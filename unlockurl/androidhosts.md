@@ -2,7 +2,7 @@
 
 为什么要修改hosts文件呢，我们这里修改hosts文件的目的主要是为了<a href="https://github.com/bannedbook/fanqiang/wiki/hosts%E7%BF%BB%E5%A2%99">hosts翻墙</a>。
 
-本文介绍四种Android手机修改hosts文件的方法，但修改hosts文件一定要谨慎：Android手机hosts文件的换行符必须是n而不是windows的rn，使用Notepad++打开hosts文件，依次点击菜单中的“视图–显示符号–显示所有字符”，如果行末是LF就没问题，CR LF结束则需要替换所有的CR LF为LF。
+本文介绍四种Android手机修改hosts文件的方法，但修改hosts文件一定要谨慎：Android手机hosts文件的换行符必须是\n而不是windows的\r\n，使用Notepad++打开hosts文件，依次点击菜单中的“视图–显示符号–显示所有字符”，如果行末是LF就没问题，CR LF结束则需要替换所有的CR LF为LF。
 
 Android手机hosts文件路径：/system/etc/hosts
 
