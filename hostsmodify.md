@@ -14,7 +14,7 @@
 
 <h2>修改hosts文件-方法二</h2>
 
-用文本编辑器打开hosts文件，将以下内容复制进去，保存即可（hosts 文件没有后缀）<br/>
+以管理员身份启动文本编辑器打开hosts文件，然后修改保存即可（hosts 文件没有后缀）<br/>
 
 <br/>Windows 用户可以以管理员身份直接运行 notepad "%SystemRoot%\system32\drivers\etc\hosts" 进行 编辑
 
