@@ -28,5 +28,7 @@ smartHosts
 
 <h2>修改hosts方法四：不需要重启</h2>
 
-直接用手机浏览器下载我们提供的<strong><a href="https://raw.githubusercontent.com/kgfw/fg/master/hosts/hosts.zip">hosts文件下载</a></strong>
+直接用手机浏览器下载我们提供的<strong><a href="https://raw.githubusercontent.com/kgfw/fg/master/hosts/hosts.zip">hosts文件</a></strong>
 用 RE管理器 （前提需要手机已Root）复制或者移动至 /system/etc/hosts 粘貼或者覆盖即可。
+
+参考：<a href="https://github.com/bannedbook/fanqiang/blob/master/unlockurl/hostsmodify.md">Windows及其它平台修改hosts文件的方法</a>
