@@ -29,6 +29,6 @@ Windows修改hosts文件也可参照这个<a href="https://raw.githubusercontent
 <a href="https://github.com/bannedbook/fanqiang/blob/master/unlockurl/androidhosts.md" >安卓修改hosts文件方法</a>
 
 <h2>Linux 和Mac修改hosts文件方法</h2>
-Linux 和Mac用户用文本编辑器（需要root权限）修改 /etc/hosts 即可开始编辑
+Linux 和Mac用户用文本编辑器（需要root权限）修改 /etc/hosts 文件即可
 
 
