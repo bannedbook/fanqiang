@@ -2,6 +2,16 @@
 
 为什么要修改hosts文件呢，我们这里修改hosts文件的目的主要是为了<a href="https://github.com/bannedbook/fanqiang/wiki/hosts%E7%BF%BB%E5%A2%99" target="_blank">hosts翻墙</a>。
 
+<h2>hosts文件的路径：</h2>
+<ul>
+	<li><strong>Windows</strong> 系统hosts位于 C:\Windows\System32\drivers\etc\hosts</span></li>
+	<li><strong>Android</strong>（安卓）系统hosts位于 /etc/hosts</span></li>
+	<li><strong>Mac</strong>（苹果电脑）系统hosts位于/etc/hosts</span></li>
+	<li><strong>iPhone</strong>（iOS）系统hosts位于/etc/hosts</span></li>
+	<li><strong>Linux</strong>系统hosts位于/etc/hosts</span></li>
+	<li>绝大多数Unix系统都是在 /etc/hosts</li>
+</ul>
+
 <h2>方法一-修改Hosts没有权限解决方法</h2>
 1.找到Hosts文件，将Hosts文件复制到桌面。（Windows7系统Hosts文件路径为：C:\WINDOWS\system32\drivers\etc\hosts）
 
