@@ -12,7 +12,7 @@
 	<li>绝大多数Unix系统都是在 /etc/hosts</li>
 </ul>
 
-<h2>方法一-Windows修改Hosts没有权限解决方法</h2>
+<h2>-Windows修改Hosts没有权限解决方法</h2>
 1.找到Hosts文件，将Hosts文件复制到桌面。（Windows7系统Hosts文件路径为：C:\WINDOWS\system32\drivers\etc\hosts）
 
 2.用记事本打开，修改内容，然后保存。
@@ -21,12 +21,9 @@
 
 通过这个方式可以解决提示无权修改Hosts文件，以后需要修改Hosts时就不再需要再复制到桌面了，因为文件属性已经修改，以后只需要在Hosts目录下修改即可
 
+Windows修改hosts文件，也可以 以管理员身份启动文本编辑器打开hosts文件，然后修改保存即可（hosts 文件没有后缀）， Windows 用户可以以管理员身份直接运行 notepad "%SystemRoot%\system32\drivers\etc\hosts" 进行 编辑。
 
-<h2>Windows修改hosts文件-方法二</h2>
-
-以管理员身份启动文本编辑器打开hosts文件，然后修改保存即可（hosts 文件没有后缀）
-
-Windows 用户可以以管理员身份直接运行 notepad "%SystemRoot%\system32\drivers\etc\hosts" 进行 编辑
+Windows修改hosts文件-视频教程也可参照这个<a href="https://raw.githubusercontent.com/kgfw/fg/master/hosts/hostsmodify.mp4" >修改hosts文件的视频教程</a>
 
 <h2>安卓修改hosts文件方法</h2>
 <a href="https://github.com/bannedbook/fanqiang/blob/master/unlockurl/androidhosts.md" >安卓修改hosts文件方法</a>
@@ -34,4 +31,4 @@ Windows 用户可以以管理员身份直接运行 notepad "%SystemRoot%\system3
 <h2>Linux 和Mac修改hosts文件方法</h2>
 Linux 和Mac用户用文本编辑器（需要root权限）修改 /etc/hosts 即可开始编辑
 
-<h2>Windows修改hosts文件-视频教程</h2>请参照这个<a href="https://raw.githubusercontent.com/kgfw/fg/master/hosts/hostsmodify.mp4" >修改hosts文件的视频教程</a>
+
