@@ -12,7 +12,7 @@
 	<li>绝大多数Unix系统都是在 /etc/hosts</li>
 </ul>
 
-<h2>-Windows修改Hosts没有权限解决方法</h2>
+<h2>Windows修改Hosts文件的方法</h2>
 1.找到Hosts文件，将Hosts文件复制到桌面。（Windows7系统Hosts文件路径为：C:\WINDOWS\system32\drivers\etc\hosts）
 
 2.用记事本打开，修改内容，然后保存。
