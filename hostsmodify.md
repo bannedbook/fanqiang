@@ -2,7 +2,7 @@
 
 为什么要修改hosts文件呢，我们这里修改hosts文件的目的主要是为了<a href="https://github.com/bannedbook/fanqiang/wiki/hosts%E7%BF%BB%E5%A2%99" target="_blank">hosts翻墙</a>。
 
-<h2>修改hosts文件-方法一</h2>
+<h2>方法一-修改Hosts没有权限解决方法</h2>
 1.找到Hosts文件，将Hosts文件复制到桌面。（Windows7系统Hosts文件路径为：C:\WINDOWS\system32\drivers\etc\hosts）
 
 2.用记事本打开，修改内容，然后保存。
@@ -22,3 +22,4 @@
 
 <br/>关闭某个IPv6的转发请在那一行的最前面添加#号，启用请去除最前面#号，每行中间的#号是为了区分地址 和注释，不用理睬
 
+<h2>修改hosts文件-方法三</h2>请参照这个<a href="https://raw.githubusercontent.com/kgfw/fg/master/hosts/hostsmodify.mp4" >修改hosts文件的视频教程</a>
