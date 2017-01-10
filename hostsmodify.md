@@ -1,4 +1,7 @@
 # 修改hosts文件的方法大全
+
+为什么要修改hosts文件呢，我们这里修改hosts文件的目的主要是为了<a href="https://github.com/bannedbook/fanqiang/wiki/hosts%E7%BF%BB%E5%A2%99" target="_blank">hosts翻墙</a>。
+
 <h2>修改hosts文件-方法一</h2>
 1.找到Hosts文件，将Hosts文件复制到桌面。（Windows7系统Hosts文件路径为：C:\WINDOWS\system32\drivers\etc\hosts）
 
