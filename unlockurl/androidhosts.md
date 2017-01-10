@@ -4,7 +4,7 @@
 
 Android手机hosts文件路径：/system/etc/hosts
 
-修改hosts方法一：需重启
+<h2>修改hosts方法一：需重启</h2>
 
 修改host文件首先需要Android手机获取Root权限
 
@@ -12,11 +12,11 @@ Android手机hosts文件路径：/system/etc/hosts
 
 保存后重启手机即可生效
 
-修改hosts方法二：不需重启
+<h2>修改hosts方法二：不需重启</h2>
 
 将hosts文件拷贝到电脑，电脑端修改后复制回手机，这种方法不需要重启
 
-修改hosts方法三：
+<h2>修改hosts方法三：</h2>
 
 各种android市场中寻找修改hosts的app，例如：
 
@@ -24,7 +24,7 @@ hosts 助手
 
 smartHosts
 
-修改hosts方法四：不需要重启
+<h2>修改hosts方法四：不需要重启</h2>
 
 直接用手机浏览器下载老D提供的hosts文件（百度网盘里的，不带.txt的）用 RE管理器 （前提需要手机已Root）复制或者移动至 /system/etc/hosts 粘貼或者覆盖即可。
 
