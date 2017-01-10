@@ -28,10 +28,5 @@ smartHosts
 
 <h2>修改hosts方法四：不需要重启</h2>
 
-直接用手机浏览器下载老D提供的hosts文件（百度网盘里的，不带.txt的）用 RE管理器 （前提需要手机已Root）复制或者移动至 /system/etc/hosts 粘貼或者覆盖即可。
-
- 
-
-至于iOS设备如何修改hosts，可能就需要越狱了，有些麻烦，这里暂且不提。本人目前使用的苹果设备用到的google服务不多，如果有朋友有什么好的方法，也可以留言告诉我。
-
-转载请注明来自 老D，本文标题：Android修改hosts文件的方法介绍, 转载请保留本声明！
+直接用手机浏览器下载我们提供的<strong><a href="https://raw.githubusercontent.com/kgfw/fg/master/hosts/hosts.zip">hosts文件下载</a></strong>
+用 RE管理器 （前提需要手机已Root）复制或者移动至 /system/etc/hosts 粘貼或者覆盖即可。
