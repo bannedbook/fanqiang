@@ -23,7 +23,7 @@
 
 Windows修改hosts文件，也可以 以管理员身份启动文本编辑器打开hosts文件，然后修改保存即可（hosts 文件没有后缀）， Windows 用户可以以管理员身份直接运行 notepad "%SystemRoot%\system32\drivers\etc\hosts" 进行 编辑。
 
-Windows修改hosts文件-视频教程也可参照这个<a href="https://raw.githubusercontent.com/kgfw/fg/master/hosts/hostsmodify.mp4" >修改hosts文件的视频教程</a>
+Windows修改hosts文件也可参照这个<a href="https://raw.githubusercontent.com/kgfw/fg/master/hosts/hostsmodify.mp4" >Windows修改hosts文件的视频教程</a>
 
 <h2>安卓修改hosts文件方法</h2>
 <a href="https://github.com/bannedbook/fanqiang/blob/master/unlockurl/androidhosts.md" >安卓修改hosts文件方法</a>
