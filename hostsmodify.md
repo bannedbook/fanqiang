@@ -14,12 +14,12 @@
 
 <h2>修改hosts文件-方法二</h2>
 
-以管理员身份启动文本编辑器打开hosts文件，然后修改保存即可（hosts 文件没有后缀）<br/>
+以管理员身份启动文本编辑器打开hosts文件，然后修改保存即可（hosts 文件没有后缀）
 
-<br/>Windows 用户可以以管理员身份直接运行 notepad "%SystemRoot%\system32\drivers\etc\hosts" 进行 编辑
+Windows 用户可以以管理员身份直接运行 notepad "%SystemRoot%\system32\drivers\etc\hosts" 进行 编辑
 
-<br/>Linux 和Mac用户用文本编辑器（需要root权限）修改 /etc/hosts 即可开始编辑
+Linux 和Mac用户用文本编辑器（需要root权限）修改 /etc/hosts 即可开始编辑
 
-<br/>关闭某个IPv6的转发请在那一行的最前面添加#号，启用请去除最前面#号，每行中间的#号是为了区分地址 和注释，不用理睬
+关闭某个IPv6的转发请在那一行的最前面添加#号，启用请去除最前面#号，每行中间的#号是为了区分地址 和注释，不用理睬
 
 <h2>修改hosts文件-方法三</h2>请参照这个<a href="https://raw.githubusercontent.com/kgfw/fg/master/hosts/hostsmodify.mp4" >修改hosts文件的视频教程</a>
