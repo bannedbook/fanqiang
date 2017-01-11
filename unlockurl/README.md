@@ -25,3 +25,5 @@
 <li ><b>问答交流</b><br/>
 教程到这里基本结束了，如果哪一步还有疑问，请点下面的翻墙交流链接发帖交流。</li>
 </ol>
+
+<p>自动回复最新翻墙信息网址：<a href="mailto:freeman105@gmail.com">freeman105@gmail.com</a>（仅仅自动回复，不解答问题,如需交流，请点：<a href="https://github.com/bannedbook/fanqiang/issues">翻墙交流</a>）。</p>
