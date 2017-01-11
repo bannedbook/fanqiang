@@ -18,7 +18,7 @@
 <li ><b>修改hosts文件</b><br/>任选其中一个ip地址（另一个备用），在自己的hosts文件中添加一行:<br/>
 104.27.172.153   ya.dnstogo.xyz<br/>
 如何修改hosts文件，请参考：<strong><a href="https://github.com/bannedbook/fanqiang/wiki/hosts%E7%BF%BB%E5%A2%99" class="wiki-page-link">hosts翻墙</a></strong>、<strong><a href="https://github.com/bannedbook/fanqiang/blob/master/unlockurl/hostsmodify.md">如何修改hosts文件</a></strong>
-<br/><br/>
+<br/>
 修改并保存hosts文件后，用浏览器打开： https://ya.dnstogo.xyz/    ，注意：必须是<b>https</b>, s不能少，否则会打不开。
 </li>
 
