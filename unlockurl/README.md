@@ -8,7 +8,8 @@
 <li ><b>获取直连域名的真实IP地址</b><br/>点击打开 https://www.whatsmydns.net/  ，在左上角的域名输入框输入域名，然后点 右侧的 "Search" 按钮，即可得到2个ip地址：
 104.27.172.153 
 104.27.173.153
-如下图<img src="https://raw.githubusercontent.com/kgfw/fg/master/hosts/findip.jpg"/>
+如下图
+<img src="https://raw.githubusercontent.com/kgfw/fg/master/hosts/findip.jpg"/>
 
 </li>
 
