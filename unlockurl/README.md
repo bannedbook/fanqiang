@@ -1,5 +1,6 @@
 # 解封禁闻直连网址
 
+本文的目的是解封已经被封锁和无法使用的<a href="https://github.com/bannedbook/fanqiang/wiki#jwurl">禁闻直连网址</a>，包括当前尚能使用的禁闻直连网址，也可以使用这种方法来防止被封，保持一直可用。
 
 <ol type=disc>
 <li ><b>获得一个直连网址的域名</b><br/>
