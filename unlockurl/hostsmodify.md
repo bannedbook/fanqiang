@@ -31,4 +31,4 @@ Windows修改hosts文件也可参照这个<a href="https://raw.githubusercontent
 <h2>Linux 和Mac修改hosts文件方法</h2>
 Linux 和Mac用户用文本编辑器（需要root权限）修改 /etc/hosts 文件即可
 
-
+<p>自动回复最新翻墙信息网址：<a href="mailto:freeman105@gmail.com">freeman105@gmail.com</a>（仅仅自动回复，不解答问题,如需交流，请点：<a href="https://github.com/bannedbook/fanqiang/issues">翻墙交流</a>）。</p>
