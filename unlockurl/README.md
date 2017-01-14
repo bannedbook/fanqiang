@@ -10,7 +10,7 @@
 104.27.172.153 <br/>
 104.27.173.153<br/>
 如下图<br/>
-<img src="https://raw.githubusercontent.com/kgfw/fg/master/hosts/findip.jpg"/>
+<img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/findip.jpg"/>
 
 </li>
 
