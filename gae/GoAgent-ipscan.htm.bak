@@ -33,7 +33,7 @@ href="https://raw.githubusercontent.com/bannedbook/fanqiang/master/gae/proxy.py"
 <p >你可以直接用Agent文件夹下的gsan目录里的工具即可扫描了，已经内置了可用ip列表大约1.6w ip。</p>
 
 <p >若你有自己有扫描工具，可以下载<a
-href="https://raw.githubusercontent.com/bannedbook/fanqiang/master/gae/googleip.txt">
+href="https://raw.githubusercontent.com/kgfw/fg/master/wstp/googleip.txt">
 googleip.txt文件</a>，其为为可用谷歌ip的地址列表，大约2w个ip，来源为vpn扫描全部谷歌地址域得到，可靠性有保障，大家可以下载来自己用<a
 href="https://code.google.com/archive/p/gogo-tester/">GoGoTest</a>、GScan进行扫描！</p>
 
