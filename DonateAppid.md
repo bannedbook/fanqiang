@@ -14,7 +14,7 @@
 
 
   * 将freeman105@gmail.com填入 成员，选择角色选 项目/所有者，点击 添加 按钮<br>  
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/fg/master/gae/DonateAppid/Snap5.jpg)
+![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/gae/DonateAppid/Snap5.jpg)
 <br>
 
 
