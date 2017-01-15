@@ -68,17 +68,17 @@ Windows Phone
 
 安装完毕，程序运行之后，Resilio Sync会弹出如下窗口：
 
-<img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/RESILIO-SYNC/img/image002.jpg" alt="" width="472" height="523" border="0" />
+<img src="https://raw.githubusercontent.com/kgfw/fg/master/BTSync//image002.jpg" alt="" width="472" height="523" border="0" />
 
 在上面的窗口中，需要选择一个名字，默认会显示你的Windows用户名，建议修改成一个可以保持匿名的名称，然后把下面的2个框打勾，然后再点击“入门”按钮。
 
 然后弹出下面的画面，如果不想订阅直接点右上角的X关掉窗口即可：
 
-<img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/RESILIO-SYNC/img/image003.jpg" alt="" width="472" height="215" border="0" />
+<img src="https://raw.githubusercontent.com/kgfw/fg/master/BTSync//image003.jpg" alt="" width="472" height="215" border="0" />
 
 然后就出现了程序主界面：
 
-<img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/RESILIO-SYNC/img/image004.jpg" alt="" width="484" height="402" border="0" />
+<img src="https://raw.githubusercontent.com/kgfw/fg/master/BTSync//image004.jpg" alt="" width="484" height="402" border="0" />
 <h3>五、RESILIO SYNC的使用</h3>
 前面说了好多屁话，现在终于说到重点部分啦。
 <h4>(一)“同步密钥”的概念</h4>
@@ -98,11 +98,11 @@ BG2G54AGRNPC5YXSTLQV5PNWL7ULYRIPC
 
 当你拿到这个密钥之后，可以通过如下步骤，导入密钥，并在你本机创建一个同步目录。（截图如下），点击“添加文件夹”右边的倒三角图标，然后点“输入密钥或链接”：
 
-<img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/RESILIO-SYNC/img/image005.jpg" alt="" width="507" height="343" border="0" />
+<img src="https://raw.githubusercontent.com/kgfw/fg/master/BTSync//image005.jpg" alt="" width="507" height="343" border="0" />
 
 输入密钥后，点击 下一步：
 
-<img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/RESILIO-SYNC/img/image006.jpg" alt="" width="527" height="90" border="0" />
+<img src="https://raw.githubusercontent.com/kgfw/fg/master/BTSync//image006.jpg" alt="" width="527" height="90" border="0" />
 
 然后会弹出选择文件夹的对话框，请选择一个有读写和修改权限的文件夹，完成上述步骤之后，Resilio Sync 就把你<span>选择</span>的目录作为同步目录。今后俺如果往自己的“翻墙软件”目录增加了新的软件，或者更新了原来的软件，你的Resilio Sync会自动同步并保存到你的这个目录。
 
@@ -110,7 +110,7 @@ BG2G54AGRNPC5YXSTLQV5PNWL7ULYRIPC
 <h4>(三)使用代理服务器</h4>
 如果你让 Resilio Sync 走<span>代理</span>（proxy）的方式联网，最好勾选“使用代理服务器”这个复选框。
 
-<img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/RESILIO-SYNC/img/image007.jpg" alt="" width="146" height="260" border="0" />
+<img src="https://raw.githubusercontent.com/kgfw/fg/master/BTSync//image007.jpg" alt="" width="146" height="260" border="0" />
 
 点击上图“首选项”，再点“高级”按钮，即可看到“使用代理服务器”的复选框了。
 <h3>六、时间同步</h3>
