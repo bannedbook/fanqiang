@@ -1,1 +1,1 @@
-ÏîÄ¿Ê×Ò³:<h2><a href="https://github.com/bannedbook/fanqiang/wiki/hosts%E7%BF%BB%E5%A2%99">hosts·­Ç½</a></h2>
+é¡¹ç›®é¦–é¡µ:<h2><a href="https://github.com/bannedbook/fanqiang/wiki/hosts%E7%BF%BB%E5%A2%99">hostsç¿»å¢™</a></h2>
