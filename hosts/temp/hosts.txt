@@ -1,8 +1,3 @@
-# newest fanqiang soft: https://git.io/jww  freeman105@gmail.com
-# bannedbook.org Start
-104.27.196.90 cn.bannedbook.org
-104.28.24.67 usadns.info
-# bannedbook.org End
 # Copyright (c) 2014-2017, racaljk.
 # https://github.com/racaljk/hosts
 # Last updated: 2017-01-20
