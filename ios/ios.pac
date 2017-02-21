@@ -66,6 +66,7 @@ var domains = {
   "nexon.co.jp": 1,
   "konachan.com": 1,
   "vultr.com": 1,
+  "glosbe.com": 1, 
   "flashfxp.com": 1,
   "nyaa.eu": 1,
   "nyaa.se": 1,
@@ -101,6 +102,7 @@ var domains = {
   "881903.com": 1, 
   "89-64.org": 1,
   "twitch.tv": 1,
+  "freewechat.com": 1,  
   "9001700.com": 1, 
   "908taiwan.org": 1, 
   "9bis.com": 1, 
@@ -2184,7 +2186,6 @@ var domains = {
   "zuo.la": 1, 
   "zuola.com": 1, 
   "zvereff.com": 1,
-  "glosbe.com": 1, 
   "zyzc9.com": 1
 };
 
