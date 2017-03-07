@@ -6,9 +6,7 @@
 
 搭建代理服务器
 ==============
-推荐服务器，速度飞快，SLA可用性99.99% ： http://www.vultr.com/?ref=7036138-3B
-赠送的20刀期限30天，注意使用。
-注意使用我们的推荐链接（不要省略?ref=7036138-3B），才能享受到赠送20刀优惠哦。
+推荐服务器，速度飞快，SLA可用性99.99% ： http://www.vultr.com/?ref=6999340
 搭配锐速，网页打开速度翻十倍，效果更加。
 ==============
 在 25 端口搭建 http/https 代理。
@@ -98,9 +96,7 @@ service iptables save
 
 然后使用 [PAC](https://raw.githubusercontent.com/bannedbook/fanqiang/master/jwpac/jw.pac) 右键另存为 PAC 文件后修改其中的server1.pac.dtwang.org为你的服务器IP即可。
 
-推荐服务器，速度飞快，SLA可用性99.99% ： http://www.vultr.com/?ref=7036138-3B
-赠送的20刀期限30天，注意使用。
-注意使用我们的推荐链接（不要省略?ref=7036138-3B），才能享受到赠送20刀优惠哦。
+推荐服务器，速度飞快，SLA可用性99.99% ： http://www.vultr.com/?ref=6999340
 搭配锐速，网页打开速度翻十倍，效果更加。
 
 转载注明出处：https://github.com/bannedbook/fanqiang/wiki/pacfq
