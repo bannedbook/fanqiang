@@ -27,5 +27,6 @@ C:\Windows\System32\drivers\etc目录下了
 如现有hosts内容重要的话请备份后再使用。
 
 ---------------------------------------------------------
+感谢Google Hosts团队 https://github.com/googlehosts/hosts 提供原始hosts文件
 
 最新翻墙软件 https://git.io/jww  自动回复最新翻墙讯息：freeman105@gmail.com
