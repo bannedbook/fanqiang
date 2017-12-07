@@ -18,7 +18,7 @@ cd D:\go-ipfs
 然后再输入：
 ipfs init
 回车
-然后会输出结果：
+然后会输出结果： 
 initializing IPFS node at C:\Users\tom\.ipfs
 generating 2048-bit RSA keypair...done
 peer identity:（一串字符串）
