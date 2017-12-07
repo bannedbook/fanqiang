@@ -46,4 +46,8 @@ ipfs pin add -r /ipns/QmdRaB7BPW4hE8UdNN5M6VdCTPG6c8AN269UrqjVYc42xC<br>
 会输出<br>
 pinned QmXtNPPScbSRnY38Ns4PZYRqyGoic1hY9v4MC4r4Aeh4my recursively<br>
 查看做种情况<br>
+<<<<<<< HEAD
 ipfs pin ls /ipfs/QmXtNPPScbSRnY38Ns4PZYRqyGoic1hY9v4MC4r4Aeh4my
+=======
+ipfs pin ls /ipfs/QmXtNPPScbSRnY38Ns4PZYRqyGoic1hY9v4MC4r4Aeh4my
+>>>>>>> 362bb29643a5829d942756416772e0c07dd44966
