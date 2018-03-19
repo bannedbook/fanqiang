@@ -1,5 +1,5 @@
 <b>备注，RESILIO SYNC 的 Tracker Server被墙，如果无法下载翻墙软件，请看</b>：
-<br><a href="https://ipfs.io/ipns/QmdRaB7BPW4hE8UdNN5M6VdCTPG6c8AN269UrqjVYc42xC">所有软件下载</a>
+<br><a href="https://ipfs.io/ipns/QmdRaB7BPW4hE8UdNN5M6VdCTPG6c8AN269UrqjVYc42xC">所有软件下载（已被墙）</a>
   <br><a href="https://github.com/bannedbook/fanqiang/blob/master/ipfs-qanqiang.md">使用 IPFS 来下载和传播翻墙软件</a>
   <br><a href="https://github.com/bannedbook/fanqiang/blob/master/RESILIO-SYNC/btfq.md">聊聊 GFW 如何封杀 Resilio Sync（BTSync）？以及如何【免翻墙】继续使用？</a>
 
