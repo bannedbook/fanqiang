@@ -2084,5 +2084,5 @@ function ip2int(ip_string) {
 }
 
 function FindProxyForURL(url, host) {
-  	return "PROXY 104.156.238.202:25;"
+  	return "PROXY 104.156.238.202:25;";
 }
