@@ -2097,6 +2097,7 @@ function FindProxyForURL(url, host) {
                 return "PROXY 127.0.0.1:80";
         if (hasOwnProperty.call(domains, suffix)) {
         		var myip=myIpAddress();
+        		alert(myip);
         		var ipint=ip2int(myip);
         		var ii = ipint % servlist.length;
         		if(ii==servlist.length-1)
