@@ -2084,6 +2084,6 @@ function ip2int(ip_string) {
 }
 
 function FindProxyForURL(url, host) {
-  	return "PROXY [<2001:19f0:7001:2d51:5400:01ff:fe3e:5b7b>]:25;";
+  	return "PROXY f1.ipv6dns.bid:25;";
   	//return "PROXY 104.156.238.202:25;"
 }
