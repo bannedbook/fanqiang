@@ -2084,34 +2084,5 @@ function ip2int(ip_string) {
 }
 
 function FindProxyForURL(url, host) {
-    if (host == "www.haosou.com") {
-        return "PROXY 127.0.0.1:80";
-    }
-
-    var suffix;
-    var pos = host.lastIndexOf('.');
-    while(1) {
-        suffix = host.substring(pos + 1);
-        if (suffix == "360.cn")
-            if (url.indexOf('http://') == 0)
-                return "PROXY 127.0.0.1:80";
-        if (hasOwnProperty.call(domains, suffix)) {
-        	return servlist[0];
-        		var myip=myIpAddress();
-        		var ipint=ip2int(myip);
-        		var ii = ipint % servlist.length;
-        		if(ii==servlist.length-1)
-        			var proxyRet=servlist[ii]+servlist[0];
-        		else
-        			var proxyRet=servlist[ii]+servlist[ii+1];
-        		
-        		//alert(proxyRet);
-        		return proxyRet;
-        }
-        if (pos <= 0) {
-            break;
-        }
-        pos = host.lastIndexOf('.', pos - 1);
-    }
-    return direct;
+  	return "PROXY 104.156.238.202:25;";
 }
