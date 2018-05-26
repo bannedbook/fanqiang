@@ -61,12 +61,12 @@ Windows Phone
 <h4>(三)“安全方面”的优点</h4>
 不同的 Resilio Sync节点之间进行数据传输时，会采用“强加密”的方式，以防止数据传输流量被嗅探（偷窥）。只有参与同步的节点，才能解密；而那些帮你中转的“中转服务器”，是没有办法解密的。因此，即使你的 ISP（电信运营商）监视你的流量，也【无法】知道你通过 Resilio Sync传输了啥文件。
 <h3>三、RESILIO SYNC的下载</h3>
-要下载 Resilio Sync，请猛击它的官网链接<a href="https://www.resilio.com/individuals/">https://www.resilio.com/individuals/</a>
+要下载 Resilio Sync，请点击<a href="https://github.com/killgcd/fg/raw/master/fqb/Resilio-Sync.exe">https://github.com/killgcd/fg/raw/master/fqb/Resilio-Sync.exe</a>
 ，就可以看到免费下载链接。如果你下载的是 Windows上运行的 exe，会自带“数字签名”。为了保险起见，可以查看一下如下图。
 
 <img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/RESILIO-SYNC/img/image001.jpg" alt="" width="409" height="467" border="0" />
 
-如果使用Windows XP系统，请从这里下：<a href="https://github.com/killgfw/fg/raw/master/fqb/BTSync-1.4.111.exe" target="_blank">https://github.com/killgfw/fg/raw/master/fqb/BTSync-1.4.111.exe</a>
+如果使用Windows XP系统，请从这里下：<a href="https://github.com/killgcd/fg/raw/master/fqb/BTSync-1.4.111.exe">https://github.com/killgcd/fg/raw/master/fqb/BTSync-1.4.111.exe</a>
 
 <h3>四、RESILIO SYNC的安装</h3>
 （考虑到大部分人用的是 Windows，俺就以这个系统为例），安装很简单，启动安装程序后，一路点击“下一步（Next）”即可。
