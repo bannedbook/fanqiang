@@ -62,7 +62,7 @@ Windows Phone
 不同的 Resilio Sync节点之间进行数据传输时，会采用“强加密”的方式，以防止数据传输流量被嗅探（偷窥）。只有参与同步的节点，才能解密；而那些帮你中转的“中转服务器”，是没有办法解密的。因此，即使你的 ISP（电信运营商）监视你的流量，也【无法】知道你通过 Resilio Sync传输了啥文件。
 <h3>三、RESILIO SYNC的下载</h3>
 要下载 Resilio Sync，请点击<a href="https://github.com/killgcd/fg/raw/master/fqb/Resilio-Sync.exe">https://github.com/killgcd/fg/raw/master/fqb/Resilio-Sync.exe</a>
-，就可以看到免费下载链接。如果你下载的是 Windows上运行的 exe，会自带“数字签名”。为了保险起见，可以查看一下如下图。
+。如果你下载的是 Windows上运行的 exe，会自带“数字签名”。为了保险起见，可以查看一下如下图。
 
 <img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/RESILIO-SYNC/img/image001.jpg" alt="" width="409" height="467" border="0" />
 
