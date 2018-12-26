@@ -1,0 +1,96 @@
+// This file is asciidoc source code.
+// To generate manpages, use the a2x command i.e.
+// a2x --no-xmllint -d manpage -f manpage meek-client.1.txt
+// see http://www.methods.co.nz/asciidoc/userguide.html#X1
+MEEK-CLIENT(1)
+==============
+
+NAME
+----
+meek-client - The meek client transport plugin
+
+SYNOPSIS
+--------
+**meek-client** [__OPTIONS__]
+
+DESCRIPTION
+-----------
+meek-client is a transport plugin for Tor that encodes a stream as a
+sequence of HTTP requests and responses. It is usually run with the
+**--url** and **--front** options. The **--url** option controls what
+URL requests are made to; the web server at that URL should be
+configured to forward requests to a meek-server somewhere. The
+**--front** option is for domain name camouflage: The domain name in the
+URL is replaced by the front domain before the request is made, but the
+Host header inside the HTTP request still points to the original domain.
+The idea is to front through a domain that is not blocked to a domain
+that is blocked.
+
+Configuration for meek-client usually appears in a torrc file. Most user
+configuration can happen either through SOCKS args (i.e., args on a
+Bridge line) or through command line options. SOCKS args take precedence
+per-connection over command line options. For example, this
+configuration using SOCKS args:
+----
+Bridge meek 0.0.2.0:1 url=https://meek-reflect.appspot.com/ front=www.google.com
+ClientTransportPlugin meek exec ./meek-client
+----
+is the same as this one using command line options:
+----
+Bridge meek 0.0.2.0:1
+ClientTransportPlugin meek exec ./meek-client --url=https://meek-reflect.appspot.com/ --front=www.google.com
+----
+The advantage of SOCKS args is that multiple Bridge lines can have different
+configurations.
+
+The **--helper** option prevents meek-client from doing any network
+operations itself. Rather, it will send all requests through a browser
+extension, which must be set up separately.
+
+You can also control an upstream proxy using torrc options:
+----
+HTTPSProxy localhost:8080
+Socks4Proxy localhost:1080
+Socks5Proxy localhost:1080
+----
+or, equivalently, using the **--proxy** command-line option.
+
+When the **--helper** option is used, you can use any type of proxy:
+HTTP or SOCKS. Without **--helper**, you can only use an HTTP proxy.
+
+OPTIONS
+-------
+**--front**=__DOMAIN__::
+    Front domain name. The **front** SOCKS arg overrides the command
+    line.
+
+**--helper**=__ADDRESS__::
+    Address of HTTP helper browser extension. For example,
+    **--helper 127.0.0.1:7000**.
+
+**--proxy**=__URL__::
+    URL of upstream proxy. For example,
+    **--proxy=http://localhost:8080/**,
+    **--proxy=socks4a://localhost:1080**, or
+    **--proxy=socks5://localhost:1080**.
+    You would normally control the proxy
+    using the **HTTPSProxy**, **Socks4Proxy**, or **Socks5Proxy**
+    configuration options in a torrc file, instead of using this option.
+
+**--log**=__FILENAME__::
+    Name of a file to write log messages to (default stderr).
+
+**--url**=__URL__::
+    URL to correspond with. The domain part of the URL may be modified
+    by **--front**.
+
+**-h**, **--help**::
+    Display a help message and exit.
+
+SEE ALSO
+--------
+**https://trac.torproject.org/projects/tor/wiki/doc/meek**
+
+BUGS
+----
+Please report at **https://trac.torproject.org/projects/tor**.

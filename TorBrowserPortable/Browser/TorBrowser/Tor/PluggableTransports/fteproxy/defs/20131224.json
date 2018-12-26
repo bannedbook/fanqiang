@@ -1,0 +1,20 @@
+{
+    "manual-http-request": {
+        "regex": "^GET\\ \\/([a-zA-Z0-9\\.\\/]*) HTTP/1\\.1\\r\\n\\r\\n$"
+    },
+    "manual-http-response": {
+        "regex": "^HTTP/1\\.1\\ 200 OK\\r\\nContent-Type:\\ ([a-zA-Z0-9]+)\\r\\n\\r\\n\\C*$"
+    },
+    "manual-ssh-request": {
+        "regex": "^SSH\\-2\\.0\\C*$"
+    },
+    "manual-ssh-response": {
+        "regex": "^SSH\\-2\\.0\\C*$"
+    },
+    "dummy-request": {
+        "regex": "^\\C+$"
+    },
+    "dummy-response": {
+        "regex": "^\\C+$"
+    }
+}

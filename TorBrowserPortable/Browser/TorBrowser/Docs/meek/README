@@ -1,0 +1,78 @@
+meek is a blocking-resistant pluggable transport for Tor. It encodes a
+data stream as a sequence of HTTPS requests and responses. Requests are
+reflected through a hard-to-block third-party web server in order to
+avoid talking directly to a Tor bridge. HTTPS encryption hides
+fingerprintable byte patterns in Tor traffic.
+
+https://trac.torproject.org/projects/tor/wiki/doc/meek
+
+The key trick that makes the system work is "domain fronting":
+communicating with a forbidden domain in a way that makes it look like
+you are communicating with an allowed domain. It works by putting the
+allowed domain on the "outside" of a request: in the DNS query and the
+SNI TLS extension; and the forbidden domain on the "inside": in the Host
+header of the HTTP request. The trick works with web services that
+ignore the SNI and handle requests based on the Host header. Google,
+with its App Engine infrastructure at appspot.com, is one of these
+services. A client wanting to communicate with a forbidden subdomain of
+appspot.com while appearing to communicate with www.google.com can run
+the client plugin program like this:
+	meek-client --url=https://meek-reflect.appspot.com/ --front=www.google.com
+
+meek can use a number of web services as a transport backend. Some of
+these, like CDNs, are very easy to set up for domain fronting: you just
+point the CDN at an instance of meek-server. Others, like App Engine,
+require you to run a small "reflector" app on the service that forwards
+requests to meek-server. A description of how to set up various services
+is at https://trac.torproject.org/projects/tor/wiki/doc/meek#Webservices.
+Reflector apps are found in the appengine, nginx, php, and wsgi
+directories.
+
+The meek-client program by itself has a fingerprintable TLS handshake.
+To disguise the TLS part of HTTPS connections, meek-client should be run
+with the --helper option pointing at a browser extension that has been
+set up separately. How it works is meek-client tells the browser what
+URL to request, the browser requests it and returns the payload to
+meek-client. The TLS implementation is that of the browser, so it better
+blends in with allowed traffic. A browser extensions for Firefox is in
+the firefox directory.
+
+Here is a summary of the programs that appear in subdirectories.
+
+appengine:
+Reflector web app that runs on Google App Engine. The reflector simply
+copies requests and responses to an instance of meek-server somewhere.
+
+firefox:
+Browser extension for TLS camouflage.
+
+meek-client:
+The client transport plugin, run by a censored client.
+
+meek-client-torbrowser:
+An auxiliary program for within Tor Browser that runs a second copy of
+Firefox with the browser extension and then configures meek-client to
+use it as a helper.
+
+meek-server:
+The server transport plugin, run on a Tor relay.
+
+nginx:
+A reflector configuration for Nginx.
+
+php:
+A PHP reflector. It can be run on any platform that supports PHP with
+the cURL library. A public instance is at
+https://meek-reflect.herokuapp.com/.
+
+terminateprocess-buffer:
+An auxiliary program used on Windows to assist with cleanup of
+subprocesses.
+
+wsgi:
+A WSGI Python reflector.
+
+To the extent possible under law, the authors have dedicated all
+copyright and related and neighboring rights to this software to the
+public domain worldwide. This software is distributed without any
+warranty. See COPYING.

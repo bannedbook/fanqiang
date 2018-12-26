@@ -1,0 +1,96 @@
+// This file is asciidoc source code.
+// To generate manpages, use the a2x command i.e.
+// a2x --no-xmllint -d manpage -f manpage meek-server.1.txt
+// see http://www.methods.co.nz/asciidoc/userguide.html#X1
+MEEK-SERVER(1)
+==============
+
+NAME
+----
+meek-server - The meek server transport plugin
+
+SYNOPSIS
+--------
+**meek-server** **--acme-hostnames**=__HOSTNAME__ [__OPTIONS__]
+
+DESCRIPTION
+-----------
+meek-server is a transport plugin for Tor that encodes a stream as a
+sequence of HTTP requests and responses.
+
+You will need to configure TLS certificates. There are two ways to set
+up certificates:
+
+* **--acme-hostnames**=__HOSTNAME__ (with optional
+  **--acme-email**=__EMAIL__) will automatically get certificates for
+  __HOSTNAME__ using Let's Encrypt. When you use this option,
+  meek-server will need to be able to listen on port 80.
+* **--cert**=__FILENAME__ and **--key**=__FILENAME__ allow use to use
+  your own externally acquired certificate.
+
+Configuration for meek-server usually appears in a torrc file. Here is a
+sample configuration using automatic Let's Encrypt certificates:
+----
+ExtORPort auto
+ServerTransportListenAddr 0.0.0.0:443
+ServerTransportPlugin meek exec ./meek-server --acme-hostnames meek-server.example --log meek-server.log
+----
+Here is a sample configuration using externally acquired certificates:
+----
+ExtORPort auto
+ServerTransportListenAddr meek 0.0.0.0:8443
+ServerTransportPlugin meek exec ./meek-server 8443 --cert cert.pem --key key.pem --log meek-server.log
+----
+
+To listen on ports 80 and 443 without needed to run as root, on Linux,
+you can use the `setcap` program, part of libcap2:
+----
+setcap 'cap_net_bind_service=+ep' /usr/local/bin/meek-server
+----
+
+OPTIONS
+-------
+**--acme-email**=__EMAIL__::
+    Optional email address to register for Let's Encrypt notifications
+    when using **--acme-hostnames**.
+
+**--acme-hostnames**=__HOSTNAME__[,__HOSTNAME__]...::
+    Comma-separated list of hostnames to honor when getting automatic
+    certificates from Let's Encrypt. meek-server will open a special
+    listener on port 80 in order to handle ACME messages; this listener
+    is separate from the one specified by `ServerTransportListenAddr`.
+    The certificates will be cached in the
+    pt_state/meek-certificate-cache directory inside tor state
+    directory.
+
+**--cert**=__FILENAME__::
+    Name of a PEM-encoded TLS certificate file. Required unless
+    **--acme-hostnames** or **--disable-tls** is used.
+
+**--disable-tls**:
+    Use plain HTTP rather than HTTPS. This option is only for testing
+    purposes. Don't use it in production.
+
+**--key**=__FILENAME__:
+    Name of a PEM-encoded TLS private key file. Required unless
+    **--acme-hostnames** or **--disable-tls** is used.
+
+**--log**=__FILENAME__::
+    Name of a file to write log messages to (default stderr).
+
+**--port**=__PORT__::
+    Port to listen on. Overrides the `TOR_PT_SERVER_BINDADDR`
+    environment variable set by tor. In most cases you should set the
+    **ServerTransportListenAddr** option in torrc, rather than use the
+    **--port** option.
+
+**-h**, **--help**::
+    Display a help message and exit.
+
+SEE ALSO
+--------
+**https://trac.torproject.org/projects/tor/wiki/doc/meek**
+
+BUGS
+----
+Please report at **https://trac.torproject.org/projects/tor**.
