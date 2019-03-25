@@ -38,7 +38,7 @@ ipfs get /ipns/QmdRaB7BPW4hE8UdNN5M6VdCTPG6c8AN269UrqjVYc42xC -o fanqiang<br>
 就会开始下载翻墙软件了，如果黑色窗口没有反应，可以按回车键迫使画面更新。<br>
 画面会显示：<br>
 Saving file(s) to fanqiang<br>
-下面有下载的进度条，知道进度条显示100%，则下载完毕，下载的翻墙软件保存在：D:\go-ipfs\fanqiang目录下。<br>
+下面有下载的进度条，直到进度条显示100%，则下载完毕，下载的翻墙软件保存在：D:\go-ipfs\fanqiang目录下。<br>
 做种传播翻墙软件<br>
 如果您希望做种，帮助传播翻墙软件，大陆网友可能有安全问题，推荐海外网友来做种。<br>
 执行命令：<br>
