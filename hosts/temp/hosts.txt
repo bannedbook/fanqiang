@@ -12,7 +12,6 @@
 127.0.0.1	spankbang.com
 127.0.0.1	sex.com
 127.0.0.1	redtube.com
-127.0.0.1	dmm.com
 127.0.0.1	beeg.com
 127.0.0.1	yespornplease.com
 127.0.0.1	4chan.org
@@ -5945,7 +5944,6 @@
 127.0.0.1	www.spankbang.com
 127.0.0.1	www.sex.com
 127.0.0.1	www.redtube.com
-127.0.0.1	www.dmm.com
 127.0.0.1	www.beeg.com
 127.0.0.1	www.yespornplease.com
 127.0.0.1	www.4chan.org
@@ -11867,3 +11865,5 @@
 127.0.0.1	www.sexmosaic.com
 127.0.0.1	www.tbib.org
 127.0.0.1	www.xdeutschpornox.com
+127.0.0.1	kaiwind.com
+127.0.0.1	www.kaiwind.com
