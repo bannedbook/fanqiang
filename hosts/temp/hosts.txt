@@ -1,6 +1,6 @@
 #to add to your hsots file, block these sites
 #wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/hosts.txt  -O ->> /etc/hosts
-
+8.8.8.8   dns.google
 127.0.0.1	livejasmin.com
 127.0.0.1	pornhub.com
 127.0.0.1	xvideos.com
