@@ -636,7 +636,6 @@
 127.0.0.1	xnxx2.pro
 127.0.0.1	getiton.com
 127.0.0.1	novinhasdozapzap.com
-127.0.0.1	ninja.co.jp
 127.0.0.1	myhotzpic.com
 127.0.0.1	xnxxfap.com
 127.0.0.1	cooch.tv
@@ -868,7 +867,6 @@
 127.0.0.1	biertijd.com
 127.0.0.1	imagepost.com
 127.0.0.1	livede55.com
-127.0.0.1	papy.co.jp
 127.0.0.1	sexpixbox.com
 127.0.0.1	funberry.com
 127.0.0.1	milfzr.com
@@ -6568,7 +6566,6 @@
 127.0.0.1	www.xnxx2.pro
 127.0.0.1	www.getiton.com
 127.0.0.1	www.novinhasdozapzap.com
-127.0.0.1	www.ninja.co.jp
 127.0.0.1	www.myhotzpic.com
 127.0.0.1	www.xnxxfap.com
 127.0.0.1	www.cooch.tv
@@ -6800,7 +6797,6 @@
 127.0.0.1	www.biertijd.com
 127.0.0.1	www.imagepost.com
 127.0.0.1	www.livede55.com
-127.0.0.1	www.papy.co.jp
 127.0.0.1	www.sexpixbox.com
 127.0.0.1	www.funberry.com
 127.0.0.1	www.milfzr.com
