@@ -61,6 +61,8 @@ vultr实际上是折算成小时来计费的，比如服务器是5美元1个月�
 
 ![](https://raw.githubusercontent.com/Alvin9999/pac2/master/vultr/vultr1.PNG)
 
+服务器位置首选美国西海岸的 Los Angeles、或者亚洲的东京、新加坡，当然其它国家地区都可以尝试。
+
 ![](https://raw.githubusercontent.com/Alvin9999/pac2/master/vultr/vultr2.PNG)
 
 **vps操作系统选择**
@@ -80,7 +82,7 @@ vultr实际上是折算成小时来计费的，比如服务器是5美元1个月�
 
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/ss/Debian2.png)
 
-**删掉服务器步骤如下图**：
+**如果需要删掉服务器时，参考下图**：
 
 删除服务器时，先开新的服务器后再删除旧服务器，这样可以保证新服务器的ip与旧ip不同。
 
@@ -124,9 +126,11 @@ xshell 连接VPS教程：
 在ssh连接服务器之前我们检查一下，看看vps服务器是否已经成功启动，看下图：
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/vps/vultr-console.jpg)
 
-点服务器右侧的3个点，然后点 View Console ，然后就会弹出一个浏览器窗口如左边，显示：......Login: ,这就说明启动成功了。如果是没有这个Login:的提示，就说明还没有启动成功，这时候肯定是连不上的。
+在https://my.vultr.com/主界面，点服务器右侧的3个点，然后点 View Console ，然后就会弹出一个浏览器窗口如左边，显示：......Login: ,这就说明启动成功了。如果是没有这个Login:的提示，按几下回车键，还是没有，则说明还没有启动成功，这时候肯定是连不上的，可以再稍等几分钟。
 
-### 确保服务器启动成功的前提下，如果xshell连不上服务器，没有弹出让你输入用户名和密码的输入框，表明你开到的ip是一个被墙的ip，遇到这种情况，重新开新的服务器，直到能用xshell连上为止，耐心点哦！如果同一个地区开了多台服务器还是不行的话，可以换其它地区。
+### 确保服务器启动成功的前提下，如果xshell连不上服务器，没有弹出让你输入用户名和密码的输入框，表明你开到的ip是一个被墙的ip，遇到这种情况，重新开新的服务器，直到能用xshell连上为止，耐心点哦！如果同一个地区开了多台服务器还是不行的话，可以换其它地区。为了验证是否确实被墙，可以在windows 命令行ping ip检查一下<br>
+`ping ip`<br>
+上面命令中的 ip 换成你的ip地址,以检查确认是否ip确实被墙了。
 
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/xshell14.png)
 
@@ -136,12 +140,12 @@ xshell 连接VPS教程：
 
 **第三步：Google BBR 一键加速VPS服务器**
 
-分别执行以下2个命令即可（选中高亮后，点鼠标右键复制粘贴到上图的#后面，然后回车）：<br>
-命令1(比较长，有折行，请完整拷贝):<br> `wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/sysctl.conf  -O -> /etc/sysctl.conf`<br>
+分别执行以下2个命令即可（鼠标选中高亮后，点鼠标右键复制粘贴到上图的#后面，然后回车）。<br>
+命令1(比较长，有折行，请完整拷贝)：<br> `wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/sysctl.conf  -O -> /etc/sysctl.conf`<br>
 > 如果提示 wget: command not found 的错误，这是你的系统精简的太干净了，wget都没有安装，所以需要安先装 wget:<br>
 `apt-get install -y wget`
 
-命令2:<br> `sysctl -p`<br>
+命令2：<br> `sysctl -p`<br>
 
 执行成功后大致会输出：<br>
 `fs.file-max = 51200 `<br>
@@ -196,7 +200,6 @@ xshell 连接VPS教程：
 
 ### 
 然后参考教程：[v2ray各平台图文使用教程](https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%90%84%E5%B9%B3%E5%8F%B0%E5%9B%BE%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B)
-
 
 ***
 
