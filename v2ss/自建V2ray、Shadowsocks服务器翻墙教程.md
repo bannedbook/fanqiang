@@ -94,7 +94,8 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 
 ***
 
-**第二步：部署VPS服务器**
+**第二步：SSH连接服务器 **
+
 
 购买服务器后，需要部署一下。因为你买的是虚拟东西，而且又远在国外，我们需要一个叫Xshell的软件来远程部署。Xshell windows版下载地址：
 
@@ -131,36 +132,14 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/ss/xshell2.png)
 
-连接成功后，会出现如上图所示，之后就可以复制粘贴代码部署了。
-
-这里我们采用v2ray官方的一键安装脚本（官方脚本更加安全可靠）：
-
-安装脚本命令：
-`bash <(curl -L -s https://install.direct/go.sh)`
-
-> 如果提示 curl: command not found 的错误，这是你的系统精简的太干净了，curl都没有安装，所以需要安装curl。CentOS系统安装curl命令: yum install -y curl  Debian/Ubuntu系统安装wget命令:apt-get install -y curl
-
-———————————————————代码分割线————————————————
-
-复制上面的安装脚本命令到VPS服务器里，复制代码用鼠标右键的复制，然后在vps里面右键粘贴进去，因为ctrl+c和ctrl+v无效。接着按回车键，脚本会自动安装。
-
-安装成功后输出提示大略如下：<br>
-`PORT:33333`<br>
-`UUID:b9a7e7ac-e9f2-4ac2-xxxx-xxxxxxxxxx`<br>
-`Created symlink /etc/systemd/system/multi-user.target.wants/v2ray.service → /etc/systemd/system/v2ray.service.`<br>
-`V2Ray v4.22.1 is installed.`<br>
-
-### 注意：以上直接下载并替换config文件的方法只适合v2ray官方客户端，像第三方开发的客户端，比如v2rayN、v2rayX是不适合用直接替换config文件的方法。如果用第三方开发的客户端的话，可以按照要求填写账号信息，如果部署的账号信息没有额外ID，在第三方客户端的额外ID那一栏一般是可以随便填写一个数字，比如1～10选1个。参考教程：[v2ray各平台图文使用教程](https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%90%84%E5%B9%B3%E5%8F%B0%E5%9B%BE%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B)
-
-
-***
+连接成功后，会出现如上图所示，之后就可以复制粘贴linux命令脚本来执行了。
 
 **第三步：Google BBR 一键加速VPS服务器**
+
 分别执行以下2个命令即可：
 `wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/sysctl.conf  -O -> /etc/sysctl.conf`<br>
 `sysctl -p`<br>
 执行成功后大致会输出：<br>
-`#sysctl -p `<br>
 `fs.file-max = 51200 `<br>
 `net.ipv4.conf.lo.accept_redirects = 0 `<br>
 `net.ipv4.conf.all.accept_redirects = 0 `<br>
@@ -188,6 +167,31 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 `net.core.wmem_max = 67108864 `<br>
 `net.core.default_qdisc = fq `<br>
 `net.ipv4.tcp_congestion_control = bbr `<br>
+***
+
+**第三步：部署VPS服务器**
+
+
+这里我们采用v2ray官方的一键安装脚本（官方脚本更加安全可靠）：
+
+安装脚本命令：
+`bash <(curl -L -s https://install.direct/go.sh)`
+
+> 如果提示 curl: command not found 的错误，这是你的系统精简的太干净了，curl都没有安装，所以需要安装curl。CentOS系统安装curl命令: yum install -y curl  Debian/Ubuntu系统安装wget命令:apt-get install -y curl
+
+———————————————————代码分割线————————————————
+
+复制上面的安装脚本命令到VPS服务器里，复制代码用鼠标右键的复制，然后在vps里面右键粘贴进去，因为ctrl+c和ctrl+v无效。接着按回车键，脚本会自动安装。
+
+安装成功后输出提示大略如下：<br>
+`PORT:33333`<br>
+`UUID:b9a7e7ac-e9f2-4ac2-xxxx-xxxxxxxxxx`<br>
+`Created symlink /etc/systemd/system/multi-user.target.wants/v2ray.service → /etc/systemd/system/v2ray.service.`<br>
+`V2Ray v4.22.1 is installed.`<br>
+
+### 注意：以上直接下载并替换config文件的方法只适合v2ray官方客户端，像第三方开发的客户端，比如v2rayN、v2rayX是不适合用直接替换config文件的方法。如果用第三方开发的客户端的话，可以按照要求填写账号信息，如果部署的账号信息没有额外ID，在第三方客户端的额外ID那一栏一般是可以随便填写一个数字，比如1～10选1个。参考教程：[v2ray各平台图文使用教程](https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%90%84%E5%B9%B3%E5%8F%B0%E5%9B%BE%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B)
+
+
 ***
 
 【v2ray客户端下载】
