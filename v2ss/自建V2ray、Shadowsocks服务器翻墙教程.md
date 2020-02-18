@@ -57,14 +57,14 @@ vultr实际上是折算成小时来计费的，比如服务器是5美元1个月�
 
 ![](https://raw.githubusercontent.com/Alvin9999/pac2/master/pp101.png)
 
-**开通服务器步骤如图**：
-
+**开通服务器步骤如图**
 
 ![](https://raw.githubusercontent.com/Alvin9999/pac2/master/vultr/vultr1.PNG)
 
 ![](https://raw.githubusercontent.com/Alvin9999/pac2/master/vultr/vultr2.PNG)
 
-** vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解，其实V2ray 在 Linux 2.6.23 及之后版本（x86 / amd64 / arm / arm64 / mips64 / mips），包括但不限于 Debian 7 / 8、Ubuntu 12.04 / 14.04 及后续版本、CentOS 6 / 7、Arch Linux 下都可以安装。
+**vps操作系统选择**
+vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解，其实V2ray 在 Linux 2.6.23 及之后版本（x86 / amd64 / arm / arm64 / mips64 / mips），包括但不限于 Debian 7 / 8、Ubuntu 12.04 / 14.04 及后续版本、CentOS 6 / 7、Arch Linux 下都可以安装。
 
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/vps/vultr-debian.jpg)
 
