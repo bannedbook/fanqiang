@@ -94,7 +94,7 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 
 ***
 
-**第二步：SSH连接服务器 **
+**第二步：SSH连接服务器**
 
 
 购买服务器后，需要部署一下。因为你买的是虚拟东西，而且又远在国外，我们需要一个叫Xshell的软件来远程部署。Xshell windows版下载地址：
@@ -140,7 +140,6 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 `wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/sysctl.conf  -O -> /etc/sysctl.conf`<br>
 `sysctl -p`<br>
 执行成功后大致会输出：<br>
-`#sysctl -p `<br>
 `fs.file-max = 51200 `<br>
 `net.ipv4.conf.lo.accept_redirects = 0 `<br>
 `net.ipv4.conf.all.accept_redirects = 0 `<br>
@@ -170,7 +169,7 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 `net.ipv4.tcp_congestion_control = bbr `<br>
 ***
 
-**第三步：部署VPS服务器**
+**第四步：部署VPS服务器**
 
 
 这里我们采用v2ray官方的一键安装脚本（官方脚本更加安全可靠）：
