@@ -122,6 +122,7 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 
 在ssh连接服务器之前我们检查一下，看看vps服务器是否已经成功启动，看下图：
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/vps/vultr-console.jpg)
+
 点服务器右侧的3个点，然后点 View Console ，然后就会弹出一个浏览器窗口如左边，显示：......Login: ,这就说明启动成功了。如果是没有这个Login:的提示，就说明还没有启动成功，这时候肯定是连不上的。
 
 ### 确保服务器启动成功的前提下，如果xshell连不上服务器，没有弹出让你输入用户名和密码的输入框，表明你开到的ip是一个被墙的ip，遇到这种情况，重新开新的服务器，直到能用xshell连上为止，耐心点哦！如果同一个地区开了多台服务器还是不行的话，可以换其它地区。
@@ -132,14 +133,12 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 
 连接成功后，会出现如上图所示，之后就可以复制粘贴代码部署了。
 
-**2019.2.16日 修订更新：**
-
-来自v2ray官方的一键安装脚本（官方脚本更加安全可靠）：
+这里我们采用v2ray官方的一键安装脚本（官方脚本更加安全可靠）：
 
 安装脚本命令：
-bash <(curl -L -s https://install.direct/go.sh)
+>bash <(curl -L -s https://install.direct/go.sh)
 
-> 如果提示 wget: command not found 的错误，这是你的系统精简的太干净了，wget都没有安装，所以需要安装wget。CentOS系统安装wget命令: yum install -y wget  Debian/Ubuntu系统安装wget命令:apt-get install -y wget
+> 如果提示 wget: command not found 的错误，这是你的系统精简的太干净了，curl都没有安装，所以需要安装curl。CentOS系统安装curl命令: yum install -y curl  Debian/Ubuntu系统安装wget命令:apt-get install -y curl
 
 ———————————————————代码分割线————————————————
 
