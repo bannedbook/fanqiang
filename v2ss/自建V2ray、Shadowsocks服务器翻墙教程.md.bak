@@ -150,7 +150,6 @@ UUID:b9a7e7ac-e9f2-4ac2-xxxx-xxxxxxxxxx
 Created symlink /etc/systemd/system/multi-user.target.wants/v2ray.service → /etc/systemd/system/v2ray.service.
 V2Ray v4.22.1 is installed.`
 
-
 **最后一步很关键，那就是启动服务，进入主界面后，输入数字1，然后输入1启动v2ray服务。以后，每次你更改配置或重启vps服务器后都要进行启动服务，请牢记！**
 
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/ss/Debian14.png)
