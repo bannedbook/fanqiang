@@ -160,34 +160,34 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 `wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/sysctl.conf  -O -> /etc/sysctl.conf`<br>
 `sysctl -p`<br>
 执行成功后大致会输出：
-'#sysctl -p '
-'fs.file-max = 51200 '
-'net.ipv4.conf.lo.accept_redirects = 0 '
-'net.ipv4.conf.all.accept_redirects = 0 '
-'net.ipv4.conf.default.accept_redirects = 0 '
-'net.ipv4.ip_local_port_range = 10000 65000 '
-'net.ipv4.tcp_fin_timeout = 15 '
-'net.ipv4.tcp_fastopen = 3 '
-'net.ipv4.tcp_keepalive_time = 1200 '
-'net.ipv4.tcp_rmem = 32768 436600 873200 '
-'net.ipv4.tcp_syncookies = 1 '
-'net.ipv4.tcp_synack_retries = 2 '
-'net.ipv4.tcp_syn_retries = 2 '
-'net.ipv4.tcp_timestamps = 0 '
-'net.ipv4.tcp_max_tw_buckets = 9000 '
-'net.ipv4.tcp_max_syn_backlog = 65536 '
-'net.ipv4.tcp_mem = 94500000 91500000 92700000 '
-'net.ipv4.tcp_max_orphans = 3276800 '
-'net.ipv4.tcp_mtu_probing = 1 '
-'net.ipv4.tcp_wmem = 8192 436600 873200 '
-'net.core.netdev_max_backlog = 250000 '
-'net.core.somaxconn = 32768 '
-'net.core.wmem_default = 8388608 '
-'net.core.rmem_default = 8388608 '
-'net.core.rmem_max = 67108864 '
-'net.core.wmem_max = 67108864 '
-'net.core.default_qdisc = fq '
-'net.ipv4.tcp_congestion_control = bbr '
+`#sysctl -p `<br>
+`fs.file-max = 51200 `<br>
+`net.ipv4.conf.lo.accept_redirects = 0 `<br>
+`net.ipv4.conf.all.accept_redirects = 0 `<br>
+`net.ipv4.conf.default.accept_redirects = 0 `<br>
+`net.ipv4.ip_local_port_range = 10000 65000 `<br>
+`net.ipv4.tcp_fin_timeout = 15 `<br>
+`net.ipv4.tcp_fastopen = 3 `<br>
+`net.ipv4.tcp_keepalive_time = 1200 `<br>
+`net.ipv4.tcp_rmem = 32768 436600 873200 `<br>
+`net.ipv4.tcp_syncookies = 1 `<br>
+`net.ipv4.tcp_synack_retries = 2 `<br>
+`net.ipv4.tcp_syn_retries = 2 `<br>
+`net.ipv4.tcp_timestamps = 0 `<br>
+`net.ipv4.tcp_max_tw_buckets = 9000 `<br>
+`net.ipv4.tcp_max_syn_backlog = 65536 `<br>
+`net.ipv4.tcp_mem = 94500000 91500000 92700000 `<br>
+`net.ipv4.tcp_max_orphans = 3276800 `<br>
+`net.ipv4.tcp_mtu_probing = 1 `<br>
+`net.ipv4.tcp_wmem = 8192 436600 873200 `<br>
+`net.core.netdev_max_backlog = 250000 `<br>
+`net.core.somaxconn = 32768 `<br>
+`net.core.wmem_default = 8388608 `<br>
+`net.core.rmem_default = 8388608 `<br>
+`net.core.rmem_max = 67108864 `<br>
+`net.core.wmem_max = 67108864 `<br>
+`net.core.default_qdisc = fq `<br>
+`net.ipv4.tcp_congestion_control = bbr `<br>
 ***
 
 ### 需要注意的是：不管是重启服务器，还是以后想修改之前vps里面的v2ray配置信息，当你重启好服务器或者修改好了v2ray配置信息后，都需要启动v2ray服务端。方式是：输入v2ray，选择1，然后选择1（启动服务）。

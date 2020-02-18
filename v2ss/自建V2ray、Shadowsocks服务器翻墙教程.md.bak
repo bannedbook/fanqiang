@@ -159,7 +159,7 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 分别执行以下2个命令即可：
 `wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/sysctl.conf  -O -> /etc/sysctl.conf`<br>
 `sysctl -p`<br>
-执行成功后输出：
+执行成功后大致会输出：
 '#sysctl -p '
 'fs.file-max = 51200 '
 'net.ipv4.conf.lo.accept_redirects = 0 '
