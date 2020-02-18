@@ -136,10 +136,12 @@ xshell 连接VPS教程：
 
 **第三步：Google BBR 一键加速VPS服务器**
 
-分别执行以下2个命令即可（把命令拷贝粘贴到上图的#后面，然后回车）：<br>
+分别执行以下2个命令即可（选中高亮后，点鼠标右键复制粘贴到上图的#后面，然后回车）：<br>
 命令1(比较长，有折行，请完整拷贝):<br> `wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/sysctl.conf  -O -> /etc/sysctl.conf`<br>
+> 如果提示 wget: command not found 的错误，这是你的系统精简的太干净了，wget都没有安装，所以需要安先装 wget:<br>
+`apt-get install -y wget`
+
 命令2:<br> `sysctl -p`<br>
-> 如果提示 wget: command not found 的错误，这是你的系统精简的太干净了，wget都没有安装，所以需要安先装 wget:<br>apt-get install -y wget
 
 执行成功后大致会输出：<br>
 `fs.file-max = 51200 `<br>
@@ -179,7 +181,8 @@ xshell 连接VPS教程：
 安装脚本命令：<br>
 `bash <(curl -L -s https://install.direct/go.sh)`
 
-> 如果提示 curl: command not found 的错误，这是你的系统精简的太干净了，curl都没有安装，所以需要安先装 curl:<br>apt-get install -y curl
+> 如果提示 curl: command not found 的错误，这是你的系统精简的太干净了，curl都没有安装，所以需要安先装 curl:<br>
+`apt-get install -y curl`
 
 ———————————————————代码分割线————————————————
 
