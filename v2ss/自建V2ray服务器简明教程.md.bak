@@ -126,7 +126,7 @@ xshell 连接VPS教程：
 在ssh连接服务器之前我们检查一下，看看vps服务器是否已经成功启动，看下图：
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/vps/vultr-console.jpg)
 
-在https://my.vultr.com/主界面，点服务器右侧的3个点，然后点 View Console ，然后就会弹出一个浏览器窗口如左边，显示：......Login: ,这就说明启动成功了。如果是没有这个Login:的提示，按几下回车键，还是没有，则说明还没有启动成功，这时候肯定是连不上的，可以再稍等几分钟。
+在my.vultr.com主界面，点服务器右侧的3个点，然后点 View Console ，然后就会弹出一个浏览器窗口如左边，显示：......Login: ,这就说明启动成功了。如果是没有这个Login:的提示，按几下回车键，还是没有，则说明还没有启动成功，这时候肯定是连不上的，可以再稍等几分钟。
 
 ### 确保服务器启动成功的前提下，如果xshell连不上服务器，没有弹出让你输入用户名和密码的输入框，表明你开到的ip是一个被墙的ip，遇到这种情况，重新开新的服务器，直到能用xshell连上为止，耐心点哦！如果同一个地区开了多台服务器还是不行的话，可以换其它地区。为了验证是否确实被墙，可以在windows 命令行ping ip检查一下<br>
 `ping ip`<br>
@@ -137,6 +137,8 @@ xshell 连接VPS教程：
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/ss/xshell2.png)
 
 连接成功后，会出现如上图所示，之后就可以复制粘贴linux命令脚本来执行了。
+
+***
 
 **第三步：Google BBR 一键加速VPS服务器**
 
