@@ -136,7 +136,7 @@ xshell 连接VPS教程：
 
 ### 确保服务器启动成功的前提下，如果xshell连不上服务器，没有弹出让你输入用户名和密码的输入框，表明你开到的ip是一个被墙的ip，遇到这种情况，重新开新的服务器，直到能用xshell连上为止，耐心点哦！如果同一个地区开了多台服务器还是不行的话，可以换其它地区。为了验证是否确实被墙，可以在windows 命令行ping ip检查一下<br>
 `ping ip`<br>
-上面命令中的 ip 换成你的ip地址,以检查确认是否ip确实被墙了。
+上面命令中的 ip 换成你的vps的ip地址,以检查确认是否ip确实被墙了。
 
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/xshell14.png)
 
