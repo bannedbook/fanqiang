@@ -1,5 +1,5 @@
 **2020年2月12日更新（未完成，修改中...）。**
-转载修订自：[Alvin9999朋友的自建v2ray服务器教程] (https://github.com/Alvin9999/new-pac/wiki/%E8%87%AA%E5%BB%BAv2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%99%E7%A8%8B)
+转载修订自：<a href="https://github.com/Alvin9999/new-pac/wiki/%E8%87%AA%E5%BB%BAv2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%99%E7%A8%8B" target="_blank"> Alvin9999的自建v2ray服务器教程</a>
 ***
 
 **自建v2ray教程很简单，整个教程分三步**：
