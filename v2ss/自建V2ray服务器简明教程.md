@@ -1,5 +1,9 @@
-**2020年2月12日更新（未完成，修改中...）。**
-转载修订自：<a href="https://github.com/Alvin9999/new-pac/wiki/%E8%87%AA%E5%BB%BAv2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%99%E7%A8%8B" target="_blank"> Alvin9999的自建v2ray服务器教程</a>
+<h1>自建V2ray服务器简明教程<h1>
+
+转载修订自：<a href="https://github.com/Alvin9999/new-pac/wiki/%E8%87%AA%E5%BB%BAv2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%99%E7%A8%8B" target="_blank"> Alvin9999的自建v2ray服务器教程</a>，主要修改部分：<br>
+1、改用V2ray官方一键安装脚本<br>
+2、简化网络加速方案
+
 ***
 
 **自建v2ray教程很简单，整个教程分简单几步**：
@@ -204,6 +208,7 @@ xshell 连接VPS教程：
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2ray/client1.jpg)
 
 注意：这里的端口，填写上面服务器安装完成后显示的Port:后面的数字，用户ID填写上面的UUID:后面的一串字符即可。
+配置好客户端，就可以自由冲浪了！至此为止，是不是很简单，有人说V2ray配置复杂，我们怎么没觉得呢？
 
 关于客户端的更详细帮助，请参考[v2ray各平台图文使用教程](https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%90%84%E5%B9%B3%E5%8F%B0%E5%9B%BE%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B)
 
@@ -231,4 +236,4 @@ xshell 连接VPS教程：
 
 ***
 
-有问题可以发Issue交流。
+有问题可以<a href="https://github.com/bannedbook/fanqiang/issues">发Issue</a>交流。
