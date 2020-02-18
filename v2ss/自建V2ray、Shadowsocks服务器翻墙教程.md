@@ -137,8 +137,8 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 **第三步：Google BBR 一键加速VPS服务器**
 
 分别执行以下2个命令即可（把命令拷贝粘贴到上图的#后面，然后回车）：<br>
-命令1: `wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/sysctl.conf  -O -> /etc/sysctl.conf`<br>
-命令2: `sysctl -p`<br>
+命令1:<br> `wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/sysctl.conf  -O -> /etc/sysctl.conf`<br>
+命令2:<br> `sysctl -p`<br>
 执行成功后大致会输出：<br>
 `fs.file-max = 51200 `<br>
 `net.ipv4.conf.lo.accept_redirects = 0 `<br>
