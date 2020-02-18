@@ -147,110 +147,47 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 安装成功后输出提示大略如下：<br>
 `PORT:33333`<br>
 `UUID:b9a7e7ac-e9f2-4ac2-xxxx-xxxxxxxxxx`<br>
-`Created symlink /etc/systemd/system/multi-user.target.wants/v2ray.service → /etc/systemd/system/v2ray.service.
-V2Ray v4.22.1 is installed.`<br>
-
-**最后一步很关键，那就是启动服务，进入主界面后，输入数字1，然后输入1启动v2ray服务。以后，每次你更改配置或重启vps服务器后都要进行启动服务，请牢记！**
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/ss/Debian14.png)
-
-采用xshell软件，可以很方便的将配置文件导出，方便配置windows v2ray客户端。选择数字4，出现提示后，输入字母y，选择电脑路径即可。
-
-> 如果你没有用xshell软件，那么无法使用脚本的文件导出功能。vps服务器里面的config.json配置文件存放路径为 /etc/v2ray/config.json MAC电脑用户可以用WinSCP MAC版连接vps服务器，然后根据路径把config.json文件复制出来。
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/ss/Debian15.png)
-
-**下面这个config.jason文件就是我们刚刚配置的v2ray文件，如果以后更改了v2ray服务端信息，那么你需要重新导出config.jason文件。**
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/ss/Debian16.png)
-
-**因为一键搭建v2ray脚本是一个循环脚本，当你配置结束后不会自动退出快捷管理命令，如果你想退出界面进行其它操作，可以同时按下键盘上的ctrl键和字母z键。**
+`Created symlink /etc/systemd/system/multi-user.target.wants/v2ray.service → /etc/systemd/system/v2ray.service.`<br>
+`V2Ray v4.22.1 is installed.`<br>
 
 ### 注意：以上直接下载并替换config文件的方法只适合v2ray官方客户端，像第三方开发的客户端，比如v2rayN、v2rayX是不适合用直接替换config文件的方法。如果用第三方开发的客户端的话，可以按照要求填写账号信息，如果部署的账号信息没有额外ID，在第三方客户端的额外ID那一栏一般是可以随便填写一个数字，比如1～10选1个。参考教程：[v2ray各平台图文使用教程](https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%90%84%E5%B9%B3%E5%8F%B0%E5%9B%BE%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B)
 
 
 ***
 
-
-**第三步：一键加速VPS服务器**
-
-**总共有2种加速方法，bbr加速和锐速加速，选择1种。**
-
-**【加速教程1：谷歌BBR加速教程】**
-
-wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh
-
-chmod +x bbr.sh
-
-./bbr.sh
-
-把上面整个代码复制后粘贴进去，不动的时候按回车，然后耐心等待。最后输入reboot来重启服务器，确保加速生效，bbr加速脚本是开机自动启动，装一次就可以了。
-
-演示开始，如图：
-
-复制并粘贴代码后，按回车键确认
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/ss/18.png)
-
-如下图提示，按任意键继续部署
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/ss/19.png)
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/ss/Debian19.png)
-
-整个部署过程需要2～5分钟，最后输入reboot来重启服务器，确保加速生效，bbr加速脚本是开机自动启动，装一次就可以了。
-
-服务器重启成功并重新连接服务器后，输入命令lsmod | grep bbr  如果出现tcp_bbr字样表示bbr已安装并启动成功。如图：
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/demo/tcp_bbr.PNG)
-
-**注意**：根据反馈，少部分人安装bbr脚本并重启后，几分钟过去了，发现xshell无法连接服务器且服务器ip无法ping通。解决方法是：开新服务器或者重装系统，然后先安装bbr脚本再安装v2ray脚本。或者换锐速加速。
-
-重装系统方法，点击vultr服务器设置界面——“Server Reinstall”，如下图：
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/demo/reinstall.png)
-
-重装过程一般需要5～10分钟。
-
-**【加速教程2：破解版锐速加速教程】**
-
-**第一步，先更换服务器内核（脚本只支持centos系统，其它系统可以直接尝试第二步）**
-
-yum -y install wget
-
-wget --no-check-certificate https://blog.asuhu.com/sh/ruisu.sh && bash ruisu.sh
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/rs1.PNG)
-
-不动的时候敲回车键，在上图时需要多等一会儿。
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/rs2.PNG)
-
-出现上图时表示已成功替换内核并服务器自动重启。
-
-**完成后会重启，2分钟后重新连接服务器，连上后开始第二步的操作。**
-
-**第二步，一键安装锐速**
-
-wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh && bash serverspeeder-all.sh
-
-卸载加速代码命令为：
-
-chattr -i /serverspeeder/etc/apx* && /serverspeeder/bin/serverSpeeder.sh uninstall -f
-
-但有些内核是不适合的，部署过程中需要手动选择推荐的，当部署时出现以下字样：
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/%E9%94%90%E9%80%9F2.PNG)
-
-提示没有完全匹配的内核,随便选一个内核就行,按照提示来输入数字,按回车键即可
-
-锐速安装成功标志如下：
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/%E9%94%90%E9%80%9F3.png)
-
-出现running字样即可!
-
-
+**第三步：Google BBR 一键加速VPS服务器**
+分别执行以下2个命令即可：
+`wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/sysctl.conf  -O -> /etc/sysctl.conf`<br>
+`sysctl -p`<br>
+执行成功后输出：
+'#sysctl -p '
+'fs.file-max = 51200 '
+'net.ipv4.conf.lo.accept_redirects = 0 '
+'net.ipv4.conf.all.accept_redirects = 0 '
+'net.ipv4.conf.default.accept_redirects = 0 '
+'net.ipv4.ip_local_port_range = 10000 65000 '
+'net.ipv4.tcp_fin_timeout = 15 '
+'net.ipv4.tcp_fastopen = 3 '
+'net.ipv4.tcp_keepalive_time = 1200 '
+'net.ipv4.tcp_rmem = 32768 436600 873200 '
+'net.ipv4.tcp_syncookies = 1 '
+'net.ipv4.tcp_synack_retries = 2 '
+'net.ipv4.tcp_syn_retries = 2 '
+'net.ipv4.tcp_timestamps = 0 '
+'net.ipv4.tcp_max_tw_buckets = 9000 '
+'net.ipv4.tcp_max_syn_backlog = 65536 '
+'net.ipv4.tcp_mem = 94500000 91500000 92700000 '
+'net.ipv4.tcp_max_orphans = 3276800 '
+'net.ipv4.tcp_mtu_probing = 1 '
+'net.ipv4.tcp_wmem = 8192 436600 873200 '
+'net.core.netdev_max_backlog = 250000 '
+'net.core.somaxconn = 32768 '
+'net.core.wmem_default = 8388608 '
+'net.core.rmem_default = 8388608 '
+'net.core.rmem_max = 67108864 '
+'net.core.wmem_max = 67108864 '
+'net.core.default_qdisc = fq '
+'net.ipv4.tcp_congestion_control = bbr '
 ***
 
 ### 需要注意的是：不管是重启服务器，还是以后想修改之前vps里面的v2ray配置信息，当你重启好服务器或者修改好了v2ray配置信息后，都需要启动v2ray服务端。方式是：输入v2ray，选择1，然后选择1（启动服务）。
