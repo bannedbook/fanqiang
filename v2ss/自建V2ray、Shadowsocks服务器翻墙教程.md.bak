@@ -145,9 +145,9 @@ vps操作系统推荐选择Debian 10 x 64，因为这里以Debian 10为例讲解
 复制上面的安装脚本命令到VPS服务器里，复制代码用鼠标右键的复制，然后在vps里面右键粘贴进去，因为ctrl+c和ctrl+v无效。接着按回车键，脚本会自动安装。
 
 安装成功后输出提示大略如下：
-`PORT:33333
-UUID:b9a7e7ac-e9f2-4ac2-xxxx-xxxxxxxxxx
-Created symlink /etc/systemd/system/multi-user.target.wants/v2ray.service → /etc/systemd/system/v2ray.service.
+`PORT:33333`<br>
+`UUID:b9a7e7ac-e9f2-4ac2-xxxx-xxxxxxxxxx`<br>
+`Created symlink /etc/systemd/system/multi-user.target.wants/v2ray.service → /etc/systemd/system/v2ray.service.
 V2Ray v4.22.1 is installed.`
 
 **最后一步很关键，那就是启动服务，进入主界面后，输入数字1，然后输入1启动v2ray服务。以后，每次你更改配置或重启vps服务器后都要进行启动服务，请牢记！**
