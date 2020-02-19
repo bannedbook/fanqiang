@@ -2,7 +2,7 @@
 
 转载修订自：<a href="https://github.com/Alvin9999/new-pac/wiki/%E8%87%AA%E5%BB%BAv2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%99%E7%A8%8B" target="_blank"> Alvin9999的自建v2ray服务器教程</a>，主要修改部分：<br>
 1、改用V2ray官方一键安装脚本<br>
-2、简化网络加速方案
+2、简化网络加速方案<br>
 3、SSH客户端改为使用Git for Windows。
 
 ***
