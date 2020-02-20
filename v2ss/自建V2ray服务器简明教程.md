@@ -53,29 +53,14 @@ SSH连接VPS成功后，会出现如上图所示，之后就可以复制粘贴li
 
 **第四步：安装V2ray服务端**
 
-
-这里我们采用v2ray官方的一键安装脚本（官方脚本更加安全可靠）：
-
-安装脚本命令：<br>
-`bash <(curl -L -s https://install.direct/go.sh)`
-
-> 如果提示 curl: command not found 的错误，这是你的系统精简的太干净了，curl都没有安装，所以需要安先装 curl:<br>
-`apt-get install -y curl`
-
-复制上面的安装脚本命令到VPS服务器里，复制代码用鼠标右键的复制，然后在vps里面右键粘贴进去，因为ctrl+c和ctrl+v无效。接着按回车键，脚本会自动安装。
-
-安装成功后输出提示大略如下：<br>
-`PORT:33333`<br>
-`UUID:b9a7e7ac-e9f2-4ac2-xxxx-xxxxxxxxxx`<br>
-`Created symlink /etc/systemd/system/multi-user.target.wants/v2ray.service → /etc/systemd/system/v2ray.service.`<br>
-`V2Ray v4.22.1 is installed.`<br>
+这里我们采用v2ray官方的一键安装脚本，见教程：[V2ray官方一键安装脚本](https://github.com/bannedbook/fanqiang/blob/master/v2ss/V2ray%E5%AE%98%E6%96%B9%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC.md)
 
 ### 
 然后我们以Windows下V2ray客户端<a href="https://github.com/2dust/v2rayN/releases/latest">v2rayN</a>为例，简单示范客户端配置如下图:
 
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2ray/client1.jpg)
 
-注意：这里的端口，填写上面服务器安装完成后显示的Port:后面的数字，用户ID填写上面的UUID:后面的一串字符即可。
+注意：这里的端口，填写上面第三步服务器安装完成后显示的Port:后面的数字，用户ID填写上面的UUID:后面的一串字符即可。
 配置好客户端，就可以自由冲浪了！至此为止，是不是很简单，有人说V2ray配置复杂，我们怎么没觉得呢？
 
 关于客户端的更详细帮助，请参考[v2ray各平台图文使用教程](https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%90%84%E5%B9%B3%E5%8F%B0%E5%9B%BE%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B)
