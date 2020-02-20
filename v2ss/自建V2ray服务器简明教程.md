@@ -47,41 +47,8 @@ SSH连接VPS成功后，会出现如上图所示，之后就可以复制粘贴li
 
 **第三步：Google BBR 一键加速VPS服务器**
 
-分别执行以下2个命令即可（鼠标选中高亮后，点鼠标右键复制粘贴到上图的#后面，然后回车）。<br>
-命令1(比较长，有折行，请完整拷贝)：<br> `wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/sysctl.conf  -O -> /etc/sysctl.conf`<br>
-> 如果提示 wget: command not found 的错误，这是你的系统精简的太干净了，wget都没有安装，所以需要安先装 wget:<br>
-`apt-get install -y wget`
+[最简单的Google BBR 一键加速VPS教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84Google%20BBR%20%E4%B8%80%E9%94%AE%E5%8A%A0%E9%80%9FVPS%E6%95%99%E7%A8%8B.md)
 
-命令2：<br> `sysctl -p`<br>
-
-执行成功后大致会输出：<br>
-`fs.file-max = 51200 `<br>
-`net.ipv4.conf.lo.accept_redirects = 0 `<br>
-`net.ipv4.conf.all.accept_redirects = 0 `<br>
-`net.ipv4.conf.default.accept_redirects = 0 `<br>
-`net.ipv4.ip_local_port_range = 10000 65000 `<br>
-`net.ipv4.tcp_fin_timeout = 15 `<br>
-`net.ipv4.tcp_fastopen = 3 `<br>
-`net.ipv4.tcp_keepalive_time = 1200 `<br>
-`net.ipv4.tcp_rmem = 32768 436600 873200 `<br>
-`net.ipv4.tcp_syncookies = 1 `<br>
-`net.ipv4.tcp_synack_retries = 2 `<br>
-`net.ipv4.tcp_syn_retries = 2 `<br>
-`net.ipv4.tcp_timestamps = 0 `<br>
-`net.ipv4.tcp_max_tw_buckets = 9000 `<br>
-`net.ipv4.tcp_max_syn_backlog = 65536 `<br>
-`net.ipv4.tcp_mem = 94500000 91500000 92700000 `<br>
-`net.ipv4.tcp_max_orphans = 3276800 `<br>
-`net.ipv4.tcp_mtu_probing = 1 `<br>
-`net.ipv4.tcp_wmem = 8192 436600 873200 `<br>
-`net.core.netdev_max_backlog = 250000 `<br>
-`net.core.somaxconn = 32768 `<br>
-`net.core.wmem_default = 8388608 `<br>
-`net.core.rmem_default = 8388608 `<br>
-`net.core.rmem_max = 67108864 `<br>
-`net.core.wmem_max = 67108864 `<br>
-`net.core.default_qdisc = fq `<br>
-`net.ipv4.tcp_congestion_control = bbr `<br>
 ***
 
 **第四步：安装V2ray服务端**
