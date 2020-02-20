@@ -10,6 +10,7 @@ BBR是Google的一套网络拥塞控制算法，用在VPS服务器上，可以�
 本文的系统要求为 Debian 9或更高版本的 Debian Linux，其它操作系统所知不详，不知是否适合本文的方法。
 
 Google BBR 一键加速VPS服务器很简单，SSH登录VPS后，分别执行以下2个命令即可（鼠标选中高亮后，点鼠标右键复制粘贴到root用户的#后面，然后回车）。<br>
+
 命令1(比较长，有折行，请完整拷贝)：<br> `wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/hosts/temp/sysctl.conf  -O -> /etc/sysctl.conf`<br>
 > 如果提示 wget: command not found 的错误，这是你的系统精简的太干净了，wget都没有安装，所以需要安先装 wget:<br>
 `apt-get install -y wget`
