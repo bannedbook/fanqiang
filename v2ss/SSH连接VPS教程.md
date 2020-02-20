@@ -25,6 +25,7 @@ ping 通vps后，就可以ssh连接了。当然你也可以跳过ping的步骤�
 `ssh root@your-vps-ip` ，然后回车，然后输入vps的root密码，密码可以点鼠标右键复制粘贴。
 
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/ss/xshell2.png)
+
 连接成功后，会出现如上图所示，之后就可以复制粘贴linux命令脚本来执行了。
 
 本文属于bannedbook系列翻墙教程的一部分，欢迎体验我们提供的免费翻墙软件和教程：
