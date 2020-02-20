@@ -38,8 +38,10 @@
 
 <p><strong>需要提醒的是，注意远程文件的目录，确保文件上传到正确的目录下面。</strong></p>
 <p>比如我们需要更新VPS上的V2RAY 服务端配置文件，我们可以把远端目录定位到/etc/v2ray目录（如下图），在右侧窗口右键点击config.json文件，点下载，下载编辑之后，在左边窗口，右键点config.json文件，点上传。<strong>再次提醒一下，先切换到 VPS 上想要存放的文件目录再进行上传。切换目录很简单，单击对应的目录名即可（Windows 上可能需要双击），也可以在“远程站点：”处手工输入后回车。</strong></p>
+
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/vps/filezilla3.jpg)
-<p>至此，我们已经知道了怎么向 VPS 上传文件，或者从VPS下载文件。</p>
+
+至此，我们已经知道了怎么向 VPS 上传文件，或者从VPS下载文件，都还算简单。
 
 本文属于bannedbook系列翻墙教程的一部分，欢迎体验我们提供的免费翻墙软件和教程：
 <ul>
