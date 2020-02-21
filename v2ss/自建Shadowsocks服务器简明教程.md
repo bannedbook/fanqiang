@@ -154,7 +154,7 @@ Shadowsocks加密算法有很多种，可以粗略的分为AEAD加密和非AEAD�
 注意：这里的端口，填写上面 “第四步 安装Shadowsocks服务器” 中config.json文件中 "port": 后面的数字，密码 和 加密 也必须和第四步中config.json里面保持一致。
 配置好客户端，就可以自由冲浪了！ 其它客户端的配置也都差不多与此类似。
 
-关于客户端的选择，请特别注意：绝大多数SSR客户端不支持AEAD加密，所以必须要使用 [SS客户端](https://shadowsocks.org/en/download/clients.html) ，而不是SSR客户端。
+<b>关于客户端的选择，请特别注意：绝大多数SSR客户端不支持AEAD加密，所以必须要使用 [SS客户端](https://shadowsocks.org/en/download/clients.html) ，而不是SSR客户端。</b>
 
 ***
 <b>相关教程</b>： [自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)
