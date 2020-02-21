@@ -62,7 +62,7 @@ SSH连接VPS成功后，会出现如上图所示，之后就可以复制粘贴li
 
 这里我们采用V2ray官方的一键安装脚本，见教程：[V2ray官方一键安装脚本](https://github.com/bannedbook/fanqiang/blob/master/v2ss/V2ray%E5%AE%98%E6%96%B9%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC.md)
 
-什么V2ray，这不是安装Shadowsocks吗，是我看错了，还是你写错了？哈哈，你没看错，我也没写错！
+什么？V2ray？，这不是安装Shadowsocks吗，是我看错了，还是你写错了？哈哈，你没看错，我也没写错！
 
 V2ray 的实现中已内置了Shadowsocks支持，包括最新的AEAD加密协议。同时经过笔者的试用，感觉V2ray 的 Shadowsocks实现，用起来挺稳定。而Shadowsocks官方的Shadowsocks libev有一个问题，我一直没法解决，就是Shadowsocks libev的服务端程序会死掉，错误日志报的错误信息却是DNS解析错误，此时重启一下Shadowsocks libev就好了，所以判断是Shadowsocks libev 服务端程序莫名其妙死掉了。所以，这里我们推荐采用V2ray 服务端程序来实现自建Shadowsocks翻墙服务器。
 
@@ -131,6 +131,8 @@ VPS传输文件教程请见： [使用FileZilla和VPS传输文件教程](https:/
 ```
 你只需要完整复制这个config.json例子，使用Notepad++将里面的 port 、password 修改成你想要的服务器端口和密码，端口小于65535 , 密码任意设置，跟客户端一致即可。
 
+Shadowsocks加密算法有很多种，可以粗略的分为AEAD加密和非AEAD加密，具体技术细节有兴趣了解的可以自行Google。现在请务必使用AEAD加密算法（chacha20-ietf-poly1305、xchacha20-ietf-poly1305、aes-128-gcm、aes-192-gcm、aes-256-gcm），目前xchacha20-ietf-poly1305和aes-256-gcm是最佳的选择，由于各大平台的cpu现在对aes算法都有较好的优化，这里个人推荐aes-256-gcm 。见上面配置文件中的 `"method": "aes-256-gcm"`  。
+
 然后上传config.json文件，覆盖vps上的/etc/v2ray/config.json 文件。
 
 然后在vps上执行命令检查下配置文件： `/usr/bin/v2ray/v2ray -test -config /etc/v2ray/config.json`
@@ -151,5 +153,9 @@ VPS传输文件教程请见： [使用FileZilla和VPS传输文件教程](https:/
 
 注意：这里的端口，填写上面 “第四步 安装Shadowsocks服务器” 中config.json文件中 "port": 后面的数字，密码 和 加密 也必须和第四步中config.json里面保持一致。
 配置好客户端，就可以自由冲浪了！ 其它客户端的配置也都差不多与此类似。
+
+***
+<b>相关教程</b>： [自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)
+***
 
 有问题可以<a href="https://github.com/bannedbook/fanqiang/issues">发Issue</a>交流。
