@@ -130,11 +130,17 @@ $1559.99/年</td><td>香港 PCCW</td><td><a href="https://bwh88.net/aff.php?aff=
 <p>点击上面的“直达通道”或者购买链接进入购买页。 （<strong>其他套餐，请在下方表格自行选择，并分别点击表格中的购买链接进入。否则会出现无法看到验证码的问题</strong>）</p>
 
 <p>映入眼帘的就是下面的页面。我们可以看到套餐详情。然后我们需要选择一下付款周期，可以选择月付、季付、半年付或者年付。年付比较便宜，会比月付便宜不少。当然也可以先月付，然后用的爽，再在后台修改续费周期为年付，看各人选择。这里我选择年付。然后添加到购物车，进入下一步。</p>
+
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/bwg/20171026202258.png)
+
 <p>然后我们就能看到下面的页面了。在“Promotional Code”处输入优惠码，目前的优惠码是&nbsp;<strong>BWH3HYATVBJW</strong>，可以优惠 6.38%。<strong>输入完优惠码后，点击“Validate Code”</strong>，验证优惠码。没问题的话，进入结算页面。</p>
+
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/bwg/20171026203144.png)
+
 <p>输入完优惠码的效果：</p>
+
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/bwg/20171026203436.png)
+
 <h2><strong>三、注册搬瓦工账户进行购买</strong></h2>
 <p>然后进入下一步。首先可以确认一下金额，没有问题的话就开始填表了。具体怎么填下面都写上了。注意事项：</p>
 <ol>
@@ -145,13 +151,19 @@ $1559.99/年</td><td>香港 PCCW</td><td><a href="https://bwh88.net/aff.php?aff=
 <li>条款前面的勾必须勾上。</li>
 </ol>
 <p>没什么问题，就可以提交订单了。</p>
+
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/bwg/20171026204240.png)
+
 <p>【更新】目前已经新增了微信支付，购买的时候选择相应的支付方式即可，如下图所示（上面的图是之前的图）。</p>
 
+
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/bwg/bandwagonhost_wechat-1024x243.png)
+
 <h2><strong>四、使用支付宝进行付款完成购买</strong></h2>
 <p>我们看一下付款前的最后一步的页面。确认是Alipay/支付宝的话，我们就可以点击“Pay now”进入付款了。</p>
+
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/bwg/20171026204907.png)
+
 <p>点击后会直接跳转到支付宝付款页面。然后扫码或者登陆账户，完成付款！就是这么简单！如果需要使用微信支付或者其他付款方式，自行选择即可。</p>
 
 <p><strong>所有方案：</strong></p>
