@@ -2,6 +2,9 @@
  <p>本文介绍搬瓦工VPS最新的购买教程，搬瓦工VPS也是一款比较适合翻墙的口碑不错的VPS。整个购买流程也就几分钟，最多不会超过十分钟。主要分为如下几步：</p>
 <p>1）选择合适的搬瓦工方案，2）检查所选方案信息，3）注册搬瓦工账户进行购买，4）使用支付宝（或微信支付、PayPal、信用卡）付款完成购买。</p>
 
+<b>广告插播，如果你觉得自己折腾VPS太麻烦，可以考虑这个服务哦（非本库服务）：</b><br>
+<a href="https://github.com/killgcd/justmysocks/blob/master/README.md"><img src="https://raw.githubusercontent.com/killgcd/justmysocks/master/images/bwgss.jpg" alt="搬瓦工翻墙 Just My Socks"></a>
+
 <b>搬瓦工VPS买前须知</b>
 <ul>
 <li>如果购买后分配的IP被墙，请24小时内请联系搬瓦工客服更换IP。</li>
@@ -9,6 +12,12 @@
 <li>当IP被墙时，更换机房功能将无法使用。</li>
 <li>根据网络调研,多数朋友买完搬瓦工后都能愉快的使用。当然也有少部分网友买了搬瓦工后，可能会觉得速度有些慢，不够理想，其实每个人的本地网络环境不一样，所以别人的使用情况对你没有太大参考意义，具体怎么样，还得自己尝试。首先需要确认是否是你本地网络的问题。如果是你本地网络的问题，那就没有办法了,建议直接换宽带吧。有些地区的宽带会限制到国外的速度，比如部分广东电信。目前已知的问题比较严重的宽带包括长城宽带、鹏博士等。</li>
 <li>为了配合我们的翻墙教程，请安装最新版Debian操作系统。</li>
+</ul>
+
+本文属于bannedbook系列翻墙教程的一部分，相关教程如下：
+<ul>
+<li><a href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md" >自建V2ray服务器简明教程</a></li>
+<li> [自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) </li>
 </ul>
 
 <h2><strong>一、挑选合适的搬瓦工套餐</strong></h2>
