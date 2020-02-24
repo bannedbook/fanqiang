@@ -14,7 +14,7 @@
           <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/XX-Net%E7%BF%BB%E5%A2%99">XX Net翻墙</a></strong>
         </li>
         <li class="Box-row">
-          <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/%E5%8A%A8%E6%80%81%E7%BD%91%E6%96%B0%E9%97%BB-%E5%8A%A8%E6%80%81%E7%BD%91%E7%BF%BB%E5%A2%99-%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8">动态网新闻 动态网翻墙 安卓应用</a></strong>
+          <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/%E5%8A%A8%E6%80%81%E7%BD%91%E6%96%B0%E9%97%BB-%E5%8A%A8%E6%80%81%E7%BD%91%E7%BF%BB%E5%A2%99-%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8">动网新闻安卓应用</a></strong>
         </li>          
         <li class="Box-row">
           <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/Goflyway%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7">Goflyway免费账号</a></strong>
