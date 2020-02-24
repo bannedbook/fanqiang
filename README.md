@@ -1,9 +1,12 @@
 # fanqiang
 翻墙-科学上网、翻墙工具大全。
 <ul >
+    <li class="Box-row">
+          <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6#JWBrowser">禁闻浏览器（JWBrowser）</a></strong>
+        </li>
   <li class="Box-row">
           <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6">安卓翻墙软件</a></strong>
-        </li>
+        </li>  
         <li class="Box-row">
           <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/Chrome%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85">Chrome一键翻墙包</a></strong>
         </li>        
