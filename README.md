@@ -37,5 +37,4 @@
         <li class="Box-row">
           <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/TorBrowser%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85">TorBrowser一键翻墙包</a></strong>
   </li>
-
-    </ul>
+</ul>
