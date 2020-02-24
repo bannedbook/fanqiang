@@ -1,0 +1,243 @@
+    <h4>{{ _( "Status" ) }}</h4>
+    <table id="status" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th width="25%">{{ _( "Property" ) }}</th>
+                <th>{{ _( "Value" ) }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ _( "Teredo Tunnel" ) }}</td>
+                <td id="teredo-tunnel"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row-fluid">
+        <h4>{{ _( "Tips" ) }}</h4>
+        <ol>
+            <li>{{ _( "Enable operations usually only needs to be performed once at each device." ) }}</li>
+            <li>{{ _( "After changing the server, it takes 10-90 seconds to successfully establish a new teredo tunnel." ) }}</li>
+            <li>{{ _( "To use teredo tunnel, win user must keep firewall enabled, and allow outbound." ) }}</li>
+            <li>{{ _( "Non-win users can also use the test button to get the fastest server for change manually." ) }}</li>
+        </ol>
+    </div> <!-- .row-fluid -->
+    <div class="row-fluid">
+        <div class="span4">
+            <button class="btn btn-primary btn-block" id="switch_ipv6_tunnel_enable" type="submit">{{ _( "Enable" ) }}</button>
+            <button class="btn btn-primary btn-block" id="switch_ipv6_tunnel_disable" type="submit">{{ _( "Disable" ) }}</button>
+        </div> <!-- .span4 -->
+        <div class="span4">
+            <button class="btn btn-primary btn-block" id="teredo_tunnel_change_server" type="submit">{{ _( "Change teredo server" ) }}</button>
+            <button class="btn btn-primary btn-block" id="teredo_tunnel_test" type="submit">{{ _( "Test teredo" ) }}</button>
+        </div> <!-- .span4 -->
+        <div class="span4">
+            <button class="btn btn-primary btn-block" id="teredo_tunnel_test_usability" type="submit">{{ _( "Test teredo usability only" ) }}</button>
+            <button class="btn btn-primary btn-block" id="teredo_tunnel_test_server" type="submit">{{ _( "Test teredo server only" ) }}</button>
+        </div> <!-- .span4 -->
+        <!--
+        <div class="span3">
+            <button class="btn btn-block" id="priority_teredo_first" type="submit" disabled="disabled">{{ _( "Switch teredo first" ) }}</button>
+            <button class="btn btn-block" id="priority_origin_first" type="submit" disabled="disabled">{{ _( "Switch origin first" ) }}</button>
+        </div>
+        -->
+    </div> <!-- .row-fluid -->
+    <div class="row-fluid">
+        <div class="span12">
+            <div id="logs" class="tab-pane">
+                <div id="log" class="span12"></div>
+            </div> <!-- #log -->
+        </div>
+    </div>
+
+<script type="text/javascript">
+    function enableButton(buttonId) {
+        var button = $('#' + buttonId);
+        if (button.attr("disabled") == "disabled") {
+            button.attr("disabled", null);
+            button.addClass('btn-primary');
+        }
+    }
+    function disableButton(buttonId) {
+        var button = $('#' + buttonId);
+        if (button.attr("disabled") != "disabled") {
+            button.attr("disabled", "disabled");
+            button.removeClass('btn-primary');
+        }
+    }
+    /*function getPriority() {
+        $.ajax({
+            type: 'GET',
+            url: '/module/gae_proxy/control/ipv6_tunnel?cmd=get_priority',
+            dataType: 'JSON',
+            success: function (result) {
+                if (result['res'] == null) {
+                    tip('{{ _("No teredo prefix policiy is found.") }}', 'info');
+                    return;
+                }
+                if (result['res'] == 'teredo') {
+                    disableButton('priority_teredo_first');
+                } else {
+                    enableButton('priority_teredo_first');
+                }
+                if (result['res'] == 'origin') {
+                    disableButton('priority_origin_first');
+                } else {
+                    enableButton('priority_origin_first');
+                }
+            },
+            error: function (result) {
+                    tip('{{ _("Failed reading the prefix policies.") }}', 'error');
+            }
+        });
+    }
+    $(function () {
+        getPriority();
+    });*/
+</script>
+<script type="text/javascript">
+    function updateStatus(selector, content) {
+        var previousContent = $(selector).html();
+        if (String(previousContent) != String(content)) {
+            $(selector).html(content);
+        }
+    }
+</script>
+<script type="text/javascript">
+    var scriptIsRunning = false;
+
+    $('button.btn').click(function () {
+        var cmd = "stop";
+        var id = $(this).attr('id');
+        var teredoStatus = $('td#teredo-tunnel').html();
+        if (id == 'switch_ipv6_tunnel_enable') {
+            if ((teredoStatus == '{{ _("qualified")}}' ||
+                 teredoStatus == '{{ _("probe")}}' ||
+                 teredoStatus == '{{ _("dormant")}}' ||
+                 teredoStatus == '{{ _("offline")}}') &&
+                !confirm('{{ _("IPv6 Tunnel")}}{{ _( "enabled" ) }}{{ _( ", are you sure to continue?" ) }}')) {
+                return;
+            }
+            cmd = "enable";
+        } else if (id == 'switch_ipv6_tunnel_disable') {
+            if (teredoStatus == '{{ _("disabled")}}' &&
+                !confirm('{{ _("IPv6 Tunnel")}}{{ _( "disabled" ) }}{{ _( ", are you sure to continue?" ) }}')) {
+                return;
+            }
+            cmd = "disable";
+        } else if (id == 'teredo_tunnel_test') {
+            cmd = "test_teredo";
+        } else if (id == 'teredo_tunnel_test_usability') {
+            cmd = "test_teredo_usability";
+        } else if (id == 'teredo_tunnel_test_server') {
+            cmd = "test_teredo_server";
+        } else if (id == 'teredo_tunnel_change_server') {
+            cmd = "set_best_server";
+        /*} else if (id == 'priority_teredo_first') {
+            cmd = "switch_pp";
+        } else if (id == 'priority_origin_first') {
+            cmd = "switch_pp";*/
+        } else {
+            return;
+        }
+
+        if (scriptIsRunning == true) {
+            tip('{{ _("Script is running, please retry later.") }}', 'warning');
+            return;
+        }
+        
+        window.timer.play();
+        tip('{{ _("Current status: ") }}"' + $(this).html() + '" {{ _("Running ...") }}', 'info');
+        scriptIsRunning = true;
+
+        $.ajax({
+            type: 'GET',
+            url: '/module/gae_proxy/control/ipv6_tunnel?cmd=' + cmd,
+            dataType: 'JSON',
+            success: function (result) {
+                window.timer.stop();
+                /*
+                $('.alert').html('{{ _("Current status: ") }}{{ _("idle") }}');
+                if (!tipHasClose()) {
+                    tipClose();
+                }*/
+                scriptIsRunning = false;
+                tip(result['res'], 'info');
+                updateProcess();
+                /*if (cmd == "switch_pp") {
+                    getPriority();
+                }*/
+            },
+            error: function (result) {
+                window.timer.stop();
+                scriptIsRunning = false;
+                tip('{{ _("No response from process: ")}}{{ _("GAEProxy")}}{{ _(". It might have already exited.")}}', 'warning', false);
+                updateProcess();
+                /*if (cmd == "switch_pp") {
+                    getPriority();
+                }*/
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    function updateLog(logContent) {
+        $('#log').html(logContent.replace(/\n/g, '<br>'));
+    }
+
+    function updateProcess() {
+        $.ajax({
+            type: 'GET',
+            url: '/module/gae_proxy/control/ipv6_tunnel?cmd=get_log',
+            dataType: 'JSON',
+            success: function (result) {
+                if (result['status'] == 'offline') {
+                    updateStatus('td#teredo-tunnel', '{{ _("offline")}}');
+                } else if (result['status'] == 'probe') {
+                    updateStatus('td#teredo-tunnel', '{{ _("probe")}}');
+                } else if (result['status'] == 'qualified') {
+                    updateStatus('td#teredo-tunnel', '{{ _("qualified")}} ({{ _("Still not connected? Wait for a while, or")}}<a href="/?module=gae_proxy&menu=advanced#global_setting">{{ _("try to reduce the connection buffer size")}}</a>)');
+                } else if (result['status'] == 'dormant') {
+                    updateStatus('td#teredo-tunnel', '{{ _("dormant")}}');
+                } else if (result['status'] == 'disabled') {
+                    updateStatus('td#teredo-tunnel', '{{ _("disabled")}}');
+                } else if (result['status'] == 'unknown') {
+                    updateStatus('td#teredo-tunnel', '{{ _("unknown")}}');
+                }
+                updateLog(result['log']);
+
+                if (window.isAutoScrollLog == true) {
+                    $('#log').scrollTop($('#log')[0].scrollHeight);
+                }
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        window.timer = $.timer(function () {
+            updateProcess();
+        });
+
+        window.timer.set({
+            time: 1000,
+            autostart: false
+        });
+
+        updateProcess();
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        resizeLogWindow();
+    });
+    $(window).resize(function () {
+        resizeLogWindow();
+    });
+    function resizeLogWindow() {
+        var windowHeight    = $(window).height(),
+            preservedHeight = 600;
+
+        $('#log').css('height', windowHeight - preservedHeight);
+    }
+</script>

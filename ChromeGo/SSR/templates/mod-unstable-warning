@@ -1,0 +1,7 @@
+        <h2>Warning:</h2>
+        <p>
+          <strong>This Privoxy version is based on <em class="warning">@code-status@</em> code and
+          not intended for production systems!
+          <br>Use at your own risk. See the <a title="GNU General Public License version 2"
+          href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">license</a> for details.</strong>
+        </p>

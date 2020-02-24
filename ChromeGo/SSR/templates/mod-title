@@ -1,0 +1,4 @@
+        <h1>
+          This is <a href="https://github.com/breakwa11/shadowsocks-rss">ShadowsocksR-Privoxy</a> @version@ on @my-hostname@ (@my-ip-address@)<!-- @if-can-toggle-start -->,
+          @if-enabled-display-then@enabled@else-not-enabled-display@disabled@endif-enabled-display@<!-- if-can-toggle-end@ -->
+        </h1>

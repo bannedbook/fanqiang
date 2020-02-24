@@ -1,0 +1,119 @@
+{
+ "outbound": {
+  "streamSettings": {
+   "network": "kcp", 
+   "kcpSettings": {
+    "uplinkCapacity": 100, 
+    "downlinkCapacity": 100, 
+    "readBufferSize": 2, 
+    "mtu": 1350, 
+    "header": {
+     "type": "none", 
+     "request": null, 
+     "response": null
+    }, 
+    "tti": 50, 
+    "congestion": false, 
+    "writeBufferSize": 2
+   }, 
+   "wsSettings": null, 
+   "tcpSettings": null, 
+   "tlsSettings": {}, 
+   "security": ""
+  }, 
+  "tag": "agentout", 
+  "protocol": "vmess", 
+  "mux": {
+   "enabled": true
+  }, 
+  "settings": {
+   "vnext": [
+    {
+     "users": [
+      {
+       "alterId": 100, 
+       "security": "aes-128-gcm", 
+       "id": "b50fd008-815a-11e9-b6b9-00163cad8bc1"
+      }
+     ], 
+     "port": 12345, 
+     "address": "64.32.6.190"
+    }
+   ]
+  }
+ }, 
+ "log": {
+  "access": "", 
+  "loglevel": "info", 
+  "error": ""
+ }, 
+ "outboundDetour": [
+  {
+   "tag": "direct", 
+   "protocol": "freedom", 
+   "settings": {
+    "response": null
+   }
+  }, 
+  {
+   "tag": "blockout", 
+   "protocol": "blackhole", 
+   "settings": {
+    "response": {
+     "type": "http"
+    }
+   }
+  }
+ ], 
+ "inbound": {
+  "streamSettings": null, 
+  "settings": {
+   "ip": "127.0.0.1", 
+   "udp": true, 
+   "clients": null, 
+   "auth": "noauth"
+  }, 
+  "protocol": "socks", 
+  "port": 1080, 
+  "listen": "0.0.0.0"
+ }, 
+ "inboundDetour": null, 
+ "routing": {
+  "settings": {
+   "rules": [
+    {
+     "ip": [
+      "0.0.0.0/8", 
+      "10.0.0.0/8", 
+      "100.64.0.0/10", 
+      "127.0.0.0/8", 
+      "169.254.0.0/16", 
+      "172.16.0.0/12", 
+      "192.0.0.0/24", 
+      "192.0.2.0/24", 
+      "192.168.0.0/16", 
+      "198.18.0.0/15", 
+      "198.51.100.0/24", 
+      "203.0.113.0/24", 
+      "::1/128", 
+      "fc00::/7", 
+      "fe80::/10"
+     ], 
+     "domain": null, 
+     "type": "field", 
+     "port": null, 
+     "outboundTag": "direct"
+    }
+   ], 
+   "domainStrategy": "IPIfNonMatch"
+  }, 
+  "strategy": "rules"
+ }, 
+ "dns": {
+  "servers": [
+   "8.8.8.8", 
+   "8.8.4.4", 
+   "localhost"
+  ]
+ }
+}

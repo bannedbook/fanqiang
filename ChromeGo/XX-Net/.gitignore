@@ -1,0 +1,9 @@
+.idea
+*~
+*.pyc
+*.swp
+*.pot
+*.mo
+
+.DS_Store
+desktop.ini

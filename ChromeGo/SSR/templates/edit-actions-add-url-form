@@ -1,0 +1,147 @@
+##############################################################################
+#
+# File        :  $Source: /cvsroot/ijbswa/current/templates/edit-actions-add-url-form,v $
+#
+# Purpose     :  Template used to add a URL pattern to the actions file.
+#
+#
+# Copyright   :  Written by and Copyright (C) 2001 the SourceForge
+#                Privoxy team. http://www.privoxy.org/
+#
+#                Original Author: Copyright (C) 2001 Jonathan Foster
+#                http://www.jon-foster.co.uk/
+#
+#                This program is free software; you can redistribute it
+#                and/or modify it under the terms of the GNU General
+#                Public License as published by the Free Software
+#                Foundation; either version 2 of the License, or (at
+#                your option) any later version.
+#
+#                This program is distributed in the hope that it will
+#                be useful, but WITHOUT ANY WARRANTY; without even the
+#                implied warranty of MERCHANTABILITY or FITNESS FOR A
+#                PARTICULAR PURPOSE.  See the GNU General Public
+#                License for more details.
+#
+#                The GNU General Public License should be included with
+#                this file.  If not, you can view it at
+#                http://www.gnu.org/copyleft/gpl.html
+#                or write to the Free Software Foundation, Inc., 59
+#                Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+##############################################################################
+#
+# Standard support:
+#
+# This file currently produces valid HTML 4.01 Strict.
+#
+# If you change it, please save the generated page from your web browser
+# and then upload it to http://validator.w3.org/ for checking.
+#
+#############################################################################
+#
+# Available variables include:
+#
+# filename
+# ver
+# section
+#
+#############################################################################
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" type="text/css" href="@default-cgi@send-stylesheet">
+  <link rel="shortcut icon" href="@default-cgi@favicon.ico" type="image/x-icon">
+
+  <title>Privoxy@@my-hostname@: Add URL Pattern</title>
+
+  <script type="text/javascript">
+<!--
+  function validate(text)
+  {
+  if (text=="")
+  {
+    alert("You need to type a pattern in order to continue!");
+    return false;
+  }
+
+  return true;
+}
+//-->
+  </script>
+</head>
+
+<body>
+
+  <table cellpadding="20" cellspacing="10" border="0" width="100%">
+    <tr>
+      <td class="title">
+
+#include mod-title
+
+      </td>
+    </tr>
+
+<!-- @if-unstable-start -->
+# This will only appear if CODE_STATUS is "alpha" or "beta". See configure.in
+    <tr>
+      <td class="warning">
+
+#include mod-unstable-warning
+
+      </td>
+    </tr>
+<!-- if-unstable-end@ -->
+
+    <tr>
+      <td class="box">
+        <h2>Add URL or TAG Pattern</h2>
+        <form method="GET" action="edit-actions-add-url"
+              onSubmit="return validate(u.value);">
+          <p>
+            <input type="hidden" name="f" value="@f@">
+            <input type="hidden" name="v" value="@v@">
+            <input type="hidden" name="s" value="@s@">
+            <input type="text" name="u" value="" size="78" class="pattern"><br>
+            <input type="submit" value="Submit"> &nbsp;
+            <input type="reset" value="Reset"> &nbsp;
+            <a class="cmd" href="edit-actions-list?f=@f@#l@s@">Cancel</a>
+          </p>
+        </form>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="box">
+        <h2>More Privoxy:</h2>
+        <ul>@menu@<li><a href="@user-manual@">Documentation</a></li></ul>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="info">
+
+#include mod-support-and-service
+
+      </td>
+    </tr>
+
+<!-- @if-have-help-info-start -->
+    <tr>
+      <td class="info">
+
+#include mod-local-help
+
+      </td>
+    </tr>
+<!-- if-have-help-info-end@ -->
+
+  </table>
+
+</body>
+</html>
+

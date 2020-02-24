@@ -1,0 +1,151 @@
+##############################################################################
+#
+# File        :  $Source: /cvsroot/ijbswa/current/templates/cgi-style.css,v $
+#
+# Purpose     :  Style sheet for the web-based config interface.
+#
+# Copyright   :  Written by and Copyright (C) 2001 the SourceForge
+#                Privoxy team. http://www.privoxy.org/
+#
+#                Original Author: Copyright (C) 2001 Jonathan Foster
+#                http://www.jon-foster.co.uk/
+#
+#                This program is free software; you can redistribute it
+#                and/or modify it under the terms of the GNU General
+#                Public License as published by the Free Software
+#                Foundation; either version 2 of the License, or (at
+#                your option) any later version.
+#
+#                This program is distributed in the hope that it will
+#                be useful, but WITHOUT ANY WARRANTY; without even the
+#                implied warranty of MERCHANTABILITY or FITNESS FOR A
+#                PARTICULAR PURPOSE.  See the GNU General Public
+#                License for more details.
+#
+#                The GNU General Public License should be included with
+#                this file.  If not, you can view it at
+#                http://www.gnu.org/copyleft/gpl.html
+#                or write to the Free Software Foundation, Inc., 59
+#                Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+##############################################################################
+
+/*
+ * CSS for Privoxy CGI and script output
+ *
+ * $Id: cgi-style.css,v 1.14 2011/09/04 11:09:40 fabiankeil Exp $
+ */
+
+/*
+ * General rules: Font, Color, Headings, Margins, Links
+ */
+body,td,th { font-family: arial, helvetica, helv, sans-serif; }
+body { background-color: #ffffff; color: #000000; }
+
+h1 { font-size: 140%; margin: 0px; }
+h2 { font-size: 120%; margin: 0px; }
+h3 { font-size: 110%; margin: 0px; }
+
+p,pre  { margin-left: 15px; }
+li { margin: 2px 15px; }
+dl { margin: 2px 15px; }
+
+a:link    { color: #0000dd; text-decoration: none; }
+a:visited { color: #330099; text-decoration: none; }
+a:active  { color: #3333ff; text-decoration: none; }
+
+/*
+ * Boxen as Table elements:
+ */
+td.title   { border: solid black 1px; background-color: #dddddd; }
+td.box     { border: solid black 1px; background-color: #eeeeee; }
+td.info    { border: solid black 1px; background-color: #ccccff; }
+td.warning { border: solid black 1px; background-color: #ffdddd; }
+
+/*
+ * Special Table Boxen: for nesting, naked container and for
+ * the Status field in CGI Output:
+ */
+td.wrapbox { border: solid black 1px; padding: 5px; }
+td.container { padding: 0px; }
+td.status  { border: solid black 1px; background-color: #ff0000; color: #ffffff; font-size: 300%; font-weight: bolder; }
+
+/*
+ * Same Boxen as <div>s:
+ */
+div.title    { border: solid black 1px; background-color: #dddddd; margin: 20px; padding: 20px; }
+div.box      { border: solid black 1px; background-color: #eeeeee; margin: 20px; padding: 20px; }
+div.info     { border: solid black 1px; background-color: #ccccff; margin: 20px; padding: 20px; }
+div.warning  { border: solid black 1px; background-color: #ffdddd; margin: 20px; padding: 20px; }
+div.wrapbox  { border: solid black 1px;                            margin: 20px; padding:  5px; }
+
+
+/*
+ * Bold definitions in <dl>s, grey BG for table headings, transparent (no-bordered) table
+ */
+dt { font-weight: bold; }
+th { background-color: #dddddd; }
+table.transparent { border-style: none}
+
+/*
+ * Special purpose paragraphs: Small for page footers,
+ * Important for quoting wrong or dangerous examples,
+ * Whiteframed for the toggle?mini=y CGI
+ */
+p.small { font-size: 10px; margin: 0px; }
+p.important { border: solid black 1px; background-color: #ffdddd; font-weight: bold; padding: 2px; }
+p.whiteframed { margin: 5px; padding: 5px; border: solid black 1px; text-align: center; background-color: #eeeeee; }
+
+/*
+ * Links as buttons:
+ */
+
+td.buttons {
+  padding: 2px;
+}
+
+a.cmd, td.indentbuttons a, td.buttons a {
+  white-space: nowrap;
+  width: auto;
+  padding: 2px;
+  background-color: #dddddd;
+  color:            #000000;
+  text-decoration: none;
+  border-top:    1px solid #ffffff;
+  border-left:   1px solid #ffffff;
+  border-bottom: 1px solid #000000;
+  border-right:  1px solid #000000;
+}
+a.cmd:hover, td.indentbuttons a:hover, td.buttons a:hover {
+  background-color: #eeeeee;
+}
+a.cmd:active, td.indentbuttons a:active, td.buttons a:active {
+  border-top:    1px solid #000000;
+  border-left:   1px solid #000000;
+  border-bottom: 1px solid #ffffff;
+  border-right:  1px solid #ffffff;
+}
+
+
+/*
+ * Special red emphasis:
+ */
+em.warning, strong.warning { color: #ff0000 }
+
+/*
+ * In show-status we use tables directly behind headlines
+ * and for some reason or another the headlines are set to
+ * "margin:0" and leave the tables no air to breath.
+ *
+ * A proper fix would be to replace or remove the "margin:0",
+ * but as this affects every cgi page we do it another time
+ * and use this workaround until then.
+ */
+.box table { margin-top: 1em; }
+
+/*
+ * Let the URL and pattern input fields scale with the browser
+ * width and try to prevent vertical scroll bars if the width
+ * is less than 80 characters.
+ */
+input.url, input.pattern { width: 95%; }

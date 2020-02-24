@@ -1,0 +1,473 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-11-15 08:26+0800\n"
+"PO-Revision-Date: 2015-12-06 09:14+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fa_IR\n"
+"Language-Team: fa_IR <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+msgid "Scan Settings"
+msgstr "تنظیمات اسکن"
+
+msgid "Scan Log"
+msgstr "اسکن ورود"
+
+msgid "Import IP"
+msgstr "واردات IP"
+
+msgid "Export IP"
+msgstr "صادرات IP"
+
+msgid "Check IP"
+msgstr "بررسی IP"
+
+msgid "IPv6 Tunnel"
+msgstr ""
+
+msgid "Advanced"
+msgstr "پیشرفته"
+
+msgid "Your browser is obsolete. Partial functionality will not be available."
+msgstr "مرورگر شما قدیمی است. قابلیت جزئی در دسترس نخواهد بود."
+
+msgid "The latest Chrome browser is recommended."
+msgstr "آخرین مرورگر کروم توصیه می شود."
+
+msgid "Status"
+msgstr "وضعیت"
+
+msgid "Property"
+msgstr "ویژگی"
+
+msgid "Value"
+msgstr "ارزش"
+
+msgid "All IP Number"
+msgstr "همه شماره IP"
+
+msgid "Left Number"
+msgstr "عدد سمت چپ"
+
+msgid "Good IP Number"
+msgstr "خوب شماره IP"
+
+msgid "Run"
+msgstr "اجرا"
+
+msgid "No response from GAEProxy process. It might have already exited."
+msgstr "هیچ پاسخی از روند GAEProxy. این ممکن است در حال حاضر خارج می شود."
+
+msgid "Stop"
+msgstr "متوقف کردن"
+
+msgid "Public appids used by default"
+msgstr "appids عمومی استفاده می شود به طور پیش فرض"
+
+msgid "The public appids are disabled to access videos or download files."
+msgstr ""
+"appids عمومی را غیرفعال برای دسترسی به فیلم ها و یا فایل های دانلود می "
+"باشد."
+
+msgid "How to apply"
+msgstr "چگونه به درخواست"
+
+msgid "Attention: inaccessable before appids are deployed."
+msgstr "توجه: غیر قابل دسترس قبل از appids مستقر هستند."
+
+msgid "Advanced options"
+msgstr "گزینه های پیشرفته"
+
+msgid "LAN proxy(Generally not needed)"
+msgstr "پروکسی LAN (به طور کلی مورد نیاز نیست)"
+
+msgid "Help"
+msgstr "کمک"
+
+msgid "Proxy type"
+msgstr "نوع پروکسی"
+
+msgid "Proxy IP address or domain name"
+msgstr "آدرس IP پروکسی و یا نام دامنه"
+
+msgid "Port"
+msgstr "درگاه"
+
+msgid "User name"
+msgstr "نام کاربری"
+
+msgid "Password"
+msgstr "رمز عبور"
+
+msgid "Save"
+msgstr "ذخیره"
+
+msgid "Advanced tricks:"
+msgstr "ترفندهای پیشرفته:"
+
+msgid "By the configuration file"
+msgstr "توسط فایل پیکربندی"
+
+msgid "Configure GAEProxy"
+msgstr "پیکربندی GAEProxy"
+
+msgid "Failed reading the settings."
+msgstr "خواندن تنظیمات انجام نشد."
+
+msgid "Wait for checking setting..."
+msgstr "صبر کنید برای چک کردن تنظیمات ..."
+
+msgid "Settings saved successfully"
+msgstr "تنظیمات با موفقیت ذخیره"
+
+msgid "AppID invalid:"
+msgstr "_AppID_ نامعتبر است:"
+
+msgid ", deploy appid before using."
+msgstr "، استقرار APPID قبل از استفاده."
+
+msgid "Failed saving settings"
+msgstr "خواندن تنظیمات انجام نشد."
+
+msgid "Deploy XX-Net onto GAE"
+msgstr "استقرار _XX-Net_ بر روی GAE"
+
+msgid "Current status: "
+msgstr "وضعیت فعلی:"
+
+msgid "idle"
+msgstr "آماده به کار"
+
+msgid "Authorization"
+msgstr "اجازه"
+
+msgid "Log"
+msgstr "ورود"
+
+msgid "Delimit multiple appids with |"
+msgstr "محدود appids های متعدد را با |"
+
+msgid "Show Debug Log"
+msgstr ""
+
+msgid "Start to deploy"
+msgstr "شروع به استقرار"
+
+msgid "Auth window will popup, make sure don't block popup in browser."
+msgstr ""
+
+msgid "XX-Net was reset."
+msgstr "_XX-Net_ بازنشانی شد."
+
+msgid "Deployment completed. "
+msgstr "استقرار تکمیل شده است. "
+
+msgid "Please go to "
+msgstr "لطفا رفتن به "
+
+msgid "the configuration page "
+msgstr "صفحه تنظیمات "
+
+msgid "to set AppID to enable them."
+msgstr "به مجموعه ای از _AppID_ به آنها را فعال کنید."
+
+msgid "An exception occurred. "
+msgstr "یک استثنا رخ داده است. "
+
+msgid "The exception info: "
+msgstr "اطلاعات استثنا:"
+
+msgid "deploying ..."
+msgstr "استقرار ..."
+
+msgid "Terminate deploying"
+msgstr "خاتمه استقرار"
+
+msgid "Deployment cancelled."
+msgstr "استقرار لغو شده است."
+
+msgid "Your AppID is either empty or invalid."
+msgstr "_AppID_ خود را به صورت خالی و یا نامعتبر است."
+
+msgid "Export format"
+msgstr "فرمت صادرات"
+
+msgid " format"
+msgstr "قالب "
+
+msgid "New line delimiter"
+msgstr "ذخیره خط جدید"
+
+msgid "IP address list"
+msgstr "لیست آدرس IP"
+
+msgid "Succeeded exporting "
+msgstr "موفق صادرات "
+
+msgid " IP addresses."
+msgstr " آدرس IP است."
+
+msgid "Failed exporting the IP addresses."
+msgstr "صادرات آدرس IP شکست خورده است."
+
+msgid "IP list"
+msgstr "لیست IP"
+
+msgid "Enable"
+msgstr ""
+
+msgid "Disable"
+msgstr ""
+
+msgid "Running ..."
+msgstr ""
+
+msgid "GAEProxy Log"
+msgstr "GAEProxy ورود"
+
+msgid "Configuration"
+msgstr "پیکربندی"
+
+msgid "Deploy Server"
+msgstr "استقرار سرور"
+
+msgid "Refresh"
+msgstr "تازه کردن"
+
+msgid "Failed reading the log"
+msgstr "خواندن ورود به سیستم شکست خورده"
+
+msgid "Auto-adjust scan thread count"
+msgstr "خودکار تنظیم تعداد موضوع اسکن"
+
+msgid "Max scan thread count"
+msgstr "حداکثر تعداد موضوع اسکن"
+
+msgid "Enable IPv6(If it's available)"
+msgstr "فعال کردن IPv6 را (سرنت تنها)"
+
+msgid "AUTO"
+msgstr ""
+
+msgid "Force IPv4"
+msgstr ""
+
+msgid "Force IPv6"
+msgstr ""
+
+msgid "IP range list"
+msgstr "لیست محدوده IP"
+
+msgid "Supporting formats"
+msgstr "حمایت از فرمت های"
+
+msgid "Submit"
+msgstr "ارسال"
+
+msgid "Failed reading the settings"
+msgstr "خواندن تنظیمات انجام نشد"
+
+msgid "Unkown error occurred"
+msgstr "خطای ناشناخته رخ داده"
+
+msgid "IPv4 Status"
+msgstr ""
+
+msgid "IPv6 Status"
+msgstr ""
+
+msgid "IPv4 Number"
+msgstr ""
+
+msgid "IPv6 Number"
+msgstr ""
+
+msgid "Is Idle"
+msgstr "آماده به کار"
+
+msgid "IP Quality"
+msgstr "IP کیفیت"
+
+msgid "Connection Pool"
+msgstr "وضعیت اتصال"
+
+msgid "Browser Proxy Setting"
+msgstr "مرورگر تنظیم پروکسی"
+
+msgid "CA status"
+msgstr "وضعیت CA"
+
+msgid "Download"
+msgstr "دانلود"
+
+msgid "Number of IP-Scanning Threads"
+msgstr "تعداد IP-اسکن موضوعات"
+
+msgid "Settings"
+msgstr "تنظیمات"
+
+msgid "Block Status"
+msgstr "وضعیت بلوک"
+
+msgid "XX-Net Version"
+msgstr "_XX-Net_ نسخه"
+
+msgid "System Proxy Status"
+msgstr "_XX-Net_ نسخه"
+
+msgid "Listening Proxy"
+msgstr "گوش دادن پروکسی"
+
+msgid "PAC URL"
+msgstr ""
+
+msgid "USE IPv6"
+msgstr ""
+
+msgid "Working AppIDs"
+msgstr "بدون APPID کارگر. لطفا بررسی کنید. "
+
+msgid "Out-of-quota AppIDs"
+msgstr "خارج از سهمیه AppIDs"
+
+msgid "Nonexistent AppIDs"
+msgstr "AppIDs وجود ندارد"
+
+msgid "System Version"
+msgstr "نسخه سیستم"
+
+msgid "Diagnostic Info"
+msgstr "اطلاعات تشخیصی"
+
+msgid "Check Github issues"
+msgstr "بررسی مسائل _Github_"
+
+msgid " or "
+msgstr " یا "
+
+msgid " Discussions"
+msgstr "بحث"
+
+msgid "Show Details"
+msgstr "نمایش جزئیات"
+
+msgid "Post to Github issue needs to sign in your Github account"
+msgstr "بازخورد یک کلید نیاز به ثبت نام در حساب github خود را"
+
+msgid "GAE Proxy Status Info"
+msgstr "GAE پروکسی وضعیت"
+
+msgid ""
+"-----------%0AProblem Description:%0APlease describe your problem, "
+"running logs may be needed.%0A%0A-----------%0ADiagnostic information:%0A"
+msgstr ""
+
+msgid ""
+"The status page is empty. Highly likely that GAEProxy failed getting "
+"started. Please follow "
+msgstr ""
+"صفحه وضعیت خالی است. بسیار محتمل است که GAEProxy شروع کار شکست خورده است."
+" لطفا دنبال کنید"
+
+msgid "guide "
+msgstr "راهنما"
+
+msgid "to troubleshoot."
+msgstr "به عیب یابی."
+
+msgid "Your local network failed. Please check your network and firewall. "
+msgstr "شبکه محلی شما را شکست خورده است. لطفا شبکه و فایروال خود را چک کنید."
+
+msgid "You may want to $1turn on IP scaner$2."
+msgstr ""
+
+msgid ""
+"You can try <a href=\"https://github.com/XX-net/XX-Net/wiki/How-to-turn-"
+"on-IPv6\">turn on IPv6</a> or <a href=\"https://github.com/XX-net/XX-"
+"Net/wiki/How-to-use-XTunnel\">use X-Tunnel</a>"
+msgstr ""
+
+msgid "XX-Net is scanning IP. Please wait about half an hour."
+msgstr "_XX-Net_ اسکن است. لطفا صبر کنید."
+
+msgid ""
+"Public appid out of quota, Please <a href=\"https://github.com/XX-net/XX-"
+"Net/wiki/Register-Google-appid\" target=\"_blank\">deploy your own "
+"APPID</a>"
+msgstr ""
+
+msgid ""
+"Your appid out of quota, Please <a href=\"https://github.com/XX-net/XX-"
+"Net/wiki/Register-Google-appid\" target=\"_blank\">deploy more APPID</a>"
+msgstr ""
+
+msgid "No working appid. Please check. "
+msgstr "بدون APPID کارگر. لطفا بررسی کنید. "
+
+msgid "System is Idle. "
+msgstr ""
+
+msgid "Connection not established yet. "
+msgstr "اتصال برقرار نشده است"
+
+msgid "Please check your browser proxy setting."
+msgstr "لطفا تنظیمات پروکسی مرورگر خود را بررسی کنید."
+
+msgid "Detecting..."
+msgstr "استقرار ..."
+
+msgid "Please import certificates to your browser."
+msgstr "لطفا مرورگر خود را به گواهی وارد کنید."
+
+msgid ""
+"You are using public APPID. You are recommended to <a "
+"href=\"https://github.com/XX-net/XX-Net/wiki/Register-Google-appid\" "
+"target=\"_blank\">deploy your own APPID</a>"
+msgstr ""
+
+msgid ", Everything is OK. Welcome to the FREE Internet. "
+msgstr "، همه چی خوبه. به اینترنت خوش آمدید. "
+
+msgid ""
+"The status page is empty. Highly likely that XX-Net failed getting "
+"started. Please follow "
+msgstr ""
+"صفحه وضعیت خالی است. بسیار محتمل است که GAEProxy شروع کار شکست خورده است."
+" لطفا دنبال کنید"
+
+msgid "No response from process. It might have already exited."
+msgstr "هیچ پاسخی از روند GAEProxy. این ممکن است در حال حاضر خارج می شود."
+
+msgid "You are using the public Appid."
+msgstr "شما با استفاده از شناسه های عمومی است."
+
+msgid "new:"
+msgstr ""
+
+msgid " h1:"
+msgstr ""
+
+msgid " h2:"
+msgstr ""
+
+msgid "Auto proxy enabled at "
+msgstr "پروکسی خودکار را فعال کنید در"
+
+msgid "Proxy enabled at "
+msgstr "پروکسی را فعال کنید در "
+
+msgid "Proxy disabled"
+msgstr "پروکسی غیرفعال"
+
+
+
+
+
+

@@ -1,0 +1,493 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: xxnet.dev@gmail.com\n"
+"POT-Creation-Date: 2017-12-24 12:00+0800\n"
+"PO-Revision-Date: 2017-12-29 12:00+0800\n"
+"Last-Translator: Emphasia@github\n"
+"Language: zh_Hans_CN\n"
+"Language-Team: zh_Hans_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+msgid "Version"
+msgstr "版本"
+
+msgid "Project main page"
+msgstr "项目主页"
+
+msgid "Bug feedback"
+msgstr "Bug 反馈"
+
+msgid "When submitting a bug, please attach "
+msgstr "报告问题时, 请附上"
+
+msgid "the status page "
+msgstr "状态页"
+
+msgid "info and "
+msgstr "信息和"
+
+msgid "the log page "
+msgstr "日志页"
+
+msgid "contents"
+msgstr "内容"
+
+msgid "Thanks to the following projects"
+msgstr "感谢以下项目"
+
+msgid "About XX-Net"
+msgstr "关于 XX-Net"
+
+msgid "General Settings"
+msgstr "通用"
+
+msgid "System Version"
+msgstr "版本"
+
+msgid "LAN Proxy Setting"
+msgstr "前置代理"
+
+msgid "System Configuration"
+msgstr "系统配置"
+
+msgid "Configuring the service[%s]. This page will refresh within %s seconds."
+msgstr "正在配置服务 [%s], 页面将在 %s 秒后刷新。"
+
+# msgid "XX-Net"
+# msgstr ""
+
+# msgid "GAE Proxy"
+# msgstr "GAE 代理"
+
+# msgid "X-Tunnel"
+# msgstr "X-Tunnel"
+
+# msgid "Smart Router"
+# msgstr "智能路由"
+
+msgid "Language"
+msgstr "语言"
+
+msgid "Auto-Startup"
+msgstr "开机自动启动"
+
+msgid "Popup Status Page on Startup"
+msgstr "启动时弹出状态页"
+
+msgid "Allow Remote"
+msgstr "允许远程访问控制页"
+
+msgid "Restarting all remote, wait to refresh."
+msgstr "正在重启所有远程程序，请等待刷新。"
+
+msgid "Help"
+msgstr "帮助"
+
+msgid "Display System Tray(Restarting XX-Net Required)"
+msgstr "显示托盘图标(需要重启 XX-Net)"
+
+msgid "Display Windows software compatibility suggestions"
+msgstr "显示 Windows 软件兼容性建议"
+
+msgid "Feedback"
+msgstr "反馈"
+
+msgid "Run as Green Software"
+msgstr "以绿色方式运行"
+
+msgid "Module management"
+msgstr "模块管理"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "LAN proxy"
+msgstr "前置代理"
+
+msgid "Generally not needed, only those who need internal proxy to access the external network (companies, Intranet, campus, etc.) need to configure this."
+msgstr "一般无需设置，只有那些需要通过内部代理访问外网的用户才需要设置。"
+
+msgid "Proxy type"
+msgstr "代理类型"
+
+msgid "Proxy IP address or domain name"
+msgstr "代理服务器"
+
+msgid "Port"
+msgstr "代理端口"
+
+msgid "User name"
+msgstr "用户名"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Do you really need LAN proxy? <a href=\"https://github.com/XX-net/XX-Net/wiki/LAN-proxy-setting\">Help</a>."
+msgstr "你似乎没有设置前置代理的需要．．．（请查看<a href=\"https://github.com/XX-net/XX-Net/wiki/LAN-proxy-setting\">帮助</a>）"
+
+msgid "Failed reading the settings."
+msgstr "读取设置失败。"
+
+msgid "Checking settings ..."
+msgstr "等待设置检查..."
+
+msgid "Settings saved successfully."
+msgstr "保存设置成功。"
+
+msgid "Failed saving settings: "
+msgstr "保存设置失败："
+
+msgid "Failed saving settings."
+msgstr "保存设置失败。"
+
+msgid "Auto-Upgrade to"
+msgstr "自动升级到"
+
+msgid "Do not upgrade"
+msgstr "不升级"
+
+msgid "Notice stable version"
+msgstr "通知稳定版"
+
+msgid "Stable version"
+msgstr "稳定版"
+
+msgid "Notice test version"
+msgstr "通知测试版"
+
+msgid "Test version"
+msgstr "测试版"
+
+msgid "Check the latest version"
+msgstr "检查最新版本"
+
+msgid "Current version"
+msgstr "当前版本"
+
+msgid "Version of the test one"
+msgstr "测试版"
+
+msgid "Version of the stable one"
+msgstr "稳定版"
+
+msgid "Keep old versions count"
+msgstr "保留的旧版本数"
+
+msgid "keep all"
+msgstr "保留全部"
+
+msgid "Update now"
+msgstr "立即更新"
+
+msgid "Manually Manage"
+msgstr "手动管理"
+
+msgid "Advanced"
+msgstr "高级"
+
+msgid "All versions download page"
+msgstr "全部已发布版本"
+
+msgid "Released version"
+msgstr "发布版本"
+
+msgid "Local version"
+msgstr "本地版本"
+
+msgid "Released"
+msgstr "发布的"
+
+msgid "Download & Change to"
+msgstr "下载并切至"
+
+msgid "no hash check"
+msgstr "不校验"
+
+msgid "Local"
+msgstr "本地的"
+
+msgid "Change to this version"
+msgstr "切至此版本"
+
+msgid "Delete"
+msgstr "删除此版本"
+
+msgid "Settings save fail:"
+msgstr "保存设置失败："
+
+msgid "Deleted successfully."
+msgstr "删除成功。"
+
+msgid "Deleting local version fail."
+msgstr "删除本地版本失败。"
+
+msgid "Failed getting local versions."
+msgstr "获取本地版本失败。"
+
+msgid "Failed getting released versions."
+msgstr "获取发布版本失败。"
+
+msgid "(Remote Web Control Enabled)"
+msgstr "(已允许远程访问)"
+
+msgid "Adaptive width"
+msgstr "自适应宽度"
+
+msgid "Exit the program"
+msgstr "退出程序"
+
+msgid "Remind me later"
+msgstr "以后再提醒我"
+
+msgid "Do not remind me this version"
+msgstr "忽略此版本"
+
+msgid "View changes"
+msgstr "显示变动"
+
+msgid "Exited successfully."
+msgstr "退出成功。"
+
+msgid "Exitting failed."
+msgstr "退出失败。"
+
+msgid "Exitting failed. A network error occurred."
+msgstr "退出失败，遇到网络错误。"
+
+msgid "Unkown error occured. Please refresh the page and try again."
+msgstr "发生未知错误，请刷新页面重试。"
+
+msgid "Updating in progress ..."
+msgstr "更新进行中..."
+
+msgid "New "
+msgstr "新"
+
+msgid "Downloading ..."
+msgstr "下载中..."
+
+msgid "Download completed."
+msgstr "下载完成。"
+
+msgid "Hello!"
+msgstr "你好！"
+
+msgid "You seem to be on your first visit."
+msgstr "你似乎是初次到访。"
+
+msgid "new to this version?"
+msgstr "第一次使用此版本？"
+
+msgid "Learn more"
+msgstr "了解更多"
+
+msgid "System"
+msgstr "系统"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Configuration"
+msgstr "配置"
+
+msgid "About"
+msgstr "关于"
+
+msgid "Your browser is obsolete. Partial functionality will not be available."
+msgstr "您的浏览器版本过低, 部分功能将无法使用。"
+
+msgid "The latest Chrome browser is recommended."
+msgstr "建议您使用最新版本的 Chrome 浏览器。"
+
+msgid "Search"
+msgstr "搜索"
+
+msgid "Search all issues"
+msgstr "在 issue 中搜索（支持 GitHub issue 搜索参数）"
+
+msgid "Notice"
+msgstr "公告"
+
+msgid "click to view"
+msgstr "点击查看"
+
+msgid "Property"
+msgstr "属性"
+
+msgid "Value"
+msgstr "值"
+
+msgid "idle"
+msgstr "空闲"
+
+msgid "working"
+msgstr "工作"
+
+msgid "XX-Net Status"
+msgstr "XX-Net 状态"
+
+msgid "Browser Proxy Setting"
+msgstr "浏览器代理设置"
+
+msgid "CA status"
+msgstr "CA 证书状态"
+
+msgid "Download"
+msgstr "下载"
+
+msgid "Block Status"
+msgstr "屏蔽状态"
+
+msgid "System Proxy"
+msgstr "系统代理"
+
+msgid "Modules"
+msgstr "模块"
+
+msgid "Launcher Web UI"
+msgstr "Web 控制页"
+
+msgid "LAN proxy"
+msgstr "前置代理"
+
+msgid "System Info"
+msgstr "系统信息"
+
+msgid "Diagnostic Info"
+msgstr "诊断信息"
+
+msgid "Check"
+msgstr "查看"
+
+msgid "GitHub issues"
+msgstr "GitHub 问题讨论区"
+
+msgid "or"
+msgstr "或"
+
+msgid "Google Group Discussions"
+msgstr "Google Group 讨论组"
+
+msgid "Show Details"
+msgstr "显示详细信息"
+
+msgid "Post to Github issue needs to sign in your Github account"
+msgstr "贴到 GitHub 问题区需要登录 GitHub 账号"
+
+msgid "XX-Net Status Info"
+msgstr "XX-Net 状态信息"
+
+msgid ""
+"-----------%0AProblem Description:%0APlease describe your problem, "
+"running logs may be needed.%0A%0A-----------%0ADiagnostic information:%0A"
+msgstr "-----------%0A问题描述：%0A请在此描述你遇到的问题，必要时贴出相关的日志信息。%0A%0A-----------%0A诊断信息：%0A"
+
+msgid "The status page is empty. Highly likely that "
+msgstr "状态页显示空白, 很可能 "
+
+msgid " failed getting started. Please follow "
+msgstr " 启动失败, 请按 "
+
+msgid "guide"
+msgstr "指导"
+
+msgid " to troubleshoot."
+msgstr "去解决。"
+
+msgid "Your local network failed, please check your network and firewall."
+msgstr "网络无法连接，请检查网络和防火墙设置。"
+
+msgid "Force-IPv4"
+msgstr "仅 IPv4"
+
+msgid "Force-IPv6"
+msgstr "仅 IPv6"
+
+msgid " not available, Please check."
+msgstr " 不可用，请检查。"
+
+msgid "You may want to $1turn on IP scaner$2."
+msgstr "您应该考虑$1开启 IP 扫描器$2。"
+
+msgid ""
+"You can try <a href=\"https://github.com/XX-net/XX-Net/wiki/How-to-turn-"
+"on-IPv6\">turn on IPv6</a> or <a href=\"https://github.com/XX-net/XX-"
+"Net/wiki/How-to-use-XTunnel\">use X-Tunnel</a>."
+msgstr "你可以尝试 <a href=\"https://github.com/XX-net/XX-Net/wiki/%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AFIPv6\">开启 IPv6</a> 或 <a href=\"https://github.com/XX-net/XX-Net/wiki/x-tunnel%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B\">使用X-Tunnel</a>。"
+
+msgid "XX-Net is scanning IP. Please wait about half an hour."
+msgstr "等待扫描IP，建议开启 IPv6。"
+
+msgid ""
+"Public AppID out of quota, Please <a href=\"https://github.com/XX-net/XX-"
+"Net/wiki/how-to-create-my-appids\" target=\"_blank\">deploy your own AppID</a>."
+msgstr "公共 AppID 配额已用完，请<a href=\"https://github.com/XX-net/XX-Net/wiki/how-to-create-my-appids\" target=\"_blank\">部署私有 AppID</a>。"
+
+msgid ""
+"Your AppID out of quota, Please <a href=\"https://github.com/XX-net/XX-"
+"Net/wiki/how-to-create-my-appids\" target=\"_blank\">deploy more AppID</a>."
+msgstr "您的 AppID 流量已用完，请<a href=\"https://github.com/XX-net/XX-Net/wiki/how-to-create-my-appids\" target=\"_blank\">部署更多 AppID</a>。"
+
+msgid "No working AppID. Please check."
+msgstr "没有可用 AppID，请检查。"
+
+msgid "System is Idle."
+msgstr "系统空闲。"
+
+msgid "Connection not established yet."
+msgstr "连接尚未建立。"
+
+msgid "Please check your browser proxy setting."
+msgstr "请检查浏览器代理设置。"
+
+msgid "Detecting ..."
+msgstr "正在自检..."
+
+msgid "Please import certificates to your browser."
+msgstr "请导入浏览器 CA 证书。"
+
+msgid ""
+"You are using public AppIDs. You are recommended to <a "
+"href=\"https://github.com/XX-net/XX-Net/wiki/how-to-create-my-appids\" "
+"target=\"_blank\">deploy your own AppID</a>."
+msgstr "您正在使用公共 AppID，因为资源有限，使用上存在限制，建议<a href=\"https://github.com/XX-net/XX-Net/wiki/how-to-create-my-appids\" target=\"_blank\">部署私有 AppID</a>。"
+
+msgid ", Everything is OK. Welcome to the FREE Internet."
+msgstr "，一切正常，你可以访问真正的互联网了。"
+
+msgid "No response from process: "
+msgstr "进程："
+
+msgid ". It might have already exited."
+msgstr " 无响应, 可能已退出。"
+
+msgid "Global PAC Proxy set"
+msgstr "全局 PAC 代理"
+
+msgid "Global GAEProxy Proxy set"
+msgstr "全局 GAEProxy 代理"
+
+msgid "Global X-Tunnel Proxy set"
+msgstr "全局 X-Tunnel 代理"
+
+msgid "Global Smart-Router Proxy set"
+msgstr "全局 Smart-Router 代理"
+
+msgid "Global Proxy disabled"
+msgstr "全局代理禁用"
+
+msgid "disable"
+msgstr "禁用"
+
+msgid "Failed loading notice."
+msgstr "获取公告失败。"
+

@@ -1,0 +1,139 @@
+##########################################################
+#
+# No-Such-Domain Error Output template for Privoxy.
+#
+#
+# USING HTML TEMPLATES:
+# ---------------------
+#
+# Template files are written win plain HTML, with a few
+# additions:
+#
+# - Lines that start with a '#' character like this one
+#   are ignored
+#
+# - Each item in the below list of exported symbols will
+#   be replaced by dynamically generated text, if they
+#   are enclosed in '@'-characters. E.g. The string @version@
+#   will be replaced by the version number of Privoxy.
+#
+# - One special application of this is to make whole blocks
+#   of the HTML template disappear if the condition <name>
+#   is not given. Simply enclose the block between the two
+#   strings @if-<name>start and if-<name>-end@. The strings
+#   should be placed in HTML comments (<!-- -->), so the
+#   html structure won't be messed when the magic happens.
+#
+# USABLE SYMBOLS IN THIS TEMPLATE:
+# --------------------------------
+#
+#  my-ip-addr:
+#    The IP-address that the client used to reach this proxy
+#  my-hostname:
+#    The hostname associated with my-ip-addr
+#  admin-address:
+#    The email address of the pxoxy's administrator, as configured
+#    in the config file
+#  default-cgi:
+#    The URL for the "main menu" builtin CGI of this proxy
+#  menu:
+#    List of <li> elements linking to the other available CGIs
+#  version:
+#    The version number of the proxy software
+#  code-status:
+#    The development status of the proxy software: "alpha", "beta",
+#    or "stable".
+#  homepage:
+#    The URL of the SourceForge ijbswa project, who maintains this
+#    software.
+#
+# CONDITIONAL SYMBOLS FOR THIS TEMPLATE AND THEIR DEPANDANT SYMBOLS:
+# ------------------------------------------------------------------
+#
+#  unstable:
+#    this is an alpha or beta release of the proxy software
+#  have-adminaddr-info:
+#    An e-mail address for the local Privoxy adminstrator has
+#    been specified and is available through the "admin-address"
+#    symbol
+#  have-proxy-info:
+#    A URL for online documentation about this proxy has been
+#    specified and is available through the "proxy-info-url"
+#    symbol
+#  have-help-info:
+#    If either have-proxy-info is true or have-adminaddr-info is
+#    true, have-help-info is true.  Used to conditionally include
+#    a grey box for any and all help info.
+#
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+  <title>Privoxy: Actions file not found</title>
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" type="text/css" href="@default-cgi@send-stylesheet">
+  <link rel="shortcut icon" href="@default-cgi@error-favicon.ico">
+</head>
+
+<body>
+
+  <table cellpadding="20" cellspacing="10" border="0" width="100%">
+    <tr>
+      <td class="title">
+
+#include mod-title
+
+      </td>
+    </tr>
+
+<!-- @if-unstable-start -->
+# This will only appear if CODE_STATUS is "alpha" or "beta". See configure.in
+    <tr>
+      <td class="warning">
+
+#include mod-unstable-warning
+
+      </td>
+    </tr>
+<!-- if-unstable-end@ -->
+
+    <tr>
+      <td class="warning">
+        <h2>Actions file not found</h2>
+        <p>The actions file you are trying to edit (index <code>@f@</code>)
+           does not exist, or cannot be read.</p>
+      </td>
+    </tr>
+
+     <tr>
+      <td class="box">
+        <h2>Privoxy Menu:</h2>
+        <ul>@menu@<li><a href="@user-manual@">Documentation</a></li></ul>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="info">
+
+#include mod-support-and-service
+
+      </td>
+    </tr>
+
+<!-- @if-have-help-info-start -->
+    <tr>
+      <td class="info">
+
+#include mod-local-help
+
+      </td>
+    </tr>
+<!-- if-have-help-info-end@ -->
+
+  </table>
+
+</body>
+</html>

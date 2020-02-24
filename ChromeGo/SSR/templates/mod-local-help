@@ -1,0 +1,12 @@
+        <h2>Local Privoxy support:</h2>
+
+<!-- @if-have-proxy-info-start -->
+        <p>You can consult the <a href="@proxy-info-url@">online documentation</a> for more information about this Privoxy installation.</p>
+<!-- if-have-proxy-info-end@ -->
+
+<!-- @if-have-adminaddr-info-start -->
+        <p>Address e-mail questions about this Privoxy installation to
+          <a href="mailto:@admin-address@"><code>@admin-address@</code></a>,
+          who will be glad to help you.
+        </p>
+<!-- if-have-adminaddr-info-end@ -->

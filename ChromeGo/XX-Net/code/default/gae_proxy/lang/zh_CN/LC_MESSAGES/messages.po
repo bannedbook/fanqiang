@@ -1,0 +1,583 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: xxnet.dev@gmail.com\n"
+"POT-Creation-Date: 2017-12-24 12:00+0800\n"
+"PO-Revision-Date: 2017-12-29 12:00+0800\n"
+"Last-Translator: Emphasia@github\n"
+"Language: zh_Hans_CN\n"
+"Language-Team: zh_Hans_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+msgid "Global Settings"
+msgstr "全局设置"
+
+msgid "Switch ON to submit setting level"
+msgstr "切换到 ON 才能提交设置级别"
+
+msgid "Passive mode consumes less system resources"
+msgstr "被动模式消耗更少的系统资源"
+
+msgid "Customized an adequate value for your network connection. large values will provide a larger bandwidth limit, but may result in tunnel connection unstable."
+msgstr "为你的网络连接自定义适当的数值。大的数值会提供较大的带宽上限，但是可能导致隧道连接不稳定。"
+
+msgid "Submit setting level"
+msgstr "提交设置级别"
+
+msgid "Setting level"
+msgstr "设置级别"
+
+msgid "Passive"
+msgstr "被动"
+
+msgid "Conservative"
+msgstr "保守"
+
+msgid "Normal"
+msgstr "正常"
+
+msgid "Radical"
+msgstr "积极"
+
+msgid "Extreme"
+msgstr "极端"
+
+msgid "Connect receive buffer size"
+msgstr "连接接收缓冲大小"
+
+msgid "Scan Settings"
+msgstr "扫描设置"
+
+msgid "Scan Log"
+msgstr "扫描日志"
+
+msgid "Import IP"
+msgstr "导入 IP"
+
+msgid "Export IP"
+msgstr "导出 IP"
+
+msgid "Check IP"
+msgstr "检查 IP"
+
+msgid "IPv6 Tunnel"
+msgstr "IPv6 隧道"
+
+msgid "Teredo Tunnel"
+msgstr "Teredo 隧道"
+
+msgid "GAEProxy Advanced Configuration"
+msgstr "GAEProxy 高级配置"
+
+msgid "Your browser is obsolete. Partial functionality will not be available."
+msgstr "您的浏览器版本过低, 部分功能将无法使用。"
+
+msgid "The latest Chrome browser is recommended."
+msgstr "建议您使用最新版本的 Chrome 浏览器。"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Property"
+msgstr "属性"
+
+msgid "Value"
+msgstr "值"
+
+msgid "All IP Number"
+msgstr "总 IP 数"
+
+msgid "Left Number"
+msgstr "待测 IP 数"
+
+msgid "Good IP Number"
+msgstr "有效 IP 数"
+
+msgid "Run"
+msgstr "开始"
+
+msgid "No response from process: "
+msgstr "进程："
+
+# msgid "GAEProxy"
+# msgstr ""
+
+# msgid "XX-Net"
+# msgstr ""
+
+msgid ". It might have already exited."
+msgstr " 无响应, 可能已退出。"
+
+msgid "Stop"
+msgstr "停止"
+
+msgid "Public AppIDs used by default"
+msgstr "默认使用公共 AppID，保存多个 AppID 请用 | 分割"
+
+msgid "The public AppIDs are disabled to access videos or download files."
+msgstr "公共 AppID 不能看视频、下载文件。"
+
+msgid "How to apply"
+msgstr "如何申请"
+
+msgid "Attention: inaccessable before AppIDs are deployed."
+msgstr "注意：AppID 部署之前无法使用。"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Advanced tricks:"
+msgstr "高级技巧："
+
+msgid "By the configuration file"
+msgstr "通过文件配置"
+
+msgid "GAEProxy Configuration"
+msgstr "GAEProxy 配置"
+
+msgid "Failed reading the settings."
+msgstr "读取设置失败。"
+
+msgid "Failed reading the prefix policies."
+msgstr "读取前缀策略失败。"
+
+msgid "No teredo prefix policiy is found."
+msgstr "未发现 Teredo 前缀策略。"
+
+msgid "Checking settings ..."
+msgstr "请等待检查设置有效性..."
+
+msgid "Settings saved successfully."
+msgstr "设置保存成功。"
+
+msgid "AppID invalid:"
+msgstr "无效的AppID："
+
+msgid ", deploy AppID before using."
+msgstr "，使用前请先部署。"
+
+msgid "Failed saving settings: "
+msgstr "保存设置失败："
+
+msgid "Failed saving settings."
+msgstr "保存设置失败。"
+
+msgid "Deploy XX-Net onto GAE"
+msgstr "部署 XX-Net 至 GAE"
+
+msgid "Current status: "
+msgstr "当前状态："
+
+msgid "idle"
+msgstr "空闲"
+
+msgid "unknown"
+msgstr "未知"
+
+msgid "offline"
+msgstr "离线（无法连接）"
+
+msgid "probe"
+msgstr "正在检查网络"
+
+msgid "qualified"
+msgstr "合格（已连接）"
+
+msgid "dormant"
+msgstr "休眠（未连接）"
+
+msgid "enabled"
+msgstr "已启用"
+
+msgid "disabled"
+msgstr "已禁用"
+
+msgid "Still not connected? Wait for a while, or"
+msgstr "仍然连接不上？等一会儿，或者"
+
+msgid "try to reduce the connection buffer size"
+msgstr "尝试降低连接缓冲数值"
+
+msgid "Script is running, please retry later."
+msgstr "脚本正在运行，请稍后再试。"
+
+msgid ", are you sure to continue?"
+msgstr "，你确定要继续吗？"
+
+msgid "working"
+msgstr "工作"
+
+msgid "Authorization"
+msgstr "授权"
+
+msgid "Log"
+msgstr "日志"
+
+msgid "Delimit multiple AppIDs with |"
+msgstr "批量部署多个 AppID 请用 | 分割；部署时不要占用 8080 端口"
+
+msgid "Show Debug Log"
+msgstr "显示日志"
+
+msgid "Start to deploy"
+msgstr "开始部署"
+
+msgid "Auth window will popup, make sure don't block popup in browser."
+msgstr "认证会弹出窗口，请确认浏览器不会阻止弹窗。"
+
+msgid "XX-Net was reset."
+msgstr "XX-Net已被重置。"
+
+msgid "Deployment completed."
+msgstr "部署完成。"
+
+msgid "Please go to "
+msgstr "请在"
+
+msgid "the configuration page "
+msgstr "配置页面"
+
+msgid "to set AppID to enable them."
+msgstr "中设置 AppID, 方会生效。"
+
+msgid "An exception occurred."
+msgstr "发生异常。"
+
+msgid "The exception info: "
+msgstr "异常信息："
+
+msgid "deploying ..."
+msgstr "正在部署..."
+
+msgid "Terminate deploying"
+msgstr "终止部署"
+
+msgid "Deployment cancelled."
+msgstr "部署已被取消。"
+
+msgid "Your AppID is either empty or invalid."
+msgstr "您的 AppID 为空或无效。"
+
+msgid "Export format"
+msgstr "导出格式"
+
+msgid "IP|IP|IP (GoGo Tester/GoAgent format)"
+msgstr "IP|IP|IP (GoGo Tester/GoAgent 格式)"
+
+msgid "New line delimiter"
+msgstr "以换行分隔"
+
+msgid "IP address list"
+msgstr "IP 地址列表"
+
+msgid "Succeeded exporting "
+msgstr "成功导出"
+
+msgid " IP addresses."
+msgstr "个 IP。"
+
+msgid "Failed exporting the IP addresses."
+msgstr "导出 IP 失败。"
+
+msgid "IP list"
+msgstr "IP 列表"
+
+msgid "Success import "
+msgstr "成功导入 "
+
+msgid " IP."
+msgstr "个 IP。"
+
+msgid "Failed importing IP."
+msgstr "导入 IP 失败。"
+
+msgid "Tips"
+msgstr "提示"
+
+msgid "Enable operations usually only needs to be performed once at each device."
+msgstr "启用操作通常只需要在每台设备上执行一次。"
+
+msgid "After changing the server, it takes 10-90 seconds to successfully establish a new teredo tunnel."
+msgstr "更换服务器后，需要等待 10-90 秒钟才会成功建立新的 teredo 隧道。"
+
+msgid "To use teredo tunnel, win user must keep firewall enabled, and allow outbound."
+msgstr "Win 用户使用 teredo 必须保持防火墙开启，出站放行即可。"
+
+msgid "Non-win users can also use the test button to get the fastest server for change manually."
+msgstr "非 win 用户也可以使用测试按钮来获取响应最快的服务器，以便手动更换。"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "Disable"
+msgstr "禁用"
+
+msgid "Test teredo"
+msgstr "测试 teredo"
+
+msgid "Test teredo usability only"
+msgstr "仅测试 teredo 可用性"
+
+msgid "Test teredo server only"
+msgstr "仅测试 teredo 服务器"
+
+msgid "Change teredo server"
+msgstr "更换 teredo 服务器"
+
+msgid "Switch teredo first"
+msgstr "切换到 teredo 隧道优先"
+
+msgid "Switch origin first"
+msgstr "切换到原生 IPv6 优先"
+
+msgid "Running ..."
+msgstr "正在执行..."
+
+msgid "GAEProxy Log"
+msgstr "GAEProxy 日志"
+
+msgid "Configuration"
+msgstr "配置"
+
+msgid "Deploy Server"
+msgstr "部署服务端"
+
+msgid "Advanced"
+msgstr "高级"
+
+msgid "Refresh"
+msgstr "刷新"
+
+msgid "Failed reading the log."
+msgstr "读取日志失败。"
+
+msgid "Auto-adjust scan thread count"
+msgstr "自动调整扫描线程数"
+
+msgid "How enable"
+msgstr "如何开启"
+
+msgid "Help"
+msgstr "帮助"
+
+msgid "Max scan thread count"
+msgstr "最大扫描线程数"
+
+msgid "AUTO"
+msgstr "自动"
+
+msgid "Force-IPv4"
+msgstr "仅 IPv4"
+
+msgid "Force-IPv6"
+msgstr "仅 IPv6"
+
+msgid "IP range list"
+msgstr "IP 段列表"
+
+msgid "Supporting formats"
+msgstr "支持格式"
+
+msgid "Submit"
+msgstr "提交"
+
+msgid "Scan IP thread is larger than the max number."
+msgstr "扫描线程数超过最大值。"
+
+msgid "Unkown error occurred."
+msgstr "发生未知错误。"
+
+msgid "IPv4 Status"
+msgstr "IPv4 状态"
+
+msgid "IPv6 Status"
+msgstr "IPv6 状态"
+
+msgid "try repair"
+msgstr "尝试修复"
+
+msgid "Good IPv4 Number"
+msgstr "有效 IPv4 IP 数"
+
+msgid "Good IPv6 Number"
+msgstr "有效 IPv6 IP 数"
+
+msgid "XX-Net Status"
+msgstr "XX-Net 状态"
+
+msgid "IP Quality"
+msgstr "IP 延迟"
+
+msgid "Connection Pool"
+msgstr "连接池"
+
+msgid "Browser Proxy Setting"
+msgstr "浏览器代理设置"
+
+msgid "CA status"
+msgstr "CA 证书状态"
+
+msgid "Download"
+msgstr "下载"
+
+msgid "Number of IP-Scanning Threads"
+msgstr "IP 扫描线程数"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Block Status"
+msgstr "屏蔽状态"
+
+msgid "XX-Net Version"
+msgstr "XX-Net 版本"
+
+msgid "System Proxy Status"
+msgstr "系统代理状态"
+
+msgid "Listening At"
+msgstr "代理监听"
+
+# msgid "PAC URL"
+# msgstr "PAC 自动代理地址"
+
+msgid "IP mode"
+msgstr "IP 模式"
+
+msgid "LAN proxy"
+msgstr "前置代理"
+
+msgid "working AppIDs"
+msgstr "工作 AppID"
+
+msgid "out-of-quota AppIDs"
+msgstr "超额 AppID"
+
+msgid "not-exist AppIDs"
+msgstr "无效 AppID"
+
+msgid "System Info"
+msgstr "系统信息"
+
+msgid "Diagnostic Info"
+msgstr "诊断信息"
+
+msgid "Check"
+msgstr "查看"
+
+msgid "GitHub issues"
+msgstr "GitHub 问题讨论区"
+
+msgid "or"
+msgstr "或"
+
+msgid "Google Group Discussions"
+msgstr "Google Group 讨论组"
+
+msgid "Show Details"
+msgstr "显示详细信息"
+
+msgid "Post to Github issue needs to sign in your Github account"
+msgstr "贴到 GitHub 问题区需要登录 GitHub 账号"
+
+msgid "GAE Proxy Status Info"
+msgstr "GAEProxy 状态信息"
+
+msgid ""
+"-----------%0AProblem Description:%0APlease describe your problem, "
+"running logs may be needed.%0A%0A-----------%0ADiagnostic information:%0A"
+msgstr "-----------%0A问题描述：%0A请在此描述你遇到的问题，必要时贴出相关的日志信息。%0A%0A-----------%0A诊断信息：%0A"
+
+msgid "The status page is empty. Highly likely that "
+msgstr "状态页显示空白, 很可能 "
+
+msgid " failed getting started. Please follow "
+msgstr " 启动失败, 请按 "
+
+msgid "guide"
+msgstr "指导"
+
+msgid " to troubleshoot."
+msgstr "去解决。"
+
+msgid "Your local network failed, please check your network and firewall."
+msgstr "网络无法连接，请检查网络和防火墙设置。"
+
+msgid " not available, Please check."
+msgstr " 不可用，请检查。"
+
+msgid "You may want to $1turn on IP scaner$2."
+msgstr "您应该考虑$1开启IP扫描器$2。"
+
+msgid ""
+"You can try <a href=\"https://github.com/XX-net/XX-Net/wiki/How-to-turn-"
+"on-IPv6\">turn on IPv6</a> or <a href=\"https://github.com/XX-net/XX-"
+"Net/wiki/How-to-use-XTunnel\">use X-Tunnel</a>."
+msgstr "你可以尝试 <a href=\"https://github.com/XX-net/XX-Net/wiki/%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AFIPv6\">开启IPv6</a> 或 <a href=\"https://github.com/XX-net/XX-Net/wiki/x-tunnel%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B\">使用X-Tunnel</a>。"
+
+msgid "XX-Net is scanning IP. Please wait about half an hour."
+msgstr "等待扫描 IP，建议开启 IPv6。"
+
+msgid ""
+"Public AppID out of quota, Please <a href=\"https://github.com/XX-net/XX-"
+"Net/wiki/how-to-create-my-appids\" target=\"_blank\">deploy your own AppID</a>."
+msgstr "公共 AppID 配额已用完，请<a href=\"https://github.com/XX-net/XX-Net/wiki/how-to-create-my-appids\" target=\"_blank\">部署私有 AppID</a>。"
+
+msgid ""
+"Your AppID out of quota, Please <a href=\"https://github.com/XX-net/XX-"
+"Net/wiki/how-to-create-my-appids\" target=\"_blank\">deploy more AppID</a>."
+msgstr "您的 AppID 流量已用完，请<a href=\"https://github.com/XX-net/XX-Net/wiki/how-to-create-my-appids\" target=\"_blank\">部署更多 AppID</a>。"
+
+msgid "No working AppID. Please check."
+msgstr "没有可用 AppID，请检查。"
+
+msgid "System is Idle."
+msgstr "系统空闲。"
+
+msgid "Connection not established yet."
+msgstr "连接尚未建立。"
+
+msgid "Please check your browser proxy setting."
+msgstr "请检查浏览器代理设置。"
+
+msgid "Detecting ..."
+msgstr "正在自检..."
+
+msgid "Please import certificates to your browser."
+msgstr "请导入浏览器 CA 证书。"
+
+msgid ""
+"You are using public AppIDs. You are recommended to <a "
+"href=\"https://github.com/XX-net/XX-Net/wiki/how-to-create-my-appids\" "
+"target=\"_blank\">deploy your own AppID</a>."
+msgstr "您正在使用公共 AppID，因为资源有限，使用上存在限制，建议<a href=\"https://github.com/XX-net/XX-Net/wiki/how-to-create-my-appids\" target=\"_blank\">部署私有 AppID</a>。"
+
+msgid ", Everything is OK. Welcome to the FREE Internet."
+msgstr "，一切正常，你可以访问真正的互联网了。"
+
+msgid "You are using public AppIDs."
+msgstr "你正使用公共 AppID。"
+
+msgid "new:"
+msgstr "新:"
+
+msgid "h1:"
+msgstr ""
+
+msgid "h2:"
+msgstr ""
+
+msgid "Auto proxy enabled at "
+msgstr "智能代理已启用："
+
+msgid "Proxy enabled at "
+msgstr "全局代理已启用："
+
+msgid "Proxy disabled"
+msgstr "全局代理已禁用"
+

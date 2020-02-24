@@ -1,0 +1,101 @@
+<form id="gae_proxy-config" method="POST" onSubmit="onSubmit(); return false;">
+    <div class="row-fluid">
+        <div class="span2">
+            <label for="gae-appid">GAE AppID </label>
+        </div> <!-- .span2 -->
+        <div id="gae-appid-field" class="span10">
+            <input id="gae-appid" type="text" placeholder='{{ _( "Public AppIDs used by default" ) }}'/>
+            <div id="public-appid-tip" class="hide">
+                <p>
+                    <span color="red">{{ _( "The public AppIDs are disabled to access videos or download files." ) }}</span>
+                    <a href="https://github.com/XX-net/XX-Net/wiki/Register-Google-appid" target="_blank">({{ _( "How to apply" ) }})</a>
+                </p>
+            </div>
+            <div id="gae-appid-tip" class="hide">
+                <p>
+                    <span>{{ _( "Attention: inaccessable before AppIDs are deployed." ) }}</span>
+                </p>
+            </div>
+        </div> <!-- .span10 -->
+    </div> <!-- .row-fluid -->
+    <div class="row-fluid">
+        <div class="span12">
+            <button class="btn btn-primary btn-block" type="submit">{{ _( "Save" ) }}</button>
+        </div> <!-- .span12 -->
+    </div> <!-- .row-fluid -->
+</form> <!-- #gae_proxy-config -->
+<div class="row-fluid">
+    <div class="span12">
+        {{ _( "Advanced tricks:" ) }} <a href="https://github.com/XX-net/XX-Net/wiki/GoAgent-manual-config" target="_blank">{{ _( "By the configuration file" ) }}</a>
+    </div> <!-- .span4 -->
+</div> <!-- .row-fluid -->
+
+<!-- JavaScript -->
+<script type="text/javascript">
+    title('{{ _( "GAEProxy Configuration" ) }}');
+</script>
+<script type="text/javascript">
+    $('#gae-appid-field').click(function () {
+        $('#gae-appid-tip').removeClass('hide');
+    });
+    $('#gae-appid-field').click(function (event) {
+        event.stopPropagation();
+    });
+    $('html').click(function () {
+        $('#gae-appid-tip').addClass('hide');
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/module/gae_proxy/control/config?cmd=get_config',
+            dataType: 'JSON',
+            success: function (result) {
+                $('#gae-appid').val(result['appid']);
+                if (!result['appid'] || result['appid'] == '') {
+                    $('#public-appid-tip').removeClass("hide");
+                }
+            },
+            error: function () {
+                tip('{{ _( "Failed reading the settings." ) }}', 'error');
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    function onSubmit() {
+        var gaeAppId          = $('#gae-appid').val();
+
+        tip('{{ _( "Checking settings ..." ) }}', 'info');
+
+        return setAppID(gaeAppId);
+    }
+</script>
+<script type="text/javascript">
+    function setAppID(gaeAppId) {
+        var config = {
+            'appid': gaeAppId
+        };
+        $.ajax({
+            type: 'POST',
+            url: '/module/gae_proxy/control/config?cmd=set_config',
+            data: config,
+            dataType: 'JSON',
+            success: function (result) {
+                if (result['res'] == 'success') {
+                    tip('{{ _( "Settings saved successfully." ) }}', 'success');
+                } else {
+                    if (result['reason'].indexOf("appid fail") > -1) {
+                        tip('{{ _( "AppID invalid:" ) }}' + result['reason'].substring(11) + '{{ _( ", deploy AppID before using." ) }}', 'error');
+                    } else {
+                        tip('{{ _( "Failed saving settings: " ) }}' + result['reason'], 'error');
+                    }
+                }
+            },
+            error: function () {
+                tip('{{ _( "Failed saving settings." ) }}', 'error');
+            }
+        });
+    }
+</script>
