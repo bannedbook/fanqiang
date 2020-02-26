@@ -71,6 +71,10 @@ SSH连接VPS成功后，会出现如上图所示，之后就可以复制粘贴li
 
 关于客户端的更详细帮助，请参考[v2ray各平台图文使用教程](https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%90%84%E5%B9%B3%E5%8F%B0%E5%9B%BE%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B)
 
+**高级玩法**
+
+当封锁特别厉害的时候，常规的v2ray配置可能已经无法满足需求，这个时候我们可以尝试下[V2Ray+TLS翻墙配置](https://github.com/bannedbook/v2ray-guide/blob/master/advanced/v2ray+tls.md)的方式，甚至搭建好后还可以套CDN，套CDN不是一个必须的步骤，但套CDN可以有效保护IP，甚至被墙的ip也能复活。套CDN的方法可以自行网络搜索。提前准备好域名，并将域名指定vps的ip，然后来搭建就好了。
+
 ***
 
 **常见问题参考解决方法**：
@@ -89,9 +93,6 @@ SSH连接VPS成功后，会出现如上图所示，之后就可以复制粘贴li
 
 如果以上问题都已排查，可以关闭 Windows 自带的防火墙、杀毒软件再尝试。
 
-3、高阶篇
-
-当封锁特别厉害的时候，常规的v2ray配置可能已经无法满足需求，这个时候我们可以尝试下ws+tls的方式，甚至搭建好后还可以套CDN，套CDN不是一个必须的步骤，但套CDN可以有效保护IP，甚至被墙的ip也能复活。套CDN的方法可以自行网络搜索。提前准备好域名，并将域名指定vps的ip，然后根据脚本来搭建就好了。
 
 ***
 <b>相关教程</b>： [自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)
