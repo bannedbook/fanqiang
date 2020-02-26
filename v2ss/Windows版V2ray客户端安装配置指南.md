@@ -67,7 +67,7 @@
 * [自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)	
 * [自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 
 
-## 客户端json配置文件(绕过国内域名及IP)
+## V2ray客户端配置文件(绕过国内域名及IP)
 
 上面的客户端配置是全局的，也就是说访问所有的网站都将翻墙。但v2ray可以配置路由，绕过国内域名及IP，将配置文件改成如下即可（服务器端无需修改）
 ```javascript
