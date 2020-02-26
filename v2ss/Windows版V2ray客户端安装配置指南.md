@@ -1,6 +1,6 @@
 # Windows版V2ray客户端安装配置指南
 
-***V2ray官方Windows客户端安装配置***
+**V2ray官方Windows客户端安装配置**
 
 <b>广告插播，如果你觉得自己折腾VPS太麻烦，可以考虑这个服务哦（非本库服务）：</b><br>
 <a href="https://github.com/killgcd/justmysocks/blob/master/README.md"><img src="https://raw.githubusercontent.com/killgcd/justmysocks/master/images/bwgss.jpg" alt="搬瓦工翻墙 Just My Socks"></a>
@@ -67,7 +67,7 @@
 * [自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)	
 * [自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 
 
-***Windows下的第三方V2ray客户端***
+**Windows下的第三方V2ray客户端**
 
 也可以使用Windows下第三方的V2ray客户端<a href="https://github.com/2dust/v2rayN/releases/latest">v2rayN</a>，v2rayN的客户端配置简单示范如下图:
 
