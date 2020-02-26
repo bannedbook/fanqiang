@@ -156,7 +156,7 @@ Configuration OK.
 
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2ray/client1.jpg)
 
-注意：这里的端口，填写上面 “第四步 安装V2ray服务器” 安装完成后显示的Port:后面的数字，用户ID填写第四步显示的UUID:后面的一串字符即可。
+注意：这里的端口，填写上面 “第四步 [安装V2ray服务器](https://github.com/bannedbook/fanqiang/blob/master/v2ss/V2ray%E5%AE%98%E6%96%B9%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC.md)” 安装完成后显示的Port:后面的数字，用户ID填写第四步显示的UUID:后面的一串字符即可。
 配置好客户端，就可以自由冲浪了！至此为止，是不是很简单，有人说V2ray配置复杂，我们怎么没觉得呢？
 
 本文属于bannedbook系列翻墙教程的一部分，欢迎体验我们提供的免费翻墙软件和教程：
