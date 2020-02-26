@@ -23,8 +23,11 @@ V2RAY官方的安装脚本命令为(SSH连接VPS后执行)：<br>
 `service v2ray restart` ,以确保v2ray启动成功。
 
 控制 V2Ray 的运行的常用命令：
+
 `service v2ray restart | force-reload  |start|stop|status|reload `
+
 测试V2Ray配置文件：
+
 `/usr/bin/v2ray/v2ray -test -config /etc/v2ray/config.json`
 
 本文属于bannedbook系列翻墙教程的一部分，请继续阅读<a href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md" >自建V2ray服务器简明教程</a>的其它章节。也欢迎体验我们提供的免费翻墙软件和教程：
