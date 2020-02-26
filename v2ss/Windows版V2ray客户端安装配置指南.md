@@ -72,65 +72,70 @@
 上面的客户端配置是全局的，也就是说访问所有的网站都将翻墙。但v2ray可以配置路由，绕过国内域名及IP，将配置文件改成如下即可（服务器端无需修改）
 ```javascript
 {
-  "inbounds": [
-    {
-      "port": 1080,
-      "protocol": "socks",
-      "sniffing": {
-        "enabled": true,
-        "destOverride": ["http", "tls"]
-      },
-      "settings": {
-        "auth": "noauth"
-      }
+    "inbounds": [
+        {
+            "port": 1080,
+            "protocol": "socks",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            },
+            "settings": {
+                "auth": "noauth"
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "serveraddr.com",
+                        "port": 33333,
+                        "users": [
+                            {
+                                "id": "b9a7e7ac-e9f2-4ac2-xxxx-xxxxxxxxxx",
+                                "alterId": 64
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls"
+            }
+        },
+        {
+            "protocol": "freedom",
+            "settings": {},
+            "tag": "direct" //如果要使用路由，这个 tag 是一定要有的
+        }
+    ],
+    "routing": {
+        "domainStrategy": "IPOnDemand",
+        "rules": [
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                    "geosite:cn"
+                ] // 中国大陆主流网站的域名
+            },
+            {
+                "type": "field",
+                "outboundTag": "direct",
+                "ip": [
+                    "geoip:cn", // 中国大陆的 IP
+                    "geoip:private" // 私有地址 IP，如路由器等
+                ]
+            }
+        ]
     }
-  ],
-  "outbounds": [
-    {
-      "protocol": "vmess",
-      "settings": {
-        "vnext": [
-          {
-            "address": "serveraddr.com", 
-            "port": 33333,
-            "users": [
-              {
-                "id": "b9a7e7ac-e9f2-4ac2-xxxx-xxxxxxxxxx",
-                "alterId": 64
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "tls" 
-      }
-    },
- {
-      "protocol": "freedom",
-      "settings": {},
-      "tag": "direct" //如果要使用路由，这个 tag 是一定要有的
-    }    
-  ],
-  "routing": {
-    "domainStrategy": "IPOnDemand",
-    "rules": [
-      {
-        "type": "field",
-        "outboundTag": "direct",
-        "domain": ["geosite:cn"] // 中国大陆主流网站的域名
-      },
-      {
-        "type": "field",
-        "outboundTag": "direct",
-        "ip": [
-          "geoip:cn", // 中国大陆的 IP
-          "geoip:private" // 私有地址 IP，如路由器等
-        ]
-      }
-    ]
-  }
 }
 ```
 
