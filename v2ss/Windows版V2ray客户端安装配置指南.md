@@ -67,6 +67,84 @@
 * [自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)	
 * [自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 
 
+<h3>客户端json配置文件(绕过国内域名及IP)</h3>
+
+上面的客户端配置是全局的，也就是说访问所有的网站都将翻墙。但v2ray可以配置路由，绕过国内域名及IP，将配置文件改成如下即可（服务器端无需修改）
+```javascript
+{
+  "inbounds": [
+    {
+      "port": 1080,
+      "protocol": "socks",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "settings": {
+        "auth": "noauth"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "mydomain.me", 
+            "port": 443,
+            "users": [
+              {
+                "id": "23ad6b10-8d1a-40f7-8ad0-e3e35cd38297",
+                "alterId": 64
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls" 
+      }
+    },
+ {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct" //如果要使用路由，这个 tag 是一定要有的
+    }    
+  ],
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": ["geosite:cn"] // 中国大陆主流网站的域名
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "ip": [
+          "geoip:cn", // 中国大陆的 IP
+          "geoip:private" // 私有地址 IP，如路由器等
+        ]
+      }
+    ]
+  }
+}
+```
+
+说明：配置文件很容易出错，最好还是使用 V2Ray 提供的配置检查功能（test 选项），因为可以检查 JSON 语法错误外的问题。
+
+`/usr/bin/v2ray/v2ray -test -config /etc/v2ray/config.json`
+
+如果是配置文件没问题，则是这样的：
+```
+V2Ray 4.21.3 (V2Fly, a community-driven edition of V2Ray.) Custom
+A unified platform for anti-censorship.
+Configuration OK.
+```
+
 **Windows下的第三方V2ray客户端**
 
 也可以使用Windows下第三方的V2ray客户端<a href="https://github.com/2dust/v2rayN/releases/latest">v2rayN</a>，v2rayN的客户端配置简单示范如下图:
