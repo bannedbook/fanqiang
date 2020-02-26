@@ -141,7 +141,7 @@
 
 说明：配置文件很容易出错，最好还是使用 V2Ray 提供的配置检查功能（test 选项），因为可以检查 JSON 语法错误外的问题。
 
-`/usr/bin/v2ray/v2ray -test -config /etc/v2ray/config.json`
+`v2ray -test -config config.json`
 
 如果是配置文件没问题，则是这样的：
 ```
