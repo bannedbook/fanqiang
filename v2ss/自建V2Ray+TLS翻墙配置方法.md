@@ -354,4 +354,4 @@ Hostname 中输入你的域名，点提交，过一会结果就出来了。
 
 
 -----
-本文fork修订自 ToutyRater 的教程，具体见顶部连接。
+本文fork修订自 ToutyRater 的教程，感谢ToutyRater。
