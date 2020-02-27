@@ -4,7 +4,7 @@ cd /d %~dp0
 ..\..\wget --ca-certificate=ca-bundle.crt -c https://cdn.jsdelivr.net/gh/Alvin9999/PAC@latest/guiNConfig.json
 
 if exist guiNConfig.json goto startcopy
-echo ip更新失败，请试试ip_1更新
+echo ip更新失败，请试试另外一个，如果都不行，请反馈kebi2014@gmail.com
 pause
 exit
 :startcopy

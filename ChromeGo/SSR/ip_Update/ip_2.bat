@@ -1,10 +1,10 @@
 @Echo Off
-Title 从coding云端更新 SS 配置文件
+Title 从GitHub云端更新 SS 配置文件
 cd /d %~dp0
 ..\..\wget --ca-certificate=ca-bundle.crt -c https://cdn.jsdelivr.net/gh/Alvin9999/pac2@latest/ssconfig.txt
 
 if exist ssconfig.txt goto startcopy
-echo ip更新失败，请试试ip_1更新
+echo ip更新失败，请试试另外一个，如果都不行，请反馈kebi2014@gmail.com
 pause
 exit
 :startcopy

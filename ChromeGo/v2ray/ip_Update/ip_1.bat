@@ -4,7 +4,7 @@ cd /d %~dp0
 ..\..\wget --ca-certificate=ca-bundle.crt -c https://gitlab.com/free9999/ipupdate/-/raw/master/v2rayN/guiNConfig.json
 
 if exist guiNConfig.json goto startcopy
-echo ip更新失败，请试试ip_2更新
+echo ip更新失败，请试试另外一个，如果都不行，请反馈kebi2014@gmail.com
 pause
 exit
 :startcopy

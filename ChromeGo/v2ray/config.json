@@ -32,14 +32,14 @@
       "settings": {
         "vnext": [
           {
-            "address": "216.244.76.219",
-            "port": 54321,
+            "address": "www.free6666.net",
+            "port": 443,
             "users": [
               {
-                "id": "3cf35a68-ea46-11e9-9cab-003048d37a3c",
-                "alterId": 64,
+                "id": "bc0abab8-a0e7-40dd-8e20-7acabed8625a",
+                "alterId": 2,
                 "email": "t@t.tt",
-                "security": "aes-128-gcm"
+                "security": "auto"
               }
             ]
           }
@@ -48,12 +48,21 @@
         "response": null
       },
       "streamSettings": {
-        "network": "tcp",
-        "security": "",
-        "tlsSettings": null,
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "www.free6666.net"
+        },
         "tcpSettings": null,
         "kcpSettings": null,
-        "wsSettings": null,
+        "wsSettings": {
+          "connectionReuse": true,
+          "path": "/6aa0a068/",
+          "headers": {
+            "Host": "www.free6666.net"
+          }
+        },
         "httpSettings": null,
         "quicSettings": null
       },
