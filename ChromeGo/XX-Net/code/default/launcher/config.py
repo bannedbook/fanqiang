@@ -82,9 +82,6 @@ def recheck_module_path():
         set(["modules", "launcher", "control_port"], 8085)
         set(["modules", "launcher", "allow_remote_connect"], 0)
 
-    if get(["modules", "launcher", "proxy"], 0) == 0:
-        set(["modules", "launcher", "proxy"], "smart_router")
-
     if get(["no_mess_system"], 0) == 1 or os.getenv("XXNET_NO_MESS_SYSTEM","0") != "0" :
         xlog.debug("no_mess_system")
         os.environ["XXNET_NO_MESS_SYSTEM"] = "1"

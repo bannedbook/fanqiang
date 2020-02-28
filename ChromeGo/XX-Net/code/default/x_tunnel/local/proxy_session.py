@@ -879,6 +879,9 @@ def login_process():
 
 
 def create_conn(sock, host, port):
+    if not (g.config.login_account and g.config.login_password):
+        return False
+
     for _ in xrange(0, 3):
         if login_process():
             break

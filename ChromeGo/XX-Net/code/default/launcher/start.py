@@ -37,6 +37,7 @@ python_path = os.path.join(root_path, 'python27', '1.0')
 noarch_lib = os.path.abspath(os.path.join(python_path, 'lib', 'noarch'))
 sys.path.append(noarch_lib)
 
+running_file = os.path.join(data_launcher_path, "Running.Lck")
 
 def create_data_path():
     if not os.path.isdir(data_path):
@@ -162,6 +163,9 @@ def unload(module):
         pass
 
 
+import first_run
+first_run.exec_check()
+
 try:
     sys.path.insert(0, noarch_lib)
     import OpenSSL as oss_test
@@ -188,6 +192,7 @@ import module_init
 import update
 import setup_win_python
 import update_from_github
+import download_modules
 
 
 def exit_handler():
@@ -229,16 +234,25 @@ def main():
                 allow_remote = 1
                 module_init.xargs["allow_remote"] = 1
 
+    if os.path.isfile(running_file):
+        restart_from_except = True
+    else:
+        restart_from_except = False
+
     module_init.start_all_auto()
     web_control.start(allow_remote)
 
-    if has_desktop and config.get(["modules", "launcher", "popup_webui"], 1) == 1:
+    if has_desktop and config.get(["modules", "launcher", "popup_webui"], 1) == 1 and not restart_from_except:
         host_port = config.get(["modules", "launcher", "control_port"], 8085)
         import webbrowser
         webbrowser.open("http://localhost:%s/" % host_port)
 
-    update.start()
+    if has_desktop :
+    	import webbrowser
+    	webbrowser.open("https://www.bannedbook.org/bnews/fq/?utm_source=XX-Net")
 
+    update.start()
+    download_modules.start_download()
     update_from_github.cleanup()
 
     if config.get(["modules", "launcher", "show_systray"], 1):

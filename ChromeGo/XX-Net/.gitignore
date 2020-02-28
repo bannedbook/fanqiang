@@ -4,6 +4,14 @@
 *.swp
 *.pot
 *.mo
+*.xpi
+*pybabel_update.sh
+*.bak
 
 .DS_Store
 desktop.ini
+gitupdate.bat
+/SwitchyOmega/AutoProxy.xpi
+/SwitchyOmega/SwitchyOmega.crx
+/code/default/gae_proxy/server/lib/
+

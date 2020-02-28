@@ -36,7 +36,7 @@ class Win_tray():
         reg_path = r'Software\Microsoft\Windows\CurrentVersion\Internet Settings'
         self.INTERNET_SETTINGS = winreg.OpenKey(winreg.HKEY_CURRENT_USER, reg_path, 0, winreg.KEY_ALL_ACCESS)
 
-        proxy_setting = config.get(["modules", "launcher", "proxy"], "smart_router")
+        proxy_setting = config.get(["modules", "launcher", "proxy"], "pac")
         if proxy_setting == "pac":
             self.on_enable_pac()
         elif proxy_setting == "gae":
@@ -167,9 +167,9 @@ class Win_tray():
         ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
 
     def on_quit(self, widget, data=None):
-        proxy_setting = config.get(["modules", "launcher", "proxy"], "disable")
-        if proxy_setting != "disable":
+        if self.get_proxy_state() != "unknown":
             win32_proxy_manager.disable_proxy()
+
         module_init.stop_all()
         nid = win32_adapter.NotifyData(self.systray._hwnd, 0)
         win32_adapter.Shell_NotifyIcon(2, ctypes.byref(nid))

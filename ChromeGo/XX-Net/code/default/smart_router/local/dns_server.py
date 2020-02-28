@@ -76,6 +76,10 @@ class DnsServerList(object):
         else:
             self.public_list = ['8.8.8.8', "208.67.222.222", "209.244.0.3", "8.26.56.26", "37.235.1.174", "91.239.100.100"]
 
+        self.public_servers = {}
+        for ip in self.public_list:
+            self.public_servers[ip] = {"query_time":0.01, "last_query": time.time()}
+
         self.i = 0
 
     def get_dns_server(self):
@@ -117,6 +121,23 @@ class DnsServerList(object):
     def get_public(self):
         return random.choice(self.public_list)
 
+    def get_fastest_public(self):
+        fastest_ip = ""
+        fastest_time = 10000
+        for ip in self.public_servers:
+            info = self.public_servers[ip]
+            if info["query_time"] < fastest_time:
+                if info["query_time"] > 2 and time.time() - info["last_query"] < 60:
+                    continue
+                fastest_ip = ip
+                fastest_time = info["query_time"]
+
+        return fastest_ip
+
+    def update_public_server(self, ip, cost_time):
+        self.public_servers[ip]["query_time"] = cost_time
+        self.public_servers[ip]["last_query"] = time.time()
+
 
 class DnsClient(object):
     def __init__(self):
@@ -137,7 +158,10 @@ class DnsClient(object):
     def stop(self):
         self.running = False
 
-    def query_over_tcp(self, domain, type=None):
+    def query_over_tcp(self, domain, type=None, loop_count=0):
+        if loop_count > 10:
+            return []
+
         if type is None:
             types = [1, 28]
         else:
@@ -146,15 +170,23 @@ class DnsClient(object):
         ips = []
         for t in types:
             query_time = 0
-            for server_ip in self.dns_server.public_list:
+            for i in range(0, 3):
+                server_ip = self.dns_server.get_fastest_public()
+                if not server_ip:
+                    return []
+
                 query_time += 1
                 if query_time > 3:
                     break
 
+                t0 = time.time()
                 try:
                     d = DNSRecord(DNSHeader())
                     d.add_question(DNSQuestion(domain, t))
-                    a_pkt = d.send(server_ip, 53, tcp=True, timeout=1)
+
+                    a_pkt = d.send(server_ip, 53, tcp=True, timeout=2)
+                    t1 = time.time()
+                    self.dns_server.update_public_server(server_ip, t1-t0)
                     p = DNSRecord.parse(a_pkt)
                     if len(p.rr) == 0:
                         xlog.warn("query_over_tcp for %s type:%d server:%s return none",
@@ -163,15 +195,24 @@ class DnsClient(object):
 
                     for r in p.rr:
                         ip = str(r.rdata)
-
-                        if "." in ip and g.ip_region.check_ip(ip):
-                            cn = g.ip_region.cn
+                        if utils.check_ip_valid(ip):
+                            if "." in ip and g.ip_region.check_ip(ip):
+                                cn = g.ip_region.cn
+                            else:
+                                cn = "XX"
+                            ips.append(ip + "|" + cn)
                         else:
-                            cn = "XX"
-                        ips.append(ip+"|"+cn)
+                            # It is domain, loop search it.
+                            ipss = self.query_over_tcp(ip, type, loop_count+1)
+                            if not ipss:
+                                continue
+                            ips += ipss
 
                     break
                 except Exception as e:
+                    t1 = time.time()
+                    self.dns_server.update_public_server(server_ip, t1 - t0)
+
                     xlog.warn("query_over_tcp %s type:%s server:%s except:%r", domain, type, server_ip,e)
 
         if ips:

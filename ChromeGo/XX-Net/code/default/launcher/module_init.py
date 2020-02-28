@@ -18,6 +18,10 @@ root_path = os.path.abspath(os.path.join(current_path, os.pardir))
 if root_path not in sys.path:
     sys.path.append(root_path)
 
+data_path = os.path.abspath(os.path.join(root_path, os.pardir, os.pardir, 'data'))
+data_launcher_path = os.path.join(data_path, 'launcher')
+running_file = os.path.join(data_launcher_path, "Running.Lck")
+
 
 def start(module):
     if not os.path.isdir(os.path.join(root_path, module)):
@@ -102,7 +106,11 @@ def call_each_module(api_name, args):
             xlog.exception("call %s api:%s, except:%r", module, api_name, e)
 
 
-def start_all_auto():
+def start_all_auto():    
+    global running_file
+    if not os.path.isfile(running_file):
+        open(running_file, 'a').close()
+
     for module in config.modules:
         if module in ["launcher"]:
             continue
@@ -117,6 +125,9 @@ def start_all_auto():
 
 
 def stop_all():
+    global running_file
     running_modules = [k for k in proc_handler]
     for module in running_modules:
         stop(module)
+
+    os.remove(running_file)

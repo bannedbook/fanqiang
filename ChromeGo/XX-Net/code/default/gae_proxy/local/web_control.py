@@ -31,6 +31,7 @@ import check_local_network
 import cert_util
 import ipv6_tunnel
 from front import front, direct_front
+import download_gae_lib
 
 current_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -463,6 +464,8 @@ class ControlHandler(simple_http_server.HttpServerHandler):
 
             else:
                 try:
+                    download_gae_lib.check_lib_or_download()
+
                     if os.path.isfile(log_path):
                         os.remove(log_path)
                     script_path = os.path.abspath(os.path.join(current_path, os.pardir, "server", 'uploader.py'))

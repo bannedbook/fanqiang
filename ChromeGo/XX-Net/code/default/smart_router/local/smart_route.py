@@ -4,7 +4,6 @@ import struct
 import urlparse
 import io
 import ssl
-import OpenSSL
 
 import utils
 import simple_http_server
