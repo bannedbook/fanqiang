@@ -13,6 +13,8 @@ start /wait "" "%~dp0DAZE\ip_Update\ip_1.bat"
 goto startfq
 
 :startfq
+
+CD /D "%~dp0"
 start %~dp0DAZE\daze.bat
 echo µÈ´ý·­Ç½Èí¼þÆô¶¯£¬ÇëÉÔºò...
 IF EXIST %~dp0Browser\chrome.exe (
