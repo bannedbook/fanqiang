@@ -65,9 +65,11 @@ setsid ./brook wsserver --domain www.mydomain.com -p yourPassword
 到这里 https://github.com/txthinking/brook/releases 下载适合你最新的版本，当前是
 https://github.com/txthinking/brook/releases/download/v20200201/brook_windows_386.exe
 然后启动windows命令行，进入brook_windows_386.exe所做在目录
-然后执行：
+然后执行(注意，有折行，请完整拷贝)：
 
 `brook_windows_386.exe wsclient -l 127.0.0.1:2080 -i 127.0.0.1 -s wss://www.mydomain.com:443 -p yourPassword`
+
+这样客户端就以本地Socks5代理的形式，启动监听在2080端口，启动你的浏览器，设置浏览器代理为Socks5代理：127.0.0.1:2080 就可以自由冲浪了。
 
 ***
 
