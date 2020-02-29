@@ -1,4 +1,4 @@
-<h1>Brook之TLS+WebSocket翻墙</h1>
+<h1>Brook之TLS+WebSocket翻墙教程</h1>
 
 **Brook之TLS+WebSocket翻墙，整个教程分简单几步**：
 
