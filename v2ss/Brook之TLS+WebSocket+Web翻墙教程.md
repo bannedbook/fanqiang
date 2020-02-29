@@ -2,6 +2,10 @@
 
 接前文 [Brook之TLS+WebSocket+Web翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md) ，本文将介绍Brook之TLS+WebSocket+Web的翻墙方法。
 
+首先把VPS上的Brook进程停掉，然后以下面的命令重新启动：
+
+`setsid ./brook wsserver -l :18000 -p yourPassword`
+
 首先在VPS上下载安装Candy web服务器，简略过程如下：
 
 ```
@@ -32,6 +36,15 @@ www.mydomain.com
 然后启动Candy，不熟悉Candy的网友可以到这里看一下：
 
 https://caddyserver.com/v1/tutorial/beginner
+
+这样，我们的Candy web服务器就以TLS+WebSocket监听在443端口，然后会转发数据包到后端的Brook，本文中我们的Brook监听在18000端口，建议你改变这个端口，不要完全照搬哦。注意，Brook 和 Candy 需要同时改变这个端口，二者保持一致。
+
+客户端和前文一样，无需改变。
+还是这个命令：
+
+`brook_windows_386.exe wsclient -l 127.0.0.1:2080 -i 127.0.0.1 -s wss://www.mydomain.com:443 -p yourPassword`
+
+
 
 
 
