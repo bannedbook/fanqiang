@@ -6,7 +6,7 @@
 
 `setsid ./brook wsserver -l :18000 -p yourPassword`
 
-首先在VPS上下载安装Candy web服务器，简略过程如下：
+然后在VPS上下载安装Candy web服务器，简略过程如下：
 
 ```
 wget https://github.com/caddyserver/caddy/releases/download/v1.0.4/caddy_v1.0.4_linux_amd64.tar.gz
