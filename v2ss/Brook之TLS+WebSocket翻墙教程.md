@@ -1,6 +1,6 @@
-<h1>自建Brook服务器翻墙教程</h1>
+<h1>Brook之TLS+WebSocket翻墙</h1>
 
-**自建Brook服务器翻墙很简单，整个教程分简单几步**：
+**Brook之TLS+WebSocket翻墙，整个教程分简单几步**：
 
 购买VPS服务器、一键加速VPS服务器、安装Brook服务器
 
