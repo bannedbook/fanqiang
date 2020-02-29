@@ -62,10 +62,15 @@ setsid ./brook wsserver --domain www.mydomain.com -p yourPassword
 **第五步：Brook客户端使用方法**
 
 本文主要以Windows客户端为例，介绍Windows版Brook客户端的安装配置
-到这里 https://github.com/txthinking/brook/releases 下载适合你最新的版本，当前是
+到这里 
+
+https://github.com/txthinking/brook/releases 
+
+下载适合你最新的版本，当前是
+
 https://github.com/txthinking/brook/releases/download/v20200201/brook_windows_386.exe
-然后启动windows命令行，进入brook_windows_386.exe所做在目录
-然后执行(注意，有折行，请完整拷贝)：
+
+然后启动windows命令行，进入brook_windows_386.exe所在目录，然后执行(注意，有折行，请完整拷贝)：
 
 `brook_windows_386.exe wsclient -l 127.0.0.1:2080 -i 127.0.0.1 -s wss://www.mydomain.com:443 -p yourPassword`
 
