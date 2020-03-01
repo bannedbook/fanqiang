@@ -6,7 +6,7 @@
 
 `setsid ./brook wsserver -l :18000 -p yourPassword`
 
-然后在VPS上下载安装Candy web服务器，简略过程如下：
+然后在VPS上下载安装Caddy web服务器，简略过程如下：
 
 ```
 wget https://github.com/caddyserver/caddy/releases/download/v1.0.4/caddy_v1.0.4_linux_amd64.tar.gz
@@ -37,14 +37,12 @@ www.mydomain.com
 
 https://caddyserver.com/v1/tutorial/beginner
 
-这样，我们的Caddy web服务器就以TLS+WebSocket监听在443端口，然后会转发数据包到后端的Brook，本文中我们的Brook监听在18000端口，建议你改变这个端口，不要完全照搬哦。注意，Brook 和 Candy 需要同时改变这个端口，二者保持一致。
+这样，我们的Caddy web服务器就以TLS+WebSocket监听在443端口，然后会转发数据包到后端的Brook，本文中我们的Brook监听在18000端口，建议你改变这个端口，不要完全照搬哦。注意，Brook 和 Caddy 需要同时改变这个端口，二者保持一致。
 
 客户端和前文一样，无需改变。
 还是这个命令：
 
 `brook_windows_386.exe wsclient -l 127.0.0.1:2080 -i 127.0.0.1 -s wss://www.mydomain.com:443 -p yourPassword`
-
-
 
 
 
