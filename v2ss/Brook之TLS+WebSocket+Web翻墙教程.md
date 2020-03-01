@@ -37,7 +37,7 @@ www.mydomain.com
 
 https://caddyserver.com/v1/tutorial/beginner
 
-这样，我们的Caddy web服务器就以TLS+WebSocket监听在443端口，然后会转发数据包到后端的Brook，本文中我们的Brook监听在18000端口，建议你改变这个端口，不要完全照搬哦。注意，Brook 和 Caddy 需要同时改变这个端口，二者保持一致。
+这样，我们的Caddy web服务器就以TLS+WebSocket监听在443端口，然后会转发数据包到后端的Brook，本文中我们的Brook监听在18000端口，你可以改变这个端口，但要注意，Brook 和 Caddy 需要同时改变这个端口，二者保持一致。
 
 客户端和前文一样，无需改变。
 还是这个命令：
