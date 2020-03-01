@@ -57,6 +57,8 @@ setsid ./brook wsserver --domain www.mydomain.com -p yourPassword
 ```
 这样Brook服务器端就启动起来了，Brook会自动申请免费TLS证书，保存在当前目录的子目录.letsencrypt下， Brook此时同时监听在 TCP 80/443 端口.
 
+***如果更改域名的DNS配置或其它内容，或者是更换域名，可能必须# rm -rf .letsencrypt ，并重新启动brook wsserver 。***
+
 ***
 
 **第五步：Brook客户端使用方法**
