@@ -80,11 +80,9 @@ https://github.com/txthinking/brook/releases/download/v20200201/brook_windows_38
 
 **高级玩法**
 
-当封锁特别厉害的时候，或者IP被墙，则可以在TLS+WebSocket基础上，再套上CDN，稍候推出Brook套CDN教程,详见下方。
+我们可以在TLS+WebSocket基础上，再套上一个Web服务器，把Brook稍稍隐藏一下，详见：[Brook之TLS+WebSocket+Web翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
 
-[Brook之TLS+WebSocket+Web翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
-
-[Brook之TLS+WebSocket+Web+Cloudflare CDN翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E5%A5%97Cloudflare%20CDN%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+当封锁特别厉害的时候，或者IP被墙，可以再套上CDN，复活被墙VPS，详见：[Brook之TLS+WebSocket+Web+Cloudflare CDN翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E5%A5%97Cloudflare%20CDN%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
 
 ***
 
