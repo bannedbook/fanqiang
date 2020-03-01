@@ -90,6 +90,8 @@ SSH连接VPS成功后，会出现如上图所示，之后就可以复制粘贴li
 
 如果以上问题都已排查，可以关闭 Windows 自带的防火墙、杀毒软件再尝试。
 
+3、账号无法使用，可能原因三：**端口没有开放**
+
 
 ***
 <b>相关教程</b>： [自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)
