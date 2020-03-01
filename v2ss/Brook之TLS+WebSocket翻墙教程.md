@@ -48,7 +48,7 @@ TLS 需要一个域名，域名有免费的和有付费的，如果你不舍得�
 注册好域名之后务必记得添加一个 A 记录指向你的 VPS! 一般将主域名 mydomain.com 和 `www.mydomain.com` 都做A记录指向你的VPS。
 进行下一步之前确保A记录生效，可以ping一下域名测试确保解析正确。
 
-前面我安装的debian 10 64位VPS, 这里我们下载这个当前（20200229）最新版本：
+前面我安装的debian 10 64位VPS, 这里我们下载这个当前（20200229）最新版本（下面三行每次拷贝一行执行，共三个命令）：
 
 ```
 wget https://github.com/txthinking/brook/releases/download/v20200201/brook
