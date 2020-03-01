@@ -1,7 +1,7 @@
 # Brook之TLS+WebSocket+CDN翻墙教程
 
 如果你的VPS IP 被墙了，或者你直接连接VPS的速度不理想，可以试试基于 [Brook之TLS+WebSocket翻墙](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS+WebSocket%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md) 或者
-[Brook之TLS+WebSocket+Web服务器翻墙](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md) 基础上，再套上Cloudflare CDN，可以复活被墙VPS，也许速度也会不一样哦。  
+[Brook之TLS+WebSocket+Web服务器翻墙](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md) 基础上，再套上Cloudflare CDN，可以复活被墙VPS，也许速度也会不一样哦。  
 
 套CDN不要求装Web服务器，可以装Web服务器，也可以不装。
 
