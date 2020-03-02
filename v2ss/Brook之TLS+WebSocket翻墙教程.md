@@ -78,6 +78,9 @@ https://github.com/txthinking/brook/releases/download/v20200201/brook_windows_38
 
 这样客户端就以本地Socks5代理的形式，启动监听在2080端口，启动你的浏览器，设置浏览器代理为Socks5代理：127.0.0.1:2080 就可以自由冲浪了。
 
+**注意事项**
+客户端和服务器时间必须保持一致。
+
 ***
 
 **高级玩法**
