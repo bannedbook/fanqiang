@@ -90,6 +90,10 @@ WebSocket 的配置其实很简单，基于前文 V2Ray+TLS 基础上， 我们 
 }
 ```
 
+### 结语
+
+改完服务器、客户端配置后，重启服务器，然后重启客户端，开始冲浪，是不是感觉更快了一些呢？
+
 ### 相关教程
 
 <a title="自建V2ray服务器简明教程" href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md">自建V2ray服务器简明教程</a>
@@ -112,6 +116,4 @@ WebSocket 的配置其实很简单，基于前文 V2Ray+TLS 基础上， 我们 
 
 <a title="购买Vultr VPS图文教程" href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%B4%AD%E4%B9%B0Vultr%20VPS%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B.md">购买Vultr VPS图文教程.md</a>
 
-### 结语
 
-改完服务器、客户端配置后，重启服务器，然后重启客户端，开始冲浪，是不是感觉更快了一些呢？
