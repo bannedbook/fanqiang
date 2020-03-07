@@ -13,5 +13,5 @@ del "..\brook.bat_backup"
 ren "..\brook.bat"  brook.bat_backup
 copy /y "%~dp0brook.bat" ..\brook.bat
 del "%~dp0brook.bat"
-ECHO.&ECHO.已更新完成最新可用brook配置,请按任意键退出,并重启程序. &PAUSE >NUL 2>NUL
+ECHO.&ECHO.已更新完成最新可用brook配置,请按回车键或空格键启动程序！ &PAUSE >NUL 2>NUL
 exit

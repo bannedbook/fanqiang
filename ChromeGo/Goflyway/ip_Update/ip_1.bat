@@ -13,5 +13,5 @@ del "..\goflyway.bat_backup"
 ren "..\goflyway.bat"  goflyway.bat_backup
 copy /y "%~dp0goflyway.bat" ..\goflyway.bat
 del "%~dp0goflyway.bat"
-ECHO.&ECHO.已更新完成最新可用Goflyway配置,请按任意键退出,软件会自动启动浏览器和代理软件. &PAUSE >NUL 2>NUL
+ECHO.&ECHO.已更新完成最新可用Goflyway配置,请按回车键或空格键启动程序！ &PAUSE >NUL 2>NUL
 exit

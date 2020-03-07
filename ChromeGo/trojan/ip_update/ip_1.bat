@@ -22,5 +22,5 @@ copy /y "%~dp0private.crt" ..\private.crt
 del "%~dp0private.crt"
 ECHO.&ECHO.已更新证书文件～
 
-ECHO.&ECHO.已更新完成最新可用trojan配置,请按任意键退出,并重启程序. &PAUSE >NUL 2>NUL
+ECHO.&ECHO.已更新完成最新可用trojan配置,请按回车键或空格键启动程序！ &PAUSE >NUL 2>NUL
 exit

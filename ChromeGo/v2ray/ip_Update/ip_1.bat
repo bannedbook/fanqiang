@@ -13,6 +13,5 @@ del "..\guiNConfig.json_backup"
 ren "..\guiNConfig.json"  guiNConfig.json_backup
 copy /y "%~dp0guiNConfig.json" ..\guiNConfig.json
 del "%~dp0guiNConfig.json"
-ECHO update ok. 
-PAUSE
+ECHO.&ECHO.已更新完成最新可用v2ray配置,请按回车键或空格键启动程序！ &PAUSE >NUL 2>NUL
 exit
