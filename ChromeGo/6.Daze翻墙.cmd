@@ -1,7 +1,8 @@
 %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a %%a 
 cls
 @echo off
-
+%1 start "" mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
+CD /D "%~dp0"
 echo 是否执行IP更新？IP更新从云端更新IP配置以解决封锁问题！
 echo 按2跳过，按1选择ip1更新，如果更新后还是用不了，请发邮件到kebi2014@gmail.com进行反馈！
 choice /C 12 /T 15 /D 2 /M "1、ip更新  2、跳过"
@@ -13,8 +14,6 @@ start /wait "" "%~dp0DAZE\ip_Update\ip_1.bat"
 goto startfq
 
 :startfq
-
-CD /D "%~dp0"
 start %~dp0DAZE\daze.bat
 echo 等待翻墙软件启动，请稍候...
 IF EXIST %~dp0Browser\chrome.exe (
