@@ -2,7 +2,7 @@
 
 如果你的VPS IP 被墙了，或者你直接连接VPS的速度不理想，可以试试本文介绍的方法。
 
-本文以[自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 为基础，介绍更加安全可靠的V2Ray+TLS翻墙配置方法。
+本文以[自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 为基础，V2ray基本安装配置请参照此文。
 
 ## 注册一个域名
 
