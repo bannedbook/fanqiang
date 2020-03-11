@@ -38,6 +38,10 @@ apt-get -y install nginx
 ```
 
 然后替换/etc/nginx.conf为如下配置
+下面的配置文件是通用配置，不管什么域名都可以使用，直接下载覆盖即可:
+
+`wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cfg/nginx.conf  -O -> /etc/nginx/nginx.conf`
+
 ```javascript
 user www-data;
 worker_processes auto;
