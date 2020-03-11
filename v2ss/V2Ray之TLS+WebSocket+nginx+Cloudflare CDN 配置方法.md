@@ -42,7 +42,7 @@ apt-get -y install nginx
 
 `wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cfg/nginx.conf  -O -> /etc/nginx/nginx.conf`
 
-下面是nginx.conf的内容，为方便大家，制作了这个通用版并上传到github，大家可以直接使用上面的命令下载覆盖即可。
+下面是nginx.conf的内容，为方便大家，制作了这个nginx通用配置文件并上传到github，大家可以直接使用上面的命令下载覆盖即可。
 
 ```javascript
 user www-data;
