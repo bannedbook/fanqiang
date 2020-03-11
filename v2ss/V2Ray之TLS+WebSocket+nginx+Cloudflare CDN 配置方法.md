@@ -29,7 +29,7 @@ TLS 需要一个域名，域名有免费的和有付费的，如果你不舍得�
 
 ## 证书生成
 
-我们采用最简略的配置，VPS端无需自己生成证书，直接使用Cloudflare CDN 自动生成的证书。所以这一步你需要做的就是 do nothing. 这样配置不但超简易，而且配合Cloudflare 的 SSL/TLS 的 Flexible 模式，比Full模式速度更快。
+我们采用最简略的配置，VPS端无需自己生成证书，直接使用Cloudflare CDN 自动生成的证书。所以这一步你需要做的就是 do nothing. 这样配置不但超简易，而且配合Cloudflare SSL/TLS 的 Flexible 模式，比Full模式速度更快。
 
 ## VPS 安装配置Nginx
 ```
