@@ -99,6 +99,7 @@ http {
 ```
 
 然后，测试nginx配置： nginx -t
+
 重新载入配置： nginx -s reload
 
 ## 配置 V2Ray
