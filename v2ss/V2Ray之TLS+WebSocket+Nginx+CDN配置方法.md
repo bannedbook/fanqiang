@@ -6,7 +6,7 @@
 
 体验了本文介绍的方法，如果速度不理想，可以考虑用国内的CDN替换Cloudflare，据说能体验飞一般的速度，正好 V2Ray 已经支持 HTTP/2 了，又拍云、七牛、阿里都不错，腾讯的 h2 还在内测，百度不清楚。据传国内CDN中转法速度提升非常大，也非常稳定，高峰期毫无压力，在重点 IP 段也无所畏惧。
 
-会用 Cloudflare，其它的 CDN 应该也许也不会有问题。
+会用 Cloudflare，其它的 CDN 应该也许也不会有问题。但有一点，如果是为了复活被墙IP，则只能用Cloudflare等国外的CDN。
 
 本文以[自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 为基础，V2ray基本安装配置请参照此文。
 
