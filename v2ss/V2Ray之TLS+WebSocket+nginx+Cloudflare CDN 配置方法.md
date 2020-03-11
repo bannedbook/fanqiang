@@ -160,6 +160,7 @@ http {
 ```
 
 修改配置后记得测试配置：/usr/bin/v2ray/v2ray -test -config /etc/v2ray/config.json
+
 重启v2ray: service v2ray   restart
 
 ### 客户端
