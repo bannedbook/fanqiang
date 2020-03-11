@@ -92,7 +92,7 @@ WebSocket 的配置其实很简单，基于前文 V2Ray+TLS 基础上， 我们 
 
 ### 结语
 
-改完服务器、客户端配置后，重启服务器，然后重启客户端，开始冲浪，是不是感觉更快了一些呢？
+改完服务器、客户端配置后，重启服务器，然后重启客户端，开始冲浪，是不是感觉更快了一些呢？如果还不够快，还可以套CDN【详见：[V2Ray之TLS+WebSocket+Nginx+CDN配置方法](https://github.com/bannedbook/fanqiang/blob/master/v2ss/V2Ray%E4%B9%8BTLS+WebSocket+Nginx+CDN%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95.md)】，套CDN不是一个必须的步骤，但套CDN可以有效保护IP，甚至被墙的ip也能复活，如果套国内CDN，据说速度可以飞起来。
 
 ### 相关教程
 
