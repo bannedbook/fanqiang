@@ -72,7 +72,7 @@ http {
 			try_files $uri $uri/ =404;
 		}
 		
-    location /v2free { # 与 V2Ray 配置中的 path 保持一致
+    location /bannedbook { # 与 V2Ray 配置中的 path 保持一致
 	    proxy_redirect off;
 	    proxy_pass http://127.0.0.1:10000; #假设WebSocket监听在环回地址的10000端口上
 	    proxy_http_version 1.1;
