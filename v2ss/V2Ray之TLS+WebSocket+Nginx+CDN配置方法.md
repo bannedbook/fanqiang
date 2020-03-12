@@ -54,7 +54,7 @@ TLS 需要一个域名，域名有免费的和有付费的，如果你不舍得�
 
 ## VPS 安装配置Nginx
 ```
-apt=get update
+apt-get update
 apt-get -y install nginx
 ```
 
