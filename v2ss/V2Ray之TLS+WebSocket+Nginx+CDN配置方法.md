@@ -8,7 +8,7 @@
 
 会用 Cloudflare，其它的 CDN 应该也许也不会有问题。但有一点，如果是为了复活被墙IP，则只能用Cloudflare等国外的CDN。
 
-目前和 V2Ray 兼容的 CDN 国外有 Cloudflare，国内阿里云，这两家的 CDN 是支持 WebSocket 的。剩下的几家不支持 WebSocket，也不会 keep TCP connection。因此 HTTP/2 回源也不支持（访问支持 HTTP/2 和回源支持 HTTP/2 是两回事）。 另外，使用国内 CDN 需要域名备案并服务商实名认证。使用有风险，入坑需谨慎。
+***目前和 V2Ray 兼容的 CDN 国外有 Cloudflare，国内阿里云，这两家的 CDN 是支持 WebSocket 的。剩下的几家不支持 WebSocket，也不会 keep TCP connection。因此 HTTP/2 回源也不支持（访问支持 HTTP/2 和回源支持 HTTP/2 是两回事）。 另外，使用国内 CDN 需要域名备案并服务商实名认证。使用有风险，入坑需谨慎。***
 
 本文以[自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 为基础，V2ray基本安装配置请参照此简明教程。
 
