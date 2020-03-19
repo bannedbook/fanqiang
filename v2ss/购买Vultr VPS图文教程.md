@@ -41,7 +41,7 @@ vultr实际上是折算成小时来计费的，比如服务器是5美元1个月�
 
 ![](https://raw.githubusercontent.com/Alvin9999/pac2/master/vultr/vultr1.PNG)
 
-服务器位置首选美国西海岸的 Los Angeles、或者亚洲的东京、新加坡，当然其它国家地区都可以尝试。
+服务器位置首选美国西海岸的 Los Angeles、或者亚洲的东京、新加坡，当然其它国家地区都可以尝试。建议在[Vultr测速网站](https://sgp-ping.vultr.com/?ref=6999340)选择各个不同的Server Location下载测试一下，然后再根据测试情况选择。 
 
 ![](https://raw.githubusercontent.com/Alvin9999/pac2/master/vultr/vultr2.PNG)
 
