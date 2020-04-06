@@ -16,3 +16,5 @@ wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cf
 /etc/init.d/cron restart
 wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cfg/resolv.conf  -O -> resolv.conf
 cp resolv.conf /etc/resolv.conf
+service v2ray start
+cat /etc/v2ray/config.json
