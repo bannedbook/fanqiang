@@ -12,7 +12,7 @@
 58 4 * * * /usr/bin/rm /var/log/*.gz
 58 5 * * * /usr/bin/rm /var/log/*.1
 28 4 * * * /sbin/service v2ray restart
-
+@reboot /sbin/service v2ray restart
 * * * * * bash /etc/v2ray/v2ray_check.sh
 * * * * * sleep 5; bash /etc/v2ray/v2ray_check.sh
 * * * * * sleep 10; bash /etc/v2ray/v2ray_check.sh
