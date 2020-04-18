@@ -1,0 +1,1 @@
+FQNews is free and open-source APP under GPLv3 licence, base on SS VPN and Flym News Reader.
