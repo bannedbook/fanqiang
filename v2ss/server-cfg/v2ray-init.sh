@@ -1,4 +1,5 @@
 apt-get update
+apt-get install curl wget -y
 iptables -A OUTPUT -p tcp --dport 25 -j REJECT
 apt-get install -y iptables-persistent
 wget https://raw.githubusercontent.com/bannedbook/blockporn/master/hosts.txt  -O ->> /etc/hosts
