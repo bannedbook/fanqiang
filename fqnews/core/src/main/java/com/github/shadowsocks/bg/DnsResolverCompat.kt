@@ -38,8 +38,6 @@ import com.github.shadowsocks.utils.printLog
 import kotlinx.coroutines.*
 import java.io.FileDescriptor
 import java.io.IOException
-import java.net.Inet4Address
-import java.net.Inet6Address
 import java.net.InetAddress
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
@@ -73,21 +71,24 @@ sealed class DnsResolverCompat {
                 socket.closeQuietly()
             }
             true
-        } catch (_: IOException) {
-            false
+        } catch (e: IOException) {
+            if ((e.cause as? ErrnoException)?.errno == OsConstants.EPERM) checkConnectivity(network, addr) else false
         } catch (_: ErrnoException) {
             false
         } catch (e: ReflectiveOperationException) {
             check(Build.VERSION.SDK_INT < 23)
             printLog(e)
-            val addresses = Core.connectivity.getLinkProperties(network)?.linkAddresses
-            true == when (addr) {
-                is Inet4Address -> addresses?.any { it.address is Inet4Address && !it.address.isLinkLocalAddress }
-                is Inet6Address -> addresses?.any {
-                    it.address.run { this is Inet6Address && !isLinkLocalAddress && !isIPv4CompatibleAddress }
+            checkConnectivity(network, addr)
+        }
+        private fun checkConnectivity(network: Network, addr: InetAddress): Boolean {
+            return Core.connectivity.getLinkProperties(network)?.routes?.any {
+                try {
+                    it.matches(addr)
+                } catch (e: RuntimeException) {
+                    printLog(e)
+                    false
                 }
-                else -> error("Unknown address type")
-            }
+            } == true
         }
 
         override fun bindSocket(network: Network, socket: FileDescriptor) = instance.bindSocket(network, socket)

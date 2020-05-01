@@ -22,6 +22,7 @@ package com.github.shadowsocks.database
 
 import SpeedUpVPN.VpnEncrypt
 import android.database.sqlite.SQLiteCantOpenDatabaseException
+import android.util.Log
 import android.util.LongSparseArray
 import com.github.shadowsocks.Core
 import com.github.shadowsocks.preference.DataStore
@@ -97,7 +98,7 @@ object ProfileManager {
         }
     }
 
-    fun serializeToJson(profiles: List<Profile>? = getAllProfiles()): JSONArray? {
+    fun serializeToJson(profiles: List<Profile>? = getActiveProfiles()): JSONArray? {
         if (profiles == null) return null
         val lookup = LongSparseArray<Profile>(profiles.size).apply { profiles.forEach { put(it.id, it) } }
         return JSONArray(profiles.map { it.toJson(lookup) }.toTypedArray())
@@ -112,7 +113,7 @@ object ProfileManager {
      * Note: It's caller's responsibility to update DirectBoot profile if necessary.
      */
     @Throws(SQLException::class)
-    fun updateProfile(profile: Profile) = check(PrivateDatabase.profileDao.update(profile) == 1)
+    fun updateProfile(profile: Profile) = try {check(PrivateDatabase.profileDao.update(profile) == 1)}catch (t:Throwable){printLog(t)}
 
     @Throws(IOException::class)
     fun getProfile(id: Long): Profile? = try {
@@ -129,9 +130,14 @@ object ProfileManager {
 
     @Throws(SQLException::class)
     fun delProfile(id: Long) {
-        check(PrivateDatabase.profileDao.delete(id) == 1)
-        listener?.onRemove(id)
-        if (id in Core.activeProfileIds && DataStore.directBootAware) DirectBoot.clean()
+        try {
+            check(PrivateDatabase.profileDao.delete(id) == 1)
+            listener?.onRemove(id)
+            if (id in Core.activeProfileIds && DataStore.directBootAware) DirectBoot.clean()
+        }
+        catch (e:Exception){
+            Log.e("delProfile",e.toString())
+        }
     }
 
     @Throws(SQLException::class)
@@ -155,8 +161,28 @@ object ProfileManager {
     }
 
     @Throws(IOException::class)
+    fun getActiveProfiles(): List<Profile>? = try {
+        PrivateDatabase.profileDao.listActive()
+    } catch (ex: SQLiteCantOpenDatabaseException) {
+        throw IOException(ex)
+    } catch (ex: SQLException) {
+        printLog(ex)
+        null
+    }
+
+    @Throws(IOException::class)
+    fun getProfilesOrderlySpeed(): List<Profile>? = try {
+        PrivateDatabase.profileDao.listAllbySpeed()
+    } catch (ex: SQLiteCantOpenDatabaseException) {
+        throw IOException(ex)
+    } catch (ex: SQLException) {
+        printLog(ex)
+        null
+    }
+
+    @Throws(IOException::class)
     fun getAllProfiles(): List<Profile>? = try {
-        PrivateDatabase.profileDao.list()
+        PrivateDatabase.profileDao.listAll()
     } catch (ex: SQLiteCantOpenDatabaseException) {
         throw IOException(ex)
     } catch (ex: SQLException) {
@@ -181,5 +207,23 @@ object ProfileManager {
     } catch (ex: SQLException) {
         printLog(ex)
         emptyList()
+    }
+
+    fun getFirstVPNServer(): Profile? {
+        try {
+            return getAllProfilesByGroup(VpnEncrypt.vpnGroupName)?.first()
+        } catch (ex: Exception) {
+            Log.e("speedup.vpn",this.javaClass.name+":"+ex.javaClass.name)
+            return null
+        }
+    }
+
+    fun getRandomVPNServer(): Profile? {
+        try {
+            return getAllProfilesByGroup(VpnEncrypt.vpnGroupName)?.random()
+        } catch (ex: Exception) {
+            Log.e("speedup.vpn",this.javaClass.name+":"+ex.javaClass.name)
+            return null
+        }
     }
 }

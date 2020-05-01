@@ -31,6 +31,7 @@ import android.os.Build
 import android.system.ErrnoException
 import android.system.Os
 import android.system.OsConstants
+import android.util.Log
 import android.util.TypedValue
 import androidx.annotation.AttrRes
 import androidx.preference.Preference
@@ -142,6 +143,7 @@ val Intent.datas get() = listOfNotNull(data) + (clipData?.asIterable()?.mapNotNu
 
 fun printLog(t: Throwable) {
     Crashlytics.logException(t)
+    Log.e("Utils","printLog",t)
     t.printStackTrace()
 }
 

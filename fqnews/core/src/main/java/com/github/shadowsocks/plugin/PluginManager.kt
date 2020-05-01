@@ -24,6 +24,7 @@ import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.ContentResolver
 import android.content.Intent
+import android.content.pm.ComponentInfo
 import android.content.pm.PackageManager
 import android.content.pm.ProviderInfo
 import android.content.pm.Signature
@@ -100,19 +101,15 @@ object PluginManager {
     }
 
     private var receiver: BroadcastReceiver? = null
-    private var cachedPlugins: Map<String, Plugin>? = null
-    fun fetchPlugins(): Map<String, Plugin> = synchronized(this) {
+    private var cachedPlugins: PluginList? = null
+    fun fetchPlugins() = synchronized(this) {
         if (receiver == null) receiver = app.listenForPackageChanges {
             synchronized(this) {
                 receiver = null
                 cachedPlugins = null
             }
         }
-        if (cachedPlugins == null) {
-            val pm = app.packageManager
-            cachedPlugins = (pm.queryIntentContentProviders(Intent(PluginContract.ACTION_NATIVE_PLUGIN),
-                    PackageManager.GET_META_DATA).map { NativePlugin(it) } + NoPlugin).associateBy { it.id }
-        }
+        if (cachedPlugins == null) cachedPlugins = PluginList()
         cachedPlugins!!
     }
 
@@ -125,30 +122,34 @@ object PluginManager {
 
     // the following parts are meant to be used by :bg
     @Throws(Throwable::class)
-    fun init(options: PluginOptions): String? {
-        if (options.id.isEmpty()) return null
+    fun init(configuration: PluginConfiguration): Pair<String, PluginOptions>? {
+        if (configuration.selected.isEmpty()) return null
         var throwable: Throwable? = null
 
         try {
-            val path = initNative(options)
-            if (path != null) return path
+            val result = initNative(configuration)
+            if (result != null) return result
         } catch (t: Throwable) {
             if (throwable == null) throwable = t else printLog(t)
         }
 
         // add other plugin types here
 
-        throw throwable ?: PluginNotFoundException(options.id)
+        throw throwable ?: PluginNotFoundException(configuration.selected)
     }
 
-    private fun initNative(options: PluginOptions): String? {
+    private fun initNative(configuration: PluginConfiguration): Pair<String, PluginOptions>? {
         val providers = app.packageManager.queryIntentContentProviders(
-                Intent(PluginContract.ACTION_NATIVE_PLUGIN, buildUri(options.id)), PackageManager.GET_META_DATA)
+                Intent(PluginContract.ACTION_NATIVE_PLUGIN, buildUri(configuration.selected)),
+                PackageManager.GET_META_DATA or
+                        PackageManager.MATCH_DIRECT_BOOT_UNAWARE or PackageManager.MATCH_DIRECT_BOOT_AWARE
+        )
         if (providers.isEmpty()) return null
-        val provider = providers.single().providerInfo
+        val provider = providers.first().providerInfo
+        val options = configuration.getOptions { provider.loadString(PluginContract.METADATA_KEY_DEFAULT_CONFIG) }
         var failure: Throwable? = null
         try {
-            initNativeFaster(provider)?.also { return it }
+            initNativeFaster(provider)?.also { return it to options }
         } catch (t: Throwable) {
             Crashlytics.log(Log.WARN, TAG, "Initializing native plugin faster mode failed")
             failure = t
@@ -158,9 +159,8 @@ object PluginManager {
             scheme(ContentResolver.SCHEME_CONTENT)
             authority(provider.authority)
         }.build()
-        val cr = app.contentResolver
         try {
-            return initNativeFast(cr, options, uri)
+            return initNativeFast(app.contentResolver, options, uri)?.let { it to options }
         } catch (t: Throwable) {
             Crashlytics.log(Log.WARN, TAG, "Initializing native plugin fast mode failed")
             failure?.also { t.addSuppressed(it) }
@@ -168,7 +168,7 @@ object PluginManager {
         }
 
         try {
-            return initNativeSlow(cr, options, uri)
+            return initNativeSlow(app.contentResolver, options, uri)?.let { it to options }
         } catch (t: Throwable) {
             failure?.also { t.addSuppressed(it) }
             throw t
@@ -176,7 +176,7 @@ object PluginManager {
     }
 
     private fun initNativeFaster(provider: ProviderInfo): String? {
-        return provider.metaData.getString(PluginContract.METADATA_KEY_EXECUTABLE_PATH)?.let { relativePath ->
+        return provider.loadString(PluginContract.METADATA_KEY_EXECUTABLE_PATH)?.let { relativePath ->
             File(provider.applicationInfo.nativeLibraryDir).resolve(relativePath).apply {
                 check(canExecute())
             }.absolutePath
@@ -218,5 +218,12 @@ object PluginManager {
         }
         if (!initialized) entryNotFound()
         return File(pluginDir, options.id).absolutePath
+    }
+
+    fun ComponentInfo.loadString(key: String) = when (val value = metaData.get(key)) {
+        is String -> value
+        is Int -> app.packageManager.getResourcesForApplication(applicationInfo).getString(value)
+        null -> null
+        else -> error("meta-data $key has invalid type ${value.javaClass}")
     }
 }

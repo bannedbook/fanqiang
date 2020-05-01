@@ -19,7 +19,6 @@
  *******************************************************************************/
 
 package com.github.shadowsocks
-
 import SpeedUpVPN.VpnEncrypt
 import android.app.*
 import android.app.admin.DevicePolicyManager
@@ -45,6 +44,7 @@ import androidx.work.WorkManager
 import com.crashlytics.android.Crashlytics
 import com.github.shadowsocks.acl.Acl
 import com.github.shadowsocks.aidl.ShadowsocksConnection
+import com.github.shadowsocks.bg.ProxyService
 import com.github.shadowsocks.core.R
 import com.github.shadowsocks.database.Profile
 import com.github.shadowsocks.database.ProfileManager
@@ -84,7 +84,12 @@ object Core {
     }
     val currentProfile: Pair<Profile, Profile?>? get() {
         if (DataStore.directBootAware) DirectBoot.getDeviceProfile()?.apply { return this }
-        return ProfileManager.expand(ProfileManager.getProfile(DataStore.profileId) ?: return null)
+        var theOne=ProfileManager.getProfile(DataStore.profileId)
+        if (theOne==null){
+            theOne=ProfileManager.getRandomVPNServer()
+            if (theOne!=null)DataStore.profileId=theOne.id
+        }
+        return ProfileManager.expand(theOne ?: return null)
     }
 
     fun switchProfile(id: Long): Profile {
@@ -92,30 +97,14 @@ object Core {
         DataStore.profileId = result.id
         return result
     }
-
-    fun showMessage(msg: String) {
-        var toast = Toast.makeText(app, msg, Toast.LENGTH_LONG)
-        toast.setGravity(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, 0, 150)
-        toast.show()
-    }
-    fun alertMessage(msg: String,activity:Context) {
-        val builder: AlertDialog.Builder? = activity.let {
-            AlertDialog.Builder(activity)
-        }
-        builder?.setMessage(msg)?.setTitle("Alert")?.setPositiveButton("ok", DialogInterface.OnClickListener {
-            _, _ ->
-        })
-        val dialog: AlertDialog? = builder?.create()
-        dialog?.show()
-    }
     //Import built-in subscription
     fun pickSingleServer(activity:Activity) = GlobalScope.async{
         Log.e("pickSingleServer ","...")
         var testMsg="搜索服务器，请稍候"
-        activity.runOnUiThread(){showMessage(testMsg)}
+        activity.runOnUiThread{showMessage(testMsg)}
         var  builtinSubUrls  = app.resources.getStringArray(R.array.builtinSubUrls)
-        for (i in 0 until builtinSubUrls.size) {
-            var builtinSub=SSRSubManager.create(builtinSubUrls.get(i),"aes")
+        for (element in builtinSubUrls) {
+            var builtinSub=SSRSubManager.createBuiltInSub(element)
             if (builtinSub != null) break
         }
         val profiles = ProfileManager.getAllProfilesByGroup(VpnEncrypt.vpnGroupName) ?: emptyList()
@@ -148,13 +137,14 @@ object Core {
 
         for (i in profiles.indices) {
             if (!profiles[i].isBuiltin())continue
+            if (profiles[i].id == theProfile.id)continue
             switchProfile(profiles[i].id)
             reloadService()
 
             testMsg+="."
             activity.runOnUiThread(){showMessage(testMsg)}
 
-            Thread.sleep(2_000)
+            Thread.sleep(5_000)
 
             //testMsg+="."
             //activity.runOnUiThread(){showMessage(testMsg)}
@@ -181,10 +171,10 @@ object Core {
                 var builtinSub=SSRSubManager.create(builtinSubUrls.get(i),"aes")
                 if (builtinSub != null) break
             }
-            val profiles = ProfileManager.getAllProfilesByGroup(VpnEncrypt.vpnGroupName) ?: emptyList()
+            val profiles = ProfileManager.getAllProfilesByGroup(VpnEncrypt.vpnGroupName)
             if (profiles.isNullOrEmpty()) {
                 Log.e("------","profiles empty, return@launch")
-                activity.runOnUiThread(){showMessage("网络连接异常，连接互联网后，请重起本APP")}
+                activity.runOnUiThread {alertMessage("网络连接异常，连接互联网后，请重起本APP",activity)}
                 return@launch
             }
 
@@ -193,11 +183,11 @@ object Core {
             startService()
             var testMsg="测试通道，请稍候."
 
-            activity.runOnUiThread(){showMessage(testMsg)}
+            activity.runOnUiThread {showMessage(testMsg)}
             Thread.sleep(5_000)
             var selectedProfileDelay = testConnection2(profiles.first())
             testMsg+="."
-            activity.runOnUiThread(){showMessage(testMsg)}
+            activity.runOnUiThread {showMessage(testMsg)}
 
 
             Log.e("test proxy:",profiles.first().name+", delay:"+selectedProfileDelay)
@@ -205,11 +195,11 @@ object Core {
                 if (!profiles.get(i).isBuiltin())continue
                 switchProfile(profiles.get(i).id)
                 reloadService()
-                Thread.sleep(2_000)
+                Thread.sleep(5_000)
                 var delay = testConnection2(profiles.get(i))
 
                 testMsg+="."
-                activity.runOnUiThread(){showMessage(testMsg)}
+                activity.runOnUiThread {showMessage(testMsg)}
 
                 Log.e("test proxy:",profiles.get(i).name+", delay:"+delay)
                 if(delay < selectedProfileDelay){
@@ -249,7 +239,7 @@ object Core {
             conn = url.openConnection(
                     Proxy(Proxy.Type.HTTP,
                             InetSocketAddress("127.0.0.1", VpnEncrypt.HTTP_PROXY_PORT))) as HttpURLConnection
-            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36");
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36")
             conn.connectTimeout = 5000
             conn.readTimeout = 5000
             conn.setRequestProperty("Connection", "close")
@@ -307,6 +297,25 @@ object Core {
         }
         return -1
     }
+    /**
+     * import free sub
+     */
+    fun importFreeSubs(): Boolean {
+        try {
+            GlobalScope.launch {
+                var  freesuburl  = app.resources.getStringArray(R.array.freesuburl)
+                for (i in freesuburl.indices) {
+                    var freeSub=SSRSubManager.createSSSub(freesuburl[i])
+                    if (freeSub != null) break
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return false
+        }
+        return true
+    }
+
     fun init(app: Application, configureClass: KClass<out Any>) {
         this.app = app
         this.configureIntent = {
@@ -372,4 +381,25 @@ object Core {
     fun startService() = ContextCompat.startForegroundService(app, Intent(app, ShadowsocksConnection.serviceClass))
     fun reloadService() = app.sendBroadcast(Intent(Action.RELOAD).setPackage(app.packageName))
     fun stopService() = app.sendBroadcast(Intent(Action.CLOSE).setPackage(app.packageName))
+    fun startServiceForTest() = app.startService(Intent(app, ProxyService::class.java).putExtra("test","go"))
+    fun showMessage(msg: String) {
+        var toast = Toast.makeText(app, msg, Toast.LENGTH_LONG)
+        toast.setGravity(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, 0, 150)
+        toast.show()
+    }
+
+    fun alertMessage(msg: String,activity:Context) {
+        try {
+            if(activity==null || (activity as Activity).isFinishing)return
+        val builder: AlertDialog.Builder? = activity.let {
+            AlertDialog.Builder(activity)
+        }
+        builder?.setMessage(msg)?.setTitle("Alert")?.setPositiveButton("ok", DialogInterface.OnClickListener {
+            _, _ ->
+        })
+        val dialog: AlertDialog? = builder?.create()
+        dialog?.show()
+        }
+        catch (t:Throwable){}
+    }
 }

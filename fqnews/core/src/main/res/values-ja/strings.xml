@@ -195,4 +195,13 @@
     <plurals name="hosts_summary">
         <item quantity="other">"設定された%dホスト名"</item>
     </plurals>
+
+    <!-- subscriptions -->
+    <string name="subscriptions">"購読する"</string>
+    <string name="add_subscription">"サブスクリプションを追加"</string>
+    <string name="edit_subscription">"サブスクリプションを編集"</string>
+    <string name="update_subscription">"サブスクリプションを更新"</string>
+    <string name="service_subscription">"サブスクリプションサービス"</string>
+    <string name="service_subscription_working">"サブスクリプションの更新（%d / %d）"</string>
+    <string name="service_subscription_finishing">"サブスクリプション更新"</string>
 </resources>

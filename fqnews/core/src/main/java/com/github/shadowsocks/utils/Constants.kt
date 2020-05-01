@@ -42,9 +42,12 @@ object Key {
     const val portProxy = "portProxy"
     const val portLocalDns = "portLocalDns"
     const val portTransproxy = "portTransproxy"
+    const val portHttpProxy = "portHttpProxy"
 
     const val route = "route"
 
+    const val isAutoUpdateServers = "isAutoUpdateServers"
+    const val is_get_free_servers = "is_get_free_servers"
     const val persistAcrossReboot = "isAutoConnect"
     const val directBootAware = "directBootAware"
 

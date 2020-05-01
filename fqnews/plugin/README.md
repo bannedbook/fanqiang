@@ -10,12 +10,11 @@ Support library for easier development on [shadowsocks
 
 These are some plugins ready to use on shadowsocks-android.
 
-* [simple-obfs](https://github.com/shadowsocks/simple-obfs-android/releases)
+* [v2ray](https://github.com/shadowsocks/v2ray-plugin-android)
 * [kcptun](https://github.com/shadowsocks/kcptun-android/releases)
+* [simple-obfs](https://github.com/shadowsocks/simple-obfs-android/releases)
 
 ## Developer's guide
-
-WARNING: This library is still in beta (0.x) and its content is subject to massive changes.
 
 This library is designed with Java interoperability in mind so theoretically you can use this
  library with other languages and/or build tools but there isn't documentation for that yet. This
@@ -32,11 +31,11 @@ There are no arbitrary restrictions/requirements on package name, component name
 
 ### Add dependency
 
-First you need to add this library to your dependencies. This library is written mostly in Scala
- and it's most convenient to use it with SBT:
+First you need to add this library to your dependencies.
+This library is written mostly in Kotlin but can also work with Java-only projects:
 
-```scala
-libraryDependencies += "com.github.shadowsocks" %% "plugin" % "0.0.4"
+```gradle
+implementation 'com.github.shadowsocks:plugin:$LATEST_VERSION'
 ```
 
 ### Native binary configuration
@@ -44,7 +43,7 @@ libraryDependencies += "com.github.shadowsocks" %% "plugin" % "0.0.4"
 First you need to get your native binary compiling on Android platform.
 
 * [Sample project for C](https://github.com/shadowsocks/simple-obfs-android/tree/4f82c4a4e415d666e70a7e2e60955cb0d85c1615);
-* [Sample project for Go](https://github.com/shadowsocks/kcptun-android/tree/41f42077e177618553417c16559784a51e9d8c4c).
+* [Sample project for Go](https://github.com/shadowsocks/v2ray-plugin-android/tree/172bd4cec0276112828614482fb646b79dbf1540).
 
 In addition to functionalities of a normal plugin, it has to support these additional flags that
  may get passed through arguments:
@@ -56,25 +55,23 @@ In addition to functionalities of a normal plugin, it has to support these addit
 
 ### Implement a binary provider
 
-It's super easy. You just need to implement two or three methods. For example for `obfs-local`:
+You just need to implement two or three methods. For example for `v2ray`:
 
-```scala
-final class BinaryProvider extends NativePluginProvider {
-  override protected def populateFiles(provider: PathProvider) {
-    provider.addPath("obfs-local", "755")
-    // add additional files here
-  }
+```kotlin
+class BinaryProvider : NativePluginProvider() {
+    override fun populateFiles(provider: PathProvider) {
+        provider.addPath("v2ray", 0b111101101)
+        // add additional files here
+    }
 
   // remove this method to disable fast mode, read more in the documentation
-  override def getExecutable: String =
-    getContext.getApplicationInfo.nativeLibraryDir + "/libobfs-local.so"
+    override fun getExecutable() = context!!.applicationInfo.nativeLibraryDir + "/libv2ray.so"
 
-  override def openFile(uri: Uri): ParcelFileDescriptor = uri.getPath match {
-    case "/obfs-local" =>
-      ParcelFileDescriptor.open(new File(getExecutable), ParcelFileDescriptor.MODE_READ_ONLY)
-    // handle additional files here
-    case _ => throw new FileNotFoundException()
-  }
+    override fun openFile(uri: Uri): ParcelFileDescriptor = when (uri.path) {
+        "/v2ray" -> ParcelFileDescriptor.open(File(getExecutable()), ParcelFileDescriptor.MODE_READ_ONLY)
+        // handle additional files here
+        else -> throw FileNotFoundException()
+    }
 }
 ```
 
@@ -87,6 +84,7 @@ Then add it to your manifest:
         ...
         <provider android:name=".BinaryProvider"
                   android:exported="true"
+                  android:directBootAware="true"
                   android:authorities="$FULLY_QUALIFIED_NAME_OF_YOUR_CONTENTPROVIDER">
             <intent-filter>
                 <action android:name="com.github.shadowsocks.plugin.ACTION_NATIVE_PLUGIN"/>
@@ -95,12 +93,16 @@ Then add it to your manifest:
                 <action android:name="com.github.shadowsocks.plugin.ACTION_NATIVE_PLUGIN"/>
                 <data android:scheme="plugin"
                       android:host="com.github.shadowsocks"
-                      android:pathPrefix="/$PLUGIN_ID"/>
+                      android:path="/$PLUGIN_ID"/>
             </intent-filter>
             <meta-data android:name="com.github.shadowsocks.plugin.id"
                        android:value="$PLUGIN_ID"/>
+            <!-- Optional: default is empty -->
             <meta-data android:name="com.github.shadowsocks.plugin.default_config"
                        android:value="dummy=default;plugin=options"/>
+            <!-- Optional: remove to disable faster mode, read more in the documentation -->
+            <meta-data android:name="com.github.shadowsocks.plugin.executable_path"
+                       android:value="$PATH_TO_EXECUTABLE_RELATIVE_TO_NATIVE_LIB_DIR"/>
         </provider>
         ...
     </application>

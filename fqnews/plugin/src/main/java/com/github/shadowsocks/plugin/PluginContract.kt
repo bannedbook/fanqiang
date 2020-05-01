@@ -79,6 +79,13 @@ object PluginContract {
      */
     const val METADATA_KEY_ID = "com.github.shadowsocks.plugin.id"
     /**
+     * The metadata key to retrieve plugin id aliases.
+     * Can be a string (representing one alias) or a resource to a string or string array.
+     *
+     * Constant Value: "com.github.shadowsocks.plugin.id.aliases"
+     */
+    const val METADATA_KEY_ID_ALIASES = "com.github.shadowsocks.plugin.id.aliases"
+    /**
      * The metadata key to retrieve default configuration. Default value is empty.
      *
      * Constant Value: "com.github.shadowsocks.plugin.default_config"

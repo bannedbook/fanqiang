@@ -21,13 +21,11 @@
 package com.github.shadowsocks.plugin
 
 import android.content.pm.ResolveInfo
-import android.os.Bundle
 
 class NativePlugin(resolveInfo: ResolveInfo) : ResolvedPlugin(resolveInfo) {
     init {
         check(resolveInfo.providerInfo != null)
     }
 
-    override val metaData: Bundle get() = resolveInfo.providerInfo.metaData
-    override val packageName: String get() = resolveInfo.providerInfo.packageName
+    override val componentInfo get() = resolveInfo.providerInfo!!
 }

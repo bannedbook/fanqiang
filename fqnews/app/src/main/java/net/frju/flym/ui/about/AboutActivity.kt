@@ -21,6 +21,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.vansuita.materialabout.builder.AboutBuilder
+import net.fred.feedex.BuildConfig
 import net.fred.feedex.R
 import net.frju.flym.utils.setupTheme
 
@@ -41,6 +42,7 @@ class AboutActivity : AppCompatActivity() {
 				.setBrief(R.string.about_info)
 				//.setAppIcon(R.mipmap.ic_launcher_foreground)
 				.setAppName(R.string.app_name)
+				.setVersionNameAsAppSubTitle()
 				.addLink(R.mipmap.github,"fanqiang","https://github.com/bannedbook/fanqiang/wiki")
 				.addLink(R.mipmap.github,R.string.app_name,"https://github.com/bannedbook/fanqiang/blob/master/fqnews/readme.md")
 				//.addTwitterLink("bannedebook")

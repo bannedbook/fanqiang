@@ -94,7 +94,9 @@ class GuardedProcessPool(private val onFatal: suspend (IOException) -> Unit) : C
                         try {
                             Os.kill(pid.get(process) as Int, OsConstants.SIGTERM)
                         } catch (e: ErrnoException) {
-                            if (e.errno != OsConstants.ESRCH) throw e
+                            if (e.errno != OsConstants.ESRCH) Crashlytics.logException(e)
+                        } catch (e: ReflectiveOperationException) {
+                            Crashlytics.logException(e)
                         }
                         if (withTimeoutOrNull(500) { exitChannel.receive() } != null) return@withContext
                     }

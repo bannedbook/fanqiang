@@ -1,3 +1,15 @@
+* 1.3.4:
+  * Optional new metadata `com.github.shadowsocks.plugin.id.aliases` for plugin ID aliases;
+    (see doc for `PluginContract.METADATA_KEY_ID_ALIASES` and main documentation "Plugin ID Aliasing" for more information)
+  * Please use `android:path` instead of `android:pathPrefix`, sample code in documentations have been updated to reflect this recommendation.
+  * Added missing documentation regarding direct boot support.
+    Please add `android:directBootAware="true"` with proper support for your `provider` if possible.
+  * You can now use `android:resources` on `meta-data` tags. (main/host app update required, however, you should never use dynamic resources)
+  * Fix occasional crash in `AlertDialogFragment`.
+  * Translation updates.
+  * Dependency updates:
+    - `androidx.core:core-ktx:1.2.0`;
+    - `com.google.android.material:material:1.1.0`.
 * 1.3.3:
   * Fix a build script issue.
 * 1.3.2:

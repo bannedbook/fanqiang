@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission-sdk-23 android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <uses-feature android:name="android.software.leanback"
                   android:required="false"/>
@@ -31,14 +32,12 @@
 
         <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing"
                    android:value="true" />
-
         <service
             android:name="com.github.shadowsocks.bg.ProxyService"
             android:process=":bg"
             android:directBootAware="true"
             android:exported="false">
         </service>
-
         <activity
             android:name="com.github.shadowsocks.UrlImportActivity"
             android:theme="@style/Theme.AppCompat.Translucent"

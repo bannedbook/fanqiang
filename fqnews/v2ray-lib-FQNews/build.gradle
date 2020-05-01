@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('v2ray-lib-FQNews-release.aar'))

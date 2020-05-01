@@ -13,6 +13,7 @@
   <string name="port_proxy">SOCKS5 proxy port</string>
   <string name="port_local_dns">Local DNS port</string>
   <string name="port_transproxy">Transproxy port</string>
+  <string name="port_http">HTTP proxy port</string>
 
   <string name="remote_dns">Remote DNS</string>
   <string name="traffic">%1$s↑\t%2$s↓</string>
@@ -92,7 +93,7 @@
   <string name="faq">FAQ</string>
   <string name="faq_url">https://github.com/bannedbook/ssvpn/blob/master/.github/faq.md</string>
   <string name="about">About</string>
-  <string name="about_title">Shadowsocks VPN %s</string>
+  <string name="about_title">SS VPN %s</string>
   <string name="edit">Edit</string>
   <string name="share">Share</string>
   <string name="add_profile">Add Profile</string>
@@ -136,6 +137,15 @@
   <string name="vpn_connected">Connected, tap to check connection</string>
   <string name="not_connected">Not connected</string>
 
+  <!-- subscriptions -->
+  <string name="subscriptions">Subscriptions</string>
+  <string name="add_subscription">Add a subscription</string>
+  <string name="edit_subscription">Edit subscription</string>
+  <string name="update_subscription">Refresh servers from subscription</string>
+  <string name="service_subscription">Subscription Service</string>
+  <string name="service_subscription_working">Syncing subscriptions… (%d of %d)</string>
+  <string name="service_subscription_finishing">Finishing up…</string>
+
   <!-- acl -->
   <string name="custom_rules">Custom rules</string>
   <string name="action_add_rule">Add rule(s)…</string>
@@ -152,11 +162,51 @@
   <string name="plugin_unknown">Unknown plugin %s</string>
   <string name="plugin_untrusted">Warning: This plugin does not seem to come from a known trusted source.</string>
   <string name="profile_plugin">Plugin: %s</string>
-
+  <string name="plugin_auto_connect_unlock_only">This plugin might not work with Auto Connect</string>
+  
   <string name="update_servers">Update Servers</string>
-  <string name="recommended_site_1"></string>
-  <string name="recommended_site_2"></string>
+  <string name = "auto_update_servers">Automatic Update Servers</string>
+  <string name = "auto_update_servers_summary">Automatically update VPN servers when App launch</string>
+  <string name = "get_free_servers">Enable 3rd-party servers</string>
+  <string name = "get_free_servers_summary">Crawl 3rd-party free servers from internet, security unknown.</string>
+  <string name="title_ping_all_server">Tcping all servers</string>
+  <string name="title_real_ping_all_server">Real test all servers</string>
+  <string name="title_retest_invalid_servers">Re-test invalid servers</string>
+  <string name="title_remove_invalid_servers">Remove invalid/Sort By Group</string>
+  <string name="title_sort_servers_by_speed">Sort servers by speed</string>
+  <string name="toast_test_ended">The test ended successfully</string>
+  <string name="toast_test_interrupted">Server: %s or the previous one caused the test to be interrupted, please check them. And please make sure that the simple-obfs plugin is installed.</string>
+  <string name="recommended_site_1">"<![CDATA[
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head profile='http://gmpg.org/xfn/11'>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+</head>
+    <body style=\'margin:0;padding:0;font-size:14px;text-align:right\'>
+      <a href=\'https://www.theepochtimes.com/?utm_source=ss.vpn\' style=\'color:#e4f2fd\'>News</a>
+    </body>
+    </html>
+  ]]>"</string>
+  <string name="recommended_site_2"><![CDATA[
+    <html>
+    <body style=\'margin:0;padding:0;font-size:14px;text-align:right\'>
+      <a href=\'https://github.com/killgcd/justmysocks/blob/master/en.md#head\' style=\'color:#e4f2fd\'>Ad:SS Servers</a>
+    </body>
+    </html>
+  ]]></string>
+  <string name="recommended_news">"<![CDATA[
+<html xmlns='http://www.w3.org/1999/xhtml' dir='ltr' lang='zh-CN'>
+<head profile='http://gmpg.org/xfn/11'>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+</head>
+    <body style=\'margin:0 auto;padding:5px 0;font-size:14px;text-align:center\'>
+      <a href=\'https://play.google.com/store/apps/details?id=com.theepochtimes.news\' style=\'color:#e4f2fd\'>The Epoch Times: Live & Breaking News</a>
+    </body>
+    </html>
+  ]]>"</string>
   <string-array name="builtinSubUrls">
     <item>builtinSubUrls</item>
+  </string-array>
+  <string-array name="freesuburl">
+    <item>freesuburl</item>
   </string-array>
 </resources>

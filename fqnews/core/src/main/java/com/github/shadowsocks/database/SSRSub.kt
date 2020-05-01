@@ -29,6 +29,9 @@ class SSRSub(
         @Query("SELECT * FROM `SSRSub` WHERE `id` = :id")
         operator fun get(id: Long): SSRSub?
 
+        @Query("SELECT * FROM `SSRSub` WHERE `url_group` = :url_group")
+        fun getByGroup(url_group: String): SSRSub?
+
         @Query("DELETE FROM `SSRSub` WHERE `id` = :id")
         fun delete(id: Long): Int
 

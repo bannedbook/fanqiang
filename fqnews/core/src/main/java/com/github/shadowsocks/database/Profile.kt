@@ -72,13 +72,36 @@ data class Profile(
         var individual: String = "",
         var plugin: String? = null,
         var udpFallback: Long? = null,
+
+        // managed fields
+        var subscription: SubscriptionStatus = SubscriptionStatus.UserConfigured,
         var tx: Long = 0,
         var rx: Long = 0,
+        var elapsed: Long = 0,
         var userOrder: Long = 0,
 
         @Ignore // not persisted in db, only used by direct boot
         var dirty: Boolean = false
 ) : Parcelable, Serializable {
+    enum class SubscriptionStatus(val persistedValue: Int) {
+        UserConfigured(0),
+        Active(1),
+        /**
+         * This profile is no longer present in subscriptions.
+         */
+        Obsolete(2),
+        ;
+
+        companion object {
+            @JvmStatic
+            @TypeConverter
+            fun of(value: Int) = values().single { it.persistedValue == value }
+            @JvmStatic
+            @TypeConverter
+            fun toInt(status: SubscriptionStatus) = status.persistedValue
+        }
+    }
+
     companion object {
         private const val TAG = "ShadowParser"
         private const val serialVersionUID = 1L
@@ -130,7 +153,7 @@ data class Profile(
             }
         }.filterNotNull().toMutableSet()
 
-        private fun findAllSSUrls(data: CharSequence?, feature: Profile? = null) = pattern.findAll(data
+        fun findAllSSUrls(data: CharSequence?, feature: Profile? = null) = pattern.findAll(data
                 ?: "").map {
             val uri = it.value.toUri()
             try {
@@ -238,7 +261,7 @@ data class Profile(
         }.filterNotNull()
 
         private class JsonParser(private val feature: Profile? = null) : ArrayList<Profile>() {
-            private val fallbackMap = mutableMapOf<Profile, Profile>()
+            val fallbackMap = mutableMapOf<Profile, Profile>()
 
             private val JsonElement?.optString get() = (this as? JsonPrimitive)?.asString
             private val JsonElement?.optBoolean
@@ -299,7 +322,7 @@ data class Profile(
                 }
             }
 
-            fun finalize(create: (Profile) -> Unit) {
+            fun finalize(create: (Profile) -> Profile) {
                 val profiles = ProfileManager.getAllProfiles() ?: emptyList()
                 for ((profile, fallback) in fallbackMap) {
                     val match = profiles.firstOrNull {
@@ -307,19 +330,20 @@ data class Profile(
                                 fallback.password == it.password && fallback.method == it.method &&
                                 it.plugin.isNullOrEmpty()
                     }
-                    profile.udpFallback = if (match == null) {
-                        create(fallback)
-                        fallback.id
-                    } else match.id
+                    profile.udpFallback = (match ?: create(fallback)).id
                     ProfileManager.updateProfile(profile)
                 }
             }
         }
 
-        fun parseJson(json: JsonElement, feature: Profile? = null, create: (Profile) -> Unit) {
+        fun parseJson(json: JsonElement, feature: Profile? = null, create: (Profile) -> Profile) {
             JsonParser(feature).run {
                 process(json)
-                for (profile in this) create(profile)
+                for (i in indices) {
+                    val fallback = fallbackMap.remove(this[i])
+                    this[i] = create(this[i])
+                    fallback?.also { fallbackMap[this[i]] = it }
+                }
                 finalize(create)
             }
         }
@@ -330,11 +354,15 @@ data class Profile(
         @Query("SELECT * FROM `Profile` WHERE `id` = :id")
         operator fun get(id: Long): Profile?
 
-        @Query("SELECT * FROM `Profile` ORDER BY `userOrder`")
-        fun list(): List<Profile>
+        @Query("SELECT * FROM `Profile` WHERE `Subscription` != 2 ORDER BY `userOrder`")
+        fun listActive(): List<Profile>
 
         @Query("SELECT * FROM `Profile`")
         fun listAll(): List<Profile>
+
+        @Query("SELECT * FROM `Profile` ORDER BY `url_group`,`elapsed`")
+        fun listAllbySpeed(): List<Profile>
+
         @Query("SELECT * FROM `Profile` WHERE `url_group` = :group")
         fun listByGroup(group: String): List<Profile>
 
@@ -382,7 +410,7 @@ data class Profile(
                 .encodedAuthority("$auth@$wrappedHost:$remotePort")
         val configuration = PluginConfiguration(plugin ?: "")
         if (configuration.selected.isNotEmpty()) {
-            builder.appendQueryParameter(Key.plugin, configuration.selectedOptions.toString(false))
+            builder.appendQueryParameter(Key.plugin, configuration.getOptions().toString(false))
         }
         if (!name.isNullOrEmpty()) builder.fragment(name)
         return builder.build()
@@ -399,7 +427,7 @@ data class Profile(
         put("password", password)
         put("method", method)
         if (profiles == null) return@apply
-        PluginConfiguration(plugin ?: "").selectedOptions.also {
+        PluginConfiguration(plugin ?: "").getOptions().also {
             if (it.id.isNotEmpty()) {
                 put("plugin", it.id)
                 put("plugin_opts", it.toString())
@@ -470,5 +498,8 @@ data class Profile(
     }
     fun isBuiltin(): Boolean {
         return VpnEncrypt.vpnGroupName == url_group
+    }
+    fun isBuiltin2(): Boolean {
+        return VpnEncrypt.freesubGroupName == url_group
     }
 }

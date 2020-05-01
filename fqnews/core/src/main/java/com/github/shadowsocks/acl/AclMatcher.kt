@@ -20,13 +20,11 @@
 
 package com.github.shadowsocks.acl
 
-import android.util.Log
 import com.github.shadowsocks.Core
 import com.github.shadowsocks.net.Subnet
 import java.io.Reader
 import java.net.Inet4Address
 import java.net.Inet6Address
-import kotlin.system.measureNanoTime
 
 class AclMatcher : AutoCloseable {
     companion object {
@@ -71,7 +69,7 @@ class AclMatcher : AutoCloseable {
         }.toList()
         check(handle == 0L)
         handle = init()
-        val time = measureNanoTime {
+        try {
             val (bypass, subnets) = Acl.parse(reader, {
                 check(addBypassDomain(handle, it))
             }, {
@@ -81,8 +79,10 @@ class AclMatcher : AutoCloseable {
             subnetsIpv4 = subnets.asSequence().filter { it.address is Inet4Address }.dedup()
             subnetsIpv6 = subnets.asSequence().filter { it.address is Inet6Address }.dedup()
             this.bypass = bypass
+        } catch (e: Exception) {
+            close()
+            throw e
         }
-        Log.d("AclMatcher", "ACL initialized in $time ns")
     }
 
     private fun quickMatches(subnets: List<Subnet.Immutable>, ip: ByteArray): Boolean {
