@@ -1,0 +1,96 @@
+include_guard "network_control_server"
+
+template network_control_server {
+    alias("_arg0") socket_path;
+    alias("_arg1") template_list_port_forwardings;
+    alias("_arg2") template_add_port_forwarding;
+    alias("_arg3") template_remove_port_forwarding;
+
+    # Start request server.
+    sys.request_server({"unix", socket_path}, "network_control_server__request_handler", {});
+}
+
+template network_control_server__request_handler {
+    alias("_caller") server;
+
+    value(_request.data) data;
+
+    try("network_control_server__try", {});
+
+    _request->reply({"error", "Bad request."});
+    _request->finish();
+}
+
+template network_control_server__try {
+    alias("_caller._request") request;
+    alias("_caller.server") server;
+    alias("_caller.data") data;
+
+    val_equal(data.type, "list") a1;
+    _try->assert(a1);
+
+    num_greater_equal(data.length, "1") a2;
+    _try->assert(a2);
+
+    data->get("0") request_cmd;
+
+    val_equal(request_cmd, "list-port-forwardings") is_list_port_forwardings;
+    val_equal(request_cmd, "add-port-forwarding") is_add_port_forwarding;
+    val_equal(request_cmd, "remove-port-forwarding") is_remove_port_forwarding;
+    or(is_add_port_forwarding, is_remove_port_forwarding) is_add_remove_port_forwarding;
+
+    If (is_list_port_forwardings) {
+        num_equal(data.length, "1") a3;
+        _try->assert(a3);
+
+        call_with_caller_target(server.template_list_port_forwardings, {}, "server._caller") call;
+        request->reply({"ok", call.port_forwardings});
+    }
+    Elif (is_add_remove_port_forwarding) {
+        num_equal(data.length, "5") a4;
+        _try->assert(a4);
+
+        data->get("1") req_protocol;
+        data->get("2") req_port_start;
+        data->get("3") req_port_end;
+        data->get("4") req_dest_addr;
+
+        val_equal(req_protocol, "tcp") is_tcp;
+        val_equal(req_protocol, "udp") is_udp;
+        or(is_tcp, is_udp) a5;
+        _try->assert(a5);
+
+        parse_number(req_port_start) port_start;
+        _try->assert(port_start.succeeded);
+
+        parse_number(req_port_end) port_end;
+        _try->assert(port_end.succeeded);
+
+        num_lesser_equal(port_start, port_end) a6;
+        _try->assert(a6);
+
+        parse_ipv4_addr(req_dest_addr) dest_addr;
+        _try->assert(dest_addr.succeeded);
+
+        If (is_add_port_forwarding) {
+            call_with_caller_target(server.template_add_port_forwarding, {req_protocol, port_start, port_end, dest_addr}, "server._caller") call;
+            If (call.succeeded) {
+                request->reply({"ok", "Port forwarding added."});
+            } Else {
+                request->reply({"error", call.error_text});
+            };
+        } Else {
+            call_with_caller_target(server.template_remove_port_forwarding, {req_protocol, port_start, port_end, dest_addr}, "server._caller") call;
+            If (call.succeeded) {
+                request->reply({"ok", "Port forwarding removed."});
+            } Else {
+                request->reply({"error", call.error_text});
+            };
+        };
+    }
+    Else {
+        _try->assert("false");
+    };
+
+    request->finish();
+}

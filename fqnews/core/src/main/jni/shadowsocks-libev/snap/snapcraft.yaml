@@ -1,0 +1,59 @@
+base: core18
+name: shadowsocks-libev
+version: 3.3.4-1
+summary: libev port of shadowsocks
+description: |
+  Shadowsocks-libev is a lightweight and secure SOCKS5 proxy for embedded
+  devices and low-end boxes.
+
+  It is rewritten in pure C and depends on libev, designed to be a
+  lightweight implementation of the shadowsocks protocol.
+grade: stable
+confinement: strict
+
+apps:
+  ss-local:
+    command: bin/ss-local
+    plugs: [network, network-bind]
+
+  ss-server:
+    command: bin/ss-server
+    plugs: [network, network-bind]
+
+  ss-redir:
+    command: bin/ss-redir
+    plugs: [network, network-bind]
+
+  ss-tunnel:
+    command: bin/ss-tunnel
+    plugs: [network, network-bind]
+
+  ss-manager:
+    command: bin/ss-manager
+    plugs: [network]
+
+passthrough:
+  layout:
+    /etc/shadowsocks-libev:
+      bind: $SNAP_COMMON/etc/shadowsocks-libev
+
+parts:
+ shadowsocks-libev:
+    plugin: autotools
+    source: https://github.com/shadowsocks/shadowsocks-libev/releases/download/v3.3.4/shadowsocks-libev-3.3.4.tar.gz
+    build-packages:
+      - libpcre3-dev
+      - asciidoc
+      - xmlto
+      - libev-dev
+      - libc-ares-dev
+      - libmbedtls-dev
+      - libsodium-dev
+    stage-packages:
+      - libc-ares2
+      - libev4
+      - libmbedtls10
+      - libsodium23
+    override-build: |
+      snapcraftctl build
+      rm -rf $SNAPCRAFT_PART_INSTALL/usr/share/doc

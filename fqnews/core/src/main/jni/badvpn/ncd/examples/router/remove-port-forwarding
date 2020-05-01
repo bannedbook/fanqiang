@@ -1,0 +1,43 @@
+#!/usr/bin/badvpn-ncd
+
+process main {
+    getargs() args;
+    value(args) args;
+
+    num_different(args.length, "4") bad_args;
+    If (bad_args) {
+        println("Usage: remove-port-forwarding <protocol> <port_start> <port_end> <dest_addr>");
+        exit("1");
+    };
+
+    args->get("0") protocol;
+    args->get("1") port_start;
+    args->get("2") port_end;
+    args->get("3") dest_addr;
+
+    var("0") exit_status;
+
+    sys.request_client({"unix", "/run/ncd-control.socket"}) client;
+
+    var({"remove-port-forwarding", protocol, port_start, port_end, dest_addr}) request_data;
+
+    client->request(request_data, "reply_handler", "finished_handler", {});
+}
+
+template reply_handler {
+    value(_reply.data) reply_data;
+    reply_data->get("0") status;
+    reply_data->get("1") text;
+
+    val_equal(status, "ok") is_ok;
+    If (is_ok) {
+        println(text);
+    } Else {
+        _caller.exit_status->set("1");
+        println("Error: ", text);
+    };
+}
+
+template finished_handler {
+    exit(_caller.exit_status);
+}

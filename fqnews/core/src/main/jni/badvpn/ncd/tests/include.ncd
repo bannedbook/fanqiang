@@ -1,0 +1,16 @@
+include "include_included.ncdi"
+include "include_included.ncdi"
+include "include_included2.ncdi"
+include "include_included2.ncdi"
+
+process main {
+    call("incl_tmpl", {}) c;
+    val_equal(c.x, "good") a;
+    assert(a);
+    
+    call("incl_tmpl2", {}) c;
+    val_equal(c.x, "good2") a;
+    assert(a);
+    
+    exit("0");
+}

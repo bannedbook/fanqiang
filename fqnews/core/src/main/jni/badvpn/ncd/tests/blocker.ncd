@@ -1,0 +1,35 @@
+process main {
+    If (@true) {
+        value({}) list;
+        var("0") i;
+        blocker() blk;
+        blk->up();
+        blk->use();
+        num_lesser(i, "100") do_more;
+        If (do_more) {
+            list->insert(i);
+            num_add(i, "1") new_i;
+            i->set(new_i);
+            blk->downup();
+        };
+        val_equal(list.length, "100") a;
+        assert(a);
+    };
+    
+    If (@true) {
+        blocker() blk;
+        assert_false(blk);
+    };
+    
+    If (@true) {
+        blocker(@false) blk;
+        assert_false(blk);
+    };
+    
+    If (@true) {
+        blocker(@true) blk;
+        assert(blk);
+    };
+    
+    exit("0");
+}

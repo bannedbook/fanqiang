@@ -1,0 +1,58 @@
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
+# This is the grammar for all other grammar files that will work with the
+# Lime LALR(1) Context-Free Grammar Parser Generator.
+# You can read this to get an idea how things work, but this file is not
+# actually used in the system. Rather, it's an implementation guide for the
+# file "lime.bootstrap".
+
+%class lime_metaparser
+%start grammar
+
+grammar
+= {$$ = new lime();}
+| grammar/$ pragma/p toklist/t stop {$$->pragma($p, $t);}
+| grammar/$ rewrite/r stop {$r->update($$);}
+.
+
+rewrite
+= sym/s '=' rhs/r {$$ = new lime_rewrite($s); $$->add_rhs($r);}
+| rewrite/$ '|' rhs/r {$$->add_rhs($r);}
+.
+
+slot
+= action/a {$$ = new lime_action($a, NULL);}
+| action/a lambda/l {$$ = new lime_action($a, $l);}
+| sym/s {$$ = new lime_glyph($s, NULL);}
+| sym/s lambda/l {$$ = new lime_glyph($s, $l);}
+| lit/l {$$ = new lime_glyph($l, NULL);}
+.
+
+rhs
+= {$$ = new lime_rhs();}
+| rhs/$ slot/s {$$->add($s);}
+.
+
+action = '{' code/$ '}' .
+
+toklist = {$$=array();}
+| toklist/$ sym/s {$$[] = $s;}
+| toklist/$ lit/l {$$[] = $l;}
+.
+
+code = {}
+| code/$ php/p {$$.=$p;}
+| code/$ '{' code/c '}' {$$.='{'.$c.'}';}
+.

@@ -1,0 +1,2560 @@
+/-- This set of tests is for Unicode property support. It is compatible with
+    Perl >= 5.15. --/
+    
+< forbid 9?=ABCDEFfGILMNPTUXZ<
+
+/^\pC\pL\pM\pN\pP\pS\pZ</8
+    \x7f\x{c0}\x{30f}\x{660}\x{66c}\x{f01}\x{1680}<
+ 0: \x{7f}\x{c0}\x{30f}\x{660}\x{66c}\x{f01}\x{1680}<
+    \np\x{300}9!\$ < 
+ 0: \x{0a}p\x{300}9!$ <
+    ** Failers 
+No match
+    ap\x{300}9!\$ < 
+No match
+  
+/^\PC/8
+    X
+ 0: X
+    ** Failers 
+ 0: *
+    \x7f
+No match
+  
+/^\PL/8
+    9
+ 0: 9
+    ** Failers 
+ 0: *
+    \x{c0}
+No match
+  
+/^\PM/8
+    X
+ 0: X
+    ** Failers 
+ 0: *
+    \x{30f}
+No match
+  
+/^\PN/8
+    X
+ 0: X
+    ** Failers 
+ 0: *
+    \x{660}
+No match
+  
+/^\PP/8
+    X
+ 0: X
+    ** Failers 
+No match
+    \x{66c}
+No match
+  
+/^\PS/8
+    X
+ 0: X
+    ** Failers 
+ 0: *
+    \x{f01}
+No match
+  
+/^\PZ/8
+    X
+ 0: X
+    ** Failers 
+ 0: *
+    \x{1680}
+No match
+    
+/^\p{Cc}/8
+    \x{017}
+ 0: \x{17}
+    \x{09f} 
+ 0: \x{9f}
+    ** Failers
+No match
+    \x{0600} 
+No match
+  
+/^\p{Cf}/8
+    \x{601}
+ 0: \x{601}
+    ** Failers
+No match
+    \x{09f} 
+No match
+  
+/^\p{Cn}/8
+    \x{e0000}
+ 0: \x{e0000}
+    ** Failers
+No match
+    \x{09f} 
+No match
+  
+/^\p{Co}/8
+    \x{f8ff}
+ 0: \x{f8ff}
+    ** Failers
+No match
+    \x{09f} 
+No match
+  
+/^\p{Ll}/8
+    a
+ 0: a
+    ** Failers 
+No match
+    Z
+No match
+    \x{e000}  
+No match
+  
+/^\p{Lm}/8
+    \x{2b0}
+ 0: \x{2b0}
+    ** Failers
+No match
+    a 
+No match
+  
+/^\p{Lo}/8
+    \x{1bb}
+ 0: \x{1bb}
+    \x{3400}
+ 0: \x{3400}
+    \x{3401}
+ 0: \x{3401}
+    \x{4d00}
+ 0: \x{4d00}
+    \x{4db4}
+ 0: \x{4db4}
+    \x{4db5}     
+ 0: \x{4db5}
+    ** Failers
+No match
+    a 
+No match
+    \x{2b0}
+No match
+    \x{4db6} 
+No match
+  
+/^\p{Lt}/8
+    \x{1c5}
+ 0: \x{1c5}
+    ** Failers
+No match
+    a 
+No match
+    \x{2b0}
+No match
+  
+/^\p{Lu}/8
+    A
+ 0: A
+    ** Failers
+No match
+    \x{2b0}
+No match
+  
+/^\p{Mc}/8
+    \x{903}
+ 0: \x{903}
+    ** Failers
+No match
+    X
+No match
+    \x{300}
+No match
+       
+/^\p{Me}/8
+    \x{488}
+ 0: \x{488}
+    ** Failers
+No match
+    X
+No match
+    \x{903}
+No match
+    \x{300}
+No match
+  
+/^\p{Mn}/8
+    \x{300}
+ 0: \x{300}
+    ** Failers
+No match
+    X
+No match
+    \x{903}
+No match
+  
+/^\p{Nd}+/8
+    0123456789\x{660}\x{661}\x{662}\x{663}\x{664}\x{665}\x{666}\x{667}\x{668}\x{669}\x{66a}
+ 0: 0123456789\x{660}\x{661}\x{662}\x{663}\x{664}\x{665}\x{666}\x{667}\x{668}\x{669}
+    \x{6f0}\x{6f1}\x{6f2}\x{6f3}\x{6f4}\x{6f5}\x{6f6}\x{6f7}\x{6f8}\x{6f9}\x{6fa}
+ 0: \x{6f0}\x{6f1}\x{6f2}\x{6f3}\x{6f4}\x{6f5}\x{6f6}\x{6f7}\x{6f8}\x{6f9}
+    \x{966}\x{967}\x{968}\x{969}\x{96a}\x{96b}\x{96c}\x{96d}\x{96e}\x{96f}\x{970}
+ 0: \x{966}\x{967}\x{968}\x{969}\x{96a}\x{96b}\x{96c}\x{96d}\x{96e}\x{96f}
+    ** Failers
+No match
+    X
+No match
+  
+/^\p{Nl}/8
+    \x{16ee}
+ 0: \x{16ee}
+    ** Failers
+No match
+    X
+No match
+    \x{966}
+No match
+  
+/^\p{No}/8
+    \x{b2}
+ 0: \x{b2}
+    \x{b3}
+ 0: \x{b3}
+    ** Failers
+No match
+    X
+No match
+    \x{16ee}
+No match
+  
+/^\p{Pc}/8
+    \x5f
+ 0: _
+    \x{203f}
+ 0: \x{203f}
+    ** Failers
+No match
+    X
+No match
+    -
+No match
+    \x{58a}
+No match
+  
+/^\p{Pd}/8
+    -
+ 0: -
+    \x{58a}
+ 0: \x{58a}
+    ** Failers
+No match
+    X
+No match
+    \x{203f}
+No match
+  
+/^\p{Pe}/8
+    )
+ 0: )
+    ]
+ 0: ]
+    }
+ 0: }
+    \x{f3b}
+ 0: \x{f3b}
+    ** Failers
+No match
+    X
+No match
+    \x{203f}
+No match
+    (
+No match
+    [
+No match
+    {
+No match
+    \x{f3c}
+No match
+  
+/^\p{Pf}/8
+    \x{bb}
+ 0: \x{bb}
+    \x{2019}
+ 0: \x{2019}
+    ** Failers
+No match
+    X
+No match
+    \x{203f}
+No match
+  
+/^\p{Pi}/8
+    \x{ab}
+ 0: \x{ab}
+    \x{2018}
+ 0: \x{2018}
+    ** Failers
+No match
+    X
+No match
+    \x{203f}
+No match
+  
+/^\p{Po}/8
+    !
+ 0: !
+    \x{37e}
+ 0: \x{37e}
+    ** Failers
+ 0: *
+    X
+No match
+    \x{203f}
+No match
+  
+/^\p{Ps}/8
+    (
+ 0: (
+    [
+ 0: [
+    {
+ 0: {
+    \x{f3c}
+ 0: \x{f3c}
+    ** Failers
+No match
+    X
+No match
+    )
+No match
+    ]
+No match
+    }
+No match
+    \x{f3b}
+No match
+  
+/^\p{Sk}/8
+    \x{2c2}
+ 0: \x{2c2}
+    ** Failers
+No match
+    X
+No match
+    \x{9f2}
+No match
+  
+/^\p{Sm}+/8
+    +<|~\x{ac}\x{2044}
+ 0: +<|~\x{ac}\x{2044}
+    ** Failers
+No match
+    X
+No match
+    \x{9f2}
+No match
+  
+/^\p{So}/8
+    \x{a6}
+ 0: \x{a6}
+    \x{482} 
+ 0: \x{482}
+    ** Failers
+No match
+    X
+No match
+    \x{9f2}
+No match
+  
+/^\p{Zl}/8
+    \x{2028}
+ 0: \x{2028}
+    ** Failers
+No match
+    X
+No match
+    \x{2029}
+No match
+  
+/^\p{Zp}/8
+    \x{2029}
+ 0: \x{2029}
+    ** Failers
+No match
+    X
+No match
+    \x{2028}
+No match
+  
+/\p{Nd}+(..)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}\x{662}AB
+ 1: AB
+  
+/\p{Nd}+?(..)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}\x{662}
+ 1: \x{661}\x{662}
+  
+/\p{Nd}{2,}(..)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}\x{662}AB
+ 1: AB
+  
+/\p{Nd}{2,}?(..)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}\x{662}A
+ 1: \x{662}A
+  
+/\p{Nd}*(..)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}\x{662}AB
+ 1: AB
+  
+/\p{Nd}*?(..)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}
+ 1: \x{660}\x{661}
+  
+/\p{Nd}{2}(..)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}\x{662}A
+ 1: \x{662}A
+  
+/\p{Nd}{2,3}(..)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}\x{662}AB
+ 1: AB
+  
+/\p{Nd}{2,3}?(..)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}\x{662}A
+ 1: \x{662}A
+  
+/\p{Nd}?(..)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}\x{662}
+ 1: \x{661}\x{662}
+  
+/\p{Nd}??(..)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}
+ 1: \x{660}\x{661}
+  
+/\p{Nd}*+(..)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}\x{662}AB
+ 1: AB
+  
+/\p{Nd}*+(...)/8
+      \x{660}\x{661}\x{662}ABC
+ 0: \x{660}\x{661}\x{662}ABC
+ 1: ABC
+  
+/\p{Nd}*+(....)/8
+      ** Failers
+ 0: ** F
+ 1: ** F
+      \x{660}\x{661}\x{662}ABC
+No match
+  
+/(?<=A\p{Nd})XYZ/8
+    A2XYZ
+ 0: XYZ
+    123A5XYZPQR
+ 0: XYZ
+    ABA\x{660}XYZpqr
+ 0: XYZ
+    ** Failers
+No match
+    AXYZ
+No match
+    XYZ     
+No match
+    
+/(?<!\pL)XYZ/8
+    1XYZ
+ 0: XYZ
+    AB=XYZ.. 
+ 0: XYZ
+    XYZ 
+ 0: XYZ
+    ** Failers
+No match
+    WXYZ 
+No match
+
+/[\P{Nd}]+/8
+    abcd
+ 0: abcd
+    ** Failers
+ 0: ** Failers
+    1234
+No match
+
+/\D+/8
+    11111111111111111111111111111111111111111111111111111111111111111111111
+No match
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ 0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+     
+/\P{Nd}+/8
+    11111111111111111111111111111111111111111111111111111111111111111111111
+No match
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ 0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+/[\D]+/8
+    11111111111111111111111111111111111111111111111111111111111111111111111
+No match
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ 0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+/[\P{Nd}]+/8
+    11111111111111111111111111111111111111111111111111111111111111111111111
+No match
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ 0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+/[\D\P{Nd}]+/8
+    11111111111111111111111111111111111111111111111111111111111111111111111
+No match
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ 0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+/\pL/8
+    a
+ 0: a
+    A 
+ 0: A
+
+/\pL/8i
+    a
+ 0: a
+    A 
+ 0: A
+    
+/\p{Lu}/8 
+    A
+ 0: A
+    aZ
+ 0: Z
+    ** Failers
+ 0: F
+    abc   
+No match
+
+/\p{Ll}/8 
+    a
+ 0: a
+    Az
+ 0: z
+    ** Failers
+ 0: a
+    ABC   
+No match
+
+/A\x{391}\x{10427}\x{ff3a}\x{1fb0}/8
+    A\x{391}\x{10427}\x{ff3a}\x{1fb0}
+ 0: A\x{391}\x{10427}\x{ff3a}\x{1fb0}
+    ** Failers
+No match
+    a\x{391}\x{10427}\x{ff3a}\x{1fb0}   
+No match
+    A\x{3b1}\x{10427}\x{ff3a}\x{1fb0}
+No match
+    A\x{391}\x{1044F}\x{ff3a}\x{1fb0}
+No match
+    A\x{391}\x{10427}\x{ff5a}\x{1fb0}
+No match
+    A\x{391}\x{10427}\x{ff3a}\x{1fb8}
+No match
+
+/A\x{391}\x{10427}\x{ff3a}\x{1fb0}/8i
+    A\x{391}\x{10427}\x{ff3a}\x{1fb0}
+ 0: A\x{391}\x{10427}\x{ff3a}\x{1fb0}
+    a\x{391}\x{10427}\x{ff3a}\x{1fb0}   
+ 0: a\x{391}\x{10427}\x{ff3a}\x{1fb0}
+    A\x{3b1}\x{10427}\x{ff3a}\x{1fb0}
+ 0: A\x{3b1}\x{10427}\x{ff3a}\x{1fb0}
+    A\x{391}\x{1044F}\x{ff3a}\x{1fb0}
+ 0: A\x{391}\x{1044f}\x{ff3a}\x{1fb0}
+    A\x{391}\x{10427}\x{ff5a}\x{1fb0}
+ 0: A\x{391}\x{10427}\x{ff5a}\x{1fb0}
+    A\x{391}\x{10427}\x{ff3a}\x{1fb8}
+ 0: A\x{391}\x{10427}\x{ff3a}\x{1fb8}
+
+/\x{391}+/8i
+    \x{391}\x{3b1}\x{3b1}\x{3b1}\x{391}
+ 0: \x{391}\x{3b1}\x{3b1}\x{3b1}\x{391}
+
+/\x{391}{3,5}(.)/8i
+    \x{391}\x{3b1}\x{3b1}\x{3b1}\x{391}X
+ 0: \x{391}\x{3b1}\x{3b1}\x{3b1}\x{391}X
+ 1: X
+
+/\x{391}{3,5}?(.)/8i
+    \x{391}\x{3b1}\x{3b1}\x{3b1}\x{391}X
+ 0: \x{391}\x{3b1}\x{3b1}\x{3b1}
+ 1: \x{3b1}
+
+/[\x{391}\x{ff3a}]/8i
+    \x{391}
+ 0: \x{391}
+    \x{ff3a}
+ 0: \x{ff3a}
+    \x{3b1}
+ 0: \x{3b1}
+    \x{ff5a}   
+ 0: \x{ff5a}
+    
+/^[\X]/8
+    X123
+ 0: X
+    *** Failers
+No match
+    AXYZ
+No match
+
+/^(\X*)C/8
+    A\x{300}\x{301}\x{302}BCA\x{300}\x{301} 
+ 0: A\x{300}\x{301}\x{302}BC
+ 1: A\x{300}\x{301}\x{302}B
+    A\x{300}\x{301}\x{302}BCA\x{300}\x{301}C 
+ 0: A\x{300}\x{301}\x{302}BCA\x{300}\x{301}C
+ 1: A\x{300}\x{301}\x{302}BCA\x{300}\x{301}
+
+/^(\X*?)C/8
+    A\x{300}\x{301}\x{302}BCA\x{300}\x{301} 
+ 0: A\x{300}\x{301}\x{302}BC
+ 1: A\x{300}\x{301}\x{302}B
+    A\x{300}\x{301}\x{302}BCA\x{300}\x{301}C 
+ 0: A\x{300}\x{301}\x{302}BC
+ 1: A\x{300}\x{301}\x{302}B
+
+/^(\X*)(.)/8
+    A\x{300}\x{301}\x{302}BCA\x{300}\x{301} 
+ 0: A\x{300}\x{301}\x{302}BCA
+ 1: A\x{300}\x{301}\x{302}BC
+ 2: A
+    A\x{300}\x{301}\x{302}BCA\x{300}\x{301}C 
+ 0: A\x{300}\x{301}\x{302}BCA\x{300}\x{301}C
+ 1: A\x{300}\x{301}\x{302}BCA\x{300}\x{301}
+ 2: C
+
+/^(\X*?)(.)/8
+    A\x{300}\x{301}\x{302}BCA\x{300}\x{301} 
+ 0: A
+ 1: 
+ 2: A
+    A\x{300}\x{301}\x{302}BCA\x{300}\x{301}C 
+ 0: A
+ 1: 
+ 2: A
+
+/^\X(.)/8
+    *** Failers
+ 0: **
+ 1: *
+    A\x{300}\x{301}\x{302}
+No match
+
+/^\X{2,3}(.)/8
+    A\x{300}\x{301}B\x{300}X
+ 0: A\x{300}\x{301}B\x{300}X
+ 1: X
+    A\x{300}\x{301}B\x{300}C\x{300}\x{301}
+ 0: A\x{300}\x{301}B\x{300}C
+ 1: C
+    A\x{300}\x{301}B\x{300}C\x{300}\x{301}X
+ 0: A\x{300}\x{301}B\x{300}C\x{300}\x{301}X
+ 1: X
+    A\x{300}\x{301}B\x{300}C\x{300}\x{301}DA\x{300}X
+ 0: A\x{300}\x{301}B\x{300}C\x{300}\x{301}D
+ 1: D
+    
+/^\X{2,3}?(.)/8
+    A\x{300}\x{301}B\x{300}X
+ 0: A\x{300}\x{301}B\x{300}X
+ 1: X
+    A\x{300}\x{301}B\x{300}C\x{300}\x{301}
+ 0: A\x{300}\x{301}B\x{300}C
+ 1: C
+    A\x{300}\x{301}B\x{300}C\x{300}\x{301}X
+ 0: A\x{300}\x{301}B\x{300}C
+ 1: C
+    A\x{300}\x{301}B\x{300}C\x{300}\x{301}DA\x{300}X
+ 0: A\x{300}\x{301}B\x{300}C
+ 1: C
+
+/^\X/8
+    A
+ 0: A
+    A\x{300}BC 
+ 0: A\x{300}
+    A\x{300}\x{301}\x{302}BC 
+ 0: A\x{300}\x{301}\x{302}
+    \x{300}  
+ 0: \x{300}
+
+/^\p{Han}+/8
+    \x{2e81}\x{3007}\x{2f804}\x{31a0}
+ 0: \x{2e81}\x{3007}\x{2f804}
+    ** Failers
+No match
+    \x{2e7f}  
+No match
+
+/^\P{Katakana}+/8
+    \x{3105}
+ 0: \x{3105}
+    ** Failers
+ 0: ** Failers
+    \x{30ff}  
+No match
+
+/^[\p{Arabic}]/8
+    \x{06e9}
+ 0: \x{6e9}
+    \x{060b}
+ 0: \x{60b}
+    ** Failers
+No match
+    \x{061c}
+No match
+    X\x{06e9}   
+No match
+
+/^[\P{Yi}]/8
+    \x{2f800}
+ 0: \x{2f800}
+    ** Failers
+ 0: *
+    \x{a014}
+No match
+    \x{a4c6}   
+No match
+    
+/^\p{Any}X/8
+    AXYZ
+ 0: AX
+    \x{1234}XYZ 
+ 0: \x{1234}X
+    ** Failers
+No match
+    X  
+No match
+    
+/^\P{Any}X/8
+    ** Failers
+No match
+    AX
+No match
+    
+/^\p{Any}?X/8
+    XYZ
+ 0: X
+    AXYZ
+ 0: AX
+    \x{1234}XYZ 
+ 0: \x{1234}X
+    ** Failers
+No match
+    ABXYZ   
+No match
+
+/^\P{Any}?X/8
+    XYZ
+ 0: X
+    ** Failers
+No match
+    AXYZ
+No match
+    \x{1234}XYZ 
+No match
+    ABXYZ   
+No match
+
+/^\p{Any}+X/8
+    AXYZ
+ 0: AX
+    \x{1234}XYZ
+ 0: \x{1234}X
+    A\x{1234}XYZ
+ 0: A\x{1234}X
+    ** Failers
+No match
+    XYZ
+No match
+
+/^\P{Any}+X/8
+    ** Failers
+No match
+    AXYZ
+No match
+    \x{1234}XYZ
+No match
+    A\x{1234}XYZ
+No match
+    XYZ
+No match
+
+/^\p{Any}*X/8
+    XYZ
+ 0: X
+    AXYZ
+ 0: AX
+    \x{1234}XYZ
+ 0: \x{1234}X
+    A\x{1234}XYZ
+ 0: A\x{1234}X
+    ** Failers
+No match
+
+/^\P{Any}*X/8
+    XYZ
+ 0: X
+    ** Failers
+No match
+    AXYZ
+No match
+    \x{1234}XYZ
+No match
+    A\x{1234}XYZ
+No match
+
+/^[\p{Any}]X/8
+    AXYZ
+ 0: AX
+    \x{1234}XYZ 
+ 0: \x{1234}X
+    ** Failers
+No match
+    X  
+No match
+    
+/^[\P{Any}]X/8
+    ** Failers
+No match
+    AX
+No match
+    
+/^[\p{Any}]?X/8
+    XYZ
+ 0: X
+    AXYZ
+ 0: AX
+    \x{1234}XYZ 
+ 0: \x{1234}X
+    ** Failers
+No match
+    ABXYZ   
+No match
+
+/^[\P{Any}]?X/8
+    XYZ
+ 0: X
+    ** Failers
+No match
+    AXYZ
+No match
+    \x{1234}XYZ 
+No match
+    ABXYZ   
+No match
+
+/^[\p{Any}]+X/8
+    AXYZ
+ 0: AX
+    \x{1234}XYZ
+ 0: \x{1234}X
+    A\x{1234}XYZ
+ 0: A\x{1234}X
+    ** Failers
+No match
+    XYZ
+No match
+
+/^[\P{Any}]+X/8
+    ** Failers
+No match
+    AXYZ
+No match
+    \x{1234}XYZ
+No match
+    A\x{1234}XYZ
+No match
+    XYZ
+No match
+
+/^[\p{Any}]*X/8
+    XYZ
+ 0: X
+    AXYZ
+ 0: AX
+    \x{1234}XYZ
+ 0: \x{1234}X
+    A\x{1234}XYZ
+ 0: A\x{1234}X
+    ** Failers
+No match
+
+/^[\P{Any}]*X/8
+    XYZ
+ 0: X
+    ** Failers
+No match
+    AXYZ
+No match
+    \x{1234}XYZ
+No match
+    A\x{1234}XYZ
+No match
+
+/^\p{Any}{3,5}?/8
+    abcdefgh
+ 0: abc
+    \x{1234}\n\r\x{3456}xyz 
+ 0: \x{1234}\x{0a}\x{0d}
+
+/^\p{Any}{3,5}/8
+    abcdefgh
+ 0: abcde
+    \x{1234}\n\r\x{3456}xyz 
+ 0: \x{1234}\x{0a}\x{0d}\x{3456}x
+
+/^\P{Any}{3,5}?/8
+    ** Failers
+No match
+    abcdefgh
+No match
+    \x{1234}\n\r\x{3456}xyz 
+No match
+
+/^\p{L&}X/8
+     AXY
+ 0: AX
+     aXY
+ 0: aX
+     \x{1c5}XY
+ 0: \x{1c5}X
+     ** Failers
+No match
+     \x{1bb}XY
+No match
+     \x{2b0}XY
+No match
+     !XY      
+No match
+
+/^[\p{L&}]X/8
+     AXY
+ 0: AX
+     aXY
+ 0: aX
+     \x{1c5}XY
+ 0: \x{1c5}X
+     ** Failers
+No match
+     \x{1bb}XY
+No match
+     \x{2b0}XY
+No match
+     !XY      
+No match
+
+/^\p{L&}+X/8
+     AXY
+ 0: AX
+     aXY
+ 0: aX
+     AbcdeXyz 
+ 0: AbcdeX
+     \x{1c5}AbXY
+ 0: \x{1c5}AbX
+     abcDEXypqreXlmn 
+ 0: abcDEXypqreX
+     ** Failers
+No match
+     \x{1bb}XY
+No match
+     \x{2b0}XY
+No match
+     !XY      
+No match
+
+/^[\p{L&}]+X/8
+     AXY
+ 0: AX
+     aXY
+ 0: aX
+     AbcdeXyz 
+ 0: AbcdeX
+     \x{1c5}AbXY
+ 0: \x{1c5}AbX
+     abcDEXypqreXlmn 
+ 0: abcDEXypqreX
+     ** Failers
+No match
+     \x{1bb}XY
+No match
+     \x{2b0}XY
+No match
+     !XY      
+No match
+
+/^\p{L&}+?X/8
+     AXY
+ 0: AX
+     aXY
+ 0: aX
+     AbcdeXyz 
+ 0: AbcdeX
+     \x{1c5}AbXY
+ 0: \x{1c5}AbX
+     abcDEXypqreXlmn 
+ 0: abcDEX
+     ** Failers
+No match
+     \x{1bb}XY
+No match
+     \x{2b0}XY
+No match
+     !XY      
+No match
+
+/^[\p{L&}]+?X/8
+     AXY
+ 0: AX
+     aXY
+ 0: aX
+     AbcdeXyz 
+ 0: AbcdeX
+     \x{1c5}AbXY
+ 0: \x{1c5}AbX
+     abcDEXypqreXlmn 
+ 0: abcDEX
+     ** Failers
+No match
+     \x{1bb}XY
+No match
+     \x{2b0}XY
+No match
+     !XY      
+No match
+
+/^\P{L&}X/8
+     !XY
+ 0: !X
+     \x{1bb}XY
+ 0: \x{1bb}X
+     \x{2b0}XY
+ 0: \x{2b0}X
+     ** Failers
+No match
+     \x{1c5}XY
+No match
+     AXY      
+No match
+
+/^[\P{L&}]X/8
+     !XY
+ 0: !X
+     \x{1bb}XY
+ 0: \x{1bb}X
+     \x{2b0}XY
+ 0: \x{2b0}X
+     ** Failers
+No match
+     \x{1c5}XY
+No match
+     AXY      
+No match
+
+/^(\p{Z}[^\p{C}\p{Z}]+)*$/
+    \xa0!
+ 0: \xa0!
+ 1: \xa0!
+
+/^[\pL](abc)(?1)/
+    AabcabcYZ    
+ 0: Aabcabc
+ 1: abc
+
+/([\pL]=(abc))*X/
+    L=abcX
+ 0: L=abcX
+ 1: L=abc
+ 2: abc
+
+/^\p{Balinese}\p{Cuneiform}\p{Nko}\p{Phags_Pa}\p{Phoenician}/8
+    \x{1b00}\x{12000}\x{7c0}\x{a840}\x{10900}
+ 0: \x{1b00}\x{12000}\x{7c0}\x{a840}\x{10900}
+
+/Check property support in non-UTF-8 mode/
+ 
+/\p{L}{4}/
+    123abcdefg
+ 0: abcd
+    123abc\xc4\xc5zz
+ 0: abc\xc4
+
+/\X{1,3}\d/
+  \x8aBCD
+No match
+  
+/\X?\d/
+  \x8aBCD 
+No match
+
+/\P{L}?\d/
+  \x8aBCD 
+No match
+
+/[\PPP\x8a]{1,}\x80/
+    A\x80
+ 0: A\x80
+
+/^[\p{Arabic}]/8
+    \x{604}
+ 0: \x{604}
+    \x{60e} 
+ 0: \x{60e}
+    \x{656} 
+ 0: \x{656}
+    \x{657} 
+ 0: \x{657}
+    \x{658} 
+ 0: \x{658}
+    \x{659} 
+ 0: \x{659}
+    \x{65a} 
+ 0: \x{65a}
+    \x{65b} 
+ 0: \x{65b}
+    \x{65c} 
+ 0: \x{65c}
+    \x{65d} 
+ 0: \x{65d}
+    \x{65e} 
+ 0: \x{65e}
+    \x{65f}
+ 0: \x{65f}
+    \x{66a} 
+ 0: \x{66a}
+    \x{6e9} 
+ 0: \x{6e9}
+    \x{6ef}
+ 0: \x{6ef}
+    \x{6fa}  
+ 0: \x{6fa}
+    ** Failers
+No match
+    \x{650}
+No match
+    \x{651}  
+No match
+    \x{652}  
+No match
+    \x{653}  
+No match
+    \x{654} 
+No match
+    \x{655} 
+No match
+    
+/^\p{Cyrillic}/8
+    \x{1d2b} 
+ 0: \x{1d2b}
+    
+/^\p{Common}/8
+    \x{589}
+ 0: \x{589}
+    \x{60c}
+ 0: \x{60c}
+    \x{61f}  
+ 0: \x{61f}
+    \x{964}
+ 0: \x{964}
+    \x{965}  
+ 0: \x{965}
+
+/^\p{Inherited}/8
+    \x{64b}
+ 0: \x{64b}
+    \x{654}
+ 0: \x{654}
+    \x{655}
+ 0: \x{655}
+    \x{200c} 
+ 0: \x{200c}
+    ** Failers
+No match
+    \x{64a}
+No match
+    \x{656}     
+No match
+
+/^\p{Shavian}/8
+    \x{10450}
+ 0: \x{10450}
+    \x{1047f}
+ 0: \x{1047f}
+    
+/^\p{Deseret}/8
+    \x{10400}
+ 0: \x{10400}
+    \x{1044f}
+ 0: \x{1044f}
+    
+/^\p{Osmanya}/8
+    \x{10480}
+ 0: \x{10480}
+    \x{1049d}
+ 0: \x{1049d}
+    \x{104a0}
+ 0: \x{104a0}
+    \x{104a9}
+ 0: \x{104a9}
+    ** Failers
+No match
+    \x{1049e}
+No match
+    \x{1049f}
+No match
+    \x{104aa}           
+No match
+
+/\p{Carian}\p{Cham}\p{Kayah_Li}\p{Lepcha}\p{Lycian}\p{Lydian}\p{Ol_Chiki}\p{Rejang}\p{Saurashtra}\p{Sundanese}\p{Vai}/8
+    \x{102A4}\x{AA52}\x{A91D}\x{1C46}\x{10283}\x{1092E}\x{1C6B}\x{A93B}\x{A8BF}\x{1BA0}\x{A50A}====
+ 0: \x{102a4}\x{aa52}\x{a91d}\x{1c46}\x{10283}\x{1092e}\x{1c6b}\x{a93b}\x{a8bf}\x{1ba0}\x{a50a}
+
+/\x{a77d}\x{1d79}/8i
+    \x{a77d}\x{1d79}
+ 0: \x{a77d}\x{1d79}
+    \x{1d79}\x{a77d} 
+ 0: \x{1d79}\x{a77d}
+
+/\x{a77d}\x{1d79}/8
+    \x{a77d}\x{1d79}
+ 0: \x{a77d}\x{1d79}
+    ** Failers 
+No match
+    \x{1d79}\x{a77d} 
+No match
+
+/(A)\1/8i
+    AA
+ 0: AA
+ 1: A
+    Aa
+ 0: Aa
+ 1: A
+    aa
+ 0: aa
+ 1: a
+    aA
+ 0: aA
+ 1: a
+
+/(\x{10a})\1/8i
+    \x{10a}\x{10a}
+ 0: \x{10a}\x{10a}
+ 1: \x{10a}
+    \x{10a}\x{10b}
+ 0: \x{10a}\x{10b}
+ 1: \x{10a}
+    \x{10b}\x{10b}
+ 0: \x{10b}\x{10b}
+ 1: \x{10b}
+    \x{10b}\x{10a}
+ 0: \x{10b}\x{10a}
+ 1: \x{10b}
+    
+/The next two tests are for property support in non-UTF-8 mode/
+
+/(?:\p{Lu}|\x20)+/
+    \x41\x20\x50\xC2\x54\xC9\x20\x54\x4F\x44\x41\x59
+ 0: A P\xc2T\xc9 TODAY
+
+/[\p{Lu}\x20]+/
+    \x41\x20\x50\xC2\x54\xC9\x20\x54\x4F\x44\x41\x59
+ 0: A P\xc2T\xc9 TODAY
+
+/\p{Avestan}\p{Bamum}\p{Egyptian_Hieroglyphs}\p{Imperial_Aramaic}\p{Inscriptional_Pahlavi}\p{Inscriptional_Parthian}\p{Javanese}\p{Kaithi}\p{Lisu}\p{Meetei_Mayek}\p{Old_South_Arabian}\p{Old_Turkic}\p{Samaritan}\p{Tai_Tham}\p{Tai_Viet}/8
+    \x{10b00}\x{a6ef}\x{13007}\x{10857}\x{10b78}\x{10b58}\x{a980}\x{110c1}\x{a4ff}\x{abc0}\x{10a7d}\x{10c48}\x{0800}\x{1aad}\x{aac0}
+ 0: \x{10b00}\x{a6ef}\x{13007}\x{10857}\x{10b78}\x{10b58}\x{a980}\x{110c1}\x{a4ff}\x{abc0}\x{10a7d}\x{10c48}\x{800}\x{1aad}\x{aac0}
+
+/^\w+/8W
+    Az_\x{aa}\x{c0}\x{1c5}\x{2b0}\x{3b6}\x{1d7c9}\x{2fa1d}1\x{660}\x{bef}\x{16ee}
+ 0: Az_\x{aa}\x{c0}\x{1c5}\x{2b0}\x{3b6}\x{1d7c9}\x{2fa1d}1\x{660}\x{bef}\x{16ee}
+
+/^[[:xdigit:]]*/8W
+    1a\x{660}\x{bef}\x{16ee}
+ 0: 1a
+  
+/^\d+/8W
+    1\x{660}\x{bef}\x{16ee}
+ 0: 1\x{660}\x{bef}
+  
+/^[[:digit:]]+/8W
+    1\x{660}\x{bef}\x{16ee}
+ 0: 1\x{660}\x{bef}
+
+/^>\s+/8W
+    >\x{20}\x{a0}\x{1680}\x{2028}\x{2029}\x{202f}\x{9}\x{b} 
+ 0: > \x{a0}\x{1680}\x{2028}\x{2029}\x{202f}\x{09}\x{0b}
+  
+/^>\pZ+/8W
+    >\x{20}\x{a0}\x{1680}\x{2028}\x{2029}\x{202f}\x{9}\x{b} 
+ 0: > \x{a0}\x{1680}\x{2028}\x{2029}\x{202f}
+  
+/^>[[:space:]]*/8W
+    >\x{20}\x{a0}\x{1680}\x{2028}\x{2029}\x{202f}\x{9}\x{b} 
+ 0: > \x{a0}\x{1680}\x{2028}\x{2029}\x{202f}\x{09}\x{0b}
+
+/^>[[:blank:]]*/8W
+    >\x{20}\x{a0}\x{1680}\x{180e}\x{2000}\x{202f}\x{9}\x{b}\x{2028} 
+ 0: > \x{a0}\x{1680}\x{180e}\x{2000}\x{202f}\x{09}
+
+/^[[:alpha:]]*/8W
+    Az\x{aa}\x{c0}\x{1c5}\x{2b0}\x{3b6}\x{1d7c9}\x{2fa1d}
+ 0: Az\x{aa}\x{c0}\x{1c5}\x{2b0}\x{3b6}\x{1d7c9}\x{2fa1d}
+
+/^[[:alnum:]]*/8W
+    Az\x{aa}\x{c0}\x{1c5}\x{2b0}\x{3b6}\x{1d7c9}\x{2fa1d}1\x{660}\x{bef}\x{16ee}
+ 0: Az\x{aa}\x{c0}\x{1c5}\x{2b0}\x{3b6}\x{1d7c9}\x{2fa1d}1\x{660}\x{bef}\x{16ee}
+
+/^[[:cntrl:]]*/8W
+    \x{0}\x{09}\x{1f}\x{7f}\x{9f} 
+ 0: \x{00}\x{09}\x{1f}\x{7f}
+
+/^[[:graph:]]*/8W
+    A\x{a1}\x{a0}
+ 0: A\x{a1}
+
+/^[[:print:]]*/8W
+    A z\x{a0}\x{a1}
+ 0: A z\x{a0}\x{a1}
+
+/^[[:punct:]]*/8W
+    .+\x{a1}\x{a0}
+ 0: .+\x{a1}
+
+/\p{Zs}*?\R/
+    ** Failers
+No match
+    a\xFCb   
+No match
+
+/\p{Zs}*\R/                                                                    
+    ** Failers 
+No match
+    a\xFCb   
+No match
+
+/ⱥ/8i
+    ⱥ
+ 0: \x{2c65}
+    Ⱥx 
+ 0: \x{23a}
+    Ⱥ 
+ 0: \x{23a}
+
+/[ⱥ]/8i
+    ⱥ
+ 0: \x{2c65}
+    Ⱥx 
+ 0: \x{23a}
+    Ⱥ 
+ 0: \x{23a}
+
+/Ⱥ/8i
+    Ⱥ
+ 0: \x{23a}
+    ⱥ
+ 0: \x{2c65}
+    
+/-- These are tests for extended grapheme clusters --/ 
+
+/^\X/8+
+    G\x{34e}\x{34e}X
+ 0: G\x{34e}\x{34e}
+ 0+ X
+    \x{34e}\x{34e}X
+ 0: \x{34e}\x{34e}
+ 0+ X
+    \x04X
+ 0: \x{04}
+ 0+ X
+    \x{1100}X
+ 0: \x{1100}
+ 0+ X
+    \x{1100}\x{34e}X
+ 0: \x{1100}\x{34e}
+ 0+ X
+    \x{1b04}\x{1b04}X 
+ 0: \x{1b04}\x{1b04}
+ 0+ X
+    *These match up to the roman letters
+ 0: *
+ 0+ These match up to the roman letters
+    \x{1111}\x{1111}L,L
+ 0: \x{1111}\x{1111}
+ 0+ L,L
+    \x{1111}\x{1111}\x{1169}L,L,V
+ 0: \x{1111}\x{1111}\x{1169}
+ 0+ L,L,V
+    \x{1111}\x{ae4c}L, LV
+ 0: \x{1111}\x{ae4c}
+ 0+ L, LV
+    \x{1111}\x{ad89}L, LVT
+ 0: \x{1111}\x{ad89}
+ 0+ L, LVT
+    \x{1111}\x{ae4c}\x{1169}L, LV, V
+ 0: \x{1111}\x{ae4c}\x{1169}
+ 0+ L, LV, V
+    \x{1111}\x{ae4c}\x{1169}\x{1169}L, LV, V, V
+ 0: \x{1111}\x{ae4c}\x{1169}\x{1169}
+ 0+ L, LV, V, V
+    \x{1111}\x{ae4c}\x{1169}\x{11fe}L, LV, V, T
+ 0: \x{1111}\x{ae4c}\x{1169}\x{11fe}
+ 0+ L, LV, V, T
+    \x{1111}\x{ad89}\x{11fe}L, LVT, T
+ 0: \x{1111}\x{ad89}\x{11fe}
+ 0+ L, LVT, T
+    \x{1111}\x{ad89}\x{11fe}\x{11fe}L, LVT, T, T
+ 0: \x{1111}\x{ad89}\x{11fe}\x{11fe}
+ 0+ L, LVT, T, T
+    \x{ad89}\x{11fe}\x{11fe}LVT, T, T
+ 0: \x{ad89}\x{11fe}\x{11fe}
+ 0+ LVT, T, T
+    *These match just the first codepoint (invalid sequence)
+ 0: *
+ 0+ These match just the first codepoint (invalid sequence)
+    \x{1111}\x{11fe}L, T
+ 0: \x{1111}
+ 0+ \x{11fe}L, T
+    \x{ae4c}\x{1111}LV, L
+ 0: \x{ae4c}
+ 0+ \x{1111}LV, L
+    \x{ae4c}\x{ae4c}LV, LV
+ 0: \x{ae4c}
+ 0+ \x{ae4c}LV, LV
+    \x{ae4c}\x{ad89}LV, LVT
+ 0: \x{ae4c}
+ 0+ \x{ad89}LV, LVT
+    \x{1169}\x{1111}V, L
+ 0: \x{1169}
+ 0+ \x{1111}V, L
+    \x{1169}\x{ae4c}V, LV
+ 0: \x{1169}
+ 0+ \x{ae4c}V, LV
+    \x{1169}\x{ad89}V, LVT
+ 0: \x{1169}
+ 0+ \x{ad89}V, LVT
+    \x{ad89}\x{1111}LVT, L
+ 0: \x{ad89}
+ 0+ \x{1111}LVT, L
+    \x{ad89}\x{1169}LVT, V
+ 0: \x{ad89}
+ 0+ \x{1169}LVT, V
+    \x{ad89}\x{ae4c}LVT, LV
+ 0: \x{ad89}
+ 0+ \x{ae4c}LVT, LV
+    \x{ad89}\x{ad89}LVT, LVT
+ 0: \x{ad89}
+ 0+ \x{ad89}LVT, LVT
+    \x{11fe}\x{1111}T, L
+ 0: \x{11fe}
+ 0+ \x{1111}T, L
+    \x{11fe}\x{1169}T, V
+ 0: \x{11fe}
+ 0+ \x{1169}T, V
+    \x{11fe}\x{ae4c}T, LV
+ 0: \x{11fe}
+ 0+ \x{ae4c}T, LV
+    \x{11fe}\x{ad89}T, LVT
+ 0: \x{11fe}
+ 0+ \x{ad89}T, LVT
+    *Test extend and spacing mark
+ 0: *
+ 0+ Test extend and spacing mark
+    \x{1111}\x{ae4c}\x{0711}L, LV, extend
+ 0: \x{1111}\x{ae4c}\x{711}
+ 0+ L, LV, extend
+    \x{1111}\x{ae4c}\x{1b04}L, LV, spacing mark
+ 0: \x{1111}\x{ae4c}\x{1b04}
+ 0+ L, LV, spacing mark
+    \x{1111}\x{ae4c}\x{1b04}\x{0711}\x{1b04}L, LV, spacing mark, extend, spacing mark
+ 0: \x{1111}\x{ae4c}\x{1b04}\x{711}\x{1b04}
+ 0+ L, LV, spacing mark, extend, spacing mark
+    *Test CR, LF, and control
+ 0: *
+ 0+ Test CR, LF, and control
+    \x0d\x{0711}CR, extend
+ 0: \x{0d}
+ 0+ \x{711}CR, extend
+    \x0d\x{1b04}CR, spacingmark
+ 0: \x{0d}
+ 0+ \x{1b04}CR, spacingmark
+    \x0a\x{0711}LF, extend
+ 0: \x{0a}
+ 0+ \x{711}LF, extend
+    \x0a\x{1b04}LF, spacingmark
+ 0: \x{0a}
+ 0+ \x{1b04}LF, spacingmark
+    \x0b\x{0711}Control, extend
+ 0: \x{0b}
+ 0+ \x{711}Control, extend
+    \x09\x{1b04}Control, spacingmark
+ 0: \x{09}
+ 0+ \x{1b04}Control, spacingmark
+    *There are no Prepend characters, so we can't test Prepend, CR
+ 0: *
+ 0+ There are no Prepend characters, so we can't test Prepend, CR
+    
+/^(?>\X{2})X/8+
+    \x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0: \x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0+ 
+    
+/^\X{2,4}X/8+
+    \x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0: \x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0+ 
+    \x{1111}\x{ae4c}\x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0: \x{1111}\x{ae4c}\x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0+ 
+    \x{1111}\x{ae4c}\x{1111}\x{ae4c}\x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0: \x{1111}\x{ae4c}\x{1111}\x{ae4c}\x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0+ 
+
+/^\X{2,4}?X/8+
+    \x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0: \x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0+ 
+    \x{1111}\x{ae4c}\x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0: \x{1111}\x{ae4c}\x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0+ 
+    \x{1111}\x{ae4c}\x{1111}\x{ae4c}\x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0: \x{1111}\x{ae4c}\x{1111}\x{ae4c}\x{1111}\x{ae4c}\x{1111}\x{ae4c}X
+ 0+ 
+
+/\X*Z/8Y
+  A\x{300}
+No match
+
+/\X*(.)/8Y
+  A\x{1111}\x{ae4c}\x{1169}
+ 0: A\x{1111}
+ 1: \x{1111}
+
+/\X?abc/8Y
+\xff\x7f\x00\x00\x03\x00\x41\xcc\x80\x41\x{300}\x61\x62\x63\x00\>06\?
+ 0: A\x{300}abc
+
+/-- --/
+
+/\x{1e9e}+/8i
+    \x{1e9e}\x{00df}
+ 0: \x{1e9e}\x{df}
+
+/[z\x{1e9e}]+/8i
+    \x{1e9e}\x{00df}
+ 0: \x{1e9e}\x{df}
+
+/\x{00df}+/8i
+    \x{1e9e}\x{00df}
+ 0: \x{1e9e}\x{df}
+
+/[z\x{00df}]+/8i
+    \x{1e9e}\x{00df}
+ 0: \x{1e9e}\x{df}
+
+/\x{1f88}+/8i
+    \x{1f88}\x{1f80} 
+ 0: \x{1f88}\x{1f80}
+
+/[z\x{1f88}]+/8i
+    \x{1f88}\x{1f80} 
+ 0: \x{1f88}\x{1f80}
+    
+/-- Characters with more than one other case; test in classes --/
+
+/[z\x{00b5}]+/8i
+    \x{00b5}\x{039c}\x{03bc}
+ 0: \x{b5}\x{39c}\x{3bc}
+
+/[z\x{039c}]+/8i
+    \x{00b5}\x{039c}\x{03bc}
+ 0: \x{b5}\x{39c}\x{3bc}
+
+/[z\x{03bc}]+/8i
+    \x{00b5}\x{039c}\x{03bc}
+ 0: \x{b5}\x{39c}\x{3bc}
+
+/[z\x{00c5}]+/8i
+    \x{00c5}\x{00e5}\x{212b}
+ 0: \x{c5}\x{e5}\x{212b}
+
+/[z\x{00e5}]+/8i
+    \x{00c5}\x{00e5}\x{212b}
+ 0: \x{c5}\x{e5}\x{212b}
+
+/[z\x{212b}]+/8i
+    \x{00c5}\x{00e5}\x{212b}
+ 0: \x{c5}\x{e5}\x{212b}
+
+/[z\x{01c4}]+/8i
+    \x{01c4}\x{01c5}\x{01c6}
+ 0: \x{1c4}\x{1c5}\x{1c6}
+
+/[z\x{01c5}]+/8i
+    \x{01c4}\x{01c5}\x{01c6}
+ 0: \x{1c4}\x{1c5}\x{1c6}
+
+/[z\x{01c6}]+/8i
+    \x{01c4}\x{01c5}\x{01c6}
+ 0: \x{1c4}\x{1c5}\x{1c6}
+
+/[z\x{01c7}]+/8i
+    \x{01c7}\x{01c8}\x{01c9}
+ 0: \x{1c7}\x{1c8}\x{1c9}
+
+/[z\x{01c8}]+/8i
+    \x{01c7}\x{01c8}\x{01c9}
+ 0: \x{1c7}\x{1c8}\x{1c9}
+
+/[z\x{01c9}]+/8i
+    \x{01c7}\x{01c8}\x{01c9}
+ 0: \x{1c7}\x{1c8}\x{1c9}
+
+/[z\x{01ca}]+/8i
+    \x{01ca}\x{01cb}\x{01cc}
+ 0: \x{1ca}\x{1cb}\x{1cc}
+
+/[z\x{01cb}]+/8i
+    \x{01ca}\x{01cb}\x{01cc}
+ 0: \x{1ca}\x{1cb}\x{1cc}
+
+/[z\x{01cc}]+/8i
+    \x{01ca}\x{01cb}\x{01cc}
+ 0: \x{1ca}\x{1cb}\x{1cc}
+
+/[z\x{01f1}]+/8i
+    \x{01f1}\x{01f2}\x{01f3}
+ 0: \x{1f1}\x{1f2}\x{1f3}
+
+/[z\x{01f2}]+/8i
+    \x{01f1}\x{01f2}\x{01f3}
+ 0: \x{1f1}\x{1f2}\x{1f3}
+
+/[z\x{01f3}]+/8i
+    \x{01f1}\x{01f2}\x{01f3}
+ 0: \x{1f1}\x{1f2}\x{1f3}
+
+/[z\x{0345}]+/8i
+    \x{0345}\x{0399}\x{03b9}\x{1fbe}
+ 0: \x{345}\x{399}\x{3b9}\x{1fbe}
+
+/[z\x{0399}]+/8i
+    \x{0345}\x{0399}\x{03b9}\x{1fbe}
+ 0: \x{345}\x{399}\x{3b9}\x{1fbe}
+
+/[z\x{03b9}]+/8i
+    \x{0345}\x{0399}\x{03b9}\x{1fbe}
+ 0: \x{345}\x{399}\x{3b9}\x{1fbe}
+
+/[z\x{1fbe}]+/8i
+    \x{0345}\x{0399}\x{03b9}\x{1fbe}
+ 0: \x{345}\x{399}\x{3b9}\x{1fbe}
+
+/[z\x{0392}]+/8i
+    \x{0392}\x{03b2}\x{03d0}
+ 0: \x{392}\x{3b2}\x{3d0}
+
+/[z\x{03b2}]+/8i
+    \x{0392}\x{03b2}\x{03d0}
+ 0: \x{392}\x{3b2}\x{3d0}
+
+/[z\x{03d0}]+/8i
+    \x{0392}\x{03b2}\x{03d0}
+ 0: \x{392}\x{3b2}\x{3d0}
+
+/[z\x{0395}]+/8i
+    \x{0395}\x{03b5}\x{03f5}
+ 0: \x{395}\x{3b5}\x{3f5}
+
+/[z\x{03b5}]+/8i
+    \x{0395}\x{03b5}\x{03f5}
+ 0: \x{395}\x{3b5}\x{3f5}
+
+/[z\x{03f5}]+/8i
+    \x{0395}\x{03b5}\x{03f5}
+ 0: \x{395}\x{3b5}\x{3f5}
+
+/[z\x{0398}]+/8i
+    \x{0398}\x{03b8}\x{03d1}\x{03f4}
+ 0: \x{398}\x{3b8}\x{3d1}\x{3f4}
+
+/[z\x{03b8}]+/8i
+    \x{0398}\x{03b8}\x{03d1}\x{03f4}
+ 0: \x{398}\x{3b8}\x{3d1}\x{3f4}
+
+/[z\x{03d1}]+/8i
+    \x{0398}\x{03b8}\x{03d1}\x{03f4}
+ 0: \x{398}\x{3b8}\x{3d1}\x{3f4}
+
+/[z\x{03f4}]+/8i
+    \x{0398}\x{03b8}\x{03d1}\x{03f4}
+ 0: \x{398}\x{3b8}\x{3d1}\x{3f4}
+
+/[z\x{039a}]+/8i
+    \x{039a}\x{03ba}\x{03f0}
+ 0: \x{39a}\x{3ba}\x{3f0}
+
+/[z\x{03ba}]+/8i
+    \x{039a}\x{03ba}\x{03f0}
+ 0: \x{39a}\x{3ba}\x{3f0}
+
+/[z\x{03f0}]+/8i
+    \x{039a}\x{03ba}\x{03f0}
+ 0: \x{39a}\x{3ba}\x{3f0}
+
+/[z\x{03a0}]+/8i
+    \x{03a0}\x{03c0}\x{03d6} 
+ 0: \x{3a0}\x{3c0}\x{3d6}
+
+/[z\x{03c0}]+/8i
+    \x{03a0}\x{03c0}\x{03d6} 
+ 0: \x{3a0}\x{3c0}\x{3d6}
+
+/[z\x{03d6}]+/8i
+    \x{03a0}\x{03c0}\x{03d6} 
+ 0: \x{3a0}\x{3c0}\x{3d6}
+
+/[z\x{03a1}]+/8i
+    \x{03a1}\x{03c1}\x{03f1}
+ 0: \x{3a1}\x{3c1}\x{3f1}
+
+/[z\x{03c1}]+/8i
+    \x{03a1}\x{03c1}\x{03f1}
+ 0: \x{3a1}\x{3c1}\x{3f1}
+
+/[z\x{03f1}]+/8i
+    \x{03a1}\x{03c1}\x{03f1}
+ 0: \x{3a1}\x{3c1}\x{3f1}
+
+/[z\x{03a3}]+/8i
+    \x{03A3}\x{03C2}\x{03C3}
+ 0: \x{3a3}\x{3c2}\x{3c3}
+
+/[z\x{03c2}]+/8i
+    \x{03A3}\x{03C2}\x{03C3}
+ 0: \x{3a3}\x{3c2}\x{3c3}
+
+/[z\x{03c3}]+/8i
+    \x{03A3}\x{03C2}\x{03C3}
+ 0: \x{3a3}\x{3c2}\x{3c3}
+
+/[z\x{03a6}]+/8i
+    \x{03a6}\x{03c6}\x{03d5} 
+ 0: \x{3a6}\x{3c6}\x{3d5}
+
+/[z\x{03c6}]+/8i
+    \x{03a6}\x{03c6}\x{03d5} 
+ 0: \x{3a6}\x{3c6}\x{3d5}
+
+/[z\x{03d5}]+/8i
+    \x{03a6}\x{03c6}\x{03d5} 
+ 0: \x{3a6}\x{3c6}\x{3d5}
+
+/[z\x{03c9}]+/8i
+    \x{03c9}\x{03a9}\x{2126}
+ 0: \x{3c9}\x{3a9}\x{2126}
+
+/[z\x{03a9}]+/8i
+    \x{03c9}\x{03a9}\x{2126}
+ 0: \x{3c9}\x{3a9}\x{2126}
+
+/[z\x{2126}]+/8i
+    \x{03c9}\x{03a9}\x{2126}
+ 0: \x{3c9}\x{3a9}\x{2126}
+
+/[z\x{1e60}]+/8i
+    \x{1e60}\x{1e61}\x{1e9b}
+ 0: \x{1e60}\x{1e61}\x{1e9b}
+
+/[z\x{1e61}]+/8i
+    \x{1e60}\x{1e61}\x{1e9b}
+ 0: \x{1e60}\x{1e61}\x{1e9b}
+
+/[z\x{1e9b}]+/8i
+    \x{1e60}\x{1e61}\x{1e9b}
+ 0: \x{1e60}\x{1e61}\x{1e9b}
+
+/-- Perl 5.12.4 gets these wrong, but 5.15.3 is OK --/
+
+/[z\x{004b}]+/8i
+    \x{004b}\x{006b}\x{212a}
+ 0: Kk\x{212a}
+
+/[z\x{006b}]+/8i
+    \x{004b}\x{006b}\x{212a}
+ 0: Kk\x{212a}
+
+/[z\x{212a}]+/8i
+    \x{004b}\x{006b}\x{212a}
+ 0: Kk\x{212a}
+
+/[z\x{0053}]+/8i
+    \x{0053}\x{0073}\x{017f}
+ 0: Ss\x{17f}
+
+/[z\x{0073}]+/8i
+    \x{0053}\x{0073}\x{017f}
+ 0: Ss\x{17f}
+
+/[z\x{017f}]+/8i
+    \x{0053}\x{0073}\x{017f}
+ 0: Ss\x{17f}
+    
+/-- --/ 
+
+/(ΣΆΜΟΣ) \1/8i
+    ΣΆΜΟΣ ΣΆΜΟΣ
+ 0: \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3} \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3}
+ 1: \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3}
+    ΣΆΜΟΣ σάμος
+ 0: \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3} \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2}
+ 1: \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3}
+    σάμος σάμος
+ 0: \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2} \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2}
+ 1: \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2}
+    σάμος σάμοσ
+ 0: \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2} \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c3}
+ 1: \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2}
+    σάμος ΣΆΜΟΣ  
+ 0: \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2} \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3}
+ 1: \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2}
+
+/(σάμος) \1/8i
+    ΣΆΜΟΣ ΣΆΜΟΣ
+ 0: \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3} \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3}
+ 1: \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3}
+    ΣΆΜΟΣ σάμος
+ 0: \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3} \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2}
+ 1: \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3}
+    σάμος σάμος
+ 0: \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2} \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2}
+ 1: \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2}
+    σάμος σάμοσ
+ 0: \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2} \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c3}
+ 1: \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2}
+    σάμος ΣΆΜΟΣ  
+ 0: \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2} \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3}
+ 1: \x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2}
+
+/(ΣΆΜΟΣ) \1*/8i
+    ΣΆΜΟΣ\x20
+ 0: \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3} 
+ 1: \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3}
+    ΣΆΜΟΣ ΣΆΜΟΣσάμοςσάμος
+ 0: \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3} \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3}\x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2}\x{3c3}\x{3ac}\x{3bc}\x{3bf}\x{3c2}
+ 1: \x{3a3}\x{386}\x{39c}\x{39f}\x{3a3}
+
+/-- Perl matches these --/
+
+/\x{00b5}+/8i
+    \x{00b5}\x{039c}\x{03bc}
+ 0: \x{b5}\x{39c}\x{3bc}
+
+/\x{039c}+/8i
+    \x{00b5}\x{039c}\x{03bc}
+ 0: \x{b5}\x{39c}\x{3bc}
+
+/\x{03bc}+/8i
+    \x{00b5}\x{039c}\x{03bc}
+ 0: \x{b5}\x{39c}\x{3bc}
+
+
+/\x{00c5}+/8i
+    \x{00c5}\x{00e5}\x{212b}
+ 0: \x{c5}\x{e5}\x{212b}
+
+/\x{00e5}+/8i
+    \x{00c5}\x{00e5}\x{212b}
+ 0: \x{c5}\x{e5}\x{212b}
+
+/\x{212b}+/8i
+    \x{00c5}\x{00e5}\x{212b}
+ 0: \x{c5}\x{e5}\x{212b}
+
+
+/\x{01c4}+/8i
+    \x{01c4}\x{01c5}\x{01c6}
+ 0: \x{1c4}\x{1c5}\x{1c6}
+
+/\x{01c5}+/8i
+    \x{01c4}\x{01c5}\x{01c6}
+ 0: \x{1c4}\x{1c5}\x{1c6}
+
+/\x{01c6}+/8i
+    \x{01c4}\x{01c5}\x{01c6}
+ 0: \x{1c4}\x{1c5}\x{1c6}
+
+
+/\x{01c7}+/8i
+    \x{01c7}\x{01c8}\x{01c9}
+ 0: \x{1c7}\x{1c8}\x{1c9}
+
+/\x{01c8}+/8i
+    \x{01c7}\x{01c8}\x{01c9}
+ 0: \x{1c7}\x{1c8}\x{1c9}
+
+/\x{01c9}+/8i
+    \x{01c7}\x{01c8}\x{01c9}
+ 0: \x{1c7}\x{1c8}\x{1c9}
+
+
+/\x{01ca}+/8i
+    \x{01ca}\x{01cb}\x{01cc}
+ 0: \x{1ca}\x{1cb}\x{1cc}
+
+/\x{01cb}+/8i
+    \x{01ca}\x{01cb}\x{01cc}
+ 0: \x{1ca}\x{1cb}\x{1cc}
+
+/\x{01cc}+/8i
+    \x{01ca}\x{01cb}\x{01cc}
+ 0: \x{1ca}\x{1cb}\x{1cc}
+
+
+/\x{01f1}+/8i
+    \x{01f1}\x{01f2}\x{01f3}
+ 0: \x{1f1}\x{1f2}\x{1f3}
+
+/\x{01f2}+/8i
+    \x{01f1}\x{01f2}\x{01f3}
+ 0: \x{1f1}\x{1f2}\x{1f3}
+
+/\x{01f3}+/8i
+    \x{01f1}\x{01f2}\x{01f3}
+ 0: \x{1f1}\x{1f2}\x{1f3}
+
+
+/\x{0345}+/8i
+    \x{0345}\x{0399}\x{03b9}\x{1fbe}
+ 0: \x{345}\x{399}\x{3b9}\x{1fbe}
+
+/\x{0399}+/8i
+    \x{0345}\x{0399}\x{03b9}\x{1fbe}
+ 0: \x{345}\x{399}\x{3b9}\x{1fbe}
+
+/\x{03b9}+/8i
+    \x{0345}\x{0399}\x{03b9}\x{1fbe}
+ 0: \x{345}\x{399}\x{3b9}\x{1fbe}
+
+/\x{1fbe}+/8i
+    \x{0345}\x{0399}\x{03b9}\x{1fbe}
+ 0: \x{345}\x{399}\x{3b9}\x{1fbe}
+
+
+/\x{0392}+/8i
+    \x{0392}\x{03b2}\x{03d0}
+ 0: \x{392}\x{3b2}\x{3d0}
+
+/\x{03b2}+/8i
+    \x{0392}\x{03b2}\x{03d0}
+ 0: \x{392}\x{3b2}\x{3d0}
+
+/\x{03d0}+/8i
+    \x{0392}\x{03b2}\x{03d0}
+ 0: \x{392}\x{3b2}\x{3d0}
+    
+
+/\x{0395}+/8i
+    \x{0395}\x{03b5}\x{03f5}
+ 0: \x{395}\x{3b5}\x{3f5}
+
+/\x{03b5}+/8i
+    \x{0395}\x{03b5}\x{03f5}
+ 0: \x{395}\x{3b5}\x{3f5}
+
+/\x{03f5}+/8i
+    \x{0395}\x{03b5}\x{03f5}
+ 0: \x{395}\x{3b5}\x{3f5}
+
+
+/\x{0398}+/8i
+    \x{0398}\x{03b8}\x{03d1}\x{03f4}
+ 0: \x{398}\x{3b8}\x{3d1}\x{3f4}
+
+/\x{03b8}+/8i
+    \x{0398}\x{03b8}\x{03d1}\x{03f4}
+ 0: \x{398}\x{3b8}\x{3d1}\x{3f4}
+
+/\x{03d1}+/8i
+    \x{0398}\x{03b8}\x{03d1}\x{03f4}
+ 0: \x{398}\x{3b8}\x{3d1}\x{3f4}
+
+/\x{03f4}+/8i
+    \x{0398}\x{03b8}\x{03d1}\x{03f4}
+ 0: \x{398}\x{3b8}\x{3d1}\x{3f4}
+    
+
+/\x{039a}+/8i
+    \x{039a}\x{03ba}\x{03f0}
+ 0: \x{39a}\x{3ba}\x{3f0}
+
+/\x{03ba}+/8i
+    \x{039a}\x{03ba}\x{03f0}
+ 0: \x{39a}\x{3ba}\x{3f0}
+
+/\x{03f0}+/8i
+    \x{039a}\x{03ba}\x{03f0}
+ 0: \x{39a}\x{3ba}\x{3f0}
+    
+
+/\x{03a0}+/8i
+    \x{03a0}\x{03c0}\x{03d6} 
+ 0: \x{3a0}\x{3c0}\x{3d6}
+
+/\x{03c0}+/8i
+    \x{03a0}\x{03c0}\x{03d6} 
+ 0: \x{3a0}\x{3c0}\x{3d6}
+
+/\x{03d6}+/8i
+    \x{03a0}\x{03c0}\x{03d6} 
+ 0: \x{3a0}\x{3c0}\x{3d6}
+
+
+/\x{03a1}+/8i
+    \x{03a1}\x{03c1}\x{03f1}
+ 0: \x{3a1}\x{3c1}\x{3f1}
+
+/\x{03c1}+/8i
+    \x{03a1}\x{03c1}\x{03f1}
+ 0: \x{3a1}\x{3c1}\x{3f1}
+
+/\x{03f1}+/8i
+    \x{03a1}\x{03c1}\x{03f1}
+ 0: \x{3a1}\x{3c1}\x{3f1}
+
+
+/\x{03a3}+/8i
+    \x{03A3}\x{03C2}\x{03C3}
+ 0: \x{3a3}\x{3c2}\x{3c3}
+
+/\x{03c2}+/8i
+    \x{03A3}\x{03C2}\x{03C3}
+ 0: \x{3a3}\x{3c2}\x{3c3}
+
+/\x{03c3}+/8i
+    \x{03A3}\x{03C2}\x{03C3}
+ 0: \x{3a3}\x{3c2}\x{3c3}
+    
+
+/\x{03a6}+/8i
+    \x{03a6}\x{03c6}\x{03d5} 
+ 0: \x{3a6}\x{3c6}\x{3d5}
+
+/\x{03c6}+/8i
+    \x{03a6}\x{03c6}\x{03d5} 
+ 0: \x{3a6}\x{3c6}\x{3d5}
+
+/\x{03d5}+/8i
+    \x{03a6}\x{03c6}\x{03d5} 
+ 0: \x{3a6}\x{3c6}\x{3d5}
+
+
+/\x{03c9}+/8i
+    \x{03c9}\x{03a9}\x{2126}
+ 0: \x{3c9}\x{3a9}\x{2126}
+
+/\x{03a9}+/8i
+    \x{03c9}\x{03a9}\x{2126}
+ 0: \x{3c9}\x{3a9}\x{2126}
+
+/\x{2126}+/8i
+    \x{03c9}\x{03a9}\x{2126}
+ 0: \x{3c9}\x{3a9}\x{2126}
+    
+
+/\x{1e60}+/8i
+    \x{1e60}\x{1e61}\x{1e9b}
+ 0: \x{1e60}\x{1e61}\x{1e9b}
+
+/\x{1e61}+/8i
+    \x{1e60}\x{1e61}\x{1e9b}
+ 0: \x{1e60}\x{1e61}\x{1e9b}
+
+/\x{1e9b}+/8i
+    \x{1e60}\x{1e61}\x{1e9b}
+ 0: \x{1e60}\x{1e61}\x{1e9b}
+    
+
+/\x{1e9e}+/8i
+    \x{1e9e}\x{00df}
+ 0: \x{1e9e}\x{df}
+
+/\x{00df}+/8i
+    \x{1e9e}\x{00df}
+ 0: \x{1e9e}\x{df}
+    
+
+/\x{1f88}+/8i
+    \x{1f88}\x{1f80} 
+ 0: \x{1f88}\x{1f80}
+
+/\x{1f80}+/8i
+    \x{1f88}\x{1f80} 
+ 0: \x{1f88}\x{1f80}
+
+
+/-- Perl 5.12.4 gets these wrong, but 5.15.3 is OK --/
+
+/\x{004b}+/8i
+    \x{004b}\x{006b}\x{212a}
+ 0: Kk\x{212a}
+
+/\x{006b}+/8i
+    \x{004b}\x{006b}\x{212a}
+ 0: Kk\x{212a}
+
+/\x{212a}+/8i
+    \x{004b}\x{006b}\x{212a}
+ 0: Kk\x{212a}
+
+
+/\x{0053}+/8i
+    \x{0053}\x{0073}\x{017f}
+ 0: Ss\x{17f}
+
+/\x{0073}+/8i
+    \x{0053}\x{0073}\x{017f}
+ 0: Ss\x{17f}
+
+/\x{017f}+/8i
+    \x{0053}\x{0073}\x{017f}
+ 0: Ss\x{17f}
+
+/^\p{Any}*\d{4}/8
+    1234
+ 0: 1234
+    123 
+No match
+
+/^\X*\w{4}/8
+    1234
+ 0: 1234
+    123  
+No match
+
+/^A\s+Z/8W
+    A\x{2005}Z
+ 0: A\x{2005}Z
+    A\x{85}\x{180e}\x{2005}Z
+ 0: A\x{85}\x{180e}\x{2005}Z
+
+/^A[\s]+Z/8W
+    A\x{2005}Z
+ 0: A\x{2005}Z
+    A\x{85}\x{180e}\x{2005}Z
+ 0: A\x{85}\x{180e}\x{2005}Z
+
+/^[[:graph:]]+$/8W
+    Letter:ABC
+ 0: Letter:ABC
+    Mark:\x{300}\x{1d172}\x{1d17b}
+ 0: Mark:\x{300}\x{1d172}\x{1d17b}
+    Number:9\x{660}
+ 0: Number:9\x{660}
+    Punctuation:\x{66a},;
+ 0: Punctuation:\x{66a},;
+    Symbol:\x{6de}<>\x{fffc}
+ 0: Symbol:\x{6de}<>\x{fffc}
+    Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
+ 0: Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
+    \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
+ 0: \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
+    \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
+ 0: \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
+    \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
+ 0: \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
+    \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
+ 0: \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
+    \x{feff}
+ 0: \x{feff}
+    \x{fff9}\x{fffa}\x{fffb}
+ 0: \x{fff9}\x{fffa}\x{fffb}
+    \x{110bd}
+ 0: \x{110bd}
+    \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
+ 0: \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
+    \x{e0001}
+ 0: \x{e0001}
+    \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
+ 0: \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
+    ** Failers
+No match
+    \x{09}
+No match
+    \x{0a}
+No match
+    \x{1D}
+No match
+    \x{20}
+No match
+    \x{85}
+No match
+    \x{a0}
+No match
+    \x{61c}
+No match
+    \x{1680}
+No match
+    \x{180e}
+No match
+    \x{2028}
+No match
+    \x{2029}
+No match
+    \x{202f}
+No match
+    \x{2065}
+No match
+    \x{2066}
+No match
+    \x{2067}
+No match
+    \x{2068}
+No match
+    \x{2069}
+No match
+    \x{3000}
+No match
+    \x{e0002}
+No match
+    \x{e001f}
+No match
+    \x{e0080} 
+No match
+
+/^[[:print:]]+$/8W
+    Space: \x{a0}
+ 0: Space: \x{a0}
+    \x{1680}\x{2000}\x{2001}\x{2002}\x{2003}\x{2004}\x{2005}
+ 0: \x{1680}\x{2000}\x{2001}\x{2002}\x{2003}\x{2004}\x{2005}
+    \x{2006}\x{2007}\x{2008}\x{2009}\x{200a} 
+ 0: \x{2006}\x{2007}\x{2008}\x{2009}\x{200a}
+    \x{202f}\x{205f} 
+ 0: \x{202f}\x{205f}
+    \x{3000}
+ 0: \x{3000}
+    Letter:ABC
+ 0: Letter:ABC
+    Mark:\x{300}\x{1d172}\x{1d17b}
+ 0: Mark:\x{300}\x{1d172}\x{1d17b}
+    Number:9\x{660}
+ 0: Number:9\x{660}
+    Punctuation:\x{66a},;
+ 0: Punctuation:\x{66a},;
+    Symbol:\x{6de}<>\x{fffc}
+ 0: Symbol:\x{6de}<>\x{fffc}
+    Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
+ 0: Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
+    \x{180e}
+ 0: \x{180e}
+    \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
+ 0: \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
+    \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
+ 0: \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
+    \x{202f}
+ 0: \x{202f}
+    \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
+ 0: \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
+    \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
+ 0: \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
+    \x{feff}
+ 0: \x{feff}
+    \x{fff9}\x{fffa}\x{fffb}
+ 0: \x{fff9}\x{fffa}\x{fffb}
+    \x{110bd}
+ 0: \x{110bd}
+    \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
+ 0: \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
+    \x{e0001}
+ 0: \x{e0001}
+    \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
+ 0: \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
+    ** Failers
+ 0: ** Failers
+    \x{09}
+No match
+    \x{1D}
+No match
+    \x{85}
+No match
+    \x{61c}
+No match
+    \x{2028}
+No match
+    \x{2029}
+No match
+    \x{2065}
+No match
+    \x{2066}
+No match
+    \x{2067}
+No match
+    \x{2068}
+No match
+    \x{2069}
+No match
+    \x{e0002}
+No match
+    \x{e001f}
+No match
+    \x{e0080} 
+No match
+
+/^[[:punct:]]+$/8W
+    \$+<=>^`|~
+ 0: $+<=>^`|~
+    !\"#%&'()*,-./:;?@[\\]_{}
+ 0: !"#%&'()*,-./:;?@[\]_{}
+    \x{a1}\x{a7}  
+ 0: \x{a1}\x{a7}
+    \x{37e} 
+ 0: \x{37e}
+    ** Failers
+No match
+    abcde  
+No match
+
+/^[[:^graph:]]+$/8W
+    \x{09}\x{0a}\x{1D}\x{20}\x{85}\x{a0}\x{61c}\x{1680}\x{180e}
+ 0: \x{09}\x{0a}\x{1d} \x{85}\x{a0}\x{61c}\x{1680}\x{180e}
+    \x{2028}\x{2029}\x{202f}\x{2065}\x{2066}\x{2067}\x{2068}\x{2069}
+ 0: \x{2028}\x{2029}\x{202f}\x{2065}\x{2066}\x{2067}\x{2068}\x{2069}
+    \x{3000}\x{e0002}\x{e001f}\x{e0080}
+ 0: \x{3000}\x{e0002}\x{e001f}\x{e0080}
+    ** Failers
+No match
+    Letter:ABC
+No match
+    Mark:\x{300}\x{1d172}\x{1d17b}
+No match
+    Number:9\x{660}
+No match
+    Punctuation:\x{66a},;
+No match
+    Symbol:\x{6de}<>\x{fffc}
+No match
+    Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
+No match
+    \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
+No match
+    \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
+No match
+    \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
+No match
+    \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
+No match
+    \x{feff}
+No match
+    \x{fff9}\x{fffa}\x{fffb}
+No match
+    \x{110bd}
+No match
+    \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
+No match
+    \x{e0001}
+No match
+    \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
+No match
+
+/^[[:^print:]]+$/8W
+    \x{09}\x{1D}\x{85}\x{61c}\x{2028}\x{2029}\x{2065}\x{2066}\x{2067}
+ 0: \x{09}\x{1d}\x{85}\x{61c}\x{2028}\x{2029}\x{2065}\x{2066}\x{2067}
+    \x{2068}\x{2069}\x{e0002}\x{e001f}\x{e0080}
+ 0: \x{2068}\x{2069}\x{e0002}\x{e001f}\x{e0080}
+    ** Failers
+No match
+    Space: \x{a0}
+No match
+    \x{1680}\x{2000}\x{2001}\x{2002}\x{2003}\x{2004}\x{2005}
+No match
+    \x{2006}\x{2007}\x{2008}\x{2009}\x{200a} 
+No match
+    \x{202f}\x{205f} 
+No match
+    \x{3000}
+No match
+    Letter:ABC
+No match
+    Mark:\x{300}\x{1d172}\x{1d17b}
+No match
+    Number:9\x{660}
+No match
+    Punctuation:\x{66a},;
+No match
+    Symbol:\x{6de}<>\x{fffc}
+No match
+    Cf-property:\x{ad}\x{600}\x{601}\x{602}\x{603}\x{604}\x{6dd}\x{70f}
+No match
+    \x{180e}
+No match
+    \x{200b}\x{200c}\x{200d}\x{200e}\x{200f}
+No match
+    \x{202a}\x{202b}\x{202c}\x{202d}\x{202e}
+No match
+    \x{202f}
+No match
+    \x{2060}\x{2061}\x{2062}\x{2063}\x{2064}
+No match
+    \x{206a}\x{206b}\x{206c}\x{206d}\x{206e}\x{206f}
+No match
+    \x{feff}
+No match
+    \x{fff9}\x{fffa}\x{fffb}
+No match
+    \x{110bd}
+No match
+    \x{1d173}\x{1d174}\x{1d175}\x{1d176}\x{1d177}\x{1d178}\x{1d179}\x{1d17a}
+No match
+    \x{e0001}
+No match
+    \x{e0020}\x{e0030}\x{e0040}\x{e0050}\x{e0060}\x{e0070}\x{e007f}
+No match
+
+/^[[:^punct:]]+$/8W
+    abcde  
+ 0: abcde
+    ** Failers
+No match
+    \$+<=>^`|~
+No match
+    !\"#%&'()*,-./:;?@[\\]_{}
+No match
+    \x{a1}\x{a7}  
+No match
+    \x{37e} 
+No match
+
+/[RST]+/8iW
+    Ss\x{17f}
+ 0: Ss\x{17f}
+    
+/[R-T]+/8iW 
+    Ss\x{17f}
+ 0: Ss\x{17f}
+
+/[q-u]+/8iW 
+    Ss\x{17f}
+ 0: Ss\x{17f}
+
+/^s?c/mi8
+    scat
+ 0: sc
+
+/[A-`]/i8
+    abcdefghijklmno
+ 0: a
+
+/\C\X*QT/8
+    Ӆ\x0aT
+No match
+
+/[\pS#moq]/
+    =
+ 0: =
+
+/[[:punct:]]/8W
+    \xc2\xb4
+No match
+    \x{b4} 
+No match
+
+/[[:^ascii:]]/8W
+    \x{100}
+ 0: \x{100}
+    \x{200}
+ 0: \x{200}
+    \x{300}
+ 0: \x{300}
+    \x{37e}
+ 0: \x{37e}
+    a
+No match
+    9
+No match
+    g
+No match
+
+/[[:^ascii:]\w]/8W
+    a
+ 0: a
+    9
+ 0: 9
+    g
+ 0: g
+    \x{100}
+ 0: \x{100}
+    \x{200}
+ 0: \x{200}
+    \x{300}
+ 0: \x{300}
+    \x{37e}
+ 0: \x{37e}
+
+/[\w[:^ascii:]]/8W
+    a
+ 0: a
+    9
+ 0: 9
+    g
+ 0: g
+    \x{100}
+ 0: \x{100}
+    \x{200}
+ 0: \x{200}
+    \x{300}
+ 0: \x{300}
+    \x{37e}
+ 0: \x{37e}
+
+/[^[:ascii:]\W]/8W
+    a
+No match
+    9
+No match
+    g
+No match
+    \x{100}
+ 0: \x{100}
+    \x{200}
+ 0: \x{200}
+    \x{300}
+No match
+    \x{37e}
+No match
+
+/[[:^ascii:]a]/8W
+    a
+ 0: a
+    9
+No match
+    g
+No match
+    \x{100}
+ 0: \x{100}
+    \x{200}
+ 0: \x{200}
+    \x{37e}
+ 0: \x{37e}
+
+/-- End of testinput6 --/

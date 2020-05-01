@@ -1,0 +1,10 @@
+[ req ]
+distinguished_name = req_distinguished_name
+prompt             = no
+# Restrict to non-UTF8 PrintableStrings.
+string_mask        = nombstr
+
+[ req_distinguished_name ]
+C  = NL
+O  = PolarSSL
+CN = PolarSSL Server 1

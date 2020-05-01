@@ -1,0 +1,99 @@
+%class ProtoParser
+%start file
+
+file =
+    directives messages {
+        $$ = array(
+            "directives" => $1,
+            "messages" => $2
+        );
+    }.
+
+directives =
+    {
+        $$ = array();
+    } |
+    directive semicolon directives {
+        $$ = array_merge(array($1), $3);
+    }.
+
+directive =
+    include string {
+        $$ = array(
+            "type" => "include",
+            "file" => $2
+        );
+    }.
+
+messages =
+    msgspec {
+        $$ = array($1);
+    } |
+    msgspec messages {
+        $$ = array_merge(array($1), $2);
+    }.
+
+msgspec =
+    message name spar entries epar semicolon {
+    $$ = array(
+        "name" => $2,
+        "entries" => $4
+    );
+}.
+
+entries =
+    entry {
+        $$ = array($1);
+    } |
+    entry entries {
+        $$ = array_merge(array($1), $2);
+    }.
+
+entry =
+    cardinality type name equals number semicolon {
+        $$ = array(
+            "cardinality" => $1,
+            "type" => $2,
+            "name" => $3,
+            "id" => $5
+        );
+    }.
+
+cardinality =
+    repeated {
+        $$ = "repeated";
+    } |
+    optional {
+        $$ = "optional";
+    } |
+    required {
+        $$ = "required";
+    } |
+    required repeated {
+        $$ = "required repeated";
+    }.
+
+type =
+    uint {
+        $$ = array(
+            "type" => "uint",
+            "size" => $1
+        );
+    } |
+    data {
+        $$ = array(
+            "type" => "data"
+        );
+    } |
+    data srpar string erpar {
+        $$ = array(
+            "type" => "constdata",
+            "size" => $3
+        );
+    } |
+    message name {
+        $$ = array(
+            "type" => "message",
+            "message" => $2
+        );
+    }.

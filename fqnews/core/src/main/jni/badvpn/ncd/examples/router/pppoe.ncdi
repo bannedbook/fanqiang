@@ -1,0 +1,296 @@
+include_guard "pppoe"
+
+template pppoe {
+    alias("_arg0") dev;
+    alias("_arg1") username;
+    alias("_arg2") password;
+    alias("_arg3") pre_up_template;
+
+    # Choose which NCD interpreter will be used for the pppd event scripts.
+    var("/usr/local/badvpn/bin/badvpn-ncd") ncd_interpreter_path;
+
+    # Retry point here.
+    var("false") retrying;
+    backtrack_point() retry_point;
+    If (retrying) {
+        sleep("5000");
+    };
+    retrying->set("true");
+
+    # Create a temporary directory.
+    concat("/run/ncd-pppoe-", dev) run_dir;
+    run({"/bin/rm", "-rf", run_dir}, {});
+    run({"/bin/mkdir", run_dir}, {"/bin/rm", "-rf", run_dir});
+
+    # Build paths for pppd scripts and other files.
+    concat(run_dir, "/ncd-request.socket") socket_path;
+    concat(run_dir, "/pppoe.pid") pppoe_pid_path;
+    concat(run_dir, "/pap-secrets") pap_secrets_path;
+    concat(run_dir, "/chap-secrets") chap_secrets_path;
+    concat(run_dir, "/pppd2.tdb") pppdb_path;
+    concat(run_dir, "/resolv.conf") resolv_conf_path;
+    concat(run_dir, "/script-auth-up") path_auth_up;
+    concat(run_dir, "/script-auth-down") path_auth_down;
+    concat(run_dir, "/script-auth-fail") path_auth_fail;
+    concat(run_dir, "/script-ip-pre-up") path_ip_pre_up;
+    concat(run_dir, "/script-ip-up") path_ip_up;
+    concat(run_dir, "/script-ip-down") path_ip_down;
+    concat(run_dir, "/script-ipv6-up") path_ipv6_up;
+    concat(run_dir, "/script-ipv6-down") path_ipv6_down;
+    concat(run_dir, "/script-ipx-up") path_ipx_up;
+    concat(run_dir, "/script-ipx-down") path_ipx_down;
+
+    # Write secrets files.
+    call("pppoe__write_secrets", {pap_secrets_path, username, password});
+    call("pppoe__write_secrets", {chap_secrets_path, username, password});
+
+    # Write pppd scripts. These will contact us via the request socket.
+    call("pppoe__write_script", {"ip-pre-up", path_ip_pre_up});
+    call("pppoe__write_script", {"ip-up", path_ip_up});
+    call("pppoe__write_script", {"ip-down", path_ip_down});
+
+    # Build path arguments for pppd;
+    concat("pid-dir=", run_dir) arg_pid_dir;
+    concat("pap-secrets=", pap_secrets_path) arg_pap_secrets;
+    concat("chap-secrets=", chap_secrets_path) arg_chap_secrets;
+    concat("pppdb=", pppdb_path) arg_pppdb;
+    concat("resolv.conf=", resolv_conf_path) arg_resolv_conf;
+    concat("auth-up=", path_auth_up) arg_auth_up;
+    concat("auth-down=", path_auth_down) arg_auth_down;
+    concat("auth-fail=", path_auth_fail) arg_auth_fail;
+    concat("ip-pre-up=", path_ip_pre_up) arg_ip_pre_up;
+    concat("ip-up=", path_ip_up) arg_ip_up;
+    concat("ip-down=", path_ip_down) arg_ip_down;
+    concat("ipv6-up=", path_ipv6_up) arg_ipv6_up;
+    concat("ipv6-down=", path_ipv6_down) arg_ipv6_down;
+    concat("ipx-up=", path_ipx_up) arg_ipx_up;
+    concat("ipx-down=", path_ipx_down) arg_ipx_down;
+
+    # Create state variables and blockers. When the request server
+    # receives requests it will update those variables and blockers.
+    var("down") state;
+    var("") current_ifname;
+    var("") current_local_ip;
+    var("") current_remote_ip;
+    value({}) current_dns_servers;
+    blocker() ip_pre_up_blocker;
+    blocker() ip_pre_up_done_blocker;
+    blocker() ip_up_blocker;
+
+    # Start request server.
+    sys.request_server({"unix", socket_path}, "pppoe__request_handler", {});
+
+    # Start pppd.
+    sys.start_process({
+        "/usr/sbin/pppd", "nodetach", "plugin", "rp-pppoe.so", dev, "noipdefault", "hide-password",
+        "usepeerdns", "user", username,
+        "path", arg_pid_dir, "path", arg_pap_secrets, "path", arg_chap_secrets, "path", arg_pppdb,
+        "path", arg_resolv_conf,
+        "path", arg_auth_up, "path", arg_auth_down, "path", arg_auth_fail, "path", arg_ip_pre_up,
+        "path", arg_ip_up, "path", arg_ip_down, "path", arg_ipv6_up, "path", arg_ipv6_down,
+        "path", arg_ipx_up, "path", arg_ipx_down
+    }, "", ["deinit_kill_time":"2000"]) pppd;
+
+    # Start a process which will cause retrying when pppd dies.
+    spawn("pppoe__pppd_wait", {});
+
+    # Wait for ip-pre-up.
+    ip_pre_up_blocker->use();
+
+    # Grab the current state variables, so the user doesn't
+    # see any unexpected changes.
+    var(current_ifname) ifname;
+    var(current_local_ip) local_ip;
+    var(current_remote_ip) remote_ip;
+    var(current_dns_servers) dns_servers;
+
+    # Call pre-up callback template.
+    call_with_caller_target(pre_up_template, {ifname, local_ip, remote_ip, dns_servers}, "_caller");
+
+    # Allow pre-up script to terminate.
+    ip_pre_up_done_blocker->up();
+
+    # Wait for connection to go up.
+    ip_up_blocker->use();
+}
+
+template pppoe__pppd_wait {
+    # Wait for pppd to die.
+    _caller.pppd->wait();
+
+    # Retry.
+    _caller.retry_point->go();
+}
+
+template pppoe__write_secrets {
+    alias("_arg0") file_path;
+    alias("_arg1") username;
+    alias("_arg2") password;
+
+    # Escape username and password.
+    regex_replace(username, {"\""}, {"\\\""}) username_esc;
+    regex_replace(password, {"\""}, {"\\\""}) password_esc;
+
+    # Write empty file and chmod it.
+    file_write(file_path, "");
+    run({"/bin/chmod", "600", file_path}, {});
+
+    # Build contents.
+    concat("\"", username_esc, "\" * \"", password_esc, "\"\n") contents;
+
+    # Write file.
+    file_write(file_path, contents);
+}
+
+template pppoe__write_script {
+    alias("_arg0") event;
+    alias("_arg1") script_path;
+
+    # This string is an NCD script which will be run by pppd.
+    # When run, it will contact us via the request server,
+    # and the requests will be processed in pppoe__request_handler.
+    var("#!<NCD_INTERPRETER_PATH>
+
+process main {
+    # Hardcoded strings.
+    var(\"<EVENT>\") hardcoded_event;
+    var(\"<SOCKET>\") hardcoded_socket;
+
+    # Start timeout to kill us after some time if we don't manage
+    # to contact the server.
+    spawn(\"timeout_process\", {});
+
+    # Build event data map.
+    getargs() args;
+    value([\"EVENT\":hardcoded_event, \"ARGS\":args]) msg_map;
+    var({\"DEVICE\", \"IFNAME\", \"IPLOCAL\", \"IPREMOTE\", \"PEERNAME\", \"LOCALNAME\",
+         \"SPEED\", \"ORIG_UID\", \"PPPLOGNAME\", \"CONNECT_TIME\", \"BYTES_SENT\",
+         \"BYTES_RCVD\", \"LINKNAME\", \"DNS1\", \"DNS2\", \"WINS1\", \"WINS2\"}) var_names;
+    Foreach (var_names As var_name) {
+        getenv(var_name) env;
+        If (env.exists) {
+            msg_map->insert(var_name, env);
+        };
+    };
+
+    # Connect to socket.
+    sys.request_client({\"unix\", hardcoded_socket}) client;
+
+    # Send request.
+    client->request(msg_map, \"reply_handler\", \"finished_handler\", {});
+}
+
+template reply_handler {
+    print();
+}
+
+template finished_handler {
+    # Request was received by server, exit now.
+    exit(\"0\");
+}
+
+template timeout_process {
+    # Sleep some time.
+    sleep(\"5000\");
+    # Timed out, exit now.
+    exit(\"1\");
+}
+
+"   ) script_contents_template;
+
+    # Replace some constants in the script with the right values.
+    regex_replace(script_contents_template,
+                  {"<NCD_INTERPRETER_PATH>", "<EVENT>", "<SOCKET>"},
+                  {_caller.ncd_interpreter_path, event, _caller.socket_path}
+    ) script_contents;
+
+    # Write the script.
+    file_write(script_path, script_contents);
+
+    # Make it executable.
+    run({"/bin/chmod", "+x", script_path}, {});
+}
+
+template pppoe__request_handler {
+    alias("_caller") pppoe;
+
+    # Get event type from request.
+    value(_request.data) request;
+    request->get("EVENT") event;
+
+    # Match to known types.
+    val_equal(event, "ip-down") is_ip_down;
+    val_equal(event, "ip-pre-up") is_ip_pre_up;
+    val_equal(event, "ip-up") is_ip_up;
+
+    If (is_ip_down) {
+        # Set state.
+        pppoe.state->set("down");
+
+        # Set blockers down.
+        pppoe.ip_up_blocker->down();
+        pppoe.ip_pre_up_done_blocker->down();
+        pppoe.ip_pre_up_blocker->down();
+    }
+    Elif (is_ip_pre_up) {
+        # Expecting to be in "down" state here.
+        val_different(pppoe.state, "down") state_is_wrong;
+        If (state_is_wrong) {
+            pppoe.retry_point->go();
+            _request->finish();
+        };
+
+        # Get variables from request.
+        request->get("IFNAME") ifname;
+        request->get("IPLOCAL") local_ip;
+        request->get("IPREMOTE") remote_ip;
+        request->try_get("DNS1") dns1;
+        request->try_get("DNS2") dns2;
+
+        # Write variables.
+        pppoe.current_ifname->set(ifname);
+        pppoe.current_local_ip->set(local_ip);
+        pppoe.current_remote_ip->set(remote_ip);
+        pppoe.current_dns_servers->reset({});
+        If (dns1.exists) {
+            pppoe.current_dns_servers->insert(pppoe.current_dns_servers.length, dns1);
+        };
+        If (dns2.exists) {
+            pppoe.current_dns_servers->insert(pppoe.current_dns_servers.length, dns2);
+        };
+
+        # Set state.
+        pppoe.state->set("pre-up");
+
+        # Set ip-pre-up blocker up.
+        pppoe.ip_pre_up_blocker->up();
+
+        # Wait for pre-up to be finished. This causes the script contacting
+        # us to not return until then, and effectively delays pppd in setting
+        # the device up and calling the ip-up script.
+        pppoe.ip_pre_up_done_blocker->use();
+    }
+    Elif(is_ip_up) {
+        # Expecting to be in "pre-up" state here.
+        val_different(pppoe.state, "pre-up") state_is_wrong;
+        If (state_is_wrong) {
+            pppoe.retry_point->go();
+            _request->finish();
+        };
+
+        # Set state.
+        pppoe.state->set("up");
+
+        # Set ip-up blocker up.
+        pppoe.ip_up_blocker->up();
+    };
+
+    # Finish request.
+    _request->finish();
+}
+
+template pppoe__escapeshellarg {
+    alias("_arg0") input;
+    regex_replace(input, {"'"}, {"\\'"}) replaced;
+    concat("'", replaced, "'") result;
+}

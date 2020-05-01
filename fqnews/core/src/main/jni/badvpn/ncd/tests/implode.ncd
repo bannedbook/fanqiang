@@ -1,0 +1,15 @@
+process main {
+    implode("X", {"a", "bb", "", "c"}) str;
+    strcmp(str, "aXbbXXc") a;
+    assert(a);
+
+    implode("", {"a", "b"}) str;
+    strcmp(str, "ab") a;
+    assert(a);
+
+    implode("X", {}) str;
+    strcmp(str, "") a;
+    assert(a);
+
+    exit("0");
+}

@@ -1,0 +1,38 @@
+process foo {
+    If ("true") {
+        If ("truee") {
+            var("A1") y;
+        } else {
+            If ("true") {
+                var("A11") q;
+            } else {
+                var("A22") q;
+            } t;
+            var(t.q) y;
+        } s;
+        var(s.y) x;
+    } elif ("true") {
+        var("B") x;
+    } else {
+        var("C") x;
+    } ifs;
+
+    val_equal(ifs.x, "A11") a;
+    assert(a);
+
+    var("a") v;
+    If ("false") {
+        v->set("b");
+    };
+    val_equal(v, "a") a;
+    assert(a);
+
+    var("a") v;
+    If ("true") {
+        v->set("b");
+    };
+    val_equal(v, "b") a;
+    assert(a);
+
+    exit("0");
+}

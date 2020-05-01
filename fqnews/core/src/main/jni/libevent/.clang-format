@@ -1,0 +1,63 @@
+---
+Language:          Cpp
+BasedOnStyle:      LLVM
+
+AccessModifierOffset: -4
+
+AlignAfterOpenBracket: DontAlign
+AlignEscapedNewlinesLeft: true
+# AlignOperands: true
+AlignTrailingComments: true
+
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+
+AlwaysBreakAfterDefinitionReturnType: All
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: false
+
+# BinPackArguments: false
+# BinPackParameters: true
+
+BreakBeforeBinaryOperators: false
+BreakBeforeBraces: Custom
+BraceWrapping: { AfterFunction: true }
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializersBeforeComma: true
+
+ColumnLimit:     80
+
+ContinuationIndentWidth: 4
+
+DerivePointerAlignment: false #XXX
+DisableFormat:   false
+ExperimentalAutoDetectBinPacking: false #XXX
+ForEachMacros:   [ LIST_FOREACH, SIMPLEQ_FOREACH, CIRCLEQ_FOREACH, TAILQ_FOREACH, TAILQ_FOREACH_REVERSE, HT_FOREACH ]
+
+IndentCaseLabels: false
+IndentFunctionDeclarationAfterType: false
+IndentWidth:     4
+IndentWrappedFunctionNames: false
+
+KeepEmptyLinesAtTheStartOfBlocks: true
+MaxEmptyLinesToKeep: 2
+
+PointerAlignment: Right #XXX
+
+# SpaceAfterCStyleCast: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles:  false
+SpacesInCStyleCastParentheses: false
+SpacesInParentheses: false
+Standard:        Cpp03
+TabWidth:        4
+UseTab:          Always
+SortIncludes:    false
+...

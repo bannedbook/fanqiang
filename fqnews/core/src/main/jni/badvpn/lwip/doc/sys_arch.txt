@@ -1,0 +1,307 @@
+sys_arch interface for lwIP
+
+Author: Adam Dunkels
+        Simon Goldschmidt
+
+The operating system emulation layer provides a common interface
+between the lwIP code and the underlying operating system kernel. The
+general idea is that porting lwIP to new architectures requires only
+small changes to a few header files and a new sys_arch
+implementation. It is also possible to do a sys_arch implementation
+that does not rely on any underlying operating system.
+
+The sys_arch provides semaphores, mailboxes and mutexes to lwIP. For the full
+lwIP functionality, multiple threads support can be implemented in the
+sys_arch, but this is not required for the basic lwIP
+functionality. Timer scheduling is implemented in lwIP, but can be implemented
+by the sys_arch port (LWIP_TIMERS_CUSTOM==1).
+
+In addition to the source file providing the functionality of sys_arch,
+the OS emulation layer must provide several header files defining
+macros used throughout lwip.  The files required and the macros they
+must define are listed below the sys_arch description.
+
+Semaphores can be either counting or binary - lwIP works with both
+kinds. Mailboxes should be implemented as a queue which allows multiple messages
+to be posted (implementing as a rendez-vous point where only one message can be
+posted at a time can have a highly negative impact on performance). A message
+in a mailbox is just a pointer, nothing more. 
+
+Semaphores are represented by the type "sys_sem_t" which is typedef'd
+in the sys_arch.h file. Mailboxes are equivalently represented by the
+type "sys_mbox_t". Mutexes are represented by the type "sys_mutex_t".
+lwIP does not place any restrictions on how these types are represented
+internally.
+
+Since lwIP 1.4.0, semaphore, mutexes and mailbox functions are prototyped in a way that
+allows both using pointers or actual OS structures to be used. This way, memory
+required for such types can be either allocated in place (globally or on the
+stack) or on the heap (allocated internally in the "*_new()" functions).
+
+The following functions must be implemented by the sys_arch:
+
+- void sys_init(void)
+
+  Is called to initialize the sys_arch layer.
+
+- err_t sys_sem_new(sys_sem_t *sem, u8_t count)
+
+  Creates a new semaphore. The semaphore is allocated to the memory that 'sem'
+  points to (which can be both a pointer or the actual OS structure).
+  The "count" argument specifies the initial state of the semaphore (which is
+  either 0 or 1).
+  If the semaphore has been created, ERR_OK should be returned. Returning any
+  other error will provide a hint what went wrong, but except for assertions,
+  no real error handling is implemented.
+
+- void sys_sem_free(sys_sem_t *sem)
+
+  Deallocates a semaphore.
+
+- void sys_sem_signal(sys_sem_t *sem)
+
+  Signals a semaphore.
+
+- u32_t sys_arch_sem_wait(sys_sem_t *sem, u32_t timeout)
+
+  Blocks the thread while waiting for the semaphore to be signaled. If the
+  "timeout" argument is non-zero, the thread should only be blocked for the
+  specified time (measured in milliseconds). If the "timeout" argument is zero,
+  the thread should be blocked until the semaphore is signalled.
+
+  The return value is SYS_ARCH_TIMEOUT if the semaphore wasn't signaled within
+  the specified time or any other value if it was signaled (with or without
+  waiting).
+
+  Notice that lwIP implements a function with a similar name,
+  sys_sem_wait(), that uses the sys_arch_sem_wait() function.
+
+- int sys_sem_valid(sys_sem_t *sem)
+
+  Returns 1 if the semaphore is valid, 0 if it is not valid.
+  When using pointers, a simple way is to check the pointer for != NULL.
+  When directly using OS structures, implementing this may be more complex.
+  This may also be a define, in which case the function is not prototyped.
+
+- void sys_sem_set_invalid(sys_sem_t *sem)
+
+  Invalidate a semaphore so that sys_sem_valid() returns 0.
+  ATTENTION: This does NOT mean that the semaphore shall be deallocated:
+  sys_sem_free() is always called before calling this function!
+  This may also be a define, in which case the function is not prototyped.
+
+- void sys_mutex_new(sys_mutex_t *mutex)
+
+  Creates a new mutex. The mutex is allocated to the memory that 'mutex'
+  points to (which can be both a pointer or the actual OS structure).
+  If the mutex has been created, ERR_OK should be returned. Returning any
+  other error will provide a hint what went wrong, but except for assertions,
+  no real error handling is implemented.
+
+- void sys_mutex_free(sys_mutex_t *mutex)
+
+  Deallocates a mutex.
+
+- void sys_mutex_lock(sys_mutex_t *mutex)
+  
+  Blocks the thread until the mutex can be grabbed.
+
+- void sys_mutex_unlock(sys_mutex_t *mutex)
+
+  Releases the mutex previously locked through 'sys_mutex_lock()'.
+
+- void sys_mutex_valid(sys_mutex_t *mutex)
+
+  Returns 1 if the mutes is valid, 0 if it is not valid.
+  When using pointers, a simple way is to check the pointer for != NULL.
+  When directly using OS structures, implementing this may be more complex.
+  This may also be a define, in which case the function is not prototyped.
+
+- void sys_mutex_set_invalid(sys_mutex_t *mutex)
+
+  Invalidate a mutex so that sys_mutex_valid() returns 0.
+  ATTENTION: This does NOT mean that the mutex shall be deallocated:
+  sys_mutex_free() is always called before calling this function!
+  This may also be a define, in which case the function is not prototyped.
+
+- err_t sys_mbox_new(sys_mbox_t *mbox, int size)
+
+  Creates an empty mailbox for maximum "size" elements. Elements stored
+  in mailboxes are pointers. You have to define macros "_MBOX_SIZE"
+  in your lwipopts.h, or ignore this parameter in your implementation
+  and use a default size.
+  If the mailbox has been created, ERR_OK should be returned. Returning any
+  other error will provide a hint what went wrong, but except for assertions,
+  no real error handling is implemented.
+
+- void sys_mbox_free(sys_mbox_t *mbox)
+
+  Deallocates a mailbox. If there are messages still present in the
+  mailbox when the mailbox is deallocated, it is an indication of a
+  programming error in lwIP and the developer should be notified.
+
+- void sys_mbox_post(sys_mbox_t *mbox, void *msg)
+
+  Posts the "msg" to the mailbox. This function have to block until
+  the "msg" is really posted.
+
+- err_t sys_mbox_trypost(sys_mbox_t *mbox, void *msg)
+
+  Try to post the "msg" to the mailbox. Returns ERR_MEM if this one
+  is full, else, ERR_OK if the "msg" is posted.
+
+- u32_t sys_arch_mbox_fetch(sys_mbox_t *mbox, void **msg, u32_t timeout)
+
+  Blocks the thread until a message arrives in the mailbox, but does
+  not block the thread longer than "timeout" milliseconds (similar to
+  the sys_arch_sem_wait() function). If "timeout" is 0, the thread should
+  be blocked until a message arrives. The "msg" argument is a result
+  parameter that is set by the function (i.e., by doing "*msg =
+  ptr"). The "msg" parameter maybe NULL to indicate that the message
+  should be dropped.
+
+  The return values are the same as for the sys_arch_sem_wait() function:
+  SYS_ARCH_TIMEOUT if there was a timeout, any other value if a messages
+  is received.
+
+  Note that a function with a similar name, sys_mbox_fetch(), is
+  implemented by lwIP. 
+
+- u32_t sys_arch_mbox_tryfetch(sys_mbox_t *mbox, void **msg)
+
+  This is similar to sys_arch_mbox_fetch, however if a message is not
+  present in the mailbox, it immediately returns with the code
+  SYS_MBOX_EMPTY. On success 0 is returned.
+
+  To allow for efficient implementations, this can be defined as a
+  function-like macro in sys_arch.h instead of a normal function. For
+  example, a naive implementation could be:
+    #define sys_arch_mbox_tryfetch(mbox,msg) \
+      sys_arch_mbox_fetch(mbox,msg,1)
+  although this would introduce unnecessary delays.
+
+- int sys_mbox_valid(sys_mbox_t *mbox)
+
+  Returns 1 if the mailbox is valid, 0 if it is not valid.
+  When using pointers, a simple way is to check the pointer for != NULL.
+  When directly using OS structures, implementing this may be more complex.
+  This may also be a define, in which case the function is not prototyped.
+
+- void sys_mbox_set_invalid(sys_mbox_t *mbox)
+
+  Invalidate a mailbox so that sys_mbox_valid() returns 0.
+  ATTENTION: This does NOT mean that the mailbox shall be deallocated:
+  sys_mbox_free() is always called before calling this function!
+  This may also be a define, in which case the function is not prototyped.
+
+If threads are supported by the underlying operating system and if
+such functionality is needed in lwIP, the following function will have
+to be implemented as well:
+
+- sys_thread_t sys_thread_new(char *name, void (* thread)(void *arg), void *arg, int stacksize, int prio)
+
+  Starts a new thread named "name" with priority "prio" that will begin its
+  execution in the function "thread()". The "arg" argument will be passed as an
+  argument to the thread() function. The stack size to used for this thread is
+  the "stacksize" parameter. The id of the new thread is returned. Both the id
+  and the priority are system dependent.
+
+When lwIP is used from more than one context (e.g. from multiple threads OR from
+main-loop and from interrupts), the SYS_LIGHTWEIGHT_PROT protection SHOULD be enabled!
+
+- sys_prot_t sys_arch_protect(void)
+
+  This optional function does a "fast" critical region protection. This function
+  is only called during very short critical regions. An embedded system which
+  supports ISR-based drivers might want to implement this function by disabling
+  interrupts. Task-based systems might want to implement this by using a mutex
+  or disabling tasking. This function should support recursive calls from the
+  same task or interrupt. In other words, sys_arch_protect() could be called
+  while already protected.
+
+  The return value is opaque to lwip and passed to the sys_arch_unprotect() call
+  matching the sys_arch_protect() call at the same nesting level. This value
+  might be used to restore the status. However implementations may depend on
+  every call to sys_arch_protect() having a matching call to sys_arch_unprotect()
+  and thus can use a nesting count or a recursive mutex.
+
+  sys_arch_protect() is only required if your port is supporting an operating
+  system.
+
+- void sys_arch_unprotect(sys_prot_t pval)
+
+  This optional function does a "fast" exit of critical region protection
+  nesting level. The value passed in pval is the opaque value returned the
+  respective call to sys_arch_protect(). See the documentation for
+  sys_arch_protect() for more information. This function is only required if
+  your port is supporting an operating system.
+
+For some configurations, you also need:
+
+- u32_t sys_now(void)
+
+  This optional function returns the current time in milliseconds (don't care
+  for wraparound, this is only used for time diffs).
+  Not implementing this function means you cannot use some modules (e.g. TCP
+  timestamps, internal timeouts for NO_SYS==1).
+
+
+Note:
+
+Be careful with using mem_malloc() in sys_arch. When malloc() refers to
+mem_malloc() you can run into a circular function call problem. In mem.c
+mem_init() tries to allcate a semaphore using mem_malloc, which of course
+can't be performed when sys_arch uses mem_malloc.
+
+-------------------------------------------------------------------------------
+Additional files required for the "OS support" emulation layer:
+-------------------------------------------------------------------------------
+
+cc.h       - Architecture environment, some compiler specific, some
+             environment specific (probably should move env stuff 
+             to sys_arch.h.)
+
+  Typedefs for the types used by lwip -
+    u8_t, s8_t, u16_t, s16_t, u32_t, s32_t, mem_ptr_t
+
+  Compiler hints for packing lwip's structures -
+    PACK_STRUCT_FIELD(x)
+    PACK_STRUCT_STRUCT
+    PACK_STRUCT_BEGIN
+    PACK_STRUCT_END
+
+  Platform specific diagnostic output -
+    LWIP_PLATFORM_DIAG(x)    - non-fatal, print a message.
+    LWIP_PLATFORM_ASSERT(x)  - fatal, print message and abandon execution.
+    Portability defines for printf formatters:
+    U16_F, S16_F, X16_F, U32_F, S32_F, X32_F, SZT_F
+
+  "lightweight" synchronization mechanisms -
+    SYS_ARCH_DECL_PROTECT(x) - declare a protection state variable.
+    SYS_ARCH_PROTECT(x)      - enter protection mode.
+    SYS_ARCH_UNPROTECT(x)    - leave protection mode.
+
+  If the compiler does not provide memset() this file must include a
+  definition of it, or include a file which defines it.
+
+  This file must either include a system-local <errno.h> which defines
+  the standard *nix error codes (or define LWIP_ERRNO_INCLUDE to that file name),
+  or it should #define LWIP_PROVIDE_ERRNO to make lwip/arch.h define the codes
+  which are used throughout.
+
+
+perf.h     - Architecture specific performance measurement.
+  Measurement calls made throughout lwip, these can be defined to nothing.
+    PERF_START               - start measuring something.
+    PERF_STOP(x)             - stop measuring something, and record the result.
+
+sys_arch.h - Tied to sys_arch.c
+
+  Arch dependent types for the following objects:
+    sys_sem_t, sys_mbox_t, sys_thread_t,
+  And, optionally:
+    sys_prot_t
+
+  Defines to set vars of sys_mbox_t and sys_sem_t to NULL.
+    SYS_MBOX_NULL NULL
+    SYS_SEM_NULL NULL

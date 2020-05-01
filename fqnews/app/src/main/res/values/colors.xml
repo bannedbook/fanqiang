@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#009789</color>
+    <color name="colorAccent">#02C8B4</color>
+
+    <color name="selected_item_background">#4c009789</color>
+
+    <!-- Dark Theme specific colors -->
+    <color name="colorPrimaryDark">#00665C</color>
+    <color name="colorBackground">#202020</color>
+    <color name="color_unread">#ffffff</color>
+    <color name="color_read">#9e9e9e</color>
+    <color name="bottom_navigation_disable">#7bffffff</color>
+    <color name="quote_background_dark">#383b3f</color>
+    <color name="quote_left_dark">#686b6f</color>
+    <color name="article_text_dark">#C0C0C0</color>
+    <color name="subtitle_dark">#8c8c8c</color>
+    <color name="subtitle_border_dark">#303030</color>
+
+    <!-- Light Theme specific colors -->
+    <color name="colorPrimaryLight">#00665C</color>
+    <color name="colorBackgroundLight">#f6f6f6</color>
+    <color name="color_unread_light">#000000</color>
+    <color name="color_read_light">#9e9e9e</color>
+    <color name="bottom_navigation_disable_light">#7b000000</color>
+    <color name="quote_background_light">#e6e6e6</color>
+    <color name="quote_left_light">#a6a6a6</color>
+    <color name="article_text_light">#000000</color>
+    <color name="subtitle_light">#666666</color>
+    <color name="subtitle_border_light">#ddd</color>
+
+    <!-- Black Theme specific colors -->
+    <color name="colorAccentBlack">#02C8B4</color>
+    <color name="colorPrimaryBlack">#111111</color>
+    <color name="colorPrimaryDarkBlack">#000000</color>
+    <color name="colorBackgroundBlack">#000000</color>
+    <color name="color_unread_black">#ffffff</color>
+    <color name="color_read_black">#9e9e9e</color>
+    <color name="bottom_navigation_disable_black">#7bffffff</color>
+    <color name="quote_background_black">#383b3f</color>
+    <color name="quote_left_black">#686b6f</color>
+    <color name="article_text_black">#C0C0C0</color>
+    <color name="subtitle_black">#8c8c8c</color>
+    <color name="subtitle_border_black">#303030</color>
+
+</resources>

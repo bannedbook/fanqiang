@@ -1,0 +1,1086 @@
+/* BEGIN_HEADER */
+#include "mbedtls/pk.h"
+
+/* For error codes */
+#include "mbedtls/asn1.h"
+#include "mbedtls/base64.h"
+#include "mbedtls/ecp.h"
+#include "mbedtls/rsa.h"
+
+#include <limits.h>
+#include <stdint.h>
+
+static int rnd_std_rand( void *rng_state, unsigned char *output, size_t len );
+
+#define RSA_KEY_SIZE 512
+#define RSA_KEY_LEN   64
+
+static int pk_genkey( mbedtls_pk_context *pk )
+{
+    ((void) pk);
+
+#if defined(MBEDTLS_RSA_C) && defined(MBEDTLS_GENPRIME)
+    if( mbedtls_pk_get_type( pk ) == MBEDTLS_PK_RSA )
+        return mbedtls_rsa_gen_key( mbedtls_pk_rsa( *pk ), rnd_std_rand, NULL, RSA_KEY_SIZE, 3 );
+#endif
+#if defined(MBEDTLS_ECP_C)
+    if( mbedtls_pk_get_type( pk ) == MBEDTLS_PK_ECKEY ||
+        mbedtls_pk_get_type( pk ) == MBEDTLS_PK_ECKEY_DH ||
+        mbedtls_pk_get_type( pk ) == MBEDTLS_PK_ECDSA )
+    {
+        int ret;
+        if( ( ret = mbedtls_ecp_group_load( &mbedtls_pk_ec( *pk )->grp,
+                                      MBEDTLS_ECP_DP_SECP192R1 ) ) != 0 )
+            return( ret );
+
+        return mbedtls_ecp_gen_keypair( &mbedtls_pk_ec( *pk )->grp, &mbedtls_pk_ec( *pk )->d,
+                                &mbedtls_pk_ec( *pk )->Q, rnd_std_rand, NULL );
+    }
+#endif
+    return( -1 );
+}
+
+#if defined(MBEDTLS_RSA_C)
+int mbedtls_rsa_decrypt_func( void *ctx, int mode, size_t *olen,
+                       const unsigned char *input, unsigned char *output,
+                       size_t output_max_len )
+{
+    return( mbedtls_rsa_pkcs1_decrypt( (mbedtls_rsa_context *) ctx,
+                                       rnd_std_rand, NULL, mode, olen,
+                                       input, output, output_max_len ) );
+}
+int mbedtls_rsa_sign_func( void *ctx,
+                   int (*f_rng)(void *, unsigned char *, size_t), void *p_rng,
+                   int mode, mbedtls_md_type_t md_alg, unsigned int hashlen,
+                   const unsigned char *hash, unsigned char *sig )
+{
+    ((void) f_rng);
+    ((void) p_rng);
+    return( mbedtls_rsa_pkcs1_sign( (mbedtls_rsa_context *) ctx, rnd_std_rand, NULL, mode,
+                            md_alg, hashlen, hash, sig ) );
+}
+size_t mbedtls_rsa_key_len_func( void *ctx )
+{
+    return( ((const mbedtls_rsa_context *) ctx)->len );
+}
+#endif /* MBEDTLS_RSA_C */
+/* END_HEADER */
+
+/* BEGIN_DEPENDENCIES
+ * depends_on:MBEDTLS_PK_C
+ * END_DEPENDENCIES
+ */
+
+/* BEGIN_CASE */
+void valid_parameters( )
+{
+    mbedtls_pk_context pk;
+    unsigned char buf[1];
+    size_t len;
+    void *options = NULL;
+
+    mbedtls_pk_init( &pk );
+
+    TEST_VALID_PARAM( mbedtls_pk_free( NULL ) );
+
+#if defined(MBEDTLS_ECDSA_C) && defined(MBEDTLS_ECP_RESTARTABLE)
+    TEST_VALID_PARAM( mbedtls_pk_restart_free( NULL ) );
+#endif
+
+    TEST_ASSERT( mbedtls_pk_setup( &pk, NULL ) ==
+                 MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+
+    /* In informational functions, we accept NULL where a context pointer
+     * is expected because that's what the library has done forever.
+     * We do not document that NULL is accepted, so we may wish to change
+     * the behavior in a future version. */
+    TEST_ASSERT( mbedtls_pk_get_bitlen( NULL ) == 0 );
+    TEST_ASSERT( mbedtls_pk_get_len( NULL ) == 0 );
+    TEST_ASSERT( mbedtls_pk_can_do( NULL, MBEDTLS_PK_NONE ) == 0 );
+
+    TEST_ASSERT( mbedtls_pk_sign_restartable( &pk,
+                                              MBEDTLS_MD_NONE,
+                                              NULL, 0,
+                                              buf, &len,
+                                              rnd_std_rand, NULL,
+                                              NULL ) ==
+                 MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+
+    TEST_ASSERT( mbedtls_pk_sign_restartable( &pk,
+                                              MBEDTLS_MD_NONE,
+                                              NULL, 0,
+                                              buf, &len,
+                                              rnd_std_rand, NULL,
+                                              NULL ) ==
+                 MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+
+    TEST_ASSERT( mbedtls_pk_sign( &pk,
+                                  MBEDTLS_MD_NONE,
+                                  NULL, 0,
+                                  buf, &len,
+                                  rnd_std_rand, NULL ) ==
+                 MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+
+    TEST_ASSERT( mbedtls_pk_verify_restartable( &pk,
+                                                MBEDTLS_MD_NONE,
+                                                NULL, 0,
+                                                buf, sizeof( buf ),
+                                                NULL ) ==
+                 MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+
+    TEST_ASSERT( mbedtls_pk_verify( &pk,
+                                    MBEDTLS_MD_NONE,
+                                    NULL, 0,
+                                    buf, sizeof( buf ) ) ==
+                 MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+
+    TEST_ASSERT( mbedtls_pk_verify_ext( MBEDTLS_PK_NONE, options,
+                                        &pk,
+                                        MBEDTLS_MD_NONE,
+                                        NULL, 0,
+                                        buf, sizeof( buf ) ) ==
+                 MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+
+    TEST_ASSERT( mbedtls_pk_encrypt( &pk,
+                                     NULL, 0,
+                                     NULL, &len, 0,
+                                     rnd_std_rand, NULL ) ==
+                 MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+
+    TEST_ASSERT( mbedtls_pk_decrypt( &pk,
+                                     NULL, 0,
+                                     NULL, &len, 0,
+                                     rnd_std_rand, NULL ) ==
+                 MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+
+#if defined(MBEDTLS_PK_PARSE_C)
+    TEST_ASSERT( mbedtls_pk_parse_key( &pk, NULL, 0, NULL, 1 ) ==
+                 MBEDTLS_ERR_PK_KEY_INVALID_FORMAT );
+
+    TEST_ASSERT( mbedtls_pk_parse_public_key( &pk, NULL, 0 ) ==
+                 MBEDTLS_ERR_PK_KEY_INVALID_FORMAT );
+#endif /* MBEDTLS_PK_PARSE_C */
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_PK_WRITE_C */
+void valid_parameters_pkwrite( data_t *key_data )
+{
+    mbedtls_pk_context pk;
+
+    /* For the write tests to be effective, we need a valid key pair. */
+    mbedtls_pk_init( &pk );
+    TEST_ASSERT( mbedtls_pk_parse_key( &pk,
+                                       key_data->x, key_data->len,
+                                       NULL, 0 ) == 0 );
+
+    TEST_ASSERT( mbedtls_pk_write_key_der( &pk, NULL, 0 ) ==
+                 MBEDTLS_ERR_ASN1_BUF_TOO_SMALL );
+
+    TEST_ASSERT( mbedtls_pk_write_pubkey_der( &pk, NULL, 0 ) ==
+                 MBEDTLS_ERR_ASN1_BUF_TOO_SMALL );
+
+#if defined(MBEDTLS_PEM_WRITE_C)
+    TEST_ASSERT( mbedtls_pk_write_key_pem( &pk, NULL, 0 ) ==
+                 MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL );
+
+    TEST_ASSERT( mbedtls_pk_write_pubkey_pem( &pk, NULL, 0 ) ==
+                 MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL );
+#endif /* MBEDTLS_PEM_WRITE_C */
+
+exit:
+    mbedtls_pk_free( &pk );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_CHECK_PARAMS:!MBEDTLS_PARAM_FAILED_ALT */
+void invalid_parameters( )
+{
+    size_t len;
+    unsigned char *null_buf = NULL;
+    unsigned char buf[1];
+    unsigned char *p = buf;
+    char str[1] = {0};
+    mbedtls_pk_context pk;
+    mbedtls_md_type_t valid_md = MBEDTLS_MD_SHA256;
+    void *options = buf;
+
+    (void) null_buf;
+    (void) p;
+    (void) str;
+
+    mbedtls_pk_init( &pk );
+
+    TEST_INVALID_PARAM( mbedtls_pk_init( NULL ) );
+
+#if defined(MBEDTLS_ECDSA_C) && defined(MBEDTLS_ECP_RESTARTABLE)
+    TEST_INVALID_PARAM( mbedtls_pk_restart_init( NULL ) );
+#endif
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_setup( NULL, NULL ) );
+
+#if defined(MBEDTLS_PK_RSA_ALT_SUPPORT)
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_setup_rsa_alt( NULL, buf,
+                                                      NULL, NULL, NULL ) );
+#endif
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_verify_restartable( NULL,
+                                                           MBEDTLS_MD_NONE,
+                                                           buf, sizeof( buf ),
+                                                           buf, sizeof( buf ),
+                                                           NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_verify_restartable( &pk,
+                                                           MBEDTLS_MD_NONE,
+                                                           NULL, sizeof( buf ),
+                                                           buf, sizeof( buf ),
+                                                           NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_verify_restartable( &pk,
+                                                           valid_md,
+                                                           NULL, 0,
+                                                           buf, sizeof( buf ),
+                                                           NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_verify_restartable( &pk,
+                                                           MBEDTLS_MD_NONE,
+                                                           buf, sizeof( buf ),
+                                                           NULL, sizeof( buf ),
+                                                           NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_verify( NULL,
+                                               MBEDTLS_MD_NONE,
+                                               buf, sizeof( buf ),
+                                               buf, sizeof( buf ) ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_verify( &pk,
+                                               MBEDTLS_MD_NONE,
+                                               NULL, sizeof( buf ),
+                                               buf, sizeof( buf ) ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_verify( &pk,
+                                               valid_md,
+                                               NULL, 0,
+                                               buf, sizeof( buf ) ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_verify( &pk,
+                                               MBEDTLS_MD_NONE,
+                                               buf, sizeof( buf ),
+                                               NULL, sizeof( buf ) ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_verify_ext( MBEDTLS_PK_NONE, options,
+                                                   NULL,
+                                                   MBEDTLS_MD_NONE,
+                                                   buf, sizeof( buf ),
+                                                   buf, sizeof( buf ) ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_verify_ext( MBEDTLS_PK_NONE, options,
+                                                   &pk,
+                                                   MBEDTLS_MD_NONE,
+                                                   NULL, sizeof( buf ),
+                                                   buf, sizeof( buf ) ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_verify_ext( MBEDTLS_PK_NONE, options,
+                                                   &pk,
+                                                   valid_md,
+                                                   NULL, 0,
+                                                   buf, sizeof( buf ) ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_verify_ext( MBEDTLS_PK_NONE, options,
+                                                   &pk,
+                                                   MBEDTLS_MD_NONE,
+                                                   buf, sizeof( buf ),
+                                                   NULL, sizeof( buf ) ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_sign_restartable( NULL,
+                                                         MBEDTLS_MD_NONE,
+                                                         buf, sizeof( buf ),
+                                                         buf, &len,
+                                                         rnd_std_rand, NULL,
+                                                         NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_sign_restartable( &pk,
+                                                         MBEDTLS_MD_NONE,
+                                                         NULL, sizeof( buf ),
+                                                         buf, &len,
+                                                         rnd_std_rand, NULL,
+                                                         NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_sign_restartable( &pk,
+                                                         valid_md,
+                                                         NULL, 0,
+                                                         buf, &len,
+                                                         rnd_std_rand, NULL,
+                                                         NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_sign_restartable( &pk,
+                                                         MBEDTLS_MD_NONE,
+                                                         buf, sizeof( buf ),
+                                                         NULL, &len,
+                                                         rnd_std_rand, NULL,
+                                                         NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_sign( NULL,
+                                             MBEDTLS_MD_NONE,
+                                             buf, sizeof( buf ),
+                                             buf, &len,
+                                             rnd_std_rand, NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_sign( &pk,
+                                             MBEDTLS_MD_NONE,
+                                             NULL, sizeof( buf ),
+                                             buf, &len,
+                                             rnd_std_rand, NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_sign( &pk,
+                                             valid_md,
+                                             NULL, 0,
+                                             buf, &len,
+                                             rnd_std_rand, NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_sign( &pk,
+                                             MBEDTLS_MD_NONE,
+                                             buf, sizeof( buf ),
+                                             NULL, &len,
+                                             rnd_std_rand, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_decrypt( NULL,
+                                                buf, sizeof( buf ),
+                                                buf, &len, sizeof( buf ),
+                                                rnd_std_rand, NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_decrypt( &pk,
+                                                NULL, sizeof( buf ),
+                                                buf, &len, sizeof( buf ),
+                                                rnd_std_rand, NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_decrypt( &pk,
+                                                buf, sizeof( buf ),
+                                                NULL, &len, sizeof( buf ),
+                                                rnd_std_rand, NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_decrypt( &pk,
+                                                buf, sizeof( buf ),
+                                                buf, NULL, sizeof( buf ),
+                                                rnd_std_rand, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_encrypt( NULL,
+                                                buf, sizeof( buf ),
+                                                buf, &len, sizeof( buf ),
+                                                rnd_std_rand, NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_encrypt( &pk,
+                                                NULL, sizeof( buf ),
+                                                buf, &len, sizeof( buf ),
+                                                rnd_std_rand, NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_encrypt( &pk,
+                                                buf, sizeof( buf ),
+                                                NULL, &len, sizeof( buf ),
+                                                rnd_std_rand, NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_encrypt( &pk,
+                                                buf, sizeof( buf ),
+                                                buf, NULL, sizeof( buf ),
+                                                rnd_std_rand, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_check_pair( NULL, &pk ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_check_pair( &pk, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_debug( NULL, NULL ) );
+
+#if defined(MBEDTLS_PK_PARSE_C)
+#if defined(MBEDTLS_FS_IO)
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_load_file( NULL, &p, &len ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_load_file( str, NULL, &len ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_load_file( str, &p, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_parse_keyfile( NULL, str, NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_parse_keyfile( &pk, NULL, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_parse_public_keyfile( NULL, str ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_parse_public_keyfile( &pk, NULL ) );
+#endif
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_parse_subpubkey( NULL, buf, &pk ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_parse_subpubkey( &null_buf, buf, &pk ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_parse_subpubkey( &p, NULL, &pk ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_parse_subpubkey( &p, buf, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_parse_key( NULL,
+                                                  buf, sizeof( buf ),
+                                                  buf, sizeof( buf ) ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_parse_key( &pk,
+                                                  NULL, sizeof( buf ),
+                                                  buf, sizeof( buf ) ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_parse_public_key( NULL,
+                                                         buf, sizeof( buf ) ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_parse_public_key( &pk,
+                                                         NULL, sizeof( buf ) ) );
+#endif /* MBEDTLS_PK_PARSE_C */
+
+#if defined(MBEDTLS_PK_WRITE_C)
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_write_pubkey( NULL, p, &pk ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_write_pubkey( &null_buf, p, &pk ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_write_pubkey( &p, NULL, &pk ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_write_pubkey( &p, p, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_write_pubkey_der( NULL,
+                                                         buf, sizeof( buf ) ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_write_pubkey_der( &pk,
+                                                         NULL, sizeof( buf ) ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_write_key_der( NULL,
+                                                      buf, sizeof( buf ) ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_write_key_der( &pk,
+                                                      NULL, sizeof( buf ) ) );
+
+#if defined(MBEDTLS_PEM_WRITE_C)
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_write_pubkey_pem( NULL,
+                                                         buf, sizeof( buf ) ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_write_pubkey_pem( &pk,
+                                                         NULL, sizeof( buf ) ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_write_key_pem( NULL,
+                                                      buf, sizeof( buf ) ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_PK_BAD_INPUT_DATA,
+                            mbedtls_pk_write_key_pem( &pk,
+                                                      NULL, sizeof( buf ) ) );
+#endif /* MBEDTLS_PEM_WRITE_C */
+
+#endif /* MBEDTLS_PK_WRITE_C */
+}
+/* END_CASE */
+
+/* BEGIN_CASE */
+void pk_utils( int type, int size, int len, char * name )
+{
+    mbedtls_pk_context pk;
+
+    mbedtls_pk_init( &pk );
+
+    TEST_ASSERT( mbedtls_pk_setup( &pk, mbedtls_pk_info_from_type( type ) ) == 0 );
+    TEST_ASSERT( pk_genkey( &pk ) == 0 );
+
+    TEST_ASSERT( (int) mbedtls_pk_get_type( &pk ) == type );
+    TEST_ASSERT( mbedtls_pk_can_do( &pk, type ) );
+    TEST_ASSERT( mbedtls_pk_get_bitlen( &pk ) == (unsigned) size );
+    TEST_ASSERT( mbedtls_pk_get_len( &pk ) == (unsigned) len );
+    TEST_ASSERT( strcmp( mbedtls_pk_get_name( &pk), name ) == 0 );
+
+exit:
+    mbedtls_pk_free( &pk );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_PK_PARSE_C:MBEDTLS_FS_IO */
+void mbedtls_pk_check_pair( char * pub_file, char * prv_file, int ret )
+{
+    mbedtls_pk_context pub, prv, alt;
+
+    mbedtls_pk_init( &pub );
+    mbedtls_pk_init( &prv );
+    mbedtls_pk_init( &alt );
+
+    TEST_ASSERT( mbedtls_pk_parse_public_keyfile( &pub, pub_file ) == 0 );
+    TEST_ASSERT( mbedtls_pk_parse_keyfile( &prv, prv_file, NULL ) == 0 );
+
+    TEST_ASSERT( mbedtls_pk_check_pair( &pub, &prv ) == ret );
+
+#if defined(MBEDTLS_RSA_C) && defined(MBEDTLS_PK_RSA_ALT_SUPPORT)
+    if( mbedtls_pk_get_type( &prv ) == MBEDTLS_PK_RSA )
+    {
+        TEST_ASSERT( mbedtls_pk_setup_rsa_alt( &alt, mbedtls_pk_rsa( prv ),
+                     mbedtls_rsa_decrypt_func, mbedtls_rsa_sign_func,
+                     mbedtls_rsa_key_len_func ) == 0 );
+        TEST_ASSERT( mbedtls_pk_check_pair( &pub, &alt ) == ret );
+    }
+#endif
+
+    mbedtls_pk_free( &pub );
+    mbedtls_pk_free( &prv );
+    mbedtls_pk_free( &alt );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_RSA_C */
+void pk_rsa_verify_test_vec( data_t * message_str, int digest, int mod,
+                             int radix_N, char * input_N, int radix_E,
+                             char * input_E, data_t * result_str,
+                             int result )
+{
+    unsigned char hash_result[1000];
+    mbedtls_rsa_context *rsa;
+    mbedtls_pk_context pk;
+    mbedtls_pk_restart_ctx *rs_ctx = NULL;
+#if defined(MBEDTLS_ECDSA_C) && defined(MBEDTLS_ECP_RESTARTABLE)
+    mbedtls_pk_restart_ctx ctx;
+
+    rs_ctx = &ctx;
+    mbedtls_pk_restart_init( rs_ctx );
+    // this setting would ensure restart would happen if ECC was used
+    mbedtls_ecp_set_max_ops( 1 );
+#endif
+
+    mbedtls_pk_init( &pk );
+
+    memset( hash_result, 0x00, 1000 );
+
+    TEST_ASSERT( mbedtls_pk_setup( &pk, mbedtls_pk_info_from_type( MBEDTLS_PK_RSA ) ) == 0 );
+    rsa = mbedtls_pk_rsa( pk );
+
+    rsa->len = mod / 8;
+    TEST_ASSERT( mbedtls_mpi_read_string( &rsa->N, radix_N, input_N ) == 0 );
+    TEST_ASSERT( mbedtls_mpi_read_string( &rsa->E, radix_E, input_E ) == 0 );
+
+
+    if( mbedtls_md_info_from_type( digest ) != NULL )
+        TEST_ASSERT( mbedtls_md( mbedtls_md_info_from_type( digest ), message_str->x, message_str->len, hash_result ) == 0 );
+
+    TEST_ASSERT( mbedtls_pk_verify( &pk, digest, hash_result, 0,
+                            result_str->x, mbedtls_pk_get_len( &pk ) ) == result );
+
+    TEST_ASSERT( mbedtls_pk_verify_restartable( &pk, digest, hash_result, 0,
+                    result_str->x, mbedtls_pk_get_len( &pk ), rs_ctx ) == result );
+
+exit:
+#if defined(MBEDTLS_ECDSA_C) && defined(MBEDTLS_ECP_RESTARTABLE)
+    mbedtls_pk_restart_free( rs_ctx );
+#endif
+    mbedtls_pk_free( &pk );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_RSA_C */
+void pk_rsa_verify_ext_test_vec( data_t * message_str, int digest,
+                                 int mod, int radix_N, char * input_N,
+                                 int radix_E, char * input_E,
+                                 data_t * result_str, int pk_type,
+                                 int mgf1_hash_id, int salt_len, int result )
+{
+    unsigned char hash_result[1000];
+    mbedtls_rsa_context *rsa;
+    mbedtls_pk_context pk;
+    mbedtls_pk_rsassa_pss_options pss_opts;
+    void *options;
+    size_t hash_len;
+
+    mbedtls_pk_init( &pk );
+
+    memset( hash_result, 0x00, 1000 );
+
+    TEST_ASSERT( mbedtls_pk_setup( &pk, mbedtls_pk_info_from_type( MBEDTLS_PK_RSA ) ) == 0 );
+    rsa = mbedtls_pk_rsa( pk );
+
+    rsa->len = mod / 8;
+    TEST_ASSERT( mbedtls_mpi_read_string( &rsa->N, radix_N, input_N ) == 0 );
+    TEST_ASSERT( mbedtls_mpi_read_string( &rsa->E, radix_E, input_E ) == 0 );
+
+
+    if( digest != MBEDTLS_MD_NONE )
+    {
+        TEST_ASSERT( mbedtls_md( mbedtls_md_info_from_type( digest ),
+                     message_str->x, message_str->len, hash_result ) == 0 );
+        hash_len = 0;
+    }
+    else
+    {
+        memcpy( hash_result, message_str->x, message_str->len );
+        hash_len = message_str->len;
+    }
+
+    if( mgf1_hash_id < 0 )
+    {
+        options = NULL;
+    }
+    else
+    {
+        options = &pss_opts;
+
+        pss_opts.mgf1_hash_id = mgf1_hash_id;
+        pss_opts.expected_salt_len = salt_len;
+    }
+
+    TEST_ASSERT( mbedtls_pk_verify_ext( pk_type, options, &pk,
+                                digest, hash_result, hash_len,
+                                result_str->x, mbedtls_pk_get_len( &pk ) ) == result );
+
+exit:
+    mbedtls_pk_free( &pk );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_ECDSA_C */
+void pk_ec_test_vec( int type, int id, data_t * key, data_t * hash,
+                     data_t * sig, int ret )
+{
+    mbedtls_pk_context pk;
+    mbedtls_ecp_keypair *eckey;
+
+    mbedtls_pk_init( &pk );
+
+
+    TEST_ASSERT( mbedtls_pk_setup( &pk, mbedtls_pk_info_from_type( type ) ) == 0 );
+
+    TEST_ASSERT( mbedtls_pk_can_do( &pk, MBEDTLS_PK_ECDSA ) );
+    eckey = mbedtls_pk_ec( pk );
+
+    TEST_ASSERT( mbedtls_ecp_group_load( &eckey->grp, id ) == 0 );
+    TEST_ASSERT( mbedtls_ecp_point_read_binary( &eckey->grp, &eckey->Q,
+                                        key->x, key->len ) == 0 );
+
+    TEST_ASSERT( mbedtls_pk_verify( &pk, MBEDTLS_MD_NONE,
+                            hash->x, hash->len, sig->x, sig->len ) == ret );
+
+exit:
+    mbedtls_pk_free( &pk );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_ECP_RESTARTABLE:MBEDTLS_ECDSA_C:MBEDTLS_ECDSA_DETERMINISTIC */
+void pk_sign_verify_restart( int pk_type, int grp_id, char *d_str,
+                              char *QX_str, char *QY_str,
+                              int md_alg, char *msg, char *sig_str,
+                              int max_ops, int min_restart, int max_restart )
+{
+    int ret, cnt_restart;
+    mbedtls_pk_restart_ctx rs_ctx;
+    mbedtls_pk_context prv, pub;
+    unsigned char hash[MBEDTLS_MD_MAX_SIZE];
+    unsigned char sig[MBEDTLS_ECDSA_MAX_LEN];
+    unsigned char sig_check[MBEDTLS_ECDSA_MAX_LEN];
+    size_t hlen, slen, slen_check;
+    const mbedtls_md_info_t *md_info;
+
+    mbedtls_pk_restart_init( &rs_ctx );
+    mbedtls_pk_init( &prv );
+    mbedtls_pk_init( &pub );
+    memset( hash, 0, sizeof( hash ) );
+    memset( sig, 0, sizeof( sig ) );
+    memset( sig_check, 0, sizeof( sig_check ) );
+
+    TEST_ASSERT( mbedtls_pk_setup( &prv, mbedtls_pk_info_from_type( pk_type ) ) == 0 );
+    TEST_ASSERT( mbedtls_ecp_group_load( &mbedtls_pk_ec( prv )->grp, grp_id ) == 0 );
+    TEST_ASSERT( mbedtls_mpi_read_string( &mbedtls_pk_ec( prv )->d, 16, d_str ) == 0 );
+
+    TEST_ASSERT( mbedtls_pk_setup( &pub, mbedtls_pk_info_from_type( pk_type ) ) == 0 );
+    TEST_ASSERT( mbedtls_ecp_group_load( &mbedtls_pk_ec( pub )->grp, grp_id ) == 0 );
+    TEST_ASSERT( mbedtls_ecp_point_read_string( &mbedtls_pk_ec( pub )->Q, 16, QX_str, QY_str ) == 0 );
+
+    slen_check = unhexify( sig_check, sig_str );
+
+    md_info = mbedtls_md_info_from_type( md_alg );
+    TEST_ASSERT( md_info != NULL );
+
+    hlen = mbedtls_md_get_size( md_info );
+    mbedtls_md( md_info, (const unsigned char *) msg, strlen( msg ), hash );
+
+    mbedtls_ecp_set_max_ops( max_ops );
+
+    slen = sizeof( sig );
+    cnt_restart = 0;
+    do {
+        ret = mbedtls_pk_sign_restartable( &prv, md_alg, hash, hlen,
+                                            sig, &slen, NULL, NULL, &rs_ctx );
+    } while( ret == MBEDTLS_ERR_ECP_IN_PROGRESS && ++cnt_restart );
+
+    TEST_ASSERT( ret == 0 );
+    TEST_ASSERT( slen == slen_check );
+    TEST_ASSERT( memcmp( sig, sig_check, slen ) == 0 );
+
+    TEST_ASSERT( cnt_restart >= min_restart );
+    TEST_ASSERT( cnt_restart <= max_restart );
+
+    cnt_restart = 0;
+    do {
+        ret = mbedtls_pk_verify_restartable( &pub, md_alg,
+                                 hash, hlen, sig, slen, &rs_ctx );
+    } while( ret == MBEDTLS_ERR_ECP_IN_PROGRESS && ++cnt_restart );
+
+    TEST_ASSERT( ret == 0 );
+    TEST_ASSERT( cnt_restart >= min_restart );
+    TEST_ASSERT( cnt_restart <= max_restart );
+
+    hash[0]++;
+    do {
+        ret = mbedtls_pk_verify_restartable( &pub, md_alg,
+                                 hash, hlen, sig, slen, &rs_ctx );
+    } while( ret == MBEDTLS_ERR_ECP_IN_PROGRESS );
+    TEST_ASSERT( ret != 0 );
+    hash[0]--;
+
+    sig[0]++;
+    do {
+        ret = mbedtls_pk_verify_restartable( &pub, md_alg,
+                                 hash, hlen, sig, slen, &rs_ctx );
+    } while( ret == MBEDTLS_ERR_ECP_IN_PROGRESS );
+    TEST_ASSERT( ret != 0 );
+    sig[0]--;
+
+    /* Do we leak memory when aborting? try verify then sign
+     * This test only makes sense when we actually restart */
+    if( min_restart > 0 )
+    {
+        ret = mbedtls_pk_verify_restartable( &pub, md_alg,
+                                 hash, hlen, sig, slen, &rs_ctx );
+        TEST_ASSERT( ret == MBEDTLS_ERR_ECP_IN_PROGRESS );
+        mbedtls_pk_restart_free( &rs_ctx );
+
+        slen = sizeof( sig );
+        ret = mbedtls_pk_sign_restartable( &prv, md_alg, hash, hlen,
+                                            sig, &slen, NULL, NULL, &rs_ctx );
+        TEST_ASSERT( ret == MBEDTLS_ERR_ECP_IN_PROGRESS );
+    }
+
+exit:
+    mbedtls_pk_restart_free( &rs_ctx );
+    mbedtls_pk_free( &prv );
+    mbedtls_pk_free( &pub );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA256_C */
+void pk_sign_verify( int type, int sign_ret, int verify_ret )
+{
+    mbedtls_pk_context pk;
+    unsigned char hash[50], sig[5000];
+    size_t sig_len;
+    void *rs_ctx = NULL;
+#if defined(MBEDTLS_ECDSA_C) && defined(MBEDTLS_ECP_RESTARTABLE)
+    mbedtls_pk_restart_ctx ctx;
+
+    rs_ctx = &ctx;
+    mbedtls_pk_restart_init( rs_ctx );
+    /* This value is large enough that the operation will complete in one run.
+     * See comments at the top of ecp_test_vect_restart in
+     * test_suite_ecp.function for estimates of operation counts. */
+    mbedtls_ecp_set_max_ops( 42000 );
+#endif
+
+    mbedtls_pk_init( &pk );
+
+    memset( hash, 0x2a, sizeof hash );
+    memset( sig, 0, sizeof sig );
+
+    TEST_ASSERT( mbedtls_pk_setup( &pk, mbedtls_pk_info_from_type( type ) ) == 0 );
+    TEST_ASSERT( pk_genkey( &pk ) == 0 );
+
+    TEST_ASSERT( mbedtls_pk_sign_restartable( &pk, MBEDTLS_MD_SHA256,
+                 hash, sizeof hash, sig, &sig_len,
+                 rnd_std_rand, NULL, rs_ctx ) == sign_ret );
+
+    TEST_ASSERT( mbedtls_pk_verify( &pk, MBEDTLS_MD_SHA256,
+                            hash, sizeof hash, sig, sig_len ) == verify_ret );
+
+    if( verify_ret == 0 )
+    {
+        hash[0]++;
+        TEST_ASSERT( mbedtls_pk_verify( &pk, MBEDTLS_MD_SHA256,
+                                hash, sizeof hash, sig, sig_len ) != 0 );
+        hash[0]--;
+
+        sig[0]++;
+        TEST_ASSERT( mbedtls_pk_verify( &pk, MBEDTLS_MD_SHA256,
+                                hash, sizeof hash, sig, sig_len ) != 0 );
+        sig[0]--;
+    }
+
+    TEST_ASSERT( mbedtls_pk_sign( &pk, MBEDTLS_MD_SHA256, hash, sizeof hash,
+                          sig, &sig_len, rnd_std_rand, NULL ) == sign_ret );
+
+    TEST_ASSERT( mbedtls_pk_verify_restartable( &pk, MBEDTLS_MD_SHA256,
+                 hash, sizeof hash, sig, sig_len, rs_ctx ) == verify_ret );
+
+    if( verify_ret == 0 )
+    {
+        hash[0]++;
+        TEST_ASSERT( mbedtls_pk_verify_restartable( &pk, MBEDTLS_MD_SHA256,
+                     hash, sizeof hash, sig, sig_len, rs_ctx ) != 0 );
+        hash[0]--;
+
+        sig[0]++;
+        TEST_ASSERT( mbedtls_pk_verify_restartable( &pk, MBEDTLS_MD_SHA256,
+                     hash, sizeof hash, sig, sig_len, rs_ctx ) != 0 );
+        sig[0]--;
+    }
+
+exit:
+#if defined(MBEDTLS_ECDSA_C) && defined(MBEDTLS_ECP_RESTARTABLE)
+    mbedtls_pk_restart_free( rs_ctx );
+#endif
+    mbedtls_pk_free( &pk );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_RSA_C */
+void pk_rsa_encrypt_test_vec( data_t * message, int mod, int radix_N,
+                              char * input_N, int radix_E, char * input_E,
+                              data_t * result, int ret )
+{
+    unsigned char output[1000];
+    rnd_pseudo_info rnd_info;
+    mbedtls_rsa_context *rsa;
+    mbedtls_pk_context pk;
+    size_t olen;
+
+    memset( &rnd_info,  0, sizeof( rnd_pseudo_info ) );
+    memset( output,     0, sizeof( output ) );
+
+
+    mbedtls_pk_init( &pk );
+    TEST_ASSERT( mbedtls_pk_setup( &pk, mbedtls_pk_info_from_type( MBEDTLS_PK_RSA ) ) == 0 );
+    rsa = mbedtls_pk_rsa( pk );
+
+    rsa->len = mod / 8;
+    TEST_ASSERT( mbedtls_mpi_read_string( &rsa->N, radix_N, input_N ) == 0 );
+    TEST_ASSERT( mbedtls_mpi_read_string( &rsa->E, radix_E, input_E ) == 0 );
+
+    TEST_ASSERT( mbedtls_pk_encrypt( &pk, message->x, message->len,
+                             output, &olen, sizeof( output ),
+                             rnd_pseudo_rand, &rnd_info ) == ret );
+    TEST_ASSERT( olen == result->len );
+    TEST_ASSERT( memcmp( output, result->x, olen ) == 0 );
+
+exit:
+    mbedtls_pk_free( &pk );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_RSA_C */
+void pk_rsa_decrypt_test_vec( data_t * cipher, int mod, int radix_P,
+                              char * input_P, int radix_Q, char * input_Q,
+                              int radix_N, char * input_N, int radix_E,
+                              char * input_E, data_t * clear, int ret )
+{
+    unsigned char output[1000];
+    rnd_pseudo_info rnd_info;
+    mbedtls_mpi N, P, Q, E;
+    mbedtls_rsa_context *rsa;
+    mbedtls_pk_context pk;
+    size_t olen;
+
+    mbedtls_pk_init( &pk );
+    mbedtls_mpi_init( &N ); mbedtls_mpi_init( &P );
+    mbedtls_mpi_init( &Q ); mbedtls_mpi_init( &E );
+
+    memset( &rnd_info,  0, sizeof( rnd_pseudo_info ) );
+
+
+    /* init pk-rsa context */
+    TEST_ASSERT( mbedtls_pk_setup( &pk, mbedtls_pk_info_from_type( MBEDTLS_PK_RSA ) ) == 0 );
+    rsa = mbedtls_pk_rsa( pk );
+
+    /* load public key */
+    TEST_ASSERT( mbedtls_mpi_read_string( &N, radix_N, input_N ) == 0 );
+    TEST_ASSERT( mbedtls_mpi_read_string( &E, radix_E, input_E ) == 0 );
+
+    /* load private key */
+    TEST_ASSERT( mbedtls_mpi_read_string( &P, radix_P, input_P ) == 0 );
+    TEST_ASSERT( mbedtls_mpi_read_string( &Q, radix_Q, input_Q ) == 0 );
+    TEST_ASSERT( mbedtls_rsa_import( rsa, &N, &P, &Q, NULL, &E ) == 0 );
+    TEST_ASSERT( mbedtls_rsa_get_len( rsa ) == (size_t) ( mod / 8 ) );
+    TEST_ASSERT( mbedtls_rsa_complete( rsa ) == 0 );
+
+    /* decryption test */
+    memset( output, 0, sizeof( output ) );
+    olen = 0;
+    TEST_ASSERT( mbedtls_pk_decrypt( &pk, cipher->x, cipher->len,
+                             output, &olen, sizeof( output ),
+                             rnd_pseudo_rand, &rnd_info ) == ret );
+    if( ret == 0 )
+    {
+        TEST_ASSERT( olen == clear->len );
+        TEST_ASSERT( memcmp( output, clear->x, olen ) == 0 );
+    }
+
+exit:
+    mbedtls_mpi_free( &N ); mbedtls_mpi_free( &P );
+    mbedtls_mpi_free( &Q ); mbedtls_mpi_free( &E );
+    mbedtls_pk_free( &pk );
+}
+/* END_CASE */
+
+/* BEGIN_CASE */
+void pk_ec_nocrypt( int type )
+{
+    mbedtls_pk_context pk;
+    unsigned char output[100];
+    unsigned char input[100];
+    rnd_pseudo_info rnd_info;
+    size_t olen = 0;
+    int ret = MBEDTLS_ERR_PK_TYPE_MISMATCH;
+
+    mbedtls_pk_init( &pk );
+
+    memset( &rnd_info,  0, sizeof( rnd_pseudo_info ) );
+    memset( output,     0, sizeof( output ) );
+    memset( input,      0, sizeof( input ) );
+
+    TEST_ASSERT( mbedtls_pk_setup( &pk, mbedtls_pk_info_from_type( type ) ) == 0 );
+
+    TEST_ASSERT( mbedtls_pk_encrypt( &pk, input, sizeof( input ),
+                             output, &olen, sizeof( output ),
+                             rnd_pseudo_rand, &rnd_info ) == ret );
+
+    TEST_ASSERT( mbedtls_pk_decrypt( &pk, input, sizeof( input ),
+                             output, &olen, sizeof( output ),
+                             rnd_pseudo_rand, &rnd_info ) == ret );
+
+exit:
+    mbedtls_pk_free( &pk );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_RSA_C */
+void pk_rsa_overflow( )
+{
+    mbedtls_pk_context pk;
+    size_t hash_len = SIZE_MAX, sig_len = SIZE_MAX;
+    unsigned char hash[50], sig[100];
+
+    if( SIZE_MAX <= UINT_MAX )
+        return;
+
+    memset( hash, 0x2a, sizeof hash );
+    memset( sig, 0, sizeof sig );
+
+    mbedtls_pk_init( &pk );
+
+    TEST_ASSERT( mbedtls_pk_setup( &pk,
+                 mbedtls_pk_info_from_type( MBEDTLS_PK_RSA ) ) == 0 );
+
+#if defined(MBEDTLS_PKCS1_V21)
+    TEST_ASSERT( mbedtls_pk_verify_ext( MBEDTLS_PK_RSASSA_PSS, NULL, &pk,
+                    MBEDTLS_MD_NONE, hash, hash_len, sig, sig_len ) ==
+                 MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+#endif /* MBEDTLS_PKCS1_V21 */
+
+    TEST_ASSERT( mbedtls_pk_verify( &pk, MBEDTLS_MD_NONE, hash, hash_len,
+                    sig, sig_len ) == MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+
+    TEST_ASSERT( mbedtls_pk_sign( &pk, MBEDTLS_MD_NONE, hash, hash_len, sig, &sig_len,
+                    rnd_std_rand, NULL ) == MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+
+exit:
+    mbedtls_pk_free( &pk );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_RSA_C:MBEDTLS_PK_RSA_ALT_SUPPORT */
+void pk_rsa_alt(  )
+{
+    /*
+     * An rsa_alt context can only do private operations (decrypt, sign).
+     * Test it against the public operations (encrypt, verify) of a
+     * corresponding rsa context.
+     */
+    mbedtls_rsa_context raw;
+    mbedtls_pk_context rsa, alt;
+    mbedtls_pk_debug_item dbg_items[10];
+    unsigned char hash[50], sig[1000];
+    unsigned char msg[50], ciph[1000], test[1000];
+    size_t sig_len, ciph_len, test_len;
+    int ret = MBEDTLS_ERR_PK_TYPE_MISMATCH;
+
+    mbedtls_rsa_init( &raw, MBEDTLS_RSA_PKCS_V15, MBEDTLS_MD_NONE );
+    mbedtls_pk_init( &rsa ); mbedtls_pk_init( &alt );
+
+    memset( hash, 0x2a, sizeof hash );
+    memset( sig, 0, sizeof sig );
+    memset( msg, 0x2a, sizeof msg );
+    memset( ciph, 0, sizeof ciph );
+    memset( test, 0, sizeof test );
+
+    /* Initiliaze PK RSA context with random key */
+    TEST_ASSERT( mbedtls_pk_setup( &rsa,
+                              mbedtls_pk_info_from_type( MBEDTLS_PK_RSA ) ) == 0 );
+    TEST_ASSERT( pk_genkey( &rsa ) == 0 );
+
+    /* Extract key to the raw rsa context */
+    TEST_ASSERT( mbedtls_rsa_copy( &raw, mbedtls_pk_rsa( rsa ) ) == 0 );
+
+    /* Initialize PK RSA_ALT context */
+    TEST_ASSERT( mbedtls_pk_setup_rsa_alt( &alt, (void *) &raw,
+                 mbedtls_rsa_decrypt_func, mbedtls_rsa_sign_func, mbedtls_rsa_key_len_func ) == 0 );
+
+    /* Test administrative functions */
+    TEST_ASSERT( mbedtls_pk_can_do( &alt, MBEDTLS_PK_RSA ) );
+    TEST_ASSERT( mbedtls_pk_get_bitlen( &alt ) == RSA_KEY_SIZE );
+    TEST_ASSERT( mbedtls_pk_get_len( &alt ) == RSA_KEY_LEN );
+    TEST_ASSERT( mbedtls_pk_get_type( &alt ) == MBEDTLS_PK_RSA_ALT );
+    TEST_ASSERT( strcmp( mbedtls_pk_get_name( &alt ), "RSA-alt" ) == 0 );
+
+    /* Test signature */
+#if SIZE_MAX > UINT_MAX
+    TEST_ASSERT( mbedtls_pk_sign( &alt, MBEDTLS_MD_NONE, hash, SIZE_MAX,
+                                  sig, &sig_len, rnd_std_rand, NULL ) ==
+                 MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+#endif /* SIZE_MAX > UINT_MAX */
+    TEST_ASSERT( mbedtls_pk_sign( &alt, MBEDTLS_MD_NONE, hash, sizeof hash,
+                                  sig, &sig_len, rnd_std_rand, NULL ) == 0 );
+    TEST_ASSERT( sig_len == RSA_KEY_LEN );
+    TEST_ASSERT( mbedtls_pk_verify( &rsa, MBEDTLS_MD_NONE,
+                            hash, sizeof hash, sig, sig_len ) == 0 );
+
+    /* Test decrypt */
+    TEST_ASSERT( mbedtls_pk_encrypt( &rsa, msg, sizeof msg,
+                             ciph, &ciph_len, sizeof ciph,
+                             rnd_std_rand, NULL ) == 0 );
+    TEST_ASSERT( mbedtls_pk_decrypt( &alt, ciph, ciph_len,
+                             test, &test_len, sizeof test,
+                             rnd_std_rand, NULL ) == 0 );
+    TEST_ASSERT( test_len == sizeof msg );
+    TEST_ASSERT( memcmp( test, msg, test_len ) == 0 );
+
+    /* Test forbidden operations */
+    TEST_ASSERT( mbedtls_pk_encrypt( &alt, msg, sizeof msg,
+                             ciph, &ciph_len, sizeof ciph,
+                             rnd_std_rand, NULL ) == ret );
+    TEST_ASSERT( mbedtls_pk_verify( &alt, MBEDTLS_MD_NONE,
+                            hash, sizeof hash, sig, sig_len ) == ret );
+    TEST_ASSERT( mbedtls_pk_debug( &alt, dbg_items ) == ret );
+
+exit:
+    mbedtls_rsa_free( &raw );
+    mbedtls_pk_free( &rsa ); mbedtls_pk_free( &alt );
+}
+/* END_CASE */

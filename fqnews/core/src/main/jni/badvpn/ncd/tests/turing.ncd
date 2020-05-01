@@ -1,0 +1,138 @@
+process main {
+    # Turing machine specification.
+    var("B") blank;
+    var([
+        {"0", "0"}:{"0", "0", "right"},
+        {"0", "1"}:{"1", "x", "right"},
+        {"1", "1"}:{"1", "1", "right"},
+        {"1", "0"}:{"2", "0", "right"},
+        {"2", "0"}:{"2", "0", "right"},
+        {"2", "1"}:{"3", "1", "right"},
+        {"3", "1"}:{"3", "1", "right"},
+        {"3", "0"}:{"4", "1", "left"},
+        {"3", "B"}:{"4", "1", "left"},
+        {"4", "1"}:{"4", "1", "left"},
+        {"4", "0"}:{"5", "0", "left"},
+        {"5", "0"}:{"5", "0", "left"},
+        {"5", "1"}:{"6", "1", "left"},
+        {"5", "x"}:{"h", "x", "stay"},
+        {"6", "1"}:{"6", "1", "left"},
+        {"6", "x"}:{"0", "x", "right"},
+        {"6", "0"}:{"0", "0", "right"}
+    ]) rules;
+    var("0") initial_state;
+    var({}) initial_tape_left;
+    var({
+        "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",
+        "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",
+        "0", "0",
+        "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",
+        "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"
+    }) initial_tape_right;
+
+    # Perform the computation, stopping when no rule matches.
+    call("turing", {blank, rules, initial_state, initial_tape_left, initial_tape_right}) results;
+
+    # Check results.
+
+    val_equal(results.tape_left, {"B"}) a;
+    assert(a);
+
+    val_equal(results.tape_right,
+        {"x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x",
+         "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x",
+         "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",
+         "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",
+         "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",
+         "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",
+         "1", "1"}
+    ) a;
+    assert(a);
+
+    val_equal({results.side, results.pos}, {"right", "55"}) a;
+    assert(a);
+
+    val_equal(results.state, "h") a;
+    assert(a);
+
+    exit("0");
+}
+
+template turing {
+    alias("_arg0") blank;
+    value(_arg1) rules;
+    alias("_arg2") initial_state;
+    alias("_arg3") initial_tape_left;
+    alias("_arg4") initial_tape_right;
+
+    # Head state.
+    var(initial_state) state;
+
+    # Tape. Positions go like this: ... L2 L1 L0 R0 R1 R2 ... 
+    value(initial_tape_left) tape_left;
+    value(initial_tape_right) tape_right;
+
+    # Make sure each side of the tape has at least one symbol so we can flip easily.
+    tape_left->insert(tape_left.length, blank);
+    tape_right->insert(tape_right.length, blank);
+
+    # Head position.
+    var("right") side;
+    var("0") pos;
+
+    # Enter loop.
+    blocker() loop_blk;
+    loop_blk->up();
+    loop_blk->use();
+
+    # Get symbol under head.
+    concat("tape_", side) tape_name;
+    alias(tape_name) cur_tape;
+    cur_tape->get(pos) symbol;
+
+    # Look for a matching rule.
+    rules->try_get({state, symbol}) rule;
+
+    If (rule.exists) {
+        # Extract directions from rule.
+        rule->get("0") new_state;
+        rule->get("1") new_symbol;
+        rule->get("2") move;
+
+        # Change head state.
+        state->set(new_state);
+
+        # Replace symbol under head.
+        cur_tape->remove(pos);
+        cur_tape->insert(pos, new_symbol);
+
+        # Branch based on how we move.
+        strcmp(move, side) is_outside;
+        strcmp(move, "stay") is_stay;
+        strcmp(pos, "0") is_zero;
+        If (is_outside) {
+            # Increment position.
+            num_add(pos, "1") new_pos;
+            pos->set(new_pos);
+
+            # If the new position is out of range, extend tape.
+            strcmp(pos, cur_tape.length) need_extend;
+            If (need_extend) {
+                cur_tape->insert(pos, blank);
+            };
+        } elif (is_stay) {
+            # Nop.
+            getargs();
+        } elif (is_zero) {
+            # Flip side, leave pos at zero.
+            side->set(move);
+        } else {
+            # Decrement position.
+            num_subtract(pos, "1") new_pos;
+            pos->set(new_pos);
+        };
+
+        # Continue loop.
+        loop_blk->downup();
+    };
+}

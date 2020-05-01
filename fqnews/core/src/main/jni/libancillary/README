@@ -1,0 +1,23 @@
+This example shows how eventfd(2) file descriptors can be shared
+over Unix sockets by processes which have no common ancestor.
+
+This problem appears frequently if one needs a poll(2) compatible
+notification mechanism; for instance when using queues in shared memory,
+to signal the reader that data is available.
+
+Usage:
+
+make
+run evserver in one window
+run evclient in another window
+
+
+This code uses the libancil library: http://www.normalesup.org/~george/comp/libancillary/
+
+Michael Haberler 1/2014
+
+
+
+
+
+

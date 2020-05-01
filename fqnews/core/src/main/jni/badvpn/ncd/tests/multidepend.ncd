@@ -1,0 +1,30 @@
+process main {
+    var("0") x;
+    process_manager() mgr;
+    
+    var("false") backtrack_check;
+    backtrack_point() point;
+    If (backtrack_check) {
+        val_equal(x, "2") a; # must not have rebound temporarily to A during backtracking
+        assert(a);
+        exit("0");
+    };
+    
+    multiprovide("A");
+    mgr->start("t1", "t1", {});
+    val_equal(x, "1") a; # must have bound to A immediately
+    assert(a);
+    
+    multiprovide("B") mgr;
+    val_equal(x, "2") a; # must have rebound to B immediately
+    assert(a);
+    
+    backtrack_check->set("true");
+    point->go();
+}
+
+template t1 {
+    multidepend({"B", "A"}) dep;
+    num_add(dep.x, "1") new_x;
+    dep.x->set(new_x);
+}

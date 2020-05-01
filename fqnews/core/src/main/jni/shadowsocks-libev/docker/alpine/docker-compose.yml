@@ -1,0 +1,9 @@
+shadowsocks:
+  image: shadowsocks/shadowsocks-libev
+  ports:
+    - "8388:8388/tcp"
+    - "8388:8388/udp"
+  environment:
+    - METHOD=aes-256-gcm
+    - PASSWORD=9MLSpPmNt
+  restart: always

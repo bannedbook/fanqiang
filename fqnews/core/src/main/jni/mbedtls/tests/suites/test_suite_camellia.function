@@ -1,0 +1,325 @@
+/* BEGIN_HEADER */
+#include "mbedtls/camellia.h"
+/* END_HEADER */
+
+/* BEGIN_DEPENDENCIES
+ * depends_on:MBEDTLS_CAMELLIA_C
+ * END_DEPENDENCIES
+ */
+
+/* BEGIN_CASE */
+void camellia_valid_param( )
+{
+    TEST_VALID_PARAM( mbedtls_camellia_free( NULL ) );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_CHECK_PARAMS:!MBEDTLS_PARAM_FAILED_ALT */
+void camellia_invalid_param( )
+{
+    mbedtls_camellia_context ctx;
+    unsigned char buf[16] = { 0 };
+    const size_t valid_keybits   = 128;
+    const int invalid_mode = 42;
+    const int valid_mode = MBEDTLS_CAMELLIA_ENCRYPT;
+    size_t off;
+    ((void) off);
+
+    TEST_INVALID_PARAM( mbedtls_camellia_init( NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_setkey_enc( NULL,
+                                                         buf,
+                                                         valid_keybits ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_setkey_enc( &ctx,
+                                                         NULL,
+                                                         valid_keybits ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_setkey_dec( NULL,
+                                                         buf,
+                                                         valid_keybits ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_setkey_dec( &ctx,
+                                                         NULL,
+                                                         valid_keybits ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_ecb( NULL,
+                                                        valid_mode,
+                                                        buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_ecb( &ctx,
+                                                        invalid_mode,
+                                                        buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_ecb( &ctx,
+                                                        valid_mode,
+                                                        NULL, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_ecb( &ctx,
+                                                        valid_mode,
+                                                        buf, NULL ) );
+
+#if defined(MBEDTLS_CIPHER_MODE_CBC)
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_cbc( NULL,
+                                                        valid_mode,
+                                                        sizeof( buf ),
+                                                        buf, buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_cbc( &ctx,
+                                                        invalid_mode,
+                                                        sizeof( buf ),
+                                                        buf, buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_cbc( &ctx,
+                                                        valid_mode,
+                                                        sizeof( buf ),
+                                                        NULL, buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_cbc( &ctx,
+                                                        valid_mode,
+                                                        sizeof( buf ),
+                                                        buf, NULL, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_cbc( &ctx,
+                                                        valid_mode,
+                                                        sizeof( buf ),
+                                                        buf, buf, NULL ) );
+#endif /* MBEDTLS_CIPHER_MODE_CBC */
+
+#if defined(MBEDTLS_CIPHER_MODE_CFB)
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_cfb128( NULL,
+                                                           valid_mode,
+                                                           sizeof( buf ),
+                                                           &off, buf,
+                                                           buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_cfb128( &ctx,
+                                                           invalid_mode,
+                                                           sizeof( buf ),
+                                                           &off, buf,
+                                                           buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_cfb128( &ctx,
+                                                           valid_mode,
+                                                           sizeof( buf ),
+                                                           NULL, buf,
+                                                           buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_cfb128( &ctx,
+                                                           valid_mode,
+                                                           sizeof( buf ),
+                                                           &off, NULL,
+                                                           buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_cfb128( &ctx,
+                                                           valid_mode,
+                                                           sizeof( buf ),
+                                                           &off, buf,
+                                                           NULL, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_cfb128( &ctx,
+                                                           valid_mode,
+                                                           sizeof( buf ),
+                                                           &off, buf,
+                                                           buf, NULL ) );
+#endif /* MBEDTLS_CIPHER_MODE_CFB */
+
+#if defined(MBEDTLS_CIPHER_MODE_CTR)
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_ctr( NULL,
+                                                        sizeof( buf ),
+                                                        &off,
+                                                        buf, buf,
+                                                        buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_ctr( &ctx,
+                                                        sizeof( buf ),
+                                                        NULL,
+                                                        buf, buf,
+                                                        buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_ctr( &ctx,
+                                                        sizeof( buf ),
+                                                        &off,
+                                                        NULL, buf,
+                                                        buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_ctr( &ctx,
+                                                        sizeof( buf ),
+                                                        &off,
+                                                        buf, NULL,
+                                                        buf, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_ctr( &ctx,
+                                                        sizeof( buf ),
+                                                        &off,
+                                                        buf, buf,
+                                                        NULL, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_CAMELLIA_BAD_INPUT_DATA,
+                            mbedtls_camellia_crypt_ctr( &ctx,
+                                                        sizeof( buf ),
+                                                        &off,
+                                                        buf, buf,
+                                                        buf, NULL ) );
+#endif /* MBEDTLS_CIPHER_MODE_CTR */
+
+exit:
+    return;
+}
+/* END_CASE */
+
+/* BEGIN_CASE */
+void camellia_encrypt_ecb( data_t * key_str, data_t * src_str,
+                           data_t * hex_dst_string, int setkey_result )
+{
+    unsigned char output[100];
+    mbedtls_camellia_context ctx;
+
+    memset(output, 0x00, 100);
+    mbedtls_camellia_init( &ctx );
+
+
+    TEST_ASSERT( mbedtls_camellia_setkey_enc( &ctx, key_str->x, key_str->len * 8 ) == setkey_result );
+    if( setkey_result == 0 )
+    {
+        TEST_ASSERT( mbedtls_camellia_crypt_ecb( &ctx, MBEDTLS_CAMELLIA_ENCRYPT, src_str->x, output ) == 0 );
+
+        TEST_ASSERT( hexcmp( output, hex_dst_string->x, 16, hex_dst_string->len ) == 0 );
+    }
+
+exit:
+    mbedtls_camellia_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE */
+void camellia_decrypt_ecb( data_t * key_str, data_t * src_str,
+                           data_t * hex_dst_string, int setkey_result )
+{
+    unsigned char output[100];
+    mbedtls_camellia_context ctx;
+
+    memset(output, 0x00, 100);
+    mbedtls_camellia_init( &ctx );
+
+
+    TEST_ASSERT( mbedtls_camellia_setkey_dec( &ctx, key_str->x, key_str->len * 8 ) == setkey_result );
+    if( setkey_result == 0 )
+    {
+        TEST_ASSERT( mbedtls_camellia_crypt_ecb( &ctx, MBEDTLS_CAMELLIA_DECRYPT, src_str->x, output ) == 0 );
+
+        TEST_ASSERT( hexcmp( output, hex_dst_string->x, 16, hex_dst_string->len ) == 0 );
+    }
+
+exit:
+    mbedtls_camellia_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_CIPHER_MODE_CBC */
+void camellia_encrypt_cbc( data_t * key_str, data_t * iv_str,
+                           data_t * src_str, data_t * hex_dst_string,
+                           int cbc_result )
+{
+    unsigned char output[100];
+    mbedtls_camellia_context ctx;
+
+    memset(output, 0x00, 100);
+    mbedtls_camellia_init( &ctx );
+
+
+    mbedtls_camellia_setkey_enc( &ctx, key_str->x, key_str->len * 8 );
+    TEST_ASSERT( mbedtls_camellia_crypt_cbc( &ctx, MBEDTLS_CAMELLIA_ENCRYPT, src_str->len, iv_str->x, src_str->x, output) == cbc_result );
+    if( cbc_result == 0 )
+    {
+
+        TEST_ASSERT( hexcmp( output, hex_dst_string->x, src_str->len, hex_dst_string->len ) == 0 );
+    }
+
+exit:
+    mbedtls_camellia_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_CIPHER_MODE_CBC */
+void camellia_decrypt_cbc( data_t * key_str, data_t * iv_str,
+                           data_t * src_str, data_t * hex_dst_string,
+                           int cbc_result )
+{
+    unsigned char output[100];
+    mbedtls_camellia_context ctx;
+
+    memset(output, 0x00, 100);
+    mbedtls_camellia_init( &ctx );
+
+
+    mbedtls_camellia_setkey_dec( &ctx, key_str->x, key_str->len * 8 );
+    TEST_ASSERT( mbedtls_camellia_crypt_cbc( &ctx, MBEDTLS_CAMELLIA_DECRYPT, src_str->len, iv_str->x, src_str->x, output ) == cbc_result );
+    if( cbc_result == 0 )
+    {
+
+        TEST_ASSERT( hexcmp( output, hex_dst_string->x, src_str->len, hex_dst_string->len ) == 0 );
+    }
+
+exit:
+    mbedtls_camellia_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_CIPHER_MODE_CFB */
+void camellia_encrypt_cfb128( data_t * key_str, data_t * iv_str,
+                              data_t * src_str,
+                              data_t * hex_dst_string )
+{
+    unsigned char output[100];
+    mbedtls_camellia_context ctx;
+    size_t iv_offset = 0;
+
+    memset(output, 0x00, 100);
+    mbedtls_camellia_init( &ctx );
+
+
+    mbedtls_camellia_setkey_enc( &ctx, key_str->x, key_str->len * 8 );
+    TEST_ASSERT( mbedtls_camellia_crypt_cfb128( &ctx, MBEDTLS_CAMELLIA_ENCRYPT, 16, &iv_offset, iv_str->x, src_str->x, output ) == 0 );
+
+    TEST_ASSERT( hexcmp( output, hex_dst_string->x, 16, hex_dst_string->len ) == 0 );
+
+exit:
+    mbedtls_camellia_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_CIPHER_MODE_CFB */
+void camellia_decrypt_cfb128( data_t * key_str, data_t * iv_str,
+                              data_t * src_str,
+                              data_t * hex_dst_string )
+{
+    unsigned char output[100];
+    mbedtls_camellia_context ctx;
+    size_t iv_offset = 0;
+
+    memset(output, 0x00, 100);
+    mbedtls_camellia_init( &ctx );
+
+
+    mbedtls_camellia_setkey_enc( &ctx, key_str->x, key_str->len * 8 );
+    TEST_ASSERT( mbedtls_camellia_crypt_cfb128( &ctx, MBEDTLS_CAMELLIA_DECRYPT, 16, &iv_offset, iv_str->x, src_str->x, output ) == 0 );
+
+    TEST_ASSERT( hexcmp( output, hex_dst_string->x, 16, hex_dst_string->len ) == 0 );
+
+exit:
+    mbedtls_camellia_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SELF_TEST */
+void camellia_selftest(  )
+{
+    TEST_ASSERT( mbedtls_camellia_self_test( 1 ) == 0 );
+}
+/* END_CASE */

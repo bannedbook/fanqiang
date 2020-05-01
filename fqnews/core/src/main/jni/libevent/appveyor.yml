@@ -1,0 +1,60 @@
+version: 2.1.8.{build}
+
+os: Visual Studio 2015
+
+build:
+  verbosity: detailed
+
+environment:
+  global:
+    CYG_ROOT: C:/MinGW/msys/1.0
+  matrix:
+    - EVENT_BUILD_METHOD: "autotools"
+      EVENT_CONFIGURE_OPTIONS: ""
+    - EVENT_BUILD_METHOD: "autotools"
+      EVENT_CONFIGURE_OPTIONS: "--disable-openssl"
+    - EVENT_BUILD_METHOD: "autotools"
+      EVENT_CONFIGURE_OPTIONS: "--disable-thread-support"
+    - EVENT_BUILD_METHOD: "autotools"
+      EVENT_CONFIGURE_OPTIONS: "--disable-debug-mode"
+    - EVENT_BUILD_METHOD: "autotools"
+      EVENT_CONFIGURE_OPTIONS: "--disable-malloc-replacement"
+    - EVENT_BUILD_METHOD: "cmake"
+      EVENT_CMAKE_OPTIONS: ""
+    - EVENT_BUILD_METHOD: "cmake"
+      EVENT_CMAKE_OPTIONS: "-DEVENT__DISABLE_OPENSSL=ON"
+    - EVENT_BUILD_METHOD: "cmake"
+      EVENT_CMAKE_OPTIONS: "-DEVENT__DISABLE_THREAD_SUPPORT=ON"
+    - EVENT_BUILD_METHOD: "cmake"
+      EVENT_CMAKE_OPTIONS: "-DEVENT__DISABLE_DEBUG_MODE=ON"
+    - EVENT_BUILD_METHOD: "cmake"
+      EVENT_CMAKE_OPTIONS: "-DEVENT__DISABLE_MM_REPLACEMENT=ON"
+    - EVENT_BUILD_METHOD: "cmake"
+      EVENT_CMAKE_OPTIONS: "-DEVENT__ENABLE_VERBOSE_DEBUG=ON"
+    - EVENT_BUILD_METHOD: "cmake"
+      EVENT_CMAKE_OPTIONS: "-DCMAKE_C_FLAGS='-DUNICODE -D_UNICODE'"
+init:
+  - 'echo Building libevent %version% for Windows'
+  - 'echo System architecture: %PLATFORM%'
+  - 'echo Repo build branch is: %APPVEYOR_REPO_BRANCH%'
+  - 'echo Build folder is: %APPVEYOR_BUILD_FOLDER%'
+  - 'echo Repo build commit is: %APPVEYOR_REPO_COMMIT%'
+  - 'echo Cygwin root is: %CYG_ROOT%'
+install:
+  - C:\MinGW\bin\mingw-get install autotools autoconf automake
+build_script:
+  - ps: |
+      if ($env:EVENT_BUILD_METHOD -eq 'autotools') {
+        $env:PATH="$env:CYG_ROOT\bin;C:\MinGW\bin;$($env:PATH)"
+        bash -lc "echo 'C:\MinGW /mingw' > /etc/fstab"
+        bash -lc "echo 'C:\OpenSSL-Win32 /ssl' >> /etc/fstab"
+        $env:APPVEYOR_BUILD_FOLDER = $env:APPVEYOR_BUILD_FOLDER -replace "\\", "/"
+        bash -lc "exec 0</dev/null; exec 2>&1; cd $env:APPVEYOR_BUILD_FOLDER; bash -x ./autogen.sh && ./configure LDFLAGS='-L/ssl -L/ssl/lib -L/ssl/lib/MinGW' CFLAGS=-I/ssl/include $env:EVENT_CONFIGURE_OPTIONS && make && make verify -j20"
+      } else {
+        md build
+        cd build
+        cmake .. $env:EVENT_CMAKE_OPTIONS
+        cmake --build .
+        $env:CTEST_PARALLEL_LEVEL="20"
+        ctest --output-on-failure
+      }

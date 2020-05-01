@@ -1,0 +1,73 @@
+/* BEGIN_HEADER */
+#include "mbedtls/version.h"
+/* END_HEADER */
+
+/* BEGIN_DEPENDENCIES
+ * depends_on:MBEDTLS_VERSION_C
+ * END_DEPENDENCIES
+ */
+
+/* BEGIN_CASE */
+void check_compiletime_version( char * version_str )
+{
+    char build_str[100];
+    char build_str_full[100];
+    unsigned int build_int;
+
+    memset( build_str, 0, 100 );
+    memset( build_str_full, 0, 100 );
+
+    mbedtls_snprintf( build_str, 100, "%d.%d.%d", MBEDTLS_VERSION_MAJOR,
+        MBEDTLS_VERSION_MINOR, MBEDTLS_VERSION_PATCH );
+
+    mbedtls_snprintf( build_str_full, 100, "mbed TLS %d.%d.%d", MBEDTLS_VERSION_MAJOR,
+        MBEDTLS_VERSION_MINOR, MBEDTLS_VERSION_PATCH );
+
+    build_int = MBEDTLS_VERSION_MAJOR << 24 |
+            MBEDTLS_VERSION_MINOR << 16 |
+            MBEDTLS_VERSION_PATCH << 8;
+
+    TEST_ASSERT( build_int == MBEDTLS_VERSION_NUMBER );
+    TEST_ASSERT( strcmp( build_str, MBEDTLS_VERSION_STRING ) == 0 );
+    TEST_ASSERT( strcmp( build_str_full, MBEDTLS_VERSION_STRING_FULL ) == 0 );
+    TEST_ASSERT( strcmp( version_str, MBEDTLS_VERSION_STRING ) == 0 );
+}
+/* END_CASE */
+
+/* BEGIN_CASE */
+void check_runtime_version( char * version_str )
+{
+    char build_str[100];
+    char get_str[100];
+    char build_str_full[100];
+    char get_str_full[100];
+    unsigned int get_int;
+
+    memset( build_str, 0, 100 );
+    memset( get_str, 0, 100 );
+    memset( build_str_full, 0, 100 );
+    memset( get_str_full, 0, 100 );
+
+    get_int = mbedtls_version_get_number();
+    mbedtls_version_get_string( get_str );
+    mbedtls_version_get_string_full( get_str_full );
+
+    mbedtls_snprintf( build_str, 100, "%d.%d.%d",
+        (get_int >> 24) & 0xFF,
+        (get_int >> 16) & 0xFF,
+        (get_int >> 8) & 0xFF );
+    mbedtls_snprintf( build_str_full, 100, "mbed TLS %s", version_str );
+
+    TEST_ASSERT( strcmp( build_str, version_str ) == 0 );
+    TEST_ASSERT( strcmp( build_str_full, get_str_full ) == 0 );
+    TEST_ASSERT( strcmp( version_str, get_str ) == 0 );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_VERSION_FEATURES */
+void check_feature( char *feature, int result )
+{
+    int check = mbedtls_version_check_feature( feature );
+    TEST_ASSERT( check == result );
+}
+/* END_CASE */

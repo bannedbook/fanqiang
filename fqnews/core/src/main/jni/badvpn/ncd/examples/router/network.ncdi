@@ -1,0 +1,356 @@
+include_guard "network"
+
+include "pppoe.ncdi"
+include "dhcp_server.ncdi"
+include "unbound.ncdi"
+include "network_control_server.ncdi"
+include "port_forwarding.ncdi"
+
+template network_main {
+    log("notice", "NCD starting");
+    log_r("notice", "NCD stopped");
+
+    # Load ipv6 module so we can disable ipv6.
+    runonce({"/sbin/modprobe", "ipv6"});
+
+    # Set some sysctl's.
+    runonce({"/sbin/sysctl", "net.ipv4.ip_forward=1"});
+    runonce({"/sbin/sysctl", "net.ipv6.conf.all.disable_ipv6=1"});
+
+    # Setup iptables INPUT chain.
+    net.iptables.policy("filter", "INPUT", "ACCEPT", "ACCEPT");
+    net.iptables.append("filter", "INPUT", "-i", "lo", "-j", "ACCEPT");
+    net.iptables.append("filter", "INPUT", "-m", "conntrack", "--ctstate", "ESTABLISHED", "-j", "ACCEPT");
+
+    # Setup iptables OUTPUT chain.
+    net.iptables.policy("filter", "OUTPUT", "ACCEPT", "ACCEPT");
+
+    # Setup iptables FORWARD chain.
+    net.iptables.policy("filter", "FORWARD", "DROP", "ACCEPT");
+    net.iptables.append("filter", "FORWARD", "-m", "conntrack", "--ctstate", "ESTABLISHED", "-j", "ACCEPT");
+    net.iptables.append("filter", "FORWARD", "-m", "connmark", "--mark", "0x1/0x1", "-j", "ACCEPT");
+
+    # Create dependency scope.
+    depend_scope() depsc;
+
+    # Start processes.
+    process_manager() mgr;
+    mgr->start("network_lan", {});
+    mgr->start("network_serverif", {});
+    mgr->start("network_internet", {});
+    mgr->start("network_lan_internet_rules", {});
+    mgr->start("network_serverif_internet_rules", {});
+    mgr->start("network_lan_serverif_rules", {});
+    mgr->start("network_lan_dhcp_server", {});
+    mgr->start("network_unbound", {});
+    mgr->start("network_port_forwarding", {});
+    mgr->start("network_start_control_server", {});
+}
+
+template network_weak_hostmodel_rules {
+    alias("_arg0") dev;
+    alias("_arg1") addr;
+
+    concat("INPUT_hostmodel_drop_", dev) drop_chain;
+
+    net.iptables.newchain("filter", drop_chain);
+    net.iptables.append("filter", drop_chain, "-j", "DROP");
+    net.iptables.append("filter", "INPUT", "-d", addr, "!", "-i", dev, "-j", drop_chain);
+}
+
+template network_weak_hostmodel_exception {
+    alias("_arg0") dev;
+    alias("_arg1") match;
+
+    concat("INPUT_hostmodel_drop_", dev) drop_chain;
+
+    listfrom({"filter", drop_chain}, match, {"-j", "RETURN"}) args;
+    net.iptables.insert(args);
+}
+
+template network_lan {
+    alias("_caller") main;
+
+    # Some configuration.
+    var("enp1s0") dev;
+    var("192.168.111.1") addr;
+    var("24") prefix;
+    var("192.168.111.100") dhcp_start;
+    var("192.168.111.149") dhcp_end;
+
+    main.depsc->provide("lan_config");
+
+    # Wait for device, set up, wait for link.
+    net.backend.waitdevice(dev);
+    net.up(dev);
+    net.backend.waitlink(dev);
+
+    # Weak host model.
+    call("network_weak_hostmodel_rules", {dev, addr});
+
+    # Assign IP address.
+    net.ipv4.addr(dev, addr, prefix);
+
+    # Do SNAT for port forwardings when connections originate from the inside.
+    net.iptables.append("nat", "POSTROUTING", "-m", "connmark", "--mark", "0x2/0x2", "-j", "SNAT", "--to-source", addr, "--random");
+
+    main.depsc->provide("lan");
+}
+
+template network_serverif {
+    alias("_caller") main;
+
+    # Some configuration.
+    var("enp3s0") dev;
+    var("192.168.113.1") addr;
+    var("24") prefix;
+
+    main.depsc->provide("serverif_config");
+
+    # Wait for device, set up, wait for link.
+    net.backend.waitdevice(dev);
+    net.up(dev);
+    net.backend.waitlink(dev);
+
+    # Weak host model.
+    call("network_weak_hostmodel_rules", {dev, addr});
+
+    # Assign IP address.
+    net.ipv4.addr(dev, addr, prefix);
+
+    # Do SNAT for port forwardings when connections originate from the inside.
+    net.iptables.append("nat", "POSTROUTING", "-m", "connmark", "--mark", "0x4/0x4", "-j", "SNAT", "--to-source", addr, "--random");
+
+    main.depsc->provide("serverif");
+}
+
+template network_internet {
+    alias("_caller") main;
+
+    # Some configuration.
+    var("enp2s0") pppoe_dev;
+    var("MISSING") pppoe_username;
+    var("MISSING") pppoe_password;
+
+    # Wait for device, set up, wait for link.
+    net.backend.waitdevice(pppoe_dev);
+    net.up(pppoe_dev);
+    net.backend.waitlink(pppoe_dev);
+
+    log("notice", "PPPoE started");
+    log_r("notice", "PPPoE stopped");
+
+    # Start PPPoE.
+    call("pppoe", {pppoe_dev, pppoe_username, pppoe_password, "network_internet_pppoe_preup"}) pppoe;
+
+    # Grab configuration.
+    var(pppoe.ifname) dev;
+    var(pppoe.local_ip) addr;
+    var(pppoe.remote_ip) remote_addr;
+    var(pppoe.dns_servers) dns_servers;
+
+    to_string(dns_servers) dns_str;
+    log("notice", "PPPoE up dev=", dev, " local=", addr, " remote=", remote_addr, " dns=", dns_str);
+    log_r("notice", "PPPoE down");
+
+    # Add default route.
+    net.ipv4.route("0.0.0.0/0", remote_addr, "20", dev);
+
+    main.depsc->provide("internet");
+}
+
+template network_internet_pppoe_preup {
+    alias("_arg0") dev;
+    alias("_arg1") addr;
+    alias("_arg2") remote_ip;
+    alias("_arg3") dns_servers;
+
+    # Weak host model.
+    call("network_weak_hostmodel_rules", {dev, addr});
+
+    # Drop packets to this system, except some things.
+    net.iptables.newchain("filter", "INPUT_internet_drop");
+    #net.iptables.append("filter", "INPUT_internet_drop", "-p", "tcp", "--dport", "22", "-j", "RETURN");
+    net.iptables.append("filter", "INPUT_internet_drop", "-j", "DROP");
+    net.iptables.append("filter", "INPUT", "-i", dev, "-j", "INPUT_internet_drop");
+
+    # Do SNAT for packets going out.
+    net.iptables.append("nat", "POSTROUTING", "-o", dev, "-j", "SNAT", "--to-source", addr, "--random");
+
+    # Do MMS clamping.
+    net.iptables.append("mangle", "OUTPUT", "-o", dev, "-p", "tcp", "--tcp-flags", "SYN,RST", "SYN", "-j", "TCPMSS", "--clamp-mss-to-pmtu");
+    net.iptables.append("mangle", "FORWARD", "-o", dev, "-p", "tcp", "--tcp-flags", "SYN,RST", "SYN", "-j", "TCPMSS", "--clamp-mss-to-pmtu");
+}
+
+template network_lan_internet_rules {
+    alias("_caller") main;
+    main.depsc->depend({"lan"}) lan;
+    main.depsc->depend({"internet"}) internet;
+
+    # Add exception to weak host model of internet interface.
+    call("network_weak_hostmodel_exception", {internet.dev, {"-i", lan.dev}});
+    net.iptables.append("filter", "FORWARD", "-m", "conntrack", "--ctstate", "NEW", "-i", lan.dev, "-o", internet.dev, "-j", "ACCEPT");
+}
+
+template network_serverif_internet_rules {
+    alias("_caller") main;
+    main.depsc->depend({"serverif"}) serverif;
+    main.depsc->depend({"internet"}) internet;
+
+    # Allow traffic from LAN to Internet.
+    call("network_weak_hostmodel_exception", {internet.dev, {"-i", serverif.dev}});
+    net.iptables.append("filter", "FORWARD", "-m", "conntrack", "--ctstate", "NEW", "-i", serverif.dev, "-o", internet.dev, "-j", "ACCEPT");
+}
+
+template network_lan_serverif_rules {
+    alias("_caller") main;
+    main.depsc->depend({"lan"}) lan;
+    main.depsc->depend({"serverif"}) serverif;
+
+    # Allow traffic from serverif to LAN.
+    call("network_weak_hostmodel_exception", {serverif.dev, {"-i", lan.dev}});
+    net.iptables.append("filter", "FORWARD", "-m", "conntrack", "--ctstate", "NEW", "-i", lan.dev, "-o", serverif.dev, "-j", "ACCEPT");
+
+    # Allow traffic from LAN to serverif.
+    call("network_weak_hostmodel_exception", {lan.dev, {"-i", serverif.dev}});
+    net.iptables.append("filter", "FORWARD", "-m", "conntrack", "--ctstate", "NEW", "-i", serverif.dev, "-o", lan.dev, "-j", "ACCEPT");
+}
+
+template network_lan_dhcp_server {
+    alias("_caller") main;
+    main.depsc->depend({"lan"}) lan;
+
+    # Start DHCP server.
+    call("dhcp_server", {lan.addr, lan.prefix, lan.dhcp_start, lan.dhcp_end, {lan.addr}, {lan.addr}});
+}
+
+template network_unbound {
+    alias("_caller") main;
+    main.depsc->depend({"lan_config"}) lan_config;
+    main.depsc->depend({"serverif_config"}) serverif_config;
+
+    # Add DNS servers.
+    net.dns({"127.0.0.1"}, "20");
+
+    # Build configuration.
+    ipv4_net_from_addr_and_prefix(lan_config.addr, lan_config.prefix) lan_network;
+    ipv4_net_from_addr_and_prefix(serverif_config.addr, serverif_config.prefix) serverif_network;
+    var({
+        {lan_network, lan_config.prefix, "allow"},
+        {serverif_network, serverif_config.prefix, "allow"}
+    }) access_control_rules;
+
+    # Start Unbound.
+    call("unbound", {"lan", access_control_rules});
+}
+
+template network_port_forwarding {
+    alias("_caller") main;
+
+    # Start forwarding.
+    call("port_forwarding", {"/var/lib/ncd-port-forwardings.ncdvalue", "network_port_forwarding_rules"}) pf;
+
+    main.depsc->provide("port_forwarding");
+}
+
+template network_port_forwarding_rules {
+    alias("_caller.main") main;
+    alias("_arg0") protocol;
+    alias("_arg1") port_start;
+    alias("_arg2") port_end;
+    alias("_arg3") dest_addr;
+
+    # Get access to lan and serverif configuration.
+    main.depsc->depend({"lan_config"}) lan;
+    main.depsc->depend({"serverif_config"}) serverif;
+
+    # Wait for Internet interface.
+    main.depsc->depend({"internet"}) internet;
+
+    # Build port range string.
+    concat(port_start, ":", port_end) port_range;
+
+    # Add rules.
+    net.iptables.append("nat", "PREROUTING", "-d", internet.addr, "-p", protocol, "--dport", port_range, "-i", lan.dev, "-j", "CONNMARK", "--set-xmark", "0x3/0x3");
+    net.iptables.append("nat", "PREROUTING", "-d", internet.addr, "-p", protocol, "--dport", port_range, "-i", serverif.dev, "-j", "CONNMARK", "--set-xmark", "0x5/0x5");
+    net.iptables.append("nat", "PREROUTING", "-d", internet.addr, "-p", protocol, "--dport", port_range, "-i", internet.dev, "-j", "CONNMARK", "--set-xmark", "0x1/0x1");
+    net.iptables.append("nat", "PREROUTING", "-d", internet.addr, "-p", protocol, "--dport", port_range, "-j", "DNAT", "--to-destination", dest_addr);
+}
+
+template network_start_control_server {
+    alias("_caller") main;
+    main.depsc->depend({"lan_config"}) lan_config;
+
+    # Start control server.
+    call("network_control_server", {"/run/ncd-control.socket",
+        "network_control_list_port_forwardings",
+        "network_control_add_port_forwarding",
+        "network_control_remove_port_forwarding"});
+}
+
+template network_control_list_port_forwardings {
+    alias("_caller.main") main;
+
+    main.depsc->depend({"port_forwarding"}) port_forwarding;
+    var(port_forwarding.pf.map.keys) port_forwardings;
+}
+
+template network_control_add_port_forwarding {
+    alias("_caller.main") main;
+    alias("_arg0") protocol;
+    alias("_arg1") port_start;
+    alias("_arg2") port_end;
+    alias("_arg3") dest_addr;
+
+    var("") try_error_text;
+    try("network_verify_port_forwarding_try", {}) verify_try;
+
+    If (verify_try.succeeded) {
+        main.depsc->depend({"port_forwarding"}) port_forwarding;
+
+        call("port_forwarding_add", {"_caller.port_forwarding.pf", protocol, port_start, port_end, dest_addr}) call;
+        alias("call.succeeded") succeeded;
+        alias("call.error_text") error_text;
+    } Else {
+        var("false") succeeded;
+        alias("try_error_text") error_text;
+    } branch;
+
+    alias("branch.succeeded") succeeded;
+    alias("branch.error_text") error_text;
+}
+
+template network_control_remove_port_forwarding {
+    alias("_caller.main") main;
+    alias("_arg0") protocol;
+    alias("_arg1") port_start;
+    alias("_arg2") port_end;
+    alias("_arg3") dest_addr;
+
+    main.depsc->depend({"port_forwarding"}) port_forwarding;
+
+    call("port_forwarding_remove", {"_caller.port_forwarding.pf", protocol, port_start, port_end, dest_addr}) call;
+    alias("call.succeeded") succeeded;
+    alias("call.error_text") error_text;
+}
+
+template network_verify_port_forwarding_try {
+    alias("_caller") c;
+
+    c.main.depsc->depend({"lan_config"}) lan;
+    c.main.depsc->depend({"serverif_config"}) serverif;
+
+    net.ipv4.addr_in_network(c.dest_addr, lan.addr, lan.prefix) in_lan;
+    net.ipv4.addr_in_network(c.dest_addr, serverif.addr, serverif.prefix) in_serverif;
+
+    If (in_lan) {
+        print();
+    }
+    Elif (in_serverif) {
+        print();
+    }
+    Else {
+        c.try_error_text->set("Destination address does not belong to any permitted network.");
+        _try->assert("false");
+    };
+}

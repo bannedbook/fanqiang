@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto">
+	<item
+		android:id="@+id/menu_entry_details__favorite"
+		android:title="@string/menu_star"
+		android:icon="@drawable/ic_star_border_white_24dp"
+		app:showAsAction="ifRoom"/>
+
+	<item
+		android:id="@+id/menu_entry_details__fulltext"
+		android:title="@string/get_full_text"
+		android:icon="@drawable/ic_original_text_white_24dp"
+		app:showAsAction="ifRoom"/>
+
+	<item
+		android:id="@+id/menu_entry_details__original_text"
+		android:title="@string/original_text"
+		android:icon="@drawable/ic_fulltext_white_24dp"
+		app:showAsAction="ifRoom"/>
+
+	<item
+		android:id="@+id/menu_entry_details__open_browser"
+		android:title="@string/open_in_browser"
+		android:icon="@drawable/ic_open_in_browser_white_24dp"
+		app:showAsAction="ifRoom"/>
+
+	<item
+		android:id="@+id/menu_entry_details__share"
+		android:title="@string/menu_share"
+		android:icon="@drawable/ic_share_white_24dp"
+		app:showAsAction="ifRoom"/>
+
+	<item
+		android:id="@+id/menu_entry_details__mark_as_unread"
+		android:title="@string/menu_mark_as_unread"
+		app:showAsAction="never"/>
+</menu>

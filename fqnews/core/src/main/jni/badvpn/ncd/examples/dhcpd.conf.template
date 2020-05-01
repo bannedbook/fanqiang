@@ -1,0 +1,11 @@
+default-lease-time 600;
+max-lease-time 7200;
+log-facility local7;
+ddns-update-style none;
+local-address <LOCAL_ADDRESS>;
+
+subnet <NETWORK> netmask <NETMASK> {
+    range <RANGE_START> <RANGE_END>;
+    option routers <ROUTERS>;
+    option domain-name-servers <DNS_SERVERS>;
+}

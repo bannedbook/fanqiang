@@ -1,0 +1,371 @@
+.TH PCRE 3 "12 May 2013" "PCRE 8.33"
+.SH NAME
+PCRE - Perl-compatible regular expressions
+.sp
+.B #include <pcre.h>
+.
+.
+.SH "PCRE 16-BIT API BASIC FUNCTIONS"
+.rs
+.sp
+.nf
+.B pcre16 *pcre16_compile(PCRE_SPTR16 \fIpattern\fP, int \fIoptions\fP,
+.B "     const char **\fIerrptr\fP, int *\fIerroffset\fP,"
+.B "     const unsigned char *\fItableptr\fP);"
+.sp
+.B pcre16 *pcre16_compile2(PCRE_SPTR16 \fIpattern\fP, int \fIoptions\fP,
+.B "     int *\fIerrorcodeptr\fP,"
+.B "     const char **\fIerrptr\fP, int *\fIerroffset\fP,"
+.B "     const unsigned char *\fItableptr\fP);"
+.sp
+.B pcre16_extra *pcre16_study(const pcre16 *\fIcode\fP, int \fIoptions\fP,
+.B "     const char **\fIerrptr\fP);"
+.sp
+.B void pcre16_free_study(pcre16_extra *\fIextra\fP);
+.sp
+.B int pcre16_exec(const pcre16 *\fIcode\fP, "const pcre16_extra *\fIextra\fP,"
+.B "     PCRE_SPTR16 \fIsubject\fP, int \fIlength\fP, int \fIstartoffset\fP,"
+.B "     int \fIoptions\fP, int *\fIovector\fP, int \fIovecsize\fP);"
+.sp
+.B int pcre16_dfa_exec(const pcre16 *\fIcode\fP, "const pcre16_extra *\fIextra\fP,"
+.B "     PCRE_SPTR16 \fIsubject\fP, int \fIlength\fP, int \fIstartoffset\fP,"
+.B "     int \fIoptions\fP, int *\fIovector\fP, int \fIovecsize\fP,"
+.B "     int *\fIworkspace\fP, int \fIwscount\fP);"
+.fi
+.
+.
+.SH "PCRE 16-BIT API STRING EXTRACTION FUNCTIONS"
+.rs
+.sp
+.nf
+.B int pcre16_copy_named_substring(const pcre16 *\fIcode\fP,
+.B "     PCRE_SPTR16 \fIsubject\fP, int *\fIovector\fP,"
+.B "     int \fIstringcount\fP, PCRE_SPTR16 \fIstringname\fP,"
+.B "     PCRE_UCHAR16 *\fIbuffer\fP, int \fIbuffersize\fP);"
+.sp
+.B int pcre16_copy_substring(PCRE_SPTR16 \fIsubject\fP, int *\fIovector\fP,
+.B "     int \fIstringcount\fP, int \fIstringnumber\fP, PCRE_UCHAR16 *\fIbuffer\fP,"
+.B "     int \fIbuffersize\fP);"
+.sp
+.B int pcre16_get_named_substring(const pcre16 *\fIcode\fP,
+.B "     PCRE_SPTR16 \fIsubject\fP, int *\fIovector\fP,"
+.B "     int \fIstringcount\fP, PCRE_SPTR16 \fIstringname\fP,"
+.B "     PCRE_SPTR16 *\fIstringptr\fP);"
+.sp
+.B int pcre16_get_stringnumber(const pcre16 *\fIcode\fP,
+.B "     PCRE_SPTR16 \fIname\fP);
+.sp
+.B int pcre16_get_stringtable_entries(const pcre16 *\fIcode\fP,
+.B "     PCRE_SPTR16 \fIname\fP, PCRE_UCHAR16 **\fIfirst\fP, PCRE_UCHAR16 **\fIlast\fP);"
+.sp
+.B int pcre16_get_substring(PCRE_SPTR16 \fIsubject\fP, int *\fIovector\fP,
+.B "     int \fIstringcount\fP, int \fIstringnumber\fP,"
+.B "     PCRE_SPTR16 *\fIstringptr\fP);"
+.sp
+.B int pcre16_get_substring_list(PCRE_SPTR16 \fIsubject\fP,
+.B "     int *\fIovector\fP, int \fIstringcount\fP, PCRE_SPTR16 **\fIlistptr\fP);"
+.sp
+.B void pcre16_free_substring(PCRE_SPTR16 \fIstringptr\fP);
+.sp
+.B void pcre16_free_substring_list(PCRE_SPTR16 *\fIstringptr\fP);
+.fi
+.
+.
+.SH "PCRE 16-BIT API AUXILIARY FUNCTIONS"
+.rs
+.sp
+.nf
+.B pcre16_jit_stack *pcre16_jit_stack_alloc(int \fIstartsize\fP, int \fImaxsize\fP);
+.sp
+.B void pcre16_jit_stack_free(pcre16_jit_stack *\fIstack\fP);
+.sp
+.B void pcre16_assign_jit_stack(pcre16_extra *\fIextra\fP,
+.B "     pcre16_jit_callback \fIcallback\fP, void *\fIdata\fP);"
+.sp
+.B const unsigned char *pcre16_maketables(void);
+.sp
+.B int pcre16_fullinfo(const pcre16 *\fIcode\fP, "const pcre16_extra *\fIextra\fP,"
+.B "     int \fIwhat\fP, void *\fIwhere\fP);"
+.sp
+.B int pcre16_refcount(pcre16 *\fIcode\fP, int \fIadjust\fP);
+.sp
+.B int pcre16_config(int \fIwhat\fP, void *\fIwhere\fP);
+.sp
+.B const char *pcre16_version(void);
+.sp
+.B int pcre16_pattern_to_host_byte_order(pcre16 *\fIcode\fP,
+.B "     pcre16_extra *\fIextra\fP, const unsigned char *\fItables\fP);"
+.fi
+.
+.
+.SH "PCRE 16-BIT API INDIRECTED FUNCTIONS"
+.rs
+.sp
+.nf
+.B void *(*pcre16_malloc)(size_t);
+.sp
+.B void (*pcre16_free)(void *);
+.sp
+.B void *(*pcre16_stack_malloc)(size_t);
+.sp
+.B void (*pcre16_stack_free)(void *);
+.sp
+.B int (*pcre16_callout)(pcre16_callout_block *);
+.fi
+.
+.
+.SH "PCRE 16-BIT API 16-BIT-ONLY FUNCTION"
+.rs
+.sp
+.nf
+.B int pcre16_utf16_to_host_byte_order(PCRE_UCHAR16 *\fIoutput\fP,
+.B "     PCRE_SPTR16 \fIinput\fP, int \fIlength\fP, int *\fIbyte_order\fP,"
+.B "     int \fIkeep_boms\fP);"
+.fi
+.
+.
+.SH "THE PCRE 16-BIT LIBRARY"
+.rs
+.sp
+Starting with release 8.30, it is possible to compile a PCRE library that
+supports 16-bit character strings, including UTF-16 strings, as well as or
+instead of the original 8-bit library. The majority of the work to make this
+possible was done by Zoltan Herczeg. The two libraries contain identical sets
+of functions, used in exactly the same way. Only the names of the functions and
+the data types of their arguments and results are different. To avoid
+over-complication and reduce the documentation maintenance load, most of the
+PCRE documentation describes the 8-bit library, with only occasional references
+to the 16-bit library. This page describes what is different when you use the
+16-bit library.
+.P
+WARNING: A single application can be linked with both libraries, but you must
+take care when processing any particular pattern to use functions from just one
+library. For example, if you want to study a pattern that was compiled with
+\fBpcre16_compile()\fP, you must do so with \fBpcre16_study()\fP, not
+\fBpcre_study()\fP, and you must free the study data with
+\fBpcre16_free_study()\fP.
+.
+.
+.SH "THE HEADER FILE"
+.rs
+.sp
+There is only one header file, \fBpcre.h\fP. It contains prototypes for all the
+functions in all libraries, as well as definitions of flags, structures, error
+codes, etc.
+.
+.
+.SH "THE LIBRARY NAME"
+.rs
+.sp
+In Unix-like systems, the 16-bit library is called \fBlibpcre16\fP, and can
+normally be accesss by adding \fB-lpcre16\fP to the command for linking an
+application that uses PCRE.
+.
+.
+.SH "STRING TYPES"
+.rs
+.sp
+In the 8-bit library, strings are passed to PCRE library functions as vectors
+of bytes with the C type "char *". In the 16-bit library, strings are passed as
+vectors of unsigned 16-bit quantities. The macro PCRE_UCHAR16 specifies an
+appropriate data type, and PCRE_SPTR16 is defined as "const PCRE_UCHAR16 *". In
+very many environments, "short int" is a 16-bit data type. When PCRE is built,
+it defines PCRE_UCHAR16 as "unsigned short int", but checks that it really is a
+16-bit data type. If it is not, the build fails with an error message telling
+the maintainer to modify the definition appropriately.
+.
+.
+.SH "STRUCTURE TYPES"
+.rs
+.sp
+The types of the opaque structures that are used for compiled 16-bit patterns
+and JIT stacks are \fBpcre16\fP and \fBpcre16_jit_stack\fP respectively. The
+type of the user-accessible structure that is returned by \fBpcre16_study()\fP
+is \fBpcre16_extra\fP, and the type of the structure that is used for passing
+data to a callout function is \fBpcre16_callout_block\fP. These structures
+contain the same fields, with the same names, as their 8-bit counterparts. The
+only difference is that pointers to character strings are 16-bit instead of
+8-bit types.
+.
+.
+.SH "16-BIT FUNCTIONS"
+.rs
+.sp
+For every function in the 8-bit library there is a corresponding function in
+the 16-bit library with a name that starts with \fBpcre16_\fP instead of
+\fBpcre_\fP. The prototypes are listed above. In addition, there is one extra
+function, \fBpcre16_utf16_to_host_byte_order()\fP. This is a utility function
+that converts a UTF-16 character string to host byte order if necessary. The
+other 16-bit functions expect the strings they are passed to be in host byte
+order.
+.P
+The \fIinput\fP and \fIoutput\fP arguments of
+\fBpcre16_utf16_to_host_byte_order()\fP may point to the same address, that is,
+conversion in place is supported. The output buffer must be at least as long as
+the input.
+.P
+The \fIlength\fP argument specifies the number of 16-bit data units in the
+input string; a negative value specifies a zero-terminated string.
+.P
+If \fIbyte_order\fP is NULL, it is assumed that the string starts off in host
+byte order. This may be changed by byte-order marks (BOMs) anywhere in the
+string (commonly as the first character).
+.P
+If \fIbyte_order\fP is not NULL, a non-zero value of the integer to which it
+points means that the input starts off in host byte order, otherwise the
+opposite order is assumed. Again, BOMs in the string can change this. The final
+byte order is passed back at the end of processing.
+.P
+If \fIkeep_boms\fP is not zero, byte-order mark characters (0xfeff) are copied
+into the output string. Otherwise they are discarded.
+.P
+The result of the function is the number of 16-bit units placed into the output
+buffer, including the zero terminator if the string was zero-terminated.
+.
+.
+.SH "SUBJECT STRING OFFSETS"
+.rs
+.sp
+The lengths and starting offsets of subject strings must be specified in 16-bit
+data units, and the offsets within subject strings that are returned by the
+matching functions are in also 16-bit units rather than bytes.
+.
+.
+.SH "NAMED SUBPATTERNS"
+.rs
+.sp
+The name-to-number translation table that is maintained for named subpatterns
+uses 16-bit characters. The \fBpcre16_get_stringtable_entries()\fP function
+returns the length of each entry in the table as the number of 16-bit data
+units.
+.
+.
+.SH "OPTION NAMES"
+.rs
+.sp
+There are two new general option names, PCRE_UTF16 and PCRE_NO_UTF16_CHECK,
+which correspond to PCRE_UTF8 and PCRE_NO_UTF8_CHECK in the 8-bit library. In
+fact, these new options define the same bits in the options word. There is a
+discussion about the
+.\" HTML <a href="pcreunicode.html#utf16strings">
+.\" </a>
+validity of UTF-16 strings
+.\"
+in the
+.\" HREF
+\fBpcreunicode\fP
+.\"
+page.
+.P
+For the \fBpcre16_config()\fP function there is an option PCRE_CONFIG_UTF16
+that returns 1 if UTF-16 support is configured, otherwise 0. If this option is
+given to \fBpcre_config()\fP or \fBpcre32_config()\fP, or if the
+PCRE_CONFIG_UTF8 or PCRE_CONFIG_UTF32 option is given to \fBpcre16_config()\fP,
+the result is the PCRE_ERROR_BADOPTION error.
+.
+.
+.SH "CHARACTER CODES"
+.rs
+.sp
+In 16-bit mode, when PCRE_UTF16 is not set, character values are treated in the
+same way as in 8-bit, non UTF-8 mode, except, of course, that they can range
+from 0 to 0xffff instead of 0 to 0xff. Character types for characters less than
+0xff can therefore be influenced by the locale in the same way as before.
+Characters greater than 0xff have only one case, and no "type" (such as letter
+or digit).
+.P
+In UTF-16 mode, the character code is Unicode, in the range 0 to 0x10ffff, with
+the exception of values in the range 0xd800 to 0xdfff because those are
+"surrogate" values that are used in pairs to encode values greater than 0xffff.
+.P
+A UTF-16 string can indicate its endianness by special code knows as a
+byte-order mark (BOM). The PCRE functions do not handle this, expecting strings
+to be in host byte order. A utility function called
+\fBpcre16_utf16_to_host_byte_order()\fP is provided to help with this (see
+above).
+.
+.
+.SH "ERROR NAMES"
+.rs
+.sp
+The errors PCRE_ERROR_BADUTF16_OFFSET and PCRE_ERROR_SHORTUTF16 correspond to
+their 8-bit counterparts. The error PCRE_ERROR_BADMODE is given when a compiled
+pattern is passed to a function that processes patterns in the other
+mode, for example, if a pattern compiled with \fBpcre_compile()\fP is passed to
+\fBpcre16_exec()\fP.
+.P
+There are new error codes whose names begin with PCRE_UTF16_ERR for invalid
+UTF-16 strings, corresponding to the PCRE_UTF8_ERR codes for UTF-8 strings that
+are described in the section entitled
+.\" HTML <a href="pcreapi.html#badutf8reasons">
+.\" </a>
+"Reason codes for invalid UTF-8 strings"
+.\"
+in the main
+.\" HREF
+\fBpcreapi\fP
+.\"
+page. The UTF-16 errors are:
+.sp
+  PCRE_UTF16_ERR1  Missing low surrogate at end of string
+  PCRE_UTF16_ERR2  Invalid low surrogate follows high surrogate
+  PCRE_UTF16_ERR3  Isolated low surrogate
+  PCRE_UTF16_ERR4  Non-character
+.
+.
+.SH "ERROR TEXTS"
+.rs
+.sp
+If there is an error while compiling a pattern, the error text that is passed
+back by \fBpcre16_compile()\fP or \fBpcre16_compile2()\fP is still an 8-bit
+character string, zero-terminated.
+.
+.
+.SH "CALLOUTS"
+.rs
+.sp
+The \fIsubject\fP and \fImark\fP fields in the callout block that is passed to
+a callout function point to 16-bit vectors.
+.
+.
+.SH "TESTING"
+.rs
+.sp
+The \fBpcretest\fP program continues to operate with 8-bit input and output
+files, but it can be used for testing the 16-bit library. If it is run with the
+command line option \fB-16\fP, patterns and subject strings are converted from
+8-bit to 16-bit before being passed to PCRE, and the 16-bit library functions
+are used instead of the 8-bit ones. Returned 16-bit strings are converted to
+8-bit for output. If both the 8-bit and the 32-bit libraries were not compiled,
+\fBpcretest\fP defaults to 16-bit and the \fB-16\fP option is ignored.
+.P
+When PCRE is being built, the \fBRunTest\fP script that is called by "make
+check" uses the \fBpcretest\fP \fB-C\fP option to discover which of the 8-bit,
+16-bit and 32-bit libraries has been built, and runs the tests appropriately.
+.
+.
+.SH "NOT SUPPORTED IN 16-BIT MODE"
+.rs
+.sp
+Not all the features of the 8-bit library are available with the 16-bit
+library. The C++ and POSIX wrapper functions support only the 8-bit library,
+and the \fBpcregrep\fP program is at present 8-bit only.
+.
+.
+.SH AUTHOR
+.rs
+.sp
+.nf
+Philip Hazel
+University Computing Service
+Cambridge CB2 3QH, England.
+.fi
+.
+.
+.SH REVISION
+.rs
+.sp
+.nf
+Last updated: 12 May 2013
+Copyright (c) 1997-2013 University of Cambridge.
+.fi

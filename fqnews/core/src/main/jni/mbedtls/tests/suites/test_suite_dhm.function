@@ -1,0 +1,238 @@
+/* BEGIN_HEADER */
+#include "mbedtls/dhm.h"
+/* END_HEADER */
+
+/* BEGIN_DEPENDENCIES
+ * depends_on:MBEDTLS_DHM_C:MBEDTLS_BIGNUM_C
+ * END_DEPENDENCIES
+ */
+
+/* BEGIN_CASE depends_on:MBEDTLS_CHECK_PARAMS:!MBEDTLS_PARAM_FAILED_ALT */
+void dhm_invalid_params( )
+{
+    mbedtls_dhm_context ctx;
+    unsigned char buf[42] = { 0 };
+    unsigned char *buf_null = NULL;
+    mbedtls_mpi X;
+    size_t const buflen = sizeof( buf );
+    size_t len;
+
+    TEST_INVALID_PARAM( mbedtls_dhm_init( NULL ) );
+    TEST_VALID_PARAM( mbedtls_dhm_free( NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_read_params( NULL,
+                                                     (unsigned char**) &buf,
+                                                     buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_read_params( &ctx, &buf_null, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_read_params( &ctx, NULL, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_read_params( &ctx,
+                                                     (unsigned char**) &buf,
+                                                     NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_make_params( NULL, buflen,
+                                                     buf, &len,
+                                                     rnd_std_rand,
+                                                     NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_make_params( &ctx, buflen,
+                                                     NULL, &len,
+                                                     rnd_std_rand,
+                                                     NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_make_params( &ctx, buflen,
+                                                     buf, NULL,
+                                                     rnd_std_rand,
+                                                     NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_make_params( &ctx, buflen,
+                                                     buf, &len,
+                                                     NULL,
+                                                     NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_set_group( NULL, &X, &X ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_set_group( &ctx, NULL, &X ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_set_group( &ctx, &X, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_read_public( NULL, buf, buflen ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_read_public( &ctx, NULL, buflen ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_make_public( NULL, buflen,
+                                                     buf, buflen,
+                                                     rnd_std_rand,
+                                                     NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_make_public( &ctx, buflen,
+                                                     NULL, buflen,
+                                                     rnd_std_rand,
+                                                     NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_make_public( &ctx, buflen,
+                                                     buf, buflen,
+                                                     NULL,
+                                                     NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_calc_secret( NULL, buf, buflen,
+                                                     &len, rnd_std_rand,
+                                                     NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_calc_secret( &ctx, NULL, buflen,
+                                                     &len, rnd_std_rand,
+                                                     NULL ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_calc_secret( &ctx, buf, buflen,
+                                                     NULL, rnd_std_rand,
+                                                     NULL ) );
+
+#if defined(MBEDTLS_ASN1_PARSE_C)
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_parse_dhm( NULL, buf, buflen ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_parse_dhm( &ctx, NULL, buflen ) );
+
+#if defined(MBEDTLS_FS_IO)
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_parse_dhmfile( NULL, "" ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_DHM_BAD_INPUT_DATA,
+                            mbedtls_dhm_parse_dhmfile( &ctx, NULL ) );
+#endif /* MBEDTLS_FS_IO */
+#endif /* MBEDTLS_ASN1_PARSE_C */
+
+exit:
+    return;
+}
+/* END_CASE */
+
+/* BEGIN_CASE */
+void dhm_do_dhm( int radix_P, char *input_P,
+                 int radix_G, char *input_G, int result )
+{
+    mbedtls_dhm_context ctx_srv;
+    mbedtls_dhm_context ctx_cli;
+    unsigned char ske[1000];
+    unsigned char *p = ske;
+    unsigned char pub_cli[1000];
+    unsigned char sec_srv[1000];
+    unsigned char sec_cli[1000];
+    size_t ske_len = 0;
+    size_t pub_cli_len = 0;
+    size_t sec_srv_len;
+    size_t sec_cli_len;
+    int x_size, i;
+    rnd_pseudo_info rnd_info;
+
+    mbedtls_dhm_init( &ctx_srv );
+    mbedtls_dhm_init( &ctx_cli );
+    memset( ske, 0x00, 1000 );
+    memset( pub_cli, 0x00, 1000 );
+    memset( sec_srv, 0x00, 1000 );
+    memset( sec_cli, 0x00, 1000 );
+    memset( &rnd_info, 0x00, sizeof( rnd_pseudo_info ) );
+
+    /*
+     * Set params
+     */
+    TEST_ASSERT( mbedtls_mpi_read_string( &ctx_srv.P, radix_P, input_P ) == 0 );
+    TEST_ASSERT( mbedtls_mpi_read_string( &ctx_srv.G, radix_G, input_G ) == 0 );
+    x_size = mbedtls_mpi_size( &ctx_srv.P );
+    pub_cli_len = x_size;
+
+    /*
+     * First key exchange
+     */
+    TEST_ASSERT( mbedtls_dhm_make_params( &ctx_srv, x_size, ske, &ske_len, &rnd_pseudo_rand, &rnd_info ) == result );
+    if ( result != 0 )
+        goto exit;
+
+    ske[ske_len++] = 0;
+    ske[ske_len++] = 0;
+    TEST_ASSERT( mbedtls_dhm_read_params( &ctx_cli, &p, ske + ske_len ) == 0 );
+
+    TEST_ASSERT( mbedtls_dhm_make_public( &ctx_cli, x_size, pub_cli, pub_cli_len, &rnd_pseudo_rand, &rnd_info ) == 0 );
+    TEST_ASSERT( mbedtls_dhm_read_public( &ctx_srv, pub_cli, pub_cli_len ) == 0 );
+
+    TEST_ASSERT( mbedtls_dhm_calc_secret( &ctx_srv, sec_srv, sizeof( sec_srv ), &sec_srv_len, &rnd_pseudo_rand, &rnd_info ) == 0 );
+    TEST_ASSERT( mbedtls_dhm_calc_secret( &ctx_cli, sec_cli, sizeof( sec_cli ), &sec_cli_len, NULL, NULL ) == 0 );
+
+    TEST_ASSERT( sec_srv_len == sec_cli_len );
+    TEST_ASSERT( sec_srv_len != 0 );
+    TEST_ASSERT( memcmp( sec_srv, sec_cli, sec_srv_len ) == 0 );
+
+    /* Re-do calc_secret on server a few times to test update of blinding values */
+    for( i = 0; i < 3; i++ )
+    {
+        sec_srv_len = 1000;
+        TEST_ASSERT( mbedtls_dhm_calc_secret( &ctx_srv, sec_srv, sizeof( sec_srv ), &sec_srv_len, &rnd_pseudo_rand, &rnd_info ) == 0 );
+
+        TEST_ASSERT( sec_srv_len == sec_cli_len );
+        TEST_ASSERT( sec_srv_len != 0 );
+        TEST_ASSERT( memcmp( sec_srv, sec_cli, sec_srv_len ) == 0 );
+    }
+
+    /*
+     * Second key exchange to test change of blinding values on server
+     */
+    p = ske;
+
+    TEST_ASSERT( mbedtls_dhm_make_params( &ctx_srv, x_size, ske, &ske_len, &rnd_pseudo_rand, &rnd_info ) == 0 );
+    ske[ske_len++] = 0;
+    ske[ske_len++] = 0;
+    TEST_ASSERT( mbedtls_dhm_read_params( &ctx_cli, &p, ske + ske_len ) == 0 );
+
+    TEST_ASSERT( mbedtls_dhm_make_public( &ctx_cli, x_size, pub_cli, pub_cli_len, &rnd_pseudo_rand, &rnd_info ) == 0 );
+    TEST_ASSERT( mbedtls_dhm_read_public( &ctx_srv, pub_cli, pub_cli_len ) == 0 );
+
+    TEST_ASSERT( mbedtls_dhm_calc_secret( &ctx_srv, sec_srv, sizeof( sec_srv ), &sec_srv_len, &rnd_pseudo_rand, &rnd_info ) == 0 );
+    TEST_ASSERT( mbedtls_dhm_calc_secret( &ctx_cli, sec_cli, sizeof( sec_cli ), &sec_cli_len, NULL, NULL ) == 0 );
+
+    TEST_ASSERT( sec_srv_len == sec_cli_len );
+    TEST_ASSERT( sec_srv_len != 0 );
+    TEST_ASSERT( memcmp( sec_srv, sec_cli, sec_srv_len ) == 0 );
+
+exit:
+    mbedtls_dhm_free( &ctx_srv );
+    mbedtls_dhm_free( &ctx_cli );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_FS_IO */
+void dhm_file( char * filename, char * p, char * g, int len )
+{
+    mbedtls_dhm_context ctx;
+    mbedtls_mpi P, G;
+
+    mbedtls_dhm_init( &ctx );
+    mbedtls_mpi_init( &P ); mbedtls_mpi_init( &G );
+
+    TEST_ASSERT( mbedtls_mpi_read_string( &P, 16, p ) == 0 );
+    TEST_ASSERT( mbedtls_mpi_read_string( &G, 16, g ) == 0 );
+
+    TEST_ASSERT( mbedtls_dhm_parse_dhmfile( &ctx, filename ) == 0 );
+
+    TEST_ASSERT( ctx.len == (size_t) len );
+    TEST_ASSERT( mbedtls_mpi_cmp_mpi( &ctx.P, &P ) == 0 );
+    TEST_ASSERT( mbedtls_mpi_cmp_mpi( &ctx.G, &G ) == 0 );
+
+exit:
+    mbedtls_mpi_free( &P ); mbedtls_mpi_free( &G );
+    mbedtls_dhm_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SELF_TEST */
+void dhm_selftest(  )
+{
+    TEST_ASSERT( mbedtls_dhm_self_test( 1 ) == 0 );
+}
+/* END_CASE */

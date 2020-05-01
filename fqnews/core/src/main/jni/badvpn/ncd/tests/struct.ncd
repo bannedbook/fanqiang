@@ -1,0 +1,42 @@
+template test_one {
+    var(@struct_encode({{_arg0, _arg1}})) encoded;
+    assert(@val_equal(encoded, _arg2));
+    
+    var(@struct_decode({_arg0}, encoded)) decoded;
+    assert(@val_equal(decoded, {_arg1}));
+}
+
+process main {
+    call(@test_one, {@u8, "0", "\x00"});
+    call(@test_one, {@u8, "254", "\xFE"});
+    call(@test_one, {@u8, "255", "\xFF"});
+    
+    call(@test_one, {@u16b, "0", "\x00\x00"});
+    call(@test_one, {@u16l, "0", "\x00\x00"});
+    call(@test_one, {@u16b, "65534", "\xFF\xFE"});
+    call(@test_one, {@u16l, "65534", "\xFE\xFF"});
+    call(@test_one, {@u16b, "65535", "\xFF\xFF"});
+    call(@test_one, {@u16l, "65535", "\xFF\xFF"});
+    
+    call(@test_one, {@u32b, "0", "\x00\x00\x00\x00"});
+    call(@test_one, {@u32l, "0", "\x00\x00\x00\x00"});
+    call(@test_one, {@u32b, "4294967294", "\xFF\xFF\xFF\xFE"});
+    call(@test_one, {@u32l, "4294967294", "\xFE\xFF\xFF\xFF"});
+    call(@test_one, {@u32b, "4294967295", "\xFF\xFF\xFF\xFF"});
+    call(@test_one, {@u32l, "4294967295", "\xFF\xFF\xFF\xFF"});
+    
+    call(@test_one, {@u64b, "0", "\x00\x00\x00\x00\x00\x00\x00\x00"});
+    call(@test_one, {@u64l, "0", "\x00\x00\x00\x00\x00\x00\x00\x00"});
+    call(@test_one, {@u64b, "18446744073709551614", "\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFE"});
+    call(@test_one, {@u64l, "18446744073709551614", "\xFE\xFF\xFF\xFF\xFF\xFF\xFF\xFF"});
+    call(@test_one, {@u64b, "18446744073709551615", "\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF"});
+    call(@test_one, {@u64l, "18446744073709551615", "\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF"});
+    
+    var(@struct_encode({{@u8, "4"}, {@u16l, "1000"}})) encoded;
+    assert(@val_equal(encoded, "\x04\xE8\x03"));
+    
+    var(@struct_decode({@u8, @u16l}, "\x05\xE9\x03")) decoded;
+    assert(@val_equal(decoded, {"5", "1001"}));
+    
+    exit("0");
+}

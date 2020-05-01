@@ -1,0 +1,38 @@
+#!/bin/bash
+
+NCD=$1
+USE_VALGRIND=$2
+
+if [[ -z $NCD ]] || [[ -n $USE_VALGRIND && $USE_VALGRIND != use_valgrind ]]; then
+	echo "Usage: $0 <ncd_command> [use_valgrind]"
+	exit 1
+fi
+
+if [[ ! -e ./run_tests ]]; then
+	echo "Must run from the tests directory"
+	exit 1
+fi
+
+failed=0
+
+for file in ./*.ncd; do
+	echo "Running: $file"
+	if [[ $USE_VALGRIND = use_valgrind ]]; then
+		valgrind --error-exitcode=1 --leak-check=full "$NCD" --loglevel none --config-file "$file"
+	else
+		"$NCD" --loglevel none --config-file "$file"
+	fi
+	res=$?
+	if [[ ! $res -eq 0 ]]; then
+		echo "FAILED"
+		let failed+=1
+	fi
+done
+
+if [[ $failed -gt 0 ]]; then
+	echo "$failed tests FAILED"
+	exit 1
+fi
+
+echo "all tests passed"
+exit 0

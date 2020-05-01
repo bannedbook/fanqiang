@@ -1,0 +1,27 @@
+process main {
+    call("make_dhcp_config", {"192.168.1.1", "24", "192.168.1.100", "192.168.1.199", {"192.168.1.1"}, {"192.168.1.1", "4.4.4.4"}, "dhcpd.conf.template", "dhcpd.conf"}) config;
+    exit("0");
+}
+
+template make_dhcp_config {
+    alias("_arg0") addr;
+    alias("_arg1") prefix;
+    alias("_arg2") range_start;
+    alias("_arg3") range_end;
+    alias("_arg4") routers;
+    alias("_arg5") dns_servers;
+    alias("_arg6") template_file;
+    alias("_arg7") output_file;
+
+    ipv4_net_from_addr_and_prefix(addr, prefix) network;
+    ipv4_prefix_to_mask(prefix) netmask;
+    implode(", ", routers) routers_str;
+    implode(", ", dns_servers) dns_servers_str;
+
+    var({"<LOCAL_ADDRESS>", "<NETWORK>", "<NETMASK>", "<RANGE_START>", "<RANGE_END>", "<ROUTERS>", "<DNS_SERVERS>"}) regex;
+    var({addr, network, netmask, range_start, range_end, routers_str, dns_servers_str}) replace;
+
+    file_read(template_file) template_data;
+    regex_replace(template_data, regex, replace) replaced_data;
+    file_write(output_file, replaced_data);
+}

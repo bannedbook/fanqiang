@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>pcre_dfa_exec specification</title>
+</head>
+<body bgcolor="#FFFFFF" text="#00005A" link="#0066FF" alink="#3399FF" vlink="#2222BB">
+<h1>pcre_dfa_exec man page</h1>
+<p>
+Return to the <a href="index.html">PCRE index page</a>.
+</p>
+<p>
+This page is part of the PCRE HTML documentation. It was generated automatically
+from the original man page. If there is any nonsense in it, please consult the
+man page, in case the conversion went wrong.
+<br>
+<br><b>
+SYNOPSIS
+</b><br>
+<P>
+<b>#include &#60;pcre.h&#62;</b>
+</P>
+<P>
+<b>int pcre_dfa_exec(const pcre *<i>code</i>, const pcre_extra *<i>extra</i>,</b>
+<b>     const char *<i>subject</i>, int <i>length</i>, int <i>startoffset</i>,</b>
+<b>     int <i>options</i>, int *<i>ovector</i>, int <i>ovecsize</i>,</b>
+<b>     int *<i>workspace</i>, int <i>wscount</i>);</b>
+<br>
+<br>
+<b>int pcre16_dfa_exec(const pcre16 *<i>code</i>, const pcre16_extra *<i>extra</i>,</b>
+<b>     PCRE_SPTR16 <i>subject</i>, int <i>length</i>, int <i>startoffset</i>,</b>
+<b>     int <i>options</i>, int *<i>ovector</i>, int <i>ovecsize</i>,</b>
+<b>     int *<i>workspace</i>, int <i>wscount</i>);</b>
+<br>
+<br>
+<b>int pcre32_dfa_exec(const pcre32 *<i>code</i>, const pcre32_extra *<i>extra</i>,</b>
+<b>     PCRE_SPTR32 <i>subject</i>, int <i>length</i>, int <i>startoffset</i>,</b>
+<b>     int <i>options</i>, int *<i>ovector</i>, int <i>ovecsize</i>,</b>
+<b>     int *<i>workspace</i>, int <i>wscount</i>);</b>
+</P>
+<br><b>
+DESCRIPTION
+</b><br>
+<P>
+This function matches a compiled regular expression against a given subject
+string, using an alternative matching algorithm that scans the subject string
+just once (<i>not</i> Perl-compatible). Note that the main, Perl-compatible,
+matching function is <b>pcre[16|32]_exec()</b>. The arguments for this function
+are:
+<pre>
+  <i>code</i>         Points to the compiled pattern
+  <i>extra</i>        Points to an associated <b>pcre[16|32]_extra</b> structure,
+                 or is NULL
+  <i>subject</i>      Points to the subject string
+  <i>length</i>       Length of the subject string
+  <i>startoffset</i>  Offset in the subject at which to start matching
+  <i>options</i>      Option bits
+  <i>ovector</i>      Points to a vector of ints for result offsets
+  <i>ovecsize</i>     Number of elements in the vector
+  <i>workspace</i>    Points to a vector of ints used as working space
+  <i>wscount</i>      Number of elements in the vector
+</pre>
+The units for <i>length</i> and <i>startoffset</i> are bytes for
+<b>pcre_exec()</b>, 16-bit data items for <b>pcre16_exec()</b>, and 32-bit items
+for <b>pcre32_exec()</b>. The options are:
+<pre>
+  PCRE_ANCHORED          Match only at the first position
+  PCRE_BSR_ANYCRLF       \R matches only CR, LF, or CRLF
+  PCRE_BSR_UNICODE       \R matches all Unicode line endings
+  PCRE_NEWLINE_ANY       Recognize any Unicode newline sequence
+  PCRE_NEWLINE_ANYCRLF   Recognize CR, LF, & CRLF as newline sequences
+  PCRE_NEWLINE_CR        Recognize CR as the only newline sequence
+  PCRE_NEWLINE_CRLF      Recognize CRLF as the only newline sequence
+  PCRE_NEWLINE_LF        Recognize LF as the only newline sequence
+  PCRE_NOTBOL            Subject is not the beginning of a line
+  PCRE_NOTEOL            Subject is not the end of a line
+  PCRE_NOTEMPTY          An empty string is not a valid match
+  PCRE_NOTEMPTY_ATSTART  An empty string at the start of the subject
+                           is not a valid match
+  PCRE_NO_START_OPTIMIZE Do not do "start-match" optimizations
+  PCRE_NO_UTF16_CHECK    Do not check the subject for UTF-16
+                           validity (only relevant if PCRE_UTF16
+                           was set at compile time)
+  PCRE_NO_UTF32_CHECK    Do not check the subject for UTF-32
+                           validity (only relevant if PCRE_UTF32
+                           was set at compile time)
+  PCRE_NO_UTF8_CHECK     Do not check the subject for UTF-8
+                           validity (only relevant if PCRE_UTF8
+                           was set at compile time)
+  PCRE_PARTIAL           ) Return PCRE_ERROR_PARTIAL for a partial
+  PCRE_PARTIAL_SOFT      )   match if no full matches are found
+  PCRE_PARTIAL_HARD      Return PCRE_ERROR_PARTIAL for a partial match
+                           even if there is a full match as well
+  PCRE_DFA_SHORTEST      Return only the shortest match
+  PCRE_DFA_RESTART       Restart after a partial match
+</pre>
+There are restrictions on what may appear in a pattern when using this matching
+function. Details are given in the
+<a href="pcrematching.html"><b>pcrematching</b></a>
+documentation. For details of partial matching, see the
+<a href="pcrepartial.html"><b>pcrepartial</b></a>
+page.
+</P>
+<P>
+A <b>pcre[16|32]_extra</b> structure contains the following fields:
+<pre>
+  <i>flags</i>            Bits indicating which fields are set
+  <i>study_data</i>       Opaque data from <b>pcre[16|32]_study()</b>
+  <i>match_limit</i>      Limit on internal resource use
+  <i>match_limit_recursion</i>  Limit on internal recursion depth
+  <i>callout_data</i>     Opaque data passed back to callouts
+  <i>tables</i>           Points to character tables or is NULL
+  <i>mark</i>             For passing back a *MARK pointer
+  <i>executable_jit</i>   Opaque data from JIT compilation
+</pre>
+The flag bits are PCRE_EXTRA_STUDY_DATA, PCRE_EXTRA_MATCH_LIMIT,
+PCRE_EXTRA_MATCH_LIMIT_RECURSION, PCRE_EXTRA_CALLOUT_DATA,
+PCRE_EXTRA_TABLES, PCRE_EXTRA_MARK and PCRE_EXTRA_EXECUTABLE_JIT. For this
+matching function, the <i>match_limit</i> and <i>match_limit_recursion</i> fields
+are not used, and must not be set. The PCRE_EXTRA_EXECUTABLE_JIT flag and
+the corresponding variable are ignored.
+</P>
+<P>
+There is a complete description of the PCRE native API in the
+<a href="pcreapi.html"><b>pcreapi</b></a>
+page and a description of the POSIX API in the
+<a href="pcreposix.html"><b>pcreposix</b></a>
+page.
+<p>
+Return to the <a href="index.html">PCRE index page</a>.
+</p>

@@ -1,0 +1,10 @@
+{
+    "server":"127.0.0.1",
+    "server_port":8389,
+    "local_port":1081,
+    "password":"aes_password",
+    "timeout":60,
+    "method":"rc4-md5",
+    "local":"127.0.0.1",
+    "fast_open":false
+}

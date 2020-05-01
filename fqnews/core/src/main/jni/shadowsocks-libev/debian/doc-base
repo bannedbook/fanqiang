@@ -1,0 +1,9 @@
+Document: shadowsocks-libev
+Title: shadowsocks-libev documentation
+Author: Max Lv <max.c.lv@gmail.com>
+Abstract: This is the documentation of shadowsocks-libev
+Section: Network/Communication
+
+Format: HTML
+Index: /usr/share/doc/shadowsocks-libev/shadowsocks-libev.html
+Files: /usr/share/doc/shadowsocks-libev/*.html

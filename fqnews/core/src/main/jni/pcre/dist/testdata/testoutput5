@@ -1,0 +1,1945 @@
+/-- This set of tests checks the API, internals, and non-Perl stuff for UTF
+    support, excluding Unicode properties. However, tests that give different
+    results in 8-bit and 16-bit modes are excluded (see tests 16 and 17). --/
+    
+< forbid W 
+
+/\x{110000}/8DZ
+Failed: character value in \x{} or \o{} is too large at offset 9
+
+/\o{4200000}/8DZ
+Failed: character value in \x{} or \o{} is too large at offset 10
+
+/\x{ffffffff}/8
+Failed: character value in \x{} or \o{} is too large at offset 11
+
+/\o{37777777777}/8
+Failed: character value in \x{} or \o{} is too large at offset 14
+
+/\x{100000000}/8
+Failed: character value in \x{} or \o{} is too large at offset 12
+
+/\o{77777777777}/8
+Failed: character value in \x{} or \o{} is too large at offset 14
+
+/\x{d800}/8
+Failed: disallowed Unicode code point (>= 0xd800 && <= 0xdfff) at offset 7
+
+/\o{154000}/8
+Failed: disallowed Unicode code point (>= 0xd800 && <= 0xdfff) at offset 9
+
+/\x{dfff}/8
+Failed: disallowed Unicode code point (>= 0xd800 && <= 0xdfff) at offset 7
+
+/\o{157777}/8
+Failed: disallowed Unicode code point (>= 0xd800 && <= 0xdfff) at offset 9
+
+/\x{d7ff}/8
+
+/\o{153777}/8
+
+/\x{e000}/8
+
+/\o{170000}/8
+
+/^\x{100}a\x{1234}/8
+    \x{100}a\x{1234}bcd
+ 0: \x{100}a\x{1234}
+
+/\x{0041}\x{2262}\x{0391}\x{002e}/DZ8
+------------------------------------------------------------------
+        Bra
+        A\x{2262}\x{391}.
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = 'A'
+Need char = '.'
+    \x{0041}\x{2262}\x{0391}\x{002e}
+ 0: A\x{2262}\x{391}.
+    
+/.{3,5}X/DZ8
+------------------------------------------------------------------
+        Bra
+        Any{3}
+        Any{0,2}
+        X
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+Need char = 'X'
+    \x{212ab}\x{212ab}\x{212ab}\x{861}X
+ 0: \x{212ab}\x{212ab}\x{212ab}\x{861}X
+
+/.{3,5}?/DZ8
+------------------------------------------------------------------
+        Bra
+        Any{3}
+        Any{0,2}?
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+    \x{212ab}\x{212ab}\x{212ab}\x{861}
+ 0: \x{212ab}\x{212ab}\x{212ab}
+
+/(?<=\C)X/8
+Failed: \C not allowed in lookbehind assertion at offset 6
+
+/^[ab]/8DZ
+------------------------------------------------------------------
+        Bra
+        ^
+        [ab]
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: anchored utf
+No first char
+No need char
+    bar
+ 0: b
+    *** Failers
+No match
+    c
+No match
+    \x{ff}
+No match
+    \x{100}  
+No match
+
+/^[^ab]/8DZ
+------------------------------------------------------------------
+        Bra
+        ^
+        [\x00-`c-\xff] (neg)
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: anchored utf
+No first char
+No need char
+    c
+ 0: c
+    \x{ff}
+ 0: \x{ff}
+    \x{100}  
+ 0: \x{100}
+    *** Failers 
+ 0: *
+    aaa
+No match
+  
+/\x{100}*(\d+|"(?1)")/8
+    1234
+ 0: 1234
+ 1: 1234
+    "1234" 
+ 0: "1234"
+ 1: "1234"
+    \x{100}1234
+ 0: \x{100}1234
+ 1: 1234
+    "\x{100}1234"  
+ 0: \x{100}1234
+ 1: 1234
+    \x{100}\x{100}12ab 
+ 0: \x{100}\x{100}12
+ 1: 12
+    \x{100}\x{100}"12" 
+ 0: \x{100}\x{100}"12"
+ 1: "12"
+    *** Failers 
+No match
+    \x{100}\x{100}abcd
+No match
+
+/\x{100}*/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}*+
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+May match empty string
+Options: utf
+No first char
+No need char
+
+/a\x{100}*/8DZ
+------------------------------------------------------------------
+        Bra
+        a
+        \x{100}*+
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = 'a'
+No need char
+
+/ab\x{100}*/8DZ
+------------------------------------------------------------------
+        Bra
+        ab
+        \x{100}*+
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = 'a'
+Need char = 'b'
+
+/\x{100}*A/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}*+
+        A
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+Need char = 'A'
+    A
+ 0: A
+
+/\x{100}*\d(?R)/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}*+
+        \d
+        Recurse
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+
+/[Z\x{100}]/8DZ
+------------------------------------------------------------------
+        Bra
+        [Z\x{100}]
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+    Z\x{100}
+ 0: Z
+    \x{100}
+ 0: \x{100}
+    \x{100}Z
+ 0: \x{100}
+    *** Failers 
+No match
+
+/[\x{200}-\x{100}]/8
+Failed: range out of order in character class at offset 15
+
+/[Ā-Ą]/8
+    \x{100}
+ 0: \x{100}
+    \x{104}
+ 0: \x{104}
+    *** Failers
+No match
+    \x{105}
+No match
+    \x{ff}    
+No match
+
+/[z-\x{100}]/8DZ
+------------------------------------------------------------------
+        Bra
+        [z-\xff\x{100}]
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+
+/[z\Qa-d]Ā\E]/8DZ
+------------------------------------------------------------------
+        Bra
+        [\-\]adz\x{100}]
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+    \x{100}
+ 0: \x{100}
+    Ā 
+ 0: \x{100}
+
+/[\xFF]/DZ
+------------------------------------------------------------------
+        Bra
+        \x{ff}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+No options
+First char = \xff
+No need char
+    >\xff<
+ 0: \xff
+
+/[^\xFF]/DZ
+------------------------------------------------------------------
+        Bra
+        [^\x{ff}]
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+No options
+No first char
+No need char
+
+/[Ä-Ü]/8
+    Ö # Matches without Study
+ 0: \x{d6}
+    \x{d6}
+ 0: \x{d6}
+    
+/[Ä-Ü]/8S
+    Ö <-- Same with Study
+ 0: \x{d6}
+    \x{d6}
+ 0: \x{d6}
+    
+/[\x{c4}-\x{dc}]/8 
+    Ö # Matches without Study
+ 0: \x{d6}
+    \x{d6} 
+ 0: \x{d6}
+
+/[\x{c4}-\x{dc}]/8S
+    Ö <-- Same with Study
+ 0: \x{d6}
+    \x{d6} 
+ 0: \x{d6}
+
+/[^\x{100}]abc(xyz(?1))/8DZ
+------------------------------------------------------------------
+        Bra
+        [^\x{100}]
+        abc
+        CBra 1
+        xyz
+        Recurse
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 1
+Options: utf
+No first char
+Need char = 'z'
+
+/[ab\x{100}]abc(xyz(?1))/8DZ
+------------------------------------------------------------------
+        Bra
+        [ab\x{100}]
+        abc
+        CBra 1
+        xyz
+        Recurse
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 1
+Options: utf
+No first char
+Need char = 'z'
+
+/(\x{100}(b(?2)c))?/DZ8
+------------------------------------------------------------------
+        Bra
+        Brazero
+        CBra 1
+        \x{100}
+        CBra 2
+        b
+        Recurse
+        c
+        Ket
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 2
+May match empty string
+Options: utf
+No first char
+No need char
+
+/(\x{100}(b(?2)c)){0,2}/DZ8
+------------------------------------------------------------------
+        Bra
+        Brazero
+        Bra
+        CBra 1
+        \x{100}
+        CBra 2
+        b
+        Recurse
+        c
+        Ket
+        Ket
+        Brazero
+        CBra 1
+        \x{100}
+        CBra 2
+        b
+        Recurse
+        c
+        Ket
+        Ket
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 2
+May match empty string
+Options: utf
+No first char
+No need char
+
+/(\x{100}(b(?1)c))?/DZ8
+------------------------------------------------------------------
+        Bra
+        Brazero
+        CBra 1
+        \x{100}
+        CBra 2
+        b
+        Recurse
+        c
+        Ket
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 2
+May match empty string
+Options: utf
+No first char
+No need char
+
+/(\x{100}(b(?1)c)){0,2}/DZ8
+------------------------------------------------------------------
+        Bra
+        Brazero
+        Bra
+        CBra 1
+        \x{100}
+        CBra 2
+        b
+        Recurse
+        c
+        Ket
+        Ket
+        Brazero
+        CBra 1
+        \x{100}
+        CBra 2
+        b
+        Recurse
+        c
+        Ket
+        Ket
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 2
+May match empty string
+Options: utf
+No first char
+No need char
+
+/\W/8
+    A.B
+ 0: .
+    A\x{100}B 
+ 0: \x{100}
+  
+/\w/8
+    \x{100}X   
+ 0: X
+
+/^\ሴ/8DZ
+------------------------------------------------------------------
+        Bra
+        ^
+        \x{1234}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: anchored utf
+No first char
+No need char
+
+/\x{100}*\d/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}*+
+        \d
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+
+/\x{100}*\s/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}*+
+        \s
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+
+/\x{100}*\w/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}*+
+        \w
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+
+/\x{100}*\D/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}*
+        \D
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+
+/\x{100}*\S/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}*
+        \S
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+
+/\x{100}*\W/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}*
+        \W
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+
+/()()()()()()()()()()
+ ()()()()()()()()()()
+ ()()()()()()()()()()
+ ()()()()()()()()()()
+ A (x) (?41) B/8x
+    AxxB     
+Matched, but too many substrings
+ 0: AxxB
+ 1: 
+ 2: 
+ 3: 
+ 4: 
+ 5: 
+ 6: 
+ 7: 
+ 8: 
+ 9: 
+10: 
+11: 
+12: 
+13: 
+14: 
+
+/^[\x{100}\E-\Q\E\x{150}]/BZ8
+------------------------------------------------------------------
+        Bra
+        ^
+        [\x{100}-\x{150}]
+        Ket
+        End
+------------------------------------------------------------------
+
+/^[\QĀ\E-\QŐ\E]/BZ8
+------------------------------------------------------------------
+        Bra
+        ^
+        [\x{100}-\x{150}]
+        Ket
+        End
+------------------------------------------------------------------
+
+/^abc./mgx8<any>
+    abc1 \x0aabc2 \x0babc3xx \x0cabc4 \x0dabc5xx \x0d\x0aabc6 \x{0085}abc7 \x{2028}abc8 \x{2029}abc9 JUNK
+ 0: abc1
+ 0: abc2
+ 0: abc3
+ 0: abc4
+ 0: abc5
+ 0: abc6
+ 0: abc7
+ 0: abc8
+ 0: abc9
+
+/abc.$/mgx8<any>
+    abc1\x0a abc2\x0b abc3\x0c abc4\x0d abc5\x0d\x0a abc6\x{0085} abc7\x{2028} abc8\x{2029} abc9
+ 0: abc1
+ 0: abc2
+ 0: abc3
+ 0: abc4
+ 0: abc5
+ 0: abc6
+ 0: abc7
+ 0: abc8
+ 0: abc9
+
+/^a\Rb/8<bsr_unicode>
+    a\nb
+ 0: a\x{0a}b
+    a\rb
+ 0: a\x{0d}b
+    a\r\nb
+ 0: a\x{0d}\x{0a}b
+    a\x0bb
+ 0: a\x{0b}b
+    a\x0cb
+ 0: a\x{0c}b
+    a\x{85}b   
+ 0: a\x{85}b
+    a\x{2028}b 
+ 0: a\x{2028}b
+    a\x{2029}b 
+ 0: a\x{2029}b
+    ** Failers
+No match
+    a\n\rb    
+No match
+
+/^a\R*b/8<bsr_unicode>
+    ab
+ 0: ab
+    a\nb
+ 0: a\x{0a}b
+    a\rb
+ 0: a\x{0d}b
+    a\r\nb
+ 0: a\x{0d}\x{0a}b
+    a\x0bb
+ 0: a\x{0b}b
+    a\x0c\x{2028}\x{2029}b
+ 0: a\x{0c}\x{2028}\x{2029}b
+    a\x{85}b   
+ 0: a\x{85}b
+    a\n\rb    
+ 0: a\x{0a}\x{0d}b
+    a\n\r\x{85}\x0cb 
+ 0: a\x{0a}\x{0d}\x{85}\x{0c}b
+
+/^a\R+b/8<bsr_unicode>
+    a\nb
+ 0: a\x{0a}b
+    a\rb
+ 0: a\x{0d}b
+    a\r\nb
+ 0: a\x{0d}\x{0a}b
+    a\x0bb
+ 0: a\x{0b}b
+    a\x0c\x{2028}\x{2029}b
+ 0: a\x{0c}\x{2028}\x{2029}b
+    a\x{85}b   
+ 0: a\x{85}b
+    a\n\rb    
+ 0: a\x{0a}\x{0d}b
+    a\n\r\x{85}\x0cb 
+ 0: a\x{0a}\x{0d}\x{85}\x{0c}b
+    ** Failers
+No match
+    ab  
+No match
+
+/^a\R{1,3}b/8<bsr_unicode>
+    a\nb
+ 0: a\x{0a}b
+    a\n\rb
+ 0: a\x{0a}\x{0d}b
+    a\n\r\x{85}b
+ 0: a\x{0a}\x{0d}\x{85}b
+    a\r\n\r\nb 
+ 0: a\x{0d}\x{0a}\x{0d}\x{0a}b
+    a\r\n\r\n\r\nb 
+ 0: a\x{0d}\x{0a}\x{0d}\x{0a}\x{0d}\x{0a}b
+    a\n\r\n\rb
+ 0: a\x{0a}\x{0d}\x{0a}\x{0d}b
+    a\n\n\r\nb 
+ 0: a\x{0a}\x{0a}\x{0d}\x{0a}b
+    ** Failers
+No match
+    a\n\n\n\rb
+No match
+    a\r
+No match
+
+/\H\h\V\v/8
+    X X\x0a
+ 0: X X\x{0a}
+    X\x09X\x0b
+ 0: X\x{09}X\x{0b}
+    ** Failers
+No match
+    \x{a0} X\x0a   
+No match
+    
+/\H*\h+\V?\v{3,4}/8 
+    \x09\x20\x{a0}X\x0a\x0b\x0c\x0d\x0a
+ 0: \x{09} \x{a0}X\x{0a}\x{0b}\x{0c}\x{0d}
+    \x09\x20\x{a0}\x0a\x0b\x0c\x0d\x0a
+ 0: \x{09} \x{a0}\x{0a}\x{0b}\x{0c}\x{0d}
+    \x09\x20\x{a0}\x0a\x0b\x0c
+ 0: \x{09} \x{a0}\x{0a}\x{0b}\x{0c}
+    ** Failers 
+No match
+    \x09\x20\x{a0}\x0a\x0b
+No match
+     
+/\H\h\V\v/8
+    \x{3001}\x{3000}\x{2030}\x{2028}
+ 0: \x{3001}\x{3000}\x{2030}\x{2028}
+    X\x{180e}X\x{85}
+ 0: X\x{180e}X\x{85}
+    ** Failers
+No match
+    \x{2009} X\x0a   
+No match
+    
+/\H*\h+\V?\v{3,4}/8 
+    \x{1680}\x{180e}\x{2007}X\x{2028}\x{2029}\x0c\x0d\x0a
+ 0: \x{1680}\x{180e}\x{2007}X\x{2028}\x{2029}\x{0c}\x{0d}
+    \x09\x{205f}\x{a0}\x0a\x{2029}\x0c\x{2028}\x0a
+ 0: \x{09}\x{205f}\x{a0}\x{0a}\x{2029}\x{0c}\x{2028}
+    \x09\x20\x{202f}\x0a\x0b\x0c
+ 0: \x{09} \x{202f}\x{0a}\x{0b}\x{0c}
+    ** Failers 
+No match
+    \x09\x{200a}\x{a0}\x{2028}\x0b
+No match
+     
+/[\h]/8BZ
+------------------------------------------------------------------
+        Bra
+        [\x09 \xa0\x{1680}\x{180e}\x{2000}-\x{200a}\x{202f}\x{205f}\x{3000}]
+        Ket
+        End
+------------------------------------------------------------------
+    >\x{1680}
+ 0: \x{1680}
+
+/[\h]{3,}/8BZ
+------------------------------------------------------------------
+        Bra
+        [\x09 \xa0\x{1680}\x{180e}\x{2000}-\x{200a}\x{202f}\x{205f}\x{3000}]{3,}+
+        Ket
+        End
+------------------------------------------------------------------
+    >\x{1680}\x{180e}\x{2000}\x{2003}\x{200a}\x{202f}\x{205f}\x{3000}<
+ 0: \x{1680}\x{180e}\x{2000}\x{2003}\x{200a}\x{202f}\x{205f}\x{3000}
+
+/[\v]/8BZ
+------------------------------------------------------------------
+        Bra
+        [\x0a-\x0d\x85\x{2028}-\x{2029}]
+        Ket
+        End
+------------------------------------------------------------------
+
+/[\H]/8BZ
+------------------------------------------------------------------
+        Bra
+        [\x00-\x08\x0a-\x1f!-\x9f\xa1-\xff\x{100}-\x{167f}\x{1681}-\x{180d}\x{180f}-\x{1fff}\x{200b}-\x{202e}\x{2030}-\x{205e}\x{2060}-\x{2fff}\x{3001}-\x{10ffff}]
+        Ket
+        End
+------------------------------------------------------------------
+
+/[\V]/8BZ
+------------------------------------------------------------------
+        Bra
+        [\x00-\x09\x0e-\x84\x86-\xff\x{100}-\x{2027}\x{202a}-\x{10ffff}]
+        Ket
+        End
+------------------------------------------------------------------
+
+/.*$/8<any>
+    \x{1ec5} 
+ 0: \x{1ec5}
+    
+/a\Rb/I8<bsr_anycrlf>
+Capturing subpattern count = 0
+Options: bsr_anycrlf utf
+First char = 'a'
+Need char = 'b'
+    a\rb
+ 0: a\x{0d}b
+    a\nb
+ 0: a\x{0a}b
+    a\r\nb
+ 0: a\x{0d}\x{0a}b
+    ** Failers
+No match
+    a\x{85}b
+No match
+    a\x0bb     
+No match
+
+/a\Rb/I8<bsr_unicode>
+Capturing subpattern count = 0
+Options: bsr_unicode utf
+First char = 'a'
+Need char = 'b'
+    a\rb
+ 0: a\x{0d}b
+    a\nb
+ 0: a\x{0a}b
+    a\r\nb
+ 0: a\x{0d}\x{0a}b
+    a\x{85}b
+ 0: a\x{85}b
+    a\x0bb     
+ 0: a\x{0b}b
+    ** Failers 
+No match
+    a\x{85}b\<bsr_anycrlf>
+No match
+    a\x0bb\<bsr_anycrlf>
+No match
+    
+/a\R?b/I8<bsr_anycrlf>
+Capturing subpattern count = 0
+Options: bsr_anycrlf utf
+First char = 'a'
+Need char = 'b'
+    a\rb
+ 0: a\x{0d}b
+    a\nb
+ 0: a\x{0a}b
+    a\r\nb
+ 0: a\x{0d}\x{0a}b
+    ** Failers
+No match
+    a\x{85}b
+No match
+    a\x0bb     
+No match
+
+/a\R?b/I8<bsr_unicode>
+Capturing subpattern count = 0
+Options: bsr_unicode utf
+First char = 'a'
+Need char = 'b'
+    a\rb
+ 0: a\x{0d}b
+    a\nb
+ 0: a\x{0a}b
+    a\r\nb
+ 0: a\x{0d}\x{0a}b
+    a\x{85}b
+ 0: a\x{85}b
+    a\x0bb     
+ 0: a\x{0b}b
+    ** Failers 
+No match
+    a\x{85}b\<bsr_anycrlf>
+No match
+    a\x0bb\<bsr_anycrlf>
+No match
+ 
+/.*a.*=.b.*/8<ANY>
+    QQQ\x{2029}ABCaXYZ=!bPQR
+ 0: ABCaXYZ=!bPQR
+    ** Failers
+No match
+    a\x{2029}b
+No match
+    \x61\xe2\x80\xa9\x62 
+No match
+
+/[[:a\x{100}b:]]/8
+Failed: unknown POSIX class name at offset 3
+
+/a[^]b/<JS>8
+    a\x{1234}b
+ 0: a\x{1234}b
+    a\nb 
+ 0: a\x{0a}b
+    ** Failers
+No match
+    ab  
+No match
+    
+/a[^]+b/<JS>8
+    aXb
+ 0: aXb
+    a\nX\nX\x{1234}b 
+ 0: a\x{0a}X\x{0a}X\x{1234}b
+    ** Failers
+No match
+    ab  
+No match
+
+/(\x{de})\1/
+    \x{de}\x{de}
+ 0: \xde\xde
+ 1: \xde
+
+/X/8f<any> 
+    A\x{1ec5}ABCXYZ
+ 0: X
+
+/Xa{2,4}b/8
+    X\P
+Partial match: X
+    Xa\P
+Partial match: Xa
+    Xaa\P 
+Partial match: Xaa
+    Xaaa\P
+Partial match: Xaaa
+    Xaaaa\P 
+Partial match: Xaaaa
+    
+/Xa{2,4}?b/8
+    X\P
+Partial match: X
+    Xa\P
+Partial match: Xa
+    Xaa\P 
+Partial match: Xaa
+    Xaaa\P
+Partial match: Xaaa
+    Xaaaa\P 
+Partial match: Xaaaa
+    
+/Xa{2,4}+b/8
+    X\P
+Partial match: X
+    Xa\P
+Partial match: Xa
+    Xaa\P 
+Partial match: Xaa
+    Xaaa\P
+Partial match: Xaaa
+    Xaaaa\P 
+Partial match: Xaaaa
+    
+/X\x{123}{2,4}b/8
+    X\P
+Partial match: X
+    X\x{123}\P
+Partial match: X\x{123}
+    X\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\P
+Partial match: X\x{123}\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}\x{123}\x{123}
+    
+/X\x{123}{2,4}?b/8
+    X\P
+Partial match: X
+    X\x{123}\P
+Partial match: X\x{123}
+    X\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\P
+Partial match: X\x{123}\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}\x{123}\x{123}
+    
+/X\x{123}{2,4}+b/8
+    X\P
+Partial match: X
+    X\x{123}\P
+Partial match: X\x{123}
+    X\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\P
+Partial match: X\x{123}\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}\x{123}\x{123}
+    
+/X\x{123}{2,4}b/8
+    Xx\P
+No match
+    X\x{123}x\P
+No match
+    X\x{123}\x{123}x\P 
+No match
+    X\x{123}\x{123}\x{123}x\P
+No match
+    X\x{123}\x{123}\x{123}\x{123}x\P 
+No match
+    
+/X\x{123}{2,4}?b/8
+    Xx\P
+No match
+    X\x{123}x\P
+No match
+    X\x{123}\x{123}x\P 
+No match
+    X\x{123}\x{123}\x{123}x\P
+No match
+    X\x{123}\x{123}\x{123}\x{123}x\P 
+No match
+    
+/X\x{123}{2,4}+b/8
+    Xx\P
+No match
+    X\x{123}x\P
+No match
+    X\x{123}\x{123}x\P 
+No match
+    X\x{123}\x{123}\x{123}x\P
+No match
+    X\x{123}\x{123}\x{123}\x{123}x\P 
+No match
+    
+/X\d{2,4}b/8
+    X\P
+Partial match: X
+    X3\P
+Partial match: X3
+    X33\P 
+Partial match: X33
+    X333\P
+Partial match: X333
+    X3333\P 
+Partial match: X3333
+    
+/X\d{2,4}?b/8
+    X\P
+Partial match: X
+    X3\P
+Partial match: X3
+    X33\P 
+Partial match: X33
+    X333\P
+Partial match: X333
+    X3333\P 
+Partial match: X3333
+    
+/X\d{2,4}+b/8
+    X\P
+Partial match: X
+    X3\P
+Partial match: X3
+    X33\P 
+Partial match: X33
+    X333\P
+Partial match: X333
+    X3333\P 
+Partial match: X3333
+
+/X\D{2,4}b/8
+    X\P
+Partial match: X
+    Xa\P
+Partial match: Xa
+    Xaa\P 
+Partial match: Xaa
+    Xaaa\P
+Partial match: Xaaa
+    Xaaaa\P 
+Partial match: Xaaaa
+    
+/X\D{2,4}?b/8
+    X\P
+Partial match: X
+    Xa\P
+Partial match: Xa
+    Xaa\P 
+Partial match: Xaa
+    Xaaa\P
+Partial match: Xaaa
+    Xaaaa\P 
+Partial match: Xaaaa
+    
+/X\D{2,4}+b/8
+    X\P
+Partial match: X
+    Xa\P
+Partial match: Xa
+    Xaa\P 
+Partial match: Xaa
+    Xaaa\P
+Partial match: Xaaa
+    Xaaaa\P 
+Partial match: Xaaaa
+
+/X\D{2,4}b/8
+    X\P
+Partial match: X
+    X\x{123}\P
+Partial match: X\x{123}
+    X\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\P
+Partial match: X\x{123}\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}\x{123}\x{123}
+    
+/X\D{2,4}?b/8
+    X\P
+Partial match: X
+    X\x{123}\P
+Partial match: X\x{123}
+    X\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\P
+Partial match: X\x{123}\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}\x{123}\x{123}
+    
+/X\D{2,4}+b/8
+    X\P
+Partial match: X
+    X\x{123}\P
+Partial match: X\x{123}
+    X\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\P
+Partial match: X\x{123}\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}\x{123}\x{123}
+
+/X[abc]{2,4}b/8
+    X\P
+Partial match: X
+    Xa\P
+Partial match: Xa
+    Xaa\P 
+Partial match: Xaa
+    Xaaa\P
+Partial match: Xaaa
+    Xaaaa\P 
+Partial match: Xaaaa
+    
+/X[abc]{2,4}?b/8
+    X\P
+Partial match: X
+    Xa\P
+Partial match: Xa
+    Xaa\P 
+Partial match: Xaa
+    Xaaa\P
+Partial match: Xaaa
+    Xaaaa\P 
+Partial match: Xaaaa
+    
+/X[abc]{2,4}+b/8
+    X\P
+Partial match: X
+    Xa\P
+Partial match: Xa
+    Xaa\P 
+Partial match: Xaa
+    Xaaa\P
+Partial match: Xaaa
+    Xaaaa\P 
+Partial match: Xaaaa
+
+/X[abc\x{123}]{2,4}b/8
+    X\P
+Partial match: X
+    X\x{123}\P
+Partial match: X\x{123}
+    X\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\P
+Partial match: X\x{123}\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}\x{123}\x{123}
+    
+/X[abc\x{123}]{2,4}?b/8
+    X\P
+Partial match: X
+    X\x{123}\P
+Partial match: X\x{123}
+    X\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\P
+Partial match: X\x{123}\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}\x{123}\x{123}
+    
+/X[abc\x{123}]{2,4}+b/8
+    X\P
+Partial match: X
+    X\x{123}\P
+Partial match: X\x{123}
+    X\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\P
+Partial match: X\x{123}\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}\x{123}\x{123}
+
+/X[^a]{2,4}b/8
+    X\P
+Partial match: X
+    Xz\P
+Partial match: Xz
+    Xzz\P 
+Partial match: Xzz
+    Xzzz\P
+Partial match: Xzzz
+    Xzzzz\P 
+Partial match: Xzzzz
+    
+/X[^a]{2,4}?b/8
+    X\P
+Partial match: X
+    Xz\P
+Partial match: Xz
+    Xzz\P 
+Partial match: Xzz
+    Xzzz\P
+Partial match: Xzzz
+    Xzzzz\P 
+Partial match: Xzzzz
+    
+/X[^a]{2,4}+b/8
+    X\P
+Partial match: X
+    Xz\P
+Partial match: Xz
+    Xzz\P 
+Partial match: Xzz
+    Xzzz\P
+Partial match: Xzzz
+    Xzzzz\P 
+Partial match: Xzzzz
+
+/X[^a]{2,4}b/8
+    X\P
+Partial match: X
+    X\x{123}\P
+Partial match: X\x{123}
+    X\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\P
+Partial match: X\x{123}\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}\x{123}\x{123}
+    
+/X[^a]{2,4}?b/8
+    X\P
+Partial match: X
+    X\x{123}\P
+Partial match: X\x{123}
+    X\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\P
+Partial match: X\x{123}\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}\x{123}\x{123}
+    
+/X[^a]{2,4}+b/8
+    X\P
+Partial match: X
+    X\x{123}\P
+Partial match: X\x{123}
+    X\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\P
+Partial match: X\x{123}\x{123}\x{123}
+    X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: X\x{123}\x{123}\x{123}\x{123}
+
+/(Y)X\1{2,4}b/8
+    YX\P
+Partial match: YX
+    YXY\P
+Partial match: YXY
+    YXYY\P 
+Partial match: YXYY
+    YXYYY\P
+Partial match: YXYYY
+    YXYYYY\P 
+Partial match: YXYYYY
+    
+/(Y)X\1{2,4}?b/8
+    YX\P
+Partial match: YX
+    YXY\P
+Partial match: YXY
+    YXYY\P 
+Partial match: YXYY
+    YXYYY\P
+Partial match: YXYYY
+    YXYYYY\P 
+Partial match: YXYYYY
+    
+/(Y)X\1{2,4}+b/8
+    YX\P
+Partial match: YX
+    YXY\P
+Partial match: YXY
+    YXYY\P 
+Partial match: YXYY
+    YXYYY\P
+Partial match: YXYYY
+    YXYYYY\P 
+Partial match: YXYYYY
+
+/(\x{123})X\1{2,4}b/8
+    \x{123}X\P
+Partial match: \x{123}X
+    \x{123}X\x{123}\P
+Partial match: \x{123}X\x{123}
+    \x{123}X\x{123}\x{123}\P 
+Partial match: \x{123}X\x{123}\x{123}
+    \x{123}X\x{123}\x{123}\x{123}\P
+Partial match: \x{123}X\x{123}\x{123}\x{123}
+    \x{123}X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: \x{123}X\x{123}\x{123}\x{123}\x{123}
+    
+/(\x{123})X\1{2,4}?b/8
+    \x{123}X\P
+Partial match: \x{123}X
+    \x{123}X\x{123}\P
+Partial match: \x{123}X\x{123}
+    \x{123}X\x{123}\x{123}\P 
+Partial match: \x{123}X\x{123}\x{123}
+    \x{123}X\x{123}\x{123}\x{123}\P
+Partial match: \x{123}X\x{123}\x{123}\x{123}
+    \x{123}X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: \x{123}X\x{123}\x{123}\x{123}\x{123}
+    
+/(\x{123})X\1{2,4}+b/8
+    \x{123}X\P
+Partial match: \x{123}X
+    \x{123}X\x{123}\P
+Partial match: \x{123}X\x{123}
+    \x{123}X\x{123}\x{123}\P 
+Partial match: \x{123}X\x{123}\x{123}
+    \x{123}X\x{123}\x{123}\x{123}\P
+Partial match: \x{123}X\x{123}\x{123}\x{123}
+    \x{123}X\x{123}\x{123}\x{123}\x{123}\P 
+Partial match: \x{123}X\x{123}\x{123}\x{123}\x{123}
+
+/\bthe cat\b/8
+    the cat\P
+ 0: the cat
+    the cat\P\P
+Partial match: the cat
+
+/abcd*/8
+    xxxxabcd\P
+ 0: abcd
+    xxxxabcd\P\P
+Partial match: abcd
+
+/abcd*/i8
+    xxxxabcd\P
+ 0: abcd
+    xxxxabcd\P\P
+Partial match: abcd
+    XXXXABCD\P
+ 0: ABCD
+    XXXXABCD\P\P
+Partial match: ABCD
+
+/abc\d*/8
+    xxxxabc1\P
+ 0: abc1
+    xxxxabc1\P\P
+Partial match: abc1
+
+/(a)bc\1*/8
+    xxxxabca\P
+ 0: abca
+ 1: a
+    xxxxabca\P\P
+Partial match: abca
+
+/abc[de]*/8
+    xxxxabcde\P
+ 0: abcde
+    xxxxabcde\P\P
+Partial match: abcde
+
+/X\W{3}X/8
+    \PX
+Partial match: X
+
+/\sxxx\s/8T1
+    AB\x{85}xxx\x{a0}XYZ
+ 0: \x{85}xxx\x{a0}
+    AB\x{a0}xxx\x{85}XYZ
+ 0: \x{a0}xxx\x{85}
+
+/\S \S/8T1
+    \x{a2} \x{84} 
+ 0: \x{a2} \x{84}
+
+'A#хц'8x<any>BZ
+------------------------------------------------------------------
+        Bra
+        A
+        Ket
+        End
+------------------------------------------------------------------
+
+'A#хц
+  PQ'8x<any>BZ
+------------------------------------------------------------------
+        Bra
+        APQ
+        Ket
+        End
+------------------------------------------------------------------
+  
+/a+#хaa
+  z#XX?/8x<any>BZ 
+------------------------------------------------------------------
+        Bra
+        a++
+        z
+        Ket
+        End
+------------------------------------------------------------------
+
+/a+#хaa
+  z#х?/8x<any>BZ 
+------------------------------------------------------------------
+        Bra
+        a++
+        z
+        Ket
+        End
+------------------------------------------------------------------
+
+/\g{A}xxx#bXX(?'A'123)(?'A'456)/8x<any>BZ
+------------------------------------------------------------------
+        Bra
+        \1
+        xxx
+        CBra 1
+        456
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+
+/\g{A}xxx#bх(?'A'123)(?'A'456)/8x<any>BZ
+------------------------------------------------------------------
+        Bra
+        \1
+        xxx
+        CBra 1
+        456
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+
+/^\cģ/8
+Failed: \c must be followed by an ASCII character at offset 3
+
+/(\R*)(.)/s8
+    \r\n
+ 0: \x{0d}
+ 1: 
+ 2: \x{0d}
+    \r\r\n\n\r 
+ 0: \x{0d}\x{0d}\x{0a}\x{0a}\x{0d}
+ 1: \x{0d}\x{0d}\x{0a}\x{0a}
+ 2: \x{0d}
+    \r\r\n\n\r\n 
+ 0: \x{0d}\x{0d}\x{0a}\x{0a}\x{0d}
+ 1: \x{0d}\x{0d}\x{0a}\x{0a}
+ 2: \x{0d}
+
+/(\R)*(.)/s8
+    \r\n
+ 0: \x{0d}
+ 1: <unset>
+ 2: \x{0d}
+    \r\r\n\n\r 
+ 0: \x{0d}\x{0d}\x{0a}\x{0a}\x{0d}
+ 1: \x{0a}
+ 2: \x{0d}
+    \r\r\n\n\r\n 
+ 0: \x{0d}\x{0d}\x{0a}\x{0a}\x{0d}
+ 1: \x{0a}
+ 2: \x{0d}
+
+/[^\x{1234}]+/iS8I   
+Capturing subpattern count = 0
+Options: caseless utf
+No first char
+No need char
+Subject length lower bound = 1
+No starting char list
+
+/[^\x{1234}]+?/iS8I   
+Capturing subpattern count = 0
+Options: caseless utf
+No first char
+No need char
+Subject length lower bound = 1
+No starting char list
+
+/[^\x{1234}]++/iS8I   
+Capturing subpattern count = 0
+Options: caseless utf
+No first char
+No need char
+Subject length lower bound = 1
+No starting char list
+
+/[^\x{1234}]{2}/iS8I
+Capturing subpattern count = 0
+Options: caseless utf
+No first char
+No need char
+Subject length lower bound = 2
+No starting char list
+
+//<bsr_anycrlf><bsr_unicode>
+Failed: inconsistent NEWLINE options at offset 0
+
+/f.*/
+    \P\Pfor
+Partial match: for
+
+/f.*/s
+    \P\Pfor
+Partial match: for
+
+/f.*/8
+    \P\Pfor
+Partial match: for
+
+/f.*/8s
+    \P\Pfor
+Partial match: for
+    
+/\x{d7ff}\x{e000}/8
+
+/\x{d800}/8
+Failed: disallowed Unicode code point (>= 0xd800 && <= 0xdfff) at offset 7
+
+/\x{dfff}/8 
+Failed: disallowed Unicode code point (>= 0xd800 && <= 0xdfff) at offset 7
+
+/\h+/8
+    \x{1681}\x{200b}\x{1680}\x{2000}\x{202f}\x{3000}
+ 0: \x{1680}\x{2000}\x{202f}\x{3000}
+    \x{3001}\x{2fff}\x{200a}\x{a0}\x{2000}
+ 0: \x{200a}\x{a0}\x{2000}
+
+/[\h\x{e000}]+/8BZ
+------------------------------------------------------------------
+        Bra
+        [\x09 \xa0\x{1680}\x{180e}\x{2000}-\x{200a}\x{202f}\x{205f}\x{3000}\x{e000}]++
+        Ket
+        End
+------------------------------------------------------------------
+    \x{1681}\x{200b}\x{1680}\x{2000}\x{202f}\x{3000}
+ 0: \x{1680}\x{2000}\x{202f}\x{3000}
+    \x{3001}\x{2fff}\x{200a}\x{a0}\x{2000}
+ 0: \x{200a}\x{a0}\x{2000}
+
+/\H+/8
+    \x{1680}\x{180e}\x{167f}\x{1681}\x{180d}\x{180f}
+ 0: \x{167f}\x{1681}\x{180d}\x{180f}
+    \x{2000}\x{200a}\x{1fff}\x{200b}
+ 0: \x{1fff}\x{200b}
+    \x{202f}\x{205f}\x{202e}\x{2030}\x{205e}\x{2060}
+ 0: \x{202e}\x{2030}\x{205e}\x{2060}
+    \x{a0}\x{3000}\x{9f}\x{a1}\x{2fff}\x{3001}
+ 0: \x{9f}\x{a1}\x{2fff}\x{3001}
+
+/[\H\x{d7ff}]+/8BZ
+------------------------------------------------------------------
+        Bra
+        [\x00-\x08\x0a-\x1f!-\x9f\xa1-\xff\x{100}-\x{167f}\x{1681}-\x{180d}\x{180f}-\x{1fff}\x{200b}-\x{202e}\x{2030}-\x{205e}\x{2060}-\x{2fff}\x{3001}-\x{10ffff}\x{d7ff}]++
+        Ket
+        End
+------------------------------------------------------------------
+    \x{1680}\x{180e}\x{167f}\x{1681}\x{180d}\x{180f}
+ 0: \x{167f}\x{1681}\x{180d}\x{180f}
+    \x{2000}\x{200a}\x{1fff}\x{200b}
+ 0: \x{1fff}\x{200b}
+    \x{202f}\x{205f}\x{202e}\x{2030}\x{205e}\x{2060}
+ 0: \x{202e}\x{2030}\x{205e}\x{2060}
+    \x{a0}\x{3000}\x{9f}\x{a1}\x{2fff}\x{3001}
+ 0: \x{9f}\x{a1}\x{2fff}\x{3001}
+
+/\v+/8
+    \x{2027}\x{2030}\x{2028}\x{2029}
+ 0: \x{2028}\x{2029}
+    \x09\x0e\x{84}\x{86}\x{85}\x0a\x0b\x0c\x0d
+ 0: \x{85}\x{0a}\x{0b}\x{0c}\x{0d}
+
+/[\v\x{e000}]+/8BZ
+------------------------------------------------------------------
+        Bra
+        [\x0a-\x0d\x85\x{2028}-\x{2029}\x{e000}]++
+        Ket
+        End
+------------------------------------------------------------------
+    \x{2027}\x{2030}\x{2028}\x{2029}
+ 0: \x{2028}\x{2029}
+    \x09\x0e\x{84}\x{86}\x{85}\x0a\x0b\x0c\x0d
+ 0: \x{85}\x{0a}\x{0b}\x{0c}\x{0d}
+
+/\V+/8
+    \x{2028}\x{2029}\x{2027}\x{2030}
+ 0: \x{2027}\x{2030}
+    \x{85}\x0a\x0b\x0c\x0d\x09\x0e\x{84}\x{86}
+ 0: \x{09}\x{0e}\x{84}\x{86}
+
+/[\V\x{d7ff}]+/8BZ
+------------------------------------------------------------------
+        Bra
+        [\x00-\x09\x0e-\x84\x86-\xff\x{100}-\x{2027}\x{202a}-\x{10ffff}\x{d7ff}]++
+        Ket
+        End
+------------------------------------------------------------------
+    \x{2028}\x{2029}\x{2027}\x{2030}
+ 0: \x{2027}\x{2030}
+    \x{85}\x0a\x0b\x0c\x0d\x09\x0e\x{84}\x{86}
+ 0: \x{09}\x{0e}\x{84}\x{86}
+
+/\R+/8<bsr_unicode>
+    \x{2027}\x{2030}\x{2028}\x{2029}
+ 0: \x{2028}\x{2029}
+    \x09\x0e\x{84}\x{86}\x{85}\x0a\x0b\x0c\x0d
+ 0: \x{85}\x{0a}\x{0b}\x{0c}\x{0d}
+
+/(..)\1/8
+    ab\P
+Partial match: ab
+    aba\P
+Partial match: aba
+    abab\P
+ 0: abab
+ 1: ab
+
+/(..)\1/8i
+    ab\P
+Partial match: ab
+    abA\P
+Partial match: abA
+    aBAb\P
+ 0: aBAb
+ 1: aB
+
+/(..)\1{2,}/8
+    ab\P
+Partial match: ab
+    aba\P
+Partial match: aba
+    abab\P
+Partial match: abab
+    ababa\P
+Partial match: ababa
+    ababab\P
+ 0: ababab
+ 1: ab
+    ababab\P\P
+Partial match: ababab
+    abababa\P
+ 0: ababab
+ 1: ab
+    abababa\P\P
+Partial match: abababa
+
+/(..)\1{2,}/8i
+    ab\P
+Partial match: ab
+    aBa\P
+Partial match: aBa
+    aBAb\P
+Partial match: aBAb
+    AbaBA\P
+Partial match: AbaBA
+    abABAb\P
+ 0: abABAb
+ 1: ab
+    aBAbaB\P\P
+Partial match: aBAbaB
+    abABabA\P
+ 0: abABab
+ 1: ab
+    abaBABa\P\P
+Partial match: abaBABa
+
+/(..)\1{2,}?x/8i
+    ab\P
+Partial match: ab
+    abA\P
+Partial match: abA
+    aBAb\P
+Partial match: aBAb
+    abaBA\P
+Partial match: abaBA
+    abAbaB\P
+Partial match: abAbaB
+    abaBabA\P
+Partial match: abaBabA
+    abAbABaBx\P
+ 0: abAbABaBx
+ 1: ab
+
+/./8<CRLF>
+    \r\P
+ 0: \x{0d}
+    \r\P\P 
+Partial match: \x{0d}
+  
+/.{2,3}/8<CRLF>
+    \r\P 
+Partial match: \x{0d}
+    \r\P\P
+Partial match: \x{0d}
+    \r\r\P
+ 0: \x{0d}\x{0d}
+    \r\r\P\P
+Partial match: \x{0d}\x{0d}
+    \r\r\r\P
+ 0: \x{0d}\x{0d}\x{0d}
+    \r\r\r\P\P     
+Partial match: \x{0d}\x{0d}\x{0d}
+
+/.{2,3}?/8<CRLF>
+    \r\P 
+Partial match: \x{0d}
+    \r\P\P
+Partial match: \x{0d}
+    \r\r\P
+ 0: \x{0d}\x{0d}
+    \r\r\P\P
+Partial match: \x{0d}\x{0d}
+    \r\r\r\P
+ 0: \x{0d}\x{0d}
+    \r\r\r\P\P     
+ 0: \x{0d}\x{0d}
+
+/[^\x{100}][^\x{1234}][^\x{ffff}][^\x{10000}][^\x{10ffff}]/8BZ
+------------------------------------------------------------------
+        Bra
+        [^\x{100}]
+        [^\x{1234}]
+        [^\x{ffff}]
+        [^\x{10000}]
+        [^\x{10ffff}]
+        Ket
+        End
+------------------------------------------------------------------
+
+/[^\x{100}][^\x{1234}][^\x{ffff}][^\x{10000}][^\x{10ffff}]/8BZi
+------------------------------------------------------------------
+        Bra
+     /i [^\x{100}]
+     /i [^\x{1234}]
+     /i [^\x{ffff}]
+     /i [^\x{10000}]
+     /i [^\x{10ffff}]
+        Ket
+        End
+------------------------------------------------------------------
+
+/[^\x{100}]*[^\x{10000}]+[^\x{10ffff}]??[^\x{8000}]{4,}[^\x{7fff}]{2,9}?[^\x{fffff}]{5,6}+/8BZ
+------------------------------------------------------------------
+        Bra
+        [^\x{100}]*
+        [^\x{10000}]+
+        [^\x{10ffff}]??
+        [^\x{8000}]{4}
+        [^\x{8000}]*
+        [^\x{7fff}]{2}
+        [^\x{7fff}]{0,7}?
+        [^\x{fffff}]{5}
+        [^\x{fffff}]?+
+        Ket
+        End
+------------------------------------------------------------------
+
+/[^\x{100}]*[^\x{10000}]+[^\x{10ffff}]??[^\x{8000}]{4,}[^\x{7fff}]{2,9}?[^\x{fffff}]{5,6}+/8BZi
+------------------------------------------------------------------
+        Bra
+     /i [^\x{100}]*
+     /i [^\x{10000}]+
+     /i [^\x{10ffff}]??
+     /i [^\x{8000}]{4}
+     /i [^\x{8000}]*
+     /i [^\x{7fff}]{2}
+     /i [^\x{7fff}]{0,7}?
+     /i [^\x{fffff}]{5}
+     /i [^\x{fffff}]?+
+        Ket
+        End
+------------------------------------------------------------------
+
+/(?<=\x{1234}\x{1234})\bxy/I8
+Capturing subpattern count = 0
+Max lookbehind = 2
+Options: utf
+First char = 'x'
+Need char = 'y'
+
+/(?<!^)ETA/8
+    ETA
+No match
+
+/\u0100/<JS>8BZ
+------------------------------------------------------------------
+        Bra
+        \x{100}
+        Ket
+        End
+------------------------------------------------------------------
+
+/[\u0100-\u0200]/<JS>8BZ
+------------------------------------------------------------------
+        Bra
+        [\x{100}-\x{200}]
+        Ket
+        End
+------------------------------------------------------------------
+
+/\ud800/<JS>8
+Failed: disallowed Unicode code point (>= 0xd800 && <= 0xdfff) at offset 5
+
+/^a+[a\x{200}]/8BZ
+------------------------------------------------------------------
+        Bra
+        ^
+        a+
+        [a\x{200}]
+        Ket
+        End
+------------------------------------------------------------------
+    aa
+ 0: aa
+
+/[b-d\x{200}-\x{250}]*[ae-h]?#[\x{200}-\x{250}]{0,8}[\x00-\xff]*#[\x{200}-\x{250}]+[a-z]/8BZ
+------------------------------------------------------------------
+        Bra
+        [b-d\x{200}-\x{250}]*+
+        [ae-h]?+
+        #
+        [\x{200}-\x{250}]{0,8}+
+        [\x00-\xff]*
+        #
+        [\x{200}-\x{250}]++
+        [a-z]
+        Ket
+        End
+------------------------------------------------------------------
+
+/[^\xff]*PRUNE:\x{100}abc(xyz(?1))/8DZ
+------------------------------------------------------------------
+        Bra
+        [^\x{ff}]*
+        PRUNE:\x{100}abc
+        CBra 1
+        xyz
+        Recurse
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 1
+Options: utf
+No first char
+Need char = 'z'
+
+/(?<=\K\x{17f})/8g+
+    \x{17f}\x{17f}\x{17f}\x{17f}\x{17f}
+ 0: \x{17f}
+ 0+ \x{17f}\x{17f}\x{17f}\x{17f}
+ 0: \x{17f}
+ 0+ \x{17f}\x{17f}\x{17f}\x{17f}
+ 0: \x{17f}
+ 0+ \x{17f}\x{17f}\x{17f}
+ 0: \x{17f}
+ 0+ \x{17f}\x{17f}
+ 0: \x{17f}
+ 0+ \x{17f}
+ 0: \x{17f}
+ 0+ 
+
+/(?<=\K\x{17f})/8G+
+    \x{17f}\x{17f}\x{17f}\x{17f}\x{17f}
+ 0: \x{17f}
+ 0+ \x{17f}\x{17f}\x{17f}\x{17f}
+ 0: \x{17f}
+ 0+ \x{17f}\x{17f}\x{17f}
+ 0: \x{17f}
+ 0+ \x{17f}\x{17f}
+ 0: \x{17f}
+ 0+ \x{17f}
+ 0: \x{17f}
+ 0+ 
+
+/-- End of testinput5 --/

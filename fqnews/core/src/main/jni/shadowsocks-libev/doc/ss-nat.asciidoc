@@ -1,0 +1,95 @@
+ss-nat(1)
+=========
+
+NAME
+----
+ss-nat - helper script to setup NAT rules for transparent proxy
+
+SYNOPSIS
+--------
+*ss-nat*
+ [-ouUfh]
+ [-s <server_ip>] [-S <server_ip>] [-l <local_port>]
+ [-L <local_port>] [-i <ip_list_file>] [-a <lan_ips>]
+ [-b <wan_ips>] [-w <wan_ips>] [-e <extra_options>]
+
+DESCRIPTION
+-----------
+*Shadowsocks-libev* is a lightweight and secure socks5 proxy.
+It is a port of the original shadowsocks created by clowwindy.
+*Shadowsocks-libev* is written in pure C and takes advantage of libev to
+achieve both high performance and low resource consumption.
+
+`ss-nat`(1) sets up NAT rules for `ss-redir`(1) to provide traffic redirection.
+It requires netfilter's NAT module and `iptables`(8).
+For more information, check out `shadowsocks-libev`(8) and the following
+'EXAMPLE' section.
+
+OPTIONS
+-------
+-s <server_ip>::
+IP address of shadowsocks remote server
+
+-l <local_port>::
+Port number of shadowsocks local server
+
+-S <server_ip>::
+IP address of shadowsocks remote UDP server
+
+-L <local_port>::
+Port number of shadowsocks local UDP server
+
+-i <ip_list_file>::
+a file whose content is bypassed ip list
+
+-a <lan_ips>::
+LAN IP of access control, need a prefix to define access control mode
+
+-b <wan_ips>::
+WAN IP of will be bypassed
+
+-w <wan_ips>::
+WAN IP of will be forwarded
+
+-e <extra_options>::
+Extra options for iptables
+
+-o::
+Apply the rules to the OUTPUT chain
+
+-u::
+Enable udprelay mode, TPROXY is required
+
+-U::
+Enable udprelay mode, using different IP and ports for TCP and UDP
+
+-f::
+Flush the rules
+
+-h::
+Show this help message and exit
+
+EXAMPLE
+-------
+`ss-nat` requires `iptables`(8). Here is an example:
+
+....
+# Enable NAT rules for shadowsocks,
+# with both TCP and UDP redirection enabled,
+# and applied for both PREROUTING and OUTPUT chains
+root@Wrt:~# ss-nat -s 192.168.1.100 -l 1080 -u -o
+
+# Disable and flush all NAT rules for shadowsocks
+root@Wrt:~# ss-nat -f
+....
+
+SEE ALSO
+--------
+`ss-local`(1),
+`ss-server`(1),
+`ss-tunnel`(1),
+`ss-manager`(1),
+`shadowsocks-libev`(8),
+`iptables`(8),
+/etc/shadowsocks-libev/config.json
+

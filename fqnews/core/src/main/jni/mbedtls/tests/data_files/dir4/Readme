@@ -1,0 +1,47 @@
+This directory contains the certificates for the tests targeting the enforcement of the policy indicated by the *pathLenConstraint* field. All leaf elements were generated with *is_ca* unset and all roots with the *selfsign=1* option. 
+
+1. zero pathlen constraint on an intermediate CA (invalid)
+```
+cert11.crt -> cert12.crt (max_pathlen=0) -> cert13.crt -> cert14.crt
+```
+
+2. zero pathlen constraint on the root CA (invalid)
+```
+cert21.crt (max_pathlen=0) -> cert22.crt -> cert23.crt
+```
+
+3. nonzero pathlen constraint on the root CA (invalid)
+```
+cert31.crt (max_pathlen=1) -> cert32.crt -> cert33.crt -> cert34.crt
+```
+
+4. nonzero pathlen constraint on an intermediate CA (invalid)
+```
+cert41.crt -> cert42.crt (max_pathlen=1) -> cert43.crt -> cert44.crt -> cert45.crt 
+```
+
+5. nonzero pathlen constraint on an intermediate CA with maximum number of elements in the chain (valid)
+```
+cert51.crt -> cert52.crt (max_pathlen=1) -> cert53.crt -> cert54.crt
+```
+
+6. nonzero pathlen constraint on the root CA with maximum number of elements in the chain (valid)
+```
+cert61.crt (max_pathlen=1) -> cert62.crt -> cert63.crt
+```
+
+7. pathlen constraint on the root CA with maximum number of elements and a self signed certificate in the chain (valid) 
+(This situation happens for example when a root of some hierarchy gets integrated into another hierarchy. In this case the certificates issued before the integration will have an intermadiate self signed certificate in their chain)
+```
+cert71.crt (max_pathlen=1) -> cert72.crt -> cert73.crt (self signed) -> cert74.crt -> cert74.crt
+```
+
+8. zero pathlen constraint on first intermediate CA (valid)
+```
+cert81.crt -> cert82.crt (max_pathlen=0) -> cert83.crt
+```
+
+9. zero pathlen constraint on trusted root (valid)
+```
+cert91.crt (max_pathlen=0) -> cert92.crt
+```

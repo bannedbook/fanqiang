@@ -1,0 +1,201 @@
+process main {
+    If (@true) {
+        blocker() blk1;
+        blocker() blk2;
+        Do {
+            blk1->up();
+            blk2->rdownup();
+        } do;
+        assert(blk1);
+        assert(blk2);
+        assert(do.succeeded);
+    };
+    
+    If (@true) {
+        blocker() blk1;
+        blocker() blk2;
+        Do {
+            blk1->rdownup();
+            _do->break();
+            blk2->up();
+        } do;
+        assert(blk1);
+        assert_false(blk2);
+        assert_false(do.succeeded);
+    };
+    
+    If (@true) {
+        blocker() blk1;
+        blocker() blk2;
+        var(@true) flag;
+        backtrack_point() point;
+        If (flag) {
+            Do {
+                blk1->rdownup();
+                flag->set(@false);
+                point->go();
+                blk2->up();
+            };
+        };
+        assert(blk1);
+        assert_false(blk2);
+    };
+    
+    If (@true) {
+        blocker() blk1;
+        var(@true) flag;
+        backtrack_point() point;
+        If (flag) {
+            Do {
+                blk1->rdownup();
+                flag->set(@false);
+                point->rgo();
+            };
+        };
+        assert(blk1);
+    };
+    
+    If (@true) {
+        blocker() blk1;
+        blocker() blk2;
+        Do {
+            backtrack_point() point;
+            _do->rbreak();
+            blk1->up();
+            point->go();
+            blk2->up();
+        } do;
+        assert_false(do.succeeded);
+        assert(blk1);
+        assert_false(blk2);
+    };
+    
+    If (@true) {
+        blocker() blk1;
+        blocker() blk2;
+        blocker() blk3;
+        Do {
+            blk1->up();
+            blk2->rdownup();
+        } Interrupt {
+            blk3->up();
+        } do;
+        assert(blk1);
+        assert(blk2);
+        assert_false(blk3);
+        assert(do.succeeded);
+    };
+    
+    If (@true) {
+        blocker() blk1;
+        blocker() blk2;
+        var(@true) flag;
+        backtrack_point() point;
+        If (flag) {
+            Do {
+                blk1->rdownup();
+                flag->set(@false);
+                point->rgo();
+            } Interrupt {
+                blk2->up();
+            };
+        };
+        assert(blk1);
+        assert_false(blk2);
+    };
+    
+    If (@true) {
+        blocker() blk1;
+        blocker() blk2;
+        blocker() blk3;
+        var(@true) flag;
+        backtrack_point() point;
+        If (flag) {
+            Do {
+                blk1->rdownup();
+                flag->set(@false);
+                point->go();
+                blk2->up();
+            } Interrupt {
+                blk3->rdownup();
+                _do->break();
+                assert(@false);
+            };
+        };
+        assert(blk1);
+        assert_false(blk2);
+        assert(blk3);
+    };
+    
+    If (@true) {
+        blocker() blk1;
+        blocker() blk2;
+        var(@true) flag;
+        backtrack_point() point;
+        If (flag) {
+            Do {
+                blk1->rdownup();
+                flag->set(@false);
+                point->go();
+                assert(blk2);
+            } Interrupt {
+                blk2->rdownup();
+            };
+        };
+        assert(blk1);
+        assert(blk2);
+    };
+    
+    If (@true) {
+        blocker() blk1;
+        blocker() blk2;
+        var(@true) flag;
+        backtrack_point() point;
+        If (flag) {
+            Do {
+                blk1->rdownup();
+                flag->set(@false);
+                point->go();
+                imperative("<none>", {}, @helper1, {}, "1000");
+                assert_false(blk2);
+            } Interrupt {
+                blk2->rdownup();
+                if(@false);
+            };
+        };
+        assert(blk1);
+        assert(blk2);
+    };
+    
+    If (@true) {
+        blocker() blk1;
+        blocker() blk2;
+        var(@true) flag;
+        backtrack_point() point;
+        If (flag) {
+            Do {
+                blk1->rdownup();
+                flag->set(@false);
+                point->go();
+                imperative("<none>", {}, @helper2, {}, "1000");
+                sleep("0", "1");
+                assert_false(blk2);
+            } Interrupt {
+                blk2->rdownup();
+                if(@false);
+            };
+        };
+        assert(blk1);
+        assert(blk2);
+    };
+    
+    exit("0");
+}
+
+template helper1 {
+    assert_false(_caller.blk2);
+}
+
+template helper2 {
+    assert(_caller.blk2);
+}

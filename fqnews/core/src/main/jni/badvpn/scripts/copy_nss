@@ -1,0 +1,23 @@
+#!/bin/sh
+
+NSSDIST="$1"
+DEST="$2"
+
+if [ -z "${NSSDIST}" ] || [ -z "${DEST}" ]; then
+    echo "Copies a Windows build of NSS such that it can be found by the BadVPN build system"
+    echo "Usage: $0 <nss dist dir> <dest>"
+    exit 1
+fi
+
+NSSOBJ="${NSSDIST}/WINNT5.1_OPT.OBJ"
+
+set -e
+
+mkdir -p "${DEST}"/include
+cp -r "${NSSOBJ}/include"/* "${DEST}"/include/
+cp -r "${NSSDIST}/public/nss"/* "${DEST}"/include/
+mkdir -p "${DEST}"/lib
+cp "${NSSOBJ}/lib"/{libnspr4,libplc4,libplds4,ssl3,smime3,nss3}.lib "${DEST}"/lib/
+mkdir -p "${DEST}"/bin
+cp "${NSSOBJ}/lib"/*.dll "${DEST}"/bin/
+cp "${NSSOBJ}/bin"/*.exe "${DEST}"/bin/

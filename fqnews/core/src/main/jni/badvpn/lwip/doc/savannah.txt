@@ -1,0 +1,120 @@
+Daily Use Guide for using Savannah for lwIP
+
+Table of Contents:
+
+1 - Obtaining lwIP from the Git repository
+2 - Committers/developers Git access using SSH
+3 - Merging a development branch to master branch
+4 - How to release lwIP
+
+
+
+1 Obtaining lwIP from the Git repository
+----------------------------------------
+
+To perform an anonymous Git clone of the master branch (this is where
+bug fixes and incremental enhancements occur), do this:
+ git clone git://git.savannah.nongnu.org/lwip.git
+
+Or, obtain a stable branch (updated with bug fixes only) as follows:
+ git clone --branch DEVEL-1_4_1 git://git.savannah.nongnu.org/lwip.git
+
+Or, obtain a specific (fixed) release as follows:
+ git clone --branch STABLE-1_4_1 git://git.savannah.nongnu.org/lwip.git
+
+
+2 Committers/developers Git access using SSH
+--------------------------------------------
+
+The Savannah server uses SSH (Secure Shell) protocol 2 authentication and encryption.
+As such, Git commits to the server occur through a SSH tunnel for project members.
+To create a SSH2 key pair in UNIX-like environments, do this:
+ ssh-keygen -t dsa
+
+Under Windows, a recommended SSH client is "PuTTY", freely available with good
+documentation and a graphic user interface. Use its key generator.
+
+Now paste the id_dsa.pub contents into your Savannah account public key list. Wait
+a while so that Savannah can update its configuration (This can take minutes).
+
+Try to login using SSH:
+ ssh -v your_login@git.sv.gnu.org
+
+If it tells you:
+ Linux vcs.savannah.gnu.org 2.6.32-5-xen-686 #1 SMP Wed Jun 17 17:10:03 UTC 2015 i686
+
+ Interactive shell login is not possible for security reasons.
+ VCS commands are allowed.
+ Last login: Tue May 15 23:10:12 2012 from 82.245.102.129
+ You tried to execute:
+ Sorry, you are not allowed to execute that command.
+ Shared connection to git.sv.gnu.org closed.
+
+then you could login; Savannah refuses to give you a shell - which is OK, as we
+are allowed to use SSH for Git only. Now, you should be able to do this:
+ git clone your_login@git.sv.gnu.org:/srv/git/lwip.git
+
+After which you can edit your local files with bug fixes or new features and
+commit them. Make sure you know what you are doing when using Git to make
+changes on the repository. If in doubt, ask on the lwip-members mailing list.
+
+(If SSH asks about authenticity of the host, you can check the key
+fingerprint against https://savannah.nongnu.org/git/?group=lwip
+
+
+3 - Merging a development branch to master branch
+-------------------------------------------------
+
+Merging is a straightforward process in Git. How to merge all changes in a
+development branch since our last merge from main:
+
+Checkout the master branch:
+ git checkout master
+
+Merge the development branch to master:
+ git merge your-development-branch
+
+Resolve any conflict.
+
+Commit the merge result.
+ git commit -a
+
+Push your commits:
+ git push
+
+
+4 How to release lwIP
+---------------------
+
+First, tag the release using Git: (I use release number 1.4.1 throughout
+this example).
+ git tag -a STABLE-1_4_1
+
+Share the tag reference by pushing it to remote:
+ git push origin STABLE-1_4_1
+
+Prepare the release:
+ cp -r lwip lwip-1.4.1
+ rm -rf lwip-1.4.1/.git lwip-1.4.1/.gitattributes
+
+Archive the current directory using tar, gzip'd, bzip2'd and zip'd.
+ tar czvf lwip-1.4.1.tar.gz lwip-1.4.1
+ tar cjvf lwip-1.4.1.tar.bz2 lwip-1.4.1
+ zip -r lwip-1.4.1.zip lwip-1.4.1
+
+Now, sign the archives with a detached GPG binary signature as follows:
+ gpg -b lwip-1.4.1.tar.gz
+ gpg -b lwip-1.4.1.tar.bz2
+ gpg -b lwip-1.4.1.zip
+
+Upload these files using anonymous FTP:
+ ncftp ftp://savannah.gnu.org/incoming/savannah/lwip
+ ncftp> mput *1.4.1.*
+
+Additionally, you may post a news item on Savannah, like this:
+
+A new 1.4.1 release is now available here:
+http://savannah.nongnu.org/files/?group=lwip&highlight=1.4.1
+
+You will have to submit this via the user News interface, then approve
+this via the Administrator News interface.

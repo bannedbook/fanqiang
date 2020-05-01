@@ -1,0 +1,141 @@
+/-- This set of tests is run only with the 8-bit library when Unicode property 
+    support is available. It starts with tests of the POSIX interface, because
+    that is supported only with the 8-bit library. --/
+
+/\w/P
+    +++\x{c2}
+No match: POSIX code 17: match failed
+
+/\w/WP
+    +++\x{c2}
+ 0: \xc2
+    
+/A\x{391}\x{10427}\x{ff3a}\x{1fb0}/8iDZ
+------------------------------------------------------------------
+        Bra
+     /i A\x{391}\x{10427}\x{ff3a}\x{1fb0}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: caseless utf
+First char = 'A' (caseless)
+No need char
+
+/A\x{391}\x{10427}\x{ff3a}\x{1fb0}/8DZ
+------------------------------------------------------------------
+        Bra
+        A\x{391}\x{10427}\x{ff3a}\x{1fb0}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = 'A'
+Need char = \x{b0}
+
+/AB\x{1fb0}/8DZ
+------------------------------------------------------------------
+        Bra
+        AB\x{1fb0}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = 'A'
+Need char = \x{b0}
+
+/AB\x{1fb0}/8DZi
+------------------------------------------------------------------
+        Bra
+     /i AB\x{1fb0}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: caseless utf
+First char = 'A' (caseless)
+Need char = 'B' (caseless)
+
+/\x{401}\x{420}\x{421}\x{422}\x{423}\x{424}\x{425}\x{426}\x{427}\x{428}\x{429}\x{42a}\x{42b}\x{42c}\x{42d}\x{42e}\x{42f}/8iSI
+Capturing subpattern count = 0
+Options: caseless utf
+No first char
+No need char
+Subject length lower bound = 17
+Starting chars: \xd0 \xd1 
+    \x{401}\x{420}\x{421}\x{422}\x{423}\x{424}\x{425}\x{426}\x{427}\x{428}\x{429}\x{42a}\x{42b}\x{42c}\x{42d}\x{42e}\x{42f}
+ 0: \x{401}\x{420}\x{421}\x{422}\x{423}\x{424}\x{425}\x{426}\x{427}\x{428}\x{429}\x{42a}\x{42b}\x{42c}\x{42d}\x{42e}\x{42f}
+    \x{451}\x{440}\x{441}\x{442}\x{443}\x{444}\x{445}\x{446}\x{447}\x{448}\x{449}\x{44a}\x{44b}\x{44c}\x{44d}\x{44e}\x{44f}
+ 0: \x{451}\x{440}\x{441}\x{442}\x{443}\x{444}\x{445}\x{446}\x{447}\x{448}\x{449}\x{44a}\x{44b}\x{44c}\x{44d}\x{44e}\x{44f}
+
+/[ⱥ]/8iBZ
+------------------------------------------------------------------
+        Bra
+     /i \x{2c65}
+        Ket
+        End
+------------------------------------------------------------------
+
+/[^ⱥ]/8iBZ
+------------------------------------------------------------------
+        Bra
+     /i [^\x{2c65}]
+        Ket
+        End
+------------------------------------------------------------------
+
+/\h/SI
+Capturing subpattern count = 0
+No options
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: \x09 \x20 \xa0 
+
+/\v/SI
+Capturing subpattern count = 0
+No options
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: \x0a \x0b \x0c \x0d \x85 
+
+/\R/SI
+Capturing subpattern count = 0
+No options
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: \x0a \x0b \x0c \x0d \x85 
+
+/[[:blank:]]/WBZ
+------------------------------------------------------------------
+        Bra
+        [\x09 \xa0]
+        Ket
+        End
+------------------------------------------------------------------
+
+/\x{212a}+/i8SI
+Capturing subpattern count = 0
+Options: caseless utf
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: K k \xe2 
+    KKkk\x{212a}
+ 0: KKkk\x{212a}
+
+/s+/i8SI
+Capturing subpattern count = 0
+Options: caseless utf
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: S s \xc5 
+    SSss\x{17f}
+ 0: SSss\x{17f}
+
+/-- End of testinput16 --/

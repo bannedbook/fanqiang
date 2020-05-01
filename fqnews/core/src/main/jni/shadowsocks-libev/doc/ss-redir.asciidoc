@@ -1,0 +1,177 @@
+ss-redir(1)
+===========
+
+NAME
+----
+ss-redir - shadowsocks client as transparent proxy, libev port
+
+SYNOPSIS
+--------
+*ss-redir*
+ [-uUv6] [-h|--help]
+ [-s <server_host>] [-p <server_port>] [-l <local_port>]
+ [-k <password>] [-m <encrypt_method>] [-f <pid_file>]
+ [-t <timeout>] [-c <config_file>] [-b <local_address>]
+ [-a <user_name>] [-n <nofile>] [--mtu <MTU>] [--no-delay]
+ [--plugin <plugin_name>] [--plugin-opts <plugin_options>]
+ [--password <password>] [--key <key_in_base64>]
+
+DESCRIPTION
+-----------
+*Shadowsocks-libev* is a lightweight and secure socks5 proxy.
+It is a port of the original shadowsocks created by clowwindy.
+*Shadowsocks-libev* is written in pure C and takes advantage of libev to
+achieve both high performance and low resource consumption.
+
+*Shadowsocks-libev* consists of five components.
+`ss-redir`(1) works as a transparent proxy on local machines to proxy TCP
+traffic and requires netfilter's NAT module.
+For more information, check out `shadowsocks-libev`(8) and the following
+'EXAMPLE' section.
+
+OPTIONS
+-------
+-s <server_host>::
+Set the server's hostname or IP.
+
+-p <server_port>::
+Set the server's port number.
+
+-l <local_port>::
+Set the local port number.
+
+-k <password>::
+--password <password>::
+Set the password. The server and the client should use the same password.
+
+--key <key_in_base64>::
+Set the key directly. The key should be encoded with URL-safe Base64.
+
+-m <encrypt_method>::
+Set the cipher.
++
+*Shadowsocks-libev* accepts 18 different ciphers:
++
+aes-128-gcm, aes-192-gcm, aes-256-gcm,
+rc4-md5, aes-128-cfb, aes-192-cfb, aes-256-cfb,
+aes-128-ctr, aes-192-ctr, aes-256-ctr, bf-cfb,
+camellia-128-cfb, camellia-192-cfb, camellia-256-cfb,
+chacha20-ietf-poly1305, salsa20, chacha20 and chacha20-ietf.
++
+The default cipher is 'chacha20-ietf-poly1305'.
++
+If built with PolarSSL or custom OpenSSL libraries, some of
+these ciphers may not work.
+
+-a <user_name>::
+Run as a specific user.
+
+-f <pid_file>::
+Start shadowsocks as a daemon with specific pid file.
+
+-t <timeout>::
+Set the socket timeout in seconds. The default value is 60.
+
+-c <config_file>::
+Use a configuration file.
++
+Refer to `shadowsocks-libev`(8) 'CONFIG FILE' section for more details.
+
+-n <number>::
+Specify max number of open files.
++
+Only available on Linux.
+
+-b <local_address>::
+Specify the local address to use while this client is making outbound 
+connections to the server.
+
+-u::
+Enable UDP relay.
++
+TPROXY is required in redir mode. You may need root permission.
+
+-U::
+Enable UDP relay and disable TCP relay.
+
+-6::
+Resovle hostname to IPv6 address first.
+
+--mtu <MTU>::
+Specify the MTU of your network interface.
+
+--mptcp::
+Enable Multipath TCP.
++
+Only available with MPTCP enabled Linux kernel.
+
+--reuse-port::
+Enable port reuse.
++
+Only available with Linux kernel > 3.9.0.
+
+--no-delay::
+Enable TCP_NODELAY.
+
+--plugin <plugin_name>::
+Enable SIP003 plugin. (Experimental)
+
+--plugin-opts <plugin_options>::
+Set SIP003 plugin options. (Experimental)
+
+-v::
+Enable verbose mode.
+
+-h|--help::
+Print help message.
+
+EXAMPLE
+-------
+ss-redir requires netfilter's NAT function. Here is an example:
+
+....
+# Create new chain
+iptables -t nat -N SHADOWSOCKS
+iptables -t mangle -N SHADOWSOCKS
+
+# Ignore your shadowsocks server's addresses
+# It's very IMPORTANT, just be careful.
+iptables -t nat -A SHADOWSOCKS -d 123.123.123.123 -j RETURN
+
+# Ignore LANs and any other addresses you'd like to bypass the proxy
+# See Wikipedia and RFC5735 for full list of reserved networks.
+# See ashi009/bestroutetb for a highly optimized CHN route list.
+iptables -t nat -A SHADOWSOCKS -d 0.0.0.0/8 -j RETURN
+iptables -t nat -A SHADOWSOCKS -d 10.0.0.0/8 -j RETURN
+iptables -t nat -A SHADOWSOCKS -d 127.0.0.0/8 -j RETURN
+iptables -t nat -A SHADOWSOCKS -d 169.254.0.0/16 -j RETURN
+iptables -t nat -A SHADOWSOCKS -d 172.16.0.0/12 -j RETURN
+iptables -t nat -A SHADOWSOCKS -d 192.168.0.0/16 -j RETURN
+iptables -t nat -A SHADOWSOCKS -d 224.0.0.0/4 -j RETURN
+iptables -t nat -A SHADOWSOCKS -d 240.0.0.0/4 -j RETURN
+
+# Anything else should be redirected to shadowsocks's local port
+iptables -t nat -A SHADOWSOCKS -p tcp -j REDIRECT --to-ports 12345
+
+# Add any UDP rules
+ip route add local default dev lo table 100
+ip rule add fwmark 1 lookup 100
+iptables -t mangle -A SHADOWSOCKS -p udp --dport 53 -j TPROXY --on-port 12345 --tproxy-mark 0x01/0x01
+
+# Apply the rules
+iptables -t nat -A PREROUTING -p tcp -j SHADOWSOCKS
+iptables -t mangle -A PREROUTING -j SHADOWSOCKS
+
+# Start the shadowsocks-redir
+ss-redir -u -c /etc/config/shadowsocks.json -f /var/run/shadowsocks.pid
+....
+
+SEE ALSO
+--------
+`ss-local`(1),
+`ss-server`(1),
+`ss-tunnel`(1),
+`ss-manager`(1),
+`shadowsocks-libev`(8),
+`iptables`(8),
+/etc/shadowsocks-libev/config.json

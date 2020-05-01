@@ -1,0 +1,27 @@
+#  This file is part of shadowsocks-libev.
+#
+#  Shadowsocks-libev is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 3 of the License, or
+#  (at your option) any later version.
+#
+#  This file is default for RPM packaging. See also
+#  /etc/sysconfig/shadowsocks-libev for environment variables.
+
+[Unit]
+Description=Shadowsocks-libev Default Server Service
+Documentation=man:shadowsocks-libev(8)
+After=network-online.target network-online.target 
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/sysconfig/shadowsocks-libev
+User=nobody
+Group=nobody
+LimitNOFILE=32768
+ExecStart=/usr/bin/ss-server -c "$CONFFILE" $DAEMON_ARGS
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
+

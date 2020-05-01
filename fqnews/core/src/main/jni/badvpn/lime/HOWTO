@@ -1,0 +1,70 @@
+Lime: An LALR(1) parser generator in and for PHP.
+
+Interpretter pattern got you down? Time to use a real parser? Welcome to Lime.
+
+If you're familiar with BISON or YACC, you may want to read the metagrammar.
+It's written in the Lime input language, so you'll get a head-start on
+understanding how to use Lime.
+
+0. If you're not running Linux on an IA32 box, then you will have to rebuild
+	lime_scan_tokens for your system. It should be enough to erase it,
+	and then type "CFLAGS=-O2 make lime_scan_tokens" at the bash prompt.
+
+1. Stare at the file lime/metagrammar to understand the syntax. You're seeing
+	slightly modified and tweaked Backus-Naur forms. The main differences
+	are that you get to name your components, instead of refering to them
+	by numbers the way that BISON demands. This idea was stolen from the
+	C-based "Lemon" parser from which Lime derives its name. Incidentally,
+	the author of Lemon disclaimed copyright, so you get a copy of the C
+	code that taught me LALR(1) parsing better than any book, despite the
+	obvious difficulties in understanding it. Oh, and one other thing:
+	symbols are terminal if the scanner feeds them to the parser. They
+	are non-terminal if they appear on the left side of a production rule.
+	Lime names semantic categories using strings instead of the numbers
+	that BISON-based parsers use, so you don't have to declare any list of
+	terminal symbols anywhere.
+
+2. Look at the file lime/lime.php to see what pragmas are defined. To be more
+	specific, you might look at the method lime::pragma(), which at the
+	time of this writing, supports "%left", "%right", "%nonassoc",
+	"%start", and "%class". The first three are for operator precedence.
+	The last two declare the start symbol and the name of a PHP class to
+	generate which will hold all the bottom-up parsing tables.
+
+3. Write a grammar file.
+
+4. php /path/to/lime/lime.php list-of-grammar-files > my_parser.php
+
+5. Read the function parse_lime_grammar() in lime.php to understand
+	how to integrate your parser into your program.
+
+6. Integrate your parser as follows:
+
+--------------- CUT ---------------
+
+include_once "lime/parse_engine.php";
+include_once "my_parser.php";
+#
+# Later:
+#
+$parser = new parse_engine(new my_parser());
+#
+# And still later:
+#
+try {
+	while (..something..) {
+		$parser->eat($type, $val);
+		# You figure out how to get the parameters.
+	}
+	# And after the last token has been eaten:
+	$parser->eat_eof();
+} catch (parse_error $e) {
+	die($e->getMessage());
+}
+return $parser->semantic;
+
+--------------- CUT ---------------
+
+7. You now have the computed semantic value of whatever you parsed. Add salt
+	and pepper to taste, and serve.
+

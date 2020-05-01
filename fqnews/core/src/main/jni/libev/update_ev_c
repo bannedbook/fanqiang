@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+(
+   sed -ne '1,\%/\* ECB.H BEGIN \*/%p' ev.c
+   cat ~/src/libecb/ecb.h
+   sed -ne '\%/\* ECB.H END \*/%,$p' ev.c
+) >ev.c~ && mv ev.c~ ev.c
+

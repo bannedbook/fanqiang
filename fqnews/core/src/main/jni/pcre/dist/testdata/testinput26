@@ -1,0 +1,14 @@
+/-- Tests for the 32-bit library with UTF-32 support only */
+
+< forbid W
+
+/-- Non-UTF characters --/
+
+/\x{110000}/8
+
+/\o{4200000}/8
+
+/\C/8
+    \x{110000}
+
+/-- End of testinput26 --/

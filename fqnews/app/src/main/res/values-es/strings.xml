@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ Copyright (c) 2010-2012 Stefan Handschuh
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+-->
+<resources>
+
+    <!-- GENERAL -->
+    <string name="app_name">FQNews</string>
+    <string name="about_flym">Sobre FQNews</string>
+    <string name="welcome_title">Bienvenido a FQNews ¿Quieres añadir una fuente?</string>
+    <string name="welcome_title_with_opml_import">¿Quieres importar fuentes anteriores de FQNews?</string>
+    <string name="cannot_find_feeds">No encontré fuentes</string>
+    <string name="menu_settings">Configuración</string>
+    <string name="menu_edit_feed">Modificar fuente</string>
+    <string name="menu_reorder">Reordenar fuentes</string>
+    <string name="menu_delete">Borrar</string>
+    <string name="menu_enable_full_text_retrieval">Hablitar recuperación de texto completo</string>
+    <string name="menu_disable_full_text_retrieval">Deshablitar recuperación de texto completo</string>
+    <string name="menu_all_read">Marcar todo como leído</string>
+    <string name="flym_feeds">Fuentes de FQNews</string>
+    <string name="error">Error</string>
+    <string name="network_error">No se ha configurado la red</string>
+    <string name="drawer_explanation">Bienvenido!\n\nManten pulsado sobre una fuente para ver sus opciones ▼</string>
+    <string name="drawer_fetch_error_explanation">Algunas fuentes no se han actualizado bien ▼</string>
+    <string name="about_screen_info">Estoy publicando esta aplicación de manera libre y de código abierto bajo la licencia GPLv3. Siéntate libre a modificarla siempre y cuando se mantenga de código abierto.</string>
+
+    <!-- FEEDS -->
+    <string name="feeds">Fuentes</string>
+    <string name="menu_add_group">Añadir grupo</string>
+    <string name="menu_import">Importar desde OPML</string>
+    <string name="menu_export">Exportar a OPML</string>
+    <string name="storage_request_explanation">Para importar o exportar archivos con fuentes debes permitir a la aplicación tener acceso a la memoria de almacenamiento.</string>
+    <string name="error_feed_export">No se han podido exportar las fuentes. Compruebe los permisos en
+        la tarjeta SD.
+    </string>
+    <string name="feed_search">Buscar fuentes</string>
+	<string name="feed_search_hint">Introduce enlace a una fuente o palabra clave</string>
+    <string name="feed_added">Fuente añadida a la lista</string>
+    <string name="question_delete_feed">¿Seguro que quiere eliminar esta fuente?</string>
+    <string name="question_delete_group">¿Seguro que quiere eliminar este grupo de fuentes?</string>
+    <string name="add_group_title">Añadir nombre de grupo</string>
+    <string name="message_exported_to">Exportar a %s</string>
+    <string name="to_group_title">Mover la fuente</string>
+    <string name="to_group_message">Puede mover la fuente al grupo o encima del grupo. ¿Qué desea
+        hacer?
+    </string>
+    <string name="to_group_above">Encima del grupo</string>
+    <string name="to_group_into">Al grupo</string>
+    <string name="google_news_top_stories">Mejores artículos</string>
+    <string name="google_news_world">Mundo</string>
+    <string name="google_news_business">Negocios</string>
+    <string name="google_news_science_technology">Ciencia &amp; Tecnología</string>
+    <string name="google_news_entertainment">Ocio</string>
+    <string name="google_news_sports">Deportes</string>
+    <string name="google_news_health">Salud</string>
+    <string name="feed_name">Nombre de la fuente</string>
+    <string name="feed_link">Enlace de la fuente</string>
+
+    <!-- ENTRIES -->
+    <string name="all_entries">Todos los artículos</string>
+    <string name="menu_star">Destacar</string>
+    <string name="menu_unstar">No destacar</string>
+    <string name="menu_share">Compartir</string>
+    <string name="menu_mark_as_unread">Marcar como no leído</string>
+    <string name="get_full_text">Descargar el texto completo</string>
+    <string name="original_text">Mostrar el texto original</string>
+	<string name="open_in_browser">Ver en el navegador</string>
+    <string name="cant_open_link">No se ha encontrado una aplicación para este enlace.</string>
+    <string name="unreads">Sin leer</string>
+    <string name="all">Todos</string>
+    <string name="favorites">Favoritos</string>
+    <string name="no_entries">No hay artículos\nDesliza para abajo para actualizar</string>
+    <string name="undo">Deshacer</string>
+    <string name="marked_as_read">Marcado como leído</string>
+    <string name="marked_as_unread">Marcado como no leído</string>
+
+    <!-- SETTINGS -->
+    <string name="settings_category_refresh">Actualización automática</string>
+    <string name="settings_refresh_enabled">Habilitar actualizaciones automáticas</string>
+    <string name="settings_refresh_enabled_description">Activa las actualizaciones automáticas de
+        las fuentes.
+    </string>
+    <string name="settings_refresh_enable_notifications">Mostrar notificación de actualización</string>
+    <string name="settings_refresh_enable_notifications_description">Mostrar una notificación de sistema cuando se concluye una actualización de las fuentes</string>
+    <string name="settings_refresh_interval">Intervalo entre actualizaciones</string>
+    <string name="settings_category_keep_time">Tiempo de retención de artículos</string>
+    <string name="settings_keep_time">Tiempo de retención de artículos leídos</string>
+    <string name="settings_keep_time_unread">Tiempo de retención de artículos no leídos</string>
+    <string name="settings_category_content_presentation">Modo de presentación</string>
+    <string name="settings_display_images">Mostrar imágenes</string>
+    <string name="settings_display_images_description">Mostrar imágenes en artículos</string>
+    <string name="settings_preload_image_mode">Precargar imágenes</string>
+    <string name="settings_font_size">Tamaño del texto</string>
+    <string name="settings_refresh_wifi_only">Actualizar sólo con Wi-Fi</string>
+    <string name="settings_refresh_wifi_only_description">Sólo se actualizarán las entradas cuando
+        se esté conectado a una red Wi-Fi.
+    </string>
+    <string name="settings_category_filter">Filtros</string>
+    <string name="settings_remove_duplicates_description_title">Borrar duplicados</string>
+    <string name="settings_remove_duplicates_description">Sólo descarga los artículos cuyo título no coincide con el de otro ya presente.</string>
+    <string name="filter">Elimina artículos con las palabras indicadas (separar con comas)</string>
+	<string name="filter_title">Lista negra</string>
+    <string name="settings_theme">Tema</string>
+    <string name="open_browser_direct">Abrir artículos directamente en tu navegador por defecto</string>
+    <string name="open_browser_direct_title">Abrir artículo en navegador</string>
+    <string name="refresh_on_startup">Actualizar fuentes al iniciar la aplicación</string>
+    <string name="refresh_on_startup_title">Actualizar al inicio</string>
+
+    <plurals name="number_of_new_entries">
+        <item quantity="one">Un artículo nuevo</item>
+        <item quantity="other">%d artículos nuevos</item>
+    </plurals>
+
+    <string-array name="settings_intervals">
+        <item>5 minutos</item>
+        <item>15 minutos</item>
+        <item>30 minutos</item>
+        <item>1 hora</item>
+        <item>2 horas</item>
+        <item>6 horas</item>
+        <item>12 horas</item>
+        <item>1 día</item>
+    </string-array>
+    <string-array name="settings_keep_times">
+        <item>1 día</item>
+        <item>2 días</item>
+        <item>4 días</item>
+        <item>1 semana</item>
+        <item>2 semanas</item>
+        <item>1 mes</item>
+        <item>2 meses</item>
+        <item>3 meses</item>
+        <item>Infinito</item>
+    </string-array>
+    <string-array name="settings_font_sizes">
+        <item>-2</item>
+        <item>-1</item>
+        <item>Normal</item>
+        <item>+1</item>
+        <item>+2</item>
+        <item>+3</item>
+    </string-array>
+    <string-array name="settings_preload_image_modes">
+        <item>Nunca</item>
+        <item>Sólo con Wi-Fi</item>
+        <item>Siempre</item>
+    </string-array>
+    <string-array name="settings_themes">
+        <item>Claro</item>
+        <item>Oscuro</item>
+        <item>Negro</item>
+    </string-array>
+
+</resources>

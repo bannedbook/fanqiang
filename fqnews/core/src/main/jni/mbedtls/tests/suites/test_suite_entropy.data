@@ -1,0 +1,61 @@
+Create NV seed_file
+nv_seed_file_create:
+
+Entropy write/update seed file
+entropy_seed_file:"data_files/entropy_seed":0
+
+Entropy write/update seed file
+entropy_seed_file:"no_such_dir/file":MBEDTLS_ERR_ENTROPY_FILE_IO_ERROR
+
+Entropy too many sources
+entropy_too_many_sources:
+
+Entropy output length #1
+entropy_func_len:0:0
+
+Entropy output length #2
+entropy_func_len:1:0
+
+Entropy output length #3
+entropy_func_len:2:0
+
+Entropy output length #4
+entropy_func_len:31:0
+
+Entropy output length #5
+entropy_func_len:65:MBEDTLS_ERR_ENTROPY_SOURCE_FAILED
+
+Entropy failing source
+entropy_source_fail:"data_files/entropy_seed"
+
+Entropy threshold #1
+entropy_threshold:16:2:8
+
+Entropy threshold #2
+entropy_threshold:32:1:32
+
+Entropy threshold #3
+entropy_threshold:16:0:MBEDTLS_ERR_ENTROPY_SOURCE_FAILED
+
+Entropy threshold #4
+entropy_threshold:1024:1:MBEDTLS_ERR_ENTROPY_SOURCE_FAILED
+
+Check NV seed standard IO
+entropy_nv_seed_std_io:
+
+Check NV seed manually #1
+entropy_nv_seed:"00112233445566778899AABBCCDDEEFF00112233445566778899AABBCCDDEEFF00112233445566778899AABBCCDDEEFF00112233445566778899AABBCCDDEEFF"
+
+Check NV seed manually #2
+entropy_nv_seed:"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+
+Check NV seed manually #3
+entropy_nv_seed:"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+
+Entropy self test
+depends_on:!MBEDTLS_TEST_NULL_ENTROPY
+entropy_selftest:0
+
+Entropy self test (MBEDTLS_TEST_NULL_ENTROPY)
+depends_on:MBEDTLS_TEST_NULL_ENTROPY
+entropy_selftest:1

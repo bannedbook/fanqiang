@@ -1,0 +1,5 @@
+debian/config.json usr/share/shadowsocks-libev
+debian/shadowsocks-libev-*.service lib/systemd/system
+usr/bin/
+usr/share/man/
+completions/bash/* usr/share/bash-completion/completions/

@@ -1,0 +1,18 @@
+language: c
+compiler:
+  - clang
+  - gcc
+before_install:
+  # Travis performs a shallow clone, which doesn't fetch tags. We need tags for
+  # Buzzy to build/test the package.
+  - git fetch
+  # Download and install Buzzy
+  - wget https://github.com/redjack/buzzy/releases/download/0.5.0/buzzy_0.5.0_precise_amd64.deb -O buzzy.deb
+  - sudo dpkg -i buzzy.deb
+script: buzzy test
+
+# In addition to pull requests, always build these branches
+branches:
+  only:
+    - master
+    - develop

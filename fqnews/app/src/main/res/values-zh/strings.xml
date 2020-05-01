@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ Copyright (c) 2010-2012 Stefan Handschuh
+ Copyright (c) 2018 Gary Wang
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+-->
+<resources>
+
+    <!-- GENERAL -->
+    <string name="app_name">FQNews</string>
+    <string name="about_flym">关于 FQNews</string>
+    <string name="welcome_title">欢迎使用 FQNews 。需要添加一个订阅源吗？</string>
+    <string name="welcome_title_with_opml_import">是否要导入旧版 FQNews 中的订阅源？</string>
+    <string name="cannot_find_feeds">未发现订阅源</string>
+    <string name="menu_settings">设置</string>
+    <string name="menu_edit_feed">编辑订阅源</string>
+    <string name="menu_reorder">排序订阅源</string>
+    <string name="menu_delete">删除</string>
+    <string name="menu_enable_full_text_retrieval">开启全文接收</string>
+    <string name="menu_disable_full_text_retrieval">关闭全文接收</string>
+    <string name="menu_all_read">标记全部为已读</string>
+    <string name="flym_feeds">FQNews 订阅源</string>
+    <string name="error">错误</string>
+    <string name="network_error">网络不可用</string>
+    <string name="drawer_explanation">欢迎!\n\n长按订阅源查看选项 ▼</string>
+    <string name="drawer_fetch_error_explanation">部分订阅源未正常刷新 ▼</string>
+    <string name="about_screen_info">I\'m publishing this application as free and open-source software under GPLv3 licence. Feel free to modify it as long as you keep it open-source as well.</string>
+
+    <!-- FEEDS -->
+    <string name="feeds">订阅源</string>
+    <string name="menu_add_group">添加分组</string>
+    <string name="menu_import">导入 OPML</string>
+    <string name="menu_export">导出为 OPML</string>
+    <string name="storage_request_explanation">程序需要获取存储读写权限以便导入导出订阅源。</string>
+    <string name="error_feed_export">导出失败，请确定你的 SD 卡可以写入。</string>
+    <string name="feed_search">搜索订阅源</string>
+	<string name="feed_search_hint">输入订阅源链接或搜索关键词</string>
+    <string name="feed_added">订阅源已加入列表</string>
+    <string name="question_delete_feed">你确定要删除这个订阅源吗？</string>
+    <string name="question_delete_group">你确定要删除这个分组和其中所有的订阅源吗？</string>
+    <string name="add_group_title">选择分组名</string>
+    <string name="message_exported_to">已导出到 %s 。</string>
+    <string name="to_group_title">移动订阅源</string>
+    <string name="to_group_message">你可以将这个订阅源移动到这个分组里面或者上面。你想做什么？</string>
+    <string name="to_group_above">移动到分组上面</string>
+    <string name="to_group_into">添加到分组</string>
+    <string name="google_news_top_stories">热门报道</string>
+    <string name="google_news_world">世界</string>
+    <string name="google_news_business">财经</string>
+    <string name="google_news_science_technology">科学 &amp; 科技</string>
+    <string name="google_news_entertainment">娱乐</string>
+    <string name="google_news_sports">体育</string>
+    <string name="google_news_health">健康</string>
+    <string name="feed_name">订阅源名称</string>
+    <string name="feed_link">订阅源链接</string>
+
+    <!-- ENTRIES -->
+    <string name="all_entries">全部文章</string>
+    <string name="menu_star">收藏</string>
+    <string name="menu_unstar">取消收藏</string>
+    <string name="menu_share">分享</string>
+    <string name="menu_mark_as_unread">标记为未读</string>
+    <string name="get_full_text">接收全文</string>
+    <string name="original_text">显示原始文本</string>
+    <string name="open_in_browser">浏览器打开</string>
+    <string name="cant_open_link">没有应用可以打开这个链接</string>
+    <string name="unreads">未读</string>
+    <string name="all">所有</string>
+    <string name="favorites">收藏</string>
+    <string name="no_entries">没有文章\n请下拉刷新</string>
+    <string name="undo">撤销</string>
+    <string name="marked_as_read">标记为已读</string>
+    <string name="marked_as_unread">标记为未读</string>
+
+    <!-- SETTINGS -->
+    <string name="settings_category_refresh">自动刷新</string>
+    <string name="settings_refresh_enabled">开启自动刷新</string>
+    <string name="settings_refresh_enabled_description">开启自动刷新</string>
+    <string name="settings_refresh_enable_notifications">显示刷新通知</string>
+    <string name="settings_refresh_enable_notifications_description">刷新完成时显示系统通知</string>
+    <string name="settings_refresh_interval">刷新间隔</string>
+    <string name="settings_category_keep_time">Time to keep entries</string>
+    <string name="settings_keep_time">已读文章保存时间</string>
+    <string name="settings_keep_time_unread">未读文章保存时间</string>
+    <string name="settings_category_content_presentation">内容介绍</string>
+    <string name="settings_display_images">显示图片</string>
+    <string name="settings_display_images_description">在文章中显示图片</string>
+    <string name="settings_preload_image_mode">预先加载图片</string>
+    <string name="settings_font_size">文字大小</string>
+    <string name="settings_refresh_wifi_only">仅在 Wi-Fi 环境自动刷新</string>
+    <string name="settings_refresh_wifi_only_description">自动刷新仅在 Wi-Fi 环境启用</string>
+    <string name="settings_category_filter">过滤器</string>
+    <string name="settings_remove_duplicates_description_title">去除重复项</string>
+    <string name="settings_remove_duplicates_description">检查新下载文章的标题并忽略相同标题的文章</string>
+    <string name="filter">移除包含这些关键词的文章 (由半角逗号分隔)</string>
+	<string name="filter_title">Blacklist</string>
+    <string name="settings_theme">主题</string>
+    <string name="open_browser_direct">直接在默认浏览器中打开</string>
+    <string name="open_browser_direct_title">在浏览器中打开</string>
+    <string name="refresh_on_startup">启动应用时刷新你的订阅源</string>
+    <string name="refresh_on_startup_title">启动时刷新</string>
+
+    <plurals name="number_of_new_entries">
+        <item quantity="one">1 篇新文章</item>
+        <item quantity="other">%d 篇新文章</item>
+    </plurals>
+
+    <string-array name="settings_intervals">
+        <item>5 分钟</item>
+        <item>15 分钟</item>
+        <item>30 分钟</item>
+        <item>1 小时</item>
+        <item>2 小时</item>
+        <item>6 小时</item>
+        <item>12 小时</item>
+        <item>1 天</item>
+    </string-array>
+    <string-array name="settings_keep_times">
+        <item>1 天</item>
+        <item>2 天</item>
+        <item>4 天</item>
+        <item>1 周</item>
+        <item>2 周</item>
+        <item>1 月</item>
+        <item>2 月</item>
+        <item>3 月</item>
+        <item>永远</item>
+    </string-array>
+    <string-array name="settings_font_sizes">
+        <item>-2</item>
+        <item>-1</item>
+        <item>标准</item>
+        <item>+1</item>
+        <item>+2</item>
+        <item>+3</item>
+    </string-array>
+    <string-array name="settings_preload_image_modes">
+        <item>从不</item>
+        <item>仅限 Wi-Fi</item>
+        <item>总是</item>
+    </string-array>
+    <string-array name="settings_themes">
+        <item>亮色</item>
+        <item>暗色</item>
+        <item>黑色</item>
+    </string-array>
+</resources>

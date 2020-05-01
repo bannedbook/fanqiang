@@ -1,0 +1,60 @@
+process main {
+    net.ipv4.addr_in_network("192.168.6.0", "192.168.6.0", "24") r;
+    assert(r);
+    
+    net.ipv4.addr_in_network("192.168.6.0", "192.168.6.0/24") r;
+    assert(r);
+    
+    net.ipv4.addr_in_network("192.168.6.1", "192.168.6.0", "24") r;
+    assert(r);
+    
+    net.ipv4.addr_in_network("192.168.6.255", "192.168.6.0", "24") r;
+    assert(r);
+    
+    net.ipv4.addr_in_network("192.168.5.255", "192.168.6.0", "24") r;
+    not(r) r;
+    assert(r);
+    
+    net.ipv4.addr_in_network("192.168.7.0", "192.168.6.0", "24") r;
+    not(r) r;
+    assert(r);
+    
+    net.ipv4.addr_in_network("192.168.7.0", "192.168.6.0/24") r;
+    not(r) r;
+    assert(r);
+    
+    net.ipv4.addr_in_network("0.0.0.0", "192.168.6.0", "0") r;
+    assert(r);
+    
+    net.ipv4.addr_in_network("0.0.0.0", "0.0.0.0", "0") r;
+    assert(r);
+    
+    net.ipv4.addr_in_network("255.255.255.255", "0.0.0.0", "0") r;
+    assert(r);
+    
+    net.ipv6.addr_in_network("::123:0", "::123:0/112") r;
+    assert(r);
+    
+    net.ipv6.addr_in_network("::123:1", "::123:0/112") r;
+    assert(r);
+    
+    net.ipv6.addr_in_network("::123:ffff", "::123:0/112") r;
+    assert(r);
+    
+    net.ipv6.addr_in_network("::123:ffff", "::123:ffff/128") r;
+    assert(r);
+    
+    net.ipv6.addr_in_network("::122:ffff", "::123:0/112") r;
+    not(r) r;
+    assert(r);
+    
+    net.ipv6.addr_in_network("::124:0", "::123:0/112") r;
+    not(r) r;
+    assert(r);
+    
+    net.ipv6.addr_in_network("::123:fffe", "::123:ffff/128") r;
+    not(r) r;
+    assert(r);
+    
+    exit("0");
+}

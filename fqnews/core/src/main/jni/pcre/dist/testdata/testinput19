@@ -1,0 +1,28 @@
+/-- This set of tests is for Unicode property support, relevant only to the
+    16- and 32-bit library. --/
+    
+/A\x{391}\x{10427}\x{ff3a}\x{1fb0}/8iDZ
+
+/A\x{391}\x{10427}\x{ff3a}\x{1fb0}/8DZ
+
+/AB\x{1fb0}/8DZ
+
+/AB\x{1fb0}/8DZi
+
+/\x{401}\x{420}\x{421}\x{422}\x{423}\x{424}\x{425}\x{426}\x{427}\x{428}\x{429}\x{42a}\x{42b}\x{42c}\x{42d}\x{42e}\x{42f}/8iSI
+    \x{401}\x{420}\x{421}\x{422}\x{423}\x{424}\x{425}\x{426}\x{427}\x{428}\x{429}\x{42a}\x{42b}\x{42c}\x{42d}\x{42e}\x{42f}
+    \x{451}\x{440}\x{441}\x{442}\x{443}\x{444}\x{445}\x{446}\x{447}\x{448}\x{449}\x{44a}\x{44b}\x{44c}\x{44d}\x{44e}\x{44f}
+
+/[ⱥ]/8iBZ
+
+/[^ⱥ]/8iBZ
+
+/[[:blank:]]/WBZ
+
+/\x{212a}+/i8SI
+    KKkk\x{212a}
+
+/s+/i8SI
+    SSss\x{17f}
+
+/-- End of testinput19 --/ 

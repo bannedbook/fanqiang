@@ -1,0 +1,18 @@
+# Sample forbidden URLs file for polipo.  -*-sh-*-
+# Put this in /etc/polipo/forbidden or in ~/.polipo-forbidden.
+
+# Forbid all hosts belonging to a given domain name:
+
+#counter.com
+#hitbox.com
+#doubleclick.net
+#www.cashcount.com
+
+# Forbid all hosts contaning a string matching a given regex.  Note
+# that you need to quote dots, so that a regex is not misinterpreted
+# as a domain name.
+
+#^http://[^/]*counter\.com
+#/ads/
+#/phpAdsNew
+#counting\.php

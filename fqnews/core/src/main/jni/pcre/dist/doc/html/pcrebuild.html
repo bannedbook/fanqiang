@@ -1,0 +1,534 @@
+<html>
+<head>
+<title>pcrebuild specification</title>
+</head>
+<body bgcolor="#FFFFFF" text="#00005A" link="#0066FF" alink="#3399FF" vlink="#2222BB">
+<h1>pcrebuild man page</h1>
+<p>
+Return to the <a href="index.html">PCRE index page</a>.
+</p>
+<p>
+This page is part of the PCRE HTML documentation. It was generated automatically
+from the original man page. If there is any nonsense in it, please consult the
+man page, in case the conversion went wrong.
+<br>
+<ul>
+<li><a name="TOC1" href="#SEC1">BUILDING PCRE</a>
+<li><a name="TOC2" href="#SEC2">PCRE BUILD-TIME OPTIONS</a>
+<li><a name="TOC3" href="#SEC3">BUILDING 8-BIT, 16-BIT AND 32-BIT LIBRARIES</a>
+<li><a name="TOC4" href="#SEC4">BUILDING SHARED AND STATIC LIBRARIES</a>
+<li><a name="TOC5" href="#SEC5">C++ SUPPORT</a>
+<li><a name="TOC6" href="#SEC6">UTF-8, UTF-16 AND UTF-32 SUPPORT</a>
+<li><a name="TOC7" href="#SEC7">UNICODE CHARACTER PROPERTY SUPPORT</a>
+<li><a name="TOC8" href="#SEC8">JUST-IN-TIME COMPILER SUPPORT</a>
+<li><a name="TOC9" href="#SEC9">CODE VALUE OF NEWLINE</a>
+<li><a name="TOC10" href="#SEC10">WHAT \R MATCHES</a>
+<li><a name="TOC11" href="#SEC11">POSIX MALLOC USAGE</a>
+<li><a name="TOC12" href="#SEC12">HANDLING VERY LARGE PATTERNS</a>
+<li><a name="TOC13" href="#SEC13">AVOIDING EXCESSIVE STACK USAGE</a>
+<li><a name="TOC14" href="#SEC14">LIMITING PCRE RESOURCE USAGE</a>
+<li><a name="TOC15" href="#SEC15">CREATING CHARACTER TABLES AT BUILD TIME</a>
+<li><a name="TOC16" href="#SEC16">USING EBCDIC CODE</a>
+<li><a name="TOC17" href="#SEC17">PCREGREP OPTIONS FOR COMPRESSED FILE SUPPORT</a>
+<li><a name="TOC18" href="#SEC18">PCREGREP BUFFER SIZE</a>
+<li><a name="TOC19" href="#SEC19">PCRETEST OPTION FOR LIBREADLINE SUPPORT</a>
+<li><a name="TOC20" href="#SEC20">DEBUGGING WITH VALGRIND SUPPORT</a>
+<li><a name="TOC21" href="#SEC21">CODE COVERAGE REPORTING</a>
+<li><a name="TOC22" href="#SEC22">SEE ALSO</a>
+<li><a name="TOC23" href="#SEC23">AUTHOR</a>
+<li><a name="TOC24" href="#SEC24">REVISION</a>
+</ul>
+<br><a name="SEC1" href="#TOC1">BUILDING PCRE</a><br>
+<P>
+PCRE is distributed with a <b>configure</b> script that can be used to build the
+library in Unix-like environments using the applications known as Autotools.
+Also in the distribution are files to support building using <b>CMake</b>
+instead of <b>configure</b>. The text file
+<a href="README.txt"><b>README</b></a>
+contains general information about building with Autotools (some of which is
+repeated below), and also has some comments about building on various operating
+systems. There is a lot more information about building PCRE without using
+Autotools (including information about using <b>CMake</b> and building "by
+hand") in the text file called
+<a href="NON-AUTOTOOLS-BUILD.txt"><b>NON-AUTOTOOLS-BUILD</b>.</a>
+You should consult this file as well as the
+<a href="README.txt"><b>README</b></a>
+file if you are building in a non-Unix-like environment.
+</P>
+<br><a name="SEC2" href="#TOC1">PCRE BUILD-TIME OPTIONS</a><br>
+<P>
+The rest of this document describes the optional features of PCRE that can be
+selected when the library is compiled. It assumes use of the <b>configure</b>
+script, where the optional features are selected or deselected by providing
+options to <b>configure</b> before running the <b>make</b> command. However, the
+same options can be selected in both Unix-like and non-Unix-like environments
+using the GUI facility of <b>cmake-gui</b> if you are using <b>CMake</b> instead
+of <b>configure</b> to build PCRE.
+</P>
+<P>
+If you are not using Autotools or <b>CMake</b>, option selection can be done by
+editing the <b>config.h</b> file, or by passing parameter settings to the
+compiler, as described in
+<a href="NON-AUTOTOOLS-BUILD.txt"><b>NON-AUTOTOOLS-BUILD</b>.</a>
+</P>
+<P>
+The complete list of options for <b>configure</b> (which includes the standard
+ones such as the selection of the installation directory) can be obtained by
+running
+<pre>
+  ./configure --help
+</pre>
+The following sections include descriptions of options whose names begin with
+--enable or --disable. These settings specify changes to the defaults for the
+<b>configure</b> command. Because of the way that <b>configure</b> works,
+--enable and --disable always come in pairs, so the complementary option always
+exists as well, but as it specifies the default, it is not described.
+</P>
+<br><a name="SEC3" href="#TOC1">BUILDING 8-BIT, 16-BIT AND 32-BIT LIBRARIES</a><br>
+<P>
+By default, a library called <b>libpcre</b> is built, containing functions that
+take string arguments contained in vectors of bytes, either as single-byte
+characters, or interpreted as UTF-8 strings. You can also build a separate
+library, called <b>libpcre16</b>, in which strings are contained in vectors of
+16-bit data units and interpreted either as single-unit characters or UTF-16
+strings, by adding
+<pre>
+  --enable-pcre16
+</pre>
+to the <b>configure</b> command. You can also build yet another separate
+library, called <b>libpcre32</b>, in which strings are contained in vectors of
+32-bit data units and interpreted either as single-unit characters or UTF-32
+strings, by adding
+<pre>
+  --enable-pcre32
+</pre>
+to the <b>configure</b> command. If you do not want the 8-bit library, add
+<pre>
+  --disable-pcre8
+</pre>
+as well. At least one of the three libraries must be built. Note that the C++
+and POSIX wrappers are for the 8-bit library only, and that <b>pcregrep</b> is
+an 8-bit program. None of these are built if you select only the 16-bit or
+32-bit libraries.
+</P>
+<br><a name="SEC4" href="#TOC1">BUILDING SHARED AND STATIC LIBRARIES</a><br>
+<P>
+The Autotools PCRE building process uses <b>libtool</b> to build both shared and
+static libraries by default. You can suppress one of these by adding one of
+<pre>
+  --disable-shared
+  --disable-static
+</pre>
+to the <b>configure</b> command, as required.
+</P>
+<br><a name="SEC5" href="#TOC1">C++ SUPPORT</a><br>
+<P>
+By default, if the 8-bit library is being built, the <b>configure</b> script
+will search for a C++ compiler and C++ header files. If it finds them, it
+automatically builds the C++ wrapper library (which supports only 8-bit
+strings). You can disable this by adding
+<pre>
+  --disable-cpp
+</pre>
+to the <b>configure</b> command.
+</P>
+<br><a name="SEC6" href="#TOC1">UTF-8, UTF-16 AND UTF-32 SUPPORT</a><br>
+<P>
+To build PCRE with support for UTF Unicode character strings, add
+<pre>
+  --enable-utf
+</pre>
+to the <b>configure</b> command. This setting applies to all three libraries,
+adding support for UTF-8 to the 8-bit library, support for UTF-16 to the 16-bit
+library, and support for UTF-32 to the to the 32-bit library. There are no
+separate options for enabling UTF-8, UTF-16 and UTF-32 independently because
+that would allow ridiculous settings such as requesting UTF-16 support while
+building only the 8-bit library. It is not possible to build one library with
+UTF support and another without in the same configuration. (For backwards
+compatibility, --enable-utf8 is a synonym of --enable-utf.)
+</P>
+<P>
+Of itself, this setting does not make PCRE treat strings as UTF-8, UTF-16 or
+UTF-32. As well as compiling PCRE with this option, you also have have to set
+the PCRE_UTF8, PCRE_UTF16 or PCRE_UTF32 option (as appropriate) when you call
+one of the pattern compiling functions.
+</P>
+<P>
+If you set --enable-utf when compiling in an EBCDIC environment, PCRE expects
+its input to be either ASCII or UTF-8 (depending on the run-time option). It is
+not possible to support both EBCDIC and UTF-8 codes in the same version of the
+library. Consequently, --enable-utf and --enable-ebcdic are mutually
+exclusive.
+</P>
+<br><a name="SEC7" href="#TOC1">UNICODE CHARACTER PROPERTY SUPPORT</a><br>
+<P>
+UTF support allows the libraries to process character codepoints up to 0x10ffff
+in the strings that they handle. On its own, however, it does not provide any
+facilities for accessing the properties of such characters. If you want to be
+able to use the pattern escapes \P, \p, and \X, which refer to Unicode
+character properties, you must add
+<pre>
+  --enable-unicode-properties
+</pre>
+to the <b>configure</b> command. This implies UTF support, even if you have
+not explicitly requested it.
+</P>
+<P>
+Including Unicode property support adds around 30K of tables to the PCRE
+library. Only the general category properties such as <i>Lu</i> and <i>Nd</i> are
+supported. Details are given in the
+<a href="pcrepattern.html"><b>pcrepattern</b></a>
+documentation.
+</P>
+<br><a name="SEC8" href="#TOC1">JUST-IN-TIME COMPILER SUPPORT</a><br>
+<P>
+Just-in-time compiler support is included in the build by specifying
+<pre>
+  --enable-jit
+</pre>
+This support is available only for certain hardware architectures. If this
+option is set for an unsupported architecture, a compile time error occurs.
+See the
+<a href="pcrejit.html"><b>pcrejit</b></a>
+documentation for a discussion of JIT usage. When JIT support is enabled,
+pcregrep automatically makes use of it, unless you add
+<pre>
+  --disable-pcregrep-jit
+</pre>
+to the "configure" command.
+</P>
+<br><a name="SEC9" href="#TOC1">CODE VALUE OF NEWLINE</a><br>
+<P>
+By default, PCRE interprets the linefeed (LF) character as indicating the end
+of a line. This is the normal newline character on Unix-like systems. You can
+compile PCRE to use carriage return (CR) instead, by adding
+<pre>
+  --enable-newline-is-cr
+</pre>
+to the <b>configure</b> command. There is also a --enable-newline-is-lf option,
+which explicitly specifies linefeed as the newline character.
+<br>
+<br>
+Alternatively, you can specify that line endings are to be indicated by the two
+character sequence CRLF. If you want this, add
+<pre>
+  --enable-newline-is-crlf
+</pre>
+to the <b>configure</b> command. There is a fourth option, specified by
+<pre>
+  --enable-newline-is-anycrlf
+</pre>
+which causes PCRE to recognize any of the three sequences CR, LF, or CRLF as
+indicating a line ending. Finally, a fifth option, specified by
+<pre>
+  --enable-newline-is-any
+</pre>
+causes PCRE to recognize any Unicode newline sequence.
+</P>
+<P>
+Whatever line ending convention is selected when PCRE is built can be
+overridden when the library functions are called. At build time it is
+conventional to use the standard for your operating system.
+</P>
+<br><a name="SEC10" href="#TOC1">WHAT \R MATCHES</a><br>
+<P>
+By default, the sequence \R in a pattern matches any Unicode newline sequence,
+whatever has been selected as the line ending sequence. If you specify
+<pre>
+  --enable-bsr-anycrlf
+</pre>
+the default is changed so that \R matches only CR, LF, or CRLF. Whatever is
+selected when PCRE is built can be overridden when the library functions are
+called.
+</P>
+<br><a name="SEC11" href="#TOC1">POSIX MALLOC USAGE</a><br>
+<P>
+When the 8-bit library is called through the POSIX interface (see the
+<a href="pcreposix.html"><b>pcreposix</b></a>
+documentation), additional working storage is required for holding the pointers
+to capturing substrings, because PCRE requires three integers per substring,
+whereas the POSIX interface provides only two. If the number of expected
+substrings is small, the wrapper function uses space on the stack, because this
+is faster than using <b>malloc()</b> for each call. The default threshold above
+which the stack is no longer used is 10; it can be changed by adding a setting
+such as
+<pre>
+  --with-posix-malloc-threshold=20
+</pre>
+to the <b>configure</b> command.
+</P>
+<br><a name="SEC12" href="#TOC1">HANDLING VERY LARGE PATTERNS</a><br>
+<P>
+Within a compiled pattern, offset values are used to point from one part to
+another (for example, from an opening parenthesis to an alternation
+metacharacter). By default, in the 8-bit and 16-bit libraries, two-byte values
+are used for these offsets, leading to a maximum size for a compiled pattern of
+around 64K. This is sufficient to handle all but the most gigantic patterns.
+Nevertheless, some people do want to process truly enormous patterns, so it is
+possible to compile PCRE to use three-byte or four-byte offsets by adding a
+setting such as
+<pre>
+  --with-link-size=3
+</pre>
+to the <b>configure</b> command. The value given must be 2, 3, or 4. For the
+16-bit library, a value of 3 is rounded up to 4. In these libraries, using
+longer offsets slows down the operation of PCRE because it has to load
+additional data when handling them. For the 32-bit library the value is always
+4 and cannot be overridden; the value of --with-link-size is ignored.
+</P>
+<br><a name="SEC13" href="#TOC1">AVOIDING EXCESSIVE STACK USAGE</a><br>
+<P>
+When matching with the <b>pcre_exec()</b> function, PCRE implements backtracking
+by making recursive calls to an internal function called <b>match()</b>. In
+environments where the size of the stack is limited, this can severely limit
+PCRE's operation. (The Unix environment does not usually suffer from this
+problem, but it may sometimes be necessary to increase the maximum stack size.
+There is a discussion in the
+<a href="pcrestack.html"><b>pcrestack</b></a>
+documentation.) An alternative approach to recursion that uses memory from the
+heap to remember data, instead of using recursive function calls, has been
+implemented to work round the problem of limited stack size. If you want to
+build a version of PCRE that works this way, add
+<pre>
+  --disable-stack-for-recursion
+</pre>
+to the <b>configure</b> command. With this configuration, PCRE will use the
+<b>pcre_stack_malloc</b> and <b>pcre_stack_free</b> variables to call memory
+management functions. By default these point to <b>malloc()</b> and
+<b>free()</b>, but you can replace the pointers so that your own functions are
+used instead.
+</P>
+<P>
+Separate functions are provided rather than using <b>pcre_malloc</b> and
+<b>pcre_free</b> because the usage is very predictable: the block sizes
+requested are always the same, and the blocks are always freed in reverse
+order. A calling program might be able to implement optimized functions that
+perform better than <b>malloc()</b> and <b>free()</b>. PCRE runs noticeably more
+slowly when built in this way. This option affects only the <b>pcre_exec()</b>
+function; it is not relevant for <b>pcre_dfa_exec()</b>.
+</P>
+<br><a name="SEC14" href="#TOC1">LIMITING PCRE RESOURCE USAGE</a><br>
+<P>
+Internally, PCRE has a function called <b>match()</b>, which it calls repeatedly
+(sometimes recursively) when matching a pattern with the <b>pcre_exec()</b>
+function. By controlling the maximum number of times this function may be
+called during a single matching operation, a limit can be placed on the
+resources used by a single call to <b>pcre_exec()</b>. The limit can be changed
+at run time, as described in the
+<a href="pcreapi.html"><b>pcreapi</b></a>
+documentation. The default is 10 million, but this can be changed by adding a
+setting such as
+<pre>
+  --with-match-limit=500000
+</pre>
+to the <b>configure</b> command. This setting has no effect on the
+<b>pcre_dfa_exec()</b> matching function.
+</P>
+<P>
+In some environments it is desirable to limit the depth of recursive calls of
+<b>match()</b> more strictly than the total number of calls, in order to
+restrict the maximum amount of stack (or heap, if --disable-stack-for-recursion
+is specified) that is used. A second limit controls this; it defaults to the
+value that is set for --with-match-limit, which imposes no additional
+constraints. However, you can set a lower limit by adding, for example,
+<pre>
+  --with-match-limit-recursion=10000
+</pre>
+to the <b>configure</b> command. This value can also be overridden at run time.
+</P>
+<br><a name="SEC15" href="#TOC1">CREATING CHARACTER TABLES AT BUILD TIME</a><br>
+<P>
+PCRE uses fixed tables for processing characters whose code values are less
+than 256. By default, PCRE is built with a set of tables that are distributed
+in the file <i>pcre_chartables.c.dist</i>. These tables are for ASCII codes
+only. If you add
+<pre>
+  --enable-rebuild-chartables
+</pre>
+to the <b>configure</b> command, the distributed tables are no longer used.
+Instead, a program called <b>dftables</b> is compiled and run. This outputs the
+source for new set of tables, created in the default locale of your C run-time
+system. (This method of replacing the tables does not work if you are cross
+compiling, because <b>dftables</b> is run on the local host. If you need to
+create alternative tables when cross compiling, you will have to do so "by
+hand".)
+</P>
+<br><a name="SEC16" href="#TOC1">USING EBCDIC CODE</a><br>
+<P>
+PCRE assumes by default that it will run in an environment where the character
+code is ASCII (or Unicode, which is a superset of ASCII). This is the case for
+most computer operating systems. PCRE can, however, be compiled to run in an
+EBCDIC environment by adding
+<pre>
+  --enable-ebcdic
+</pre>
+to the <b>configure</b> command. This setting implies
+--enable-rebuild-chartables. You should only use it if you know that you are in
+an EBCDIC environment (for example, an IBM mainframe operating system). The
+--enable-ebcdic option is incompatible with --enable-utf.
+</P>
+<P>
+The EBCDIC character that corresponds to an ASCII LF is assumed to have the
+value 0x15 by default. However, in some EBCDIC environments, 0x25 is used. In
+such an environment you should use
+<pre>
+  --enable-ebcdic-nl25
+</pre>
+as well as, or instead of, --enable-ebcdic. The EBCDIC character for CR has the
+same value as in ASCII, namely, 0x0d. Whichever of 0x15 and 0x25 is <i>not</i>
+chosen as LF is made to correspond to the Unicode NEL character (which, in
+Unicode, is 0x85).
+</P>
+<P>
+The options that select newline behaviour, such as --enable-newline-is-cr,
+and equivalent run-time options, refer to these character values in an EBCDIC
+environment.
+</P>
+<br><a name="SEC17" href="#TOC1">PCREGREP OPTIONS FOR COMPRESSED FILE SUPPORT</a><br>
+<P>
+By default, <b>pcregrep</b> reads all files as plain text. You can build it so
+that it recognizes files whose names end in <b>.gz</b> or <b>.bz2</b>, and reads
+them with <b>libz</b> or <b>libbz2</b>, respectively, by adding one or both of
+<pre>
+  --enable-pcregrep-libz
+  --enable-pcregrep-libbz2
+</pre>
+to the <b>configure</b> command. These options naturally require that the
+relevant libraries are installed on your system. Configuration will fail if
+they are not.
+</P>
+<br><a name="SEC18" href="#TOC1">PCREGREP BUFFER SIZE</a><br>
+<P>
+<b>pcregrep</b> uses an internal buffer to hold a "window" on the file it is
+scanning, in order to be able to output "before" and "after" lines when it
+finds a match. The size of the buffer is controlled by a parameter whose
+default value is 20K. The buffer itself is three times this size, but because
+of the way it is used for holding "before" lines, the longest line that is
+guaranteed to be processable is the parameter size. You can change the default
+parameter value by adding, for example,
+<pre>
+  --with-pcregrep-bufsize=50K
+</pre>
+to the <b>configure</b> command. The caller of \fPpcregrep\fP can, however,
+override this value by specifying a run-time option.
+</P>
+<br><a name="SEC19" href="#TOC1">PCRETEST OPTION FOR LIBREADLINE SUPPORT</a><br>
+<P>
+If you add
+<pre>
+  --enable-pcretest-libreadline
+</pre>
+to the <b>configure</b> command, <b>pcretest</b> is linked with the
+<b>libreadline</b> library, and when its input is from a terminal, it reads it
+using the <b>readline()</b> function. This provides line-editing and history
+facilities. Note that <b>libreadline</b> is GPL-licensed, so if you distribute a
+binary of <b>pcretest</b> linked in this way, there may be licensing issues.
+</P>
+<P>
+Setting this option causes the <b>-lreadline</b> option to be added to the
+<b>pcretest</b> build. In many operating environments with a sytem-installed
+<b>libreadline</b> this is sufficient. However, in some environments (e.g.
+if an unmodified distribution version of readline is in use), some extra
+configuration may be necessary. The INSTALL file for <b>libreadline</b> says
+this:
+<pre>
+  "Readline uses the termcap functions, but does not link with the
+  termcap or curses library itself, allowing applications which link
+  with readline the to choose an appropriate library."
+</pre>
+If your environment has not been set up so that an appropriate library is
+automatically included, you may need to add something like
+<pre>
+  LIBS="-ncurses"
+</pre>
+immediately before the <b>configure</b> command.
+</P>
+<br><a name="SEC20" href="#TOC1">DEBUGGING WITH VALGRIND SUPPORT</a><br>
+<P>
+By adding the
+<pre>
+  --enable-valgrind
+</pre>
+option to to the <b>configure</b> command, PCRE will use valgrind annotations
+to mark certain memory regions as unaddressable. This allows it to detect
+invalid memory accesses, and is mostly useful for debugging PCRE itself.
+</P>
+<br><a name="SEC21" href="#TOC1">CODE COVERAGE REPORTING</a><br>
+<P>
+If your C compiler is gcc, you can build a version of PCRE that can generate a
+code coverage report for its test suite. To enable this, you must install
+<b>lcov</b> version 1.6 or above. Then specify
+<pre>
+  --enable-coverage
+</pre>
+to the <b>configure</b> command and build PCRE in the usual way.
+</P>
+<P>
+Note that using <b>ccache</b> (a caching C compiler) is incompatible with code
+coverage reporting. If you have configured <b>ccache</b> to run automatically
+on your system, you must set the environment variable
+<pre>
+  CCACHE_DISABLE=1
+</pre>
+before running <b>make</b> to build PCRE, so that <b>ccache</b> is not used.
+</P>
+<P>
+When --enable-coverage is used, the following addition targets are added to the
+<i>Makefile</i>:
+<pre>
+  make coverage
+</pre>
+This creates a fresh coverage report for the PCRE test suite. It is equivalent
+to running "make coverage-reset", "make coverage-baseline", "make check", and
+then "make coverage-report".
+<pre>
+  make coverage-reset
+</pre>
+This zeroes the coverage counters, but does nothing else.
+<pre>
+  make coverage-baseline
+</pre>
+This captures baseline coverage information.
+<pre>
+  make coverage-report
+</pre>
+This creates the coverage report.
+<pre>
+  make coverage-clean-report
+</pre>
+This removes the generated coverage report without cleaning the coverage data
+itself.
+<pre>
+  make coverage-clean-data
+</pre>
+This removes the captured coverage data without removing the coverage files
+created at compile time (*.gcno).
+<pre>
+  make coverage-clean
+</pre>
+This cleans all coverage data including the generated coverage report. For more
+information about code coverage, see the <b>gcov</b> and <b>lcov</b>
+documentation.
+</P>
+<br><a name="SEC22" href="#TOC1">SEE ALSO</a><br>
+<P>
+<b>pcreapi</b>(3), <b>pcre16</b>, <b>pcre32</b>, <b>pcre_config</b>(3).
+</P>
+<br><a name="SEC23" href="#TOC1">AUTHOR</a><br>
+<P>
+Philip Hazel
+<br>
+University Computing Service
+<br>
+Cambridge CB2 3QH, England.
+<br>
+</P>
+<br><a name="SEC24" href="#TOC1">REVISION</a><br>
+<P>
+Last updated: 12 May 2013
+<br>
+Copyright &copy; 1997-2013 University of Cambridge.
+<br>
+<p>
+Return to the <a href="index.html">PCRE index page</a>.
+</p>

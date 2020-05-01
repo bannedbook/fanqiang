@@ -1,0 +1,172 @@
+Test case mbedtls_base64_encode #1 buffer just right
+mbedtls_base64_encode:"":"":0:0
+
+Test case mbedtls_base64_encode #2 buffer just right
+mbedtls_base64_encode:"f":"Zg==":5:0
+
+Test case mbedtls_base64_encode #2 buffer too small
+mbedtls_base64_encode:"f":"Zg==":4:MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL
+
+Test case mbedtls_base64_encode #3 buffer just right
+mbedtls_base64_encode:"fo":"Zm8=":5:0
+
+Test case mbedtls_base64_encode #3 buffer too small
+mbedtls_base64_encode:"fo":"Zm8=":4:MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL
+
+Test case mbedtls_base64_encode #4 buffer just right
+mbedtls_base64_encode:"foo":"Zm9v":5:0
+
+Test case mbedtls_base64_encode #4 buffer too small
+mbedtls_base64_encode:"foo":"Zm9v":4:MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL
+
+Test case mbedtls_base64_encode #5 buffer just right
+mbedtls_base64_encode:"foob":"Zm9vYg==":9:0
+
+Test case mbedtls_base64_encode #5 buffer too small
+mbedtls_base64_encode:"foob":"Zm9vYg==":8:MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL
+
+Test case mbedtls_base64_encode #6 buffer just right
+mbedtls_base64_encode:"fooba":"Zm9vYmE=":9:0
+
+Test case mbedtls_base64_encode #6 buffer too small
+mbedtls_base64_encode:"fooba":"Zm9vYmE=":8:MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL
+
+Test case mbedtls_base64_encode #7 buffer just right
+mbedtls_base64_encode:"foobar":"Zm9vYmFy":9:0
+
+Test case mbedtls_base64_encode #7 buffer too small
+mbedtls_base64_encode:"foobar":"Zm9vYmFy":8:MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL
+
+Test case mbedtls_base64_decode #1
+mbedtls_base64_decode:"":"":0
+
+Test case mbedtls_base64_decode #2
+mbedtls_base64_decode:"Zg==":"f":0
+
+Test case mbedtls_base64_decode #3
+mbedtls_base64_decode:"Zm8=":"fo":0
+
+Test case mbedtls_base64_decode #4
+mbedtls_base64_decode:"Zm9v":"foo":0
+
+Test case mbedtls_base64_decode #5
+mbedtls_base64_decode:"Zm9vYg==":"foob":0
+
+Test case mbedtls_base64_decode #6
+mbedtls_base64_decode:"Zm9vYmE=":"fooba":0
+
+Test case mbedtls_base64_decode #7
+mbedtls_base64_decode:"Zm9vYmFy":"foobar":0
+
+Base64 decode (Illegal character)
+mbedtls_base64_decode:"zm#=":"":MBEDTLS_ERR_BASE64_INVALID_CHARACTER
+
+Base64 decode (Too much equal signs)
+mbedtls_base64_decode:"zm===":"":MBEDTLS_ERR_BASE64_INVALID_CHARACTER
+
+Base64 decode (Invalid char after equal signs)
+mbedtls_base64_decode:"zm=masd":"":MBEDTLS_ERR_BASE64_INVALID_CHARACTER
+
+Base64 decode (Space inside string)
+mbedtls_base64_decode:"zm masd":"":MBEDTLS_ERR_BASE64_INVALID_CHARACTER
+
+Base64 decode "Zm9vYmFy" (no newline nor '\0' at end)
+base64_decode_hex_src:"5a6d3976596d4679":"foobar":0
+
+Base64 decode "Zm9vYmFy\n" (LF at end)
+base64_decode_hex_src:"5a6d3976596d46790a":"foobar":0
+
+Base64 decode "Zm9vYmFy\r\n" (CRLF at end)
+base64_decode_hex_src:"5a6d3976596d46790d0a":"foobar":0
+
+Base64 decode "Zm9vYmFy\r" (CR at end)
+base64_decode_hex_src:"5a6d3976596d46790d":"":MBEDTLS_ERR_BASE64_INVALID_CHARACTER
+
+Base64 decode "Zm9vYmFy " (SP at end)
+base64_decode_hex_src:"5a6d3976596d467920":"foobar":0
+
+Base64 decode "Zm9vYmFy \n" (SP+LF at end)
+base64_decode_hex_src:"5a6d3976596d4679200a":"foobar":0
+
+Base64 decode "Zm9vYmFy \r\n" (SP+CRLF at end)
+base64_decode_hex_src:"5a6d3976596d4679200d0a":"foobar":0
+
+Base64 decode "Zm9vYmFy \r" (SP+CR at end)
+base64_decode_hex_src:"5a6d3976596d4679200d":"":MBEDTLS_ERR_BASE64_INVALID_CHARACTER
+
+Base64 decode "Zm9vYmFy  " (2SP at end)
+base64_decode_hex_src:"5a6d3976596d46792020":"foobar":0
+
+Base64 decode "Zm9vYmFy  \n" (2SP+LF at end)
+base64_decode_hex_src:"5a6d3976596d467920200a":"foobar":0
+
+Base64 decode "Zm9vYmFy  \r\n" (2SP+CRLF at end)
+base64_decode_hex_src:"5a6d3976596d467920200d0a":"foobar":0
+
+Base64 decode "Zm9vYmFy  \r" (2SP+CR at end)
+base64_decode_hex_src:"5a6d3976596d467920200d":"":MBEDTLS_ERR_BASE64_INVALID_CHARACTER
+
+Base64 decode "Zm9vYmF\ny" (LF inside)
+base64_decode_hex_src:"5a6d3976596d460a79":"foobar":0
+
+Base64 decode "Zm9vYmF\ry" (CRLF inside)
+base64_decode_hex_src:"5a6d3976596d460d0a79":"foobar":0
+
+Base64 decode "Zm9vYmF\ry" (CR inside)
+base64_decode_hex_src:"5a6d3976596d460d79":"":MBEDTLS_ERR_BASE64_INVALID_CHARACTER
+
+Base64 decode "Zm9vYmF y" (SP inside)
+base64_decode_hex_src:"5a6d3976596d462079":"":MBEDTLS_ERR_BASE64_INVALID_CHARACTER
+
+Base64 decode "Zm9vYmF \ny" (SP+LF inside)
+base64_decode_hex_src:"5a6d3976596d46200a79":"foobar":0
+
+Base64 decode "Zm9vYmF \ry" (SP+CRLF inside)
+base64_decode_hex_src:"5a6d3976596d46200d0a79":"foobar":0
+
+Base64 decode "Zm9vYmF \ry" (SP+CR inside)
+base64_decode_hex_src:"5a6d3976596d46200d79":"":MBEDTLS_ERR_BASE64_INVALID_CHARACTER
+
+Base64 decode "Zm9vYmF  y" (2SP inside)
+base64_decode_hex_src:"5a6d3976596d46202079":"":MBEDTLS_ERR_BASE64_INVALID_CHARACTER
+
+Base64 decode "Zm9vYmF  \ny" (2SP+LF inside)
+base64_decode_hex_src:"5a6d3976596d4620200a79":"foobar":0
+
+Base64 decode "Zm9vYmF  \ry" (2SP+CRLF inside)
+base64_decode_hex_src:"5a6d3976596d4620200d0a79":"foobar":0
+
+Base64 decode "Zm9vYmF  \ry" (2SP+CR inside)
+base64_decode_hex_src:"5a6d3976596d4620200d79":"":MBEDTLS_ERR_BASE64_INVALID_CHARACTER
+
+Base64 encode hex #1
+base64_encode_hex:"010203040506070809":"AQIDBAUGBwgJ":13:0
+
+Base64 encode hex #2 (buffer too small)
+base64_encode_hex:"010203040506070809":"AQIDBAUGBwgJ":12:MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL
+
+Base64 encode hex #3
+base64_encode_hex:"0102030405060708":"AQIDBAUGBwg=":13:0
+
+Base64 encode hex #4
+base64_encode_hex:"01020304050607":"AQIDBAUGBw==":13:0
+
+Base64 decode hex #1
+base64_decode_hex:"AQIDBAUGBwgJ":"010203040506070809":9:0
+
+Base64 decode hex #2 (buffer too small)
+base64_decode_hex:"AQIDBAUGBwgJ":"010203040506070809":8:MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL
+
+Base64 decode hex #3
+base64_decode_hex:"AQIDBAUGBwg=":"0102030405060708":8:0
+
+Base64 decode hex #4
+base64_decode_hex:"AQIDBAUGBw==":"01020304050607":7:0
+
+Base64 decode hex #5 (buffer too small)
+base64_decode_hex:"AQIDBAUGBw==":"01020304050607":6:MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL
+
+Base64 Selftest
+depends_on:MBEDTLS_SELF_TEST
+base64_selftest:
+

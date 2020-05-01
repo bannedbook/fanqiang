@@ -1,0 +1,15 @@
+Check compiletime library version
+check_compiletime_version:"2.16.1"
+
+Check runtime library version
+check_runtime_version:"2.16.1"
+
+Check for MBEDTLS_VERSION_C
+check_feature:"MBEDTLS_VERSION_C":0
+
+Check for MBEDTLS_AES_C when already present
+depends_on:MBEDTLS_AES_C
+check_feature:"MBEDTLS_AES_C":0
+
+Check for unknown define
+check_feature:"MBEDTLS_UNKNOWN":-1

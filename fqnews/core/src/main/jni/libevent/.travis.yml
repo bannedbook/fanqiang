@@ -1,0 +1,100 @@
+os:
+  - linux
+  - osx
+sudo: false
+dist: trusty
+
+env:
+  matrix:
+    - EVENT_BUILD_METHOD=cmake EVENT_CMAKE_OPTIONS="-DEVENT__COVERAGE=ON -DCMAKE_BUILD_TYPE=debug" COVERALLS=yes
+    - EVENT_BUILD_METHOD=cmake EVENT_CMAKE_OPTIONS=""
+    - EVENT_BUILD_METHOD=cmake EVENT_CMAKE_OPTIONS="-DEVENT__DISABLE_OPENSSL=ON"
+    - EVENT_BUILD_METHOD=cmake EVENT_CMAKE_OPTIONS="-DEVENT__DISABLE_THREAD_SUPPORT=ON"
+    - EVENT_BUILD_METHOD=cmake EVENT_CMAKE_OPTIONS="-DEVENT__DISABLE_DEBUG_MODE=ON"
+    - EVENT_BUILD_METHOD=cmake EVENT_CMAKE_OPTIONS="-DEVENT__DISABLE_MM_REPLACEMENT=ON"
+    - EVENT_BUILD_METHOD=cmake EVENT_CMAKE_OPTIONS="-DEVENT__ENABLE_VERBOSE_DEBUG=ON"
+    - EVENT_BUILD_METHOD=autotools EVENT_CONFIGURE_OPTIONS=""
+    - EVENT_BUILD_METHOD=autotools EVENT_CONFIGURE_OPTIONS="--disable-openssl"
+    - EVENT_BUILD_METHOD=autotools EVENT_CONFIGURE_OPTIONS="--disable-thread-support"
+    - EVENT_BUILD_METHOD=autotools EVENT_CONFIGURE_OPTIONS="--disable-debug-mode"
+    - EVENT_BUILD_METHOD=autotools EVENT_CONFIGURE_OPTIONS="--disable-malloc-replacement"
+
+language: c
+compiler:
+  - gcc
+  - clang
+
+before_install:
+  - if [ -n "$COVERALLS" ]; then
+      pip install --user cpp-coveralls;
+    fi
+  - export JOBS=20
+  - export TIMEOUT=50
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+      brew update;
+      brew uninstall libtool && brew install libtool;
+      brew install openssl;
+      brew install lcov;
+      if [ "$CC" == "gcc" ]; then
+        export CC=$(ls -t /usr/local/bin/gcc-?.?);
+      fi
+
+      export OPENSSL_ROOT=$(echo /usr/local/Cellar/openssl/*);
+      export
+        CMAKE_INCLUDE_PATH=$OPENSSL_ROOT/include
+        CMAKE_LIBRARY_PATH=$OPENSSL_ROOT/lib;
+      export
+        CFLAGS=-I$CMAKE_INCLUDE_PATH
+        LDFLAGS=-L$CMAKE_LIBRARY_PATH;
+
+      export JOBS=4;
+    fi
+
+addons:
+  apt:
+    sources:
+    - xenial
+    - sourceline: 'deb http://archive.ubuntu.com/ubuntu xenial main'
+    packages:
+    - zlib1g-dev
+    - libssl-dev
+    - build-essential
+    - automake
+    - autoconf
+    - cmake
+    - lcov
+
+script:
+  - if [ "$EVENT_BUILD_METHOD" = "autotools" ]; then
+      ./autogen.sh &&
+      ./configure $EVENT_CONFIGURE_OPTIONS &&
+      make &&
+      travis_wait $TIMEOUT make -j $JOBS verify;
+    fi
+  - if [ "$EVENT_BUILD_METHOD" = "cmake" ]; then
+      export
+        CTEST_PARALLEL_LEVEL=$JOBS
+        CTEST_OUTPUT_ON_FAILURE=1;
+
+      mkdir build &&
+      cd build &&
+      cmake .. $EVENT_CMAKE_OPTIONS &&
+      travis_wait $TIMEOUT
+      cmake --build . --target verify;
+    fi
+
+after_script:
+  - if [ -n "$COVERALLS" ]; then
+      coveralls
+        --build-root .
+        --root ..
+        --exclude test
+        --exclude sample
+        --exclude cmake
+        --exclude build/CMakeFiles/CheckTypeSize
+        --exclude build/CMakeFiles/CompilerIdC
+        --gcov-options '\-lp';
+    fi
+
+notifications:
+  irc: "irc.oftc.net#libevent"

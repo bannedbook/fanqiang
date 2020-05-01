@@ -1,0 +1,20 @@
+language: c
+compiler:
+  - clang
+  - gcc
+env:
+  - ARCH=i386 ENABLE_SHARED_EXECUTABLES=YES
+  - ARCH=amd64 ENABLE_SHARED_EXECUTABLES=YES
+  - ARCH=i386 ENABLE_SHARED_EXECUTABLES=NO
+  - ARCH=amd64 ENABLE_SHARED_EXECUTABLES=NO
+os:
+  - linux
+  - osx
+install: .travis/install
+script: .travis/test
+
+# In addition to pull requests, always build these branches
+branches:
+  only:
+    - master
+    - develop

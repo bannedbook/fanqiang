@@ -1,0 +1,4 @@
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/logo"
+    android:gravity="center"
+    android:background="@android:color/black"/>

@@ -1,0 +1,21 @@
+/* BEGIN_HEADER */
+#include "mbedtls/error.h"
+/* END_HEADER */
+
+/* BEGIN_DEPENDENCIES
+ * depends_on:MBEDTLS_ERROR_C
+ * END_DEPENDENCIES
+ */
+
+/* BEGIN_CASE */
+void error_strerror( int code, char * result_str )
+{
+    char buf[500];
+
+    memset( buf, 0, sizeof( buf ) );
+
+    mbedtls_strerror( code, buf, 500 );
+
+    TEST_ASSERT( strcmp( buf, result_str ) == 0 );
+}
+/* END_CASE */

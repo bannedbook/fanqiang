@@ -1,0 +1,64 @@
+CMAC self test
+mbedtls_cmac_self_test:
+
+CMAC null arguments
+mbedtls_cmac_null_args:
+
+CMAC init #1 AES-128: OK
+depends_on:MBEDTLS_AES_C
+mbedtls_cmac_setkey:MBEDTLS_CIPHER_AES_128_ECB:128:0
+
+CMAC init #2 AES-192: OK
+depends_on:MBEDTLS_AES_C
+mbedtls_cmac_setkey:MBEDTLS_CIPHER_AES_192_ECB:192:0
+
+CMAC init #3 AES-256: OK
+depends_on:MBEDTLS_AES_C
+mbedtls_cmac_setkey:MBEDTLS_CIPHER_AES_256_ECB:256:0
+
+CMAC init #4 3DES : OK
+depends_on:MBEDTLS_DES_C
+mbedtls_cmac_setkey:MBEDTLS_CIPHER_DES_EDE3_ECB:192:0
+
+CMAC init #5 AES-224: bad key size
+depends_on:MBEDTLS_AES_C
+mbedtls_cmac_setkey:MBEDTLS_CIPHER_ID_AES:224:MBEDTLS_ERR_CIPHER_BAD_INPUT_DATA
+
+CMAC init #6 AES-0: bad key size
+depends_on:MBEDTLS_AES_C
+mbedtls_cmac_setkey:MBEDTLS_CIPHER_ID_AES:0:MBEDTLS_ERR_CIPHER_BAD_INPUT_DATA
+
+CMAC init #7 Camellia: wrong cipher
+depends_on:MBEDTLS_CAMELLIA_C
+mbedtls_cmac_setkey:MBEDTLS_CIPHER_ID_CAMELLIA:128:MBEDTLS_ERR_CIPHER_BAD_INPUT_DATA
+
+CMAC Single Blocks #1 - Empty block, no updates
+mbedtls_cmac_multiple_blocks:MBEDTLS_CIPHER_AES_128_ECB:"2b7e151628aed2a6abf7158809cf4f3c":128:16:"":-1:"":-1:"":-1:"":-1:"bb1d6929e95937287fa37d129b756746"
+
+CMAC Single Blocks #2 - Single 16 byte block
+mbedtls_cmac_multiple_blocks:MBEDTLS_CIPHER_AES_128_ECB:"2b7e151628aed2a6abf7158809cf4f3c":128:16:"6bc1bee22e409f96e93d7e117393172a":16:"":-1:"":-1:"":-1:"070a16b46b4d4144f79bdd9dd04a287c"
+
+CMAC Single Blocks #3 - Single 64 byte block
+mbedtls_cmac_multiple_blocks:MBEDTLS_CIPHER_AES_128_ECB:"2b7e151628aed2a6abf7158809cf4f3c":128:16:"6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710":64:"":-1:"":-1:"":-1:"51f0bebf7e3b9d92fc49741779363cfe"
+
+CMAC Multiple Blocks #1 - Multiple 8 byte blocks
+mbedtls_cmac_multiple_blocks:MBEDTLS_CIPHER_AES_128_ECB:"2b7e151628aed2a6abf7158809cf4f3c":128:16:"6bc1bee22e409f96":8:"e93d7e117393172a":8:"":-1:"":-1:"070a16b46b4d4144f79bdd9dd04a287c"
+
+CMAC Multiple Blocks #2 - Multiple 16 byte blocks
+mbedtls_cmac_multiple_blocks:MBEDTLS_CIPHER_AES_128_ECB:"2b7e151628aed2a6abf7158809cf4f3c":128:16:"6bc1bee22e409f96e93d7e117393172a":16:"ae2d8a571e03ac9c9eb76fac45af8e51":16:"30c81c46a35ce411e5fbc1191a0a52ef":16:"f69f2445df4f9b17ad2b417be66c3710":16:"51f0bebf7e3b9d92fc49741779363cfe"
+
+CMAC Multiple Blocks #3 - Multiple variable sized blocks
+mbedtls_cmac_multiple_blocks:MBEDTLS_CIPHER_AES_128_ECB:"2b7e151628aed2a6abf7158809cf4f3c":128:16:"6bc1bee22e409f96":8:"e93d7e117393172aae2d8a571e03ac9c":16:"9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52ef":24:"f69f2445df4f9b17ad2b417be66c3710":16:"51f0bebf7e3b9d92fc49741779363cfe"
+
+CMAC Multiple Blocks #4 - Multiple 8 byte blocks with gaps
+mbedtls_cmac_multiple_blocks:MBEDTLS_CIPHER_AES_128_ECB:"2b7e151628aed2a6abf7158809cf4f3c":128:16:"":0:"6bc1bee22e409f96":8:"":0:"e93d7e117393172a":8:"070a16b46b4d4144f79bdd9dd04a287c"
+
+CMAC Multiple Operations, same key #1 - Empty, empty
+mbedtls_cmac_multiple_operations_same_key:MBEDTLS_CIPHER_AES_192_ECB:"8e73b0f7da0e6452c810f32b809079e562f8ead2522c6b7b":192:16:"":-1:"":-1:"":-1:"d17ddf46adaacde531cac483de7a9367":"":-1:"":-1:"":-1:"d17ddf46adaacde531cac483de7a9367"
+
+CMAC Multiple Operations, same key #2 - Empty, 64 byte block
+mbedtls_cmac_multiple_operations_same_key:MBEDTLS_CIPHER_AES_192_ECB:"8e73b0f7da0e6452c810f32b809079e562f8ead2522c6b7b":192:16:"":-1:"":-1:"":-1:"d17ddf46adaacde531cac483de7a9367":"6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710":64:"":-1:"":-1:"a1d5df0eed790f794d77589659f39a11"
+
+CMAC Multiple Operations, same key #3 - variable byte blocks
+mbedtls_cmac_multiple_operations_same_key:MBEDTLS_CIPHER_AES_192_ECB:"8e73b0f7da0e6452c810f32b809079e562f8ead2522c6b7b":192:16:"6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e51":32:"30c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710":32:"":-1:"a1d5df0eed790f794d77589659f39a11":"6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e51":32:"30c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710":32:"":-1:"a1d5df0eed790f794d77589659f39a11"
+

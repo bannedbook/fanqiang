@@ -1,0 +1,63 @@
+process main {
+    value({}) list;
+    var("0") i;
+    backtrack_point() point;
+    num_lesser(i, "100") do_more;
+    If (do_more) {
+        list->insert(i);
+        num_add(i, "1") new_i;
+        i->set(new_i);
+        point->go();
+    };
+    val_equal(list.length, "100") a;
+    assert(a);
+    
+    value({}) list;
+    var("0") i;
+    blocker() blk;
+    blk->up();
+    blk->use();
+    num_lesser(i, "100") do_more;
+    If (do_more) {
+        list->insert(i);
+        num_add(i, "1") new_i;
+        i->set(new_i);
+        blk->downup();
+    };
+    val_equal(list.length, "100") a;
+    assert(a);
+    
+    var("true") start;
+    var("false") flag;
+    backtrack_point() point;
+    If (start) {
+        blocker() blk;
+        blk->up();
+        spawn("helper1", {});
+        imperative("<none>", {}, "helper3", {}, "1000");
+        start->set("false");
+        blk->down();
+        if("false");
+    } Else {
+        assert(flag);
+    };
+    
+    exit("0");
+}
+
+template helper1 {
+    _caller.blk->use();
+    imperative("<none>", {}, "helper2", {}, "1000");
+    _caller.point->rgo();
+}
+
+template helper2 {
+    val_equal(_caller._caller.flag, "true") a;
+    assert(a);
+}
+
+template helper3 {
+    val_equal(_caller.flag, "false") a;
+    assert(a);
+    _caller.flag->set("true");
+}

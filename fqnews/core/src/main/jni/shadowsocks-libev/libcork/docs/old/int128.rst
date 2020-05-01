@@ -1,0 +1,145 @@
+.. _int128:
+
+****************
+128-bit integers
+****************
+
+.. highlight:: c
+
+::
+
+  #include <libcork/core.h>
+
+We provide an API for working with unsigned, 128-bit integers.  Unlike libraries
+like GMP_, our goal is not to support arbitrarily large integers, but to provide
+optimized support for this one specific integer type.  We might add support for
+additional large integer types in the future, as need arises, but the focus will
+always be on a small number of specific types, and not on arbitrary sizes.  For
+that, use GMP.
+
+.. _GMP: http://gmplib.org/
+
+
+.. type:: cork_u128
+
+   An unsigned, 128-bit integer.  You can assume that instances of this type
+   will be exactly 16 bytes in size, and that the integer value will be stored
+   in host-endian order.  This type is currently implemented as a ``struct``,
+   but none of its members are part of the public API.
+
+
+Initialization
+==============
+
+.. function:: cork_u128 cork_u128_from_32(uint32_t i0, uint32_t i1, uint32_t i2, uint32_t i3)
+              cork_u128 cork_u128_from_64(uint64_t i0, uint64_t i1)
+
+   Return a 128-bit integer initialized with the given portions.  The various
+   *iX* pieces are given in big-endian order, regardless of the host's
+   endianness.  For instance, both of the following initialize an integer to
+   :math:`2^{64}`::
+
+       cork_u128  value1 = cork_u128_from_32(0, 1, 0, 0);
+       cork_u128  value2 = cork_u128_from_64(1, 0);
+
+
+Accessing subsets
+=================
+
+.. function:: &uint8_t cork_u128_be8(cork_u128 value, unsigned int index)
+              &uint16_t cork_u128_be16(cork_u128 value, unsigned int index)
+              &uint32_t cork_u128_be32(cork_u128 value, unsigned int index)
+              &uint64_t cork_u128_be64(cork_u128 value, unsigned int index)
+
+   Returns a reference to a portion of a 128-bit integer.  Regardless of the
+   host's endianness, the indices are counted in big-endian order — i.e., an
+   *index* of ``0`` will always return the most-significant portion of *value*.
+
+   The result is a valid lvalue, so you can assign to it to update the contents
+   of *value*::
+
+       cork_u128  value;
+       cork_u128_be64(value, 0) = 4;
+       cork_u128_be64(value, 1) = 16;
+
+
+Arithmetic
+==========
+
+All of the functions in this section are implemented as macros or inline
+functions, so you won't incur any function-call overhead when using them.
+
+.. function:: cork_u128 cork_u128_add(cork_128 a, cork_u128 b)
+              cork_u128 cork_u128_sub(cork_128 a, cork_u128 b)
+
+   Add or subtract two 128-bit integers, returning the result.
+
+   ::
+
+       cork_u128  a = cork_u128_from_32(0, 10);
+       cork_u128  b = cork_u128_from_32(0, 3);
+       cork_u128  c = cork_u128_add(a, b);
+       cork_u128  d = cork_u128_sub(a, b);
+       // c == 13 && d == 7
+
+
+Comparison
+==========
+
+All of the functions in this section are implemented as macros or inline
+functions, so you won't incur any function-call overhead when using them.
+
+.. function:: bool cork_u128_eq(cork_128 a, cork_u128 b)
+              bool cork_u128_ne(cork_128 a, cork_u128 b)
+              bool cork_u128_lt(cork_128 a, cork_u128 b)
+              bool cork_u128_le(cork_128 a, cork_u128 b)
+              bool cork_u128_gt(cork_128 a, cork_u128 b)
+              bool cork_u128_ge(cork_128 a, cork_u128 b)
+
+   Compare two 128-bit integers.  These functions correspond, respectively, to
+   the ``==``, ``!=``, ``<``, ``<=``, ``>``, and ``>=`` operators.
+
+   ::
+
+       cork_u128  a = cork_u128_from_32(0, 10);
+       cork_u128  b = cork_u128_from_32(0, 3);
+       // cork_u128_eq(a, b) → false
+       // cork_u128_ne(a, b) → true
+       // cork_u128_eq(a, a) → true
+       // cork_u128_gt(a, b) → true
+       // cork_u128_ge(a, a) → true
+       // and so on
+
+
+Printing
+========
+
+.. function:: const char \*cork_u128_to_decimal(char \*buf, cork_u128 value)
+              const char \*cork_u128_to_hex(char \*buf, cork_u128 value)
+              const char \*cork_u128_to_padded_hex(char \*buf, cork_u128 value)
+
+   Write the string representation of *value* into *buf*.  The ``decimal`` and
+   ``hex`` variants do not include any padding in the result.  The
+   ``padded_hex`` variant pads the result with ``0`` characters so that the
+   string representation of every :c:type:`cork_u128` has the same width.
+
+   You must provide the buffer that the string representation will be rendered
+   into.  (This ensures that these functions are thread-safe.)  The return value
+   will be some portion of this buffer, but might not be *buf* itself.
+
+   You are responsible for ensuring that *buf* is large enough to hold the
+   string representation of any valid 128-bit integer.  The
+   :c:macro:`CORK_U128_DECIMAL_LENGTH` and :c:macro:`CORK_U128_HEX_LENGTH`
+   macros can be helpful for this::
+
+     char  buf[CORK_U128_DECIMAL_LENGTH];
+     cork_u128  value = cork_u128_from_32(0, 125);
+     printf("%s\n", cork_u128_to_decimal(buf, value));
+     // prints "125\n"
+
+
+.. macro:: CORK_U128_DECIMAL_LENGTH
+           CORK_U128_HEX_LENGTH
+
+   The maximum length of the decimal or hexadecimal string representation of a
+   128-bit integer, including a ``NUL`` terminator.

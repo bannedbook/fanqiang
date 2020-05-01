@@ -1,0 +1,35 @@
+#!/usr/bin/perl
+
+# This is a script for removing trailing whitespace from lines in files that
+# are listed on the command line.
+
+# This subroutine does the work for one file.
+
+sub detrail {
+my($file) = $_[0];
+my($changed) = 0;
+open(IN, "$file") || die "Can't open $file for input";
+@lines = <IN>;
+close(IN);
+foreach (@lines)
+  {
+  if (/\s+\n$/)
+    {
+    s/\s+\n$/\n/;
+    $changed = 1;
+    }
+  }
+if ($changed)
+  {
+  open(OUT, ">$file") || die "Can't open $file for output";
+  print OUT @lines;
+  close(OUT);
+  }
+}
+
+# This is the main program
+
+$, = "";   # Output field separator
+for ($i = 0; $i < @ARGV; $i++) { &detrail($ARGV[$i]); }
+
+# End

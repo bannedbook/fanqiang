@@ -1,0 +1,9 @@
+*.sln
+*.vcxproj
+
+*.log
+/test_suite*
+data_files/mpi_write
+data_files/hmac_drbg_seed
+data_files/ctr_drbg_seed
+data_files/entropy_seed

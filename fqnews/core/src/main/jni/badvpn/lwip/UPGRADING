@@ -1,0 +1,275 @@
+This file lists major changes between release versions that require
+ports or applications to be changed. Use it to update a port or an
+application written for an older version of lwIP to correctly work
+with newer versions.
+
+
+(git master)
+
+  * [Enter new changes just after this line - do not remove this line]
+
+  ++ Application changes:
+
+  * ip4_route_src: parameter order is reversed: ip4_route_src(dest, src) -> ip4_route_src(src, dest)
+    to make parameter order consistent with other ip*_route*() functions.
+    Same also applies to LWIP_HOOK_IP4_ROUTE_SRC() parameter order.
+
+  * pbuf API: pbuf->type (an u8_t holding the enum 'pbuf_type') has changed to only hold a
+    description of the pbuf (e.g. data following pbuf struct, data volatile, allocation
+    source heap/pool/etc.). As a consequence, applications can't test pbuf->type any more.
+    Use pbuf_match_type(pbuf, type) instead.
+
+  * socket API: according to the standard, SO_ERROR now only returns asynchronous errors.
+    All other/normal/synchronous errors are (and always were) available via 'errno'.
+    LWIP_SOCKET_SET_ERRNO has been removed - 'errno' is always set - and required!
+
+  * compatibility headers: moved from 'src/include/posix' to 'src/include/compat/posix',
+    'src/include/compat/stdc' etc.
+
+  * The IPv6 implementation now supports address scopes. All addresses that have a scope according
+    to the default policy (link-local unicast addresses, interface-local and link-local multicast
+    addresses) should now have a zone set on them before being passed to the core API, although
+    lwIP will currently attempt to select a zone on the caller's behalf when necessary.
+    Applications that directly assign IPv6 addresses to interfaces (which is NOT recommended)
+    must now ensure that link-local addresses carry the netif's zone. See the new ip6_zone.h header
+    file for more information and relevant macros. For now it is still possible to turn off scopes
+    support through the new LWIP_IPV6_SCOPES option. When upgrading an implementation that uses the
+    core API directly, it is highly recommended to enable LWIP_IPV6_SCOPES_DEBUG at least for
+    a while, to ensure e.g. proper address initialization.
+
+  * LWIP_HOOK_DHCP_APPEND_OPTIONS() has changed, see description in opt.h (options_out_len is not
+    available in struct dhcp any more)
+
+(2.0.2)
+
+  ++ Application changes:
+
+  * slipif: The way to pass serial port number has changed. netif->num is not
+    supported any more, netif->state is interpreted as an u8_t port number now
+    (it's not a POINTER to an u8_t any more!)
+
+(2.0.1)
+
+  ++ Application changes:
+
+  * UDP does NOT receive multicast traffic from ALL netifs on an UDP PCB bound to a specific
+    netif any more. Users need to bind to IP_ADDR_ANY to receive multicast traffic and compare 
+    ip_current_netif() to the desired netif for every packet.
+    See bug #49662 for an explanation.
+
+(2.0.0)
+
+  ++ Application changes:
+
+  * Changed netif "up" flag handling to be an administrative flag (as opposed to the previous meaning of
+    "ip4-address-valid", a netif will now not be used for transmission if not up) -> even a DHCP netif
+    has to be set "up" before starting the DHCP client
+  * Added IPv6 support (dual-stack or IPv4/IPv6 only)
+  * Changed ip_addr_t to be a union in dual-stack mode (use ip4_addr_t where referring to IPv4 only).
+  * Major rewrite of SNMP (added MIB parser that creates code stubs for custom MIBs);
+    supports SNMPv2c (experimental v3 support)
+  * Moved some core applications from contrib repository to src/apps (and include/lwip/apps)
+
+  +++ Raw API:
+    * Changed TCP listen backlog: removed tcp_accepted(), added the function pair tcp_backlog_delayed()/
+      tcp_backlog_accepted() to explicitly delay backlog handling on a connection pcb
+
+  +++ Socket API:
+    * Added an implementation for posix sendmsg()
+    * Added LWIP_FIONREAD_LINUXMODE that makes ioctl/FIONREAD return the size of the next pending datagram
+
+  ++ Port changes
+
+  +++ new files:
+    * MANY new and moved files! 
+    * Added src/Filelists.mk for use in Makefile projects
+    * Continued moving stack-internal parts from abc.h to abc_priv.h in sub-folder "priv"
+      to let abc.h only contain the actual application programmer's API
+
+  +++ sys layer:
+    * Made LWIP_TCPIP_CORE_LOCKING==1 the default as it usually performs better than
+      the traditional message passing (although with LWIP_COMPAT_MUTEX you are still
+      open to priority inversion, so this is not recommended any more)
+    * Added LWIP_NETCONN_SEM_PER_THREAD to use one "op_completed" semaphore per thread
+      instead of using one per netconn (these semaphores are used even with core locking
+      enabled as some longer lasting functions like big writes still need to delay)
+    * Added generalized abstraction for itoa(), strnicmp(), stricmp() and strnstr()
+      in def.h (to be overridden in cc.h) instead of config 
+      options for netbiosns, httpd, dns, etc. ...
+    * New abstraction for hton* and ntoh* functions in def.h.
+      To override them, use the following in cc.h: 
+      #define lwip_htons(x) <your_htons>
+      #define lwip_htonl(x) <your_htonl>
+
+  +++ new options:
+     * TODO
+
+  +++ new pools:
+     * Added LWIP_MEMPOOL_* (declare/init/alloc/free) to declare private memp pools
+       that share memp.c code but do not have to be made global via lwippools.h
+     * Added pools for IPv6, MPU_COMPATIBLE, dns-api, netif-api, etc.
+     * added hook LWIP_HOOK_MEMP_AVAILABLE() to get informed when a memp pool was empty and an item
+       is now available
+
+  * Signature of LWIP_HOOK_VLAN_SET macro was changed
+
+  * LWIP_DECLARE_MEMORY_ALIGNED() may be used to declare aligned memory buffers (mem/memp)
+    or to move buffers to dedicated memory using compiler attributes
+
+  * Standard C headers are used to define sized types and printf formatters
+    (disable by setting LWIP_NO_STDINT_H=1 or LWIP_NO_INTTYPES_H=1 if your compiler
+    does not support these)
+
+
+  ++ Major bugfixes/improvements
+
+  * Added IPv6 support (dual-stack or IPv4/IPv6 only)
+  * Major rewrite of PPP (incl. keep-up with apache pppd)
+    see doc/ppp.txt for an upgrading how-to
+  * Major rewrite of SNMP (incl. MIB parser)
+  * Fixed timing issues that might have lead to losing a DHCP lease
+  * Made rx processing path more robust against crafted errors
+  * TCP window scaling support
+  * modification of api modules to support FreeRTOS-MPU (don't pass stack-pointers to other threads)
+  * made DNS client more robust
+  * support PBUF_REF for RX packets
+  * LWIP_NETCONN_FULLDUPLEX allows netconn/sockets to be used for reading/writing from separate
+    threads each (needs LWIP_NETCONN_SEM_PER_THREAD)
+  * Moved and reordered stats (mainly memp/mib2)
+
+(1.4.0)
+
+  ++ Application changes:
+
+  * Replaced struct ip_addr by typedef ip_addr_t (struct ip_addr is kept for
+    compatibility to old applications, but will be removed in the future).
+
+  * Renamed mem_realloc() to mem_trim() to prevent confusion with realloc()
+
+  +++ Raw API:
+    * Changed the semantics of tcp_close() (since it was rather a
+      shutdown before): Now the application does *NOT* get any calls to the recv
+      callback (aside from NULL/closed) after calling tcp_close()
+
+    * When calling tcp_abort() from a raw API TCP callback function,
+      make sure you return ERR_ABRT to prevent accessing unallocated memory.
+      (ERR_ABRT now means the applicaiton has called tcp_abort!)
+
+  +++ Netconn API:
+    * Changed netconn_receive() and netconn_accept() to return
+      err_t, not a pointer to new data/netconn.
+
+  +++ Socket API:
+    * LWIP_SO_RCVTIMEO: when accept() or recv() time out, they
+      now set errno to EWOULDBLOCK/EAGAIN, not ETIMEDOUT.
+
+    * Added a minimal version of posix fctl() to have a
+      standardised way to set O_NONBLOCK for nonblocking sockets.
+
+  +++ all APIs:
+    * correctly implemented SO(F)_REUSEADDR
+
+  ++ Port changes
+
+  +++ new files:
+
+    * Added 4 new files: def.c, timers.c, timers.h, tcp_impl.h:
+
+    * Moved stack-internal parts of tcp.h to tcp_impl.h, tcp.h now only contains
+      the actual application programmer's API
+  
+    * Separated timer implementation from sys.h/.c, moved to timers.h/.c;
+      Added timer implementation for NO_SYS==1, set NO_SYS_NO_TIMERS==1 if you
+      still want to use your own timer implementation for NO_SYS==0 (as before).
+
+  +++ sys layer:
+
+    * Converted mbox- and semaphore-functions to take pointers to sys_mbox_t/
+      sys_sem_t;
+
+    * Converted sys_mbox_new/sys_sem_new to take pointers and return err_t;
+
+    * Added Mutex concept in sys_arch (define LWIP_COMPAT_MUTEX to let sys.h use
+      binary semaphores instead of mutexes - as before)
+
+  +++ new options:
+
+     * Don't waste memory when chaining segments, added option TCP_OVERSIZE to
+       prevent creating many small pbufs when calling tcp_write with many small
+       blocks of data. Instead, pbufs are allocated larger than needed and the
+       space is used for later calls to tcp_write.
+
+     * Added LWIP_NETIF_TX_SINGLE_PBUF to always copy to try to create single pbufs
+       in tcp_write/udp_send.
+
+    * Added an additional option LWIP_ETHERNET to support ethernet without ARP
+      (necessary for pure PPPoE)
+
+    * Add MEMP_SEPARATE_POOLS to place memory pools in separate arrays. This may
+      be used to place these pools into user-defined memory by using external
+      declaration.
+
+    * Added TCP_SNDQUEUELOWAT corresponding to TCP_SNDLOWAT
+
+  +++ new pools:
+
+     * Netdb uses a memp pool for allocating memory when getaddrinfo() is called,
+       so MEMP_NUM_NETDB has to be set accordingly.
+
+     * DNS_LOCAL_HOSTLIST_IS_DYNAMIC uses a memp pool instead of the heap, so
+       MEMP_NUM_LOCALHOSTLIST has to be set accordingly.
+
+     * Snmp-agent uses a memp pools instead of the heap, so MEMP_NUM_SNMP_* have
+       to be set accordingly.
+
+     * PPPoE uses a MEMP pool instead of the heap, so MEMP_NUM_PPPOE_INTERFACES
+       has to be set accordingly
+
+  * Integrated loopif into netif.c - loopif does not have to be created by the
+    port any more, just define LWIP_HAVE_LOOPIF to 1.
+
+  * Added define LWIP_RAND() for lwip-wide randomization (needs to be defined
+    in cc.h, e.g. used by igmp)
+
+  * Added printf-formatter X8_F to printf u8_t as hex
+
+  * The heap now may be moved to user-defined memory by defining
+    LWIP_RAM_HEAP_POINTER as a void pointer to that memory's address
+
+  * added autoip_set_struct() and dhcp_set_struct() to let autoip and dhcp work
+    with user-allocated structs instead of calling mem_malloc
+
+  * Added const char* name to mem- and memp-stats for easier debugging.
+
+  * Calculate the TCP/UDP checksum while copying to only fetch data once:
+    Define LWIP_CHKSUM_COPY to a memcpy-like function that returns the checksum
+
+  * Added SO_REUSE_RXTOALL to pass received UDP broadcast/multicast packets to
+    more than one pcb.
+
+  * Changed the semantics of ARP_QUEUEING==0: ARP_QUEUEING now cannot be turned
+    off any more, if this is set to 0, only one packet (the most recent one) is
+    queued (like demanded by RFC 1122).
+
+  
+  ++ Major bugfixes/improvements
+
+  * Implemented tcp_shutdown() to only shut down one end of a connection
+  * Implemented shutdown() at socket- and netconn-level
+  * Added errorset support to select() + improved select speed overhead
+  * Merged pppd to v2.3.11 (including some backported bugfixes from 2.4.x)
+  * Added timer implementation for NO_SYS==1 (may be disabled with NO_SYS_NO_TIMERS==1
+  * Use macros defined in ip_addr.h to work with IP addresses
+  * Implemented many nonblocking socket/netconn functions
+  * Fixed ARP input processing: only add a new entry if a request was directed as us
+  * mem_realloc() to mem_trim() to prevent confusion with realloc()
+  * Some improvements for AutoIP (don't route/forward link-local addresses, don't break
+    existing connections when assigning a routable address)
+  * Correctly handle remote side overrunning our rcv_wnd in ooseq case
+  * Removed packing from ip_addr_t, the packed version is now only used in protocol headers
+  * Corrected PBUF_POOL_BUFSIZE for ports where ETH_PAD_SIZE > 0
+  * Added support for static ARP table entries
+
+(STABLE-1.3.2)
+
+  * initial version of this file

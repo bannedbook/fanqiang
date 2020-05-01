@@ -1,0 +1,23 @@
+This work was packaged for Debian by:
+
+    Max Lv <max.c.lv@gmail.com> on Sat, 06 Apr 2013 16:59:15 +0800
+
+It was downloaded from:
+
+    https://github.com/madeye/shadowsocks-libev
+
+Upstream Author(s):
+
+    clowwindy <clowwindy42@gmail.com>
+
+Copyright:
+
+    Copyright (C) 2013 Max Lv
+
+License:
+
+    GPLv3
+
+The Debian packaging is:
+
+    Copyright (C) 2013 Max Lv <max.c.lv@gmail.com>

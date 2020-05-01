@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{46CF2D25-6A36-4189-B59C-E4815388E554}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>mbedTLS</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>Windows7.1SDK</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(Configuration)\$(TargetName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(Configuration)\$(TargetName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IntDir>$(Configuration)\$(TargetName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IntDir>$(Configuration)\$(TargetName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;MBEDTLS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../include</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;MBEDTLS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../include</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;MBEDTLS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN64;NDEBUG;_WINDOWS;_USRDLL;MBEDTLS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\mbedtls\aes.h" />
+    <ClInclude Include="..\..\include\mbedtls\aesni.h" />
+    <ClInclude Include="..\..\include\mbedtls\arc4.h" />
+    <ClInclude Include="..\..\include\mbedtls\aria.h" />
+    <ClInclude Include="..\..\include\mbedtls\asn1.h" />
+    <ClInclude Include="..\..\include\mbedtls\asn1write.h" />
+    <ClInclude Include="..\..\include\mbedtls\base64.h" />
+    <ClInclude Include="..\..\include\mbedtls\bignum.h" />
+    <ClInclude Include="..\..\include\mbedtls\blowfish.h" />
+    <ClInclude Include="..\..\include\mbedtls\bn_mul.h" />
+    <ClInclude Include="..\..\include\mbedtls\camellia.h" />
+    <ClInclude Include="..\..\include\mbedtls\ccm.h" />
+    <ClInclude Include="..\..\include\mbedtls\certs.h" />
+    <ClInclude Include="..\..\include\mbedtls\chacha20.h" />
+    <ClInclude Include="..\..\include\mbedtls\chachapoly.h" />
+    <ClInclude Include="..\..\include\mbedtls\check_config.h" />
+    <ClInclude Include="..\..\include\mbedtls\cipher.h" />
+    <ClInclude Include="..\..\include\mbedtls\cipher_internal.h" />
+    <ClInclude Include="..\..\include\mbedtls\cmac.h" />
+    <ClInclude Include="..\..\include\mbedtls\compat-1.3.h" />
+    <ClInclude Include="..\..\include\mbedtls\config.h" />
+    <ClInclude Include="..\..\include\mbedtls\ctr_drbg.h" />
+    <ClInclude Include="..\..\include\mbedtls\debug.h" />
+    <ClInclude Include="..\..\include\mbedtls\des.h" />
+    <ClInclude Include="..\..\include\mbedtls\dhm.h" />
+    <ClInclude Include="..\..\include\mbedtls\ecdh.h" />
+    <ClInclude Include="..\..\include\mbedtls\ecdsa.h" />
+    <ClInclude Include="..\..\include\mbedtls\ecjpake.h" />
+    <ClInclude Include="..\..\include\mbedtls\ecp.h" />
+    <ClInclude Include="..\..\include\mbedtls\ecp_internal.h" />
+    <ClInclude Include="..\..\include\mbedtls\entropy.h" />
+    <ClInclude Include="..\..\include\mbedtls\entropy_poll.h" />
+    <ClInclude Include="..\..\include\mbedtls\error.h" />
+    <ClInclude Include="..\..\include\mbedtls\gcm.h" />
+    <ClInclude Include="..\..\include\mbedtls\havege.h" />
+    <ClInclude Include="..\..\include\mbedtls\hkdf.h" />
+    <ClInclude Include="..\..\include\mbedtls\hmac_drbg.h" />
+    <ClInclude Include="..\..\include\mbedtls\md.h" />
+    <ClInclude Include="..\..\include\mbedtls\md2.h" />
+    <ClInclude Include="..\..\include\mbedtls\md4.h" />
+    <ClInclude Include="..\..\include\mbedtls\md5.h" />
+    <ClInclude Include="..\..\include\mbedtls\md_internal.h" />
+    <ClInclude Include="..\..\include\mbedtls\memory_buffer_alloc.h" />
+    <ClInclude Include="..\..\include\mbedtls\net.h" />
+    <ClInclude Include="..\..\include\mbedtls\net_sockets.h" />
+    <ClInclude Include="..\..\include\mbedtls\nist_kw.h" />
+    <ClInclude Include="..\..\include\mbedtls\oid.h" />
+    <ClInclude Include="..\..\include\mbedtls\padlock.h" />
+    <ClInclude Include="..\..\include\mbedtls\pem.h" />
+    <ClInclude Include="..\..\include\mbedtls\pk.h" />
+    <ClInclude Include="..\..\include\mbedtls\pk_internal.h" />
+    <ClInclude Include="..\..\include\mbedtls\pkcs11.h" />
+    <ClInclude Include="..\..\include\mbedtls\pkcs12.h" />
+    <ClInclude Include="..\..\include\mbedtls\pkcs5.h" />
+    <ClInclude Include="..\..\include\mbedtls\platform.h" />
+    <ClInclude Include="..\..\include\mbedtls\platform_time.h" />
+    <ClInclude Include="..\..\include\mbedtls\platform_util.h" />
+    <ClInclude Include="..\..\include\mbedtls\poly1305.h" />
+    <ClInclude Include="..\..\include\mbedtls\ripemd160.h" />
+    <ClInclude Include="..\..\include\mbedtls\rsa.h" />
+    <ClInclude Include="..\..\include\mbedtls\rsa_internal.h" />
+    <ClInclude Include="..\..\include\mbedtls\sha1.h" />
+    <ClInclude Include="..\..\include\mbedtls\sha256.h" />
+    <ClInclude Include="..\..\include\mbedtls\sha512.h" />
+    <ClInclude Include="..\..\include\mbedtls\ssl.h" />
+    <ClInclude Include="..\..\include\mbedtls\ssl_cache.h" />
+    <ClInclude Include="..\..\include\mbedtls\ssl_ciphersuites.h" />
+    <ClInclude Include="..\..\include\mbedtls\ssl_cookie.h" />
+    <ClInclude Include="..\..\include\mbedtls\ssl_internal.h" />
+    <ClInclude Include="..\..\include\mbedtls\ssl_ticket.h" />
+    <ClInclude Include="..\..\include\mbedtls\threading.h" />
+    <ClInclude Include="..\..\include\mbedtls\timing.h" />
+    <ClInclude Include="..\..\include\mbedtls\version.h" />
+    <ClInclude Include="..\..\include\mbedtls\x509.h" />
+    <ClInclude Include="..\..\include\mbedtls\x509_crl.h" />
+    <ClInclude Include="..\..\include\mbedtls\x509_crt.h" />
+    <ClInclude Include="..\..\include\mbedtls\x509_csr.h" />
+    <ClInclude Include="..\..\include\mbedtls\xtea.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\library\aes.c" />
+    <ClCompile Include="..\..\library\aesni.c" />
+    <ClCompile Include="..\..\library\arc4.c" />
+    <ClCompile Include="..\..\library\aria.c" />
+    <ClCompile Include="..\..\library\asn1parse.c" />
+    <ClCompile Include="..\..\library\asn1write.c" />
+    <ClCompile Include="..\..\library\base64.c" />
+    <ClCompile Include="..\..\library\bignum.c" />
+    <ClCompile Include="..\..\library\blowfish.c" />
+    <ClCompile Include="..\..\library\camellia.c" />
+    <ClCompile Include="..\..\library\ccm.c" />
+    <ClCompile Include="..\..\library\certs.c" />
+    <ClCompile Include="..\..\library\chacha20.c" />
+    <ClCompile Include="..\..\library\chachapoly.c" />
+    <ClCompile Include="..\..\library\cipher.c" />
+    <ClCompile Include="..\..\library\cipher_wrap.c" />
+    <ClCompile Include="..\..\library\cmac.c" />
+    <ClCompile Include="..\..\library\ctr_drbg.c" />
+    <ClCompile Include="..\..\library\debug.c" />
+    <ClCompile Include="..\..\library\des.c" />
+    <ClCompile Include="..\..\library\dhm.c" />
+    <ClCompile Include="..\..\library\ecdh.c" />
+    <ClCompile Include="..\..\library\ecdsa.c" />
+    <ClCompile Include="..\..\library\ecjpake.c" />
+    <ClCompile Include="..\..\library\ecp.c" />
+    <ClCompile Include="..\..\library\ecp_curves.c" />
+    <ClCompile Include="..\..\library\entropy.c" />
+    <ClCompile Include="..\..\library\entropy_poll.c" />
+    <ClCompile Include="..\..\library\error.c" />
+    <ClCompile Include="..\..\library\gcm.c" />
+    <ClCompile Include="..\..\library\havege.c" />
+    <ClCompile Include="..\..\library\hkdf.c" />
+    <ClCompile Include="..\..\library\hmac_drbg.c" />
+    <ClCompile Include="..\..\library\md.c" />
+    <ClCompile Include="..\..\library\md2.c" />
+    <ClCompile Include="..\..\library\md4.c" />
+    <ClCompile Include="..\..\library\md5.c" />
+    <ClCompile Include="..\..\library\md_wrap.c" />
+    <ClCompile Include="..\..\library\memory_buffer_alloc.c" />
+    <ClCompile Include="..\..\library\net_sockets.c" />
+    <ClCompile Include="..\..\library\nist_kw.c" />
+    <ClCompile Include="..\..\library\oid.c" />
+    <ClCompile Include="..\..\library\padlock.c" />
+    <ClCompile Include="..\..\library\pem.c" />
+    <ClCompile Include="..\..\library\pk.c" />
+    <ClCompile Include="..\..\library\pk_wrap.c" />
+    <ClCompile Include="..\..\library\pkcs11.c" />
+    <ClCompile Include="..\..\library\pkcs12.c" />
+    <ClCompile Include="..\..\library\pkcs5.c" />
+    <ClCompile Include="..\..\library\pkparse.c" />
+    <ClCompile Include="..\..\library\pkwrite.c" />
+    <ClCompile Include="..\..\library\platform.c" />
+    <ClCompile Include="..\..\library\platform_util.c" />
+    <ClCompile Include="..\..\library\poly1305.c" />
+    <ClCompile Include="..\..\library\ripemd160.c" />
+    <ClCompile Include="..\..\library\rsa.c" />
+    <ClCompile Include="..\..\library\rsa_internal.c" />
+    <ClCompile Include="..\..\library\sha1.c" />
+    <ClCompile Include="..\..\library\sha256.c" />
+    <ClCompile Include="..\..\library\sha512.c" />
+    <ClCompile Include="..\..\library\ssl_cache.c" />
+    <ClCompile Include="..\..\library\ssl_ciphersuites.c" />
+    <ClCompile Include="..\..\library\ssl_cli.c" />
+    <ClCompile Include="..\..\library\ssl_cookie.c" />
+    <ClCompile Include="..\..\library\ssl_srv.c" />
+    <ClCompile Include="..\..\library\ssl_ticket.c" />
+    <ClCompile Include="..\..\library\ssl_tls.c" />
+    <ClCompile Include="..\..\library\threading.c" />
+    <ClCompile Include="..\..\library\timing.c" />
+    <ClCompile Include="..\..\library\version.c" />
+    <ClCompile Include="..\..\library\version_features.c" />
+    <ClCompile Include="..\..\library\x509.c" />
+    <ClCompile Include="..\..\library\x509_create.c" />
+    <ClCompile Include="..\..\library\x509_crl.c" />
+    <ClCompile Include="..\..\library\x509_crt.c" />
+    <ClCompile Include="..\..\library\x509_csr.c" />
+    <ClCompile Include="..\..\library\x509write_crt.c" />
+    <ClCompile Include="..\..\library\x509write_csr.c" />
+    <ClCompile Include="..\..\library\xtea.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

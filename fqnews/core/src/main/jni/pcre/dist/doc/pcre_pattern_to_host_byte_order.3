@@ -1,0 +1,44 @@
+.TH PCRE_PATTERN_TO_HOST_BYTE_ORDER 3 "24 June 2012" "PCRE 8.30"
+.SH NAME
+PCRE - Perl-compatible regular expressions
+.SH SYNOPSIS
+.rs
+.sp
+.B #include <pcre.h>
+.PP
+.nf
+.B int pcre_pattern_to_host_byte_order(pcre *\fIcode\fP,
+.B "     pcre_extra *\fIextra\fP, const unsigned char *\fItables\fP);"
+.sp
+.B int pcre16_pattern_to_host_byte_order(pcre16 *\fIcode\fP,
+.B "     pcre16_extra *\fIextra\fP, const unsigned char *\fItables\fP);"
+.sp
+.B int pcre32_pattern_to_host_byte_order(pcre32 *\fIcode\fP,
+.B "     pcre32_extra *\fIextra\fP, const unsigned char *\fItables\fP);"
+.fi
+.
+.SH DESCRIPTION
+.rs
+.sp
+This function ensures that the bytes in 2-byte and 4-byte values in a compiled
+pattern are in the correct order for the current host. It is useful when a
+pattern that has been compiled on one host is transferred to another that might
+have different endianness. The arguments are:
+.sp
+  \fIcode\fP         A compiled regular expression
+  \fIextra\fP        Points to an associated \fBpcre[16|32]_extra\fP structure,
+                 or is NULL
+  \fItables\fP       Pointer to character tables, or NULL to
+                 set the built-in default
+.sp
+The result is 0 for success, a negative PCRE_ERROR_xxx value otherwise.
+.P
+There is a complete description of the PCRE native API in the
+.\" HREF
+\fBpcreapi\fP
+.\"
+page and a description of the POSIX API in the
+.\" HREF
+\fBpcreposix\fP
+.\"
+page.

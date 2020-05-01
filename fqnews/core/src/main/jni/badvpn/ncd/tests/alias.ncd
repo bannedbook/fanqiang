@@ -1,0 +1,48 @@
+process foo {
+    var("hello") x;
+    alias("x") y;
+    val_equal(y, "hello") a;
+    assert(a);
+
+    var("hello") x;
+    alias("x") y;
+    y->set("world");
+    val_equal(y, "world") a;
+    assert(a);
+
+    var("hello") x;
+    alias("x") y;
+    alias("y") z;
+    z->set("world");
+    val_equal(x, "world") a;
+    assert(a);
+
+    call("test", {"hello"}) c;
+    alias("c.x") x;
+    val_equal(x, "hello") a;
+    assert(a);
+
+    call("test", {"hello"}) c;
+    alias("c") x;
+    alias("x") y;
+    alias("y.x") z;
+    c.x->set("world");
+    val_equal(z, "world") a;
+    assert(a);
+
+    var("hello") x;
+    call("test2", {"_caller.x"}) c;
+    c.x->set("world");
+    val_equal(x, "world") a;
+    assert(a);
+
+    exit("0");
+}
+
+template test {
+    var(_arg0) x;
+}
+
+template test2 {
+    alias(_arg0) x;
+}

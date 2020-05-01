@@ -1,0 +1,35 @@
+process main {
+    var({"a", "b", "c", "d"}) list;
+    value(["a":"1", "b":"2", "c":"3", "d":"4"]) map;
+
+    value({}) new;
+    Foreach (list As value) {
+        new->insert(new.length, value);
+    };
+    val_equal(new, list) a;
+    assert(a);
+
+    value({}) new;
+    Foreach (list As index:value) {
+        new->insert(index, value);
+    };
+    val_equal(new, list) a;
+    assert(a);
+
+    value([]) new;
+    Foreach (map As key) {
+        map->get(key) value;
+        new->insert(key, value);
+    };
+    val_equal(new, map) a;
+    assert(a);
+
+    value([]) new;
+    Foreach (map As key:value) {
+        new->insert(key, value);
+    };
+    val_equal(new, map) a;
+    assert(a);
+
+    exit("0");
+}

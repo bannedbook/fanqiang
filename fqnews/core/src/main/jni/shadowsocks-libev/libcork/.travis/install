@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+if [ "$TRAVIS_OS_NAME" = linux ]; then
+    sudo apt-get update -qq
+
+    if [ "$ARCH" = i386 ]; then
+        sudo apt-get install gcc-multilib
+    fi
+
+    sudo apt-get install check:$ARCH
+else
+    brew install --universal check
+fi

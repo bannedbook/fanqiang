@@ -1,0 +1,17 @@
+/-- Tests for the 32-bit library with UTF-32 support only */
+
+< forbid W
+
+/-- Non-UTF characters --/
+
+/\x{110000}/8
+Failed: character value in \x{} or \o{} is too large at offset 9
+
+/\o{4200000}/8
+Failed: character value in \x{} or \o{} is too large at offset 10
+
+/\C/8
+    \x{110000}
+Error -10 (bad UTF-32 string) offset=0 reason=3
+
+/-- End of testinput26 --/

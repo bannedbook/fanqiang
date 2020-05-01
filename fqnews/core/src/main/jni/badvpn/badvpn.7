@@ -1,0 +1,324 @@
+.TH badvpn 7 "6 October 2010"
+.SH NAME
+BadVPN - peer-to-peer VPN system
+.SH DESCRIPTION
+.P
+BadVPN is a peer-to-peer VPN system. It provides a Layer 2 (Ethernet) network between
+the peers (VPN network nodes). The peers connect to a central server which acts as a chat
+server for them to establish direct connections between each other (data connections).
+These connections are used for transferring network data (Ethernet frames).
+.SS "Features"
+.P
+.B "Data connections"
+.P
+Peers can transfer network data either over UDP or TCP. For both there are ways of
+securing the data (see below).
+.P
+.B "IPv6 support"
+.P
+IPv6 can be used for both server connections and data connections, alongside with IPv4.
+Additionally, both can be combined to allow gradual migration to IPv6.
+.P
+.B "Address selection"
+.P
+Because NATs and firewalls are widespread, it is harder for peer-to-peer services to operate.
+In general, for two computers to be able to communicate, one computer must
+.I bind
+to one of its addresses, and the other computer must
+.I connect
+to the computer that binded (both for TCP and UDP). In a network with point-to-point
+connectivity, the connecting computer can connect to the same address as the binding computer
+bound to, so it is sufficient for the binding computer to send its address to the connecting
+computer. However, NATs and firewalls break point-to-point connectivity. When a network is
+behind a NAT, it is, by default, impossible for computers outside of that network to connect
+to computers inside the network. This is because computers inside the network have no externally
+visible IP address, and only communicate with the outside world through the external IP address
+of the NAT router. It is however possible to manually configure the NAT router to
+.I forward
+a specific port number on its external IP address to a specific computer inside the network.
+This makes it possible for a computer outside of the network to connect to a computer inside
+a network, however, it must connect to the external address of the NAT router (rather than
+the address the computer inside bound to, which is its internal address). So there needs
+to be some way for the connecting peer to know what address to connect to.
+.P
+BadVPN solves this problem with so-called
+.IR "address scopes" "."
+The peer that binds must have a list of external addresses for each address it can bind to,
+possibly ordered from best to worst. Each external address has its scope name. A scope name
+represents part of a network from which an external address can be reached. On the other hand,
+the peer that connects must have a list of scopes which it can reach. When a peer binds to an
+address, it sends the other peer a list of external addresses along with scope names. That peer
+than chooses the first external address whose scope it recognizes and attempts to connect to it
+(if there is one).
+.P
+BadVPN also allows a peer to have multiple addresses for binding to. It is possible to specify
+both an IPv4 and an IPv6 address to work in a multi-protocol environment.
+.P
+.B "Relaying"
+.P
+BadVPN can be configured to allow pairs of peers that cannot communicate directly (i.e. because of
+NATs or firewalls) to relay network data through a third peer. Relaying is only attempted if
+none of the two peers recognize any of the other peer's external addresses (or there are none).
+For relaying to work, for each of the two peers (P1, other one P2) there must be at least one
+third peer (R) that P1 it is allowed to relay through and can communicate directly with, and all
+such peers R must be able to communicate directly with P2.
+.P
+.B "IGMP snooping"
+.P
+BadVPN nodes perform IGMP snooping in order to efficiently deliver multicast frames. For example,
+this makes it possible to use BadVPN as a tunnel into an IPTV network of an Internet Service Provider
+for you to watch TV from wherever you want (given sufficient link quality).
+.P
+.B "Code quality"
+.P
+BadVPN has great focus on code quality and reliability. BadVPN is written in the C programming
+language. It is a single-threaded event-driven program. This allows for low resource usage and
+fast response times. Even though C is a relatively low-level language, the programs are made of
+small, highly cohesive and loosely coupled modules that are combined into a complete program on
+a high level. Modules are accesed and communicate through small, simple and to-the-point interfaces.
+It utilizes a flow-based design which greatly simplifies processing of data and input and output
+of the programs.
+.SS "Security features"
+.P
+BadVPN contains many security features, all of which are optional. The included security
+features are described here.
+.P
+.B TLS for client-server connections
+.P
+It is possible for the peers to communicate with the chat server securely with TLS. It is
+highly recommended that this feature is used if any security whatsoever is needed. Not
+using it renders all other security features useless, since clients exchange keys
+unencrypted via the server. When enabled, the chat server requires each client to identify
+itself with a certificate.
+.P
+BadVPN uses Mozilla's NSS library for TLS support. This means that the required certificates
+and keys must be available in a NSS database. The database and certificates can be
+generated with the
+.B certutil
+command. See the examples section on how to generate and distribute the certificates.
+.P
+.B TLS for peer messaging
+.P
+If TLS is being used for client-server connections, it will also be used between each pair of
+peers communicating via the server, on top of the TLS connections to the server. This secures
+the messages from the server itself. It is important because the messages may include
+encryption keys and other private data.
+.P
+.B TLS for TCP data connections
+.P
+If TCP is used for data connections between the peers, the data connections can be secured
+with TLS. This requires using TLS for client-server connections. The clients need to trust
+each others' certificates to be able to connect. Additionally, each client must identify to
+its peers with the same certificates it used for connecting to the server.
+.P
+.B Encryption for UDP data connections
+.P
+If UDP is used for data connections, it is possible for each pair of peers to encrypt their
+UDP packets with a symmetric block cipher. Note that the encryption keys are transmitted
+through the server unencrypted, so for this to be useful, server connections must be secured
+with TLS. The encryption aims to prevent third parties from seeing the real contents of
+the network data being transfered.
+.P
+.B Hashes for UDP data connections
+.P
+If UDP is used for data connections, it is possible to include hashes in packets. Note that
+hashes are only useful together with encryption. If enabled, the hash is calculated on the
+packet with the hash field zeroed and then written to the hash field. Hashes are calculated
+and included before encryption (if enabled). Combined with encryption, hashes aim to prevent
+third parties from tampering with the packets and injecting them into the network.
+.P
+.B One-time passwords for UDP data connections
+.P
+If UDP is used for data connections, it is possible to include one-time passwords in packets.
+Note that for this to be useful, server connections must be secured with TLS.
+One-time passwords are generated from a seed value by encrypting zero data with a block cipher.
+The seed contains the encryption key for the block cipher and the initialization vector.
+Only a fixed number of passwords are used from a single seed. The peers exchange seeds through
+the server. One-time passwords aim to prevent replay attacks.
+.P
+.B Control over peer communication
+.P
+It is possible to instruct the chat server to only allow certain peers to communicate. This
+will break end-to-end connectivity in the virtual network. It is useful in certain cases
+to improve security, for example when the VPN is used only to allow clients to securely connect
+to a central service.
+.SH "EXAMPLES"
+.SS "Setting up certificates"
+.P
+If you want to use TLS for server connections (recommended), the server and all the peers will
+need certificates. This section explains how to generate and distribute the certificates using
+NSS command line tools.
+.P
+.B Setting up the Certificate Authority (CA)
+.P
+On the system that will host the CA, create a NSS database for the CA and generate a CA certificate
+valid for 24 months:
+.P
+vpnca $ certutil -d sql:/home/vpnca/nssdb -N
+.br
+vpnca $ certutil -d sql:/home/vpnca/nssdb -S -n "vpnca" -s "CN=vpnca" -t "TC,," -x -2 -v 24
+.br
+> Is this a CA certificate [y/N]? y
+.br
+> Enter the path length constraint, enter to skip [<0 for unlimited path]: > -1
+.br
+> Is this a critical extension [y/N]? n
+.P
+Export the public CA certificate (this file is public):
+.P
+vpnca $ certutil -d sql:/home/vpnca/nssdb -L -n vpnca -a > ca.pem
+.P
+.B Setting up the server certificate
+.P
+On the CA system, generate a certificate for the server valid for 24 months, with TLS server usage context:
+.P
+vpnca $ certutil -d sql:/home/vpnca/nssdb -S -n "<insert_server_name>" -s "CN=<insert_server_name>" -c "vpnca" -t ",," -2 -6 -v 24
+.br
+> 0
+.br
+> -1
+.br
+> Is this a critical extension [y/N]? n
+.br
+> Is this a CA certificate [y/N]? n
+.br
+> Enter the path length constraint, enter to skip [<0 for unlimited path]: >
+.br
+> Is this a critical extension [y/N]? n
+.P
+Export the server certificate to a PKCS#12 file (this file must be kept secret):
+.P
+vpnca $ pk12util -d sql:/home/vpnca/nssdb -o server.p12 -n "<insert_server_name>"
+.P
+On the system that will run the server, create a NSS database and import the CA certificate
+and the server cerificate:
+.P
+vpnserver $ certutil -d sql:/home/vpnserver/nssdb -N
+.br
+vpnserver $ certutil -d sql:/home/vpnserver/nssdb -A -t "CT,," -n "vpnca" -i /path/to/ca.pem
+.br
+vpnserver $ pk12util -d sql:/home/vpnserver/nssdb -i /path/to/server.p12
+.P
+.B Setting up peer certificates
+.P
+On the CA system, generate a certificate for the peer valid for 24 months, with TLS client and
+TLS server usage contexts:
+.P
+vpnca $ certutil -d sql:/home/vpnca/nssdb -S -n "peer-<insert_name>" -s "CN=peer-<insert_name>" -c "vpnca" -t ",," -2 -6 -v 24
+.br
+> 0
+.br
+> 1
+.br
+> -1
+.br
+> Is this a critical extension [y/N]? n
+.br
+> Is this a CA certificate [y/N]? n
+.br
+> Enter the path length constraint, enter to skip [<0 for unlimited path]: >
+.br
+> Is this a critical extension [y/N]? n
+.P
+Export the peer certificate to a PKCS#12 file (this file must be kept secret):
+.P
+vpnca $ pk12util -d sql:/home/vpnca/nssdb -o peer-<insert_name>.p12 -n "peer-<insert_name>"
+.P
+On the system that will run the VPN client, create a NSS database and import the CA certificate
+and the peer cerificate:
+.P
+vpnclient $ certutil -d sql:/home/vpnclient/nssdb -N
+.br
+vpnclient $ certutil -d sql:/home/vpnclient/nssdb -A -t "CT,," -n "vpnca" -i /path/to/ca.pem
+.br
+vpnclient $ pk12util -d sql:/home/vpnclient/nssdb -i /path/to/peer-<insert_name>.p12
+.SS "Setting up TAP devices"
+.P
+You need to create and configure TAP devices on all computers that will participate in the virtual network
+(i.e. run the client program). See
+.BR badvpn-client (8),
+section `TAP DEVICE CONFIGURATION` for details.
+.SS "Example: Local IPv4 network, UDP transport, zero security"
+.P
+.B Starting the server:
+.P
+badvpn-server --listen-addr 0.0.0.0:7000
+.P
+.B Starting the peers:
+.P
+badvpn-client
+.RS
+--server-addr <insert_server_local_address>:7000
+.br
+--transport-mode udp --encryption-mode none --hash-mode none
+.br
+--scope local1
+.br
+--bind-addr 0.0.0.0:8000 --num-ports 30 --ext-addr {server_reported}:8000 local1
+.br
+--tapdev tap0
+.RE
+.SS "Example: Adding TLS and UDP security"
+.P
+.B Starting the server (other options as above):
+.P
+badvpn-server ...
+.RS
+--ssl --nssdb sql:/home/vpnserver/nssdb --server-cert-name "<insert_server_name>"
+.RE
+.P
+.B Starting the peers (other options as above):
+.P
+badvpn-client ...
+.RS
+--ssl --nssdb sql:/home/vpnclient/nssdb --client-cert-name "peer-<insert_name>"
+.br
+--encryption-mode blowfish --hash-mode md5 --otp blowfish 3000 2000
+.RE
+.SS "Example: Multiple local networks behind NATs, all connected to the Internet"
+.P
+For each peer in the existing local network, configure the NAT router to forward its
+range of ports to it (assuming their port ranges do not overlap). The clients also need
+to know the external IP address of the NAT router. If you don't have a static one,
+you'll need to discover it before starting the clients. Also forward the server port to
+the server.
+.P
+.B Starting the peers in the local network (other options as above):
+.P
+badvpn-client
+.RS
+.RB "..."
+.br
+--scope internet
+.br
+.RB "..."
+.br
+--ext-addr <insert_NAT_routers_external_IP>:<insert_start_of_forwarded_port_range> internet
+.br
+.RB "..."
+.RE
+.P
+The --ext-addr option applies to the previously specified --bind-addr option, and must come after
+the first --ext-addr option which specifies a local address.
+.P
+Now perform a similar setup in some other local network behind a NAT. However:
+.br
+- Don't set up a new server, instead make the peers connect to the existing server in the first
+local network.
+.br
+- You can't use {server_reported} for the local address --ext-addr options, because the server
+would report the NAT router's external address rather than the peer's internal address. Instead
+each peer has to know its internal IP address.
+.br
+- Use a different scope name for it, e.g. "local2" instead of "local1".
+.P
+If setup correctly, all peers will be able to communicate: those in the same local network will
+communicate directly through local addresses, and those in different local networks will
+communicate through the Internet.
+.SH "PROTOCOL"
+The protocols used in BadVPN are described in the source code in the protocol/ directory.
+.SH "SEE ALSO"
+.BR badvpn-server (8),
+.BR badvpn-client (8)
+.SH AUTHORS
+Ambroz Bizjak <ambrop7@gmail.com>

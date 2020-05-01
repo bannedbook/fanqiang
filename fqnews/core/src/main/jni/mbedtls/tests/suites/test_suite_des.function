@@ -1,0 +1,275 @@
+/* BEGIN_HEADER */
+#include "mbedtls/des.h"
+/* END_HEADER */
+
+/* BEGIN_DEPENDENCIES
+ * depends_on:MBEDTLS_DES_C
+ * END_DEPENDENCIES
+ */
+
+/* BEGIN_CASE */
+void des_check_weak( data_t * key, int ret )
+{
+    TEST_ASSERT( mbedtls_des_key_check_weak( key->x ) == ret );
+}
+/* END_CASE */
+
+/* BEGIN_CASE */
+void des_encrypt_ecb( data_t * key_str, data_t * src_str,
+                      data_t * hex_dst_string )
+{
+    unsigned char output[100];
+    mbedtls_des_context ctx;
+
+    memset(output, 0x00, 100);
+    mbedtls_des_init( &ctx );
+
+
+    mbedtls_des_setkey_enc( &ctx, key_str->x );
+    TEST_ASSERT( mbedtls_des_crypt_ecb( &ctx, src_str->x, output ) == 0 );
+
+    TEST_ASSERT( hexcmp( output, hex_dst_string->x, 8, hex_dst_string->len ) == 0 );
+
+exit:
+    mbedtls_des_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE */
+void des_decrypt_ecb( data_t * key_str, data_t * src_str,
+                      data_t * hex_dst_string )
+{
+    unsigned char output[100];
+    mbedtls_des_context ctx;
+
+    memset(output, 0x00, 100);
+    mbedtls_des_init( &ctx );
+
+
+    mbedtls_des_setkey_dec( &ctx, key_str->x );
+    TEST_ASSERT( mbedtls_des_crypt_ecb( &ctx, src_str->x, output ) == 0 );
+
+    TEST_ASSERT( hexcmp( output, hex_dst_string->x, 8, hex_dst_string->len ) == 0 );
+
+exit:
+    mbedtls_des_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_CIPHER_MODE_CBC */
+void des_encrypt_cbc( data_t * key_str, data_t * iv_str,
+                      data_t * src_str, data_t * hex_dst_string,
+                      int cbc_result )
+{
+    unsigned char output[100];
+    mbedtls_des_context ctx;
+
+    memset(output, 0x00, 100);
+    mbedtls_des_init( &ctx );
+
+
+    mbedtls_des_setkey_enc( &ctx, key_str->x );
+    TEST_ASSERT( mbedtls_des_crypt_cbc( &ctx, MBEDTLS_DES_ENCRYPT, src_str->len, iv_str->x, src_str->x, output ) == cbc_result );
+    if( cbc_result == 0 )
+    {
+
+        TEST_ASSERT( hexcmp( output, hex_dst_string->x, src_str->len, hex_dst_string->len ) == 0 );
+    }
+
+exit:
+    mbedtls_des_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_CIPHER_MODE_CBC */
+void des_decrypt_cbc( data_t * key_str, data_t * iv_str,
+                      data_t * src_str, data_t * hex_dst_string,
+                      int cbc_result )
+{
+    unsigned char output[100];
+    mbedtls_des_context ctx;
+
+    memset(output, 0x00, 100);
+    mbedtls_des_init( &ctx );
+
+
+    mbedtls_des_setkey_dec( &ctx, key_str->x );
+    TEST_ASSERT( mbedtls_des_crypt_cbc( &ctx, MBEDTLS_DES_DECRYPT, src_str->len, iv_str->x, src_str->x, output ) == cbc_result );
+    if( cbc_result == 0 )
+    {
+
+        TEST_ASSERT( hexcmp( output, hex_dst_string->x, src_str->len, hex_dst_string->len ) == 0 );
+    }
+
+exit:
+    mbedtls_des_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE */
+void des3_encrypt_ecb( int key_count, data_t * key_str,
+                       data_t * src_str, data_t * hex_dst_string )
+{
+    unsigned char output[100];
+    mbedtls_des3_context ctx;
+
+    memset(output, 0x00, 100);
+    mbedtls_des3_init( &ctx );
+
+
+    if( key_count == 2 )
+        mbedtls_des3_set2key_enc( &ctx, key_str->x );
+    else if( key_count == 3 )
+        mbedtls_des3_set3key_enc( &ctx, key_str->x );
+    else
+        TEST_ASSERT( 0 );
+
+    TEST_ASSERT( mbedtls_des3_crypt_ecb( &ctx, src_str->x, output ) == 0 );
+
+    TEST_ASSERT( hexcmp( output, hex_dst_string->x, 8, hex_dst_string->len ) == 0 );
+
+exit:
+    mbedtls_des3_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE */
+void des3_decrypt_ecb( int key_count, data_t * key_str,
+                       data_t * src_str, data_t * hex_dst_string )
+{
+    unsigned char output[100];
+    mbedtls_des3_context ctx;
+
+    memset(output, 0x00, 100);
+    mbedtls_des3_init( &ctx );
+
+
+    if( key_count == 2 )
+        mbedtls_des3_set2key_dec( &ctx, key_str->x );
+    else if( key_count == 3 )
+        mbedtls_des3_set3key_dec( &ctx, key_str->x );
+    else
+        TEST_ASSERT( 0 );
+
+    TEST_ASSERT( mbedtls_des3_crypt_ecb( &ctx, src_str->x, output ) == 0 );
+
+    TEST_ASSERT( hexcmp( output, hex_dst_string->x, 8, hex_dst_string->len ) == 0 );
+
+exit:
+    mbedtls_des3_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_CIPHER_MODE_CBC */
+void des3_encrypt_cbc( int key_count, data_t * key_str,
+                       data_t * iv_str, data_t * src_str,
+                       data_t * hex_dst_string, int cbc_result )
+{
+    unsigned char output[100];
+    mbedtls_des3_context ctx;
+
+    memset(output, 0x00, 100);
+    mbedtls_des3_init( &ctx );
+
+
+    if( key_count == 2 )
+        mbedtls_des3_set2key_enc( &ctx, key_str->x );
+    else if( key_count == 3 )
+        mbedtls_des3_set3key_enc( &ctx, key_str->x );
+    else
+        TEST_ASSERT( 0 );
+
+    TEST_ASSERT( mbedtls_des3_crypt_cbc( &ctx, MBEDTLS_DES_ENCRYPT, src_str->len, iv_str->x, src_str->x, output ) == cbc_result );
+
+    if( cbc_result == 0 )
+    {
+
+        TEST_ASSERT( hexcmp( output, hex_dst_string->x, src_str->len, hex_dst_string->len ) == 0 );
+    }
+
+exit:
+    mbedtls_des3_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_CIPHER_MODE_CBC */
+void des3_decrypt_cbc( int key_count, data_t * key_str,
+                       data_t * iv_str, data_t * src_str,
+                       data_t * hex_dst_string, int cbc_result )
+{
+    unsigned char output[100];
+    mbedtls_des3_context ctx;
+
+    memset(output, 0x00, 100);
+    mbedtls_des3_init( &ctx );
+
+
+    if( key_count == 2 )
+        mbedtls_des3_set2key_dec( &ctx, key_str->x );
+    else if( key_count == 3 )
+        mbedtls_des3_set3key_dec( &ctx, key_str->x );
+    else
+        TEST_ASSERT( 0 );
+
+    TEST_ASSERT( mbedtls_des3_crypt_cbc( &ctx, MBEDTLS_DES_DECRYPT, src_str->len, iv_str->x, src_str->x, output ) == cbc_result );
+
+    if( cbc_result == 0 )
+    {
+
+        TEST_ASSERT( hexcmp( output, hex_dst_string->x, src_str->len, hex_dst_string->len ) == 0 );
+    }
+
+exit:
+    mbedtls_des3_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE */
+void des_key_parity_run(  )
+{
+    int i, j, cnt;
+    unsigned char key[MBEDTLS_DES_KEY_SIZE];
+    unsigned int parity;
+
+    memset( key, 0, MBEDTLS_DES_KEY_SIZE );
+    cnt = 0;
+
+    // Iterate through all possible byte values
+    //
+    for( i = 0; i < 32; i++ )
+    {
+        for( j = 0; j < 8; j++ )
+            key[j] = cnt++;
+
+        // Set the key parity according to the table
+        //
+        mbedtls_des_key_set_parity( key );
+
+        // Check the parity with a function
+        //
+        for( j = 0; j < 8; j++ )
+        {
+            parity = key[j] ^ ( key[j] >> 4 );
+            parity = parity ^
+                    ( parity >> 1 ) ^
+                    ( parity >> 2 ) ^
+                    ( parity >> 3 );
+            parity &= 1;
+
+            if( parity != 1 )
+                TEST_ASSERT( 0 );
+        }
+
+        // Check the parity with the table
+        //
+        TEST_ASSERT( mbedtls_des_key_check_key_parity( key ) == 0 );
+    }
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SELF_TEST */
+void des_selftest(  )
+{
+    TEST_ASSERT( mbedtls_des_self_test( 1 ) == 0 );
+}
+/* END_CASE */

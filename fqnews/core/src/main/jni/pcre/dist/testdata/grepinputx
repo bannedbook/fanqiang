@@ -1,0 +1,43 @@
+This is a second file of input for the pcregrep tests.
+
+Here is the pattern again.
+
+Pattern
+That time it was on a line by itself.
+
+To pat or not to pat, that is the question.
+
+complete pair
+of lines
+
+That was a complete pair
+of lines all by themselves.
+
+complete pair
+of lines
+
+And there they were again, to check line numbers.
+
+one
+two
+three
+four
+five
+six
+seven
+eight
+nine
+ten
+eleven
+twelve
+thirteen
+fourteen
+fifteen
+sixteen
+seventeen
+eighteen
+nineteen
+twenty
+
+This line contains pattern not on a line by itself.
+This is the last line of this file.

@@ -1,0 +1,11 @@
+// message for an AddrProto address
+message addr {
+    // address type. from addr.h
+    required uint8 type = 1;
+    // for IPv4 and IPv6 addresses, the port (network byte order)
+    optional data("2") ip_port = 2;
+    // for IPv4 addresses, the IP address
+    optional data("4") ipv4_addr = 3;
+    // for IPv6 addresses, the IP address
+    optional data("16") ipv6_addr = 4;
+};

@@ -1,0 +1,112 @@
+process main {
+    var("0") x;
+    
+    var("false") backtrack_check;
+    backtrack_point() point;
+    If (backtrack_check) {
+        val_equal(x, "10") a;
+        assert(a);
+        call("phase2", {});
+    };
+    
+    process_manager() mgr;
+    
+    mgr->start("name", "increment", {"1", "2", "false"});
+    val_equal(x, "1") a;
+    assert(a);
+    
+    mgr->stop("name");
+    val_equal(x, "3") a;
+    assert(a);
+    
+    mgr->start("name", "increment", {"3", "4", "true"});
+    val_equal(x, "6") a;
+    assert(a);
+    
+    mgr->stop("name");
+    val_equal(x, "6") a;
+    assert(a);
+    
+    mgr->start("name", "increment", {"5", "6", "false"});
+    val_equal(x, "6") a;
+    assert(a);
+    
+    backtrack_check->set("true");
+    point->go();
+}
+
+template phase2 {
+    var("0") x;
+    
+    var("false") backtrack_check;
+    backtrack_point() point;
+    If (backtrack_check) {
+        val_equal(x, "10") a;
+        assert(a);
+        call("phase3", {});
+    };
+    
+    process_manager() mgr;
+    
+    mgr->start("name", "increment", {"1", "2", "true"});
+    val_equal(x, "1") a;
+    assert(a);
+    
+    mgr->stop("name");
+    val_equal(x, "1") a;
+    assert(a);
+    
+    mgr->start("name", "increment", {"3", "4", "true"});
+    val_equal(x, "1") a;
+    assert(a);
+    
+    depend("INC_DONE");
+    val_equal(x, "6") a;
+    assert(a);
+    
+    backtrack_check->set("true");
+    point->go();
+}
+
+template phase3 {
+    var("0") x;
+    
+    var("false") backtrack_check;
+    backtrack_point() point;
+    If (backtrack_check) {
+        val_equal(x, "10") a;
+        assert(a);
+        exit("0");
+    };
+    
+    process_manager() mgr;
+    
+    mgr->start("increment", {"1", "2", "false"});
+    val_equal(x, "1") a;
+    assert(a);
+    
+    mgr->start("increment", {"3", "4", "false"});
+    val_equal(x, "4") a;
+    assert(a);
+
+    backtrack_check->set("true");
+    point->go();
+}
+
+template increment {
+    var(_arg0) amount;
+    var(_arg1) amount_deinit;
+    var(_arg2) do_sleep;
+    imperative("<none>", {}, "increment_deinit_inc", {}, "10000");
+    num_add(_caller.x, amount) new_x;
+    _caller.x->set(new_x);
+    If (do_sleep) {
+        sleep("0", "0");
+    };
+    provide("INC_DONE");
+}
+
+template increment_deinit_inc {
+    num_add(_caller._caller.x, _caller.amount_deinit) new_x;
+    _caller._caller.x->set(new_x);
+}

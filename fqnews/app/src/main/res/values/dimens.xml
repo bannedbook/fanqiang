@@ -1,0 +1,13 @@
+<resources>
+    <!-- NavigationDrawer -->
+    <dimen name="nav_drawer_width">304dp</dimen>
+
+    <!-- Container Sheet -->
+    <dimen name="container_max_width">420dp</dimen>
+    <dimen name="container_horizontal_padding_end">0dp</dimen>
+    <dimen name="container_details_top_margin">0dp</dimen>
+
+    <dimen name="entry_img_width">50dp</dimen>
+    <dimen name="entry_img_height">50dp</dimen>
+    <dimen name="main_list_padding_bottom">88dp</dimen>
+</resources>

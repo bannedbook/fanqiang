@@ -1,0 +1,12 @@
+# All IPs listed here will be blocked while the ss-server try to outbound.
+# Only IP is allowed, *NOT* domain name.
+#
+
+[outbound_block_list]
+127.0.0.0/8
+::1/128
+10.0.0.0/8
+172.16.0.0/12
+192.168.0.0/16
+fc00::/7
+::ffff:127.0.0.1/104

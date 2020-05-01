@@ -1,0 +1,21 @@
+Single low error
+depends_on:MBEDTLS_AES_C
+error_strerror:-0x0020:"AES - Invalid key length"
+
+Single high error
+depends_on:MBEDTLS_RSA_C
+error_strerror:-0x4080:"RSA - Bad input parameters to function"
+
+Low and high error
+depends_on:MBEDTLS_AES_C:MBEDTLS_RSA_C
+error_strerror:-0x40A0:"RSA - Bad input parameters to function \: AES - Invalid key length"
+
+Non existing high error
+error_strerror:-0x8880:"UNKNOWN ERROR CODE (8880)"
+
+Non existing low error
+error_strerror:-0x007F:"UNKNOWN ERROR CODE (007F)"
+
+Non existing low and high error
+error_strerror:-0x88FF:"UNKNOWN ERROR CODE (8880) \: UNKNOWN ERROR CODE (007F)"
+

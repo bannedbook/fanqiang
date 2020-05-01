@@ -1,0 +1,38 @@
+process main {
+    value("ab\0") str1;
+    value("ab") str2;
+
+    strcmp(str1.length, "3") a;
+    assert(a);
+
+    strcmp(str2.length, "2") a;
+    assert(a);
+
+    strcmp(str1, str2) a;
+    not(a) a;
+    assert(a);
+
+    concat(str1, str2) strc;
+    strcmp(strc, "ab\0ab") a;
+    assert(a);
+
+    concat(str2, str1) strc;
+    strcmp(strc, "abab\0") a;
+    assert(a);
+
+    value("") str1;
+    value("\x00\x00") str2;
+    value("\x00\x01") str3;
+    value("\x01") str4;
+
+    val_lesser(str1, str2) a;
+    assert(a);
+
+    val_lesser(str2, str3) a;
+    assert(a);
+
+    val_lesser(str3, str4) a;
+    assert(a);
+
+    exit("0");
+}

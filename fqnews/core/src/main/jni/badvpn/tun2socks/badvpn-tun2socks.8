@@ -1,0 +1,126 @@
+.TH badvpn-tun2socks 8 "February 2012"
+.SH NAME
+badvpn-tun2socks \- create a TUN device to route TCP traffic through a SOCKS server
+.SH SYNOPSIS
+.PP
+.B
+badvpn-tun2socks
+.br
+  [\fB\-\-help\fR]
+.br
+  [\fB\-\-version\fR]
+.br
+  [\fB\-\-logger\fR <stdout/syslog>]
+.br
+  [\fB\-\-syslog-facility\fR <string>] [\fB\-\-syslog-ident\fR <string>]
+.br
+  [\fB\-\-loglevel\fR <0-5/none/error/warning/notice/info/debug>]
+.br
+  [\fB\-\-channel-loglevel\fR <channel-name> <0-5/none/error/warning/notice/info/debug>] ...
+.br
+  [\fB\-\-tundev\fR <name>]
+.br
+  \fB\-\-netif\-ipaddr\fR <ipaddr>
+.br
+  \fB\-\-netif\-netmask\fR <ipnetmask>
+.br
+  \fB\-\-socks\-server\-addr\fR <addr>
+.br
+  [\fB\-\-udpgw-remote-server-addr\fR <addr>]
+.br
+  [\fB\-\-udpgw-max-connections\fR <number>]
+.br
+  [\fB\-\-udpgw-connection-buffer-size\fR <number>]
+.PP
+Address format is a.b.c.d:port (IPv4) or [addr]:port (IPv6).
+.SH DESCRIPTION
+.PP
+badvpn-tun2socks
+is a network utility used to "socksify" TCP connections at the network
+layer. It implements a TUN device which accepts all incoming TCP
+connections (regardless of destination IP), and forwards them through
+a SOCKS server. This allows you to forward all connections through
+SOCKS, without any need for application support. It can be used, for
+example, to forward connections through a remote SSH server.
+.SH EXAMPLE
+.PP
+This example demonstrates using tun2socks in combination with SSH's dynamic forwarding feature.
+
+Connect to the SSH server, passing -D localhost:1080 to the ssh
+command to enable dynamic forwarding. This will make ssh open a local
+SOCKS server which tun2socks forward connection through.
+
+First create a TUN device (eg. using openvpn):
+
+.nf
+  openvpn --mktun --dev tun0 --user <someuser>
+.fi
+
+Configure the IP of the new tun device:
+
+.nf
+  ifconfig tun0 10.0.0.1 netmask 255.255.255.0
+.fi
+
+Now start the badvpn-tun2socks program:
+
+.nf
+  badvpn-tun2socks --tundev tun0 --netif-ipaddr 10.0.0.2 --netif-netmask 255.255.255.0 \\
+                   --socks-server-addr 127.0.0.1:1080
+.fi
+
+Note that the address 10.0.0.2 is not a typo. It specifies the IP address of the virtual
+router inside the TUN device, and must be different from the IP of the
+TUN interface itself (but in the same subnet).
+
+Now you should be able to ping the virtual router's IP (10.0.0.2):
+
+.nf
+  ping -n 10.0.0.2
+.fi
+
+All that remains is to route connections through the TUN device
+instead of the existing default gateway. This is done as follows:
+
+1. Add a route to the SSH server through your existing gateway, with a
+lower metric than the original default route.
+
+2. If your DNS servers are in a network that is not direcly attached (e.g. in the Internet),
+also add routes for them (like for the SSH server). This is
+needed because tun2socks does not forward UDP by default (see below).
+
+3. Add a default route through the virtual router in the TUN device,
+with a lower metric than the original default route, but higher than
+the SSH and DNS routes.
+
+This will make all external connections go through the TUN device,
+except for the SSH connection (else SSH would go through the TUN
+device, which would go through... SSH).
+
+For example (assuming there are no existing default routes with metric
+<=6; otherwise remove them or change their metrics):
+
+.nf
+  route add <IP_of_SSH_server> gw <IP_of_original_gateway> metric 5
+  <same for DNS>
+  route add default gw 10.0.0.2 metric 6
+.fi
+.SH UDP FORWARDING
+tun2socks can forward UDP, however this requires a forwarder daemon, badvpn-udpgw to run
+on the remote SSH server:
+
+.nf
+  badvpn-udpgw --listen-addr 127.0.0.1:7300
+.fi
+
+Then tell tun2socks to forward UDP via the forwarder:
+
+.nf
+  --udpgw-remote-server-addr 127.0.0.1:7300 
+.fi
+.SH COPYRIGHT
+.PP
+Copyright \(co 2010 Ambroz Bizjak <ambrop7@gmail.com>
+.br
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

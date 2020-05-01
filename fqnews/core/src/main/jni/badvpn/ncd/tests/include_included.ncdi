@@ -1,0 +1,5 @@
+include_guard "include_included"
+
+template incl_tmpl {
+    var("good") x;
+}

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- GENERAL -->
+    <string name="app_name">FQNews</string>
+    <string name="about_flym">О FQNews</string>
+    <string name="welcome_title">Добродошли у Флим. Да ли желите да додате нови довод?</string>
+    <string name="welcome_title_with_opml_import">Да ли желите да увезете претходно сачувану Флим довода?</string>
+    <string name="cannot_find_feeds">Доводи нису пронађени</string>
+    <string name="menu_settings">Подешавања</string>
+    <string name="menu_edit_feed">Уређивање довода</string>
+    <string name="menu_reorder">Организуј редослед довода</string>
+    <string name="menu_delete">Избриши</string>
+    <string name="menu_enable_full_text_retrieval">Омогући преузимање комплетног текста</string>
+    <string name="menu_disable_full_text_retrieval">Онемогући преузимање комплетног текста</string>
+    <string name="menu_all_read">Означи све као прочитано</string>
+    <string name="flym_feeds">Флим доводи</string>
+    <string name="error">Грешка</string>
+    <string name="network_error">Мрежа није подешена</string>
+    <string name="drawer_explanation">Добродошли!\n\nЗа преглед опција, притисните и задржите жељени довод ▼</string>
+    <string name="drawer_fetch_error_explanation">Део довода није освежен ▼</string>
+    <string name="about_screen_info">Ову апликацију објављујем као бесплатан и слободан софтвер под ГНУ-овом општом јавном лиценцом (ГПЛ) верзије 3</string>
+
+    <!-- FEEDS -->
+    <string name="feeds">Доводи</string>
+    <string name="menu_add_group">Додај групу</string>
+    <string name="menu_import">Увези из ОПМЛ</string>
+    <string name="menu_export">Извези у ОПМЛ</string>
+    <string name="storage_request_explanation">Да би увоз/извоз довода био могућ у/из датотеке, неопходно је да дозволите апликацији приступ интерном складишту.</string>
+    <string name="error_feed_export">Извоз није успешно завршен. Проверите да ли уређај има СД картицу монтирану у систему.</string>
+    <string name="feed_search">Претрага довода</string>
+    <string name="feed_search_hint">Унесите везу до довода или кључну реч</string>
+    <string name="feed_added">Довод је додат у листу</string>
+    <string name="question_delete_feed">Да ли заиста желите да избришете овај довод?</string>
+    <string name="question_delete_group">Да ли заиста желите да избришете ову групу и да све доводе унутар исте?</string>
+    <string name="add_group_title">Изаберите име групе</string>
+    <string name="message_exported_to">Извезено у %s.</string>
+    <string name="to_group_title">Акција померања довода</string>
+    <string name="to_group_message">Довод можете да померите у групу или изнад ње. Шта желите да радите?</string>
+    <string name="to_group_above">О групи</string>
+    <string name="to_group_into">У групу</string>
+    <string name="google_news_top_stories">Најбоље приче</string>
+    <string name="google_news_world">Свет</string>
+    <string name="google_news_business">Пословни свет</string>
+    <string name="google_news_science_technology">Наука и Технологија</string>
+    <string name="google_news_entertainment">Забава</string>
+    <string name="google_news_sports">Спорт</string>
+    <string name="google_news_health">Здравље</string>
+    <string name="feed_name">Име довода</string>
+    <string name="feed_link">Хипервеза довода</string>
+
+    <!-- ENTRIES -->
+    <string name="all_entries">Сви чланци</string>
+    <string name="menu_star">Звезда</string>
+    <string name="menu_unstar">Без звезде</string>
+    <string name="menu_share">Подели</string>
+    <string name="menu_mark_as_unread">Означи као непрочитано</string>
+    <string name="get_full_text">Преузми комплетан текст</string>
+    <string name="original_text">Прикажи оригиналан текст</string>
+    <string name="open_in_browser">Погледај у прегледачу</string>
+    <string name="cant_open_link">Није пронађена ниједна апликација која може приказати изабрани садржај</string>
+    <string name="unreads">Непрочитано</string>
+    <string name="all">Све</string>
+    <string name="favorites">Омиљено</string>
+    <string name="no_entries">Нема чланака\nМолимо да превучете прстом, по екрану, на доле за освежавање листе чланака</string>
+    <string name="undo">Опозови</string>
+    <string name="marked_as_read">Означено као прочитано</string>
+    <string name="marked_as_unread">Означено као непрочитано</string>
+
+    <!-- SETTINGS -->
+    <string name="settings_category_refresh">Аутоматско освежавање</string>
+    <string name="settings_refresh_enabled">Омогући аутоматско освежавање</string>
+    <string name="settings_refresh_enabled_description">Омогући аутоматско освежавање довода</string>
+    <string name="settings_refresh_enable_notifications">Приказивање обавештења приликом освежавања</string>
+    <string name="settings_refresh_enable_notifications_description">Прикажи системско обавештење након што се освежавање заврши</string>
+    <string name="settings_refresh_interval">Интервал аутоматског освежавања</string>
+    <string name="settings_category_keep_time">Време чувања уноса</string>
+    <string name="settings_keep_time">Време чувања чланака</string>
+    <string name="settings_keep_time_unread">Временско ограничење за чување непрочитаних чланака</string>
+    <string name="settings_category_content_presentation">Приказ садржаја</string>
+    <string name="settings_display_images">Прикажи слике</string>
+    <string name="settings_display_images_description">Прикажи слике унутар чланака</string>
+    <string name="settings_preload_image_mode">Учитавање слика унапред</string>
+    <string name="settings_font_size">Величина текста</string>
+    <string name="settings_refresh_wifi_only">Освежи само преко бежичне мреже (Wi-Fi)</string>
+    <string name="settings_refresh_wifi_only_description">Аутоматско освежавање довода ће бити извршено само ако је доступна бежична конекција (Wi-Fi)</string>
+    <string name="settings_category_filter">Филтери</string>
+    <string name="settings_remove_duplicates_description_title">Уклони дупликате</string>
+    <string name="settings_remove_duplicates_description">Проверава наслове чланака који су преузети и прескаче ако исти већ постоје како би се избегао дупли садржај тј. дупли чланци</string>
+    <string name="filter">Уклони чланке који садрже кључне речи (листа раздвојена запетом")</string>
+    <string name="filter_title">Црна листа</string>
+    <string name="settings_theme">Теме</string>
+    <string name="open_browser_direct">Отварање чланака директно у подразумеваном интернет прегледачу</string>
+    <string name="open_browser_direct_title">Отвори у прегледачу</string>
+    <string name="refresh_on_startup">Освежавање довода при покретању апликације</string>
+    <string name="refresh_on_startup_title">Освежавање приликом покретања</string>
+
+    <plurals name="number_of_new_entries">
+        <item quantity="one">Један нови чланак</item>
+        <item quantity="other">Нових чланака: %d</item>
+    </plurals>
+
+    <string-array name="settings_intervals">
+        <item>5 минута</item>
+        <item>15 минута</item>
+        <item>30 минута</item>
+        <item>1 час</item>
+        <item>2 часа</item>
+        <item>6 часова</item>
+        <item>12 часова</item>
+        <item>1 дан</item>
+    </string-array>
+    <string-array name="settings_keep_times">
+        <item>1 дан</item>
+        <item>2 дана</item>
+        <item>4 дана</item>
+        <item>1 недеља</item>
+        <item>2 недеље</item>
+        <item>1 месец</item>
+        <item>2 месеца</item>
+        <item>3 месеца</item>
+        <item>Заувек</item>
+    </string-array>
+    <string-array name="settings_font_sizes">
+        <item>-2</item>
+        <item>-1</item>
+        <item>Стандардно</item>
+        <item>+1</item>
+        <item>+2</item>
+        <item>+3</item>
+    </string-array>
+    <string-array name="settings_preload_image_modes">
+        <item>Никада</item>
+        <item>Само преко бежичне мреже (Wi-Fi)</item>
+        <item>Увек</item>
+    </string-array>
+    <string-array name="settings_themes">
+        <item>Светла</item>
+        <item>Тамна</item>
+        <item>Црна</item>
+    </string-array>
+</resources>

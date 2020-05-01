@@ -1,0 +1,67 @@
+#! /usr/bin/perl
+
+# A script to scan PCRE's man pages to check for typos in the control
+# sequences. I use only a small set of the available repertoire, so it is 
+# straightforward to check that nothing else has slipped in by mistake. This
+# script should be called in the doc directory.
+
+$yield = 0;
+
+while (scalar(@ARGV) > 0)
+  {
+  $line = 0; 
+  $file = shift @ARGV;
+    
+  open (IN, $file) || die "Failed to open $file\n";
+  
+  while (<IN>)
+    {  
+    $line++; 
+    if (/^\s*$/)
+      {
+      printf "Empty line $line of $file\n";
+      $yield = 1;  
+      }   
+    elsif (/^\./)
+      {
+      if (!/^\.\s*$|
+            ^\.B\s+\S| 
+            ^\.TH\s\S|
+            ^\.SH\s\S|
+            ^\.SS\s\S|
+            ^\.TP(?:\s?\d+)?\s*$|
+            ^\.SM\s*$|
+            ^\.br\s*$| 
+            ^\.rs\s*$| 
+            ^\.sp\s*$| 
+            ^\.nf\s*$| 
+            ^\.fi\s*$| 
+            ^\.P\s*$| 
+            ^\.PP\s*$| 
+            ^\.\\"(?:\ HREF)?\s*$|
+            ^\.\\"\sHTML\s<a\shref="[^"]+?">\s*$|
+            ^\.\\"\sHTML\s<a\sname="[^"]+?"><\/a>\s*$|
+            ^\.\\"\s<\/a>\s*$|
+            ^\.\\"\sJOINSH\s*$|
+            ^\.\\"\sJOIN\s*$/x  
+         )
+        {
+        printf "Bad control line $line of $file\n";
+        $yield = 1;
+        }
+      }
+    else
+      {
+      if (/\\[^ef]|\\f[^IBP]/)
+        {
+        printf "Bad backslash in line $line of $file\n";  
+        $yield = 1; 
+        } 
+      }   
+    }
+     
+  close(IN);   
+  }
+  
+exit $yield;
+# End  

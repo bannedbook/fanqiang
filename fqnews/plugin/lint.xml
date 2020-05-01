@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="ImpliedQuantity" severity="warning" />
+    <issue id="ExtraTranslation" severity="warning" />
+    <issue id="MissingTranslation" severity="informational" />
+</lint>

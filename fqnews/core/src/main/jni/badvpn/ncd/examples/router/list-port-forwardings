@@ -1,0 +1,61 @@
+#!/usr/bin/badvpn-ncd
+
+process main {
+    getargs() args;
+    value(args) args;
+
+    num_different(args.length, "0") bad_args;
+    If (bad_args) {
+        println("Usage: list-port-forwardings");
+        exit("1");
+    };
+
+    var("0") exit_status;
+
+    sys.request_client({"unix", "/run/ncd-control.socket"}) client;
+
+    var({"list-port-forwardings"}) request_data;
+
+    client->request(request_data, "reply_handler", "finished_handler", {});
+}
+
+template reply_handler {
+    value(_reply.data) reply_data;
+    reply_data->get("0") status;
+    reply_data->get("1") arg;
+
+    val_equal(status, "ok") is_ok;
+    If (is_ok) {
+        println("Protocol  Start  End    Destination");
+        Foreach (arg As entry) {
+            value(entry) entry;
+            entry->get("0") protocol;
+            entry->get("1") port_start;
+            entry->get("2") port_end;
+            entry->get("3") dest_addr;
+            call("append_spaces", {port_start, "5"}) fixed_start;
+            call("append_spaces", {port_end, "5"}) fixed_end;
+            println(protocol, "       ", fixed_start.result, "  ", fixed_end.result, "  ", dest_addr);
+        };
+    } Else {
+        _caller.exit_status->set("1");
+        println("Error: ", arg);
+    };
+}
+
+template finished_handler {
+    exit(_caller.exit_status);
+}
+
+template append_spaces {
+    alias("_arg0") input;
+    alias("_arg1") min_length;
+
+    value(input) result;
+    backtrack_point() point;
+    num_lesser(result.length, min_length) more;
+    If (more) {
+        result->append(" ");
+        point->go();
+    };
+}

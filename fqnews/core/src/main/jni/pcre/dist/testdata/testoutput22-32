@@ -1,0 +1,81 @@
+/-- Tests for reloading pre-compile patterns with UTF-16 or UTF-32 support. */
+
+%-- Generated from: 
+    /(?P<cbra1>[aZ\x{400}-\x{10ffff}]{4,}
+      [\x{f123}\x{10039}\x{20000}-\x{21234}]?|
+      [A-Cx-z\x{100000}-\x{1000a7}\x{101234}])
+      (?<cb2>[^az])/x 
+       
+    In 16-bit mode with options:  S8>testdata/saved16LE-2
+                                 FS8>testdata/saved16BE-2
+    In 32-bit mode with options:  S8>testdata/saved32LE-2
+                                 FS8>testdata/saved32BE-2
+--%8x
+
+<!testsaved16LE-2
+Compiled pattern loaded from testsaved16LE-2
+Study data loaded from testsaved16LE-2
+Error -28 from pcre32_fullinfo(0)
+Running in 32-bit mode but pattern was compiled in 16-bit mode
+
+<!testsaved16BE-2
+Compiled pattern loaded from testsaved16BE-2
+Study data loaded from testsaved16BE-2
+Error -28 from pcre32_fullinfo(0)
+Running in 32-bit mode but pattern was compiled in 16-bit mode
+
+<!testsaved32LE-2
+Compiled pattern loaded from testsaved32LE-2
+Study data loaded from testsaved32LE-2
+------------------------------------------------------------------
+  0  70 Bra
+  2  33 CBra 1
+  5     [Za\x{400}-\x{10ffff}]{4,}
+ 23     [\x{f123}\x{10039}\x{20000}-\x{21234}]?
+ 35  19 Alt
+ 37     [A-Cx-z\x{100000}-\x{1000a7}\x{101234}]
+ 54  52 Ket
+ 56  12 CBra 2
+ 59     [\x00-`b-y{-\xff] (neg)
+ 68  12 Ket
+ 70  70 Ket
+ 72     End
+------------------------------------------------------------------
+Capturing subpattern count = 2
+Named capturing subpatterns:
+  cb2     2
+  cbra1   1
+Options: extended utf
+No first char
+No need char
+Subject length lower bound = 2
+No starting char list
+
+<!testsaved32BE-2
+Compiled pattern loaded from testsaved32BE-2
+Study data loaded from testsaved32BE-2
+------------------------------------------------------------------
+  0  70 Bra
+  2  33 CBra 1
+  5     [Za\x{400}-\x{10ffff}]{4,}
+ 23     [\x{f123}\x{10039}\x{20000}-\x{21234}]?
+ 35  19 Alt
+ 37     [A-Cx-z\x{100000}-\x{1000a7}\x{101234}]
+ 54  52 Ket
+ 56  12 CBra 2
+ 59     [\x00-`b-y{-\xff] (neg)
+ 68  12 Ket
+ 70  70 Ket
+ 72     End
+------------------------------------------------------------------
+Capturing subpattern count = 2
+Named capturing subpatterns:
+  cb2     2
+  cbra1   1
+Options: extended utf
+No first char
+No need char
+Subject length lower bound = 2
+No starting char list
+
+/-- End of testinput22 --/

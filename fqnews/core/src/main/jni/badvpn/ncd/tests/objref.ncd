@@ -1,0 +1,15 @@
+process main {
+    var("VAR1") var1;
+    objref({"var1"}) ref1;
+    assert(@val_equal(ref1, "VAR1"));
+
+    var("VAR2") var2;
+    call("test", {{"var2"}}) c;
+    assert(@val_equal(c.ref, "VAR2"));
+    
+    exit("0");
+}
+
+template test {
+    objref_arg(_arg0) ref;
+}

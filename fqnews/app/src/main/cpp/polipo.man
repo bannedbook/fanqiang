@@ -1,0 +1,93 @@
+.TH POLIPO 1
+.SH NAME
+polipo \- a caching web proxy
+.SH SYNOPSIS
+.B polipo
+[
+.B \-h
+|
+.B \-v
+|
+.B \-x
+] [
+.B \-c
+.I config
+] [
+.IB var=val
+]...
+.SH DESCRIPTION
+Polipo is a caching HTTP proxy.  It listens to requests for web pages
+from your browser and forwards them to web servers, and forwards the
+servers' replies to your browser.  In the process, it optimises and
+cleans up the network traffic.
+.PP
+By default, Polipo listens on TCP port 8123.  Please configure your
+web browser to use the proxy on 
+.B localhost 
+port 8123.
+.SH OPTIONS
+.TP
+.B \-h
+Display help and exit.
+.TP
+.B \-v
+Display the list of configuration variables and exit.
+.TP
+.B \-x
+Purge the on-disk cache and exit.
+.TP
+.B \-c
+Select an alternate configuration file.
+.TP
+.IB var = val
+Change the value of a configuration variable.
+.SH FILES
+.TP
+.B /etc/polipo/config
+The default location of Polipo's configuration file.
+.TP
+.B /etc/polipo/forbidden
+The default location of the list of forbidden URLs.
+.TP
+.B /var/cache/polipo/
+The default location of the on-disk cache.
+.TP
+.B /usr/share/polipo/www/
+The default root of the local web space.
+.SH SIGNALS
+.TP 
+.B SIGUSR1
+write out all in-memory objects to disk and reload the forbidden URLs file.
+.TP 
+.B SIGUSR2
+write out all in-memory objects to disk, discard all in-memory
+objects, and reload the forbidden URLs file.
+.TP 
+.B SIGTERM, SIGINT, SIGHUP
+write out all in-memory objects to disk and quit.
+.SH SECURITY
+The internal web server will follow symbolic links that point outside
+the local document tree.  You should run Polipo in a chroot jail if that
+is a problem.
+.PP
+There is no reason to run Polipo as root.
+.SH FULL DOCUMENTATION
+The full manual for Polipo is maintained in a texinfo file, and is
+normally available through a web server internal to Polipo.  Please
+make sure that Polipo is running, and point your favourite web browser
+at
+.IP
+http://localhost:8123/
+.PP
+Alternatively, you may type
+.IP
+$ info polipo
+.PP
+at a shell prompt, or
+.IP
+C-h i m polipo RET
+.PP
+in
+.BR Emacs .
+.SH AUTHOR
+Polipo was written by Juliusz Chroboczek.

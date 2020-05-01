@@ -1,0 +1,759 @@
+<html>
+<head>
+<title>pcregrep specification</title>
+</head>
+<body bgcolor="#FFFFFF" text="#00005A" link="#0066FF" alink="#3399FF" vlink="#2222BB">
+<h1>pcregrep man page</h1>
+<p>
+Return to the <a href="index.html">PCRE index page</a>.
+</p>
+<p>
+This page is part of the PCRE HTML documentation. It was generated automatically
+from the original man page. If there is any nonsense in it, please consult the
+man page, in case the conversion went wrong.
+<br>
+<ul>
+<li><a name="TOC1" href="#SEC1">SYNOPSIS</a>
+<li><a name="TOC2" href="#SEC2">DESCRIPTION</a>
+<li><a name="TOC3" href="#SEC3">SUPPORT FOR COMPRESSED FILES</a>
+<li><a name="TOC4" href="#SEC4">BINARY FILES</a>
+<li><a name="TOC5" href="#SEC5">OPTIONS</a>
+<li><a name="TOC6" href="#SEC6">ENVIRONMENT VARIABLES</a>
+<li><a name="TOC7" href="#SEC7">NEWLINES</a>
+<li><a name="TOC8" href="#SEC8">OPTIONS COMPATIBILITY</a>
+<li><a name="TOC9" href="#SEC9">OPTIONS WITH DATA</a>
+<li><a name="TOC10" href="#SEC10">MATCHING ERRORS</a>
+<li><a name="TOC11" href="#SEC11">DIAGNOSTICS</a>
+<li><a name="TOC12" href="#SEC12">SEE ALSO</a>
+<li><a name="TOC13" href="#SEC13">AUTHOR</a>
+<li><a name="TOC14" href="#SEC14">REVISION</a>
+</ul>
+<br><a name="SEC1" href="#TOC1">SYNOPSIS</a><br>
+<P>
+<b>pcregrep [options] [long options] [pattern] [path1 path2 ...]</b>
+</P>
+<br><a name="SEC2" href="#TOC1">DESCRIPTION</a><br>
+<P>
+<b>pcregrep</b> searches files for character patterns, in the same way as other
+grep commands do, but it uses the PCRE regular expression library to support
+patterns that are compatible with the regular expressions of Perl 5. See
+<a href="pcresyntax.html"><b>pcresyntax</b>(3)</a>
+for a quick-reference summary of pattern syntax, or
+<a href="pcrepattern.html"><b>pcrepattern</b>(3)</a>
+for a full description of the syntax and semantics of the regular expressions
+that PCRE supports.
+</P>
+<P>
+Patterns, whether supplied on the command line or in a separate file, are given
+without delimiters. For example:
+<pre>
+  pcregrep Thursday /etc/motd
+</pre>
+If you attempt to use delimiters (for example, by surrounding a pattern with
+slashes, as is common in Perl scripts), they are interpreted as part of the
+pattern. Quotes can of course be used to delimit patterns on the command line
+because they are interpreted by the shell, and indeed quotes are required if a
+pattern contains white space or shell metacharacters.
+</P>
+<P>
+The first argument that follows any option settings is treated as the single
+pattern to be matched when neither <b>-e</b> nor <b>-f</b> is present.
+Conversely, when one or both of these options are used to specify patterns, all
+arguments are treated as path names. At least one of <b>-e</b>, <b>-f</b>, or an
+argument pattern must be provided.
+</P>
+<P>
+If no files are specified, <b>pcregrep</b> reads the standard input. The
+standard input can also be referenced by a name consisting of a single hyphen.
+For example:
+<pre>
+  pcregrep some-pattern /file1 - /file3
+</pre>
+By default, each line that matches a pattern is copied to the standard
+output, and if there is more than one file, the file name is output at the
+start of each line, followed by a colon. However, there are options that can
+change how <b>pcregrep</b> behaves. In particular, the <b>-M</b> option makes it
+possible to search for patterns that span line boundaries. What defines a line
+boundary is controlled by the <b>-N</b> (<b>--newline</b>) option.
+</P>
+<P>
+The amount of memory used for buffering files that are being scanned is
+controlled by a parameter that can be set by the <b>--buffer-size</b> option.
+The default value for this parameter is specified when <b>pcregrep</b> is built,
+with the default default being 20K. A block of memory three times this size is
+used (to allow for buffering "before" and "after" lines). An error occurs if a
+line overflows the buffer.
+</P>
+<P>
+Patterns can be no longer than 8K or BUFSIZ bytes, whichever is the greater.
+BUFSIZ is defined in <b>&#60;stdio.h&#62;</b>. When there is more than one pattern
+(specified by the use of <b>-e</b> and/or <b>-f</b>), each pattern is applied to
+each line in the order in which they are defined, except that all the <b>-e</b>
+patterns are tried before the <b>-f</b> patterns.
+</P>
+<P>
+By default, as soon as one pattern matches a line, no further patterns are
+considered. However, if <b>--colour</b> (or <b>--color</b>) is used to colour the
+matching substrings, or if <b>--only-matching</b>, <b>--file-offsets</b>, or
+<b>--line-offsets</b> is used to output only the part of the line that matched
+(either shown literally, or as an offset), scanning resumes immediately
+following the match, so that further matches on the same line can be found. If
+there are multiple patterns, they are all tried on the remainder of the line,
+but patterns that follow the one that matched are not tried on the earlier part
+of the line.
+</P>
+<P>
+This behaviour means that the order in which multiple patterns are specified
+can affect the output when one of the above options is used. This is no longer
+the same behaviour as GNU grep, which now manages to display earlier matches
+for later patterns (as long as there is no overlap).
+</P>
+<P>
+Patterns that can match an empty string are accepted, but empty string
+matches are never recognized. An example is the pattern "(super)?(man)?", in
+which all components are optional. This pattern finds all occurrences of both
+"super" and "man"; the output differs from matching with "super|man" when only
+the matching substrings are being shown.
+</P>
+<P>
+If the <b>LC_ALL</b> or <b>LC_CTYPE</b> environment variable is set,
+<b>pcregrep</b> uses the value to set a locale when calling the PCRE library.
+The <b>--locale</b> option can be used to override this.
+</P>
+<br><a name="SEC3" href="#TOC1">SUPPORT FOR COMPRESSED FILES</a><br>
+<P>
+It is possible to compile <b>pcregrep</b> so that it uses <b>libz</b> or
+<b>libbz2</b> to read files whose names end in <b>.gz</b> or <b>.bz2</b>,
+respectively. You can find out whether your binary has support for one or both
+of these file types by running it with the <b>--help</b> option. If the
+appropriate support is not present, files are treated as plain text. The
+standard input is always so treated.
+</P>
+<br><a name="SEC4" href="#TOC1">BINARY FILES</a><br>
+<P>
+By default, a file that contains a binary zero byte within the first 1024 bytes
+is identified as a binary file, and is processed specially. (GNU grep also
+identifies binary files in this manner.) See the <b>--binary-files</b> option
+for a means of changing the way binary files are handled.
+</P>
+<br><a name="SEC5" href="#TOC1">OPTIONS</a><br>
+<P>
+The order in which some of the options appear can affect the output. For
+example, both the <b>-h</b> and <b>-l</b> options affect the printing of file
+names. Whichever comes later in the command line will be the one that takes
+effect. Similarly, except where noted below, if an option is given twice, the
+later setting is used. Numerical values for options may be followed by K or M,
+to signify multiplication by 1024 or 1024*1024 respectively.
+</P>
+<P>
+<b>--</b>
+This terminates the list of options. It is useful if the next item on the
+command line starts with a hyphen but is not an option. This allows for the
+processing of patterns and filenames that start with hyphens.
+</P>
+<P>
+<b>-A</b> <i>number</i>, <b>--after-context=</b><i>number</i>
+Output <i>number</i> lines of context after each matching line. If filenames
+and/or line numbers are being output, a hyphen separator is used instead of a
+colon for the context lines. A line containing "--" is output between each
+group of lines, unless they are in fact contiguous in the input file. The value
+of <i>number</i> is expected to be relatively small. However, <b>pcregrep</b>
+guarantees to have up to 8K of following text available for context output.
+</P>
+<P>
+<b>-a</b>, <b>--text</b>
+Treat binary files as text. This is equivalent to
+<b>--binary-files</b>=<i>text</i>.
+</P>
+<P>
+<b>-B</b> <i>number</i>, <b>--before-context=</b><i>number</i>
+Output <i>number</i> lines of context before each matching line. If filenames
+and/or line numbers are being output, a hyphen separator is used instead of a
+colon for the context lines. A line containing "--" is output between each
+group of lines, unless they are in fact contiguous in the input file. The value
+of <i>number</i> is expected to be relatively small. However, <b>pcregrep</b>
+guarantees to have up to 8K of preceding text available for context output.
+</P>
+<P>
+<b>--binary-files=</b><i>word</i>
+Specify how binary files are to be processed. If the word is "binary" (the
+default), pattern matching is performed on binary files, but the only output is
+"Binary file &#60;name&#62; matches" when a match succeeds. If the word is "text",
+which is equivalent to the <b>-a</b> or <b>--text</b> option, binary files are
+processed in the same way as any other file. In this case, when a match
+succeeds, the output may be binary garbage, which can have nasty effects if
+sent to a terminal. If the word is "without-match", which is equivalent to the
+<b>-I</b> option, binary files are not processed at all; they are assumed not to
+be of interest.
+</P>
+<P>
+<b>--buffer-size=</b><i>number</i>
+Set the parameter that controls how much memory is used for buffering files
+that are being scanned.
+</P>
+<P>
+<b>-C</b> <i>number</i>, <b>--context=</b><i>number</i>
+Output <i>number</i> lines of context both before and after each matching line.
+This is equivalent to setting both <b>-A</b> and <b>-B</b> to the same value.
+</P>
+<P>
+<b>-c</b>, <b>--count</b>
+Do not output individual lines from the files that are being scanned; instead
+output the number of lines that would otherwise have been shown. If no lines
+are selected, the number zero is output. If several files are are being
+scanned, a count is output for each of them. However, if the
+<b>--files-with-matches</b> option is also used, only those files whose counts
+are greater than zero are listed. When <b>-c</b> is used, the <b>-A</b>,
+<b>-B</b>, and <b>-C</b> options are ignored.
+</P>
+<P>
+<b>--colour</b>, <b>--color</b>
+If this option is given without any data, it is equivalent to "--colour=auto".
+If data is required, it must be given in the same shell item, separated by an
+equals sign.
+</P>
+<P>
+<b>--colour=</b><i>value</i>, <b>--color=</b><i>value</i>
+This option specifies under what circumstances the parts of a line that matched
+a pattern should be coloured in the output. By default, the output is not
+coloured. The value (which is optional, see above) may be "never", "always", or
+"auto". In the latter case, colouring happens only if the standard output is
+connected to a terminal. More resources are used when colouring is enabled,
+because <b>pcregrep</b> has to search for all possible matches in a line, not
+just one, in order to colour them all.
+<br>
+<br>
+The colour that is used can be specified by setting the environment variable
+PCREGREP_COLOUR or PCREGREP_COLOR. The value of this variable should be a
+string of two numbers, separated by a semicolon. They are copied directly into
+the control string for setting colour on a terminal, so it is your
+responsibility to ensure that they make sense. If neither of the environment
+variables is set, the default is "1;31", which gives red.
+</P>
+<P>
+<b>-D</b> <i>action</i>, <b>--devices=</b><i>action</i>
+If an input path is not a regular file or a directory, "action" specifies how
+it is to be processed. Valid values are "read" (the default) or "skip"
+(silently skip the path).
+</P>
+<P>
+<b>-d</b> <i>action</i>, <b>--directories=</b><i>action</i>
+If an input path is a directory, "action" specifies how it is to be processed.
+Valid values are "read" (the default in non-Windows environments, for
+compatibility with GNU grep), "recurse" (equivalent to the <b>-r</b> option), or
+"skip" (silently skip the path, the default in Windows environments). In the
+"read" case, directories are read as if they were ordinary files. In some
+operating systems the effect of reading a directory like this is an immediate
+end-of-file; in others it may provoke an error.
+</P>
+<P>
+<b>-e</b> <i>pattern</i>, <b>--regex=</b><i>pattern</i>, <b>--regexp=</b><i>pattern</i>
+Specify a pattern to be matched. This option can be used multiple times in
+order to specify several patterns. It can also be used as a way of specifying a
+single pattern that starts with a hyphen. When <b>-e</b> is used, no argument
+pattern is taken from the command line; all arguments are treated as file
+names. There is no limit to the number of patterns. They are applied to each
+line in the order in which they are defined until one matches.
+<br>
+<br>
+If <b>-f</b> is used with <b>-e</b>, the command line patterns are matched first,
+followed by the patterns from the file(s), independent of the order in which
+these options are specified. Note that multiple use of <b>-e</b> is not the same
+as a single pattern with alternatives. For example, X|Y finds the first
+character in a line that is X or Y, whereas if the two patterns are given
+separately, with X first, <b>pcregrep</b> finds X if it is present, even if it
+follows Y in the line. It finds Y only if there is no X in the line. This
+matters only if you are using <b>-o</b> or <b>--colo(u)r</b> to show the part(s)
+of the line that matched.
+</P>
+<P>
+<b>--exclude</b>=<i>pattern</i>
+Files (but not directories) whose names match the pattern are skipped without
+being processed. This applies to all files, whether listed on the command line,
+obtained from <b>--file-list</b>, or by scanning a directory. The pattern is a
+PCRE regular expression, and is matched against the final component of the file
+name, not the entire path. The <b>-F</b>, <b>-w</b>, and <b>-x</b> options do not
+apply to this pattern. The option may be given any number of times in order to
+specify multiple patterns. If a file name matches both an <b>--include</b>
+and an <b>--exclude</b> pattern, it is excluded. There is no short form for this
+option.
+</P>
+<P>
+<b>--exclude-from=</b><i>filename</i>
+Treat each non-empty line of the file as the data for an <b>--exclude</b>
+option. What constitutes a newline when reading the file is the operating
+system's default. The <b>--newline</b> option has no effect on this option. This
+option may be given more than once in order to specify a number of files to
+read.
+</P>
+<P>
+<b>--exclude-dir</b>=<i>pattern</i>
+Directories whose names match the pattern are skipped without being processed,
+whatever the setting of the <b>--recursive</b> option. This applies to all
+directories, whether listed on the command line, obtained from
+<b>--file-list</b>, or by scanning a parent directory. The pattern is a PCRE
+regular expression, and is matched against the final component of the directory
+name, not the entire path. The <b>-F</b>, <b>-w</b>, and <b>-x</b> options do not
+apply to this pattern. The option may be given any number of times in order to
+specify more than one pattern. If a directory matches both <b>--include-dir</b>
+and <b>--exclude-dir</b>, it is excluded. There is no short form for this
+option.
+</P>
+<P>
+<b>-F</b>, <b>--fixed-strings</b>
+Interpret each data-matching pattern as a list of fixed strings, separated by
+newlines, instead of as a regular expression. What constitutes a newline for
+this purpose is controlled by the <b>--newline</b> option. The <b>-w</b> (match
+as a word) and <b>-x</b> (match whole line) options can be used with <b>-F</b>.
+They apply to each of the fixed strings. A line is selected if any of the fixed
+strings are found in it (subject to <b>-w</b> or <b>-x</b>, if present). This
+option applies only to the patterns that are matched against the contents of
+files; it does not apply to patterns specified by any of the <b>--include</b> or
+<b>--exclude</b> options.
+</P>
+<P>
+<b>-f</b> <i>filename</i>, <b>--file=</b><i>filename</i>
+Read patterns from the file, one per line, and match them against
+each line of input. What constitutes a newline when reading the file is the
+operating system's default. The <b>--newline</b> option has no effect on this
+option. Trailing white space is removed from each line, and blank lines are
+ignored. An empty file contains no patterns and therefore matches nothing. See
+also the comments about multiple patterns versus a single pattern with
+alternatives in the description of <b>-e</b> above.
+<br>
+<br>
+If this option is given more than once, all the specified files are
+read. A data line is output if any of the patterns match it. A filename can
+be given as "-" to refer to the standard input. When <b>-f</b> is used, patterns
+specified on the command line using <b>-e</b> may also be present; they are
+tested before the file's patterns. However, no other pattern is taken from the
+command line; all arguments are treated as the names of paths to be searched.
+</P>
+<P>
+<b>--file-list</b>=<i>filename</i>
+Read a list of files and/or directories that are to be scanned from the given
+file, one per line. Trailing white space is removed from each line, and blank
+lines are ignored. These paths are processed before any that are listed on the
+command line. The filename can be given as "-" to refer to the standard input.
+If <b>--file</b> and <b>--file-list</b> are both specified as "-", patterns are
+read first. This is useful only when the standard input is a terminal, from
+which further lines (the list of files) can be read after an end-of-file
+indication. If this option is given more than once, all the specified files are
+read.
+</P>
+<P>
+<b>--file-offsets</b>
+Instead of showing lines or parts of lines that match, show each match as an
+offset from the start of the file and a length, separated by a comma. In this
+mode, no context is shown. That is, the <b>-A</b>, <b>-B</b>, and <b>-C</b>
+options are ignored. If there is more than one match in a line, each of them is
+shown separately. This option is mutually exclusive with <b>--line-offsets</b>
+and <b>--only-matching</b>.
+</P>
+<P>
+<b>-H</b>, <b>--with-filename</b>
+Force the inclusion of the filename at the start of output lines when searching
+a single file. By default, the filename is not shown in this case. For matching
+lines, the filename is followed by a colon; for context lines, a hyphen
+separator is used. If a line number is also being output, it follows the file
+name.
+</P>
+<P>
+<b>-h</b>, <b>--no-filename</b>
+Suppress the output filenames when searching multiple files. By default,
+filenames are shown when multiple files are searched. For matching lines, the
+filename is followed by a colon; for context lines, a hyphen separator is used.
+If a line number is also being output, it follows the file name.
+</P>
+<P>
+<b>--help</b>
+Output a help message, giving brief details of the command options and file
+type support, and then exit. Anything else on the command line is
+ignored.
+</P>
+<P>
+<b>-I</b>
+Treat binary files as never matching. This is equivalent to
+<b>--binary-files</b>=<i>without-match</i>.
+</P>
+<P>
+<b>-i</b>, <b>--ignore-case</b>
+Ignore upper/lower case distinctions during comparisons.
+</P>
+<P>
+<b>--include</b>=<i>pattern</i>
+If any <b>--include</b> patterns are specified, the only files that are
+processed are those that match one of the patterns (and do not match an
+<b>--exclude</b> pattern). This option does not affect directories, but it
+applies to all files, whether listed on the command line, obtained from
+<b>--file-list</b>, or by scanning a directory. The pattern is a PCRE regular
+expression, and is matched against the final component of the file name, not
+the entire path. The <b>-F</b>, <b>-w</b>, and <b>-x</b> options do not apply to
+this pattern. The option may be given any number of times. If a file name
+matches both an <b>--include</b> and an <b>--exclude</b> pattern, it is excluded.
+There is no short form for this option.
+</P>
+<P>
+<b>--include-from=</b><i>filename</i>
+Treat each non-empty line of the file as the data for an <b>--include</b>
+option. What constitutes a newline for this purpose is the operating system's
+default. The <b>--newline</b> option has no effect on this option. This option
+may be given any number of times; all the files are read.
+</P>
+<P>
+<b>--include-dir</b>=<i>pattern</i>
+If any <b>--include-dir</b> patterns are specified, the only directories that
+are processed are those that match one of the patterns (and do not match an
+<b>--exclude-dir</b> pattern). This applies to all directories, whether listed
+on the command line, obtained from <b>--file-list</b>, or by scanning a parent
+directory. The pattern is a PCRE regular expression, and is matched against the
+final component of the directory name, not the entire path. The <b>-F</b>,
+<b>-w</b>, and <b>-x</b> options do not apply to this pattern. The option may be
+given any number of times. If a directory matches both <b>--include-dir</b> and
+<b>--exclude-dir</b>, it is excluded. There is no short form for this option.
+</P>
+<P>
+<b>-L</b>, <b>--files-without-match</b>
+Instead of outputting lines from the files, just output the names of the files
+that do not contain any lines that would have been output. Each file name is
+output once, on a separate line.
+</P>
+<P>
+<b>-l</b>, <b>--files-with-matches</b>
+Instead of outputting lines from the files, just output the names of the files
+containing lines that would have been output. Each file name is output
+once, on a separate line. Searching normally stops as soon as a matching line
+is found in a file. However, if the <b>-c</b> (count) option is also used,
+matching continues in order to obtain the correct count, and those files that
+have at least one match are listed along with their counts. Using this option
+with <b>-c</b> is a way of suppressing the listing of files with no matches.
+</P>
+<P>
+<b>--label</b>=<i>name</i>
+This option supplies a name to be used for the standard input when file names
+are being output. If not supplied, "(standard input)" is used. There is no
+short form for this option.
+</P>
+<P>
+<b>--line-buffered</b>
+When this option is given, input is read and processed line by line, and the
+output is flushed after each write. By default, input is read in large chunks,
+unless <b>pcregrep</b> can determine that it is reading from a terminal (which
+is currently possible only in Unix-like environments). Output to terminal is
+normally automatically flushed by the operating system. This option can be
+useful when the input or output is attached to a pipe and you do not want
+<b>pcregrep</b> to buffer up large amounts of data. However, its use will affect
+performance, and the <b>-M</b> (multiline) option ceases to work.
+</P>
+<P>
+<b>--line-offsets</b>
+Instead of showing lines or parts of lines that match, show each match as a
+line number, the offset from the start of the line, and a length. The line
+number is terminated by a colon (as usual; see the <b>-n</b> option), and the
+offset and length are separated by a comma. In this mode, no context is shown.
+That is, the <b>-A</b>, <b>-B</b>, and <b>-C</b> options are ignored. If there is
+more than one match in a line, each of them is shown separately. This option is
+mutually exclusive with <b>--file-offsets</b> and <b>--only-matching</b>.
+</P>
+<P>
+<b>--locale</b>=<i>locale-name</i>
+This option specifies a locale to be used for pattern matching. It overrides
+the value in the <b>LC_ALL</b> or <b>LC_CTYPE</b> environment variables. If no
+locale is specified, the PCRE library's default (usually the "C" locale) is
+used. There is no short form for this option.
+</P>
+<P>
+<b>--match-limit</b>=<i>number</i>
+Processing some regular expression patterns can require a very large amount of
+memory, leading in some cases to a program crash if not enough is available.
+Other patterns may take a very long time to search for all possible matching
+strings. The <b>pcre_exec()</b> function that is called by <b>pcregrep</b> to do
+the matching has two parameters that can limit the resources that it uses.
+<br>
+<br>
+The <b>--match-limit</b> option provides a means of limiting resource usage
+when processing patterns that are not going to match, but which have a very
+large number of possibilities in their search trees. The classic example is a
+pattern that uses nested unlimited repeats. Internally, PCRE uses a function
+called <b>match()</b> which it calls repeatedly (sometimes recursively). The
+limit set by <b>--match-limit</b> is imposed on the number of times this
+function is called during a match, which has the effect of limiting the amount
+of backtracking that can take place.
+<br>
+<br>
+The <b>--recursion-limit</b> option is similar to <b>--match-limit</b>, but
+instead of limiting the total number of times that <b>match()</b> is called, it
+limits the depth of recursive calls, which in turn limits the amount of memory
+that can be used. The recursion depth is a smaller number than the total number
+of calls, because not all calls to <b>match()</b> are recursive. This limit is
+of use only if it is set smaller than <b>--match-limit</b>.
+<br>
+<br>
+There are no short forms for these options. The default settings are specified
+when the PCRE library is compiled, with the default default being 10 million.
+</P>
+<P>
+<b>-M</b>, <b>--multiline</b>
+Allow patterns to match more than one line. When this option is given, patterns
+may usefully contain literal newline characters and internal occurrences of ^
+and $ characters. The output for a successful match may consist of more than
+one line, the last of which is the one in which the match ended. If the matched
+string ends with a newline sequence the output ends at the end of that line.
+<br>
+<br>
+When this option is set, the PCRE library is called in "multiline" mode.
+There is a limit to the number of lines that can be matched, imposed by the way
+that <b>pcregrep</b> buffers the input file as it scans it. However,
+<b>pcregrep</b> ensures that at least 8K characters or the rest of the document
+(whichever is the shorter) are available for forward matching, and similarly
+the previous 8K characters (or all the previous characters, if fewer than 8K)
+are guaranteed to be available for lookbehind assertions. This option does not
+work when input is read line by line (see \fP--line-buffered\fP.)
+</P>
+<P>
+<b>-N</b> <i>newline-type</i>, <b>--newline</b>=<i>newline-type</i>
+The PCRE library supports five different conventions for indicating
+the ends of lines. They are the single-character sequences CR (carriage return)
+and LF (linefeed), the two-character sequence CRLF, an "anycrlf" convention,
+which recognizes any of the preceding three types, and an "any" convention, in
+which any Unicode line ending sequence is assumed to end a line. The Unicode
+sequences are the three just mentioned, plus VT (vertical tab, U+000B), FF
+(form feed, U+000C), NEL (next line, U+0085), LS (line separator, U+2028), and
+PS (paragraph separator, U+2029).
+<br>
+<br>
+When the PCRE library is built, a default line-ending sequence is specified.
+This is normally the standard sequence for the operating system. Unless
+otherwise specified by this option, <b>pcregrep</b> uses the library's default.
+The possible values for this option are CR, LF, CRLF, ANYCRLF, or ANY. This
+makes it possible to use <b>pcregrep</b> to scan files that have come from other
+environments without having to modify their line endings. If the data that is
+being scanned does not agree with the convention set by this option,
+<b>pcregrep</b> may behave in strange ways. Note that this option does not
+apply to files specified by the <b>-f</b>, <b>--exclude-from</b>, or
+<b>--include-from</b> options, which are expected to use the operating system's
+standard newline sequence.
+</P>
+<P>
+<b>-n</b>, <b>--line-number</b>
+Precede each output line by its line number in the file, followed by a colon
+for matching lines or a hyphen for context lines. If the filename is also being
+output, it precedes the line number. This option is forced if
+<b>--line-offsets</b> is used.
+</P>
+<P>
+<b>--no-jit</b>
+If the PCRE library is built with support for just-in-time compiling (which
+speeds up matching), <b>pcregrep</b> automatically makes use of this, unless it
+was explicitly disabled at build time. This option can be used to disable the
+use of JIT at run time. It is provided for testing and working round problems.
+It should never be needed in normal use.
+</P>
+<P>
+<b>-o</b>, <b>--only-matching</b>
+Show only the part of the line that matched a pattern instead of the whole
+line. In this mode, no context is shown. That is, the <b>-A</b>, <b>-B</b>, and
+<b>-C</b> options are ignored. If there is more than one match in a line, each
+of them is shown separately. If <b>-o</b> is combined with <b>-v</b> (invert the
+sense of the match to find non-matching lines), no output is generated, but the
+return code is set appropriately. If the matched portion of the line is empty,
+nothing is output unless the file name or line number are being printed, in
+which case they are shown on an otherwise empty line. This option is mutually
+exclusive with <b>--file-offsets</b> and <b>--line-offsets</b>.
+</P>
+<P>
+<b>-o</b><i>number</i>, <b>--only-matching</b>=<i>number</i>
+Show only the part of the line that matched the capturing parentheses of the
+given number. Up to 32 capturing parentheses are supported, and -o0 is
+equivalent to <b>-o</b> without a number. Because these options can be given
+without an argument (see above), if an argument is present, it must be given in
+the same shell item, for example, -o3 or --only-matching=2. The comments given
+for the non-argument case above also apply to this case. If the specified
+capturing parentheses do not exist in the pattern, or were not set in the
+match, nothing is output unless the file name or line number are being printed.
+<br>
+<br>
+If this option is given multiple times, multiple substrings are output, in the
+order the options are given. For example, -o3 -o1 -o3 causes the substrings
+matched by capturing parentheses 3 and 1 and then 3 again to be output. By
+default, there is no separator (but see the next option).
+</P>
+<P>
+<b>--om-separator</b>=<i>text</i>
+Specify a separating string for multiple occurrences of <b>-o</b>. The default
+is an empty string. Separating strings are never coloured.
+</P>
+<P>
+<b>-q</b>, <b>--quiet</b>
+Work quietly, that is, display nothing except error messages. The exit
+status indicates whether or not any matches were found.
+</P>
+<P>
+<b>-r</b>, <b>--recursive</b>
+If any given path is a directory, recursively scan the files it contains,
+taking note of any <b>--include</b> and <b>--exclude</b> settings. By default, a
+directory is read as a normal file; in some operating systems this gives an
+immediate end-of-file. This option is a shorthand for setting the <b>-d</b>
+option to "recurse".
+</P>
+<P>
+<b>--recursion-limit</b>=<i>number</i>
+See <b>--match-limit</b> above.
+</P>
+<P>
+<b>-s</b>, <b>--no-messages</b>
+Suppress error messages about non-existent or unreadable files. Such files are
+quietly skipped. However, the return code is still 2, even if matches were
+found in other files.
+</P>
+<P>
+<b>-u</b>, <b>--utf-8</b>
+Operate in UTF-8 mode. This option is available only if PCRE has been compiled
+with UTF-8 support. All patterns (including those for any <b>--exclude</b> and
+<b>--include</b> options) and all subject lines that are scanned must be valid
+strings of UTF-8 characters.
+</P>
+<P>
+<b>-V</b>, <b>--version</b>
+Write the version numbers of <b>pcregrep</b> and the PCRE library to the
+standard output and then exit. Anything else on the command line is
+ignored.
+</P>
+<P>
+<b>-v</b>, <b>--invert-match</b>
+Invert the sense of the match, so that lines which do <i>not</i> match any of
+the patterns are the ones that are found.
+</P>
+<P>
+<b>-w</b>, <b>--word-regex</b>, <b>--word-regexp</b>
+Force the patterns to match only whole words. This is equivalent to having \b
+at the start and end of the pattern. This option applies only to the patterns
+that are matched against the contents of files; it does not apply to patterns
+specified by any of the <b>--include</b> or <b>--exclude</b> options.
+</P>
+<P>
+<b>-x</b>, <b>--line-regex</b>, <b>--line-regexp</b>
+Force the patterns to be anchored (each must start matching at the beginning of
+a line) and in addition, require them to match entire lines. This is equivalent
+to having ^ and $ characters at the start and end of each alternative branch in
+every pattern. This option applies only to the patterns that are matched
+against the contents of files; it does not apply to patterns specified by any
+of the <b>--include</b> or <b>--exclude</b> options.
+</P>
+<br><a name="SEC6" href="#TOC1">ENVIRONMENT VARIABLES</a><br>
+<P>
+The environment variables <b>LC_ALL</b> and <b>LC_CTYPE</b> are examined, in that
+order, for a locale. The first one that is set is used. This can be overridden
+by the <b>--locale</b> option. If no locale is set, the PCRE library's default
+(usually the "C" locale) is used.
+</P>
+<br><a name="SEC7" href="#TOC1">NEWLINES</a><br>
+<P>
+The <b>-N</b> (<b>--newline</b>) option allows <b>pcregrep</b> to scan files with
+different newline conventions from the default. Any parts of the input files
+that are written to the standard output are copied identically, with whatever
+newline sequences they have in the input. However, the setting of this option
+does not affect the interpretation of files specified by the <b>-f</b>,
+<b>--exclude-from</b>, or <b>--include-from</b> options, which are assumed to use
+the operating system's standard newline sequence, nor does it affect the way in
+which <b>pcregrep</b> writes informational messages to the standard error and
+output streams. For these it uses the string "\n" to indicate newlines,
+relying on the C I/O library to convert this to an appropriate sequence.
+</P>
+<br><a name="SEC8" href="#TOC1">OPTIONS COMPATIBILITY</a><br>
+<P>
+Many of the short and long forms of <b>pcregrep</b>'s options are the same
+as in the GNU <b>grep</b> program. Any long option of the form
+<b>--xxx-regexp</b> (GNU terminology) is also available as <b>--xxx-regex</b>
+(PCRE terminology). However, the <b>--file-list</b>, <b>--file-offsets</b>,
+<b>--include-dir</b>, <b>--line-offsets</b>, <b>--locale</b>, <b>--match-limit</b>,
+<b>-M</b>, <b>--multiline</b>, <b>-N</b>, <b>--newline</b>, <b>--om-separator</b>,
+<b>--recursion-limit</b>, <b>-u</b>, and <b>--utf-8</b> options are specific to
+<b>pcregrep</b>, as is the use of the <b>--only-matching</b> option with a
+capturing parentheses number.
+</P>
+<P>
+Although most of the common options work the same way, a few are different in
+<b>pcregrep</b>. For example, the <b>--include</b> option's argument is a glob
+for GNU <b>grep</b>, but a regular expression for <b>pcregrep</b>. If both the
+<b>-c</b> and <b>-l</b> options are given, GNU grep lists only file names,
+without counts, but <b>pcregrep</b> gives the counts.
+</P>
+<br><a name="SEC9" href="#TOC1">OPTIONS WITH DATA</a><br>
+<P>
+There are four different ways in which an option with data can be specified.
+If a short form option is used, the data may follow immediately, or (with one
+exception) in the next command line item. For example:
+<pre>
+  -f/some/file
+  -f /some/file
+</pre>
+The exception is the <b>-o</b> option, which may appear with or without data.
+Because of this, if data is present, it must follow immediately in the same
+item, for example -o3.
+</P>
+<P>
+If a long form option is used, the data may appear in the same command line
+item, separated by an equals character, or (with two exceptions) it may appear
+in the next command line item. For example:
+<pre>
+  --file=/some/file
+  --file /some/file
+</pre>
+Note, however, that if you want to supply a file name beginning with ~ as data
+in a shell command, and have the shell expand ~ to a home directory, you must
+separate the file name from the option, because the shell does not treat ~
+specially unless it is at the start of an item.
+</P>
+<P>
+The exceptions to the above are the <b>--colour</b> (or <b>--color</b>) and
+<b>--only-matching</b> options, for which the data is optional. If one of these
+options does have data, it must be given in the first form, using an equals
+character. Otherwise <b>pcregrep</b> will assume that it has no data.
+</P>
+<br><a name="SEC10" href="#TOC1">MATCHING ERRORS</a><br>
+<P>
+It is possible to supply a regular expression that takes a very long time to
+fail to match certain lines. Such patterns normally involve nested indefinite
+repeats, for example: (a+)*\d when matched against a line of a's with no final
+digit. The PCRE matching function has a resource limit that causes it to abort
+in these circumstances. If this happens, <b>pcregrep</b> outputs an error
+message and the line that caused the problem to the standard error stream. If
+there are more than 20 such errors, <b>pcregrep</b> gives up.
+</P>
+<P>
+The <b>--match-limit</b> option of <b>pcregrep</b> can be used to set the overall
+resource limit; there is a second option called <b>--recursion-limit</b> that
+sets a limit on the amount of memory (usually stack) that is used (see the
+discussion of these options above).
+</P>
+<br><a name="SEC11" href="#TOC1">DIAGNOSTICS</a><br>
+<P>
+Exit status is 0 if any matches were found, 1 if no matches were found, and 2
+for syntax errors, overlong lines, non-existent or inaccessible files (even if
+matches were found in other files) or too many matching errors. Using the
+<b>-s</b> option to suppress error messages about inaccessible files does not
+affect the return code.
+</P>
+<br><a name="SEC12" href="#TOC1">SEE ALSO</a><br>
+<P>
+<b>pcrepattern</b>(3), <b>pcresyntax</b>(3), <b>pcretest</b>(1).
+</P>
+<br><a name="SEC13" href="#TOC1">AUTHOR</a><br>
+<P>
+Philip Hazel
+<br>
+University Computing Service
+<br>
+Cambridge CB2 3QH, England.
+<br>
+</P>
+<br><a name="SEC14" href="#TOC1">REVISION</a><br>
+<P>
+Last updated: 03 April 2014
+<br>
+Copyright &copy; 1997-2014 University of Cambridge.
+<br>
+<p>
+Return to the <a href="index.html">PCRE index page</a>.
+</p>

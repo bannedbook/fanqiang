@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: shadowsocks-libev
+Description: a lightweight secured socks5 proxy
+URL: https://shadowsocks.org
+Version: @VERSION@
+Requires:
+Cflags: -I${includedir}
+Libs: -L${libdir} -lshadowsocks-libev

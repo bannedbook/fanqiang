@@ -1,0 +1,672 @@
+#line 2 "suites/host_test.function"
+
+/**
+ * \brief       Verifies that string is in string parameter format i.e. "<str>"
+ *              It also strips enclosing '"' from the input string.
+ *
+ * \param str   String parameter.
+ *
+ * \return      0 if success else 1
+ */
+int verify_string( char **str )
+{
+    if( ( *str )[0] != '"' ||
+        ( *str )[strlen( *str ) - 1] != '"' )
+    {
+        mbedtls_fprintf( stderr,
+            "Expected string (with \"\") for parameter and got: %s\n", *str );
+        return( -1 );
+    }
+
+    ( *str )++;
+    ( *str )[strlen( *str ) - 1] = '\0';
+
+    return( 0 );
+}
+
+/**
+ * \brief       Verifies that string is an integer. Also gives the converted
+ *              integer value.
+ *
+ * \param str   Input string.
+ * \param value Pointer to int for output value.
+ *
+ * \return      0 if success else 1
+ */
+int verify_int( char *str, int *value )
+{
+    size_t i;
+    int minus = 0;
+    int digits = 1;
+    int hex = 0;
+
+    for( i = 0; i < strlen( str ); i++ )
+    {
+        if( i == 0 && str[i] == '-' )
+        {
+            minus = 1;
+            continue;
+        }
+
+        if( ( ( minus && i == 2 ) || ( !minus && i == 1 ) ) &&
+            str[i - 1] == '0' && ( str[i] == 'x' || str[i] == 'X' ) )
+        {
+            hex = 1;
+            continue;
+        }
+
+        if( ! ( ( str[i] >= '0' && str[i] <= '9' ) ||
+                ( hex && ( ( str[i] >= 'a' && str[i] <= 'f' ) ||
+                           ( str[i] >= 'A' && str[i] <= 'F' ) ) ) ) )
+        {
+            digits = 0;
+            break;
+        }
+    }
+
+    if( digits )
+    {
+        if( hex )
+            *value = strtol( str, NULL, 16 );
+        else
+            *value = strtol( str, NULL, 10 );
+
+        return( 0 );
+    }
+
+    mbedtls_fprintf( stderr,
+                    "Expected integer for parameter and got: %s\n", str );
+    return( KEY_VALUE_MAPPING_NOT_FOUND );
+}
+
+
+/**
+ * \brief       Usage string.
+ *
+ */
+#define USAGE \
+    "Usage: %s [OPTIONS] files...\n\n" \
+    "   Command line arguments:\n" \
+    "     files...          One or more test data files. If no file is\n" \
+    "                       specified the following default test case\n" \
+    "                       file is used:\n" \
+    "                           %s\n\n" \
+    "   Options:\n" \
+    "     -v | --verbose    Display full information about each test\n" \
+    "     -h | --help       Display this information\n\n", \
+    argv[0], \
+    "TESTCASE_FILENAME"
+
+
+/**
+ * \brief       Read a line from the passed file pointer.
+ *
+ * \param f     FILE pointer
+ * \param buf   Pointer to memory to hold read line.
+ * \param len   Length of the buf.
+ *
+ * \return      0 if success else -1
+ */
+int get_line( FILE *f, char *buf, size_t len )
+{
+    char *ret;
+    int i = 0, str_len = 0, has_string = 0;
+
+    /* Read until we get a valid line */
+    do
+    {
+        ret = fgets( buf, len, f );
+        if( ret == NULL )
+            return( -1 );
+
+        str_len = strlen( buf );
+
+        /* Skip empty line and comment */
+        if ( str_len == 0 || buf[0] == '#' )
+            continue;
+        has_string = 0;
+        for ( i = 0; i < str_len; i++ )
+        {
+            char c = buf[i];
+            if ( c != ' ' && c != '\t' && c != '\n' &&
+                 c != '\v' && c != '\f' && c != '\r' )
+            {
+                has_string = 1;
+                break;
+            }
+        }
+    } while( !has_string );
+
+    /* Strip new line and carriage return */
+    ret = buf + strlen( buf );
+    if( ret-- > buf && *ret == '\n' )
+        *ret = '\0';
+    if( ret-- > buf && *ret == '\r' )
+        *ret = '\0';
+
+    return( 0 );
+}
+
+/**
+ * \brief       Splits string delimited by ':'. Ignores '\:'.
+ *
+ * \param buf           Input string
+ * \param len           Input string length
+ * \param params        Out params found
+ * \param params_len    Out params array len
+ *
+ * \return      Count of strings found.
+ */
+static int parse_arguments( char *buf, size_t len, char **params,
+                            size_t params_len )
+{
+    size_t cnt = 0, i;
+    char *cur = buf;
+    char *p = buf, *q;
+
+    params[cnt++] = cur;
+
+    while( *p != '\0' && p < ( buf + len ) )
+    {
+        if( *p == '\\' )
+        {
+            p++;
+            p++;
+            continue;
+        }
+        if( *p == ':' )
+        {
+            if( p + 1 < buf + len )
+            {
+                cur = p + 1;
+                assert( cnt < params_len );
+                params[cnt++] = cur;
+            }
+            *p = '\0';
+        }
+
+        p++;
+    }
+
+    /* Replace newlines, question marks and colons in strings */
+    for( i = 0; i < cnt; i++ )
+    {
+        p = params[i];
+        q = params[i];
+
+        while( *p != '\0' )
+        {
+            if( *p == '\\' && *( p + 1 ) == 'n' )
+            {
+                p += 2;
+                *( q++ ) = '\n';
+            }
+            else if( *p == '\\' && *( p + 1 ) == ':' )
+            {
+                p += 2;
+                *( q++ ) = ':';
+            }
+            else if( *p == '\\' && *( p + 1 ) == '?' )
+            {
+                p += 2;
+                *( q++ ) = '?';
+            }
+            else
+                *( q++ ) = *( p++ );
+        }
+        *q = '\0';
+    }
+
+    return( cnt );
+}
+
+/**
+ * \brief       Converts parameters into test function consumable parameters.
+ *              Example: Input:  {"int", "0", "char*", "Hello",
+ *                                "hex", "abef", "exp", "1"}
+ *                      Output:  {
+ *                                0,                // Verified int
+ *                                "Hello",          // Verified string
+ *                                2, { 0xab, 0xef },// Converted len,hex pair
+ *                                9600              // Evaluated expression
+ *                               }
+ *
+ *
+ * \param cnt               Parameter array count.
+ * \param params            Out array of found parameters.
+ * \param int_params_store  Memory for storing processed integer parameters.
+ *
+ * \return      0 for success else 1
+ */
+static int convert_params( size_t cnt , char ** params , int * int_params_store )
+{
+    char ** cur = params;
+    char ** out = params;
+    int ret = DISPATCH_TEST_SUCCESS;
+
+    while ( cur < params + cnt )
+    {
+        char * type = *cur++;
+        char * val = *cur++;
+
+        if ( strcmp( type, "char*" ) == 0 )
+        {
+            if ( verify_string( &val ) == 0 )
+            {
+              *out++ = val;
+            }
+            else
+            {
+                ret = ( DISPATCH_INVALID_TEST_DATA );
+                break;
+            }
+        }
+        else if ( strcmp( type, "int" ) == 0 )
+        {
+            if ( verify_int( val, int_params_store ) == 0 )
+            {
+              *out++ = (char *) int_params_store++;
+            }
+            else
+            {
+                ret = ( DISPATCH_INVALID_TEST_DATA );
+                break;
+            }
+        }
+        else if ( strcmp( type, "hex" ) == 0 )
+        {
+            if ( verify_string( &val ) == 0 )
+            {
+                *int_params_store = unhexify( (unsigned char *) val, val );
+                *out++ = val;
+                *out++ = (char *)(int_params_store++);
+            }
+            else
+            {
+                ret = ( DISPATCH_INVALID_TEST_DATA );
+                break;
+            }
+        }
+        else if ( strcmp( type, "exp" ) == 0 )
+        {
+            int exp_id = strtol( val, NULL, 10 );
+            if ( get_expression ( exp_id, int_params_store ) == 0 )
+            {
+              *out++ = (char *)int_params_store++;
+            }
+            else
+            {
+              ret = ( DISPATCH_INVALID_TEST_DATA );
+              break;
+            }
+        }
+        else
+        {
+          ret = ( DISPATCH_INVALID_TEST_DATA );
+          break;
+        }
+    }
+    return( ret );
+}
+
+/**
+ * \brief       Tests snprintf implementation with test input.
+ *
+ * \note
+ * At high optimization levels (e.g. gcc -O3), this function may be
+ * inlined in run_test_snprintf. This can trigger a spurious warning about
+ * potential misuse of snprintf from gcc -Wformat-truncation (observed with
+ * gcc 7.2). This warning makes tests in run_test_snprintf redundant on gcc
+ * only. They are still valid for other compilers. Avoid this warning by
+ * forbidding inlining of this function by gcc.
+ *
+ * \param n         Buffer test length.
+ * \param ref_buf   Expected buffer.
+ * \param ref_ret   Expected snprintf return value.
+ *
+ * \return      0 for success else 1
+ */
+#if defined(__GNUC__)
+__attribute__((__noinline__))
+#endif
+static int test_snprintf( size_t n, const char ref_buf[10], int ref_ret )
+{
+    int ret;
+    char buf[10] = "xxxxxxxxx";
+    const char ref[10] = "xxxxxxxxx";
+
+    if( n >= sizeof( buf ) )
+        return( -1 );
+    ret = mbedtls_snprintf( buf, n, "%s", "123" );
+    if( ret < 0 || (size_t) ret >= n )
+        ret = -1;
+
+    if( strncmp( ref_buf, buf, sizeof( buf ) ) != 0 ||
+        ref_ret != ret ||
+        memcmp( buf + n, ref + n, sizeof( buf ) - n ) != 0 )
+    {
+        return( 1 );
+    }
+
+    return( 0 );
+}
+
+/**
+ * \brief       Tests snprintf implementation.
+ *
+ * \param none
+ *
+ * \return      0 for success else 1
+ */
+static int run_test_snprintf( void )
+{
+    return( test_snprintf( 0, "xxxxxxxxx",  -1 ) != 0 ||
+            test_snprintf( 1, "",           -1 ) != 0 ||
+            test_snprintf( 2, "1",          -1 ) != 0 ||
+            test_snprintf( 3, "12",         -1 ) != 0 ||
+            test_snprintf( 4, "123",         3 ) != 0 ||
+            test_snprintf( 5, "123",         3 ) != 0 );
+}
+
+
+/**
+ * \brief       Desktop implementation of execute_tests().
+ *              Parses command line and executes tests from
+ *              supplied or default data file.
+ *
+ * \param argc  Command line argument count.
+ * \param argv  Argument array.
+ *
+ * \return      Program exit status.
+ */
+int execute_tests( int argc , const char ** argv )
+{
+    /* Local Configurations and options */
+    const char *default_filename = "DATA_FILE";
+    const char *test_filename = NULL;
+    const char **test_files = NULL;
+    int testfile_count = 0;
+    int option_verbose = 0;
+    int function_id = 0;
+
+    /* Other Local variables */
+    int arg_index = 1;
+    const char *next_arg;
+    int testfile_index, ret, i, cnt;
+    int total_errors = 0, total_tests = 0, total_skipped = 0;
+    FILE *file;
+    char buf[5000];
+    char *params[50];
+    /* Store for proccessed integer params. */
+    int int_params[50];
+    void *pointer;
+#if defined(__unix__) || (defined(__APPLE__) && defined(__MACH__))
+    int stdout_fd = -1;
+#endif /* __unix__ || __APPLE__ __MACH__ */
+
+#if defined(MBEDTLS_MEMORY_BUFFER_ALLOC_C) && \
+    !defined(TEST_SUITE_MEMORY_BUFFER_ALLOC)
+    unsigned char alloc_buf[1000000];
+    mbedtls_memory_buffer_alloc_init( alloc_buf, sizeof( alloc_buf ) );
+#endif
+
+    /*
+     * The C standard doesn't guarantee that all-bits-0 is the representation
+     * of a NULL pointer. We do however use that in our code for initializing
+     * structures, which should work on every modern platform. Let's be sure.
+     */
+    memset( &pointer, 0, sizeof( void * ) );
+    if( pointer != NULL )
+    {
+        mbedtls_fprintf( stderr, "all-bits-zero is not a NULL pointer\n" );
+        return( 1 );
+    }
+
+    /*
+     * Make sure we have a snprintf that correctly zero-terminates
+     */
+    if( run_test_snprintf() != 0 )
+    {
+        mbedtls_fprintf( stderr, "the snprintf implementation is broken\n" );
+        return( 1 );
+    }
+
+    while( arg_index < argc )
+    {
+        next_arg = argv[arg_index];
+
+        if( strcmp( next_arg, "--verbose" ) == 0 ||
+                 strcmp( next_arg, "-v" ) == 0 )
+        {
+            option_verbose = 1;
+        }
+        else if( strcmp(next_arg, "--help" ) == 0 ||
+                 strcmp(next_arg, "-h" ) == 0 )
+        {
+            mbedtls_fprintf( stdout, USAGE );
+            mbedtls_exit( EXIT_SUCCESS );
+        }
+        else
+        {
+            /* Not an option, therefore treat all further arguments as the file
+             * list.
+             */
+            test_files = &argv[ arg_index ];
+            testfile_count = argc - arg_index;
+        }
+
+        arg_index++;
+    }
+
+    /* If no files were specified, assume a default */
+    if ( test_files == NULL || testfile_count == 0 )
+    {
+        test_files = &default_filename;
+        testfile_count = 1;
+    }
+
+    /* Initialize the struct that holds information about the last test */
+    memset( &test_info, 0, sizeof( test_info ) );
+
+    /* Now begin to execute the tests in the testfiles */
+    for ( testfile_index = 0;
+          testfile_index < testfile_count;
+          testfile_index++ )
+    {
+        int unmet_dep_count = 0;
+        char *unmet_dependencies[20];
+
+        test_filename = test_files[ testfile_index ];
+
+        file = fopen( test_filename, "r" );
+        if( file == NULL )
+        {
+            mbedtls_fprintf( stderr, "Failed to open test file: %s\n",
+                             test_filename );
+            return( 1 );
+        }
+
+        while( !feof( file ) )
+        {
+            if( unmet_dep_count > 0 )
+            {
+                mbedtls_fprintf( stderr,
+                    "FATAL: Dep count larger than zero at start of loop\n" );
+                mbedtls_exit( MBEDTLS_EXIT_FAILURE );
+            }
+            unmet_dep_count = 0;
+
+            if( ( ret = get_line( file, buf, sizeof(buf) ) ) != 0 )
+                break;
+            mbedtls_fprintf( stdout, "%s%.66s", test_info.failed ? "\n" : "", buf );
+            mbedtls_fprintf( stdout, " " );
+            for( i = strlen( buf ) + 1; i < 67; i++ )
+                mbedtls_fprintf( stdout, "." );
+            mbedtls_fprintf( stdout, " " );
+            fflush( stdout );
+
+            total_tests++;
+
+            if( ( ret = get_line( file, buf, sizeof( buf ) ) ) != 0 )
+                break;
+            cnt = parse_arguments( buf, strlen( buf ), params,
+                                   sizeof( params ) / sizeof( params[0] ) );
+
+            if( strcmp( params[0], "depends_on" ) == 0 )
+            {
+                for( i = 1; i < cnt; i++ )
+                {
+                    int dep_id = strtol( params[i], NULL, 10 );
+                    if( dep_check( dep_id ) != DEPENDENCY_SUPPORTED )
+                    {
+                        if( 0 == option_verbose )
+                        {
+                            /* Only one count is needed if not verbose */
+                            unmet_dep_count++;
+                            break;
+                        }
+
+                        unmet_dependencies[ unmet_dep_count ] = strdup( params[i] );
+                        if(  unmet_dependencies[ unmet_dep_count ] == NULL )
+                        {
+                            mbedtls_fprintf( stderr, "FATAL: Out of memory\n" );
+                            mbedtls_exit( MBEDTLS_EXIT_FAILURE );
+                        }
+                        unmet_dep_count++;
+                    }
+                }
+
+                if( ( ret = get_line( file, buf, sizeof( buf ) ) ) != 0 )
+                    break;
+                cnt = parse_arguments( buf, strlen( buf ), params,
+                                       sizeof( params ) / sizeof( params[0] ) );
+            }
+
+            // If there are no unmet dependencies execute the test
+            if( unmet_dep_count == 0 )
+            {
+                test_info.failed = 0;
+                test_info.paramfail_test_state = PARAMFAIL_TESTSTATE_IDLE;
+
+#if defined(__unix__) || (defined(__APPLE__) && defined(__MACH__))
+                /* Suppress all output from the library unless we're verbose
+                 * mode
+                 */
+                if( !option_verbose )
+                {
+                    stdout_fd = redirect_output( &stdout, "/dev/null" );
+                    if( stdout_fd == -1 )
+                    {
+                        /* Redirection has failed with no stdout so exit */
+                        exit( 1 );
+                    }
+                }
+#endif /* __unix__ || __APPLE__ __MACH__ */
+
+                function_id = strtol( params[0], NULL, 10 );
+                if ( (ret = check_test( function_id )) == DISPATCH_TEST_SUCCESS )
+                {
+                    ret = convert_params( cnt - 1, params + 1, int_params );
+                    if ( DISPATCH_TEST_SUCCESS == ret )
+                    {
+                        ret = dispatch_test( function_id, (void **)( params + 1 ) );
+                    }
+                }
+
+#if defined(__unix__) || (defined(__APPLE__) && defined(__MACH__))
+                if( !option_verbose && restore_output( &stdout, stdout_fd ) )
+                {
+                        /* Redirection has failed with no stdout so exit */
+                        exit( 1 );
+                }
+#endif /* __unix__ || __APPLE__ __MACH__ */
+
+            }
+
+            if( unmet_dep_count > 0 || ret == DISPATCH_UNSUPPORTED_SUITE )
+            {
+                total_skipped++;
+                mbedtls_fprintf( stdout, "----" );
+
+                if( 1 == option_verbose && ret == DISPATCH_UNSUPPORTED_SUITE )
+                {
+                    mbedtls_fprintf( stdout, "\n   Test Suite not enabled" );
+                }
+
+                if( 1 == option_verbose && unmet_dep_count > 0 )
+                {
+                    mbedtls_fprintf( stdout, "\n   Unmet dependencies: " );
+                    for( i = 0; i < unmet_dep_count; i++ )
+                    {
+                        mbedtls_fprintf( stdout, "%s  ",
+                                        unmet_dependencies[i] );
+                        free( unmet_dependencies[i] );
+                    }
+                }
+                mbedtls_fprintf( stdout, "\n" );
+                fflush( stdout );
+
+                unmet_dep_count = 0;
+            }
+            else if( ret == DISPATCH_TEST_SUCCESS )
+            {
+                if( test_info.failed == 0 )
+                {
+                    mbedtls_fprintf( stdout, "PASS\n" );
+                }
+                else
+                {
+                    total_errors++;
+                    mbedtls_fprintf( stdout, "FAILED\n" );
+                    mbedtls_fprintf( stdout, "  %s\n  at line %d, %s\n",
+                                     test_info.test, test_info.line_no,
+                                     test_info.filename );
+                }
+                fflush( stdout );
+            }
+            else if( ret == DISPATCH_INVALID_TEST_DATA )
+            {
+                mbedtls_fprintf( stderr, "FAILED: FATAL PARSE ERROR\n" );
+                fclose( file );
+                mbedtls_exit( 2 );
+            }
+            else if( ret == DISPATCH_TEST_FN_NOT_FOUND )
+            {
+                mbedtls_fprintf( stderr, "FAILED: FATAL TEST FUNCTION NOT FUND\n" );
+                fclose( file );
+                mbedtls_exit( 2 );
+            }
+            else
+                total_errors++;
+        }
+        fclose( file );
+
+        /* In case we encounter early end of file */
+        for( i = 0; i < unmet_dep_count; i++ )
+            free( unmet_dependencies[i] );
+    }
+
+    mbedtls_fprintf( stdout, "\n----------------------------------------------------------------------------\n\n");
+    if( total_errors == 0 )
+        mbedtls_fprintf( stdout, "PASSED" );
+    else
+        mbedtls_fprintf( stdout, "FAILED" );
+
+    mbedtls_fprintf( stdout, " (%d / %d tests (%d skipped))\n",
+             total_tests - total_errors, total_tests, total_skipped );
+
+#if defined(MBEDTLS_MEMORY_BUFFER_ALLOC_C) && \
+    !defined(TEST_SUITE_MEMORY_BUFFER_ALLOC)
+#if defined(MBEDTLS_MEMORY_DEBUG)
+    mbedtls_memory_buffer_alloc_status();
+#endif
+    mbedtls_memory_buffer_alloc_free();
+#endif
+
+#if defined(__unix__) || (defined(__APPLE__) && defined(__MACH__))
+    if( stdout_fd != -1 )
+        close_output( stdout );
+#endif /* __unix__ || __APPLE__ __MACH__ */
+
+    return( total_errors != 0 );
+}

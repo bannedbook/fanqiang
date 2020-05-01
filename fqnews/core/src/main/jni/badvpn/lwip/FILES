@@ -1,0 +1,5 @@
+src/      - The source code for the lwIP TCP/IP stack.
+doc/      - The documentation for lwIP.
+test/     - Some code to test whether the sources do what they should.
+
+See also the FILES file in each subdirectory.

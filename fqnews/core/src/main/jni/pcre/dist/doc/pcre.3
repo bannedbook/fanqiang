@@ -1,0 +1,230 @@
+.TH PCRE 3 "10 February 2015" "PCRE 8.37"
+.SH NAME
+PCRE - Perl-compatible regular expressions (original API)
+.SH "PLEASE TAKE NOTE"
+.rs
+.sp
+This document relates to PCRE releases that use the original API,
+with library names libpcre, libpcre16, and libpcre32. January 2015 saw the
+first release of a new API, known as PCRE2, with release numbers starting at
+10.00 and library names libpcre2-8, libpcre2-16, and libpcre2-32. The old
+libraries (now called PCRE1) are still being maintained for bug fixes, but
+there will be no new development. New projects are advised to use the new PCRE2
+libraries.
+.
+.
+.SH INTRODUCTION
+.rs
+.sp
+The PCRE library is a set of functions that implement regular expression
+pattern matching using the same syntax and semantics as Perl, with just a few
+differences. Some features that appeared in Python and PCRE before they
+appeared in Perl are also available using the Python syntax, there is some
+support for one or two .NET and Oniguruma syntax items, and there is an option
+for requesting some minor changes that give better JavaScript compatibility.
+.P
+Starting with release 8.30, it is possible to compile two separate PCRE
+libraries: the original, which supports 8-bit character strings (including
+UTF-8 strings), and a second library that supports 16-bit character strings
+(including UTF-16 strings). The build process allows either one or both to be
+built. The majority of the work to make this possible was done by Zoltan
+Herczeg.
+.P
+Starting with release 8.32 it is possible to compile a third separate PCRE
+library that supports 32-bit character strings (including UTF-32 strings). The
+build process allows any combination of the 8-, 16- and 32-bit libraries. The
+work to make this possible was done by Christian Persch.
+.P
+The three libraries contain identical sets of functions, except that the names
+in the 16-bit library start with \fBpcre16_\fP instead of \fBpcre_\fP, and the
+names in the 32-bit library start with \fBpcre32_\fP instead of \fBpcre_\fP. To
+avoid over-complication and reduce the documentation maintenance load, most of
+the documentation describes the 8-bit library, with the differences for the
+16-bit and 32-bit libraries described separately in the
+.\" HREF
+\fBpcre16\fP
+and
+.\" HREF
+\fBpcre32\fP
+.\"
+pages. References to functions or structures of the form \fIpcre[16|32]_xxx\fP
+should be read as meaning "\fIpcre_xxx\fP when using the 8-bit library,
+\fIpcre16_xxx\fP when using the 16-bit library, or \fIpcre32_xxx\fP when using
+the 32-bit library".
+.P
+The current implementation of PCRE corresponds approximately with Perl 5.12,
+including support for UTF-8/16/32 encoded strings and Unicode general category
+properties. However, UTF-8/16/32 and Unicode support has to be explicitly
+enabled; it is not the default. The Unicode tables correspond to Unicode
+release 6.3.0.
+.P
+In addition to the Perl-compatible matching function, PCRE contains an
+alternative function that matches the same compiled patterns in a different
+way. In certain circumstances, the alternative function has some advantages.
+For a discussion of the two matching algorithms, see the
+.\" HREF
+\fBpcrematching\fP
+.\"
+page.
+.P
+PCRE is written in C and released as a C library. A number of people have
+written wrappers and interfaces of various kinds. In particular, Google Inc.
+have provided a comprehensive C++ wrapper for the 8-bit library. This is now
+included as part of the PCRE distribution. The
+.\" HREF
+\fBpcrecpp\fP
+.\"
+page has details of this interface. Other people's contributions can be found
+in the \fIContrib\fP directory at the primary FTP site, which is:
+.sp
+.\" HTML <a href="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre">
+.\" </a>
+ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre
+.\"
+.P
+Details of exactly which Perl regular expression features are and are not
+supported by PCRE are given in separate documents. See the
+.\" HREF
+\fBpcrepattern\fP
+.\"
+and
+.\" HREF
+\fBpcrecompat\fP
+.\"
+pages. There is a syntax summary in the
+.\" HREF
+\fBpcresyntax\fP
+.\"
+page.
+.P
+Some features of PCRE can be included, excluded, or changed when the library is
+built. The
+.\" HREF
+\fBpcre_config()\fP
+.\"
+function makes it possible for a client to discover which features are
+available. The features themselves are described in the
+.\" HREF
+\fBpcrebuild\fP
+.\"
+page. Documentation about building PCRE for various operating systems can be
+found in the
+.\" HTML <a href="README.txt">
+.\" </a>
+\fBREADME\fP
+.\"
+and
+.\" HTML <a href="NON-AUTOTOOLS-BUILD.txt">
+.\" </a>
+\fBNON-AUTOTOOLS_BUILD\fP
+.\"
+files in the source distribution.
+.P
+The libraries contains a number of undocumented internal functions and data
+tables that are used by more than one of the exported external functions, but
+which are not intended for use by external callers. Their names all begin with
+"_pcre_" or "_pcre16_" or "_pcre32_", which hopefully will not provoke any name
+clashes. In some environments, it is possible to control which external symbols
+are exported when a shared library is built, and in these cases the
+undocumented symbols are not exported.
+.
+.
+.SH "SECURITY CONSIDERATIONS"
+.rs
+.sp
+If you are using PCRE in a non-UTF application that permits users to supply
+arbitrary patterns for compilation, you should be aware of a feature that
+allows users to turn on UTF support from within a pattern, provided that PCRE
+was built with UTF support. For example, an 8-bit pattern that begins with
+"(*UTF8)" or "(*UTF)" turns on UTF-8 mode, which interprets patterns and
+subjects as strings of UTF-8 characters instead of individual 8-bit characters.
+This causes both the pattern and any data against which it is matched to be
+checked for UTF-8 validity. If the data string is very long, such a check might
+use sufficiently many resources as to cause your application to lose
+performance.
+.P
+One way of guarding against this possibility is to use the
+\fBpcre_fullinfo()\fP function to check the compiled pattern's options for UTF.
+Alternatively, from release 8.33, you can set the PCRE_NEVER_UTF option at
+compile time. This causes an compile time error if a pattern contains a
+UTF-setting sequence.
+.P
+If your application is one that supports UTF, be aware that validity checking
+can take time. If the same data string is to be matched many times, you can use
+the PCRE_NO_UTF[8|16|32]_CHECK option for the second and subsequent matches to
+save redundant checks.
+.P
+Another way that performance can be hit is by running a pattern that has a very
+large search tree against a string that will never match. Nested unlimited
+repeats in a pattern are a common example. PCRE provides some protection
+against this: see the PCRE_EXTRA_MATCH_LIMIT feature in the
+.\" HREF
+\fBpcreapi\fP
+.\"
+page.
+.
+.
+.SH "USER DOCUMENTATION"
+.rs
+.sp
+The user documentation for PCRE comprises a number of different sections. In
+the "man" format, each of these is a separate "man page". In the HTML format,
+each is a separate page, linked from the index page. In the plain text format,
+the descriptions of the \fBpcregrep\fP and \fBpcretest\fP programs are in files
+called \fBpcregrep.txt\fP and \fBpcretest.txt\fP, respectively. The remaining
+sections, except for the \fBpcredemo\fP section (which is a program listing),
+are concatenated in \fBpcre.txt\fP, for ease of searching. The sections are as
+follows:
+.sp
+  pcre              this document
+  pcre-config       show PCRE installation configuration information
+  pcre16            details of the 16-bit library
+  pcre32            details of the 32-bit library
+  pcreapi           details of PCRE's native C API
+  pcrebuild         building PCRE
+  pcrecallout       details of the callout feature
+  pcrecompat        discussion of Perl compatibility
+  pcrecpp           details of the C++ wrapper for the 8-bit library
+  pcredemo          a demonstration C program that uses PCRE
+  pcregrep          description of the \fBpcregrep\fP command (8-bit only)
+  pcrejit           discussion of the just-in-time optimization support
+  pcrelimits        details of size and other limits
+  pcrematching      discussion of the two matching algorithms
+  pcrepartial       details of the partial matching facility
+.\" JOIN
+  pcrepattern       syntax and semantics of supported
+                      regular expressions
+  pcreperform       discussion of performance issues
+  pcreposix         the POSIX-compatible C API for the 8-bit library
+  pcreprecompile    details of saving and re-using precompiled patterns
+  pcresample        discussion of the pcredemo program
+  pcrestack         discussion of stack usage
+  pcresyntax        quick syntax reference
+  pcretest          description of the \fBpcretest\fP testing command
+  pcreunicode       discussion of Unicode and UTF-8/16/32 support
+.sp
+In the "man" and HTML formats, there is also a short page for each C library
+function, listing its arguments and results.
+.
+.
+.SH AUTHOR
+.rs
+.sp
+.nf
+Philip Hazel
+University Computing Service
+Cambridge CB2 3QH, England.
+.fi
+.P
+Putting an actual email address here seems to have been a spam magnet, so I've
+taken it away. If you want to email me, use my two initials, followed by the
+two digits 10, at the domain cam.ac.uk.
+.
+.
+.SH REVISION
+.rs
+.sp
+.nf
+Last updated: 10 February 2015
+Copyright (c) 1997-2015 University of Cambridge.
+.fi

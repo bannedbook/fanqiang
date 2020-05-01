@@ -1,0 +1,386 @@
+# This file contains some examples of using NCD, the Network Configuration Daemon.
+#
+# A short introduction to NCD follows.
+#
+# NCD is a general-purpose system configuration system, operated with a unique programming language.
+# The configuration consists of one or more so-called processes that can be considered executing in
+# parallel. Further, each process consists of one or more statements, representing the individual
+# actions. Statements are implemented as modules built into NCD.
+#
+# Inside a process, statements can be considered "executed" one after another. That is, when NCD
+# starts up, it initializes the first statement, putting it in the DOWN state. When the statement
+# reports having transitioned into the UP state, it initializes the next statement in the DOWN state,
+# and so on.
+#
+# However, execution can go in the other direction too. A statement in the UP state can, at any time,
+# report having transitioned into the DOWN state. At this point, any statements after that one will
+# automatically be de-initialized. The de-initiazation is done from the bottom up. First the last
+# initialized statement after the problematic statement is requested to terminate and enters the
+# DYING state. After it terminates, its preceding statement enters the DYING state, and so on, until
+# all statements following the problematic statement have been de-initiazed.
+#
+# The backward-execution is the key feature of NCD, and is particularly well suited for programming
+# system configurations. Read on to see why.
+#
+# Statements in NCD can be divided into two categories:
+#   - Statements that configure something. These statements transition into the UP state "immediately".
+#     On de-initialization, such statements perform the reverse operation of what they did when initialized.
+#     Imaginary example: a statement that turn a light on intialization, and turns if off on de-initialization.
+#   - Statements that wait for something. These statements may remain in the DOWN state indefinitely.
+#     They enter the UP state when the waited-for condition is satisfied, and also go back into the DOWN
+#     state when it is no longer satisfied.
+#     Imaginary example: a statement that is UP when a switch is turned on, and DOWN when it is turned off.
+#
+# Using the two example statements, we can constuct a process that controls the light based on the switch:
+# (these are not really implemented in NCD :)
+#
+#  process light {
+#      wait_switch();
+#      turn_light();
+#  }
+#
+# When the switch is turned on, wait_switch() will transition to UP, initializing turn_light(), turning the
+# light on. When the switch is turned off, wait_switch() will transition to DOWN, causing the de-initialization
+# of turn_light(), turning the light off.
+# We can add another turn_light() at the end to make the switch control two lights.
+#
+# A more complex example: We have a christmas three with lights on it. There are multiple "regular" lights,
+# controlled with switches, and a special "top" light. The regular lights take a long time to turn on, and
+# each takes a different, unpredictable time. We want the top light to be turned on if and only if all the regular
+# lights are completely on.
+#
+# This problem can easily be solved using dependencies. NCD has built-in support for dependencies, provided
+# in the form of provide() and depend() statements. A depend() statement is DOWN when its corresponding
+# provide() statement is not initialized, and UP when it is. When a provide() is requested to de-initialize, it
+# transitions the depend() statements back into the DOWN state, and, before actually dying, waits for any
+# statements following them to de-initialize.
+#
+# The christmas three problem can then be programmed as follows:
+#
+# process light1 {
+#     wait_switch1();
+#     turn_light1();
+#     provide("L1");
+# }
+#
+# process light2 {
+#     wait_switch2();
+#     turn_light2();
+#     provide("L2");
+# }
+#
+# process top_light {
+#     depend("L1");
+#     depend("L2");
+#     turn_top_light();
+# }
+#
+# Follow some real examples of network configuration using NCD.
+# For a list of implemented statements and their descriptions, take a look at the BadVPN source code, in
+# the ncd/modules/ folder.
+#
+
+#
+# Network card using DHCP.
+#
+
+process lan {
+    # Make the interface name a variable so we can refer to it.
+    # The NCD language has no notion of assigning a variable. Instead variables are
+    # provided by statements preceding the statement where they are used.
+    # The built-in var() statement can be used to make an alias.
+    var("eth0") dev;
+
+    # Wait for the network card to appear, set it up and wait for the cable to be
+    # plugged it.
+    net.backend.waitdevice(dev);
+    net.up(dev);
+    net.backend.waitlink(dev);
+
+    # Start DHCP.
+    net.ipv4.dhcp(dev) dhcp;
+    
+    # DHCP has obtained an address.
+    # Because net.ipv4.dhcp does no checks of the IP address, as a safety measure, do not proceed
+    # if the address is local.
+    ip_in_network(dhcp.addr, "127.0.0.0", "8") test_local;
+    ifnot(test_local);
+
+    # Assign the obtained address to the interface.
+    net.ipv4.addr(dev, dhcp.addr, dhcp.prefix);
+
+    # Add a default route.
+    # <dest> <dest_prefix> <gateway/"none"> <metric> <device>
+    net.ipv4.route("0.0.0.0", "0", dhcp.gateway, "20", dev);
+
+    # Add DNS servers, as provided by DHCP.
+    # "20" is the priority of the servers. When applying DNS servers, NCD collects the servers
+    # from all active net.dns() statements, sorts them by priority ascending (stable), and writes
+    # them to /etc/resolv.conf, overwriting anything that was previously there.
+    net.dns(dhcp.dns_servers, "20");
+}
+
+#
+# Network card with static configuration.
+#
+
+process lan2 {
+    # Make the interface name a variable so we can refer to it.
+    var("eth1") dev;
+
+    # Wait for the network card to appear, set it up and wait for the cable to be
+    # plugged it.
+    net.backend.waitdevice(dev);
+    net.up(dev);
+    net.backend.waitlink(dev);
+
+    # Assign an IP address.
+    # "24" is prefix length, i.e. subnet mask 255.255.255.0
+    net.ipv4.addr(dev, "192.168.62.3", "24");
+
+    # Add a default route.
+    net.ipv4.route("0.0.0.0", "0", "192.168.62.3", "20", dev);
+
+    # Build a list of DNS servers.
+    # The NCD language does not support "expressions" - statement arguments must be
+    # constant strings or variables referring to preceding statements.
+    # A list can be constructed using the built-in list() statement.
+    list("192.168.62.5", "192.168.62.6") dns_servers;
+
+    # Add the DNS servers.
+    net.dns(dns_servers, "20");
+}
+
+#
+# Wireless network interface using wpa_supplicant.
+#
+
+process WLAN {
+    # Set device.
+    var("wlan0") dev;
+
+    # Wait for device and rfkill switch.
+    net.backend.waitdevice(dev);
+    net.backend.rfkill("wlan", dev);
+
+    # Start wpa_supplicant on this interface, using configuration in /etc/wpa_supplicant/all.conf .
+    list() args;
+    net.backend.wpa_supplicant(dev, "/etc/wpa_supplicant/all.conf", "/usr/sbin/wpa_supplicant", args) sup;
+
+    # wpa_supplicant tells us what network we connected to. Look below for how this can be used to
+    # have different configurations, "BadVPN, but configured differently based on what network we're in".
+    println("connected to wireless network: bssid=", sup.bssid, " ssid=", sup.ssid);
+
+    # Wireless connection successful, here comes network config (DHCP/static/whatever) ...
+}
+
+#
+# A BadVPN VPN interface for access to the virtual network (only).
+#
+
+process lan {
+    ... (something like above) ...
+
+    # Alias our IP address for easy access from the "vpn" process (or, for a static address, alias
+    # it before assigning it, and assign it using the alias).
+    var(dhcp.addr) ipaddr;
+
+    # Allow VPN to start at this point.
+    # (and require it to stop before deconfiguring the interface if e.g. the cable is plugged out)
+    provide("LAN");
+}
+
+process vpn {
+    # Need the local interface to be working in order start VPN.
+    depend("LAN") landep;
+
+    # Choose the name of the network interface.
+    var("tap3") dev;
+
+    # Construct command line arguments for badvpn-client. Adapt according to your setup.
+    # "--tapdev" will be provided automatically.
+
+    # Alias the port number that the VPN process will bind to.
+    var("6000") port;
+
+    # Construct dynamic parts of command line options.
+    # The VPN client program needs to know some IP addresses in order to tell other peers where to connect to.
+    # Obtain this informations from variables in the "lan" process through the depend() statement.
+
+    # Construct the local address (addr + port).
+    concat(landep.ipaddr, ":", port) local_addr_arg;
+
+    # Construct the Internet address (assuming we are behind a NAT).
+    # Need to know the NAT's external address here. But we could queried it somehow.
+    # That is if we have preconfigured the NAT router to forward ports. But we could implement a statement
+    # that obtains the mappings dynamically with UPnP!
+    concat("1.2.3.4", ":", port) internet_addr_arg;
+
+    # Finally construct the complete arguments, using the above address arguments.
+    list(
+        "--logger", "syslog", "--syslog-ident", "badvpn",
+        "--server-addr", "badvpn.example.com:7000",
+        "--ssl", "--nssdb", "sql:/home/badvpn/nssdb", "--client-cert-name", "peer-someone",
+        "--transport-mode", "udp", "--encryption-mode", "blowfish", "--hash-mode", "md5", "--otp", "blowfish", "3000", "2000",
+        "--scope", "mylan", "--scope", "internet",
+        "--bind-addr", "0.0.0.0:6000", "--num-ports", "20",
+                "--ext-addr", local_addr_arg, "mylan",
+                "--ext-addr", internet_addr_arg, "internet"
+    ) args;
+
+    # Start the BadVPN backend.
+    # "badvpn" is the user account which the VPN client will run as.
+    # If you use SSL, the NSS database must be accessible to this user.
+    net.backend.badvpn(dev, "badvpn", "/usr/bin/badvpn-client-26", args);
+
+    # Assign an IP address to the VPN interface.
+    # (we could easily use DHCP here!)
+    net.ipv4.addr(dev, "10.0.0.1", "24");
+}
+
+#
+# BadVPN, but configured differently based on what network we're in.
+# The network is identified based on the IP address we were assigned by DHCP.
+# The different configuration provide specific arguents to badvpn-client.
+#
+
+process lan {
+    ... (interface config stuff using DHCP, see above) ...
+    ... (the 'ipaddr' variable holds the local IP address) ...
+
+    # Match the address to various known networks.
+    ip_in_network(ipaddr, "192.168.4.0", "24") is_lan1;
+    ip_in_network(ipaddr, "192.168.7.0", "24") is_lan2;
+
+    # Allow VPN to start at this point.
+    provide("LAN");
+}
+
+process vpn {
+    ...
+
+    # Construct common arguments here ...
+    list( ... ) common_args;
+
+    # Choose appropriate configuration by waking up the configuration processes
+    # and waiting for one to complete.
+    provide("VPN_CONF_START");
+    depend("VPN_CONF_END") config;
+
+    # Concatenate common and configuration-specific arguments.
+    concatlist(common_args, config.args) args;
+
+    ...
+}
+
+process vpn_config_lan1 {
+    depend("VPN_CONF_START") dep;
+
+    # Proceed only if we're in lan1.
+    if(dep.landep.is_lan1);
+
+    list(
+        ...
+    ) args;
+
+    provide("VPN_CONF_END");
+}
+
+process vpn_config_lan2 {
+    depend("VPN_CONF_START") dep;
+
+    # Proceed only if we're in lan2.
+    if(dep.landep.is_lan2);
+
+    list(
+        ...
+    ) args;
+
+    provide("VPN_CONF_END");
+}
+
+process vpn_config_inet {
+    depend("VPN_CONF_START") dep;
+
+    # Proceed only if we're not in any known network.
+    ifnot(dep.landep.is_lan1);
+    ifnot(dep.landep.is_lan2);
+
+    list(
+        ...
+    ) args;
+
+    provide("VPN_CONF_END");
+}
+
+#
+# Two wired network interfaces (eth0, eth1), both of which may be used for Internet access.
+# When both are working, give priority to eth1 (e.g. if eth0 is up, but later eth1 also comes
+# up, the configuration will be changed to use eth1 for Internet access).
+#
+
+process eth0 {
+    # Set device.
+    var("eth0") dev;
+
+    # Wait for device.
+    net.backend.waitdevice(dev);
+    net.up(dev);
+    net.backend.waitlink(dev);
+
+    # DHCP configuration.
+    net.ipv4.dhcp(dev) dhcp;
+    ip_in_network(dhcp.addr, "127.0.0.0", "8") test_local;
+    ifnot(test_local);
+    var(dhcp.addr) addr;
+    var(dhcp.prefix) addr_prefix;
+    var(dhcp.gateway) gateway;
+    var(dhcp.dns_servers) dns_servers;
+
+    # Assign IP address.
+    net.ipv4.addr(dev, addr, addr_prefix);
+
+    # Go on configuring the network.
+    multiprovide("NET-eth0");
+}
+
+process eth1 {
+    # Set device.
+    var("eth1") dev;
+
+    # Wait for device.
+    net.backend.waitdevice(dev);
+    net.up(dev);
+    net.backend.waitlink(dev);
+
+    # Static configuration.
+    var("192.168.111.116") addr;
+    var("24") addr_prefix;
+    var("192.168.111.1") gateway;
+    list("192.168.111.14", "193.2.1.66") dns_servers;
+
+    # Assign IP address.
+    net.ipv4.addr(dev, addr, addr_prefix);
+
+    # Go on configuring the network.
+    multiprovide("NET-eth1");
+}
+
+process NETCONF {
+    # Wait for some network connection. Prefer eth1 by putting it in front of eth0.
+    list("NET-eth1", "NET-eth0") pnames;
+    multidepend(pnames) ifdep;
+
+    # Alias device values.
+    var(ifdep.dev) dev;
+    var(ifdep.addr) addr;
+    var(ifdep.addr_prefix) addr_prefix;
+    var(ifdep.gateway) gateway;
+    var(ifdep.dns_servers) dns_servers;
+
+    # Add default route.
+    net.ipv4.route("0.0.0.0", "0", gateway, "20", dev);
+
+    # Configure DNS servers.
+    net.dns(dns_servers, "20");
+}

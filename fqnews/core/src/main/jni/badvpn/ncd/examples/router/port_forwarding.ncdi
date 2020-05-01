@@ -1,0 +1,170 @@
+include_guard "port_forwarding"
+
+template port_forwarding {
+    alias("_arg0") forwardings_file;
+    alias("_arg1") template_forward;
+
+    # Map which holds the set of current port forwardings.
+    # Enties are: {protocol, port_start, port_end, dest_addr}:""
+    value([]) map;
+
+    # Blocker which is initially down and is toggled down-up
+    # whenever the forwarding change.
+    blocker() update_blocker;
+
+    # Process manager, each forwarding has a port_forwarding__instance process.
+    # The process identifiers are the same as the keys in the map.
+    process_manager() mgr;
+
+    # Spawn a process for dealing with storage of port forwardings on disk.
+    spawn("port_forwarding__stored", {});
+}
+
+template port_forwarding__instance {
+    alias("_caller") pf;
+    alias("_arg0") protocol;
+    alias("_arg1") port_start;
+    alias("_arg2") port_end;
+    alias("_arg3") dest_addr;
+
+    log("notice", "adding port forwarding ", protocol, ":", port_start, ":", port_end, " to ", dest_addr);
+    log_r("notice", "removed port forwarding ", protocol, ":", port_start, ":", port_end, " to ", dest_addr);
+
+    # Do the forwarding.
+    call_with_caller_target(pf.template_forward, {protocol, port_start, port_end, dest_addr}, "pf._caller");
+}
+
+template port_forwarding_add {
+    alias(_arg0) pf;
+    alias("_arg1") protocol;
+    alias("_arg2") port_start;
+    alias("_arg3") port_end;
+    alias("_arg4") dest_addr;
+
+    var("false") succeeded;
+    var("") error_text;
+    var("true") not_finished;
+    backtrack_point() finished_point;
+
+    If (not_finished) {
+        # Check for conflicts with existing forwardings.
+        Foreach (pf.map.keys As entry) {
+            value(entry) entry;
+            entry->get("0") e_protocol;
+            entry->get("1") e_port_start;
+            entry->get("2") e_port_end;
+
+            val_different(protocol, e_protocol) different_protocol;
+            num_lesser(port_end, e_port_start) before;
+            num_greater(port_start, e_port_end) after;
+            or(different_protocol, before, after) no_conflict;
+            not(no_conflict) conflict;
+
+            If (conflict) {
+                error_text->set("Port forwarding conflicts with an existing forwarding.");
+                not_finished->set("false");
+                finished_point->go();
+            };
+        };
+
+        # Build entry key.
+        var({protocol, port_start, port_end, dest_addr}) key;
+
+        # Insert to map and toggle blocker.
+        pf.map->insert(key, "");
+        pf.update_blocker->downup();
+
+        # Start process.
+        pf.mgr->start(key, "port_forwarding__instance", {protocol, port_start, port_end, dest_addr});
+
+        succeeded->set("true");
+        not_finished->set("false");
+        finished_point->go();
+    };
+}
+
+template port_forwarding_remove {
+    alias(_arg0) pf;
+    alias("_arg1") protocol;
+    alias("_arg2") port_start;
+    alias("_arg3") port_end;
+    alias("_arg4") dest_addr;
+
+    var("false") succeeded;
+    var("") error_text;
+    var("true") not_finished;
+    backtrack_point() finished_point;
+
+    If (not_finished) {
+        # Build entry key.
+        var({protocol, port_start, port_end, dest_addr}) key;
+
+        # Check if the forwarding exists.
+        pf.map->try_get(key) entry;
+        not(entry.exists) does_not_exist;
+        If (does_not_exist) {
+            error_text->set("Port forwarding does not exist.");
+            not_finished->set("false");
+            finished_point->go();
+        };
+
+        # Stop process.
+        pf.mgr->stop(key);
+
+        # Remove from map and toggle blocker.
+        pf.map->remove(key);
+        pf.update_blocker->downup();
+
+        succeeded->set("true");
+        not_finished->set("false");
+        finished_point->go();
+    };
+}
+
+template port_forwarding__stored {
+    alias("_caller") pf;
+
+    # Create file if it doesn't exist.
+    file_stat(pf.forwardings_file) stat;
+    If (stat.succeeded) { print(); } Else {
+        file_write(pf.forwardings_file, "{}\n");
+    };
+
+    # Read port forwardings from file.
+    file_read(pf.forwardings_file) data;
+    from_string(data) forwardings;
+
+    # Add them.
+    Foreach (forwardings As fwd) {
+        value(fwd) fwd;
+        fwd->get("0") protocol;
+        fwd->get("1") port_start;
+        fwd->get("2") port_end;
+        fwd->get("3") dest_addr;
+        call("port_forwarding_add", {"_caller.pf", protocol, port_start, port_end, dest_addr});
+    };
+
+    # Write forwardings to file on exit.
+    imperative("<none>", {}, "port_forwarding__write", {}, "6000");
+
+    # Also write forwardings whenever they are changed.
+    pf.update_blocker->use();
+    call("port_forwarding__write", {});
+}
+
+template port_forwarding__write {
+    alias("_caller.pf") pf;
+
+    # Convert forwardings to string.
+    to_string(pf.map.keys) data;
+    concat(data, "\n") data;
+
+    # Build name of temporary file.
+    concat(pf.forwardings_file, ".new") temp_file;
+
+    # Write temporary file.
+    file_write(temp_file, data);
+
+    # Move to live file.
+    runonce({"/bin/mv", temp_file, pf.forwardings_file});
+}

@@ -1,0 +1,2 @@
+ipsetdot: You must specify exactly one input file.
+Usage: ipsetdot [options] <input filename>

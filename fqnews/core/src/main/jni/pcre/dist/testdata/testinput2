@@ -1,0 +1,4220 @@
+/-- This set of tests is not Perl-compatible. It checks on special features
+    of PCRE's API, error diagnostics, and the compiled code of some patterns.
+    It also checks the non-Perl syntax the PCRE supports (Python, .NET, 
+    Oniguruma). Finally, there are some tests where PCRE and Perl differ, 
+    either because PCRE can't be compatible, or there is a possible Perl 
+    bug.
+    
+    NOTE: This is a non-UTF set of tests. When UTF support is needed, use
+    test 5, and if Unicode Property Support is needed, use test 7. --/
+    
+< forbid 8W 
+  
+/(a)b|/I
+
+/abc/I
+    abc
+    defabc
+    \Aabc
+    *** Failers
+    \Adefabc
+    ABC
+
+/^abc/I
+    abc
+    \Aabc
+    *** Failers
+    defabc
+    \Adefabc
+
+/a+bc/I
+
+/a*bc/I
+
+/a{3}bc/I
+
+/(abc|a+z)/I
+
+/^abc$/I
+    abc
+    *** Failers
+    def\nabc
+
+/ab\idef/X
+
+/(?X)ab\idef/X
+
+/x{5,4}/
+
+/z{65536}/
+
+/[abcd/
+
+/(?X)[\B]/
+
+/(?X)[\R]/
+
+/(?X)[\X]/
+
+/[\B]/BZ
+
+/[\R]/BZ
+
+/[\X]/BZ
+
+/[z-a]/
+
+/^*/
+
+/(abc/
+
+/(?# abc/
+
+/(?z)abc/
+
+/.*b/I
+
+/.*?b/I
+
+/cat|dog|elephant/I
+    this sentence eventually mentions a cat
+    this sentences rambles on and on for a while and then reaches elephant
+
+/cat|dog|elephant/IS
+    this sentence eventually mentions a cat
+    this sentences rambles on and on for a while and then reaches elephant
+
+/cat|dog|elephant/IiS
+    this sentence eventually mentions a CAT cat
+    this sentences rambles on and on for a while to elephant ElePhant
+
+/a|[bcd]/IS
+
+/(a|[^\dZ])/IS
+
+/(a|b)*[\s]/IS
+
+/(ab\2)/
+
+/{4,5}abc/
+
+/(a)(b)(c)\2/I
+    abcb
+    \O0abcb
+    \O3abcb
+    \O6abcb
+    \O9abcb
+    \O12abcb
+
+/(a)bc|(a)(b)\2/I
+    abc
+    \O0abc
+    \O3abc
+    \O6abc
+    aba
+    \O0aba
+    \O3aba
+    \O6aba
+    \O9aba
+    \O12aba
+
+/abc$/IE
+    abc
+    *** Failers
+    abc\n
+    abc\ndef
+
+/(a)(b)(c)(d)(e)\6/
+
+/the quick brown fox/I
+    the quick brown fox
+    this is a line with the quick brown fox
+
+/the quick brown fox/IA
+    the quick brown fox
+    *** Failers
+    this is a line with the quick brown fox
+
+/ab(?z)cd/
+
+/^abc|def/I
+    abcdef
+    abcdef\B
+
+/.*((abc)$|(def))/I
+    defabc
+    \Zdefabc
+
+/)/
+
+/a[]b/
+
+/[^aeiou ]{3,}/I
+    co-processors, and for
+
+/<.*>/I
+    abc<def>ghi<klm>nop
+
+/<.*?>/I
+    abc<def>ghi<klm>nop
+
+/<.*>/IU
+    abc<def>ghi<klm>nop
+
+/(?U)<.*>/I
+    abc<def>ghi<klm>nop
+
+/<.*?>/IU
+    abc<def>ghi<klm>nop
+
+/={3,}/IU
+    abc========def
+
+/(?U)={3,}?/I
+    abc========def
+
+/(?<!bar|cattle)foo/I
+    foo
+    catfoo
+    *** Failers
+    the barfoo
+    and cattlefoo
+
+/(?<=a+)b/
+
+/(?<=aaa|b{0,3})b/
+
+/(?<!(foo)a\1)bar/
+
+/(?i)abc/I
+
+/(a|(?m)a)/I
+
+/(?i)^1234/I
+
+/(^b|(?i)^d)/I
+
+/(?s).*/I
+
+/[abcd]/IS
+
+/(?i)[abcd]/IS
+
+/(?m)[xy]|(b|c)/IS
+
+/(^a|^b)/Im
+
+/(?i)(^a|^b)/Im
+
+/(a)(?(1)a|b|c)/
+
+/(?(?=a)a|b|c)/
+
+/(?(1a)/
+
+/(?(1a))/
+
+/(?(?i))/
+
+/(?(abc))/
+
+/(?(?<ab))/
+
+/((?s)blah)\s+\1/I
+
+/((?i)blah)\s+\1/I
+
+/((?i)b)/IDZS
+
+/(a*b|(?i:c*(?-i)d))/IS
+
+/a$/I
+    a
+    a\n
+    *** Failers
+    \Za
+    \Za\n
+
+/a$/Im
+    a
+    a\n
+    \Za\n
+    *** Failers
+    \Za
+
+/\Aabc/Im
+
+/^abc/Im
+
+/^((a+)(?U)([ab]+)(?-U)([bc]+)(\w*))/I
+  aaaaabbbbbcccccdef
+
+/(?<=foo)[ab]/IS
+
+/(?<!foo)(alpha|omega)/IS
+
+/(?!alphabet)[ab]/IS
+
+/(?<=foo\n)^bar/Im
+    foo\nbarbar
+    ***Failers
+    rhubarb
+    barbell
+    abc\nbarton
+
+/^(?<=foo\n)bar/Im
+    foo\nbarbar
+    ***Failers
+    rhubarb
+    barbell
+    abc\nbarton
+
+/(?>^abc)/Im
+    abc
+    def\nabc
+    *** Failers
+    defabc
+
+/(?<=ab(c+)d)ef/
+
+/(?<=ab(?<=c+)d)ef/
+
+/(?<=ab(c|de)f)g/
+
+/The next three are in testinput2 because they have variable length branches/
+
+/(?<=bullock|donkey)-cart/I
+    the bullock-cart
+    a donkey-cart race
+    *** Failers
+    cart
+    horse-and-cart
+
+/(?<=ab(?i)x|y|z)/I
+
+/(?>.*)(?<=(abcd)|(xyz))/I
+    alphabetabcd
+    endingxyz
+
+/(?<=ab(?i)x(?-i)y|(?i)z|b)ZZ/I
+    abxyZZ
+    abXyZZ
+    ZZZ
+    zZZ
+    bZZ
+    BZZ
+    *** Failers
+    ZZ
+    abXYZZ
+    zzz
+    bzz
+
+/(?<!(foo)a)bar/I
+    bar
+    foobbar
+    *** Failers
+    fooabar
+
+/This one is here because Perl behaves differently; see also the following/I
+
+/^(a\1?){4}$/I
+    aaaa
+    aaaaaa
+    
+/Perl does not fail these two for the final subjects. Neither did PCRE until/
+/release 8.01. The problem is in backtracking into a subpattern that contains/
+/a recursive reference to itself. PCRE has now made these into atomic patterns./
+
+/^(xa|=?\1a){2}$/
+    xa=xaa
+    ** Failers
+    xa=xaaa
+
+/^(xa|=?\1a)+$/
+    xa=xaa
+    ** Failers
+    xa=xaaa
+
+/These are syntax tests from Perl 5.005/I
+
+/a[b-a]/
+
+/a[]b/
+
+/a[/
+
+/*a/
+
+/(*)b/
+
+/abc)/
+
+/(abc/
+
+/a**/
+
+/)(/
+
+/\1/
+
+/\2/
+
+/(a)|\2/
+
+/a[b-a]/Ii
+
+/a[]b/Ii
+
+/a[/Ii
+
+/*a/Ii
+
+/(*)b/Ii
+
+/abc)/Ii
+
+/(abc/Ii
+
+/a**/Ii
+
+/)(/Ii
+
+/:(?:/
+
+/(?<%)b/
+
+/a(?{)b/
+
+/a(?{{})b/
+
+/a(?{}})b/
+
+/a(?{"{"})b/
+
+/a(?{"{"}})b/
+
+/(?(1?)a|b)/
+
+/[a[:xyz:/
+
+/(?<=x+)y/
+
+/a{37,17}/
+
+/abc/\
+
+/abc/\i
+
+/(a)bc(d)/I
+    abcd
+    abcd\C2
+    abcd\C5
+
+/(.{20})/I
+    abcdefghijklmnopqrstuvwxyz
+    abcdefghijklmnopqrstuvwxyz\C1
+    abcdefghijklmnopqrstuvwxyz\G1
+
+/(.{15})/I
+    abcdefghijklmnopqrstuvwxyz
+    abcdefghijklmnopqrstuvwxyz\C1\G1
+
+/(.{16})/I
+    abcdefghijklmnopqrstuvwxyz
+    abcdefghijklmnopqrstuvwxyz\C1\G1\L
+
+/^(a|(bc))de(f)/I
+    adef\G1\G2\G3\G4\L
+    bcdef\G1\G2\G3\G4\L
+    adefghijk\C0
+
+/^abc\00def/I
+    abc\00def\L\C0
+
+/word ((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+
+)((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+ )((?:[a-zA-Z0-9]+
+)?)?)?)?)?)?)?)?)?otherword/I
+
+/.*X/IDZ
+
+/.*X/IDZs
+
+/(.*X|^B)/IDZ
+
+/(.*X|^B)/IDZs
+
+/(?s)(.*X|^B)/IDZ
+
+/(?s:.*X|^B)/IDZ
+
+/\Biss\B/I+
+    Mississippi
+
+/iss/IG+
+    Mississippi
+
+/\Biss\B/IG+
+    Mississippi
+
+/\Biss\B/Ig+
+    Mississippi
+    *** Failers
+    Mississippi\A
+
+/(?<=[Ms])iss/Ig+
+    Mississippi
+
+/(?<=[Ms])iss/IG+
+    Mississippi
+
+/^iss/Ig+
+    ississippi
+
+/.*iss/Ig+
+    abciss\nxyzisspqr
+
+/.i./I+g
+    Mississippi
+    Mississippi\A
+    Missouri river
+    Missouri river\A
+
+/^.is/I+g
+    Mississippi
+
+/^ab\n/Ig+
+    ab\nab\ncd
+
+/^ab\n/Img+
+    ab\nab\ncd
+
+/abc/I
+
+/abc|bac/I
+
+/(abc|bac)/I
+
+/(abc|(c|dc))/I
+
+/(abc|(d|de)c)/I
+
+/a*/I
+
+/a+/I
+
+/(baa|a+)/I
+
+/a{0,3}/I
+
+/baa{3,}/I
+
+/"([^\\"]+|\\.)*"/I
+
+/(abc|ab[cd])/I
+
+/(a|.)/I
+
+/a|ba|\w/I
+
+/abc(?=pqr)/I
+
+/...(?<=abc)/I
+
+/abc(?!pqr)/I
+
+/ab./I
+
+/ab[xyz]/I
+
+/abc*/I
+
+/ab.c*/I
+
+/a.c*/I
+
+/.c*/I
+
+/ac*/I
+
+/(a.c*|b.c*)/I
+
+/a.c*|aba/I
+
+/.+a/I
+
+/(?=abcda)a.*/I
+
+/(?=a)a.*/I
+
+/a(b)*/I
+
+/a\d*/I
+
+/ab\d*/I
+
+/a(\d)*/I
+
+/abcde{0,0}/I
+
+/ab\d+/I
+
+/a(?(1)b)(.)/I
+
+/a(?(1)bag|big)(.)/I
+
+/a(?(1)bag|big)*(.)/I
+
+/a(?(1)bag|big)+(.)/I
+
+/a(?(1)b..|b..)(.)/I
+
+/ab\d{0}e/I
+
+/a?b?/I
+    a
+    b
+    ab
+    \
+    *** Failers
+    \N
+
+/|-/I
+    abcd
+    -abc
+    \Nab-c
+    *** Failers
+    \Nabc
+
+/^.?abcd/IS
+
+/\(             # ( at start
+  (?:           # Non-capturing bracket
+  (?>[^()]+)    # Either a sequence of non-brackets (no backtracking)
+  |             # Or
+  (?R)          # Recurse - i.e. nested bracketed string
+  )*            # Zero or more contents
+  \)            # Closing )
+  /Ix
+    (abcd)
+    (abcd)xyz
+    xyz(abcd)
+    (ab(xy)cd)pqr
+    (ab(xycd)pqr
+    () abc ()
+    12(abcde(fsh)xyz(foo(bar))lmno)89
+    *** Failers
+    abcd
+    abcd)
+    (abcd
+
+/\(  ( (?>[^()]+) | (?R) )* \) /Ixg
+    (ab(xy)cd)pqr
+    1(abcd)(x(y)z)pqr
+
+/\(  (?: (?>[^()]+) | (?R) ) \) /Ix
+    (abcd)
+    (ab(xy)cd)
+    (a(b(c)d)e)
+    ((ab))
+    *** Failers
+    ()
+
+/\(  (?: (?>[^()]+) | (?R) )? \) /Ix
+    ()
+    12(abcde(fsh)xyz(foo(bar))lmno)89
+
+/\(  ( (?>[^()]+) | (?R) )* \) /Ix
+    (ab(xy)cd)
+
+/\( ( ( (?>[^()]+) | (?R) )* ) \) /Ix
+    (ab(xy)cd)
+
+/\( (123)? ( ( (?>[^()]+) | (?R) )* ) \) /Ix
+    (ab(xy)cd)
+    (123ab(xy)cd)
+
+/\( ( (123)? ( (?>[^()]+) | (?R) )* ) \) /Ix
+    (ab(xy)cd)
+    (123ab(xy)cd)
+
+/\( (((((((((( ( (?>[^()]+) | (?R) )* )))))))))) \) /Ix
+    (ab(xy)cd)
+
+/\( ( ( (?>[^()<>]+) | ((?>[^()]+)) | (?R) )* ) \) /Ix
+    (abcd(xyz<p>qrs)123)
+
+/\( ( ( (?>[^()]+) | ((?R)) )* ) \) /Ix
+    (ab(cd)ef)
+    (ab(cd(ef)gh)ij)
+
+/^[[:alnum:]]/DZ
+
+/^[[:^alnum:]]/DZ
+
+/^[[:alpha:]]/DZ
+
+/^[[:^alpha:]]/DZ
+
+/[_[:alpha:]]/IS
+
+/^[[:ascii:]]/DZ
+
+/^[[:^ascii:]]/DZ
+
+/^[[:blank:]]/DZ
+
+/^[[:^blank:]]/DZ
+
+/[\n\x0b\x0c\x0d[:blank:]]/IS
+
+/^[[:cntrl:]]/DZ
+
+/^[[:digit:]]/DZ
+
+/^[[:graph:]]/DZ
+
+/^[[:lower:]]/DZ
+
+/^[[:print:]]/DZ
+
+/^[[:punct:]]/DZ
+
+/^[[:space:]]/DZ
+
+/^[[:upper:]]/DZ
+
+/^[[:xdigit:]]/DZ
+
+/^[[:word:]]/DZ
+
+/^[[:^cntrl:]]/DZ
+
+/^[12[:^digit:]]/DZ
+
+/^[[:^blank:]]/DZ
+
+/[01[:alpha:]%]/DZ
+
+/[[.ch.]]/I
+
+/[[=ch=]]/I
+
+/[[:rhubarb:]]/I
+
+/[[:upper:]]/Ii
+    A
+    a
+
+/[[:lower:]]/Ii
+    A
+    a
+
+/((?-i)[[:lower:]])[[:lower:]]/Ii
+    ab
+    aB
+    *** Failers
+    Ab
+    AB
+
+/[\200-\110]/I
+
+/^(?(0)f|b)oo/I
+
+/This one's here because of the large output vector needed/I
+
+/(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\d+(?:\s|$))(\w+)\s+(\270)/I
+    \O900 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 ABC ABC
+
+/This one's here because Perl does this differently and PCRE can't at present/I
+
+/(main(O)?)+/I
+    mainmain
+    mainOmain
+
+/These are all cases where Perl does it differently (nested captures)/I
+
+/^(a(b)?)+$/I
+    aba
+
+/^(aa(bb)?)+$/I
+    aabbaa
+
+/^(aa|aa(bb))+$/I
+    aabbaa
+
+/^(aa(bb)??)+$/I
+    aabbaa
+
+/^(?:aa(bb)?)+$/I
+    aabbaa
+
+/^(aa(b(b))?)+$/I
+    aabbaa
+
+/^(?:aa(b(b))?)+$/I
+    aabbaa
+
+/^(?:aa(b(?:b))?)+$/I
+    aabbaa
+
+/^(?:aa(bb(?:b))?)+$/I
+    aabbbaa
+
+/^(?:aa(b(?:bb))?)+$/I
+    aabbbaa
+
+/^(?:aa(?:b(b))?)+$/I
+    aabbaa
+
+/^(?:aa(?:b(bb))?)+$/I
+    aabbbaa
+
+/^(aa(b(bb))?)+$/I
+    aabbbaa
+
+/^(aa(bb(bb))?)+$/I
+    aabbbbaa
+
+/--------------------------------------------------------------------/I
+
+/#/IxDZ
+
+/a#/IxDZ
+
+/[\s]/DZ
+
+/[\S]/DZ
+
+/a(?i)b/DZ
+    ab
+    aB
+    *** Failers
+    AB
+
+/(a(?i)b)/DZ
+    ab
+    aB
+    *** Failers
+    AB
+
+/   (?i)abc/IxDZ
+
+/#this is a comment
+  (?i)abc/IxDZ
+
+/123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890/DZ
+
+/\Q123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890/DZ
+
+/\Q\E/DZ
+    \
+
+/\Q\Ex/DZ
+
+/ \Q\E/DZ
+
+/a\Q\E/DZ
+  abc
+  bca
+  bac
+
+/a\Q\Eb/DZ
+  abc
+
+/\Q\Eabc/DZ
+
+/x*+\w/DZ
+    *** Failers
+    xxxxx
+
+/x?+/DZ
+
+/x++/DZ
+
+/x{1,3}+/BZO
+
+/x{1,3}+/BZOi
+
+/[^x]{1,3}+/BZO
+
+/[^x]{1,3}+/BZOi
+
+/(x)*+/DZ
+
+/^(\w++|\s++)*$/I
+    now is the time for all good men to come to the aid of the party
+    *** Failers
+    this is not a line with only words and spaces!
+
+/(\d++)(\w)/I
+    12345a
+    *** Failers
+    12345+
+
+/a++b/I
+    aaab
+
+/(a++b)/I
+    aaab
+
+/(a++)b/I
+    aaab
+
+/([^()]++|\([^()]*\))+/I
+    ((abc(ade)ufh()()x
+
+/\(([^()]++|\([^()]+\))+\)/I
+    (abc)
+    (abc(def)xyz)
+    *** Failers
+    ((()aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+/(abc){1,3}+/DZ
+
+/a+?+/I
+
+/a{2,3}?+b/I
+
+/(?U)a+?+/I
+
+/a{2,3}?+b/IU
+
+/x(?U)a++b/DZ
+    xaaaab
+
+/(?U)xa++b/DZ
+    xaaaab
+
+/^((a+)(?U)([ab]+)(?-U)([bc]+)(\w*))/DZ
+
+/^x(?U)a+b/DZ
+
+/^x(?U)(a+)b/DZ
+
+/[.x.]/I
+
+/[=x=]/I
+
+/[:x:]/I
+
+/\l/I
+
+/\L/I
+
+/\N{name}/I
+
+/\u/I
+
+/\U/I
+
+/a{1,3}b/U
+    ab
+
+/[/I
+
+/[a-/I
+
+/[[:space:]/I
+
+/[\s]/IDZ
+
+/[[:space:]]/IDZ
+
+/[[:space:]abcde]/IDZ
+
+/< (?: (?(R) \d++  | [^<>]*+) | (?R)) * >/Ix
+    <>
+    <abcd>
+    <abc <123> hij>
+    <abc <def> hij>
+    <abc<>def>
+    <abc<>
+    *** Failers
+    <abc
+
+|8J\$WE\<\.rX\+ix\[d1b\!H\#\?vV0vrK\:ZH1\=2M\>iV\;\?aPhFB\<\*vW\@QW\@sO9\}cfZA\-i\'w\%hKd6gt1UJP\,15_\#QY\$M\^Mss_U\/\]\&LK9\[5vQub\^w\[KDD\<EjmhUZ\?\.akp2dF\>qmj\;2\}YWFdYx\.Ap\]hjCPTP\(n28k\+3\;o\&WXqs\/gOXdr\$\:r\'do0\;b4c\(f_Gr\=\"\\4\)\[01T7ajQJvL\$W\~mL_sS\/4h\:x\*\[ZN\=KLs\&L5zX\/\/\>it\,o\:aU\(\;Z\>pW\&T7oP\'2K\^E\:x9\'c\[\%z\-\,64JQ5AeH_G\#KijUKghQw\^\\vea3a\?kka_G\$8\#\`\*kynsxzBLru\'\]k_\[7FrVx\}\^\=\$blx\>s\-N\%j\;D\*aZDnsw\:YKZ\%Q\.Kne9\#hP\?\+b3\(SOvL\,\^\;\&u5\@\?5C5Bhb\=m\-vEh_L15Jl\]U\)0RP6\{q\%L\^_z5E\'Dw6X\b|IDZ
+
+|\$\<\.X\+ix\[d1b\!H\#\?vV0vrK\:ZH1\=2M\>iV\;\?aPhFB\<\*vW\@QW\@sO9\}cfZA\-i\'w\%hKd6gt1UJP\,15_\#QY\$M\^Mss_U\/\]\&LK9\[5vQub\^w\[KDD\<EjmhUZ\?\.akp2dF\>qmj\;2\}YWFdYx\.Ap\]hjCPTP\(n28k\+3\;o\&WXqs\/gOXdr\$\:r\'do0\;b4c\(f_Gr\=\"\\4\)\[01T7ajQJvL\$W\~mL_sS\/4h\:x\*\[ZN\=KLs\&L5zX\/\/\>it\,o\:aU\(\;Z\>pW\&T7oP\'2K\^E\:x9\'c\[\%z\-\,64JQ5AeH_G\#KijUKghQw\^\\vea3a\?kka_G\$8\#\`\*kynsxzBLru\'\]k_\[7FrVx\}\^\=\$blx\>s\-N\%j\;D\*aZDnsw\:YKZ\%Q\.Kne9\#hP\?\+b3\(SOvL\,\^\;\&u5\@\?5C5Bhb\=m\-vEh_L15Jl\]U\)0RP6\{q\%L\^_z5E\'Dw6X\b|IDZ
+
+/(.*)\d+\1/I
+
+/(.*)\d+/I
+
+/(.*)\d+\1/Is
+
+/(.*)\d+/Is
+
+/(.*(xyz))\d+\2/I
+
+/((.*))\d+\1/I
+    abc123bc
+
+/a[b]/I
+
+/(?=a).*/I
+
+/(?=abc).xyz/IiI
+
+/(?=abc)(?i).xyz/I
+
+/(?=a)(?=b)/I
+
+/(?=.)a/I
+
+/((?=abcda)a)/I
+
+/((?=abcda)ab)/I
+
+/()a/I
+
+/(?(1)ab|ac)(.)/I
+
+/(?(1)abz|acz)(.)/I
+
+/(?(1)abz)(.)/I
+
+/(?(1)abz)(1)23/I
+
+/(a)+/I
+
+/(a){2,3}/I
+
+/(a)*/I
+
+/[a]/I
+
+/[ab]/I
+
+/[ab]/IS
+
+/[^a]/I
+
+/\d456/I
+
+/\d456/IS
+
+/a^b/I
+
+/^a/Im
+  abcde
+  xy\nabc
+  *** Failers
+  xyabc
+
+/c|abc/I
+
+/(?i)[ab]/IS
+
+/[ab](?i)cd/IS
+
+/abc(?C)def/I
+    abcdef
+    1234abcdef
+    *** Failers
+    abcxyz
+    abcxyzf
+
+/abc(?C)de(?C1)f/I
+    123abcdef
+
+/(?C1)\dabc(?C2)def/IS
+    1234abcdef
+    *** Failers
+    abcdef
+
+/(?C1)\dabc(?C2)def/ISS
+    1234abcdef
+    *** Failers
+    abcdef
+
+/(?C255)ab/I
+
+/(?C256)ab/I
+
+/(?Cab)xx/I
+
+/(?C12vr)x/I
+
+/abc(?C)def/I
+    *** Failers
+    \x83\x0\x61bcdef
+
+/(abc)(?C)de(?C1)f/I
+    123abcdef
+    123abcdef\C+
+    123abcdef\C-
+    *** Failers
+    123abcdef\C!1
+
+/(?C0)(abc(?C1))*/I
+    abcabcabc
+    abcabc\C!1!3
+    *** Failers
+    abcabcabc\C!1!3
+
+/(\d{3}(?C))*/I
+    123\C+
+    123456\C+
+    123456789\C+
+
+/((xyz)(?C)p|(?C1)xyzabc)/I
+    xyzabc\C+
+
+/(X)((xyz)(?C)p|(?C1)xyzabc)/I
+    Xxyzabc\C+
+
+/(?=(abc))(?C)abcdef/I
+    abcdef\C+
+
+/(?!(abc)(?C1)d)(?C2)abcxyz/I
+    abcxyz\C+
+
+/(?<=(abc)(?C))xyz/I
+   abcxyz\C+
+
+/a(b+)(c*)(?C1)/I
+    abbbbbccc\C*1
+
+/a(b+?)(c*?)(?C1)/I
+    abbbbbccc\C*1
+
+/(?C)abc/I
+
+/(?C)^abc/I
+
+/(?C)a|b/IS
+
+/(?R)/I
+
+/(a|(?R))/I
+
+/(ab|(bc|(de|(?R))))/I
+
+/x(ab|(bc|(de|(?R))))/I
+    xab
+    xbc
+    xde
+    xxab
+    xxxab
+    *** Failers
+    xyab
+
+/(ab|(bc|(de|(?1))))/I
+
+/x(ab|(bc|(de|(?1)x)x)x)/I
+
+/^([^()]|\((?1)*\))*$/I
+    abc
+    a(b)c
+    a(b(c))d
+    *** Failers)
+    a(b(c)d
+
+/^>abc>([^()]|\((?1)*\))*<xyz<$/I
+   >abc>123<xyz<
+   >abc>1(2)3<xyz<
+   >abc>(1(2)3)<xyz<
+
+/(a(?1)b)/DZ
+
+/(a(?1)+b)/DZ
+
+/^(\d+|\((?1)([+*-])(?1)\)|-(?1))$/I
+    12
+    (((2+2)*-3)-7)
+    -12
+    *** Failers
+    ((2+2)*-3)-7)
+
+/^(x(y|(?1){2})z)/I
+    xyz
+    xxyzxyzz
+    *** Failers
+    xxyzz
+    xxyzxyzxyzz
+
+/((< (?: (?(R) \d++  | [^<>]*+) | (?2)) * >))/Ix
+    <>
+    <abcd>
+    <abc <123> hij>
+    <abc <def> hij>
+    <abc<>def>
+    <abc<>
+    *** Failers
+    <abc
+
+/(?1)/I
+
+/((?2)(abc)/I
+
+/^(abc)def(?1)/I
+    abcdefabc
+
+/^(a|b|c)=(?1)+/I
+    a=a
+    a=b
+    a=bc
+
+/^(a|b|c)=((?1))+/I
+    a=a
+    a=b
+    a=bc
+
+/a(?P<name1>b|c)d(?P<longername2>e)/DZ
+    abde
+    acde
+
+/(?:a(?P<c>c(?P<d>d)))(?P<a>a)/DZ
+
+/(?P<a>a)...(?P=a)bbb(?P>a)d/DZ
+
+/^\W*(?:(?P<one>(?P<two>.)\W*(?P>one)\W*(?P=two)|)|(?P<three>(?P<four>.)\W*(?P>three)\W*(?P=four)|\W*.\W*))\W*$/Ii
+    1221
+    Satan, oscillate my metallic sonatas!
+    A man, a plan, a canal: Panama!
+    Able was I ere I saw Elba.
+    *** Failers
+    The quick brown fox
+
+/((?(R)a|b))\1(?1)?/I
+  bb
+  bbaa
+
+/(.*)a/Is
+
+/(.*)a\1/Is
+
+/(.*)a(b)\2/Is
+
+/((.*)a|(.*)b)z/Is
+
+/((.*)a|(.*)b)z\1/Is
+
+/((.*)a|(.*)b)z\2/Is
+
+/((.*)a|(.*)b)z\3/Is
+
+/((.*)a|^(.*)b)z\3/Is
+
+/(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)a/Is
+
+/(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)a\31/Is
+
+/(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)|(.*)a\32/Is
+
+/(a)(bc)/INDZ
+  abc
+
+/(?P<one>a)(bc)/INDZ
+  abc
+
+/(a)(?P<named>bc)/INDZ
+
+/(a+)*zz/I
+  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaazzbbbbbb\M
+  aaaaaaaaaaaaaz\M
+
+/(aaa(?C1)bbb|ab)/I
+   aaabbb
+   aaabbb\C*0
+   aaabbb\C*1
+   aaabbb\C*-1
+
+/ab(?P<one>cd)ef(?P<two>gh)/I
+    abcdefgh
+    abcdefgh\C1\Gtwo
+    abcdefgh\Cone\Ctwo
+    abcdefgh\Cthree
+
+/(?P<Tes>)(?P<Test>)/DZ
+
+/(?P<Test>)(?P<Tes>)/DZ
+
+/(?P<Z>zz)(?P<A>aa)/I
+    zzaa\CZ
+    zzaa\CA
+
+/(?P<x>eks)(?P<x>eccs)/I
+
+/(?P<abc>abc(?P<def>def)(?P<abc>xyz))/I
+
+"\[((?P<elem>\d+)(,(?P>elem))*)\]"I
+    [10,20,30,5,5,4,4,2,43,23,4234]
+    *** Failers
+    []
+
+"\[((?P<elem>\d+)(,(?P>elem))*)?\]"I
+    [10,20,30,5,5,4,4,2,43,23,4234]
+    []
+
+/(a(b(?2)c))?/DZ
+
+/(a(b(?2)c))*/DZ
+
+/(a(b(?2)c)){0,2}/DZ
+
+/[ab]{1}+/DZ
+
+/((w\/|-|with)*(free|immediate)*.*?shipping\s*[!.-]*)/Ii
+     Baby Bjorn Active Carrier - With free SHIPPING!!
+
+/((w\/|-|with)*(free|immediate)*.*?shipping\s*[!.-]*)/IiS
+     Baby Bjorn Active Carrier - With free SHIPPING!!
+
+/a*.*b/ISDZ
+
+/(a|b)*.?c/ISDZ
+
+/abc(?C255)de(?C)f/DZ
+
+/abcde/ICDZ
+  abcde
+  abcdfe
+
+/a*b/ICDZS
+  ab
+  aaaab
+  aaaacb
+
+/a*b/ICDZSS
+  ab
+  aaaab
+  aaaacb
+
+/a+b/ICDZ
+  ab
+  aaaab
+  aaaacb
+
+/(abc|def)x/ICDZS
+  abcx
+  defx
+  ** Failers 
+  abcdefzx
+
+/(abc|def)x/ICDZSS
+  abcx
+  defx
+  ** Failers 
+  abcdefzx
+
+/(ab|cd){3,4}/IC
+  ababab
+  abcdabcd
+  abcdcdcdcdcd
+
+/([ab]{,4}c|xy)/ICDZS
+    Note: that { does NOT introduce a quantifier
+
+/([ab]{,4}c|xy)/ICDZSS
+    Note: that { does NOT introduce a quantifier
+
+/([ab]{1,4}c|xy){4,5}?123/ICDZ
+    aacaacaacaacaac123
+
+/\b.*/I
+  ab cd\>1
+
+/\b.*/Is
+  ab cd\>1
+
+/(?!.bcd).*/I
+  Xbcd12345
+
+/abcde/I
+    ab\P
+    abc\P
+    abcd\P
+    abcde\P
+    the quick brown abc\P
+    ** Failers\P
+    the quick brown abxyz fox\P
+
+"^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/(20)?\d\d$"I
+    13/05/04\P
+    13/5/2004\P
+    02/05/09\P
+    1\P
+    1/2\P
+    1/2/0\P
+    1/2/04\P
+    0\P
+    02/\P
+    02/0\P
+    02/1\P
+    ** Failers\P
+    \P
+    123\P
+    33/4/04\P
+    3/13/04\P
+    0/1/2003\P
+    0/\P
+    02/0/\P
+    02/13\P
+
+/0{0,2}ABC/I
+
+/\d{3,}ABC/I
+
+/\d*ABC/I
+
+/[abc]+DE/I
+
+/[abc]?123/I
+    123\P
+    a\P
+    b\P
+    c\P
+    c12\P
+    c123\P
+
+/^(?:\d){3,5}X/I
+    1\P
+    123\P
+    123X
+    1234\P
+    1234X
+    12345\P
+    12345X
+    *** Failers
+    1X
+    123456\P
+
+//KF>testsavedregex
+
+/abc/IS>testsavedregex
+<testsavedregex
+    abc
+    ** Failers
+    bca
+
+/abc/ISS>testsavedregex
+<testsavedregex
+    abc
+    ** Failers
+    bca
+
+/abc/IFS>testsavedregex
+<testsavedregex
+    abc
+    ** Failers
+    bca
+
+/abc/IFSS>testsavedregex
+<testsavedregex
+    abc
+    ** Failers
+    bca
+
+/(a|b)/IS>testsavedregex
+<testsavedregex
+    abc
+    ** Failers
+    def
+
+/(a|b)/ISS>testsavedregex
+<testsavedregex
+    abc
+    ** Failers
+    def
+
+/(a|b)/ISF>testsavedregex
+<testsavedregex
+    abc
+    ** Failers
+    def
+
+/(a|b)/ISSF>testsavedregex
+<testsavedregex
+    abc
+    ** Failers
+    def
+
+~<(\w+)/?>(.)*</(\1)>~smgI
+    \J1024<!DOCTYPE seite SYSTEM "http://www.lco.lineas.de/xmlCms.dtd">\n<seite>\n<dokumenteninformation>\n<seitentitel>Partner der LCO</seitentitel>\n<sprache>de</sprache>\n<seitenbeschreibung>Partner der LINEAS Consulting\nGmbH</seitenbeschreibung>\n<schluesselworte>LINEAS Consulting GmbH Hamburg\nPartnerfirmen</schluesselworte>\n<revisit>30 days</revisit>\n<robots>index,follow</robots>\n<menueinformation>\n<aktiv>ja</aktiv>\n<menueposition>3</menueposition>\n<menuetext>Partner</menuetext>\n</menueinformation>\n<lastedited>\n<autor>LCO</autor>\n<firma>LINEAS Consulting</firma>\n<datum>15.10.2003</datum>\n</lastedited>\n</dokumenteninformation>\n<inhalt>\n\n<absatzueberschrift>Die Partnerfirmen der LINEAS Consulting\nGmbH</absatzueberschrift>\n\n<absatz><link ziel="http://www.ca.com/" zielfenster="_blank">\n<bild name="logo_ca.gif" rahmen="no"/></link> <link\nziel="http://www.ey.com/" zielfenster="_blank"><bild\nname="logo_euy.gif" rahmen="no"/></link>\n</absatz>\n\n<absatz><link ziel="http://www.cisco.de/" zielfenster="_blank">\n<bild name="logo_cisco.gif" rahmen="ja"/></link></absatz>\n\n<absatz><link ziel="http://www.atelion.de/"\nzielfenster="_blank"><bild\nname="logo_atelion.gif" rahmen="no"/></link>\n</absatz>\n\n<absatz><link ziel="http://www.line-information.de/"\nzielfenster="_blank">\n<bild name="logo_line_information.gif" rahmen="no"/></link>\n</absatz>\n\n<absatz><bild name="logo_aw.gif" rahmen="no"/></absatz>\n\n<absatz><link ziel="http://www.incognis.de/"\nzielfenster="_blank"><bild\nname="logo_incognis.gif" rahmen="no"/></link></absatz>\n\n<absatz><link ziel="http://www.addcraft.com/"\nzielfenster="_blank"><bild\nname="logo_addcraft.gif" rahmen="no"/></link></absatz>\n\n<absatz><link ziel="http://www.comendo.com/"\nzielfenster="_blank"><bild\nname="logo_comendo.gif" rahmen="no"/></link></absatz>\n\n</inhalt>\n</seite>
+
+/^a/IF
+
+/line\nbreak/I
+    this is a line\nbreak
+    line one\nthis is a line\nbreak in the second line
+
+/line\nbreak/If
+    this is a line\nbreak
+    ** Failers
+    line one\nthis is a line\nbreak in the second line
+
+/line\nbreak/Imf
+    this is a line\nbreak
+    ** Failers
+    line one\nthis is a line\nbreak in the second line
+
+/(?i)(?-i)AbCd/I
+    AbCd
+    ** Failers
+    abcd
+
+/a{11111111111111111111}/I
+
+/(){64294967295}/I
+
+/(){2,4294967295}/I
+
+"(?i:a)(?i:b)(?i:c)(?i:d)(?i:e)(?i:f)(?i:g)(?i:h)(?i:i)(?i:j)(k)(?i:l)A\1B"I
+    abcdefghijklAkB
+
+"(?P<n0>a)(?P<n1>b)(?P<n2>c)(?P<n3>d)(?P<n4>e)(?P<n5>f)(?P<n6>g)(?P<n7>h)(?P<n8>i)(?P<n9>j)(?P<n10>k)(?P<n11>l)A\11B"I
+    abcdefghijklAkB
+
+"(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)(l)A\11B"I
+    abcdefghijklAkB
+
+"(?P<name0>a)(?P<name1>a)(?P<name2>a)(?P<name3>a)(?P<name4>a)(?P<name5>a)(?P<name6>a)(?P<name7>a)(?P<name8>a)(?P<name9>a)(?P<name10>a)(?P<name11>a)(?P<name12>a)(?P<name13>a)(?P<name14>a)(?P<name15>a)(?P<name16>a)(?P<name17>a)(?P<name18>a)(?P<name19>a)(?P<name20>a)(?P<name21>a)(?P<name22>a)(?P<name23>a)(?P<name24>a)(?P<name25>a)(?P<name26>a)(?P<name27>a)(?P<name28>a)(?P<name29>a)(?P<name30>a)(?P<name31>a)(?P<name32>a)(?P<name33>a)(?P<name34>a)(?P<name35>a)(?P<name36>a)(?P<name37>a)(?P<name38>a)(?P<name39>a)(?P<name40>a)(?P<name41>a)(?P<name42>a)(?P<name43>a)(?P<name44>a)(?P<name45>a)(?P<name46>a)(?P<name47>a)(?P<name48>a)(?P<name49>a)(?P<name50>a)(?P<name51>a)(?P<name52>a)(?P<name53>a)(?P<name54>a)(?P<name55>a)(?P<name56>a)(?P<name57>a)(?P<name58>a)(?P<name59>a)(?P<name60>a)(?P<name61>a)(?P<name62>a)(?P<name63>a)(?P<name64>a)(?P<name65>a)(?P<name66>a)(?P<name67>a)(?P<name68>a)(?P<name69>a)(?P<name70>a)(?P<name71>a)(?P<name72>a)(?P<name73>a)(?P<name74>a)(?P<name75>a)(?P<name76>a)(?P<name77>a)(?P<name78>a)(?P<name79>a)(?P<name80>a)(?P<name81>a)(?P<name82>a)(?P<name83>a)(?P<name84>a)(?P<name85>a)(?P<name86>a)(?P<name87>a)(?P<name88>a)(?P<name89>a)(?P<name90>a)(?P<name91>a)(?P<name92>a)(?P<name93>a)(?P<name94>a)(?P<name95>a)(?P<name96>a)(?P<name97>a)(?P<name98>a)(?P<name99>a)(?P<name100>a)"I
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+"(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)(a)"I
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+/[^()]*(?:\((?R)\)[^()]*)*/I
+    (this(and)that
+    (this(and)that)
+    (this(and)that)stuff
+
+/[^()]*(?:\((?>(?R))\)[^()]*)*/I
+    (this(and)that
+    (this(and)that)
+
+/[^()]*(?:\((?R)\))*[^()]*/I
+    (this(and)that
+    (this(and)that)
+
+/(?:\((?R)\))*[^()]*/I
+    (this(and)that
+    (this(and)that)
+    ((this))
+
+/(?:\((?R)\))|[^()]*/I
+    (this(and)that
+    (this(and)that)
+    (this)
+    ((this))
+
+/\x{0000ff}/I
+
+/^((?P<A>a1)|(?P<A>a2)b)/I
+
+/^((?P<A>a1)|(?P<A>a2)b)/IJ
+    a1b\CA
+    a2b\CA
+    ** Failers
+    a1b\CZ\CA
+    
+/(?|(?<a>)(?<b>)(?<a>)|(?<a>)(?<b>)(?<a>))/IJ
+
+/^(?P<A>a)(?P<A>b)/IJ
+    ab\CA
+
+/^(?P<A>a)(?P<A>b)|cd/IJ
+    ab\CA
+    cd\CA
+
+/^(?P<A>a)(?P<A>b)|cd(?P<A>ef)(?P<A>gh)/IJ
+    cdefgh\CA
+
+/^((?P<A>a1)|(?P<A>a2)b)/IJ
+    a1b\GA
+    a2b\GA
+    ** Failers
+    a1b\GZ\GA
+
+/^(?P<A>a)(?P<A>b)/IJ
+    ab\GA
+
+/^(?P<A>a)(?P<A>b)|cd/IJ
+    ab\GA
+    cd\GA
+
+/^(?P<A>a)(?P<A>b)|cd(?P<A>ef)(?P<A>gh)/IJ
+    cdefgh\GA
+
+/(?J)^((?P<A>a1)|(?P<A>a2)b)/I
+    a1b\CA
+    a2b\CA
+
+/^(?P<A>a) (?J:(?P<B>b)(?P<B>c)) (?P<A>d)/I
+
+/ In this next test, J is not set at the outer level; consequently it isn't
+set in the pattern's options; consequently pcre_get_named_substring() produces
+a random value. /Ix
+
+/^(?P<A>a) (?J:(?P<B>b)(?P<B>c)) (?P<C>d)/I
+    a bc d\CA\CB\CC
+
+/^(?P<A>a)?(?(A)a|b)/I
+    aabc
+    bc
+    ** Failers
+    abc
+
+/(?:(?(ZZ)a|b)(?P<ZZ>X))+/I
+    bXaX
+
+/(?:(?(2y)a|b)(X))+/I
+
+/(?:(?(ZA)a|b)(?P<ZZ>X))+/I
+
+/(?:(?(ZZ)a|b)(?(ZZ)a|b)(?P<ZZ>X))+/I
+    bbXaaX
+
+/(?:(?(ZZ)a|\(b\))\\(?P<ZZ>X))+/I
+    (b)\\Xa\\X
+
+/(?P<ABC/I
+
+/(?:(?(A)(?P=A)a|b)(?P<A>X|Y))+/I
+    bXXaYYaY
+    bXYaXXaX
+
+/()()()()()()()()()(?:(?(A)(?P=A)a|b)(?P<A>X|Y))+/I
+    bXXaYYaY
+
+/\s*,\s*/IS
+    \x0b,\x0b
+    \x0c,\x0d
+
+/^abc/Im
+    xyz\nabc
+    xyz\nabc\<lf>
+    xyz\r\nabc\<lf>
+    xyz\rabc\<cr>
+    xyz\r\nabc\<crlf>
+    ** Failers
+    xyz\nabc\<cr>
+    xyz\r\nabc\<cr>
+    xyz\nabc\<crlf>
+    xyz\rabc\<crlf>
+    xyz\rabc\<lf>
+
+/abc$/Im<lf>
+    xyzabc
+    xyzabc\n
+    xyzabc\npqr
+    xyzabc\r\<cr>
+    xyzabc\rpqr\<cr>
+    xyzabc\r\n\<crlf>
+    xyzabc\r\npqr\<crlf>
+    ** Failers
+    xyzabc\r
+    xyzabc\rpqr
+    xyzabc\r\n
+    xyzabc\r\npqr
+
+/^abc/Im<cr>
+    xyz\rabcdef
+    xyz\nabcdef\<lf>
+    ** Failers
+    xyz\nabcdef
+
+/^abc/Im<lf>
+    xyz\nabcdef
+    xyz\rabcdef\<cr>
+    ** Failers
+    xyz\rabcdef
+
+/^abc/Im<crlf>
+    xyz\r\nabcdef
+    xyz\rabcdef\<cr>
+    ** Failers
+    xyz\rabcdef
+
+/^abc/Im<bad>
+
+/abc/I
+    xyz\rabc\<bad>
+    abc
+
+/.*/I<lf>
+    abc\ndef
+    abc\rdef
+    abc\r\ndef
+    \<cr>abc\ndef
+    \<cr>abc\rdef
+    \<cr>abc\r\ndef
+    \<crlf>abc\ndef
+    \<crlf>abc\rdef
+    \<crlf>abc\r\ndef
+
+/\w+(.)(.)?def/Is
+    abc\ndef
+    abc\rdef
+    abc\r\ndef
+
++((?:\s|//.*\\n|/[*](?:\\n|.)*?[*]/)*)+I
+   /* this is a C style comment */\M
+
+/(?P<B>25[0-5]|2[0-4]\d|[01]?\d?\d)(?:\.(?P>B)){3}/I
+
+/()()()()()()()()()()()()()()()()()()()()
+ ()()()()()()()()()()()()()()()()()()()()
+ ()()()()()()()()()()()()()()()()()()()()
+ ()()()()()()()()()()()()()()()()()()()()
+ ()()()()()()()()()()()()()()()()()()()()
+ (.(.))/Ix
+    XY\O400
+
+/(a*b|(?i:c*(?-i)d))/IS
+
+/()[ab]xyz/IS
+
+/(|)[ab]xyz/IS
+
+/(|c)[ab]xyz/IS
+
+/(|c?)[ab]xyz/IS
+
+/(d?|c?)[ab]xyz/IS
+
+/(d?|c)[ab]xyz/IS
+
+/^a*b\d/DZ
+
+/^a*+b\d/DZ
+
+/^a*?b\d/DZ
+
+/^a+A\d/DZ
+    aaaA5
+    ** Failers
+    aaaa5
+
+/^a*A\d/IiDZ
+    aaaA5
+    aaaa5
+
+/(a*|b*)[cd]/IS
+
+/(a+|b*)[cd]/IS
+
+/(a*|b+)[cd]/IS
+
+/(a+|b+)[cd]/IS
+
+/((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+ ((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+ (((
+ a
+ ))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+ ))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+ )))
+/Ix
+  large nest
+
+/a*\d/BZ
+
+/a*\D/BZ
+
+/0*\d/BZ
+
+/0*\D/BZ
+
+/a*\s/BZ
+
+/a*\S/BZ
+
+/ *\s/BZ
+
+/ *\S/BZ
+
+/a*\w/BZ
+
+/a*\W/BZ
+
+/=*\w/BZ
+
+/=*\W/BZ
+
+/\d*a/BZ
+
+/\d*2/BZ
+
+/\d*\d/BZ
+
+/\d*\D/BZ
+
+/\d*\s/BZ
+
+/\d*\S/BZ
+
+/\d*\w/BZ
+
+/\d*\W/BZ
+
+/\D*a/BZ
+
+/\D*2/BZ
+
+/\D*\d/BZ
+
+/\D*\D/BZ
+
+/\D*\s/BZ
+
+/\D*\S/BZ
+
+/\D*\w/BZ
+
+/\D*\W/BZ
+
+/\s*a/BZ
+
+/\s*2/BZ
+
+/\s*\d/BZ
+
+/\s*\D/BZ
+
+/\s*\s/BZ
+
+/\s*\S/BZ
+
+/\s*\w/BZ
+
+/\s*\W/BZ
+
+/\S*a/BZ
+
+/\S*2/BZ
+
+/\S*\d/BZ
+
+/\S*\D/BZ
+
+/\S*\s/BZ
+
+/\S*\S/BZ
+
+/\S*\w/BZ
+
+/\S*\W/BZ
+
+/\w*a/BZ
+
+/\w*2/BZ
+
+/\w*\d/BZ
+
+/\w*\D/BZ
+
+/\w*\s/BZ
+
+/\w*\S/BZ
+
+/\w*\w/BZ
+
+/\w*\W/BZ
+
+/\W*a/BZ
+
+/\W*2/BZ
+
+/\W*\d/BZ
+
+/\W*\D/BZ
+
+/\W*\s/BZ
+
+/\W*\S/BZ
+
+/\W*\w/BZ
+
+/\W*\W/BZ
+
+/[^a]+a/BZ
+
+/[^a]+a/BZi
+
+/[^a]+A/BZi
+
+/[^a]+b/BZ
+
+/[^a]+\d/BZ
+
+/a*[^a]/BZ
+
+/(?P<abc>x)(?P<xyz>y)/I
+    xy\Cabc\Cxyz
+
+/(?<abc>x)(?'xyz'y)/I
+    xy\Cabc\Cxyz
+
+/(?<abc'x)(?'xyz'y)/I
+
+/(?<abc>x)(?'xyz>y)/I
+
+/(?P'abc'x)(?P<xyz>y)/I
+
+/^(?:(?(ZZ)a|b)(?<ZZ>X))+/
+    bXaX
+    bXbX
+    ** Failers
+    aXaX
+    aXbX
+
+/^(?P>abc)(?<abcd>xxx)/
+
+/^(?P>abc)(?<abc>x|y)/
+    xx
+    xy
+    yy
+    yx
+
+/^(?P>abc)(?P<abc>x|y)/
+    xx
+    xy
+    yy
+    yx
+
+/^((?(abc)a|b)(?<abc>x|y))+/
+    bxay
+    bxby
+    ** Failers
+    axby
+
+/^(((?P=abc)|X)(?<abc>x|y))+/
+    XxXxxx
+    XxXyyx
+    XxXyxx
+    ** Failers
+    x
+
+/^(?1)(abc)/
+    abcabc
+
+/^(?:(?:\1|X)(a|b))+/
+    Xaaa
+    Xaba
+
+/^[\E\Qa\E-\Qz\E]+/BZ
+
+/^[a\Q]bc\E]/BZ
+
+/^[a-\Q\E]/BZ
+
+/^(?P>abc)[()](?<abc>)/BZ
+
+/^((?(abc)y)[()](?P<abc>x))+/BZ
+    (xy)x
+
+/^(?P>abc)\Q()\E(?<abc>)/BZ
+
+/^(?P>abc)[a\Q(]\E(](?<abc>)/BZ
+
+/^(?P>abc) # this is (a comment)
+  (?<abc>)/BZx
+
+/^\W*(?:(?<one>(?<two>.)\W*(?&one)\W*\k<two>|)|(?<three>(?<four>.)\W*(?&three)\W*\k'four'|\W*.\W*))\W*$/Ii
+    1221
+    Satan, oscillate my metallic sonatas!
+    A man, a plan, a canal: Panama!
+    Able was I ere I saw Elba.
+    *** Failers
+    The quick brown fox
+
+/(?=(\w+))\1:/I
+    abcd:
+
+/(?=(?'abc'\w+))\k<abc>:/I
+    abcd:
+
+/(?'abc'a|b)(?<abc>d|e)\k<abc>{2}/J
+    adaa
+    ** Failers
+    addd
+    adbb
+
+/(?'abc'a|b)(?<abc>d|e)(?&abc){2}/J
+    bdaa
+    bdab
+    ** Failers
+    bddd
+
+/(?(<bc))/
+
+/(?(''))/
+
+/(?('R')stuff)/
+
+/((abc (?(R) (?(R1)1) (?(R2)2) X  |  (?1)  (?2)   (?R) ))) /x
+    abcabc1Xabc2XabcXabcabc
+
+/(?<A> (?'B' abc (?(R) (?(R&A)1) (?(R&B)2) X  |  (?1)  (?2)   (?R) ))) /x
+    abcabc1Xabc2XabcXabcabc
+
+/(?<A> (?'B' abc (?(R) (?(R&C)1) (?(R&B)2) X  |  (?1)  (?2)   (?R) ))) /x
+
+/^(?(DEFINE) abc | xyz ) /x
+
+/(?(DEFINE) abc) xyz/xI
+
+/(a|)*\d/
+  \O0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  \O0aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa4
+
+/^a.b/<lf>
+    a\rb
+    a\nb\<cr>
+    a\x85b\<anycrlf> 
+    ** Failers
+    a\nb
+    a\nb\<any>
+    a\rb\<cr>
+    a\rb\<any>
+    a\x85b\<any> 
+    a\rb\<anycrlf>
+
+/^abc./mgx<any>
+    abc1 \x0aabc2 \x0babc3xx \x0cabc4 \x0dabc5xx \x0d\x0aabc6 \x85abc7 JUNK
+
+/abc.$/mgx<any>
+    abc1\x0a abc2\x0b abc3\x0c abc4\x0d abc5\x0d\x0a abc6\x85 abc7 abc9
+
+/a/<cr><any>
+
+/a/<any><crlf>
+
+/^a\Rb/<bsr_unicode>
+    a\nb
+    a\rb
+    a\r\nb
+    a\x0bb
+    a\x0cb
+    a\x85b
+    ** Failers
+    a\n\rb
+
+/^a\R*b/<bsr_unicode>
+    ab
+    a\nb
+    a\rb
+    a\r\nb
+    a\x0bb
+    a\x0cb
+    a\x85b
+    a\n\rb
+    a\n\r\x85\x0cb
+
+/^a\R+b/<bsr_unicode>
+    a\nb
+    a\rb
+    a\r\nb
+    a\x0bb
+    a\x0cb
+    a\x85b
+    a\n\rb
+    a\n\r\x85\x0cb
+    ** Failers
+    ab
+
+/^a\R{1,3}b/<bsr_unicode>
+    a\nb
+    a\n\rb
+    a\n\r\x85b
+    a\r\n\r\nb
+    a\r\n\r\n\r\nb
+    a\n\r\n\rb
+    a\n\n\r\nb
+    ** Failers
+    a\n\n\n\rb
+    a\r
+
+/^a[\R]b/<bsr_unicode>
+    aRb
+    ** Failers
+    a\nb
+
+/(?&abc)X(?<abc>P)/I
+    abcPXP123
+
+/(?1)X(?<abc>P)/I
+    abcPXP123
+
+/(?:a(?&abc)b)*(?<abc>x)/
+    123axbaxbaxbx456
+    123axbaxbaxb456
+
+/(?:a(?&abc)b){1,5}(?<abc>x)/
+    123axbaxbaxbx456
+
+/(?:a(?&abc)b){2,5}(?<abc>x)/
+    123axbaxbaxbx456
+
+/(?:a(?&abc)b){2,}(?<abc>x)/
+    123axbaxbaxbx456
+
+/(abc)(?i:(?1))/
+   defabcabcxyz
+   DEFabcABCXYZ
+
+/(abc)(?:(?i)(?1))/
+   defabcabcxyz
+   DEFabcABCXYZ
+
+/^(a)\g-2/
+
+/^(a)\g/
+
+/^(a)\g{0}/
+
+/^(a)\g{3/
+
+/^(a)\g{aa}/
+
+/^a.b/<lf>
+    a\rb
+    *** Failers
+    a\nb
+
+/.+foo/
+    afoo
+    ** Failers
+    \r\nfoo
+    \nfoo
+
+/.+foo/<crlf>
+    afoo
+    \nfoo
+    ** Failers
+    \r\nfoo
+
+/.+foo/<any>
+    afoo
+    ** Failers
+    \nfoo
+    \r\nfoo
+
+/.+foo/s
+    afoo
+    \r\nfoo
+    \nfoo
+    
+/^$/mg<any>
+    abc\r\rxyz
+    abc\n\rxyz  
+    ** Failers 
+    abc\r\nxyz
+
+/(?m)^$/<any>g+
+    abc\r\n\r\n
+
+/(?m)^$|^\r\n/<any>g+ 
+    abc\r\n\r\n
+    
+/(?m)$/<any>g+ 
+    abc\r\n\r\n
+
+/abc.$/mgx<anycrlf>
+    abc1\x0a abc2\x0b abc3\x0c abc4\x0d abc5\x0d\x0a abc6\x85 abc9
+
+/^X/m
+    XABC
+    ** Failers 
+    XABC\B
+
+/(ab|c)(?-1)/BZ
+    abc
+
+/xy(?+1)(abc)/BZ
+    xyabcabc
+    ** Failers
+    xyabc  
+    
+/x(?-0)y/
+
+/x(?-1)y/
+
+/x(?+0)y/ 
+
+/x(?+1)y/
+
+/^(abc)?(?(-1)X|Y)/BZ
+    abcX
+    Y
+    ** Failers
+    abcY   
+    
+/^((?(+1)X|Y)(abc))+/BZ 
+    YabcXabc
+    YabcXabcXabc
+    ** Failers
+    XabcXabc  
+
+/(?(-1)a)/BZ
+
+/((?(-1)a))/BZ
+
+/((?(-2)a))/BZ
+
+/^(?(+1)X|Y)(.)/BZ
+    Y!
+
+/(?<A>tom|bon)-\k{A}/
+    tom-tom
+    bon-bon 
+    ** Failers
+    tom-bon  
+
+/\g{A/ 
+
+/(?|(abc)|(xyz))/BZ
+   >abc<
+   >xyz< 
+
+/(x)(?|(abc)|(xyz))(x)/BZ
+    xabcx
+    xxyzx 
+
+/(x)(?|(abc)(pqr)|(xyz))(x)/BZ
+    xabcpqrx
+    xxyzx 
+
+/\H++X/BZ
+    ** Failers
+    XXXX
+    
+/\H+\hY/BZ
+    XXXX Y 
+
+/\H+ Y/BZ
+
+/\h+A/BZ
+
+/\v*B/BZ
+
+/\V+\x0a/BZ
+
+/A+\h/BZ
+
+/ *\H/BZ
+
+/A*\v/BZ
+
+/\x0b*\V/BZ
+
+/\d+\h/BZ
+
+/\d*\v/BZ
+
+/S+\h\S+\v/BZ
+
+/\w{3,}\h\w+\v/BZ
+
+/\h+\d\h+\w\h+\S\h+\H/BZ
+
+/\v+\d\v+\w\v+\S\v+\V/BZ
+
+/\H+\h\H+\d/BZ
+
+/\V+\v\V+\w/BZ
+
+/\( (?: [^()]* | (?R) )* \)/x
+\J1024(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(0(00)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)0)
+
+/[\E]AAA/
+
+/[\Q\E]AAA/
+
+/[^\E]AAA/
+
+/[^\Q\E]AAA/
+
+/[\E^]AAA/
+
+/[\Q\E^]AAA/
+
+/A(*PRUNE)B(*SKIP)C(*THEN)D(*COMMIT)E(*F)F(*FAIL)G(?!)H(*ACCEPT)I/BZ
+
+/^a+(*FAIL)/C
+    aaaaaa
+    
+/a+b?c+(*FAIL)/C
+    aaabccc
+
+/a+b?(*PRUNE)c+(*FAIL)/C
+    aaabccc
+
+/a+b?(*COMMIT)c+(*FAIL)/C
+    aaabccc
+    
+/a+b?(*SKIP)c+(*FAIL)/C
+    aaabcccaaabccc
+
+/a+b?(*THEN)c+(*FAIL)/C
+    aaabccc
+    
+/a(*MARK)b/ 
+
+/(?i:A{1,}\6666666666)/
+
+/\g6666666666/
+
+/[\g6666666666]/BZ
+
+/(?1)\c[/
+
+/.+A/<crlf>
+    \r\nA
+    
+/\nA/<crlf>
+    \r\nA 
+
+/[\r\n]A/<crlf>
+    \r\nA 
+
+/(\r|\n)A/<crlf>
+    \r\nA 
+
+/a(*CR)b/
+
+/(*CR)a.b/
+    a\nb
+    ** Failers
+    a\rb  
+
+/(*CR)a.b/<lf>
+    a\nb
+    ** Failers
+    a\rb  
+
+/(*LF)a.b/<CRLF>
+    a\rb
+    ** Failers
+    a\nb  
+
+/(*CRLF)a.b/
+    a\rb
+    a\nb  
+    ** Failers
+    a\r\nb  
+
+/(*ANYCRLF)a.b/<CR>
+    ** Failers
+    a\rb
+    a\nb  
+    a\r\nb  
+
+/(*ANY)a.b/<cr>
+    ** Failers
+    a\rb
+    a\nb  
+    a\r\nb  
+    a\x85b 
+    
+/(*ANY).*/g
+    abc\r\ndef
+
+/(*ANYCRLF).*/g
+    abc\r\ndef
+
+/(*CRLF).*/g
+    abc\r\ndef
+
+/a\Rb/I<bsr_anycrlf>
+    a\rb
+    a\nb
+    a\r\nb
+    ** Failers
+    a\x85b
+    a\x0bb     
+
+/a\Rb/I<bsr_unicode>
+    a\rb
+    a\nb
+    a\r\nb
+    a\x85b
+    a\x0bb     
+    ** Failers 
+    a\x85b\<bsr_anycrlf>
+    a\x0bb\<bsr_anycrlf>
+    
+/a\R?b/I<bsr_anycrlf>
+    a\rb
+    a\nb
+    a\r\nb
+    ** Failers
+    a\x85b
+    a\x0bb     
+
+/a\R?b/I<bsr_unicode>
+    a\rb
+    a\nb
+    a\r\nb
+    a\x85b
+    a\x0bb     
+    ** Failers 
+    a\x85b\<bsr_anycrlf>
+    a\x0bb\<bsr_anycrlf>
+    
+/a\R{2,4}b/I<bsr_anycrlf>
+    a\r\n\nb
+    a\n\r\rb
+    a\r\n\r\n\r\n\r\nb
+    ** Failers
+    a\x85\85b
+    a\x0b\0bb     
+
+/a\R{2,4}b/I<bsr_unicode>
+    a\r\rb
+    a\n\n\nb
+    a\r\n\n\r\rb
+    a\x85\85b
+    a\x0b\0bb     
+    ** Failers 
+    a\r\r\r\r\rb 
+    a\x85\85b\<bsr_anycrlf>
+    a\x0b\0bb\<bsr_anycrlf>
+ 
+/(*BSR_ANYCRLF)a\Rb/I
+    a\nb
+    a\rb 
+
+/(*BSR_UNICODE)a\Rb/I
+    a\x85b
+
+/(*BSR_ANYCRLF)(*CRLF)a\Rb/I
+    a\nb
+    a\rb 
+
+/(*CRLF)(*BSR_UNICODE)a\Rb/I
+    a\x85b
+
+/(*CRLF)(*BSR_ANYCRLF)(*CR)ab/I
+
+/(?<a>)(?&)/
+
+/(?<abc>)(?&a)/
+
+/(?<a>)(?&aaaaaaaaaaaaaaaaaaaaaaa)/
+
+/(?+-a)/
+
+/(?-+a)/
+
+/(?(-1))/
+
+/(?(+10))/
+
+/(?(10))/
+
+/(?(+2))()()/
+
+/(?(2))()()/
+
+/\k''/
+
+/\k<>/
+
+/\k{}/
+
+/\k/
+
+/\kabc/
+
+/(?P=)/
+
+/(?P>)/
+
+/(?!\w)(?R)/
+
+/(?=\w)(?R)/
+
+/(?<!\w)(?R)/
+
+/(?<=\w)(?R)/
+
+/[[:foo:]]/
+
+/[[:1234:]]/
+
+/[[:f\oo:]]/
+
+/[[: :]]/
+
+/[[:...:]]/
+
+/[[:l\ower:]]/
+
+/[[:abc\:]]/
+
+/[abc[:x\]pqr:]]/
+
+/[[:a\dz:]]/
+
+/(^(a|b\g<-1'c))/
+
+/^(?+1)(?<a>x|y){0}z/
+    xzxx
+    yzyy 
+    ** Failers
+    xxz  
+
+/(\3)(\1)(a)/
+    cat
+
+/(\3)(\1)(a)/<JS>
+    cat
+    
+/TA]/
+    The ACTA] comes 
+
+/TA]/<JS>
+    The ACTA] comes 
+
+/(?2)[]a()b](abc)/
+    abcbabc
+
+/(?2)[^]a()b](abc)/
+    abcbabc
+
+/(?1)[]a()b](abc)/
+    abcbabc
+    ** Failers 
+    abcXabc
+
+/(?1)[^]a()b](abc)/
+    abcXabc
+    ** Failers 
+    abcbabc
+
+/(?2)[]a()b](abc)(xyz)/
+    xyzbabcxyz
+
+/(?&N)[]a(?<N>)](?<M>abc)/
+   abc<abc
+
+/(?&N)[]a(?<N>)](abc)/
+   abc<abc
+
+/a[]b/
+
+/a[^]b/
+
+/a[]b/<JS>
+    ** Failers
+    ab
+
+/a[]+b/<JS>
+    ** Failers
+    ab 
+
+/a[]*+b/<JS>
+    ** Failers
+    ab 
+
+/a[^]b/<JS>
+    aXb
+    a\nb 
+    ** Failers
+    ab  
+    
+/a[^]+b/<JS> 
+    aXb
+    a\nX\nXb 
+    ** Failers
+    ab  
+
+/a(?!)b/BZ
+
+/(?!)?a/BZ
+    ab
+
+/a(*FAIL)+b/
+
+/(abc|pqr|123){0}[xyz]/SI
+
+/(?(?=.*b)b|^)/CI
+   adc
+   abc 
+   
+/(?(?=b).*b|^d)/I
+
+/(?(?=.*b).*b|^d)/I
+
+/xyz/C
+  xyz 
+  abcxyz 
+  abcxyz\Y
+  ** Failers 
+  abc
+  abc\Y
+  abcxypqr  
+  abcxypqr\Y  
+  
+/(*NO_START_OPT)xyz/C
+  abcxyz
+  
+/(*NO_AUTO_POSSESS)a+b/BZ  
+
+/xyz/CY
+  abcxyz 
+
+/^"((?(?=[a])[^"])|b)*"$/C
+    "ab"
+
+/^"((?(?=[a])[^"])|b)*"$/
+    "ab"
+
+/^X(?5)(a)(?|(b)|(q))(c)(d)Y/
+    XYabcdY
+
+/^X(?&N)(a)(?|(b)|(q))(c)(d)(?<N>Y)/
+    XYabcdY
+ 
+/Xa{2,4}b/
+    X\P
+    Xa\P
+    Xaa\P 
+    Xaaa\P
+    Xaaaa\P 
+    
+/Xa{2,4}?b/
+    X\P
+    Xa\P
+    Xaa\P 
+    Xaaa\P
+    Xaaaa\P 
+    
+/Xa{2,4}+b/
+    X\P
+    Xa\P
+    Xaa\P 
+    Xaaa\P
+    Xaaaa\P 
+    
+/X\d{2,4}b/
+    X\P
+    X3\P
+    X33\P 
+    X333\P
+    X3333\P 
+    
+/X\d{2,4}?b/
+    X\P
+    X3\P
+    X33\P 
+    X333\P
+    X3333\P 
+    
+/X\d{2,4}+b/
+    X\P
+    X3\P
+    X33\P 
+    X333\P
+    X3333\P 
+    
+/X\D{2,4}b/
+    X\P
+    Xa\P
+    Xaa\P 
+    Xaaa\P
+    Xaaaa\P 
+    
+/X\D{2,4}?b/
+    X\P
+    Xa\P
+    Xaa\P 
+    Xaaa\P
+    Xaaaa\P 
+    
+/X\D{2,4}+b/
+    X\P
+    Xa\P
+    Xaa\P 
+    Xaaa\P
+    Xaaaa\P 
+    
+/X[abc]{2,4}b/
+    X\P
+    Xa\P
+    Xaa\P 
+    Xaaa\P
+    Xaaaa\P 
+    
+/X[abc]{2,4}?b/
+    X\P
+    Xa\P
+    Xaa\P 
+    Xaaa\P
+    Xaaaa\P 
+    
+/X[abc]{2,4}+b/
+    X\P
+    Xa\P
+    Xaa\P 
+    Xaaa\P
+    Xaaaa\P 
+    
+/X[^a]{2,4}b/
+    X\P
+    Xz\P
+    Xzz\P 
+    Xzzz\P
+    Xzzzz\P 
+    
+/X[^a]{2,4}?b/
+    X\P
+    Xz\P
+    Xzz\P 
+    Xzzz\P
+    Xzzzz\P 
+    
+/X[^a]{2,4}+b/
+    X\P
+    Xz\P
+    Xzz\P 
+    Xzzz\P
+    Xzzzz\P 
+    
+/(Y)X\1{2,4}b/
+    YX\P
+    YXY\P
+    YXYY\P 
+    YXYYY\P
+    YXYYYY\P 
+    
+/(Y)X\1{2,4}?b/
+    YX\P
+    YXY\P
+    YXYY\P 
+    YXYYY\P
+    YXYYYY\P 
+    
+/(Y)X\1{2,4}+b/
+    YX\P
+    YXY\P
+    YXYY\P 
+    YXYYY\P
+    YXYYYY\P 
+    
+/\++\KZ|\d+X|9+Y/
+    ++++123999\P
+    ++++123999Y\P
+    ++++Z1234\P 
+
+/Z(*F)/
+    Z\P
+    ZA\P 
+    
+/Z(?!)/
+    Z\P 
+    ZA\P 
+
+/dog(sbody)?/
+    dogs\P
+    dogs\P\P 
+    
+/dog(sbody)??/
+    dogs\P
+    dogs\P\P 
+
+/dog|dogsbody/
+    dogs\P
+    dogs\P\P 
+ 
+/dogsbody|dog/
+    dogs\P
+    dogs\P\P 
+
+/\bthe cat\b/
+    the cat\P
+    the cat\P\P
+
+/abc/
+   abc\P
+   abc\P\P
+   
+/abc\K123/
+    xyzabc123pqr
+    xyzabc12\P
+    xyzabc12\P\P
+    
+/(?<=abc)123/
+    xyzabc123pqr 
+    xyzabc12\P
+    xyzabc12\P\P
+
+/\babc\b/
+    +++abc+++
+    +++ab\P
+    +++ab\P\P  
+
+/(?&word)(?&element)(?(DEFINE)(?<element><[^m][^>]>[^<])(?<word>\w*+))/BZ
+
+/(?&word)(?&element)(?(DEFINE)(?<element><[^\d][^>]>[^<])(?<word>\w*+))/BZ
+
+/(ab)(x(y)z(cd(*ACCEPT)))pq/BZ
+
+/abc\K/+
+    abcdef
+    abcdef\N\N
+    xyzabcdef\N\N
+    ** Failers
+    abcdef\N 
+    xyzabcdef\N
+    
+/^(?:(?=abc)|abc\K)/+
+    abcdef
+    abcdef\N\N 
+    ** Failers 
+    abcdef\N 
+
+/a?b?/+
+    xyz
+    xyzabc
+    xyzabc\N
+    xyzabc\N\N
+    xyz\N\N    
+    ** Failers 
+    xyz\N 
+
+/^a?b?/+
+    xyz
+    xyzabc
+    ** Failers 
+    xyzabc\N
+    xyzabc\N\N
+    xyz\N\N    
+    xyz\N 
+    
+/^(?<name>a|b\g<name>c)/
+    aaaa
+    bacxxx
+    bbaccxxx 
+    bbbacccxx
+
+/^(?<name>a|b\g'name'c)/
+    aaaa
+    bacxxx
+    bbaccxxx 
+    bbbacccxx
+
+/^(a|b\g<1>c)/
+    aaaa
+    bacxxx
+    bbaccxxx 
+    bbbacccxx
+
+/^(a|b\g'1'c)/
+    aaaa
+    bacxxx
+    bbaccxxx 
+    bbbacccxx
+
+/^(a|b\g'-1'c)/
+    aaaa
+    bacxxx
+    bbaccxxx 
+    bbbacccxx
+
+/(^(a|b\g<-1>c))/
+    aaaa
+    bacxxx
+    bbaccxxx 
+    bbbacccxx
+
+/(?-i:\g<name>)(?i:(?<name>a))/
+    XaaX
+    XAAX 
+
+/(?i:\g<name>)(?-i:(?<name>a))/
+    XaaX
+    ** Failers 
+    XAAX 
+
+/(?-i:\g<+1>)(?i:(a))/
+    XaaX
+    XAAX 
+
+/(?=(?<regex>(?#simplesyntax)\$(?<name>[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)(?:\[(?<index>[a-zA-Z0-9_\x{7f}-\x{ff}]+|\$\g<name>)\]|->\g<name>(\(.*?\))?)?|(?#simple syntax withbraces)\$\{(?:\g<name>(?<indices>\[(?:\g<index>|'(?:\\.|[^'\\])*'|"(?:\g<regex>|\\.|[^"\\])*")\])?|\g<complex>|\$\{\g<complex>\})\}|(?#complexsyntax)\{(?<complex>\$(?<segment>\g<name>(\g<indices>*|\(.*?\))?)(?:->\g<segment>)*|\$\g<complex>|\$\{\g<complex>\})\}))\{/
+
+/(?<n>a|b|c)\g<n>*/
+   abc
+   accccbbb 
+
+/^X(?7)(a)(?|(b)|(q)(r)(s))(c)(d)(Y)/
+    XYabcdY
+
+/(?<=b(?1)|zzz)(a)/
+    xbaax
+    xzzzax 
+
+/(a)(?<=b\1)/
+
+/(a)(?<=b+(?1))/
+
+/(a+)(?<=b(?1))/
+
+/(a(?<=b(?1)))/
+
+/(?<=b(?1))xyz/
+
+/(?<=b(?1))xyz(b+)pqrstuvew/
+
+/(a|bc)\1/SI
+
+/(a|bc)\1{2,3}/SI
+
+/(a|bc)(?1)/SI
+
+/(a|b\1)(a|b\1)/SI
+
+/(a|b\1){2}/SI
+
+/(a|bbbb\1)(a|bbbb\1)/SI
+
+/(a|bbbb\1){2}/SI
+
+/^From +([^ ]+) +[a-zA-Z][a-zA-Z][a-zA-Z] +[a-zA-Z][a-zA-Z][a-zA-Z] +[0-9]?[0-9] +[0-9][0-9]:[0-9][0-9]/SI
+
+/<tr([\w\W\s\d][^<>]{0,})><TD([\w\W\s\d][^<>]{0,})>([\d]{0,}\.)(.*)((<BR>([\w\W\s\d][^<>]{0,})|[\s]{0,}))<\/a><\/TD><TD([\w\W\s\d][^<>]{0,})>([\w\W\s\d][^<>]{0,})<\/TD><TD([\w\W\s\d][^<>]{0,})>([\w\W\s\d][^<>]{0,})<\/TD><\/TR>/isIS
+
+"(?>.*/)foo"SI
+
+/(?(?=[^a-z]+[a-z])  \d{2}-[a-z]{3}-\d{2}  |  \d{2}-\d{2}-\d{2} ) /xSI
+
+/(?:(?:(?:(?:(?:(?:(?:(?:(?:(a|b|c))))))))))/iSI
+
+/(?:c|d)(?:)(?:aaaaaaaa(?:)(?:bbbbbbbb)(?:bbbbbbbb(?:))(?:bbbbbbbb(?:)(?:bbbbbbbb)))/SI
+
+/<a[\s]+href[\s]*=[\s]*          # find <a href=
+ ([\"\'])?                       # find single or double quote
+ (?(1) (.*?)\1 | ([^\s]+))       # if quote found, match up to next matching
+                                 # quote, otherwise match up to next space
+/isxSI
+
+/^(?!:)                       # colon disallowed at start
+  (?:                         # start of item
+    (?: [0-9a-f]{1,4} |       # 1-4 hex digits or
+    (?(1)0 | () ) )           # if null previously matched, fail; else null
+    :                         # followed by colon
+  ){1,7}                      # end item; 1-7 of them required               
+  [0-9a-f]{1,4} $             # final hex number at end of string
+  (?(1)|.)                    # check that there was an empty component
+  /xiIS
+
+/(?|(?<a>A)|(?<a>B))/I
+    AB\Ca
+    BA\Ca
+
+/(?|(?<a>A)|(?<b>B))/ 
+
+/(?:a(?<quote> (?<apostrophe>')|(?<realquote>")) |
+    b(?<quote> (?<apostrophe>')|(?<realquote>")) ) 
+    (?('quote')[a-z]+|[0-9]+)/JIx
+    a"aaaaa
+    b"aaaaa 
+    ** Failers 
+    b"11111
+    a"11111 
+    
+/^(?|(a)(b)(c)(?<D>d)|(?<D>e)) (?('D')X|Y)/JDZx
+    abcdX
+    eX
+    ** Failers
+    abcdY
+    ey     
+    
+/(?<A>a) (b)(c)  (?<A>d  (?(R&A)$ | (?4)) )/JDZx
+    abcdd
+    ** Failers
+    abcdde  
+
+/abcd*/
+    xxxxabcd\P
+    xxxxabcd\P\P
+
+/abcd*/i
+    xxxxabcd\P
+    xxxxabcd\P\P
+    XXXXABCD\P
+    XXXXABCD\P\P
+
+/abc\d*/
+    xxxxabc1\P
+    xxxxabc1\P\P
+
+/(a)bc\1*/
+    xxxxabca\P
+    xxxxabca\P\P
+
+/abc[de]*/
+    xxxxabcde\P
+    xxxxabcde\P\P
+
+/-- This is not in the Perl-compatible test because Perl seems currently to be
+    broken and not behaving as specified in that it *does* bumpalong after
+    hitting (*COMMIT). --/
+
+/(?1)(A(*COMMIT)|B)D/
+    ABD
+    XABD
+    BAD
+    ABXABD  
+    ** Failers 
+    ABX 
+    BAXBAD  
+
+/(\3)(\1)(a)/<JS>
+    cat
+
+/(\3)(\1)(a)/SI<JS>
+    cat
+
+/(\3)(\1)(a)/SI
+    cat
+
+/i(?(DEFINE)(?<s>a))/SI
+    i
+    
+/()i(?(1)a)/SI 
+    ia
+
+/(?i)a(?-i)b|c/BZ
+    XabX
+    XAbX
+    CcC 
+    ** Failers
+    XABX   
+
+/(?i)a(?s)b|c/BZ
+
+/(?i)a(?s-i)b|c/BZ
+
+/^(ab(c\1)d|x){2}$/BZ
+    xabcxd
+    
+/^(?&t)*+(?(DEFINE)(?<t>.))$/BZ
+
+/^(?&t)*(?(DEFINE)(?<t>.))$/BZ
+
+/ -- This one is here because Perl gives the match as "b" rather than "ab". I
+     believe this to be a Perl bug. --/  
+      
+/(?>a\Kb)z|(ab)/
+    ab 
+
+/(?P<L1>(?P<L2>0|)|(?P>L2)(?P>L1))/
+
+/abc(*MARK:)pqr/
+
+/abc(*:)pqr/
+
+/abc(*FAIL:123)xyz/
+
+/--- This should, and does, fail. In Perl, it does not, which I think is a 
+     bug because replacing the B in the pattern by (B|D) does make it fail. ---/
+
+/A(*COMMIT)B/+K
+    ACABX
+
+/--- These should be different, but in Perl they are not, which I think
+     is a bug in Perl. ---/
+
+/A(*THEN)B|A(*THEN)C/K
+    AC
+
+/A(*PRUNE)B|A(*PRUNE)C/K
+    AC
+    
+/--- Mark names can be duplicated. Perl doesn't give a mark for this one,
+though PCRE does. ---/
+
+/^A(*:A)B|^X(*:A)Y/K
+    ** Failers
+    XAQQ
+    
+/--- COMMIT at the start of a pattern should be the same as an anchor. Perl 
+optimizations defeat this. So does the PCRE optimization unless we disable it 
+with \Y. ---/
+
+/(*COMMIT)ABC/
+    ABCDEFG
+    ** Failers
+    DEFGABC\Y  
+    
+/^(ab (c+(*THEN)cd) | xyz)/x
+    abcccd  
+
+/^(ab (c+(*PRUNE)cd) | xyz)/x
+    abcccd  
+
+/^(ab (c+(*FAIL)cd) | xyz)/x
+    abcccd  
+    
+/--- Perl gets some of these wrong ---/ 
+
+/(?>.(*ACCEPT))*?5/
+    abcde
+
+/(.(*ACCEPT))*?5/
+    abcde
+
+/(.(*ACCEPT))5/
+    abcde
+
+/(.(*ACCEPT))*5/
+    abcde
+
+/A\NB./BZ
+    ACBD
+    *** Failers
+    A\nB
+    ACB\n   
+
+/A\NB./sBZ
+    ACBD
+    ACB\n 
+    *** Failers
+    A\nB  
+  
+/A\NB/<crlf>
+    A\nB
+    A\rB
+    ** Failers
+    A\r\nB    
+
+/\R+b/BZ
+
+/\R+\n/BZ
+
+/\R+\d/BZ
+
+/\d*\R/BZ
+
+/\s*\R/BZ
+    \x20\x0a
+    \x20\x0d
+    \x20\x0d\x0a
+
+/\S*\R/BZ
+    a\x0a
+
+/X\h*\R/BZ
+    X\x20\x0a
+
+/X\H*\R/BZ
+    X\x0d\x0a
+
+/X\H+\R/BZ
+    X\x0d\x0a
+
+/X\H++\R/BZ
+    X\x0d\x0a
+
+/(?<=abc)def/
+    abc\P\P
+
+/abc$/
+    abc
+    abc\P
+    abc\P\P
+
+/abc$/m
+    abc
+    abc\n
+    abc\P\P
+    abc\n\P\P 
+    abc\P
+    abc\n\P
+
+/abc\z/
+    abc
+    abc\P
+    abc\P\P
+
+/abc\Z/
+    abc
+    abc\P
+    abc\P\P
+
+/abc\b/
+    abc
+    abc\P
+    abc\P\P
+
+/abc\B/
+    abc
+    abc\P
+    abc\P\P
+
+/.+/
+    abc\>0
+    abc\>1
+    abc\>2
+    abc\>3
+    abc\>4
+    abc\>-4 
+
+/^\cģ/
+
+/(?P<abn>(?P=abn)xxx)/BZ
+
+/(a\1z)/BZ
+
+/(?P<abn>(?P=abn)(?<badstufxxx)/BZ
+
+/(?P<abn>(?P=axn)xxx)/BZ
+
+/(?P<abn>(?P=axn)xxx)(?<axn>yy)/BZ
+
+/-- These tests are here because Perl gets the first one wrong. --/
+
+/(\R*)(.)/s
+    \r\n
+    \r\r\n\n\r 
+    \r\r\n\n\r\n 
+
+/(\R)*(.)/s
+    \r\n
+    \r\r\n\n\r 
+    \r\r\n\n\r\n 
+
+/((?>\r\n|\n|\x0b|\f|\r|\x85)*)(.)/s
+    \r\n
+    \r\r\n\n\r 
+    \r\r\n\n\r\n 
+
+/-- --/
+
+/^abc$/BZ
+
+/^abc$/BZm
+
+/^(a)*+(\w)/S
+    aaaaX
+    ** Failers 
+    aaaa
+
+/^(?:a)*+(\w)/S
+    aaaaX
+    ** Failers 
+    aaaa
+
+/(a)++1234/SDZ
+
+/([abc])++1234/SI
+
+/(?<=(abc)+)X/
+
+/(^ab)/I
+
+/(^ab)++/I
+
+/(^ab|^)+/I
+
+/(^ab|^)++/I
+
+/(?:^ab)/I
+
+/(?:^ab)++/I
+
+/(?:^ab|^)+/I
+
+/(?:^ab|^)++/I
+
+/(.*ab)/I
+
+/(.*ab)++/I
+
+/(.*ab|.*)+/I
+
+/(.*ab|.*)++/I
+
+/(?:.*ab)/I
+
+/(?:.*ab)++/I
+
+/(?:.*ab|.*)+/I
+
+/(?:.*ab|.*)++/I
+
+/(?=a)[bcd]/I
+
+/((?=a))[bcd]/I
+
+/((?=a))+[bcd]/I
+
+/((?=a))++[bcd]/I
+
+/(?=a+)[bcd]/iI
+
+/(?=a+?)[bcd]/iI
+
+/(?=a++)[bcd]/iI
+
+/(?=a{3})[bcd]/iI
+
+/(abc)\1+/S
+
+/-- Perl doesn't get these right IMO (the 3rd is PCRE-specific) --/
+
+/(?1)(?:(b(*ACCEPT))){0}/
+    b
+
+/(?1)(?:(b(*ACCEPT))){0}c/
+    bc
+    ** Failers 
+    b 
+
+/(?1)(?:((*ACCEPT))){0}c/
+    c
+    c\N 
+
+/^.*?(?(?=a)a|b(*THEN)c)/
+    ba
+
+/^.*?(?(?=a)a|bc)/
+    ba
+
+/^.*?(?(?=a)a(*THEN)b|c)/
+    ac
+
+/^.*?(?(?=a)a(*THEN)b)c/
+    ac
+
+/^.*?(a(*THEN)b)c/
+    aabc
+    
+/^.*? (?1) c (?(DEFINE)(a(*THEN)b))/x
+    aabc
+
+/^.*?(a(*THEN)b|z)c/
+    aabc
+
+/^.*?(z|a(*THEN)b)c/
+    aabc
+
+/-- --/
+
+/-- These studied versions are here because they are not Perl-compatible; the
+    studying means the mark is not seen. --/
+
+/(*MARK:A)(*SKIP:B)(C|X)/KS
+    C
+    D
+     
+/(*:A)A+(*SKIP:A)(B|Z)/KS
+    AAAC
+
+/-- --/
+
+"(?=a*(*ACCEPT)b)c"
+    c
+    c\N 
+    
+/(?1)c(?(DEFINE)((*ACCEPT)b))/
+    c
+    c\N  
+    
+/(?>(*ACCEPT)b)c/
+    c
+    c\N  
+
+/(?:(?>(a)))+a%/++
+    %aa%
+
+/(a)b|ac/++SS
+    ac\O3
+    
+/(a)(b)x|abc/++
+     abc\O6
+
+/(a)bc|(a)(b)\2/
+    \O3abc
+    \O4abc 
+
+/(?(DEFINE)(a(?2)|b)(b(?1)|a))(?:(?1)|(?2))/SI
+
+/(a(?2)|b)(b(?1)|a)(?:(?1)|(?2))/SI
+
+/(a(?2)|b)(b(?1)|a)(?1)(?2)/SI
+
+/(abc)(?1)/SI
+
+/^(?>a)++/
+    aa\M
+    aaaaaaaaa\M 
+    
+/(a)(?1)++/
+    aa\M
+    aaaaaaaaa\M  
+
+/(?:(foo)|(bar)|(baz))X/SS=
+    bazfooX
+    foobazbarX
+    barfooX
+    bazX
+    foobarbazX    
+    bazfooX\O0
+    bazfooX\O2
+    bazfooX\O4
+    bazfooX\O6
+    bazfooX\O8
+    bazfooX\O10
+
+/(?=abc){3}abc/BZ
+
+/(?=abc)+abc/BZ
+
+/(?=abc)++abc/BZ
+
+/(?=abc){0}xyz/BZ
+
+/(?=(a))?./BZ
+
+/(?=(a))??./BZ
+
+/^(?=(a)){0}b(?1)/BZ
+
+/(?(DEFINE)(a))?b(?1)/BZ
+
+/^(?=(?1))?[az]([abc])d/BZ
+
+/^(?!a){0}\w+/BZ
+
+/(?<=(abc))?xyz/BZ
+
+/[:a[:abc]b:]/BZ
+
+/((?2))((?1))/SS
+    abc
+
+/((?(R2)a+|(?1)b))/SS
+    aaaabcde
+
+/(?(R)a*(?1)|((?R))b)/SS
+    aaaabcde
+
+/(a+|(?R)b)/
+
+/^(a(*:A)(d|e(*:B))z|aeq)/C
+    adz
+    aez
+    aeqwerty
+
+/.(*F)/
+    \P\Pabc
+
+/\btype\b\W*?\btext\b\W*?\bjavascript\b/IS
+
+/\btype\b\W*?\btext\b\W*?\bjavascript\b|\burl\b\W*?\bshell:|<input\b.*?\btype\b\W*?\bimage\b|\bonkeyup\b\W*?\=/IS
+
+/a(*SKIP)c|b(*ACCEPT)|/+S!I
+    a
+
+/a(*SKIP)c|b(*ACCEPT)cd(*ACCEPT)|x/SI
+    ax
+
+'a*(*ACCEPT)b'+
+    \N\N
+    abc\N\N
+    bbb\N\N 
+
+/(*ACCEPT)a/+I
+    bax
+
+/z(*ACCEPT)a/+I
+    baxzbx
+
+/a(?:.)*?a/ims                                                                  
+    \Mabbbbbbbbbbbbbbbbbbbbba
+    
+/a(?:.(*THEN))*?a/ims
+    \Mabbbbbbbbbbbbbbbbbbbbba
+
+/a(?:.(*THEN:ABC))*?a/ims
+    \Mabbbbbbbbbbbbbbbbbbbbba
+
+/^(?>a+)(?>(z+))\w/BZ
+    aaaazzzzb
+    ** Failers
+    aazz  
+
+/(.)(\1|a(?2))/
+    bab
+    
+/\1|(.)(?R)\1/
+    cbbbc
+    
+/(.)((?(1)c|a)|a(?2))/
+    baa  
+
+/(?P<abn>(?P=abn)xxx)/BZ
+
+/(a\1z)/BZ
+
+/^(?>a+)(?>b+)(?>c+)(?>d+)(?>e+)/
+     \Maabbccddee
+
+/^(?>(a+))(?>(b+))(?>(c+))(?>(d+))(?>(e+))/
+     \Maabbccddee
+
+/^(?>(a+))(?>b+)(?>(c+))(?>d+)(?>(e+))/
+     \Maabbccddee
+
+/^a\x41z/<JS>
+    aAz
+    *** Failers
+    ax41z
+
+/^a[m\x41]z/<JS>
+    aAz
+
+/^a\x1z/<JS>
+    ax1z
+
+/^a\u0041z/<JS>
+    aAz
+    *** Failers
+    au0041z
+
+/^a[m\u0041]z/<JS>
+    aAz
+
+/^a\u041z/<JS>
+    au041z
+    *** Failers
+    aAz
+
+/^a\U0041z/<JS>
+    aU0041z
+    *** Failers
+    aAz
+
+/(?(?=c)c|d)++Y/BZ
+
+/(?(?=c)c|d)*+Y/BZ
+
+/a[\NB]c/
+    aNc
+    
+/a[B-\Nc]/ 
+
+/a[B\Nc]/ 
+
+/(a)(?2){0,1999}?(b)/
+
+/(a)(?(DEFINE)(b))(?2){0,1999}?(?2)/
+
+/--- This test, with something more complicated than individual letters, causes
+different behaviour in Perl. Perhaps it disables some optimization; no tag is
+passed back for the failures, whereas in PCRE there is a tag. ---/
+    
+/(A|P)(*:A)(B|P) | (X|P)(X|P)(*:B)(Y|P)/xK
+    AABC
+    XXYZ 
+    ** Failers
+    XAQQ  
+    XAQQXZZ  
+    AXQQQ 
+    AXXQQQ 
+
+/-- Perl doesn't give marks for these, though it does if the alternatives are
+replaced by single letters. --/
+    
+/(b|q)(*:m)f|a(*:n)w/K
+    aw 
+    ** Failers 
+    abc
+
+/(q|b)(*:m)f|a(*:n)w/K
+    aw 
+    ** Failers 
+    abc
+
+/-- After a partial match, the behaviour is as for a failure. --/
+
+/^a(*:X)bcde/K
+   abc\P
+   
+/-- These are here because Perl doesn't return a mark, except for the first --/
+
+/(?=(*:x))(q|)/K+
+    abc
+
+/(?=(*:x))((*:y)q|)/K+
+    abc
+
+/(?=(*:x))(?:(*:y)q|)/K+
+    abc
+
+/(?=(*:x))(?>(*:y)q|)/K+
+    abc
+
+/(?=a(*:x))(?!a(*:y)c)/K+
+    ab
+
+/(?=a(*:x))(?=a(*:y)c|)/K+
+    ab
+
+/(..)\1/
+    ab\P
+    aba\P
+    abab\P
+
+/(..)\1/i
+    ab\P
+    abA\P
+    aBAb\P
+
+/(..)\1{2,}/
+    ab\P
+    aba\P
+    abab\P
+    ababa\P
+    ababab\P
+    ababab\P\P
+    abababa\P
+    abababa\P\P
+
+/(..)\1{2,}/i
+    ab\P
+    aBa\P
+    aBAb\P
+    AbaBA\P
+    abABAb\P
+    aBAbaB\P\P
+    abABabA\P
+    abaBABa\P\P
+
+/(..)\1{2,}?x/i
+    ab\P
+    abA\P
+    aBAb\P
+    abaBA\P
+    abAbaB\P
+    abaBabA\P
+    abAbABaBx\P
+
+/^(..)\1/
+    aba\P
+
+/^(..)\1{2,3}x/
+    aba\P
+    ababa\P
+    ababa\P\P
+    abababx
+    ababababx  
+
+/^(..)\1{2,3}?x/
+    aba\P
+    ababa\P
+    ababa\P\P
+    abababx
+    ababababx  
+    
+/^(..)(\1{2,3})ab/
+    abababab
+
+/^\R/
+    \r\P
+    \r\P\P
+    
+/^\R{2,3}x/
+    \r\P
+    \r\P\P
+    \r\r\P 
+    \r\r\P\P
+    \r\r\r\P  
+    \r\r\r\P\P
+    \r\rx
+    \r\r\rx    
+
+/^\R{2,3}?x/
+    \r\P
+    \r\P\P
+    \r\r\P 
+    \r\r\P\P
+    \r\r\r\P  
+    \r\r\r\P\P
+    \r\rx
+    \r\r\rx    
+    
+/^\R?x/
+    \r\P
+    \r\P\P 
+    x
+    \rx  
+
+/^\R+x/
+    \r\P
+    \r\P\P 
+    \r\n\P
+    \r\n\P\P  
+    \rx  
+
+/^a$/<CRLF>
+    a\r\P
+    a\r\P\P 
+
+/^a$/m<CRLF>
+    a\r\P
+    a\r\P\P 
+
+/^(a$|a\r)/<CRLF>
+    a\r\P
+    a\r\P\P 
+
+/^(a$|a\r)/m<CRLF>
+    a\r\P
+    a\r\P\P 
+
+/./<CRLF>
+    \r\P
+    \r\P\P 
+  
+/.{2,3}/<CRLF>
+    \r\P 
+    \r\P\P
+    \r\r\P
+    \r\r\P\P
+    \r\r\r\P
+    \r\r\r\P\P     
+
+/.{2,3}?/<CRLF>
+    \r\P 
+    \r\P\P
+    \r\r\P
+    \r\r\P\P
+    \r\r\r\P
+    \r\r\r\P\P     
+
+"AB(C(D))(E(F))?(?(?=\2)(?=\4))"
+    ABCDGHI\O03
+    
+/-- These are all run as real matches in test 1; here we are just checking the
+settings of the anchored and startline bits. --/ 
+
+/(?>.*?a)(?<=ba)/I
+
+/(?:.*?a)(?<=ba)/I
+
+/.*?a(*PRUNE)b/I
+
+/.*?a(*PRUNE)b/sI
+
+/^a(*PRUNE)b/sI
+
+/.*?a(*SKIP)b/I
+
+/(?>.*?a)b/sI
+
+/(?>.*?a)b/I
+
+/(?>^a)b/sI
+
+/(?>.*?)(?<=(abcd)|(wxyz))/I
+
+/(?>.*)(?<=(abcd)|(wxyz))/I
+
+"(?>.*)foo"I
+
+"(?>.*?)foo"I
+
+/(?>^abc)/mI
+
+/(?>.*abc)/mI
+
+/(?:.*abc)/mI
+
+/-- Check PCRE_STUDY_EXTRA_NEEDED --/
+
+/.?/S-I
+
+/.?/S!I
+
+/(?:(a)+(?C1)bb|aa(?C2)b)/
+    aab\C+
+   
+/(?:(a)++(?C1)bb|aa(?C2)b)/
+    aab\C+ 
+    
+/(?:(?>(a))(?C1)bb|aa(?C2)b)/
+    aab\C+ 
+
+/(?:(?1)(?C1)x|ab(?C2))((a)){0}/                                                
+    aab\C+ 
+
+/(?1)(?C1)((a)(?C2)){0}/   
+    aab\C+ 
+
+/(?:(a)+(?C1)bb|aa(?C2)b)++/
+    aab\C+
+    aab\C+\O2
+
+/(ab)x|ab/
+    ab\O3
+    ab\O2 
+  
+/(ab)/
+    ab\O3
+    ab\O2 
+    
+/(?<=123)(*MARK:xx)abc/K
+    xxxx123a\P\P
+    xxxx123a\P
+    
+/123\Kabc/
+    xxxx123a\P\P
+    xxxx123a\P
+
+/^(?(?=a)aa|bb)/C
+    bb
+
+/(?C1)^(?C2)(?(?C99)(?=(?C3)a(?C4))(?C5)a(?C6)a(?C7)|(?C8)b(?C9)b(?C10))(?C11)/
+    bb
+
+/-- Perl seems to have a bug with this one --/
+
+/aaaaa(*COMMIT)(*PRUNE)b|a+c/
+    aaaaaac
+    
+/-- Here are some that Perl treats differently because of the way it handles
+backtracking verbs. --/
+
+ /(?!a(*COMMIT)b)ac|ad/
+     ac
+     ad 
+
+/^(?!a(*THEN)b|ac)../
+     ac
+     ad 
+
+/^(?=a(*THEN)b|ac)/
+    ac
+    
+/\A.*?(?:a|b(*THEN)c)/
+    ba
+
+/\A.*?(?:a|b(*THEN)c)++/
+    ba
+
+/\A.*?(?:a|b(*THEN)c|d)/
+    ba
+
+/(?:(a(*MARK:X)a+(*SKIP:X)b)){0}(?:(?1)|aac)/
+    aac 
+
+/\A.*?(a|b(*THEN)c)/
+    ba
+
+/^(A(*THEN)B|A(*THEN)D)/
+    AD           
+    
+/(?!b(*THEN)a)bn|bnn/
+    bnn
+
+/(?(?=b(*SKIP)a)bn|bnn)/
+    bnn
+
+/(?=b(*THEN)a|)bn|bnn/
+    bnn
+
+/-------------------------/ 
+
+/(*LIMIT_MATCH=12bc)abc/
+
+/(*LIMIT_MATCH=4294967290)abc/
+
+/(*LIMIT_RECURSION=4294967280)abc/I
+
+/(a+)*zz/
+    aaaaaaaaaaaaaz
+    aaaaaaaaaaaaaz\q3000
+
+/(a+)*zz/S-
+    aaaaaaaaaaaaaz\Q10 
+
+/(*LIMIT_MATCH=3000)(a+)*zz/I
+    aaaaaaaaaaaaaz
+    aaaaaaaaaaaaaz\q60000
+
+/(*LIMIT_MATCH=60000)(*LIMIT_MATCH=3000)(a+)*zz/I
+    aaaaaaaaaaaaaz
+
+/(*LIMIT_MATCH=60000)(a+)*zz/I
+    aaaaaaaaaaaaaz
+    aaaaaaaaaaaaaz\q3000
+
+/(*LIMIT_RECURSION=10)(a+)*zz/IS-
+    aaaaaaaaaaaaaz
+    aaaaaaaaaaaaaz\Q1000
+
+/(*LIMIT_RECURSION=10)(*LIMIT_RECURSION=1000)(a+)*zz/IS-
+    aaaaaaaaaaaaaz
+
+/(*LIMIT_RECURSION=1000)(a+)*zz/IS-
+    aaaaaaaaaaaaaz
+    aaaaaaaaaaaaaz\Q10
+
+/-- This test causes a segfault with Perl 5.18.0 --/
+
+/^(?=(a)){0}b(?1)/
+    backgammon
+
+/(?|(?<n>f)|(?<n>b))/JI
+
+/(?<a>abc)(?<a>z)\k<a>()/JDZS
+
+/a*[bcd]/BZ
+
+/[bcd]*a/BZ
+
+/-- A complete set of tests for auto-possessification of character types --/
+
+/\D+\D \D+\d \D+\S \D+\s \D+\W \D+\w \D+. \D+\C \D+\R \D+\H \D+\h \D+\V \D+\v \D+\Z \D+\z \D+$/BZx
+
+/\d+\D \d+\d \d+\S \d+\s \d+\W \d+\w \d+. \d+\C \d+\R \d+\H \d+\h \d+\V \d+\v \d+\Z \d+\z \d+$/BZx
+
+/\S+\D \S+\d \S+\S \S+\s \S+\W \S+\w \S+. \S+\C \S+\R \S+\H \S+\h \S+\V \S+\v \S+\Z \S+\z \S+$/BZx
+
+/\s+\D \s+\d \s+\S \s+\s \s+\W \s+\w \s+. \s+\C \s+\R \s+\H \s+\h \s+\V \s+\v \s+\Z \s+\z \s+$/BZx
+
+/\W+\D \W+\d \W+\S \W+\s \W+\W \W+\w \W+. \W+\C \W+\R \W+\H \W+\h \W+\V \W+\v \W+\Z \W+\z \W+$/BZx
+
+/\w+\D \w+\d \w+\S \w+\s \w+\W \w+\w \w+. \w+\C \w+\R \w+\H \w+\h \w+\V \w+\v \w+\Z \w+\z \w+$/BZx
+
+/\C+\D \C+\d \C+\S \C+\s \C+\W \C+\w \C+. \C+\C \C+\R \C+\H \C+\h \C+\V \C+\v \C+\Z \C+\z \C+$/BZx
+
+/\R+\D \R+\d \R+\S \R+\s \R+\W \R+\w \R+. \R+\C \R+\R \R+\H \R+\h \R+\V \R+\v \R+\Z \R+\z \R+$/BZx
+
+/\H+\D \H+\d \H+\S \H+\s \H+\W \H+\w \H+. \H+\C \H+\R \H+\H \H+\h \H+\V \H+\v \H+\Z \H+\z \H+$/BZx
+
+/\h+\D \h+\d \h+\S \h+\s \h+\W \h+\w \h+. \h+\C \h+\R \h+\H \h+\h \h+\V \h+\v \h+\Z \h+\z \h+$/BZx
+
+/\V+\D \V+\d \V+\S \V+\s \V+\W \V+\w \V+. \V+\C \V+\R \V+\H \V+\h \V+\V \V+\v \V+\Z \V+\z \V+$/BZx
+
+/\v+\D \v+\d \v+\S \v+\s \v+\W \v+\w \v+. \v+\C \v+\R \v+\H \v+\h \v+\V \v+\v \v+\Z \v+\z \v+$/BZx
+
+/ a+\D  a+\d  a+\S  a+\s  a+\W  a+\w  a+.  a+\C  a+\R  a+\H  a+\h  a+\V  a+\v  a+\Z  a+\z  a+$/BZx
+
+/\n+\D \n+\d \n+\S \n+\s \n+\W \n+\w \n+. \n+\C \n+\R \n+\H \n+\h \n+\V \n+\v \n+\Z \n+\z \n+$/BZx
+
+/ .+\D  .+\d  .+\S  .+\s  .+\W  .+\w  .+.  .+\C  .+\R  .+\H  .+\h  .+\V  .+\v  .+\Z  .+\z  .+$/BZx
+
+/ .+\D  .+\d  .+\S  .+\s  .+\W  .+\w  .+.  .+\C  .+\R  .+\H  .+\h  .+\V  .+\v  .+\Z  .+\z  .+$/BZxs
+
+/\D+$  \d+$  \S+$  \s+$  \W+$  \w+$  \C+$  \R+$  \H+$  \h+$  \V+$  \v+$   a+$  \n+$   .+$  .+$/BZxm
+
+/(?=a+)a(a+)++a/BZ
+
+/a+(bb|cc)a+(?:bb|cc)a+(?>bb|cc)a+(?:bb|cc)+a+(aa)a+(?:bb|aa)/BZ
+
+/a+(bb|cc)?#a+(?:bb|cc)??#a+(?:bb|cc)?+#a+(?:bb|cc)*#a+(bb|cc)?a#a+(?:aa)?/BZ
+
+/a+(?:bb)?a#a+(?:|||)#a+(?:|b)a#a+(?:|||)?a/BZ
+
+/[ab]*/BZ
+    aaaa
+
+/[ab]*?/BZ
+    aaaa
+
+/[ab]?/BZ
+    aaaa
+
+/[ab]??/BZ
+    aaaa
+
+/[ab]+/BZ
+    aaaa
+
+/[ab]+?/BZ
+    aaaa
+
+/[ab]{2,3}/BZ
+    aaaa
+
+/[ab]{2,3}?/BZ
+    aaaa
+
+/[ab]{2,}/BZ
+    aaaa
+
+/[ab]{2,}?/BZ
+    aaaa
+
+/\d+\s{0,5}=\s*\S?=\w{0,4}\W*/BZ
+
+/[a-d]{5,12}[e-z0-9]*#[^a-z]+[b-y]*a[2-7]?[^0-9a-z]+/BZ
+
+/[a-z]*\s#[ \t]?\S#[a-c]*\S#[C-G]+?\d#[4-8]*\D#[4-9,]*\D#[!$]{0,5}\w#[M-Xf-l]+\W#[a-c,]?\W/BZ
+
+/a+(aa|bb)*c#a*(bb|cc)*a#a?(bb|cc)*d#[a-f]*(g|hh)*f/BZ
+
+/[a-f]*(g|hh|i)*i#[a-x]{4,}(y{0,6})*y#[a-k]+(ll|mm)+n/BZ
+
+/[a-f]*(?>gg|hh)+#[a-f]*(?>gg|hh)?#[a-f]*(?>gg|hh)*a#[a-f]*(?>gg|hh)*h/BZ
+
+/[a-c]*d/DZS
+
+/[a-c]+d/DZS
+
+/[a-c]?d/DZS
+
+/[a-c]{4,6}d/DZS
+
+/[a-c]{0,6}d/DZS
+
+/-- End of special auto-possessive tests --/
+
+/^A\o{1239}B/
+    A\123B
+
+/^A\oB/
+    
+/^A\x{zz}B/ 
+
+/^A\x{12Z/
+
+/^A\x{/
+
+/[ab]++/BZO
+
+/[^ab]*+/BZO
+
+/a{4}+/BZO
+
+/a{4}+/BZOi
+
+/[a-[:digit:]]+/
+
+/[A-[:digit:]]+/
+
+/[a-[.xxx.]]+/
+
+/[a-[=xxx=]]+/
+
+/[a-[!xxx!]]+/
+
+/[A-[!xxx!]]+/
+    A]]]
+
+/[a-\d]+/
+
+/(?<0abc>xx)/
+
+/(?&1abc)xx(?<1abc>y)/
+
+/(?<ab-cd>xx)/
+
+/(?'0abc'xx)/
+
+/(?P<0abc>xx)/
+
+/\k<5ghj>/
+
+/\k'5ghj'/
+
+/\k{2fgh}/
+
+/(?P=8yuki)/
+
+/\g{4df}/
+
+/(?&1abc)xx(?<1abc>y)/
+
+/(?P>1abc)xx(?<1abc>y)/
+
+/\g'3gh'/
+
+/\g<5fg>/
+
+/(?(<4gh>)abc)/
+
+/(?('4gh')abc)/
+
+/(?(4gh)abc)/
+
+/(?(R&6yh)abc)/
+
+/(((a\2)|(a*)\g<-1>))*a?/BZ
+
+/-- Test the ugly "start or end of word" compatibility syntax --/
+
+/[[:<:]]red[[:>:]]/BZ
+    little red riding hood
+    a /red/ thing 
+    red is a colour
+    put it all on red  
+    ** Failers
+    no reduction
+    Alfred Winifred
+    
+/[a[:<:]] should give error/ 
+
+/(?=ab\K)/+
+    abcd
+
+/abcd/f<lf>
+    xx\nxabcd
+    
+/ -- Test stack check external calls --/ 
+
+/(((((a)))))/Q0
+
+/(((((a)))))/Q1
+
+/(((((a)))))/Q
+
+/^\w+(?>\s*)(?<=\w)/BZ
+
+/\othing/
+
+/\o{}/
+
+/\o{whatever}/
+
+/\xthing/
+
+/\x{}/
+
+/\x{whatever}/
+
+"((?=(?(?=(?(?=(?(?=()))))))))"
+    a
+
+"(?(?=)==)(((((((((?=)))))))))"
+    a
+
+/^(?:(a)|b)(?(1)A|B)/I
+    aA123\O3
+    aA123\O6
+
+'^(?:(?<AA>a)|b)(?(<AA>)A|B)'
+    aA123\O3
+    aA123\O6
+
+'^(?<AA>)(?:(?<AA>a)|b)(?(<AA>)A|B)'J
+    aA123\O3
+    aA123\O6
+
+'^(?:(?<AA>X)|)(?:(?<AA>a)|b)\k{AA}'J
+    aa123\O3
+    aa123\O6
+
+/(?<N111>(?J)(?<N111>1(111111)11|)1|1|)(?(<N111>)1)/
+
+/(?(?=0)?)+/
+
+/(?(?=0)(?=00)?00765)/
+     00765
+
+/(?(?=0)(?=00)?00765|(?!3).56)/
+     00765
+     456
+     ** Failers
+     356   
+
+'^(a)*+(\w)'
+    g
+    g\O3
+
+'^(?:a)*+(\w)'
+    g
+    g\O3
+
+//C
+    \O\C+
+
+"((?2){0,1999}())?"
+
+/((?+1)(\1))/BZ
+
+/(?(?!)a|b)/
+    bbb
+    aaa 
+
+"((?2)+)((?1))"
+
+"(?(?<E>.*!.*)?)"
+
+"X((?2)()*+){2}+"BZ
+
+"X((?2)()*+){2}"BZ
+
+"(?<=((?2))((?1)))"
+
+/(?<=\Ka)/g+
+    aaaaa
+
+/(?<=\Ka)/G+
+    aaaaa
+
+/((?2){73}(?2))((?1))/
+
+/.((?2)(?R)\1)()/BZ
+
+/(?1)()((((((\1++))\x85)+)|))/
+
+/(\9*+(?2);\3++()2|)++{/
+
+/\V\x85\9*+((?2)\3++()2)*:2/
+
+/(((?(R)){0,2}) (?''((?'R')((?'R')))))/J
+
+/(((?(X)){0,2}) (?''((?'X')((?'X')))))/J
+
+/(((?(R)){0,2}) (?''((?'X')((?'R')))))/
+
+"(?J)(?'d'(?'d'\g{d}))"
+
+".*?\h.+.\.+\R*?\xd(?i)(?=!(?=b`b`b`\`b\xa9b!)`\a`bbbbbbbbbbbbb`bbbbbbbbbbbb*R\x85bbbbbbb\C?{((?2)(?))((
+\H){8(?<=(?1){29}\xa8bbbb\x16\xd\xc6^($(?<! )(\xa9H4){4}h}1)B))\x15')"
+
+"(?J:(?|(?'R')(\k'R')|((?'R'))))"
+
+/(?<=|(\,\$(?73591620449005828816)\xa8.{7}){6}\x09)/
+
+//
+\O1
+
+/^(?:(?(1)x|)+)+$()/BZ
+
+/(?=di(?<=(?1))|(?=(.))))/
+
+/(?(R))*+/BZ
+
+/[[:\\](?'abc')[a:]/
+
+"[[[.\xe8Nq\xffq\xff\xe0\x2|||::Nq\xffq\xff\xe0\x6\x2|||::[[[:[::::::[[[[[::::::::[:[[[:[:::[[[[[[[[[[[[:::::::::::::::::[[.\xe8Nq\xffq\xff\xe0\x2|||::Nq\xffq\xff\xe0\x6\x2|||::[[[:[::::::[[[[[::::::::[:[[[:[:::[[[[[[[[[[[[[[:::E[[[:[:[[:[:::[[:::E[[[:[:[[:'[:::::E[[[:[::::::[[[:[[[[[[[::E[[[:[::::::[[[:[[[[[[[[:[[::[::::[[:::::::[[:[[[[[[[:[[::[:[[:[~"
+
+/()(?(R)0)*+/BZ
+
+/(?R-:(?</
+
+/(?1){3918}(((((0(\k'R'))))(?J)(?'R'(?'R'\3){99})))/I
+
+/(?J:(?|(:(?|(?'R')(\k'R')|((?'R')))H'Rk'Rf)|s(?'R')))/
+
+/0(?0)|(1)(*THEN)(*SKIP:0)(*FAIL)/
+    01
+
+/((?(R8000000000)))/ 
+
+/(?(8000000000/
+
+/(?:ab)?(?:ab)(?:ab)/
+    abab
+    ababab
+    aba
+
+/((*MARK:A))++a(*SKIP:B)b/
+    aacb
+
+/(?J:(?|(:(?|(?'R')(\z(?|(?'R')(\k'R')|((?'R')))k'R')|((?'R')))H'Ak'Rf)|s(?'R')))/
+
+/(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?&a)(?<a>1)/
+
+/a[[:punct:]b]/BZ
+
+/-- End of testinput2 --/

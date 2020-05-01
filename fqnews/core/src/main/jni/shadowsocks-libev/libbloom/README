@@ -1,0 +1,45 @@
+
+Introduction
+------------
+This is libbloom, a simple and small bloom filter implementation in C.
+
+If you are reading this you probably already know about bloom filters
+and why you might use one. If not, the wikipedia article is a good intro:
+http://en.wikipedia.org/wiki/Bloom_filter
+
+
+Building
+--------
+The Makefile assumes GNU Make, so run 'make' or 'gmake' as appropriate
+on your system.
+
+By default it builds an optimized 64 bit libbloom. See Makefile comments
+for other build options.
+
+The shared library will be in ./build/libbloom.so
+
+
+Sample Usage
+------------
+
+#include "bloom.h"
+
+struct bloom bloom;
+bloom_init(&bloom, 1000000, 0.01);
+bloom_add(&bloom, buffer, buflen);
+
+if (bloom_check(&bloom, buffer, buflen)) {
+  printf("It may be there!\n");
+}
+
+
+Documentation
+-------------
+Read bloom.h for more detailed documentation on the public interfaces.
+
+
+License
+-------
+This code (except MurmurHash2) is under BSD license. See LICENSE file.
+
+See murmur2/README for info on MurmurHash2.

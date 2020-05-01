@@ -1,0 +1,62 @@
+include_guard "temp_dir"
+
+template temp_dir {
+    objref_arg(_arg0) log;
+    alias(@_arg1) temp_base_dir;
+    alias(@_arg2) mktemp;
+    alias(@_arg3) rm;
+
+    # Create a temporary directory.
+    var("") created_dir;
+    Do {
+        # Build the path template.
+        value(@concat(temp_base_dir, "/build-")) temp_prefix;
+        concat(temp_prefix, "XXXXXXXXXXXXXXXX") temp_template;
+        
+        # Call mktemp.
+        call(@run_process_output, {{mktemp, "-d", temp_template}}) mktemp_res;
+        
+        # Check mktemp success.
+        If (@not(mktemp_res.succeeded)) {
+            log->call(@error, "mktemp failed");
+            _do->break();
+        };
+        
+        # Remove a trailing newline from the output.
+        objref(^mktemp_res.output) output;
+        If (@num_equal(output.length, "0")) {
+            log->call(@error, "mktemp result is empty");
+            _do->break();
+        };
+        var(@num_subtract(output.length, "1")) len_minus_one;
+        output->substr(len_minus_one) last_char;
+        If (@val_different(last_char, "\n")) {
+            log->call(@error, "last char of mktemp result is not a newline");
+            _do->break();
+        };
+        output->substr("0", len_minus_one) without_newline;
+        output->reset(without_newline);
+        
+        # Check created dir prefix.
+        output->substr("0", temp_prefix.length) created_prefix;
+        If (@val_different(created_prefix, temp_prefix)) {
+            log->call(@error, "mktemp result prefix incorrect");
+            _do->break();
+        };
+        
+        # Remember it.
+        created_dir->set(output);
+    } Interrupt {
+        # Do not interrupt the directory creation, or we might
+        # end up with creating but not removing a directory.
+        if(@false);
+    } dir_creation;
+    
+    # Expose success status.
+    var(dir_creation.succeeded) succeeded;
+    
+    # Arrange for removing the temp dir.
+    If (succeeded) {
+        run({}, {rm, "-rf", created_dir});
+    };
+}

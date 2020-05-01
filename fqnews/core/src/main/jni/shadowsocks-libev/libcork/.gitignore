@@ -1,0 +1,15 @@
+/build/
+/.build/
+
+RELEASE-VERSION
+
+/libcork*.tar.gz
+/libcork*.tar.bz2
+
+*.[oa]
+*.os
+*.so
+*.dylib
+
+!.travis.yml
+!.travis/

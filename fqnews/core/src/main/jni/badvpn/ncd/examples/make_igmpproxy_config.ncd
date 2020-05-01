@@ -1,0 +1,53 @@
+process main {
+    call("make_igmpproxy_config", {"br0", "eth1", "./igmpproxy.conf.template", "./igmpproxy.conf"});
+
+    println("Done.");
+    exit("0");
+}
+
+template make_igmpproxy_config {
+    alias("_arg0") upstream_iface;
+    alias("_arg1") downstream_iface;
+    alias("_arg2") template_file;
+    alias("_arg3") output_file;
+
+    # Make a list of interfaces to add as disabled (upstream and downstream will not be disabled).
+    var({
+        "eth0", "eth1", "eth2", "eth3", "eth4", "eth5", "eth6", "eth7", "eth8", "eth9",
+        "wlan0", "wlan1", "wlan2", "wlan3", "wlan4", "wlan5", "wlan6", "wlan7", "wlan8", "wlan9",
+        "tap0", "tap1", "tap2", "tap3", "tap4", "tap5", "tap6", "tap7", "tap8", "tap9",
+        "br0", "br1", "br2", "br3", "br4", "br5", "br6", "br7", "br8", "br9"
+    }) disabled_ifaces;
+
+    # Build replacements for template config.
+    var({"<UPSTREAM_IFACE>", "<DOWNSTREAM_IFACE>"}) regex;
+    var({upstream_iface, downstream_iface}) replace;
+
+    # Read template config.
+    file_read(template_file) template_data;
+
+    # Perform replacements.
+    regex_replace(template_data, regex, replace) replaced_data;
+    
+    # Build string value from replaced_data, to which we will append
+    # configuration for disabled interfaces.
+    value(replaced_data) output_data;
+
+    # Build disabled strings.
+    Foreach (disabled_ifaces As iface) {
+        # Determine if the interface is disabled.
+        val_equal(iface, upstream_iface) is_up;
+        val_equal(iface, downstream_iface) is_down;
+        or(is_up, is_down) is_not_disabled;
+        not(is_not_disabled) is_disabled;
+        
+        # If it's disabled, append to the configuration file.
+        If (is_disabled) {
+            concat("phyint ", iface, " disabled\n") str;
+            output_data->append(str);
+        };
+    };
+    
+    # Write config.
+    file_write(output_file, output_data);
+}

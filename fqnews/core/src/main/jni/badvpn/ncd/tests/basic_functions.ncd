@@ -1,0 +1,267 @@
+process main {
+    var(@identity("Foo")) x;
+    val_equal(x, "Foo") a;
+    assert(a);
+    
+    
+    var(@if("true", "T", "F")) x;
+    val_equal(x, "T") a;
+    assert(a);
+    
+    var(@if("ntrue", "T", "F")) x;
+    val_equal(x, "F") a;
+    assert(a);
+    
+    
+    var(@bool("ntrue")) x;
+    assert_false(x);
+
+    var(@bool("true")) x;
+    assert(x);
+    
+    
+    var(@not("ntrue")) x;
+    assert(x);
+
+    var(@not("true")) x;
+    assert_false(x);
+    
+    
+    
+    var(@and("ntrue")) x;
+    assert_false(x);
+    
+    var(@and("true")) x;
+    assert(x);
+    
+    var(@and("ntrue", "ntrue")) x;
+    assert_false(x);
+    
+    var(@and("ntrue", "true")) x;
+    assert_false(x);
+    
+    var(@and("true", "ntrue")) x;
+    assert_false(x);
+    
+    var(@and("true", "true")) x;
+    assert(x);
+    
+    
+    var(@or("ntrue")) x;
+    assert_false(x);
+    
+    var(@or("true")) x;
+    assert(x);
+    
+    var(@or("ntrue", "ntrue")) x;
+    assert_false(x);
+    
+    var(@or("ntrue", "true")) x;
+    assert(x);
+    
+    var(@or("true", "ntrue")) x;
+    assert(x);
+    
+    var(@or("true", "true")) x;
+    assert(x);
+    
+    
+    var(@imp("ntrue", "ntrue")) x;
+    assert(x);
+    
+    var(@imp("ntrue", "true")) x;
+    assert(x);
+    
+    var(@imp("true", "ntrue")) x;
+    assert_false(x);
+    
+    var(@imp("true", "true")) x;
+    assert(x);
+    
+    
+    var(@val_lesser("B", "A")) x;
+    assert_false(x);
+    
+    var(@val_lesser("B", "B")) x;
+    assert_false(x);
+    
+    var(@val_lesser("B", "C")) x;
+    assert(x);
+    
+    
+    var(@val_greater("B", "A")) x;
+    assert(x);
+    
+    var(@val_greater("B", "B")) x;
+    assert_false(x);
+    
+    var(@val_greater("B", "C")) x;
+    assert_false(x);
+    
+    
+    var(@val_lesser_equal("B", "A")) x;
+    assert_false(x);
+    
+    var(@val_lesser_equal("B", "B")) x;
+    assert(x);
+    
+    var(@val_lesser_equal("B", "C")) x;
+    assert(x);
+    
+    
+    var(@val_greater_equal("B", "A")) x;
+    assert(x);
+    
+    var(@val_greater_equal("B", "B")) x;
+    assert(x);
+    
+    var(@val_greater_equal("B", "C")) x;
+    assert_false(x);
+    
+    
+    var(@val_equal("B", "A")) x;
+    assert_false(x);
+    
+    var(@val_equal("B", "B")) x;
+    assert(x);
+    
+    var(@val_equal("B", "C")) x;
+    assert_false(x);
+    
+    
+    var(@val_different("B", "A")) x;
+    assert(x);
+    
+    var(@val_different("B", "B")) x;
+    assert_false(x);
+    
+    var(@val_different("B", "C")) x;
+    assert(x);
+    
+    
+    var(@concat("Foo", "Bar", {"Baaz", "Qux", {"M"}})) x;
+    val_equal(x, "FooBarBaazQuxM") a;
+    assert(a);
+    
+    
+    var(@concatlist({"A"}, {}, {{}, []})) x;
+    val_equal(x, {"A", {}, []}) a;
+    assert(a);
+    
+    
+    var(@num_lesser("10", "9")) x;
+    assert_false(x);
+    
+    var(@num_lesser("10", "10")) x;
+    assert_false(x);
+    
+    var(@num_lesser("10", "11")) x;
+    assert(x);
+    
+    
+    var(@num_greater("10", "9")) x;
+    assert(x);
+    
+    var(@num_greater("10", "10")) x;
+    assert_false(x);
+    
+    var(@num_greater("10", "11")) x;
+    assert_false(x);
+    
+    
+    var(@num_lesser_equal("10", "9")) x;
+    assert_false(x);
+    
+    var(@num_lesser_equal("10", "10")) x;
+    assert(x);
+    
+    var(@num_lesser_equal("10", "11")) x;
+    assert(x);
+    
+    
+    var(@num_greater_equal("10", "9")) x;
+    assert(x);
+    
+    var(@num_greater_equal("10", "10")) x;
+    assert(x);
+    
+    var(@num_greater_equal("10", "11")) x;
+    assert_false(x);
+    
+    
+    var(@num_equal("10", "9")) x;
+    assert_false(x);
+    
+    var(@num_equal("10", "10")) x;
+    assert(x);
+    
+    var(@num_equal("10", "11")) x;
+    assert_false(x);
+    
+    
+    var(@num_different("10", "9")) x;
+    assert(x);
+    
+    var(@num_different("10", "10")) x;
+    assert_false(x);
+    
+    var(@num_different("10", "11")) x;
+    assert(x);
+    
+    
+    var(@num_add("6", "14")) x;
+    val_equal(x, "20") a;
+    assert(a);
+    
+    
+    var(@num_subtract("30", "3")) x;
+    val_equal(x, "27") a;
+    assert(a);
+    
+    
+    var(@num_multiply("62", "2")) x;
+    val_equal(x, "124") a;
+    assert(a);
+    
+    
+    var(@num_divide("31", "15")) x;
+    val_equal(x, "2") a;
+    assert(a);
+    
+    
+    var(@num_modulo("31", "15")) x;
+    val_equal(x, "1") a;
+    assert(a);
+    
+    
+    var(@num_min("3", "5")) x;
+    val_equal(x, "3") a;
+    assert(a);
+    
+    
+    var(@num_max("3", "5")) x;
+    val_equal(x, "5") a;
+    assert(a);
+    
+    
+    var(@encode_value("foo")) x;
+    val_equal(x, "\"foo\"") a;
+    assert(a);
+    
+    var(@decode_value("\"foo\"")) x;
+    val_equal(x, "foo") a;
+    assert(a);
+    
+    
+    var(@tolower("09@AZ[`az{")) x;
+    val_equal(x, "09@az[`az{") a;
+    assert(a);
+    
+    
+    var(@toupper("09@AZ[`az{")) x;
+    val_equal(x, "09@AZ[`AZ{") a;
+    assert(a);
+    
+    
+    exit("0");
+}

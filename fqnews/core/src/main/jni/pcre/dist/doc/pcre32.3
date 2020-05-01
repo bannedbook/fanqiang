@@ -1,0 +1,369 @@
+.TH PCRE 3 "12 May 2013" "PCRE 8.33"
+.SH NAME
+PCRE - Perl-compatible regular expressions
+.sp
+.B #include <pcre.h>
+.
+.
+.SH "PCRE 32-BIT API BASIC FUNCTIONS"
+.rs
+.sp
+.nf
+.B pcre32 *pcre32_compile(PCRE_SPTR32 \fIpattern\fP, int \fIoptions\fP,
+.B "     const char **\fIerrptr\fP, int *\fIerroffset\fP,"
+.B "     const unsigned char *\fItableptr\fP);"
+.sp
+.B pcre32 *pcre32_compile2(PCRE_SPTR32 \fIpattern\fP, int \fIoptions\fP,
+.B "     int *\fIerrorcodeptr\fP,"
+.B "     const unsigned char *\fItableptr\fP);"
+.sp
+.B pcre32_extra *pcre32_study(const pcre32 *\fIcode\fP, int \fIoptions\fP,
+.B "     const char **\fIerrptr\fP);"
+.sp
+.B void pcre32_free_study(pcre32_extra *\fIextra\fP);
+.sp
+.B int pcre32_exec(const pcre32 *\fIcode\fP, "const pcre32_extra *\fIextra\fP,"
+.B "     PCRE_SPTR32 \fIsubject\fP, int \fIlength\fP, int \fIstartoffset\fP,"
+.B "     int \fIoptions\fP, int *\fIovector\fP, int \fIovecsize\fP);"
+.sp
+.B int pcre32_dfa_exec(const pcre32 *\fIcode\fP, "const pcre32_extra *\fIextra\fP,"
+.B "     PCRE_SPTR32 \fIsubject\fP, int \fIlength\fP, int \fIstartoffset\fP,"
+.B "     int \fIoptions\fP, int *\fIovector\fP, int \fIovecsize\fP,"
+.B "     int *\fIworkspace\fP, int \fIwscount\fP);"
+.fi
+.
+.
+.SH "PCRE 32-BIT API STRING EXTRACTION FUNCTIONS"
+.rs
+.sp
+.nf
+.B int pcre32_copy_named_substring(const pcre32 *\fIcode\fP,
+.B "     PCRE_SPTR32 \fIsubject\fP, int *\fIovector\fP,"
+.B "     int \fIstringcount\fP, PCRE_SPTR32 \fIstringname\fP,"
+.B "     PCRE_UCHAR32 *\fIbuffer\fP, int \fIbuffersize\fP);"
+.sp
+.B int pcre32_copy_substring(PCRE_SPTR32 \fIsubject\fP, int *\fIovector\fP,
+.B "     int \fIstringcount\fP, int \fIstringnumber\fP, PCRE_UCHAR32 *\fIbuffer\fP,"
+.B "     int \fIbuffersize\fP);"
+.sp
+.B int pcre32_get_named_substring(const pcre32 *\fIcode\fP,
+.B "     PCRE_SPTR32 \fIsubject\fP, int *\fIovector\fP,"
+.B "     int \fIstringcount\fP, PCRE_SPTR32 \fIstringname\fP,"
+.B "     PCRE_SPTR32 *\fIstringptr\fP);"
+.sp
+.B int pcre32_get_stringnumber(const pcre32 *\fIcode\fP,
+.B "     PCRE_SPTR32 \fIname\fP);"
+.sp
+.B int pcre32_get_stringtable_entries(const pcre32 *\fIcode\fP,
+.B "     PCRE_SPTR32 \fIname\fP, PCRE_UCHAR32 **\fIfirst\fP, PCRE_UCHAR32 **\fIlast\fP);"
+.sp
+.B int pcre32_get_substring(PCRE_SPTR32 \fIsubject\fP, int *\fIovector\fP,
+.B "     int \fIstringcount\fP, int \fIstringnumber\fP,"
+.B "     PCRE_SPTR32 *\fIstringptr\fP);"
+.sp
+.B int pcre32_get_substring_list(PCRE_SPTR32 \fIsubject\fP,
+.B "     int *\fIovector\fP, int \fIstringcount\fP, PCRE_SPTR32 **\fIlistptr\fP);"
+.sp
+.B void pcre32_free_substring(PCRE_SPTR32 \fIstringptr\fP);
+.sp
+.B void pcre32_free_substring_list(PCRE_SPTR32 *\fIstringptr\fP);
+.fi
+.
+.
+.SH "PCRE 32-BIT API AUXILIARY FUNCTIONS"
+.rs
+.sp
+.nf
+.B pcre32_jit_stack *pcre32_jit_stack_alloc(int \fIstartsize\fP, int \fImaxsize\fP);
+.sp
+.B void pcre32_jit_stack_free(pcre32_jit_stack *\fIstack\fP);
+.sp
+.B void pcre32_assign_jit_stack(pcre32_extra *\fIextra\fP,
+.B "     pcre32_jit_callback \fIcallback\fP, void *\fIdata\fP);"
+.sp
+.B const unsigned char *pcre32_maketables(void);
+.sp
+.B int pcre32_fullinfo(const pcre32 *\fIcode\fP, "const pcre32_extra *\fIextra\fP,"
+.B "     int \fIwhat\fP, void *\fIwhere\fP);"
+.sp
+.B int pcre32_refcount(pcre32 *\fIcode\fP, int \fIadjust\fP);
+.sp
+.B int pcre32_config(int \fIwhat\fP, void *\fIwhere\fP);
+.sp
+.B const char *pcre32_version(void);
+.sp
+.B int pcre32_pattern_to_host_byte_order(pcre32 *\fIcode\fP,
+.B "     pcre32_extra *\fIextra\fP, const unsigned char *\fItables\fP);"
+.fi
+.
+.
+.SH "PCRE 32-BIT API INDIRECTED FUNCTIONS"
+.rs
+.sp
+.nf
+.B void *(*pcre32_malloc)(size_t);
+.sp
+.B void (*pcre32_free)(void *);
+.sp
+.B void *(*pcre32_stack_malloc)(size_t);
+.sp
+.B void (*pcre32_stack_free)(void *);
+.sp
+.B int (*pcre32_callout)(pcre32_callout_block *);
+.fi
+.
+.
+.SH "PCRE 32-BIT API 32-BIT-ONLY FUNCTION"
+.rs
+.sp
+.nf
+.B int pcre32_utf32_to_host_byte_order(PCRE_UCHAR32 *\fIoutput\fP,
+.B "     PCRE_SPTR32 \fIinput\fP, int \fIlength\fP, int *\fIbyte_order\fP,"
+.B "     int \fIkeep_boms\fP);"
+.fi
+.
+.
+.SH "THE PCRE 32-BIT LIBRARY"
+.rs
+.sp
+Starting with release 8.32, it is possible to compile a PCRE library that
+supports 32-bit character strings, including UTF-32 strings, as well as or
+instead of the original 8-bit library. This work was done by Christian Persch,
+based on the work done by Zoltan Herczeg for the 16-bit library. All three
+libraries contain identical sets of functions, used in exactly the same way.
+Only the names of the functions and the data types of their arguments and
+results are different. To avoid over-complication and reduce the documentation
+maintenance load, most of the PCRE documentation describes the 8-bit library,
+with only occasional references to the 16-bit and 32-bit libraries. This page
+describes what is different when you use the 32-bit library.
+.P
+WARNING: A single application can be linked with all or any of the three
+libraries, but you must take care when processing any particular pattern
+to use functions from just one library. For example, if you want to study
+a pattern that was compiled with \fBpcre32_compile()\fP, you must do so
+with \fBpcre32_study()\fP, not \fBpcre_study()\fP, and you must free the
+study data with \fBpcre32_free_study()\fP.
+.
+.
+.SH "THE HEADER FILE"
+.rs
+.sp
+There is only one header file, \fBpcre.h\fP. It contains prototypes for all the
+functions in all libraries, as well as definitions of flags, structures, error
+codes, etc.
+.
+.
+.SH "THE LIBRARY NAME"
+.rs
+.sp
+In Unix-like systems, the 32-bit library is called \fBlibpcre32\fP, and can
+normally be accesss by adding \fB-lpcre32\fP to the command for linking an
+application that uses PCRE.
+.
+.
+.SH "STRING TYPES"
+.rs
+.sp
+In the 8-bit library, strings are passed to PCRE library functions as vectors
+of bytes with the C type "char *". In the 32-bit library, strings are passed as
+vectors of unsigned 32-bit quantities. The macro PCRE_UCHAR32 specifies an
+appropriate data type, and PCRE_SPTR32 is defined as "const PCRE_UCHAR32 *". In
+very many environments, "unsigned int" is a 32-bit data type. When PCRE is
+built, it defines PCRE_UCHAR32 as "unsigned int", but checks that it really is
+a 32-bit data type. If it is not, the build fails with an error message telling
+the maintainer to modify the definition appropriately.
+.
+.
+.SH "STRUCTURE TYPES"
+.rs
+.sp
+The types of the opaque structures that are used for compiled 32-bit patterns
+and JIT stacks are \fBpcre32\fP and \fBpcre32_jit_stack\fP respectively. The
+type of the user-accessible structure that is returned by \fBpcre32_study()\fP
+is \fBpcre32_extra\fP, and the type of the structure that is used for passing
+data to a callout function is \fBpcre32_callout_block\fP. These structures
+contain the same fields, with the same names, as their 8-bit counterparts. The
+only difference is that pointers to character strings are 32-bit instead of
+8-bit types.
+.
+.
+.SH "32-BIT FUNCTIONS"
+.rs
+.sp
+For every function in the 8-bit library there is a corresponding function in
+the 32-bit library with a name that starts with \fBpcre32_\fP instead of
+\fBpcre_\fP. The prototypes are listed above. In addition, there is one extra
+function, \fBpcre32_utf32_to_host_byte_order()\fP. This is a utility function
+that converts a UTF-32 character string to host byte order if necessary. The
+other 32-bit functions expect the strings they are passed to be in host byte
+order.
+.P
+The \fIinput\fP and \fIoutput\fP arguments of
+\fBpcre32_utf32_to_host_byte_order()\fP may point to the same address, that is,
+conversion in place is supported. The output buffer must be at least as long as
+the input.
+.P
+The \fIlength\fP argument specifies the number of 32-bit data units in the
+input string; a negative value specifies a zero-terminated string.
+.P
+If \fIbyte_order\fP is NULL, it is assumed that the string starts off in host
+byte order. This may be changed by byte-order marks (BOMs) anywhere in the
+string (commonly as the first character).
+.P
+If \fIbyte_order\fP is not NULL, a non-zero value of the integer to which it
+points means that the input starts off in host byte order, otherwise the
+opposite order is assumed. Again, BOMs in the string can change this. The final
+byte order is passed back at the end of processing.
+.P
+If \fIkeep_boms\fP is not zero, byte-order mark characters (0xfeff) are copied
+into the output string. Otherwise they are discarded.
+.P
+The result of the function is the number of 32-bit units placed into the output
+buffer, including the zero terminator if the string was zero-terminated.
+.
+.
+.SH "SUBJECT STRING OFFSETS"
+.rs
+.sp
+The lengths and starting offsets of subject strings must be specified in 32-bit
+data units, and the offsets within subject strings that are returned by the
+matching functions are in also 32-bit units rather than bytes.
+.
+.
+.SH "NAMED SUBPATTERNS"
+.rs
+.sp
+The name-to-number translation table that is maintained for named subpatterns
+uses 32-bit characters. The \fBpcre32_get_stringtable_entries()\fP function
+returns the length of each entry in the table as the number of 32-bit data
+units.
+.
+.
+.SH "OPTION NAMES"
+.rs
+.sp
+There are two new general option names, PCRE_UTF32 and PCRE_NO_UTF32_CHECK,
+which correspond to PCRE_UTF8 and PCRE_NO_UTF8_CHECK in the 8-bit library. In
+fact, these new options define the same bits in the options word. There is a
+discussion about the
+.\" HTML <a href="pcreunicode.html#utf32strings">
+.\" </a>
+validity of UTF-32 strings
+.\"
+in the
+.\" HREF
+\fBpcreunicode\fP
+.\"
+page.
+.P
+For the \fBpcre32_config()\fP function there is an option PCRE_CONFIG_UTF32
+that returns 1 if UTF-32 support is configured, otherwise 0. If this option is
+given to \fBpcre_config()\fP or \fBpcre16_config()\fP, or if the
+PCRE_CONFIG_UTF8 or PCRE_CONFIG_UTF16 option is given to \fBpcre32_config()\fP,
+the result is the PCRE_ERROR_BADOPTION error.
+.
+.
+.SH "CHARACTER CODES"
+.rs
+.sp
+In 32-bit mode, when PCRE_UTF32 is not set, character values are treated in the
+same way as in 8-bit, non UTF-8 mode, except, of course, that they can range
+from 0 to 0x7fffffff instead of 0 to 0xff. Character types for characters less
+than 0xff can therefore be influenced by the locale in the same way as before.
+Characters greater than 0xff have only one case, and no "type" (such as letter
+or digit).
+.P
+In UTF-32 mode, the character code is Unicode, in the range 0 to 0x10ffff, with
+the exception of values in the range 0xd800 to 0xdfff because those are
+"surrogate" values that are ill-formed in UTF-32.
+.P
+A UTF-32 string can indicate its endianness by special code knows as a
+byte-order mark (BOM). The PCRE functions do not handle this, expecting strings
+to be in host byte order. A utility function called
+\fBpcre32_utf32_to_host_byte_order()\fP is provided to help with this (see
+above).
+.
+.
+.SH "ERROR NAMES"
+.rs
+.sp
+The error PCRE_ERROR_BADUTF32 corresponds to its 8-bit counterpart.
+The error PCRE_ERROR_BADMODE is given when a compiled
+pattern is passed to a function that processes patterns in the other
+mode, for example, if a pattern compiled with \fBpcre_compile()\fP is passed to
+\fBpcre32_exec()\fP.
+.P
+There are new error codes whose names begin with PCRE_UTF32_ERR for invalid
+UTF-32 strings, corresponding to the PCRE_UTF8_ERR codes for UTF-8 strings that
+are described in the section entitled
+.\" HTML <a href="pcreapi.html#badutf8reasons">
+.\" </a>
+"Reason codes for invalid UTF-8 strings"
+.\"
+in the main
+.\" HREF
+\fBpcreapi\fP
+.\"
+page. The UTF-32 errors are:
+.sp
+  PCRE_UTF32_ERR1  Surrogate character (range from 0xd800 to 0xdfff)
+  PCRE_UTF32_ERR2  Non-character
+  PCRE_UTF32_ERR3  Character > 0x10ffff
+.
+.
+.SH "ERROR TEXTS"
+.rs
+.sp
+If there is an error while compiling a pattern, the error text that is passed
+back by \fBpcre32_compile()\fP or \fBpcre32_compile2()\fP is still an 8-bit
+character string, zero-terminated.
+.
+.
+.SH "CALLOUTS"
+.rs
+.sp
+The \fIsubject\fP and \fImark\fP fields in the callout block that is passed to
+a callout function point to 32-bit vectors.
+.
+.
+.SH "TESTING"
+.rs
+.sp
+The \fBpcretest\fP program continues to operate with 8-bit input and output
+files, but it can be used for testing the 32-bit library. If it is run with the
+command line option \fB-32\fP, patterns and subject strings are converted from
+8-bit to 32-bit before being passed to PCRE, and the 32-bit library functions
+are used instead of the 8-bit ones. Returned 32-bit strings are converted to
+8-bit for output. If both the 8-bit and the 16-bit libraries were not compiled,
+\fBpcretest\fP defaults to 32-bit and the \fB-32\fP option is ignored.
+.P
+When PCRE is being built, the \fBRunTest\fP script that is called by "make
+check" uses the \fBpcretest\fP \fB-C\fP option to discover which of the 8-bit,
+16-bit and 32-bit libraries has been built, and runs the tests appropriately.
+.
+.
+.SH "NOT SUPPORTED IN 32-BIT MODE"
+.rs
+.sp
+Not all the features of the 8-bit library are available with the 32-bit
+library. The C++ and POSIX wrapper functions support only the 8-bit library,
+and the \fBpcregrep\fP program is at present 8-bit only.
+.
+.
+.SH AUTHOR
+.rs
+.sp
+.nf
+Philip Hazel
+University Computing Service
+Cambridge CB2 3QH, England.
+.fi
+.
+.
+.SH REVISION
+.rs
+.sp
+.nf
+Last updated: 12 May 2013
+Copyright (c) 1997-2013 University of Cambridge.
+.fi

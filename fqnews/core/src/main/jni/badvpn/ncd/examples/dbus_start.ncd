@@ -1,0 +1,82 @@
+process main {
+    call("dbus_start", {{"--session", "--nopidfile"}}) dbus_start;
+
+    println("Got dbus: ", dbus_start.dbus_address);
+    rprintln("Lost dbus");
+}
+
+template dbus_start {
+    alias("_arg0") dbus_args;
+
+    var("false") retrying;
+
+    backtrack_point() retry_point;
+    If (retrying) {
+        println("dbus_start: retrying in one second");
+        sleep("1000", "0");
+    };
+
+    retrying->set("true");
+
+    listfrom({"/usr/bin/dbus-daemon"}, dbus_args, {"--print-address"}) dbus_command;
+
+    sys.start_process(dbus_command, "r") proc;
+    If (proc.is_error) {
+        println("dbus_start: error starting process");
+        retry_point->go();
+    };
+
+    var("") dbus_address;
+    blocker() finished_blocker;
+
+    process_manager() mgr;
+    mgr->start("dbus_start__waiter", {});
+    mgr->start("dbus_start__reader", {});
+
+    finished_blocker->use();
+}
+
+template dbus_start__waiter {
+    alias("_caller.proc") proc;
+    alias("_caller.retry_point") retry_point;
+
+    proc->wait();
+    println("dbus_start: process terminated");
+    retry_point->go();
+}
+
+template dbus_start__reader {
+    alias("_caller.proc") proc;
+    alias("_caller.retry_point") retry_point;
+    alias("_caller.dbus_address") dbus_address;
+    alias("_caller.finished_blocker") finished_blocker;
+
+    proc->read_pipe() rpipe;
+    If (rpipe.is_error) {
+        println("dbus_start: read pipe error");
+        retry_point->go();
+    };
+
+    value("") buffer;
+
+    backtrack_point() read_point;
+    rpipe->read() data;
+
+    If (data.not_eof) {
+        buffer->append(data);
+
+        explode("\n", buffer, "2") exp;
+        value(exp) exp;
+
+        num_greater(exp.length, "1") found;
+        If (found) {
+            exp->get("0") address;
+            dbus_address->set(address);
+            finished_blocker->up();
+        };
+
+        read_point->go();
+    };
+
+    println("dbus_start: read pipe eof");
+}

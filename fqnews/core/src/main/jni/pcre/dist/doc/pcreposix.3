@@ -1,0 +1,267 @@
+.TH PCREPOSIX 3 "09 January 2012" "PCRE 8.30"
+.SH NAME
+PCRE - Perl-compatible regular expressions.
+.SH "SYNOPSIS"
+.rs
+.sp
+.B #include <pcreposix.h>
+.PP
+.nf
+.B int regcomp(regex_t *\fIpreg\fP, const char *\fIpattern\fP,
+.B "     int \fIcflags\fP);"
+.sp
+.B int regexec(regex_t *\fIpreg\fP, const char *\fIstring\fP,
+.B "     size_t \fInmatch\fP, regmatch_t \fIpmatch\fP[], int \fIeflags\fP);"
+.B "     size_t regerror(int \fIerrcode\fP, const regex_t *\fIpreg\fP,"
+.B "     char *\fIerrbuf\fP, size_t \fIerrbuf_size\fP);"
+.sp
+.B void regfree(regex_t *\fIpreg\fP);
+.fi
+.
+.SH DESCRIPTION
+.rs
+.sp
+This set of functions provides a POSIX-style API for the PCRE regular
+expression 8-bit library. See the
+.\" HREF
+\fBpcreapi\fP
+.\"
+documentation for a description of PCRE's native API, which contains much
+additional functionality. There is no POSIX-style wrapper for PCRE's 16-bit
+and 32-bit library.
+.P
+The functions described here are just wrapper functions that ultimately call
+the PCRE native API. Their prototypes are defined in the \fBpcreposix.h\fP
+header file, and on Unix systems the library itself is called
+\fBpcreposix.a\fP, so can be accessed by adding \fB-lpcreposix\fP to the
+command for linking an application that uses them. Because the POSIX functions
+call the native ones, it is also necessary to add \fB-lpcre\fP.
+.P
+I have implemented only those POSIX option bits that can be reasonably mapped
+to PCRE native options. In addition, the option REG_EXTENDED is defined with
+the value zero. This has no effect, but since programs that are written to the
+POSIX interface often use it, this makes it easier to slot in PCRE as a
+replacement library. Other POSIX options are not even defined.
+.P
+There are also some other options that are not defined by POSIX. These have
+been added at the request of users who want to make use of certain
+PCRE-specific features via the POSIX calling interface.
+.P
+When PCRE is called via these functions, it is only the API that is POSIX-like
+in style. The syntax and semantics of the regular expressions themselves are
+still those of Perl, subject to the setting of various PCRE options, as
+described below. "POSIX-like in style" means that the API approximates to the
+POSIX definition; it is not fully POSIX-compatible, and in multi-byte encoding
+domains it is probably even less compatible.
+.P
+The header for these functions is supplied as \fBpcreposix.h\fP to avoid any
+potential clash with other POSIX libraries. It can, of course, be renamed or
+aliased as \fBregex.h\fP, which is the "correct" name. It provides two
+structure types, \fIregex_t\fP for compiled internal forms, and
+\fIregmatch_t\fP for returning captured substrings. It also defines some
+constants whose names start with "REG_"; these are used for setting options and
+identifying error codes.
+.
+.
+.SH "COMPILING A PATTERN"
+.rs
+.sp
+The function \fBregcomp()\fP is called to compile a pattern into an
+internal form. The pattern is a C string terminated by a binary zero, and
+is passed in the argument \fIpattern\fP. The \fIpreg\fP argument is a pointer
+to a \fBregex_t\fP structure that is used as a base for storing information
+about the compiled regular expression.
+.P
+The argument \fIcflags\fP is either zero, or contains one or more of the bits
+defined by the following macros:
+.sp
+  REG_DOTALL
+.sp
+The PCRE_DOTALL option is set when the regular expression is passed for
+compilation to the native function. Note that REG_DOTALL is not part of the
+POSIX standard.
+.sp
+  REG_ICASE
+.sp
+The PCRE_CASELESS option is set when the regular expression is passed for
+compilation to the native function.
+.sp
+  REG_NEWLINE
+.sp
+The PCRE_MULTILINE option is set when the regular expression is passed for
+compilation to the native function. Note that this does \fInot\fP mimic the
+defined POSIX behaviour for REG_NEWLINE (see the following section).
+.sp
+  REG_NOSUB
+.sp
+The PCRE_NO_AUTO_CAPTURE option is set when the regular expression is passed
+for compilation to the native function. In addition, when a pattern that is
+compiled with this flag is passed to \fBregexec()\fP for matching, the
+\fInmatch\fP and \fIpmatch\fP arguments are ignored, and no captured strings
+are returned.
+.sp
+  REG_UCP
+.sp
+The PCRE_UCP option is set when the regular expression is passed for
+compilation to the native function. This causes PCRE to use Unicode properties
+when matchine \ed, \ew, etc., instead of just recognizing ASCII values. Note
+that REG_UTF8 is not part of the POSIX standard.
+.sp
+  REG_UNGREEDY
+.sp
+The PCRE_UNGREEDY option is set when the regular expression is passed for
+compilation to the native function. Note that REG_UNGREEDY is not part of the
+POSIX standard.
+.sp
+  REG_UTF8
+.sp
+The PCRE_UTF8 option is set when the regular expression is passed for
+compilation to the native function. This causes the pattern itself and all data
+strings used for matching it to be treated as UTF-8 strings. Note that REG_UTF8
+is not part of the POSIX standard.
+.P
+In the absence of these flags, no options are passed to the native function.
+This means the the regex is compiled with PCRE default semantics. In
+particular, the way it handles newline characters in the subject string is the
+Perl way, not the POSIX way. Note that setting PCRE_MULTILINE has only
+\fIsome\fP of the effects specified for REG_NEWLINE. It does not affect the way
+newlines are matched by . (they are not) or by a negative class such as [^a]
+(they are).
+.P
+The yield of \fBregcomp()\fP is zero on success, and non-zero otherwise. The
+\fIpreg\fP structure is filled in on success, and one member of the structure
+is public: \fIre_nsub\fP contains the number of capturing subpatterns in
+the regular expression. Various error codes are defined in the header file.
+.P
+NOTE: If the yield of \fBregcomp()\fP is non-zero, you must not attempt to
+use the contents of the \fIpreg\fP structure. If, for example, you pass it to
+\fBregexec()\fP, the result is undefined and your program is likely to crash.
+.
+.
+.SH "MATCHING NEWLINE CHARACTERS"
+.rs
+.sp
+This area is not simple, because POSIX and Perl take different views of things.
+It is not possible to get PCRE to obey POSIX semantics, but then PCRE was never
+intended to be a POSIX engine. The following table lists the different
+possibilities for matching newline characters in PCRE:
+.sp
+                          Default   Change with
+.sp
+  . matches newline          no     PCRE_DOTALL
+  newline matches [^a]       yes    not changeable
+  $ matches \en at end        yes    PCRE_DOLLARENDONLY
+  $ matches \en in middle     no     PCRE_MULTILINE
+  ^ matches \en in middle     no     PCRE_MULTILINE
+.sp
+This is the equivalent table for POSIX:
+.sp
+                          Default   Change with
+.sp
+  . matches newline          yes    REG_NEWLINE
+  newline matches [^a]       yes    REG_NEWLINE
+  $ matches \en at end        no     REG_NEWLINE
+  $ matches \en in middle     no     REG_NEWLINE
+  ^ matches \en in middle     no     REG_NEWLINE
+.sp
+PCRE's behaviour is the same as Perl's, except that there is no equivalent for
+PCRE_DOLLAR_ENDONLY in Perl. In both PCRE and Perl, there is no way to stop
+newline from matching [^a].
+.P
+The default POSIX newline handling can be obtained by setting PCRE_DOTALL and
+PCRE_DOLLAR_ENDONLY, but there is no way to make PCRE behave exactly as for the
+REG_NEWLINE action.
+.
+.
+.SH "MATCHING A PATTERN"
+.rs
+.sp
+The function \fBregexec()\fP is called to match a compiled pattern \fIpreg\fP
+against a given \fIstring\fP, which is by default terminated by a zero byte
+(but see REG_STARTEND below), subject to the options in \fIeflags\fP. These can
+be:
+.sp
+  REG_NOTBOL
+.sp
+The PCRE_NOTBOL option is set when calling the underlying PCRE matching
+function.
+.sp
+  REG_NOTEMPTY
+.sp
+The PCRE_NOTEMPTY option is set when calling the underlying PCRE matching
+function. Note that REG_NOTEMPTY is not part of the POSIX standard. However,
+setting this option can give more POSIX-like behaviour in some situations.
+.sp
+  REG_NOTEOL
+.sp
+The PCRE_NOTEOL option is set when calling the underlying PCRE matching
+function.
+.sp
+  REG_STARTEND
+.sp
+The string is considered to start at \fIstring\fP + \fIpmatch[0].rm_so\fP and
+to have a terminating NUL located at \fIstring\fP + \fIpmatch[0].rm_eo\fP
+(there need not actually be a NUL at that location), regardless of the value of
+\fInmatch\fP. This is a BSD extension, compatible with but not specified by
+IEEE Standard 1003.2 (POSIX.2), and should be used with caution in software
+intended to be portable to other systems. Note that a non-zero \fIrm_so\fP does
+not imply REG_NOTBOL; REG_STARTEND affects only the location of the string, not
+how it is matched.
+.P
+If the pattern was compiled with the REG_NOSUB flag, no data about any matched
+strings is returned. The \fInmatch\fP and \fIpmatch\fP arguments of
+\fBregexec()\fP are ignored.
+.P
+If the value of \fInmatch\fP is zero, or if the value \fIpmatch\fP is NULL,
+no data about any matched strings is returned.
+.P
+Otherwise,the portion of the string that was matched, and also any captured
+substrings, are returned via the \fIpmatch\fP argument, which points to an
+array of \fInmatch\fP structures of type \fIregmatch_t\fP, containing the
+members \fIrm_so\fP and \fIrm_eo\fP. These contain the offset to the first
+character of each substring and the offset to the first character after the end
+of each substring, respectively. The 0th element of the vector relates to the
+entire portion of \fIstring\fP that was matched; subsequent elements relate to
+the capturing subpatterns of the regular expression. Unused entries in the
+array have both structure members set to -1.
+.P
+A successful match yields a zero return; various error codes are defined in the
+header file, of which REG_NOMATCH is the "expected" failure code.
+.
+.
+.SH "ERROR MESSAGES"
+.rs
+.sp
+The \fBregerror()\fP function maps a non-zero errorcode from either
+\fBregcomp()\fP or \fBregexec()\fP to a printable message. If \fIpreg\fP is not
+NULL, the error should have arisen from the use of that structure. A message
+terminated by a binary zero is placed in \fIerrbuf\fP. The length of the
+message, including the zero, is limited to \fIerrbuf_size\fP. The yield of the
+function is the size of buffer needed to hold the whole message.
+.
+.
+.SH MEMORY USAGE
+.rs
+.sp
+Compiling a regular expression causes memory to be allocated and associated
+with the \fIpreg\fP structure. The function \fBregfree()\fP frees all such
+memory, after which \fIpreg\fP may no longer be used as a compiled expression.
+.
+.
+.SH AUTHOR
+.rs
+.sp
+.nf
+Philip Hazel
+University Computing Service
+Cambridge CB2 3QH, England.
+.fi
+.
+.
+.SH REVISION
+.rs
+.sp
+.nf
+Last updated: 09 January 2012
+Copyright (c) 1997-2012 University of Cambridge.
+.fi

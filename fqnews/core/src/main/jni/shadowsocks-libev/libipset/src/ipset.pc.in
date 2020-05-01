@@ -1,0 +1,14 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+sharedir=${prefix}/share
+sphinxdir=${sharedir}/doc/ipset/html
+
+Name: ipset
+Description: Library for storing IP sets and maps
+Version: @VERSION@
+URL: http://github.com/dcreager/ipset/
+Requires: libcork >= 0.12.0
+Libs: -L${libdir} -lipset
+Cflags: -I${includedir}

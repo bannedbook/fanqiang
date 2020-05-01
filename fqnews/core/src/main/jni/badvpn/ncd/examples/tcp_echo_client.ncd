@@ -1,0 +1,35 @@
+process main {
+    getargs() args;
+    value(args) args;
+
+    num_different(args.length, "2") bad_args;
+    If (bad_args) {
+        println("bad arguments");
+        exit("1");
+    };
+
+    args->get("0") addr_ip;
+    args->get("1") addr_port;
+
+    sys.connect({"tcp", {"ipv4", addr_ip, addr_port}}) socket;
+    If (socket.is_error) {
+        println("connection error!");
+        exit("1");
+    };
+
+    println("connected");
+
+    socket->write("This echo client is implemented in NCD!\n\n");
+
+    backtrack_point() recv_point;
+
+    socket->read() data;
+    If (data.not_eof) {
+        socket->write(data);
+        recv_point->go();
+    };
+
+    println("server disconnected");
+
+    exit("0");
+}

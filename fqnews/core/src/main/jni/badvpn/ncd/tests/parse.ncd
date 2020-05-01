@@ -1,0 +1,90 @@
+process main {
+    parse_number("awfa") x;
+    not(x.succeeded) a;
+    assert(a);
+
+    parse_number("023182") x;
+    assert(x.succeeded);
+    val_equal(x, "23182") a;
+    assert(a);
+
+    parse_hex_number("012AF") x;
+    assert(x.succeeded);
+    val_equal(x, "4783") a;
+    assert(a);
+
+    parse_ipv4_addr("192.168.61.007") x;
+    assert(x.succeeded);
+    val_equal(x, "192.168.61.7") a;
+    assert(a);
+
+    parse_ipv6_addr("1234:0000::abcd") x;
+    assert(x.succeeded);
+    val_equal(x, "1234::abcd") a;
+    assert(a);
+
+    parse_value("{\"Hello World\", {}}") x;
+    assert(x.succeeded);
+    val_equal(x, {"Hello World", {}}) a;
+    assert(a);
+
+    var({"Hello", "fw", {}, {}, ["key":{{}}, [[]:[]]:["k":"v"]], {"st", {"ri", {"ng", [[{}:{}]:[]]}}}}) v;
+    to_string(v) str;
+    from_string(str) v2;
+    to_string(v2) str2;
+    val_equal(v, v2) a;
+    assert(a);
+    val_equal(str, str2) a;
+    assert(a);
+    
+    parse_value("{\"Hello\", \"fw\", {}, {}, [\"key\":{{}}, [[]:[]]:[\"k\":\"v\"]], {\"st\", {\"ri\", {\"ng\", [[{}:{}]:[]]}}}}") x;
+    assert(x.succeeded);
+    
+    parse_value("{\"Hello\", \"fw\", {}, {}, \"key\":{{}}, [[]:[]]:[\"k\":\"v\"]], {\"st, {\"ri\", {\"ng\", [[{}:{}]:[]]}}}}") x;
+    not(x.succeeded) a;
+    assert(a);
+    
+    parse_value("{\"Hello\", \"fw\", {}, {}, [\"key\":{{}}, [[]:[]]:[\"k\":\"v\"]], {\"st\", \"ri\", \"ng\", [[{}:{}]:[]]}}}}") x;
+    not(x.succeeded) a;
+    assert(a);
+    
+    parse_value("{\"Hello\", \"fw\", {}, {}, [\"key\":{{}}, [[]:[]]:[\"k\":\"v\"]], {\"st\", {\"ri\", {\"ng\", [[{}:{}]:[]]}}}}}") x;
+    not(x.succeeded) a;
+    assert(a);
+    
+    parse_value("{\"Hello\", \"fw\", {}, {}, [\"key\":{{}}, [[]:[]]:[\"k\":\"v\"]], {\"st\", {\"ri\", {\"ng\", [[{}:{}]:[]]}}}") x;
+    not(x.succeeded) a;
+    assert(a);
+    
+    parse_value("{syntax error") x;
+    not(x.succeeded) a;
+    assert(a);
+    
+    parse_ipv4_cidr_addr("192.168.61.007/24") x;
+    assert(x.succeeded);
+    val_equal(x, "192.168.61.7/24") a;
+    assert(a);
+    val_equal(x.addr, "192.168.61.7") a;
+    assert(a);
+    val_equal(x.prefix, "24") a;
+    assert(a);
+    
+    parse_ipv4_cidr_addr("192.168.61.007/33") x;
+    not(x.succeeded) a;
+    assert(a);
+    
+    parse_ipv6_cidr_addr("1234:0000::abcd/41") x;
+    assert(x.succeeded);
+    val_equal(x, "1234::abcd/41") a;
+    assert(a);
+    val_equal(x.addr, "1234::abcd") a;
+    assert(a);
+    val_equal(x.prefix, "41") a;
+    assert(a);
+    
+    parse_ipv6_cidr_addr("1234:0000::abcd/129") x;
+    not(x.succeeded) a;
+    assert(a);
+    
+    exit("0");
+}

@@ -1,0 +1,15 @@
+process main {
+    ipv4_prefix_to_mask("16") mask;
+    strcmp(mask, "255.255.0.0") a;
+    assert(a);
+
+    ipv4_mask_to_prefix("128.0.0.0") prefix;
+    strcmp(prefix, "1") a;
+    assert(a);
+
+    ipv4_net_from_addr_and_prefix("192.168.1.4", "24") net;
+    strcmp(net, "192.168.1.0") a;
+    assert(a);
+
+    exit("0");
+}

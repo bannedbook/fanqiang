@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+sharedir=${prefix}/share
+sphinxdir=${sharedir}/doc/APPNAME/html
+
+Name: APPNAME
+Description: FILL_THIS_IN
+Version: @VERSION@
+URL: FILL_THIS_IN
+Libs: -L${libdir} -lAPPNAME
+Cflags: -I${includedir}

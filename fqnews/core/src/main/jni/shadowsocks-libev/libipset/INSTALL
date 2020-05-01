@@ -1,0 +1,34 @@
+Installation instructions
+=========================
+
+The ipset library is written in ANSI C.  It uses cmake as its build
+manager.
+
+
+Prerequisite libraries
+----------------------
+
+To build ipset, you need the following libraries installed on your
+system:
+
+  * pkg-config
+  * libcork
+  * libcork (https://github.com/redjack/libcork)
+  * check (http://check.sourceforge.net)
+
+
+Building from source
+--------------------
+
+The ipset library uses cmake as its build manager.  In most cases, you
+should be able to build the source code using the following:
+
+    $ mkdir build
+    $ cd build
+    $ cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX
+    $ make
+    $ make test
+    $ make install
+
+You might have to run the last command using sudo, if you need
+administrative privileges to write to the $PREFIX directory.

@@ -1,0 +1,292 @@
+Version 1.999.130:
+
+- Fix TUN/TAP operation with Linux kernel 3.19. See: https://bugzilla.kernel.org/show_bug.cgi?id=96381
+
+- ncd: modules/daemon: Implement custom retry time.
+
+- ncd: modules/daemon: Fix the "daemon crashed" log message to include module context.
+
+- ncd: modules: arithmetic: Don't fail immediately on arithmetic errors, expose their occurrence.
+
+- ncd: Add clock_get_ms function.
+
+- ncd: Implement a simple checksum function as used in the Sphereo blue tooth protocol.
+
+- ncd: socket: Implement support for opening serial ports.
+
+- ncd: Implement struct_decode.
+
+- ncd: Implement struct_encode function.
+
+- ncd: sys.evdev: Provide event code strings for EV_SYN if available.
+
+- ncd: modules: blocker: Implement initial_state argument.
+
+- ncd: modules: blocker: Expose the up-state as a variable.
+
+- ncd: Implement Do-Interrupt.
+
+- ncd: Implement Do.
+
+- ncd: Implement lazy evaluation in If clause.
+
+- ncd: Implement ifel function to support future lazy If.
+
+- ncd: Optimize value::append().
+
+- ncd: Implement backtrack_point::rgo.
+
+- ncd: modules: explode: Pass through external strings (avoid copy).
+
+- ncd: modules: explode: Implement compiling search strings.
+
+- ncd: modules: parse: Implement parse_hex_number.
+
+- ncd: Implement caret syntax sugar. ^a.b.c = {"a", "b", "c"}
+
+- ncd: Fix bugs with bad expectations of null-terminated strings.
+
+- ncd: Implement object reference infrastructure and objref module.
+
+- ncd: Remove ComposedString type along with the buffer module.
+
+- ncd: Implement Block syntax as syntax-sugar around inline_code().
+
+- ncd: modules: call: Implement inline_code calls.
+
+- ncd: modules: call: Fix bug in call_with_caller_target deinit.
+
+- ncd: modules: socket: close: Fix completion order vs closing. 
+
+- ncd: Fix a bug that caused a bad assertion failure in file_write().
+
+- ncd: modules: socket: add read() eof variable
+
+- ncd: modules: socket: Implement _caller in client process.
+
+- ncd: Add --signal-exit-code option.
+
+- ncd: Implement syntax sugar @something = "something".
+
+- ncd: Fix crash with num_multiply(..., "0").
+
+- ncd: Infrastructure for built-in functions and implementation of many such functions.
+
+- ncd: Fix bad assertion regarding map values.
+
+Version 1.999.129:
+
+- ncd: modules: file_open: Fix typo in assertion.
+
+- server: Fix bug forgetting to call BSSLConnection_ReleaseBuffers(). Unless threads are enabled, this is an assert failure if NDEBUG is not defined an a non-issue otherwise.
+
+- ncd: Look for various programs in PATH instead of hardcoded paths.
+
+- Add compile-udpgw.sh.
+
+- ncd: modules: net_dns: Implement net.dns.resolvconf() forspecification of arbitrary resolv.conf lines
+
+Version 1.999.128:
+
+- tun2socks: add option --append-source-to-username to give the SOCKS server the source IP of the connection
+
+- tun2socks: IPv6 support, and updated to newer version of lwIP
+
+- tun2socks: fix some bugs/crashes
+
+- tun2socks, udpgw: transparent DNS forwarding, though no Windows support on udpgw side (contributed by Kerem Hadimli)
+
+- NCD: preliminary support for dynamically loading commands
+
+Version 1.999.127:
+
+- client, server: implement experimental support for performing SSL operations in worker threads. Currently it's rather inefficient.
+
+- NCD: modules: value: implement value::append() for appending to a list
+
+- NCD: modules: net_iptables: add single-argument form of append and insert commands, allowing for generic use
+
+- NCD: modules: net_iptables: implement net.iptables.insert() and net.ebtables.insert()
+
+- NCD: modules: sys_start_process: implement options, including username, term_on_deinit and deinit_kill_time
+
+- NCD: modules: sys_request_server: implement _caller in request handler
+
+- NCD: modules: add getenv()
+
+- NCD: modules: daemon: implement options, including username option
+
+- NCD: modules: runonce: add new options format with a map, implement username option
+
+- NCD: modules: add buffer(), which exposes a buffer with efficient appending and removing from the beginning.
+
+- NCD: add a new internal string representation called ComposedString. This allows modules to expose the concatenation of multiple memroy buffers as a single string value, efficiently.
+
+- fix many, hopefully all, strict aliasing violations. In particular, this fixes a bug where the DHCP client integrated into NCD won't work correctly, subject to optimization flags.
+
+- NCD: modules: sleep: interpret empty string as no sleeping, add sleep(ms_start) with one argument
+
+- NCD: modules: add log(), log_r() and log_fr() commands for logging via the BLog system
+
+Version 1.999.126:
+
+- NCD: modules: sleep: interpret empty string time as no sleeping, add sleep(ms_start) with one argument
+
+- NCD: modules: add log module for message logging using the BLog system
+
+- NCD: implement the "include" and "include_guard" directives, which allow separating reusable code into files
+
+- NCD: modules: call2: implement call_with_caller_target(), which makes it easier to write reusable code that calls back user-provided code
+
+- NCD: modules: call2: remove call2_if(), call2_ifelse(), embcall2(), embcall2_if(), embcall2_ifelse()
+
+- NCD: modules: add sys.start_process(), which implements starting and controlling external processes and reading/writing their stdout/stdin
+
+- tun2socks: implement SOCKS password authentication
+
+- NCD: track the depth of values and limit the maximum depth. This avoids stack overflow with very deeply nested values.
+
+- NCD: modules: add substr()
+
+- NCD: process_manager: add 2-argument start() method which doesn't take a process identifier
+
+- NCD: process_manager: allow process identifiers to be any value not just strings
+
+- NCD: multidepend, depend_scope: fix immediate effect order when a depend finishes backtracking
+
+- NCD: add depend_scope module to do exactly what the multidepend module does, but with separate non-global dependency name scopes
+
+- NCD: multidepend: allow dependency names to be any value not just strings
+
+- NCD: implement value::insert(what) for appending to a list
+
+- NCD: change the format of addresses in sys.request_server() and sys.request_client() to be the same as in the socket module
+
+- NCD: add socket module (sys.connect() and sys.listen())
+
+- NCD: fix bug where duplicate template/process names would not be detected and weird behaviour would result
+
+- NCD: add backtrack_point() for simple backtracking
+
+- NCD: add file_open() for more complete file I/O
+
+- NCD: implement parse_ipv6_addr() and parse_ipv6_cidr_addr()
+
+- NCD: port to Emscripten/Javascript, for the in-browser demo
+
+- NCD: many performance and memory usage improvements
+
+- NCD: add assert_false()
+
+- NCD: don't link to OpenSSL to for random number generator. Use /dev/urandom instead to generate XIDs for DHCP.
+
+- NCD: deprecate ip_in_network() and instead add net.ipv{4,6}.addr_in_network(), net.ipv{4,6}.ifnot_addr_in_network()
+
+- NCD: implement some IPv6 modules: net.ipv6.addr(), net.ipv6.route()
+
+- NCD: support CIDR style addr/prefix addresses in various modules
+
+- NCD: recognize Elif and Else with capital first letter to be consistent with other reserved keywords
+
+Version 1.999.123:
+
+- NCD: performance improvements related to finding modules for statements
+
+- NCD: performance improvements related to resolving object names
+
+- NCD: performance improvements related to instantiating statement arguments
+
+- NCD: add value::replace_this() and value::replace_this_undo()
+
+- NCD: add value::reset()
+
+- NCD: add value::replace() and value::replace_undo()
+
+- Port to compile with MSVC for Windows.
+
+- NCD: add Foreach clause
+
+- NCD: implement _caller in spawn(), add spawn::join()
+
+- NCD: add explode()
+
+- NCD: add hard_reboot() and hard_poweroff()
+
+- NCD: add file_stat() and file_lstat()
+
+- NCD: fix regex_replace() semantics. It was very broken because it did a complete replacement pass for every regex on the list, so it would match parts that have already been replaced, producing unexpected results.
+
+- NCD: small performance improvement
+
+Version 1.999.121:
+
+- NCD: improve error handling semantics; see http://code.google.com/p/badvpn/source/detail?r=1376
+
+- NCD: fix assertion failure in sys.evdev() if a device error occurs (e.g. device unplugged) while an event is being processed. Similar fix in some other modules, but these may not be reproducable.
+
+- NCD: some more performance improvements
+
+- NCD: some performance improvements (~30% faster interpretation of cpu-bound code)
+
+- NCD: implemented If..elif..else clause.
+
+- NCD: net.backend.wpa_supplicant: fix to work with wpa_supplicant>=1.0
+
+Version 1.999.115:
+
+- NCD: Many improvements; new statements, including call(), alias(), foreach(), choose().
+
+Version 1.999.113:
+
+- NCD: when starting child processes, make sure that file descriptors for standard
+  streams are always open in the child, by opening /dev/null if they are not.
+
+- Improve build system to allow selective building of components.
+  By default, everything is built, unless -DBUILD_NOTHING_BY_DEFAULT=1 is given.
+  Individual components can then be enabled or disabled using -DBUILD_COMPONENT=1
+  and -DBUILD_COMPONENT=0.
+
+- When starting any BadVPN program, make sure that file descriptors for standard
+  streams are always open in the child, by opening /dev/null if they are not.
+
+- NCD: net.backend.wpa_supplicant(): add 'bssid' and 'ssid' variables to allow
+  determining what wireless network wpa_supplicant connected to.
+
+- NCD: net.backend.wpa_supplicant(): do not require the user to start wpa_supplicant via
+  stdbuf, but do it automatically.
+
+Version 1.999.111:
+
+- Improved protocol such that peers can use SSL when comminicating via the server. This
+  improves security, as compromising the server will not allow the attacker to see secret
+  data shared by peers (in particular, encryption keys and OTP seeds when in UDP mode).
+
+  Compatibility is preserved if an only if the following conditions are met:
+  - The server is using the latest version.
+  - If the network is using SSL, all clients using the new version are using the
+    "--allow-peer-talk-without-ssl" command line option.
+
+  Be aware, however, that using the "--allow-peer-talk-without-ssl" option negates the
+  security benefits of the new SSL support - not only between pairs of peers where one
+  peer is using the old version, but also between pairs where both peers are capable
+  of SSL. This is because the server can re-initialize the pair, telling them not to use
+  SSL.
+
+Version 1.999.107:
+
+- Added Windows IOCP support, removing the limitation on ~64 connections. This is important
+  for tun2socks, which may have to handle several hundred connections.
+
+Version 1.999.105.2:
+
+- Fixed an assertion failure in tun2socks related to sending data to SOCKS.
+
+Version 1.999.101.3:
+
+- Fixed UDP transport on Windows 7 which didn't work (was only tested on XP).
+
+Version 1.999.101:
+
+- Fixed a protocol issue present in versions <=1.999.100.3. Compatibility is preserved in
+  case of a new server and old clients, but it is not possible to connect to an old server
+  with a new client.

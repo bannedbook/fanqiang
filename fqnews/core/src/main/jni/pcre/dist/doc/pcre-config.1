@@ -1,0 +1,92 @@
+.TH PCRE-CONFIG 1 "01 January 2012" "PCRE 8.30"
+.SH NAME
+pcre-config - program to return PCRE configuration
+.SH SYNOPSIS
+.rs
+.sp
+.nf
+.B pcre-config  [--prefix] [--exec-prefix] [--version] [--libs]
+.B "            [--libs16] [--libs32] [--libs-cpp] [--libs-posix]"
+.B "            [--cflags] [--cflags-posix]"
+.fi
+.
+.
+.SH DESCRIPTION
+.rs
+.sp
+\fBpcre-config\fP returns the configuration of the installed PCRE
+libraries and the options required to compile a program to use them. Some of
+the options apply only to the 8-bit, or 16-bit, or 32-bit libraries,
+respectively, and are
+not available if only one of those libraries has been built. If an unavailable
+option is encountered, the "usage" information is output.
+.
+.
+.SH OPTIONS
+.rs
+.TP 10
+\fB--prefix\fP
+Writes the directory prefix used in the PCRE installation for architecture
+independent files (\fI/usr\fP on many systems, \fI/usr/local\fP on some
+systems) to the standard output.
+.TP 10
+\fB--exec-prefix\fP
+Writes the directory prefix used in the PCRE installation for architecture
+dependent files (normally the same as \fB--prefix\fP) to the standard output.
+.TP 10
+\fB--version\fP
+Writes the version number of the installed PCRE libraries to the standard
+output.
+.TP 10
+\fB--libs\fP
+Writes to the standard output the command line options required to link
+with the 8-bit PCRE library (\fB-lpcre\fP on many systems).
+.TP 10
+\fB--libs16\fP
+Writes to the standard output the command line options required to link
+with the 16-bit PCRE library (\fB-lpcre16\fP on many systems).
+.TP 10
+\fB--libs32\fP
+Writes to the standard output the command line options required to link
+with the 32-bit PCRE library (\fB-lpcre32\fP on many systems).
+.TP 10
+\fB--libs-cpp\fP
+Writes to the standard output the command line options required to link with
+PCRE's C++ wrapper library (\fB-lpcrecpp\fP \fB-lpcre\fP on many
+systems).
+.TP 10
+\fB--libs-posix\fP
+Writes to the standard output the command line options required to link with
+PCRE's POSIX API wrapper library (\fB-lpcreposix\fP \fB-lpcre\fP on many
+systems).
+.TP 10
+\fB--cflags\fP
+Writes to the standard output the command line options required to compile
+files that use PCRE (this may include some \fB-I\fP options, but is blank on
+many systems).
+.TP 10
+\fB--cflags-posix\fP
+Writes to the standard output the command line options required to compile
+files that use PCRE's POSIX API wrapper library (this may include some \fB-I\fP
+options, but is blank on many systems).
+.
+.
+.SH "SEE ALSO"
+.rs
+.sp
+\fBpcre(3)\fP
+.
+.
+.SH AUTHOR
+.rs
+.sp
+This manual page was originally written by Mark Baker for the Debian GNU/Linux
+system. It has been subsequently revised as a generic PCRE man page.
+.
+.
+.SH REVISION
+.rs
+.sp
+.nf
+Last updated: 24 June 2012
+.fi

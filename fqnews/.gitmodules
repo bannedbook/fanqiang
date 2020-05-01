@@ -1,0 +1,31 @@
+[submodule "core/src/main/jni/shadowsocks-libev"]
+	path = core/src/main/jni/shadowsocks-libev
+	url = https://github.com/shadowsocks/shadowsocks-libev
+[submodule "core/src/main/jni/badvpn"]
+	path = core/src/main/jni/badvpn
+	url = https://github.com/shadowsocks/badvpn.git
+	branch = shadowsocks-android
+[submodule "core/src/main/jni/libancillary"]
+	path = core/src/main/jni/libancillary
+	url = https://github.com/shadowsocks/libancillary.git
+	branch = shadowsocks-android
+[submodule "core/src/main/jni/libevent"]
+	path = core/src/main/jni/libevent
+	url = https://github.com/shadowsocks/libevent.git
+	branch = shadowsocks-android
+[submodule "core/src/main/jni/mbedtls"]
+	path = core/src/main/jni/mbedtls
+	url = https://github.com/ARMmbed/mbedtls
+[submodule "core/src/main/jni/pcre"]
+	path = core/src/main/jni/pcre
+	url = https://android.googlesource.com/platform/external/pcre
+[submodule "core/src/main/jni/libsodium"]
+	path = core/src/main/jni/libsodium
+	url = https://github.com/jedisct1/libsodium.git
+	branch = stable
+[submodule "core/src/main/jni/libev"]
+	path = core/src/main/jni/libev
+	url = https://git.lighttpd.net/libev.git
+[submodule "core/src/main/jni/re2"]
+	path = core/src/main/jni/re2
+	url = https://github.com/google/re2.git

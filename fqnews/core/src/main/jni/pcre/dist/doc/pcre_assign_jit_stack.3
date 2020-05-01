@@ -1,0 +1,59 @@
+.TH PCRE_ASSIGN_JIT_STACK 3 "24 June 2012" "PCRE 8.30"
+.SH NAME
+PCRE - Perl-compatible regular expressions
+.SH SYNOPSIS
+.rs
+.sp
+.B #include <pcre.h>
+.PP
+.nf
+.B void pcre_assign_jit_stack(pcre_extra *\fIextra\fP,
+.B "     pcre_jit_callback \fIcallback\fP, void *\fIdata\fP);"
+.sp
+.B void pcre16_assign_jit_stack(pcre16_extra *\fIextra\fP,
+.B "     pcre16_jit_callback \fIcallback\fP, void *\fIdata\fP);"
+.sp
+.B void pcre32_assign_jit_stack(pcre32_extra *\fIextra\fP,
+.B "     pcre32_jit_callback \fIcallback\fP, void *\fIdata\fP);"
+.fi
+.
+.SH DESCRIPTION
+.rs
+.sp
+This function provides control over the memory used as a stack at run-time by a
+call to \fBpcre[16|32]_exec()\fP with a pattern that has been successfully
+compiled with JIT optimization. The arguments are:
+.sp
+  extra     the data pointer returned by \fBpcre[16|32]_study()\fP
+  callback  a callback function
+  data      a JIT stack or a value to be passed to the callback
+              function
+.P
+If \fIcallback\fP is NULL and \fIdata\fP is NULL, an internal 32K block on
+the machine stack is used.
+.P
+If \fIcallback\fP is NULL and \fIdata\fP is not NULL, \fIdata\fP must
+be a valid JIT stack, the result of calling \fBpcre[16|32]_jit_stack_alloc()\fP.
+.P
+If \fIcallback\fP not NULL, it is called with \fIdata\fP as an argument at
+the start of matching, in order to set up a JIT stack. If the result is NULL,
+the internal 32K stack is used; otherwise the return value must be a valid JIT
+stack, the result of calling \fBpcre[16|32]_jit_stack_alloc()\fP.
+.P
+You may safely assign the same JIT stack to multiple patterns, as long as they
+are all matched in the same thread. In a multithread application, each thread
+must use its own JIT stack. For more details, see the
+.\" HREF
+\fBpcrejit\fP
+.\"
+page.
+.P
+There is a complete description of the PCRE native API in the
+.\" HREF
+\fBpcreapi\fP
+.\"
+page and a description of the POSIX API in the
+.\" HREF
+\fBpcreposix\fP
+.\"
+page.

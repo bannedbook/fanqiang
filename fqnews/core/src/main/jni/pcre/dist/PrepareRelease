@@ -1,0 +1,258 @@
+#/bin/sh
+
+# Script to prepare the files for building a PCRE release. It does some
+# processing of the documentation, detrails files, and creates pcre.h.generic
+# and config.h.generic (for use by builders who can't run ./configure).
+
+# You must run this script before runnning "make dist". If its first argument
+# is "doc", it stops after preparing the documentation. There are no other
+# arguments. The script makes use of the following files:
+
+# 132html     A Perl script that converts a .1 or .3 man page into HTML. It
+#             "knows" the relevant troff constructs that are used in the PCRE
+#             man pages.
+
+# CheckMan    A Perl script that checks man pages for typos in the mark up.
+
+# CleanTxt    A Perl script that cleans up the output of "nroff -man" by
+#             removing backspaces and other redundant text so as to produce
+#             a readable .txt file.
+
+# Detrail     A Perl script that removes trailing spaces from files.
+
+# doc/index.html.src
+#             A file that is copied as index.html into the doc/html directory
+#             when the HTML documentation is built. It works like this so that
+#             doc/html can be deleted and re-created from scratch.
+
+# README & NON-AUTOTOOLS-BUILD
+#             These files are copied into the doc/html directory, with .txt
+#             extensions so that they can by hyperlinked from the HTML 
+#             documentation, because some people just go to the HTML without
+#             looking for text files.
+
+
+# First, sort out the documentation. Remove pcredemo.3 first because it won't
+# pass the markup check (it is created below, using markup that none of the
+# other pages use).
+
+cd doc
+echo Processing documentation
+
+/bin/rm -f pcredemo.3
+
+# Check the remaining man pages
+
+perl ../CheckMan *.1 *.3
+if [ $? != 0 ] ; then exit 1; fi
+
+# Make Text form of the documentation. It needs some mangling to make it
+# tidy for online reading. Concatenate all the .3 stuff, but omit the
+# individual function pages.
+
+cat <<End >pcre.txt
+-----------------------------------------------------------------------------
+This file contains a concatenation of the PCRE man pages, converted to plain
+text format for ease of searching with a text editor, or for use on systems
+that do not have a man page processor. The small individual files that give
+synopses of each function in the library have not been included. Neither has
+the pcredemo program. There are separate text files for the pcregrep and
+pcretest commands.
+-----------------------------------------------------------------------------
+
+
+End
+
+echo "Making pcre.txt"
+for file in pcre pcre16 pcre32 pcrebuild pcrematching pcreapi pcrecallout \
+            pcrecompat pcrepattern pcresyntax pcreunicode pcrejit pcrepartial \
+            pcreprecompile pcreperform pcreposix pcrecpp pcresample \
+            pcrelimits pcrestack ; do
+  echo "  Processing $file.3"
+  nroff -c -man $file.3 >$file.rawtxt
+  perl ../CleanTxt <$file.rawtxt >>pcre.txt
+  /bin/rm $file.rawtxt
+  echo "------------------------------------------------------------------------------" >>pcre.txt
+  if [ "$file" != "pcresample" ] ; then
+    echo " " >>pcre.txt
+    echo " " >>pcre.txt
+  fi
+done
+
+# The three commands
+for file in pcretest pcregrep pcre-config ; do
+  echo Making $file.txt
+  nroff -c -man $file.1 >$file.rawtxt
+  perl ../CleanTxt <$file.rawtxt >$file.txt
+  /bin/rm $file.rawtxt
+done
+
+
+# Make pcredemo.3 from the pcredemo.c source file
+
+echo "Making pcredemo.3"
+perl <<"END" >pcredemo.3
+  open(IN, "../pcredemo.c") || die "Failed to open pcredemo.c\n";
+  open(OUT, ">pcredemo.3") || die "Failed to open pcredemo.3\n";
+  print OUT ".\\\" Start example.\n" .
+            ".de EX\n" .
+            ".  nr mE \\\\n(.f\n" .
+            ".  nf\n" .
+            ".  nh\n" .
+            ".  ft CW\n" .
+            "..\n" .
+            ".\n" .
+            ".\n" .
+            ".\\\" End example.\n" .
+            ".de EE\n" .
+            ".  ft \\\\n(mE\n" .
+            ".  fi\n" .
+            ".  hy \\\\n(HY\n" .
+            "..\n" .
+            ".\n" .
+            ".EX\n" ;
+  while (<IN>)
+    {
+    s/\\/\\e/g;
+    print OUT;
+    }
+  print OUT ".EE\n";
+  close(IN);
+  close(OUT);
+END
+if [ $? != 0 ] ; then exit 1; fi
+
+
+# Make HTML form of the documentation.
+
+echo "Making HTML documentation"
+/bin/rm html/*
+cp index.html.src html/index.html
+cp ../README html/README.txt
+cp ../NON-AUTOTOOLS-BUILD html/NON-AUTOTOOLS-BUILD.txt
+
+for file in *.1 ; do
+  base=`basename $file .1`
+  echo "  Making $base.html"
+  perl ../132html -toc $base <$file >html/$base.html
+done
+
+# Exclude table of contents for function summaries. It seems that expr
+# forces an anchored regex. Also exclude them for small pages that have
+# only one section.
+
+for file in *.3 ; do
+  base=`basename $file .3`
+  toc=-toc
+  if [ `expr $base : '.*_'` -ne 0 ] ; then toc="" ; fi
+  if [ "$base" = "pcresample" ]  || \
+     [ "$base" = "pcrestack" ]   || \
+     [ "$base" = "pcrecompat" ]  || \
+     [ "$base" = "pcrelimits" ]  || \
+     [ "$base" = "pcreperform" ] || \
+     [ "$base" = "pcreunicode" ] ; then
+    toc=""
+  fi
+  echo "  Making $base.html"
+  perl ../132html $toc $base <$file >html/$base.html
+  if [ $? != 0 ] ; then exit 1; fi
+done
+
+# End of documentation processing; stop if only documentation required.
+
+cd ..
+echo Documentation done
+if [ "$1" = "doc" ] ; then exit; fi
+
+# These files are detrailed; do not detrail the test data because there may be
+# significant trailing spaces. Do not detrail RunTest.bat, because it has CRLF
+# line endings and the detrail script removes all trailing white space. The
+# configure files are also omitted from the detrailing. We don't bother with
+# those pcre[16|32]_xx files that just define COMPILE_PCRE16 and then #include the
+# common file, because they aren't going to change.
+
+files="\
+  Makefile.am \
+  Makefile.in \
+  configure.ac \
+  README \
+  LICENCE \
+  COPYING \
+  AUTHORS \
+  NEWS \
+  NON-UNIX-USE \
+  NON-AUTOTOOLS-BUILD \
+  INSTALL \
+  132html \
+  CleanTxt \
+  Detrail \
+  ChangeLog \
+  CMakeLists.txt \
+  RunGrepTest \
+  RunTest \
+  pcre-config.in \
+  libpcre.pc.in \
+  libpcre16.pc.in \
+  libpcre32.pc.in \
+  libpcreposix.pc.in \
+  libpcrecpp.pc.in \
+  config.h.in \
+  pcre_chartables.c.dist \
+  pcredemo.c \
+  pcregrep.c \
+  pcretest.c \
+  dftables.c \
+  pcreposix.c \
+  pcreposix.h \
+  pcre.h.in \
+  pcre_internal.h \
+  pcre_byte_order.c \
+  pcre_compile.c \
+  pcre_config.c \
+  pcre_dfa_exec.c \
+  pcre_exec.c \
+  pcre_fullinfo.c \
+  pcre_get.c \
+  pcre_globals.c \
+  pcre_jit_compile.c \
+  pcre_jit_test.c \
+  pcre_maketables.c \
+  pcre_newline.c \
+  pcre_ord2utf8.c \
+  pcre16_ord2utf16.c \
+  pcre32_ord2utf32.c \
+  pcre_printint.c \
+  pcre_refcount.c \
+  pcre_string_utils.c \
+  pcre_study.c \
+  pcre_tables.c \
+  pcre_valid_utf8.c \
+  pcre_version.c \
+  pcre_xclass.c \
+  pcre16_utf16_utils.c \
+  pcre32_utf32_utils.c \
+  pcre16_valid_utf16.c \
+  pcre32_valid_utf32.c \
+  pcre_scanner.cc \
+  pcre_scanner.h \
+  pcre_scanner_unittest.cc \
+  pcrecpp.cc \
+  pcrecpp.h \
+  pcrecpparg.h.in \
+  pcrecpp_unittest.cc \
+  pcre_stringpiece.cc \
+  pcre_stringpiece.h.in \
+  pcre_stringpiece_unittest.cc \
+  perltest.pl \
+  ucp.h \
+  makevp.bat \
+  pcre.def \
+  libpcre.def \
+  libpcreposix.def"
+
+echo Detrailing
+perl ./Detrail $files doc/p* doc/html/*
+
+echo Done
+
+#End

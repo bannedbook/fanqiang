@@ -1,0 +1,10 @@
+quickleave
+
+phyint <UPSTREAM_IFACE> upstream  ratelimit 0  threshold 1
+    altnet 89.143.8.0/24
+    altnet 95.176.0.0/16
+
+phyint <DOWNSTREAM_IFACE> downstream  ratelimit 0  threshold 1
+
+# A lot of these will be appended by make_igmpproxy_config:
+# phyint eth0 disabled

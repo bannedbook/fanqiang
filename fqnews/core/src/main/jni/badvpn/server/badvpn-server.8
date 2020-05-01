@@ -1,0 +1,190 @@
+.TH badvpn-server 8 "21 June 2011"
+.SH NAME
+badvpn-server \- chat server for the BadVPN peer-to-peer VPN system
+.SH SYNOPSIS
+.B badvpn-server
+.RS
+.RB "[" --help "]"
+.br
+.RB "[" --version "]"
+.br
+.RB "[" --logger " <stdout/syslog>]"
+.br
+(logger=syslog?
+.br
+.RS
+.br
+.RB "[" --syslog-facility " <string>]"
+.br
+.RB "[" --syslog-ident " <string>]"
+.br
+.RE
+)
+.br
+.RB "[" --loglevel " <0-5/none/error/warning/notice/info/debug>]"
+.br
+.RB "[" --channel-loglevel " <channel-name> <0-5/none/error/warning/notice/info/debug>] ..."
+.br
+.RB "[" --listen-addr " <addr>] ..."
+.br
+.RB "[" --ssl " " --nssdb " <string> " --server-cert-name " <string>]"
+.br
+.RB "[" --comm-predicate " <string>]"
+.br
+.RB "[" --relay-predicate " <string>]"
+.br
+.RB "[" --client-socket-sndbuf " <bytes / 0>]"
+.br
+.RE
+.SH INTRODUCTION
+.P
+This page documents the BadVPN server, which is used in a BadVPN VPN network by peers to
+talk to each other in order to establish data connections. For a general description of
+BadVPN, see
+.BR badvpn (7).
+.SH DESCRIPTION
+.P
+The BadVPN server is a chat server used by nodes in the VPN network to talk to each other
+in order to establish data connections. Once it initializes, the server only terminates
+if a signal is received.
+.SH OPTIONS
+.P
+The BadVPN server is configured entirely from command line.
+.TP
+.BR --help
+Print version and command line syntax and exit.
+.TP
+.BR --version
+Print version and exit.
+.TP
+.BR --logger " <stdout/syslog>"
+Select where to log messages. Default is stdout. Syslog is not available on Windows.
+.TP
+.BR --syslog-facility " <string>"
+When logging to syslog, set the logging facility. The facility name must be in lower case.
+.TP
+.BR --syslog-ident " <string>"
+When logging to syslog, set the ident.
+.TP
+.BR --loglevel " <0-5/none/error/warning/notice/info/debug>"
+Set the default logging level.
+.TP
+.BR --channel-loglevel " <channel-name> <0-5/none/error/warning/notice/info/debug>"
+Set the logging level for a specific logging channel.
+.TP
+.BR --listen-addr " <addr>"
+Add an address for the server to listen on. See below for address format.
+.TP
+.BR --ssl
+Use TLS. Requires --nssdb and --server-cert-name.
+.TP
+.BR --nssdb " <string>"
+When using TLS, the NSS database to use. Probably something like sql:/some/folder.
+.TP
+.BR --server-cert-name " <string>"
+When using TLS, the name of the certificate to use. The certificate must be readily accessible.
+.TP
+.BR --comm-predicate " <string>"
+Set a predicate to define which pairs of clients are allowed to communicate. The predicate is a
+logical expression; see below for details. Available functions:
+.br
+.BR p1name "(string)"
+- true if the TLS common name of peer 1 equals the given string. If TLS is not used, the common
+name is assumed to be an empty string.
+.br
+.BR p1addr "(string)"
+- true if the IP address of peer 1 equals the given string. The string must not be a name.
+.br
+.BR p2name "(string)"
+- true if the TLS common name of peer 2 equals the given string. If TLS is not used, the common
+name is assumed to be an empty string.
+.br
+.BR p2addr "(string)"
+- true if the IP address of peer 2 equals the given string. The string must not be a name.
+.br
+There is no rule as to which is peer 1 and which peer 2. When the server needs to determine
+whether to allow two peers to communicate, it evaluates the predicate once and in no specific order.
+.TP
+.BR --relay-predicate " <string>"
+Set a predicate to define how peers can relay data through other peers. The predicate is a
+logical expression; see below for details. If the predicate evaluates to true, peer P can relay data
+through peer R. Available functions:
+.br
+.BR pname "(string)"
+- true if the TLS common name of peer P peer equals the given string. If TLS is not used, the common
+name is assumed to be an empty string.
+.br
+.BR paddr "(string)"
+- true if the IP address of peer P equals the given string. The string must not be a name.
+.br
+.BR rname "(string)"
+- true if the TLS common name of peer R peer equals the given string. If TLS is not used, the common
+name is assumed to be an empty string.
+.br
+.BR raddr "(string)"
+- true if the IP address of peer R equals the given string. The string must not be a name.
+.br
+.TP
+.BR --client-socket-sndbuf " <bytes / 0>"
+Sets the value of the SO_SNDBUF socket option for client TCP sockets (zero to not set). Lower values
+will improve fairness when data from multiple peers is being sent to a given peer, but may result in lower
+bandwidth if the network's bandwidth-delay product to too big.
+.SH "EXIT CODE"
+.P
+If initialization fails, exits with code 1. Otherwise runs until termination is requested and exits with code 1.
+.SH "ADDRESS FORMAT"
+.P
+Addresses have the form ipaddr:port, where ipaddr is either an IPv4 address (name or numeric), or an
+IPv6 address enclosed in brackets [] (name or numeric again).
+.SH PREDICATES
+.P
+The BadVPN server includes a small predicate language used to define certain policies.
+Syntax and semantics of the language are described here.
+.TP
+.BR true
+Logical true constant. Evaluates to 1.
+.TP
+.BR false
+Logical false constant. Evaluates to 0.
+.TP
+.BR NOT " expression"
+Logical negation. If the expression evaluates to error, the
+negation evaluates to error.
+.TP
+.RB "expression " OR " expression"
+Logical disjunction. The second expression is only evaluated
+if the first expression evaluates to false. If a sub-expression
+evaluates to error, the disjunction evaluates to error.
+.TP
+.RB "expression " AND " expression"
+Logical conjunction. The second expression is only evaluated
+if the first expression evaluates to true. If a sub-expression
+evaluates to error, the conjunction evaluates to error.
+.TP
+.RB function "(" "arg" "," " ..." "," " arg" ")"
+Evaluation of a user-provided function (function is the name of the
+function, [a-zA-Z0-9_]+).
+If the function with the given name does not exist, it evaluates to
+error.
+Arguments are evaluated from left to right. Each argument can either
+be a logical expression or a string (characters enclosed in double
+quotes, without any double quote).
+If an argument is encountered, but all needed arguments have already
+been evaluated, the function evaluates to error.
+If an argument is of wrong type, it is not evaluated and the function
+evaluates to error.
+If an argument evaluates to error, the function evaluates to error.
+If after all arguments have been evaluated, the function needs more
+arguments, it evaluates to error.
+Then the handler function is called. If it returns anything other
+than 1 and 0, the function evaluates to error. Otherwise it evaluates
+to what the handler function returned.
+.SH "EXAMPLES"
+.P
+For examples of using BadVPN, see
+.BR badvpn (7).
+.SH "SEE ALSO"
+.BR badvpn-client (8),
+.BR badvpn (7)
+.SH AUTHORS
+Ambroz Bizjak <ambrop7@gmail.com>

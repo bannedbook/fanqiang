@@ -1,0 +1,123 @@
+# An example NCD script for network configuration.
+#
+# The first three processes demonstrate different kinds of interfaces
+# and configurations. They are all disabled by default.
+#
+# The last process waits for one of the interfaces to come up
+# and sets up routes and DNS entries to use that interface for
+# Internet access.
+#
+# Be sure to change the dependency list in the last process to name
+# the interfaces you use.
+
+# Example wired interface with static configuration.
+process wired_example_static {
+    if("false"); # remove/comment to enable
+
+    # Set device.
+    var("eth0") dev;
+
+    # Wait for device.
+    net.backend.waitdevice(dev);
+    net.up(dev);
+    net.backend.waitlink(dev);
+
+    # Static configuration.
+    var("192.168.111.116") addr;
+    var("24") addr_prefix;
+    var("192.168.111.1") gateway;
+    var({"192.168.111.14", "193.2.1.66"}) dns_servers;
+
+    # Assign IP address.
+    net.ipv4.addr(dev, addr, addr_prefix);
+
+    # Go on configuring the network.
+    concat("NET-", dev) provide_name;
+    multiprovide(provide_name);
+}
+
+# Example wired interface with DHCP configuration.
+process wired_example_dhcp {
+    if("false"); # remove/comment to enable
+
+    # Set device.
+    var("eth1") dev;
+
+    # Wait for device.
+    net.backend.waitdevice(dev);
+    net.up(dev);
+    net.backend.waitlink(dev);
+
+    # DHCP configuration.
+    net.ipv4.dhcp(dev) dhcp;
+    ip_in_network(dhcp.addr, "127.0.0.0", "8") test_local;
+    ifnot(test_local);
+    var(dhcp.addr) addr;
+    var(dhcp.prefix) addr_prefix;
+    var(dhcp.gateway) gateway;
+    var(dhcp.dns_servers) dns_servers;
+
+    # Assign IP address.
+    net.ipv4.addr(dev, addr, addr_prefix);
+
+    # Go on configuring the network.
+    concat("NET-", dev) provide_name;
+    multiprovide(provide_name);
+}
+
+# Example wireless interface with DHCP configuration.
+# This will use the wpa_supplicant configuration file /etc/wpa_supplicant/all.conf
+# which should specify the wireless networks and other options.
+process wireless_example_dhcp {
+    if("false"); # remove/comment to enable
+
+    # Set device.
+    var("wlan0") dev;
+
+    # Wait for device and rfkill.
+    net.backend.waitdevice(dev);
+    net.backend.rfkill("wlan", dev);
+
+    # Connect to wireless network.
+    net.backend.wpa_supplicant(dev, "/etc/wpa_supplicant/all.conf", "/usr/sbin/wpa_supplicant", {});
+
+    # DHCP configuration.
+    net.ipv4.dhcp(dev) dhcp;
+    ip_in_network(dhcp.addr, "127.0.0.0", "8") test_local;
+    ifnot(test_local);
+    var(dhcp.addr) addr;
+    var(dhcp.prefix) addr_prefix;
+    var(dhcp.gateway) gateway;
+    var(dhcp.dns_servers) dns_servers;
+
+    # Assign IP address.
+    net.ipv4.addr(dev, addr, addr_prefix);
+
+    # Go on configuring the network.
+    concat("NET-", dev) provide_name;
+    multiprovide(provide_name);
+}
+
+# This process sets up routes and DNS servers for at most one of
+# the working interfaces. It will change the configuration if a
+# more important interface comes up while one is already up.
+process NETCONF {
+    # Choose devices and priorities; put preferred devices to the front.
+    var({"NET-eth0", "NET-eth1", "NET-wlan0"}) provide_names;
+
+    # Wait for one of the interfaces (and deinit/switch appropriately).
+    multidepend(provide_names) ifdep;
+
+    # Alias device values.
+    var(ifdep.dev) dev;
+    var(ifdep.addr) addr;
+    var(ifdep.addr_prefix) addr_prefix;
+    var(ifdep.gateway) gateway;
+    var(ifdep.dns_servers) dns_servers;
+
+    # Add default route.
+    net.ipv4.route("0.0.0.0", "0", gateway, "20", dev);
+
+    # Configure DNS servers.
+    net.dns(dns_servers, "20");
+}

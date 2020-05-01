@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+  <color name="material_green_700">#388E3C</color>
+  <color name="material_green_a700">#00C853</color>
+  <color name="material_blue_grey_100">#CFD8DC</color>
+  <color name="material_blue_grey_300">#90A4AE</color>
+  <color name="material_blue_grey_500">#607D8B</color>
+  <color name="material_blue_grey_600">#546E7A</color>
+  <color name="material_blue_grey_700">#455A64</color>
+  <color name="material_primary_100">@color/material_blue_grey_100</color>
+  <color name="material_primary_300">@color/material_blue_grey_300</color>
+  <color name="material_primary_500">@color/material_blue_grey_500</color>
+  <color name="material_primary_600">@color/material_blue_grey_600</color>
+  <color name="material_primary_700">@color/material_blue_grey_700</color>
+  <color name="material_primary_800">@color/material_blue_grey_800</color>
+  <color name="material_primary_900">@color/material_blue_grey_900</color>
+  <color name="material_accent_200">@color/material_green_a700</color>
+
+  <color name="light_color_primary">@color/material_primary_500</color>
+  <color name="light_color_primary_dark">@color/material_primary_700</color>
+  <color name="light_color_primary_text">@color/material_primary_500</color>
+  <color name="dark_color_primary">@color/material_primary_800</color>
+  <color name="dark_color_primary_dark">@color/material_primary_900</color>
+  <color name="dark_color_primary_text">@color/material_primary_300</color>
+
+  <color name="color_primary">@color/light_color_primary</color>
+  <color name="color_primary_dark">@color/light_color_primary_dark</color>
+  <color name="color_primary_text">@color/light_color_primary_text</color>
+  
+</resources>

@@ -1,0 +1,42 @@
+include_guard "unbound"
+
+template unbound {
+    alias("_arg0") unique_id;
+    alias("_arg1") access_control_rules;
+
+    # Create a temporary directory.
+    concat("/run/ncd-unbound-", unique_id) run_dir;
+    run({"/bin/rm", "-rf", run_dir}, {});
+    run({"/bin/mkdir", run_dir}, {"/bin/rm", "-rf", run_dir});
+
+    # Compute path for unbound.conf.
+    concat(run_dir, "/unbound.conf") unbound_conf_path;
+
+    # This is a template for unbound.conf.
+    value("
+server:
+    verbosity: 1
+    do-ip4: yes
+    do-ip6: no
+    do-udp: yes
+    do-tcp: no
+    interface: 0.0.0.0
+    access-control: 127.0.0.0/8 allow
+"   ) config;
+
+    # Append access control rules.
+    Foreach (access_control_rules As rule) {
+        value(rule) rule;
+        rule->get("0") network;
+        rule->get("1") prefix;
+        rule->get("2") action;
+        concat("    access-control: ", network, "/", prefix, " ", action, "\n") line;
+        config->append(line);
+    };
+
+    # Write unbound.conf.
+    file_write(unbound_conf_path, config);
+
+    # Start unbound.
+    daemon({"/usr/sbin/unbound", "-d", "-c", unbound_conf_path});
+}

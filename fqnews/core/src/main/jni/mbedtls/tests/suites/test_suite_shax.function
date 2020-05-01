@@ -1,0 +1,255 @@
+/* BEGIN_HEADER */
+#include "mbedtls/sha1.h"
+#include "mbedtls/sha256.h"
+#include "mbedtls/sha512.h"
+/* END_HEADER */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA1_C */
+void sha1_valid_param( )
+{
+    TEST_VALID_PARAM( mbedtls_sha1_free( NULL ) );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA1_C:MBEDTLS_CHECK_PARAMS:!MBEDTLS_PARAM_FAILED_ALT */
+void sha1_invalid_param( )
+{
+    mbedtls_sha1_context ctx;
+    unsigned char buf[64] = { 0 };
+    size_t const buflen = sizeof( buf );
+
+    TEST_INVALID_PARAM( mbedtls_sha1_init( NULL ) );
+
+    TEST_INVALID_PARAM( mbedtls_sha1_clone( NULL, &ctx ) );
+    TEST_INVALID_PARAM( mbedtls_sha1_clone( &ctx, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA1_BAD_INPUT_DATA,
+                            mbedtls_sha1_starts_ret( NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA1_BAD_INPUT_DATA,
+                            mbedtls_sha1_update_ret( NULL, buf, buflen ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA1_BAD_INPUT_DATA,
+                            mbedtls_sha1_update_ret( &ctx, NULL, buflen ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA1_BAD_INPUT_DATA,
+                            mbedtls_sha1_finish_ret( NULL, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA1_BAD_INPUT_DATA,
+                            mbedtls_sha1_finish_ret( &ctx, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA1_BAD_INPUT_DATA,
+                            mbedtls_internal_sha1_process( NULL, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA1_BAD_INPUT_DATA,
+                            mbedtls_internal_sha1_process( &ctx, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA1_BAD_INPUT_DATA,
+                            mbedtls_sha1_ret( NULL, buflen, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA1_BAD_INPUT_DATA,
+                            mbedtls_sha1_ret( buf, buflen, NULL ) );
+
+exit:
+    return;
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA1_C */
+void mbedtls_sha1( data_t * src_str, data_t * hex_hash_string )
+{
+    unsigned char output[41];
+
+    memset(output, 0x00, 41);
+
+
+    TEST_ASSERT( mbedtls_sha1_ret( src_str->x, src_str->len, output ) == 0 );
+
+    TEST_ASSERT( hexcmp( output, hex_hash_string->x, 20, hex_hash_string->len ) == 0 );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA256_C */
+void sha256_valid_param( )
+{
+    TEST_VALID_PARAM( mbedtls_sha256_free( NULL ) );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA256_C:MBEDTLS_CHECK_PARAMS:!MBEDTLS_PARAM_FAILED_ALT */
+void sha256_invalid_param( )
+{
+    mbedtls_sha256_context ctx;
+    unsigned char buf[64] = { 0 };
+    size_t const buflen = sizeof( buf );
+    int valid_type = 0;
+    int invalid_type = 42;
+
+    TEST_INVALID_PARAM( mbedtls_sha256_init( NULL ) );
+
+    TEST_INVALID_PARAM( mbedtls_sha256_clone( NULL, &ctx ) );
+    TEST_INVALID_PARAM( mbedtls_sha256_clone( &ctx, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA256_BAD_INPUT_DATA,
+                            mbedtls_sha256_starts_ret( NULL, valid_type ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA256_BAD_INPUT_DATA,
+                            mbedtls_sha256_starts_ret( &ctx, invalid_type ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA256_BAD_INPUT_DATA,
+                            mbedtls_sha256_update_ret( NULL, buf, buflen ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA256_BAD_INPUT_DATA,
+                            mbedtls_sha256_update_ret( &ctx, NULL, buflen ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA256_BAD_INPUT_DATA,
+                            mbedtls_sha256_finish_ret( NULL, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA256_BAD_INPUT_DATA,
+                            mbedtls_sha256_finish_ret( &ctx, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA256_BAD_INPUT_DATA,
+                            mbedtls_internal_sha256_process( NULL, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA256_BAD_INPUT_DATA,
+                            mbedtls_internal_sha256_process( &ctx, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA256_BAD_INPUT_DATA,
+                            mbedtls_sha256_ret( NULL, buflen,
+                                                buf, valid_type ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA256_BAD_INPUT_DATA,
+                            mbedtls_sha256_ret( buf, buflen,
+                                                NULL, valid_type ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA256_BAD_INPUT_DATA,
+                            mbedtls_sha256_ret( buf, buflen,
+                                                buf, invalid_type ) );
+
+exit:
+    return;
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA256_C */
+void sha224( data_t * src_str, data_t * hex_hash_string )
+{
+    unsigned char output[57];
+
+    memset(output, 0x00, 57);
+
+
+    TEST_ASSERT( mbedtls_sha256_ret( src_str->x, src_str->len, output, 1 ) == 0 );
+
+    TEST_ASSERT( hexcmp( output, hex_hash_string->x, 28, hex_hash_string->len ) == 0 );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA256_C */
+void mbedtls_sha256( data_t * src_str, data_t * hex_hash_string )
+{
+    unsigned char output[65];
+
+    memset(output, 0x00, 65);
+
+
+    TEST_ASSERT( mbedtls_sha256_ret( src_str->x, src_str->len, output, 0 ) == 0 );
+
+    TEST_ASSERT( hexcmp( output, hex_hash_string->x, 32, hex_hash_string->len ) == 0 );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA512_C */
+void sha512_valid_param( )
+{
+    TEST_VALID_PARAM( mbedtls_sha512_free( NULL ) );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA512_C:MBEDTLS_CHECK_PARAMS:!MBEDTLS_PARAM_FAILED_ALT */
+void sha512_invalid_param( )
+{
+    mbedtls_sha512_context ctx;
+    unsigned char buf[64] = { 0 };
+    size_t const buflen = sizeof( buf );
+    int valid_type = 0;
+    int invalid_type = 42;
+
+    TEST_INVALID_PARAM( mbedtls_sha512_init( NULL ) );
+
+    TEST_INVALID_PARAM( mbedtls_sha512_clone( NULL, &ctx ) );
+    TEST_INVALID_PARAM( mbedtls_sha512_clone( &ctx, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA512_BAD_INPUT_DATA,
+                            mbedtls_sha512_starts_ret( NULL, valid_type ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA512_BAD_INPUT_DATA,
+                            mbedtls_sha512_starts_ret( &ctx, invalid_type ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA512_BAD_INPUT_DATA,
+                            mbedtls_sha512_update_ret( NULL, buf, buflen ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA512_BAD_INPUT_DATA,
+                            mbedtls_sha512_update_ret( &ctx, NULL, buflen ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA512_BAD_INPUT_DATA,
+                            mbedtls_sha512_finish_ret( NULL, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA512_BAD_INPUT_DATA,
+                            mbedtls_sha512_finish_ret( &ctx, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA512_BAD_INPUT_DATA,
+                            mbedtls_internal_sha512_process( NULL, buf ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA512_BAD_INPUT_DATA,
+                            mbedtls_internal_sha512_process( &ctx, NULL ) );
+
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA512_BAD_INPUT_DATA,
+                            mbedtls_sha512_ret( NULL, buflen,
+                                                buf, valid_type ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA512_BAD_INPUT_DATA,
+                            mbedtls_sha512_ret( buf, buflen,
+                                                NULL, valid_type ) );
+    TEST_INVALID_PARAM_RET( MBEDTLS_ERR_SHA512_BAD_INPUT_DATA,
+                            mbedtls_sha512_ret( buf, buflen,
+                                                buf, invalid_type ) );
+
+exit:
+    return;
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA512_C */
+void sha384( data_t * src_str, data_t * hex_hash_string )
+{
+    unsigned char output[97];
+
+    memset(output, 0x00, 97);
+
+
+    TEST_ASSERT( mbedtls_sha512_ret( src_str->x, src_str->len, output, 1 ) == 0 );
+
+    TEST_ASSERT( hexcmp( output, hex_hash_string->x, 48, hex_hash_string->len ) == 0 );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA512_C */
+void mbedtls_sha512( data_t * src_str, data_t * hex_hash_string )
+{
+    unsigned char output[129];
+
+    memset(output, 0x00, 129);
+
+
+    TEST_ASSERT( mbedtls_sha512_ret( src_str->x, src_str->len, output, 0 ) == 0 );
+
+    TEST_ASSERT( hexcmp( output, hex_hash_string->x, 64, hex_hash_string->len ) == 0 );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA1_C:MBEDTLS_SELF_TEST */
+void sha1_selftest(  )
+{
+    TEST_ASSERT( mbedtls_sha1_self_test( 1 ) == 0 );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA256_C:MBEDTLS_SELF_TEST */
+void sha256_selftest(  )
+{
+    TEST_ASSERT( mbedtls_sha256_self_test( 1 ) == 0 );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SHA512_C:MBEDTLS_SELF_TEST */
+void sha512_selftest(  )
+{
+    TEST_ASSERT( mbedtls_sha512_self_test( 1 ) == 0 );
+}
+/* END_CASE */

@@ -1,0 +1,43 @@
+// message for all MsgProto messages
+message msg {
+    // message type, from msgproto.h
+    required uint16 type = 1;
+    // message payload. Is itself one of the messages below
+    // for "youconnect", "seed" and "confirmseed" messages,
+    // and empty for other messages
+    required data payload = 2;
+};
+
+// "youconnect" message payload
+message msg_youconnect {
+    // external addresses to try; one or more msg_youconnect_addr messages
+    required repeated data addr = 1;
+    // encryption key if using UDP and encryption is enabled
+    optional data key = 2;
+    // password if using TCP
+    optional uint64 password = 3;
+};
+
+// an external address
+message msg_youconnect_addr {
+    // scope name for this address
+    required data name = 1;
+    // address according to AddrProto
+    required data addr = 2;
+};
+
+// "seed" message payload
+message msg_seed {
+    // identifier for the seed being send
+    required uint16 seed_id = 1;
+    // seed encryption key
+    required data key = 2;
+    // seed IV
+    required data iv = 3;
+};
+
+// "confirmseed" message payload
+message msg_confirmseed {
+    // identifier for the seed being confirmed
+    required uint16 seed_id = 1;
+};

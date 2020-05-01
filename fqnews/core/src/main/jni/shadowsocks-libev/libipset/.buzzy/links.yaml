@@ -1,0 +1,4 @@
+- git://github.com/redjack/check.git
+- !git-env
+  url: git://github.com/redjack/libcork.git
+  commit: develop

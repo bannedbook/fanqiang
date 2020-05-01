@@ -1,0 +1,65 @@
+/* BEGIN_HEADER */
+#include "mbedtls/pkcs5.h"
+/* END_HEADER */
+
+/* BEGIN_DEPENDENCIES
+ * depends_on:MBEDTLS_PKCS5_C
+ * END_DEPENDENCIES
+ */
+
+/* BEGIN_CASE */
+void pbkdf2_hmac( int hash, data_t * pw_str, data_t * salt_str,
+                  int it_cnt, int key_len, data_t * result_key_string )
+{
+    mbedtls_md_context_t ctx;
+    const mbedtls_md_info_t *info;
+
+    unsigned char key[100];
+
+    mbedtls_md_init( &ctx );
+
+    info = mbedtls_md_info_from_type( hash );
+    TEST_ASSERT( info != NULL );
+    TEST_ASSERT( mbedtls_md_setup( &ctx, info, 1 ) == 0 );
+    TEST_ASSERT( mbedtls_pkcs5_pbkdf2_hmac( &ctx, pw_str->x, pw_str->len, salt_str->x, salt_str->len,
+                                     it_cnt, key_len, key ) == 0 );
+
+    TEST_ASSERT( hexcmp( key, result_key_string->x, key_len, result_key_string->len ) == 0 );
+
+exit:
+    mbedtls_md_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_ASN1_PARSE_C */
+void mbedtls_pkcs5_pbes2( int params_tag, data_t *params_hex, data_t *pw,
+                  data_t *data, int ref_ret, data_t *ref_out )
+{
+    int my_ret;
+    mbedtls_asn1_buf params;
+    unsigned char *my_out = NULL;
+
+    params.tag = params_tag;
+    params.p = params_hex->x;
+    params.len = params_hex->len;
+
+    my_out = zero_alloc( ref_out->len );
+
+    my_ret = mbedtls_pkcs5_pbes2( &params, MBEDTLS_PKCS5_DECRYPT,
+                          pw->x, pw->len, data->x, data->len, my_out );
+    TEST_ASSERT( my_ret == ref_ret );
+
+    if( ref_ret == 0 )
+        TEST_ASSERT( memcmp( my_out, ref_out->x, ref_out->len ) == 0 );
+
+exit:
+    mbedtls_free( my_out );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SELF_TEST */
+void pkcs5_selftest(  )
+{
+    TEST_ASSERT( mbedtls_pkcs5_self_test( 1 ) == 0 );
+}
+/* END_CASE */

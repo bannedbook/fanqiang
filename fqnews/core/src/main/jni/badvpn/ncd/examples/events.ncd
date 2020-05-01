@@ -1,0 +1,101 @@
+#
+# NCD input event handling example program.
+#
+# This program responds to volume key presses by synchronously calling an external
+# script for muting and adjusting volume, and responds to power button presses by
+# suspending using pm-suspend.
+#
+# It uses process_manager() and sys.watch_input() to dynamically create and remove
+# processes that deal with specific input devices. The individual input device processes
+# then use sys.evdev() to handle input events from their input device.
+#
+
+process events_main {
+    # Volume control script, called with argument "up", "down" or "mute".
+    var("/usr/local/bin/volumekey") volume_script;
+
+    # Suspend command.
+    list("/usr/sbin/pm-suspend") suspend_cmd;
+
+    provide("GLOBAL");
+}
+
+process events_watcher {
+    depend("GLOBAL");
+  
+    # Create process manager.
+    process_manager() manager;
+
+    # Wait for input device events.
+    sys.watch_input("event") watcher;
+
+    # Dispatch.
+    concat("events_watcher_", watcher.event_type) func;
+    call(func, {});
+
+    # Next event.
+    watcher->nextevent();
+}
+
+template events_watcher_added {
+    # Start event handling process for this device.
+    _caller.manager->start(_caller.watcher.devname, "events_input_device", {_caller.watcher.devname});
+}
+
+template events_watcher_removed {
+    # Stop event handling process for this device.
+    _caller.manager->stop(_caller.watcher.devname);
+}
+
+template events_input_device {
+    # Alias arguments.
+    var(_arg0) dev;
+
+    # Get global.
+    depend("GLOBAL") gdep;
+
+    # Wait for input events.
+    sys.evdev(dev) evdev;
+
+    # Query event details.
+    strcmp(evdev.code, "KEY_MUTE") is_mute;
+    strcmp(evdev.code, "KEY_VOLUMEUP") is_vup;
+    strcmp(evdev.code, "KEY_VOLUMEDOWN") is_vdown;
+    strcmp(evdev.code, "KEY_POWER") is_power;
+    strcmp(evdev.value, "1") is_pressed;
+
+    # Compute where to dispatch the event.
+    and(is_mute, is_pressed) dispatch_mute;
+    and(is_vup, is_pressed) dispatch_vup;
+    and(is_vdown, is_pressed) dispatch_vdown;
+    and(is_power, is_pressed) dispatch_power;
+
+    # Dispatch event.
+    choose({
+        {dispatch_mute, "events_input_event_mute"},
+        {dispatch_vup, "events_input_event_vup"},
+        {dispatch_vdown, "events_input_event_vdown"},
+        {dispatch_power, "events_input_event_power"}},
+        "<none>"
+    ) func;
+    call(func, {});
+
+    # Next event.
+    evdev->nextevent();
+}
+
+template events_input_event_mute {
+    runonce({_caller.gdep.volume_script, "mute"});
+}
+
+template events_input_event_vup {
+    runonce({_caller.gdep.volume_script, "up"});
+}
+
+template events_input_event_vdown {
+    runonce({_caller.gdep.volume_script, "down"});
+}
+
+template events_input_event_power {
+    runonce(_caller.gdep.suspend_cmd);
+}

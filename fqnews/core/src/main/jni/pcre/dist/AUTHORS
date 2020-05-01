@@ -1,0 +1,45 @@
+THE MAIN PCRE LIBRARY
+---------------------
+
+Written by:       Philip Hazel
+Email local part: ph10
+Email domain:     cam.ac.uk
+
+University of Cambridge Computing Service,
+Cambridge, England.
+
+Copyright (c) 1997-2015 University of Cambridge
+All rights reserved
+
+
+PCRE JUST-IN-TIME COMPILATION SUPPORT
+-------------------------------------
+
+Written by:       Zoltan Herczeg
+Email local part: hzmester
+Emain domain:     freemail.hu
+
+Copyright(c) 2010-2015 Zoltan Herczeg
+All rights reserved.
+
+
+STACK-LESS JUST-IN-TIME COMPILER
+--------------------------------
+
+Written by:       Zoltan Herczeg
+Email local part: hzmester
+Emain domain:     freemail.hu
+
+Copyright(c) 2009-2015 Zoltan Herczeg
+All rights reserved.
+
+
+THE C++ WRAPPER LIBRARY
+-----------------------
+
+Written by:       Google Inc.
+
+Copyright (c) 2007-2012 Google Inc
+All rights reserved
+
+####

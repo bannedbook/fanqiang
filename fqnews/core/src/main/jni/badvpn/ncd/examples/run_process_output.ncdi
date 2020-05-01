@@ -1,0 +1,41 @@
+include_guard "run_process_output"
+
+template run_process_output {
+    alias(@_arg0) command;
+    
+    # We collect the results here.
+    var(@false) succeeded;
+    value("") output;
+    
+    Do {
+        # Start child process.
+        sys.start_process(command, "r", ["keep_stderr":"true"]) proc;
+        If (proc.is_error) {
+            _do->break();
+        };
+        
+        # Get read pipe handle.
+        proc->read_pipe() read_pipe;
+        If (read_pipe.is_error) {
+            _do->break();
+        };
+        
+        # Read all contents.
+        backtrack_point() read_again;
+        read_pipe->read() read;
+        If (read.not_eof) {
+            output->append(read);
+            read_again->go();
+        };
+        
+        # Wait for the process to terminate.
+        proc->wait() wait;
+        val_different(wait.exit_status, "0") not_ok;
+        If (not_ok) {
+            _do->break();
+        };
+        
+        # Assume success.
+        succeeded->set(@true);
+    };
+}

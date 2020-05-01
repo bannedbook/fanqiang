@@ -1,0 +1,63 @@
+sudo: required
+language: c
+dist : trusty
+compiler:
+    - clang
+    - gcc
+os:
+    - linux
+    - osx
+env:
+    global:
+        - LIBSODIUM_VER=1.0.12
+        - MBEDTLS_VER=2.4.0
+before_install:
+    - |
+      if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+          # All dependencies for macOS build. Some packages has been installed by travis so use reinstall.
+          brew reinstall autoconf automake xmlto c-ares libev mbedtls libsodium asciidoc >> /dev/null 2>&1;
+      else
+          wget  https://github.com/jedisct1/libsodium/releases/download/$LIBSODIUM_VER/libsodium-$LIBSODIUM_VER.tar.gz;
+          tar xvf libsodium-$LIBSODIUM_VER.tar.gz;
+          pushd libsodium-$LIBSODIUM_VER;
+          ./configure --prefix=/usr && make;
+          sudo make install;
+          popd;
+          wget https://tls.mbed.org/download/mbedtls-$MBEDTLS_VER-gpl.tgz;
+          tar xvf mbedtls-$MBEDTLS_VER-gpl.tgz;
+          pushd mbedtls-$MBEDTLS_VER;
+          make SHARED=1;
+          sudo make install;
+          popd;
+          # Load cached docker images
+          if [[ -d $HOME/docker ]]; then
+              ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load";
+          fi
+      fi
+addons:
+    apt:
+        sources:
+            - george-edison55-precise-backports # cmake 3.2.3 / doxygen 1.8.3
+        packages:
+            - libc-ares-dev
+            - libev-dev
+            - asciidoc
+            - xmlto
+script:
+    - ./autogen.sh
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+          ./configure --disable-documentation --with-mbedtls=/usr/local/opt/mbedtls --with-sodium=/usr/local/opt/libsodium;
+      else
+          ./configure;
+      fi
+    - make
+    - cd build && cmake ../ && make
+branches:
+    only:
+        - master
+notifications:
+    recipients:
+        - max.c.lv@gmail.com
+    email:
+        on_success: change
+        on_failure: always

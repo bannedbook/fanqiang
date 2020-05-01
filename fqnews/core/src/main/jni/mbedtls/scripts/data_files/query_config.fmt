@@ -1,0 +1,139 @@
+/*
+ *  Query Mbed TLS compile time configurations from config.h
+ *
+ *  Copyright (C) 2018, Arm Limited, All Rights Reserved
+ *  SPDX-License-Identifier: Apache-2.0
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+ *  not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ *  This file is part of Mbed TLS (https://tls.mbed.org)
+ */
+
+#if !defined(MBEDTLS_CONFIG_FILE)
+#include "mbedtls/config.h"
+#else
+#include MBEDTLS_CONFIG_FILE
+#endif
+
+#if defined(MBEDTLS_PLATFORM_C)
+#include "mbedtls/platform.h"
+#else
+#include <stdio.h>
+#define mbedtls_printf printf
+#endif /* MBEDTLS_PLATFORM_C */
+
+/*
+ * Include all the headers with public APIs in case they define a macro to its
+ * default value when that configuration is not set in the config.h.
+ */
+#include "mbedtls/aes.h"
+#include "mbedtls/aesni.h"
+#include "mbedtls/arc4.h"
+#include "mbedtls/aria.h"
+#include "mbedtls/asn1.h"
+#include "mbedtls/asn1write.h"
+#include "mbedtls/base64.h"
+#include "mbedtls/bignum.h"
+#include "mbedtls/blowfish.h"
+#include "mbedtls/camellia.h"
+#include "mbedtls/ccm.h"
+#include "mbedtls/certs.h"
+#include "mbedtls/chacha20.h"
+#include "mbedtls/chachapoly.h"
+#include "mbedtls/cipher.h"
+#include "mbedtls/cmac.h"
+#include "mbedtls/ctr_drbg.h"
+#include "mbedtls/debug.h"
+#include "mbedtls/des.h"
+#include "mbedtls/dhm.h"
+#include "mbedtls/ecdh.h"
+#include "mbedtls/ecdsa.h"
+#include "mbedtls/ecjpake.h"
+#include "mbedtls/ecp.h"
+#include "mbedtls/entropy.h"
+#include "mbedtls/entropy_poll.h"
+#include "mbedtls/error.h"
+#include "mbedtls/gcm.h"
+#include "mbedtls/havege.h"
+#include "mbedtls/hkdf.h"
+#include "mbedtls/hmac_drbg.h"
+#include "mbedtls/md.h"
+#include "mbedtls/md2.h"
+#include "mbedtls/md4.h"
+#include "mbedtls/md5.h"
+#include "mbedtls/memory_buffer_alloc.h"
+#include "mbedtls/net_sockets.h"
+#include "mbedtls/nist_kw.h"
+#include "mbedtls/oid.h"
+#include "mbedtls/padlock.h"
+#include "mbedtls/pem.h"
+#include "mbedtls/pk.h"
+#include "mbedtls/pkcs11.h"
+#include "mbedtls/pkcs12.h"
+#include "mbedtls/pkcs5.h"
+#include "mbedtls/platform_time.h"
+#include "mbedtls/platform_util.h"
+#include "mbedtls/poly1305.h"
+#include "mbedtls/ripemd160.h"
+#include "mbedtls/rsa.h"
+#include "mbedtls/sha1.h"
+#include "mbedtls/sha256.h"
+#include "mbedtls/sha512.h"
+#include "mbedtls/ssl.h"
+#include "mbedtls/ssl_cache.h"
+#include "mbedtls/ssl_ciphersuites.h"
+#include "mbedtls/ssl_cookie.h"
+#include "mbedtls/ssl_internal.h"
+#include "mbedtls/ssl_ticket.h"
+#include "mbedtls/threading.h"
+#include "mbedtls/timing.h"
+#include "mbedtls/version.h"
+#include "mbedtls/x509.h"
+#include "mbedtls/x509_crl.h"
+#include "mbedtls/x509_crt.h"
+#include "mbedtls/x509_csr.h"
+#include "mbedtls/xtea.h"
+
+#include <string.h>
+
+/*
+ * Helper macros to convert a macro or its expansion into a string
+ * WARNING: This does not work for expanding function-like macros. However,
+ * Mbed TLS does not currently have configuration options used in this fashion.
+ */
+#define MACRO_EXPANSION_TO_STR(macro)   MACRO_NAME_TO_STR(macro)
+#define MACRO_NAME_TO_STR(macro)                                        \
+    mbedtls_printf( "%s", strlen( #macro "" ) > 0 ? #macro "\n" : "" )
+
+#if defined(_MSC_VER)
+/*
+ * Visual Studio throws the warning 4003 because many Mbed TLS feature macros
+ * are defined empty. This means that from the preprocessor's point of view
+ * the macro MBEDTLS_EXPANSION_TO_STR is being invoked without arguments as
+ * some macros expand to nothing. We suppress that specific warning to get a
+ * clean build and to ensure that tests treating warnings as errors do not
+ * fail.
+ */
+#pragma warning(push)
+#pragma warning(disable:4003)
+#endif /* _MSC_VER */
+
+int query_config( const char *config )
+{
+CHECK_CONFIG    /* If the symbol is not found, return an error */
+    return( 1 );
+}
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif /* _MSC_VER */

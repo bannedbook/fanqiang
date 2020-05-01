@@ -1,0 +1,53 @@
+/* BEGIN_HEADER */
+#include "mbedtls/base64.h"
+#include "mbedtls/pem.h"
+#include "mbedtls/des.h"
+#include "mbedtls/aes.h"
+/* END_HEADER */
+
+/* BEGIN_CASE depends_on:MBEDTLS_PEM_WRITE_C */
+void mbedtls_pem_write_buffer( char * start, char * end, data_t * buf,
+                               char * result_str )
+{
+    unsigned char *check_buf = NULL;
+    int ret;
+    size_t olen = 0, olen2 = 0;
+
+
+    ret = mbedtls_pem_write_buffer( start, end, buf->x, buf->len, NULL, 0, &olen );
+    TEST_ASSERT( ret == MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL );
+
+    check_buf = (unsigned char *) mbedtls_calloc( 1, olen );
+    TEST_ASSERT( check_buf != NULL );
+
+    ret = mbedtls_pem_write_buffer( start, end, buf->x, buf->len, check_buf, olen, &olen2 );
+
+    TEST_ASSERT( olen2 <= olen );
+    TEST_ASSERT( olen > strlen( (char*) result_str ) );
+    TEST_ASSERT( ret == 0 );
+    TEST_ASSERT( strncmp( (char *) check_buf, (char *) result_str, olen ) == 0 );
+
+exit:
+    mbedtls_free( check_buf );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_PEM_PARSE_C:MBEDTLS_AES_C:MBEDTLS_DES_C:MBEDTLS_MD5_C:MBEDTLS_CIPHER_MODE_CBC */
+void mbedtls_pem_read_buffer( char *header, char *footer, char *data,
+                              char *pwd, int res )
+{
+    mbedtls_pem_context ctx;
+    int ret;
+    size_t use_len = 0;
+    size_t pwd_len = strlen( pwd );
+
+    mbedtls_pem_init( &ctx );
+
+    ret = mbedtls_pem_read_buffer( &ctx, header, footer, (unsigned char *)data,
+                (unsigned char *)pwd, pwd_len, &use_len );
+    TEST_ASSERT( ret == res );
+
+exit:
+    mbedtls_pem_free( &ctx );
+}
+/* END_CASE */

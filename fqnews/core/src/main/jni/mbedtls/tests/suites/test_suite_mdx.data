@@ -1,0 +1,99 @@
+# Test MD2, MD4, MD5 and RIPEMD160
+mbedtls_md2 Test vector RFC1319 #1
+md2_text:"":"8350e5a3e24c153df2275c9f80692773"
+
+mbedtls_md2 Test vector RFC1319 #2
+md2_text:"a":"32ec01ec4a6dac72c0ab96fb34c0b5d1"
+
+mbedtls_md2 Test vector RFC1319 #3
+md2_text:"abc":"da853b0d3f88d99b30283a69e6ded6bb"
+
+mbedtls_md2 Test vector RFC1319 #4
+md2_text:"message digest":"ab4f496bfb2a530b219ff33031fe06b0"
+
+mbedtls_md2 Test vector RFC1319 #5
+md2_text:"abcdefghijklmnopqrstuvwxyz":"4e8ddff3650292ab5a4108c3aa47940b"
+
+mbedtls_md2 Test vector RFC1319 #6
+md2_text:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789":"da33def2a42df13975352846c30338cd"
+
+mbedtls_md2 Test vector RFC1319 #7
+md2_text:"12345678901234567890123456789012345678901234567890123456789012345678901234567890":"d5976f79d83d3a0dc9806c3c66f3efd8"
+
+mbedtls_md4 Test vector RFC1320 #1
+md4_text:"":"31d6cfe0d16ae931b73c59d7e0c089c0"
+
+mbedtls_md4 Test vector RFC1320 #2
+md4_text:"a":"bde52cb31de33e46245e05fbdbd6fb24"
+
+mbedtls_md4 Test vector RFC1320 #3
+md4_text:"abc":"a448017aaf21d8525fc10ae87aa6729d"
+
+mbedtls_md4 Test vector RFC1320 #4
+md4_text:"message digest":"d9130a8164549fe818874806e1c7014b"
+
+mbedtls_md4 Test vector RFC1320 #5
+md4_text:"abcdefghijklmnopqrstuvwxyz":"d79e1c308aa5bbcdeea8ed63df412da9"
+
+mbedtls_md4 Test vector RFC1320 #6
+md4_text:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789":"043f8582f241db351ce627e153e7f0e4"
+
+mbedtls_md4 Test vector RFC1320 #7
+md4_text:"12345678901234567890123456789012345678901234567890123456789012345678901234567890":"e33b4ddc9c38f2199c3e7b164fcc0536"
+
+mbedtls_md5 Test vector RFC1321 #1
+md5_text:"":"d41d8cd98f00b204e9800998ecf8427e"
+
+mbedtls_md5 Test vector RFC1321 #2
+md5_text:"a":"0cc175b9c0f1b6a831c399e269772661"
+
+mbedtls_md5 Test vector RFC1321 #3
+md5_text:"abc":"900150983cd24fb0d6963f7d28e17f72"
+
+mbedtls_md5 Test vector RFC1321 #4
+md5_text:"message digest":"f96b697d7cb7938d525a2f31aaf161d0"
+
+mbedtls_md5 Test vector RFC1321 #5
+md5_text:"abcdefghijklmnopqrstuvwxyz":"c3fcd3d76192e4007dfb496cca67e13b"
+
+mbedtls_md5 Test vector RFC1321 #6
+md5_text:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789":"d174ab98d277d9f5a5611c2c9f419d9f"
+
+mbedtls_md5 Test vector RFC1321 #7
+md5_text:"12345678901234567890123456789012345678901234567890123456789012345678901234567890":"57edf4a22be3c955ac49da2e2107b67a"
+
+mbedtls_ripemd160 Test vector from paper #1
+ripemd160_text:"":"9c1185a5c5e9fc54612808977ee8f548b2258d31"
+
+mbedtls_ripemd160 Test vector from paper #2
+ripemd160_text:"a":"0bdc9d2d256b3ee9daae347be6f4dc835a467ffe"
+
+mbedtls_ripemd160 Test vector from paper #3
+ripemd160_text:"abc":"8eb208f7e05d987a9b044a8e98c6b087f15a0bfc"
+
+mbedtls_ripemd160 Test vector from paper #4
+ripemd160_text:"message digest":"5d0689ef49d2fae572b881b123a85ffa21595f36"
+
+mbedtls_ripemd160 Test vector from paper #5
+ripemd160_text:"abcdefghijklmnopqrstuvwxyz":"f71c27109c692c1b56bbdceb5b9d2865b3708dbc"
+
+mbedtls_ripemd160 Test vector from paper #6
+ripemd160_text:"abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq":"12a053384a9c0c88e405a06c27dcf49ada62eb2b"
+
+mbedtls_ripemd160 Test vector from paper #7
+ripemd160_text:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789":"b0e20b6e3116640286ed3a87a5713079b21f5189"
+
+mbedtls_ripemd160 Test vector from paper #8
+ripemd160_text:"12345678901234567890123456789012345678901234567890123456789012345678901234567890":"9b752e45573d4b39f4dbd3323cab82bf63326bfb"
+
+MD2 Selftest
+md2_selftest:
+
+MD4 Selftest
+md4_selftest:
+
+MD5 Selftest
+md5_selftest:
+
+RIPEMD160 Selftest
+ripemd160_selftest:

@@ -1,0 +1,26 @@
+/-- Tests for reloading pre-compiled patterns. The first one gives an error
+right away, and can be any old pattern compiled in 8-bit mode ("abc" is
+typical). The others require the link size to be 2. */x
+
+<!testsaved8
+
+%-- Generated from: 
+    /^[aL](?P<name>(?:[AaLl]+)[^xX-]*?)(?P<other>[\x{150}-\x{250}\x{300}]|
+      [^\x{800}aAs-uS-U\x{d800}-\x{dfff}])++[^#\b\x{500}\x{1000}]{3,5}$
+      /x
+
+    In 16-bit mode with options:  S>testdata/saved16LE-1
+                                 FS>testdata/saved16BE-1
+    In 32-bit mode with options:  S>testdata/saved32LE-1
+                                 FS>testdata/saved32BE-1
+--%x
+
+<!testsaved16LE-1
+
+<!testsaved16BE-1
+
+<!testsaved32LE-1
+
+<!testsaved32BE-1
+
+/-- End of testinput21 --/

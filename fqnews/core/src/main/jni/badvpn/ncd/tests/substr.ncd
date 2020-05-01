@@ -1,0 +1,37 @@
+process main {
+    var("0123456789") str;
+    concat(str) external_str;
+    
+    call("do_test", {"_caller.str"});
+    call("do_test", {"_caller.external_str"});
+    
+    exit("0");
+}
+
+template do_test {
+    alias(_arg0) str;
+    
+    substr(str, "0") sub;
+    val_equal(sub, "0123456789") a;
+    assert(a);
+    
+    substr(str, "2") sub;
+    val_equal(sub, "23456789") a;
+    assert(a);
+    
+    substr(str, "3", "0") sub;
+    val_equal(sub, "") a;
+    assert(a);
+    
+    substr(str, "3", "6") sub;
+    val_equal(sub, "345678") a;
+    assert(a);
+    
+    substr(str, "3", "7") sub;
+    val_equal(sub, "3456789") a;
+    assert(a);
+    
+    substr(str, "3", "8") sub;
+    val_equal(sub, "3456789") a;
+    assert(a);
+}

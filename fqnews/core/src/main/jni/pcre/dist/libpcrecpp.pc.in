@@ -1,0 +1,12 @@
+# Package Information for pkg-config
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: libpcrecpp
+Description: PCRECPP - C++ wrapper for PCRE
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lpcre -lpcrecpp
+Cflags: -I${includedir} @PCRE_STATIC_CFLAG@

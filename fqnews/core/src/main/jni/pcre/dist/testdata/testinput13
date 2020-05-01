@@ -1,0 +1,9 @@
+/-- This test is run only when JIT support is not available. It checks that an 
+attempt to use it has the expected behaviour. It also tests things that
+are different without JIT. --/
+   
+/abc/S+I
+
+/a*/SI
+
+/-- End of testinput13 --/

@@ -1,0 +1,64 @@
+Debug print msg (threshold 1, level 0)
+debug_print_msg_threshold:1:0:"MyFile":999:"MyFile(0999)\: Text message, 2 == 2\n"
+
+Debug print msg (threshold 1, level 1)
+debug_print_msg_threshold:1:1:"MyFile":999:"MyFile(0999)\: Text message, 2 == 2\n"
+
+Debug print msg (threshold 1, level 2)
+debug_print_msg_threshold:1:2:"MyFile":999:""
+
+Debug print msg (threshold 0, level 1)
+debug_print_msg_threshold:0:1:"MyFile":999:""
+
+Debug print msg (threshold 0, level 5)
+debug_print_msg_threshold:0:5:"MyFile":999:""
+
+Debug print return value #1
+mbedtls_debug_print_ret:"MyFile":999:"Test return value":0:"MyFile(0999)\: Test return value() returned 0 (-0x0000)\n"
+
+Debug print return value #2
+mbedtls_debug_print_ret:"MyFile":999:"Test return value":-0x1000:"MyFile(0999)\: Test return value() returned -4096 (-0x1000)\n"
+
+Debug print return value #3
+mbedtls_debug_print_ret:"MyFile":999:"Test return value":-0xFFFF:"MyFile(0999)\: Test return value() returned -65535 (-0xffff)\n"
+
+Debug print buffer #1
+mbedtls_debug_print_buf:"MyFile":999:"Test return value":"":"MyFile(0999)\: dumping 'Test return value' (0 bytes)\n"
+
+Debug print buffer #2
+mbedtls_debug_print_buf:"MyFile":999:"Test return value":"00":"MyFile(0999)\: dumping 'Test return value' (1 bytes)\nMyFile(0999)\: 0000\:  00                                               .\n"
+
+Debug print buffer #3
+mbedtls_debug_print_buf:"MyFile":999:"Test return value":"000102030405060708090A0B0C0D0E0F":"MyFile(0999)\: dumping 'Test return value' (16 bytes)\nMyFile(0999)\: 0000\:  00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f  ................\n"
+
+Debug print buffer #4
+mbedtls_debug_print_buf:"MyFile":999:"Test return value":"000102030405060708090A0B0C0D0E0F00":"MyFile(0999)\: dumping 'Test return value' (17 bytes)\nMyFile(0999)\: 0000\:  00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f  ................\nMyFile(0999)\: 0010\:  00                                               .\n"
+
+Debug print buffer #5
+mbedtls_debug_print_buf:"MyFile":999:"Test return value":"000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F30":"MyFile(0999)\: dumping 'Test return value' (49 bytes)\nMyFile(0999)\: 0000\:  00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f  ................\nMyFile(0999)\: 0010\:  10 11 12 13 14 15 16 17 18 19 1a 1b 1c 1d 1e 1f  ................\nMyFile(0999)\: 0020\:  20 21 22 23 24 25 26 27 28 29 2a 2b 2c 2d 2e 2f   !"#$%&'()*+,-./\nMyFile(0999)\: 0030\:  30                                               0\n"
+
+Debug print certificate #1 (RSA)
+depends_on:MBEDTLS_PEM_PARSE_C:MBEDTLS_BASE64_C:MBEDTLS_RSA_C:MBEDTLS_SHA1_C
+mbedtls_debug_print_crt:"data_files/server1.crt":"MyFile":999:"PREFIX_":"MyFile(0999)\: PREFIX_ #1\:\nMyFile(0999)\: cert. version     \: 3\nMyFile(0999)\: serial number     \: 01\nMyFile(0999)\: issuer name       \: C=NL, O=PolarSSL, CN=PolarSSL Test CA\nMyFile(0999)\: subject name      \: C=NL, O=PolarSSL, CN=PolarSSL Server 1\nMyFile(0999)\: issued  on        \: 2011-02-12 14\:44\:06\nMyFile(0999)\: expires on        \: 2021-02-12 14\:44\:06\nMyFile(0999)\: signed using      \: RSA with SHA1\nMyFile(0999)\: RSA key size      \: 2048 bits\nMyFile(0999)\: basic constraints \: CA=false\nMyFile(0999)\: value of 'crt->rsa.N' (2048 bits) is\:\nMyFile(0999)\:  a9 02 1f 3d 40 6a d5 55 53 8b fd 36 ee 82 65 2e\nMyFile(0999)\:  15 61 5e 89 bf b8 e8 45 90 db ee 88 16 52 d3 f1\nMyFile(0999)\:  43 50 47 96 12 59 64 87 6b fd 2b e0 46 f9 73 be\nMyFile(0999)\:  dd cf 92 e1 91 5b ed 66 a0 6f 89 29 79 45 80 d0\nMyFile(0999)\:  83 6a d5 41 43 77 5f 39 7c 09 04 47 82 b0 57 39\nMyFile(0999)\:  70 ed a3 ec 15 19 1e a8 33 08 47 c1 05 42 a9 fd\nMyFile(0999)\:  4c c3 b4 df dd 06 1f 4d 10 51 40 67 73 13 0f 40\nMyFile(0999)\:  f8 6d 81 25 5f 0a b1 53 c6 30 7e 15 39 ac f9 5a\nMyFile(0999)\:  ee 7f 92 9e a6 05 5b e7 13 97 85 b5 23 92 d9 d4\nMyFile(0999)\:  24 06 d5 09 25 89 75 07 dd a6 1a 8f 3f 09 19 be\nMyFile(0999)\:  ad 65 2c 64 eb 95 9b dc fe 41 5e 17 a6 da 6c 5b\nMyFile(0999)\:  69 cc 02 ba 14 2c 16 24 9c 4a dc cd d0 f7 52 67\nMyFile(0999)\:  73 f1 2d a0 23 fd 7e f4 31 ca 2d 70 ca 89 0b 04\nMyFile(0999)\:  db 2e a6 4f 70 6e 9e ce bd 58 89 e2 53 59 9e 6e\nMyFile(0999)\:  5a 92 65 e2 88 3f 0c 94 19 a3 dd e5 e8 9d 95 13\nMyFile(0999)\:  ed 29 db ab 70 12 dc 5a ca 6b 17 ab 52 82 54 b1\nMyFile(0999)\: value of 'crt->rsa.E' (17 bits) is\:\nMyFile(0999)\:  01 00 01\n"
+
+Debug print certificate #2 (EC)
+depends_on:MBEDTLS_PEM_PARSE_C:MBEDTLS_BASE64_C:MBEDTLS_ECDSA_C:MBEDTLS_ECP_C:MBEDTLS_ECP_DP_SECP384R1_ENABLED:MBEDTLS_SHA256_C
+mbedtls_debug_print_crt:"data_files/test-ca2.crt":"MyFile":999:"PREFIX_":"MyFile(0999)\: PREFIX_ #1\:\nMyFile(0999)\: cert. version     \: 3\nMyFile(0999)\: serial number     \: C1\:43\:E2\:7E\:62\:43\:CC\:E8\nMyFile(0999)\: issuer name       \: C=NL, O=PolarSSL, CN=Polarssl Test EC CA\nMyFile(0999)\: subject name      \: C=NL, O=PolarSSL, CN=Polarssl Test EC CA\nMyFile(0999)\: issued  on        \: 2013-09-24 15\:49\:48\nMyFile(0999)\: expires on        \: 2023-09-22 15\:49\:48\nMyFile(0999)\: signed using      \: ECDSA with SHA256\nMyFile(0999)\: EC key size       \: 384 bits\nMyFile(0999)\: basic constraints \: CA=true\nMyFile(0999)\: value of 'crt->eckey.Q(X)' (384 bits) is\:\nMyFile(0999)\:  c3 da 2b 34 41 37 58 2f 87 56 fe fc 89 ba 29 43\nMyFile(0999)\:  4b 4e e0 6e c3 0e 57 53 33 39 58 d4 52 b4 91 95\nMyFile(0999)\:  39 0b 23 df 5f 17 24 62 48 fc 1a 95 29 ce 2c 2d\nMyFile(0999)\: value of 'crt->eckey.Q(Y)' (384 bits) is\:\nMyFile(0999)\:  87 c2 88 52 80 af d6 6a ab 21 dd b8 d3 1c 6e 58\nMyFile(0999)\:  b8 ca e8 b2 69 8e f3 41 ad 29 c3 b4 5f 75 a7 47\nMyFile(0999)\:  6f d5 19 29 55 69 9a 53 3b 20 b4 66 16 60 33 1e\n"
+
+Debug print mbedtls_mpi #1
+mbedtls_debug_print_mpi:16:"01020304050607":"MyFile":999:"VALUE":"MyFile(0999)\: value of 'VALUE' (49 bits) is\:\nMyFile(0999)\:  01 02 03 04 05 06 07\n"
+
+Debug print mbedtls_mpi #2
+mbedtls_debug_print_mpi:16:"00000000000007":"MyFile":999:"VALUE":"MyFile(0999)\: value of 'VALUE' (3 bits) is\:\nMyFile(0999)\:  07\n"
+
+Debug print mbedtls_mpi #3
+mbedtls_debug_print_mpi:16:"00000000000000":"MyFile":999:"VALUE":"MyFile(0999)\: value of 'VALUE' (0 bits) is\:\nMyFile(0999)\:  00\n"
+
+Debug print mbedtls_mpi #4
+mbedtls_debug_print_mpi:16:"0941379d00fed1491fe15df284dfde4a142f68aa8d412023195cee66883e6290ffe703f4ea5963bf212713cee46b107c09182b5edcd955adac418bf4918e2889af48e1099d513830cec85c26ac1e158b52620e33ba8692f893efbb2f958b4424":"MyFile":999:"VALUE":"MyFile(0999)\: value of 'VALUE' (764 bits) is\:\nMyFile(0999)\:  09 41 37 9d 00 fe d1 49 1f e1 5d f2 84 df de 4a\nMyFile(0999)\:  14 2f 68 aa 8d 41 20 23 19 5c ee 66 88 3e 62 90\nMyFile(0999)\:  ff e7 03 f4 ea 59 63 bf 21 27 13 ce e4 6b 10 7c\nMyFile(0999)\:  09 18 2b 5e dc d9 55 ad ac 41 8b f4 91 8e 28 89\nMyFile(0999)\:  af 48 e1 09 9d 51 38 30 ce c8 5c 26 ac 1e 15 8b\nMyFile(0999)\:  52 62 0e 33 ba 86 92 f8 93 ef bb 2f 95 8b 44 24\n"
+
+Debug print mbedtls_mpi #5
+mbedtls_debug_print_mpi:16:"0000000000000000000000000000000000000000000000000000000941379d00fed1491fe15df284dfde4a142f68aa8d412023195cee66883e6290ffe703f4ea5963bf212713cee46b107c09182b5edcd955adac418bf4918e2889af48e1099d513830cec85c26ac1e158b52620e33ba8692f893efbb2f958b4424":"MyFile":999:"VALUE":"MyFile(0999)\: value of 'VALUE' (764 bits) is\:\nMyFile(0999)\:  09 41 37 9d 00 fe d1 49 1f e1 5d f2 84 df de 4a\nMyFile(0999)\:  14 2f 68 aa 8d 41 20 23 19 5c ee 66 88 3e 62 90\nMyFile(0999)\:  ff e7 03 f4 ea 59 63 bf 21 27 13 ce e4 6b 10 7c\nMyFile(0999)\:  09 18 2b 5e dc d9 55 ad ac 41 8b f4 91 8e 28 89\nMyFile(0999)\:  af 48 e1 09 9d 51 38 30 ce c8 5c 26 ac 1e 15 8b\nMyFile(0999)\:  52 62 0e 33 ba 86 92 f8 93 ef bb 2f 95 8b 44 24\n"
+
+Debug print mbedtls_mpi #6
+mbedtls_debug_print_mpi:16:"0000000000000000000000000000000000000000000000000000000041379d00fed1491fe15df284dfde4a142f68aa8d412023195cee66883e6290ffe703f4ea5963bf212713cee46b107c09182b5edcd955adac418bf4918e2889af48e1099d513830cec85c26ac1e158b52620e33ba8692f893efbb2f958b4424":"MyFile":999:"VALUE":"MyFile(0999)\: value of 'VALUE' (759 bits) is\:\nMyFile(0999)\:  41 37 9d 00 fe d1 49 1f e1 5d f2 84 df de 4a 14\nMyFile(0999)\:  2f 68 aa 8d 41 20 23 19 5c ee 66 88 3e 62 90 ff\nMyFile(0999)\:  e7 03 f4 ea 59 63 bf 21 27 13 ce e4 6b 10 7c 09\nMyFile(0999)\:  18 2b 5e dc d9 55 ad ac 41 8b f4 91 8e 28 89 af\nMyFile(0999)\:  48 e1 09 9d 51 38 30 ce c8 5c 26 ac 1e 15 8b 52\nMyFile(0999)\:  62 0e 33 ba 86 92 f8 93 ef bb 2f 95 8b 44 24\n"

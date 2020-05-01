@@ -1,0 +1,60 @@
+include_guard "dhcp_server"
+
+template dhcp_server {
+    alias("_arg0") addr;
+    alias("_arg1") prefix;
+    alias("_arg2") range_start;
+    alias("_arg3") range_end;
+    alias("_arg4") routers;
+    alias("_arg5") dns_servers;
+
+    # Choose lease file.
+    concat("/var/lib/dhcp/dhcpd-", addr, ".leases") leases_file;
+
+    # Create leases file if it doesn't exist.
+    file_stat(leases_file) stat;
+    If (stat.succeeded) { print(); } Else {
+        file_write(leases_file, "");
+    };
+
+    # Create a temporary directory.
+    concat("/run/ncd-dhcp-server-", addr) run_dir;
+    run({"/bin/rm", "-rf", run_dir}, {});
+    run({"/bin/mkdir", run_dir}, {"/bin/rm", "-rf", run_dir});
+
+    # Compute path for dhcp.conf.
+    concat(run_dir, "/dhcp.conf") dhcp_conf_path;
+
+    # This is a template for dhcp.conf.
+    var("
+default-lease-time 43200;
+max-lease-time 43200;
+log-facility local7;
+ddns-update-style none;
+local-address <LOCAL_ADDRESS>;
+
+subnet <NETWORK> netmask <NETMASK> {
+        authoritative;
+        range <RANGE_START> <RANGE_END>;
+        option routers <ROUTERS>;
+        option domain-name-servers <DNS_SERVERS>;
+}
+"   ) config_template;
+
+    # Compute some of the variables.
+    ipv4_net_from_addr_and_prefix(addr, prefix) network;
+    ipv4_prefix_to_mask(prefix) netmask;
+    implode(", ", routers) routers_str;
+    implode(", ", dns_servers) dns_servers_str;
+
+    # Perform substitutions.
+    var({"<LOCAL_ADDRESS>", "<NETWORK>", "<NETMASK>", "<RANGE_START>", "<RANGE_END>", "<ROUTERS>", "<DNS_SERVERS>"}) regex;
+    var({addr, network, netmask, range_start, range_end, routers_str, dns_servers_str}) replace;
+    regex_replace(config_template, regex, replace) config_data;
+
+    # Write dhcp.conf.
+    file_write(dhcp_conf_path, config_data);
+
+    # Start dhcpd.
+    daemon({"/usr/sbin/dhcpd", "-f", "-cf", dhcp_conf_path, "-user", "dhcp", "-group", "dhcp", "--no-pid", "-lf", leases_file});
+}

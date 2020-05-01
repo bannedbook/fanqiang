@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>pcre_copy_substring specification</title>
+</head>
+<body bgcolor="#FFFFFF" text="#00005A" link="#0066FF" alink="#3399FF" vlink="#2222BB">
+<h1>pcre_copy_substring man page</h1>
+<p>
+Return to the <a href="index.html">PCRE index page</a>.
+</p>
+<p>
+This page is part of the PCRE HTML documentation. It was generated automatically
+from the original man page. If there is any nonsense in it, please consult the
+man page, in case the conversion went wrong.
+<br>
+<br><b>
+SYNOPSIS
+</b><br>
+<P>
+<b>#include &#60;pcre.h&#62;</b>
+</P>
+<P>
+<b>int pcre_copy_substring(const char *<i>subject</i>, int *<i>ovector</i>,</b>
+<b>     int <i>stringcount</i>, int <i>stringnumber</i>, char *<i>buffer</i>,</b>
+<b>     int <i>buffersize</i>);</b>
+<br>
+<br>
+<b>int pcre16_copy_substring(PCRE_SPTR16 <i>subject</i>, int *<i>ovector</i>,</b>
+<b>     int <i>stringcount</i>, int <i>stringnumber</i>, PCRE_UCHAR16 *<i>buffer</i>,</b>
+<b>     int <i>buffersize</i>);</b>
+<br>
+<br>
+<b>int pcre32_copy_substring(PCRE_SPTR32 <i>subject</i>, int *<i>ovector</i>,</b>
+<b>     int <i>stringcount</i>, int <i>stringnumber</i>, PCRE_UCHAR32 *<i>buffer</i>,</b>
+<b>     int <i>buffersize</i>);</b>
+</P>
+<br><b>
+DESCRIPTION
+</b><br>
+<P>
+This is a convenience function for extracting a captured substring into a given
+buffer. The arguments are:
+<pre>
+  <i>subject</i>       Subject that has been successfully matched
+  <i>ovector</i>       Offset vector that <b>pcre[16|32]_exec()</b> used
+  <i>stringcount</i>   Value returned by <b>pcre[16|32]_exec()</b>
+  <i>stringnumber</i>  Number of the required substring
+  <i>buffer</i>        Buffer to receive the string
+  <i>buffersize</i>    Size of buffer
+</pre>
+The yield is the length of the string, PCRE_ERROR_NOMEMORY if the buffer was
+too small, or PCRE_ERROR_NOSUBSTRING if the string number is invalid.
+</P>
+<P>
+There is a complete description of the PCRE native API in the
+<a href="pcreapi.html"><b>pcreapi</b></a>
+page and a description of the POSIX API in the
+<a href="pcreposix.html"><b>pcreposix</b></a>
+page.
+<p>
+Return to the <a href="index.html">PCRE index page</a>.
+</p>

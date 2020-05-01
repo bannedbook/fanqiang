@@ -1,0 +1,15 @@
+shadowsocks-libev for Debian
+----------------------------
+
+The Debian package has added systemd support. A default server service which
+reads the default configuration in /etc/default/shadowsocks-libev is installed
+and enabled by default, plus some other service templates placed in
+/lib/systemd/system, which can be used by users later.
+
+The systemd service templates accept one parameter to determine the
+configuration json file that is used by this instance. For example,
+if the user starts a service called "shadowsocks-libev-local@foobar.service",
+This service instance will start the "ss-local" client and read
+/etc/shadowsocks-libev/foobar.json as its configuration file.
+
+ -- Boyuan Yang <073plan@gmail.com>  Thu, 08 Sep 2016 19:01:20 +0800

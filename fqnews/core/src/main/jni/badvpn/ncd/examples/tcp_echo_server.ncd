@@ -1,0 +1,40 @@
+process main {
+    getargs() args;
+    value(args) args;
+
+    num_different(args.length, "2") bad_args;
+    If (bad_args) {
+        println("bad arguments");
+        exit("1");
+    };
+
+    args->get("0") addr_ip;
+    args->get("1") addr_port;
+
+    sys.listen({"tcp", {"ipv4", addr_ip, addr_port}}, "client_handler", {}) listener;
+    If (listener.is_error) {
+        println("failed to listen");
+        exit("1");
+    };
+
+    println("listening");
+}
+
+template client_handler {
+    to_string(_socket.client_addr) addr_str;
+
+    println("client ", addr_str, ": connected");
+    rprintln("client ", addr_str, ": disconnected");
+
+    _socket->write("This echo server is implemented in NCD!\n\n");
+
+    backtrack_point() recv_point;
+
+    _socket->read() data;
+    If (data.not_eof) {
+        _socket->write(data);
+        recv_point->go();
+    };
+
+    _socket->close();
+}

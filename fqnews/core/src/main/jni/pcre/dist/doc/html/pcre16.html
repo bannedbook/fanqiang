@@ -1,0 +1,384 @@
+<html>
+<head>
+<title>pcre16 specification</title>
+</head>
+<body bgcolor="#FFFFFF" text="#00005A" link="#0066FF" alink="#3399FF" vlink="#2222BB">
+<h1>pcre16 man page</h1>
+<p>
+Return to the <a href="index.html">PCRE index page</a>.
+</p>
+<p>
+This page is part of the PCRE HTML documentation. It was generated automatically
+from the original man page. If there is any nonsense in it, please consult the
+man page, in case the conversion went wrong.
+<br>
+<ul>
+<li><a name="TOC1" href="#SEC1">PCRE 16-BIT API BASIC FUNCTIONS</a>
+<li><a name="TOC2" href="#SEC2">PCRE 16-BIT API STRING EXTRACTION FUNCTIONS</a>
+<li><a name="TOC3" href="#SEC3">PCRE 16-BIT API AUXILIARY FUNCTIONS</a>
+<li><a name="TOC4" href="#SEC4">PCRE 16-BIT API INDIRECTED FUNCTIONS</a>
+<li><a name="TOC5" href="#SEC5">PCRE 16-BIT API 16-BIT-ONLY FUNCTION</a>
+<li><a name="TOC6" href="#SEC6">THE PCRE 16-BIT LIBRARY</a>
+<li><a name="TOC7" href="#SEC7">THE HEADER FILE</a>
+<li><a name="TOC8" href="#SEC8">THE LIBRARY NAME</a>
+<li><a name="TOC9" href="#SEC9">STRING TYPES</a>
+<li><a name="TOC10" href="#SEC10">STRUCTURE TYPES</a>
+<li><a name="TOC11" href="#SEC11">16-BIT FUNCTIONS</a>
+<li><a name="TOC12" href="#SEC12">SUBJECT STRING OFFSETS</a>
+<li><a name="TOC13" href="#SEC13">NAMED SUBPATTERNS</a>
+<li><a name="TOC14" href="#SEC14">OPTION NAMES</a>
+<li><a name="TOC15" href="#SEC15">CHARACTER CODES</a>
+<li><a name="TOC16" href="#SEC16">ERROR NAMES</a>
+<li><a name="TOC17" href="#SEC17">ERROR TEXTS</a>
+<li><a name="TOC18" href="#SEC18">CALLOUTS</a>
+<li><a name="TOC19" href="#SEC19">TESTING</a>
+<li><a name="TOC20" href="#SEC20">NOT SUPPORTED IN 16-BIT MODE</a>
+<li><a name="TOC21" href="#SEC21">AUTHOR</a>
+<li><a name="TOC22" href="#SEC22">REVISION</a>
+</ul>
+<P>
+<b>#include &#60;pcre.h&#62;</b>
+</P>
+<br><a name="SEC1" href="#TOC1">PCRE 16-BIT API BASIC FUNCTIONS</a><br>
+<P>
+<b>pcre16 *pcre16_compile(PCRE_SPTR16 <i>pattern</i>, int <i>options</i>,</b>
+<b>     const char **<i>errptr</i>, int *<i>erroffset</i>,</b>
+<b>     const unsigned char *<i>tableptr</i>);</b>
+<br>
+<br>
+<b>pcre16 *pcre16_compile2(PCRE_SPTR16 <i>pattern</i>, int <i>options</i>,</b>
+<b>     int *<i>errorcodeptr</i>,</b>
+<b>     const char **<i>errptr</i>, int *<i>erroffset</i>,</b>
+<b>     const unsigned char *<i>tableptr</i>);</b>
+<br>
+<br>
+<b>pcre16_extra *pcre16_study(const pcre16 *<i>code</i>, int <i>options</i>,</b>
+<b>     const char **<i>errptr</i>);</b>
+<br>
+<br>
+<b>void pcre16_free_study(pcre16_extra *<i>extra</i>);</b>
+<br>
+<br>
+<b>int pcre16_exec(const pcre16 *<i>code</i>, const pcre16_extra *<i>extra</i>,</b>
+<b>     PCRE_SPTR16 <i>subject</i>, int <i>length</i>, int <i>startoffset</i>,</b>
+<b>     int <i>options</i>, int *<i>ovector</i>, int <i>ovecsize</i>);</b>
+<br>
+<br>
+<b>int pcre16_dfa_exec(const pcre16 *<i>code</i>, const pcre16_extra *<i>extra</i>,</b>
+<b>     PCRE_SPTR16 <i>subject</i>, int <i>length</i>, int <i>startoffset</i>,</b>
+<b>     int <i>options</i>, int *<i>ovector</i>, int <i>ovecsize</i>,</b>
+<b>     int *<i>workspace</i>, int <i>wscount</i>);</b>
+</P>
+<br><a name="SEC2" href="#TOC1">PCRE 16-BIT API STRING EXTRACTION FUNCTIONS</a><br>
+<P>
+<b>int pcre16_copy_named_substring(const pcre16 *<i>code</i>,</b>
+<b>     PCRE_SPTR16 <i>subject</i>, int *<i>ovector</i>,</b>
+<b>     int <i>stringcount</i>, PCRE_SPTR16 <i>stringname</i>,</b>
+<b>     PCRE_UCHAR16 *<i>buffer</i>, int <i>buffersize</i>);</b>
+<br>
+<br>
+<b>int pcre16_copy_substring(PCRE_SPTR16 <i>subject</i>, int *<i>ovector</i>,</b>
+<b>     int <i>stringcount</i>, int <i>stringnumber</i>, PCRE_UCHAR16 *<i>buffer</i>,</b>
+<b>     int <i>buffersize</i>);</b>
+<br>
+<br>
+<b>int pcre16_get_named_substring(const pcre16 *<i>code</i>,</b>
+<b>     PCRE_SPTR16 <i>subject</i>, int *<i>ovector</i>,</b>
+<b>     int <i>stringcount</i>, PCRE_SPTR16 <i>stringname</i>,</b>
+<b>     PCRE_SPTR16 *<i>stringptr</i>);</b>
+<br>
+<br>
+<b>int pcre16_get_stringnumber(const pcre16 *<i>code</i>,</b>
+<b>"     PCRE_SPTR16 <i>name</i>);</b>
+<br>
+<br>
+<b>int pcre16_get_stringtable_entries(const pcre16 *<i>code</i>,</b>
+<b>     PCRE_SPTR16 <i>name</i>, PCRE_UCHAR16 **<i>first</i>, PCRE_UCHAR16 **<i>last</i>);</b>
+<br>
+<br>
+<b>int pcre16_get_substring(PCRE_SPTR16 <i>subject</i>, int *<i>ovector</i>,</b>
+<b>     int <i>stringcount</i>, int <i>stringnumber</i>,</b>
+<b>     PCRE_SPTR16 *<i>stringptr</i>);</b>
+<br>
+<br>
+<b>int pcre16_get_substring_list(PCRE_SPTR16 <i>subject</i>,</b>
+<b>     int *<i>ovector</i>, int <i>stringcount</i>, PCRE_SPTR16 **<i>listptr</i>);</b>
+<br>
+<br>
+<b>void pcre16_free_substring(PCRE_SPTR16 <i>stringptr</i>);</b>
+<br>
+<br>
+<b>void pcre16_free_substring_list(PCRE_SPTR16 *<i>stringptr</i>);</b>
+</P>
+<br><a name="SEC3" href="#TOC1">PCRE 16-BIT API AUXILIARY FUNCTIONS</a><br>
+<P>
+<b>pcre16_jit_stack *pcre16_jit_stack_alloc(int <i>startsize</i>, int <i>maxsize</i>);</b>
+<br>
+<br>
+<b>void pcre16_jit_stack_free(pcre16_jit_stack *<i>stack</i>);</b>
+<br>
+<br>
+<b>void pcre16_assign_jit_stack(pcre16_extra *<i>extra</i>,</b>
+<b>     pcre16_jit_callback <i>callback</i>, void *<i>data</i>);</b>
+<br>
+<br>
+<b>const unsigned char *pcre16_maketables(void);</b>
+<br>
+<br>
+<b>int pcre16_fullinfo(const pcre16 *<i>code</i>, const pcre16_extra *<i>extra</i>,</b>
+<b>     int <i>what</i>, void *<i>where</i>);</b>
+<br>
+<br>
+<b>int pcre16_refcount(pcre16 *<i>code</i>, int <i>adjust</i>);</b>
+<br>
+<br>
+<b>int pcre16_config(int <i>what</i>, void *<i>where</i>);</b>
+<br>
+<br>
+<b>const char *pcre16_version(void);</b>
+<br>
+<br>
+<b>int pcre16_pattern_to_host_byte_order(pcre16 *<i>code</i>,</b>
+<b>     pcre16_extra *<i>extra</i>, const unsigned char *<i>tables</i>);</b>
+</P>
+<br><a name="SEC4" href="#TOC1">PCRE 16-BIT API INDIRECTED FUNCTIONS</a><br>
+<P>
+<b>void *(*pcre16_malloc)(size_t);</b>
+<br>
+<br>
+<b>void (*pcre16_free)(void *);</b>
+<br>
+<br>
+<b>void *(*pcre16_stack_malloc)(size_t);</b>
+<br>
+<br>
+<b>void (*pcre16_stack_free)(void *);</b>
+<br>
+<br>
+<b>int (*pcre16_callout)(pcre16_callout_block *);</b>
+</P>
+<br><a name="SEC5" href="#TOC1">PCRE 16-BIT API 16-BIT-ONLY FUNCTION</a><br>
+<P>
+<b>int pcre16_utf16_to_host_byte_order(PCRE_UCHAR16 *<i>output</i>,</b>
+<b>     PCRE_SPTR16 <i>input</i>, int <i>length</i>, int *<i>byte_order</i>,</b>
+<b>     int <i>keep_boms</i>);</b>
+</P>
+<br><a name="SEC6" href="#TOC1">THE PCRE 16-BIT LIBRARY</a><br>
+<P>
+Starting with release 8.30, it is possible to compile a PCRE library that
+supports 16-bit character strings, including UTF-16 strings, as well as or
+instead of the original 8-bit library. The majority of the work to make this
+possible was done by Zoltan Herczeg. The two libraries contain identical sets
+of functions, used in exactly the same way. Only the names of the functions and
+the data types of their arguments and results are different. To avoid
+over-complication and reduce the documentation maintenance load, most of the
+PCRE documentation describes the 8-bit library, with only occasional references
+to the 16-bit library. This page describes what is different when you use the
+16-bit library.
+</P>
+<P>
+WARNING: A single application can be linked with both libraries, but you must
+take care when processing any particular pattern to use functions from just one
+library. For example, if you want to study a pattern that was compiled with
+<b>pcre16_compile()</b>, you must do so with <b>pcre16_study()</b>, not
+<b>pcre_study()</b>, and you must free the study data with
+<b>pcre16_free_study()</b>.
+</P>
+<br><a name="SEC7" href="#TOC1">THE HEADER FILE</a><br>
+<P>
+There is only one header file, <b>pcre.h</b>. It contains prototypes for all the
+functions in all libraries, as well as definitions of flags, structures, error
+codes, etc.
+</P>
+<br><a name="SEC8" href="#TOC1">THE LIBRARY NAME</a><br>
+<P>
+In Unix-like systems, the 16-bit library is called <b>libpcre16</b>, and can
+normally be accesss by adding <b>-lpcre16</b> to the command for linking an
+application that uses PCRE.
+</P>
+<br><a name="SEC9" href="#TOC1">STRING TYPES</a><br>
+<P>
+In the 8-bit library, strings are passed to PCRE library functions as vectors
+of bytes with the C type "char *". In the 16-bit library, strings are passed as
+vectors of unsigned 16-bit quantities. The macro PCRE_UCHAR16 specifies an
+appropriate data type, and PCRE_SPTR16 is defined as "const PCRE_UCHAR16 *". In
+very many environments, "short int" is a 16-bit data type. When PCRE is built,
+it defines PCRE_UCHAR16 as "unsigned short int", but checks that it really is a
+16-bit data type. If it is not, the build fails with an error message telling
+the maintainer to modify the definition appropriately.
+</P>
+<br><a name="SEC10" href="#TOC1">STRUCTURE TYPES</a><br>
+<P>
+The types of the opaque structures that are used for compiled 16-bit patterns
+and JIT stacks are <b>pcre16</b> and <b>pcre16_jit_stack</b> respectively. The
+type of the user-accessible structure that is returned by <b>pcre16_study()</b>
+is <b>pcre16_extra</b>, and the type of the structure that is used for passing
+data to a callout function is <b>pcre16_callout_block</b>. These structures
+contain the same fields, with the same names, as their 8-bit counterparts. The
+only difference is that pointers to character strings are 16-bit instead of
+8-bit types.
+</P>
+<br><a name="SEC11" href="#TOC1">16-BIT FUNCTIONS</a><br>
+<P>
+For every function in the 8-bit library there is a corresponding function in
+the 16-bit library with a name that starts with <b>pcre16_</b> instead of
+<b>pcre_</b>. The prototypes are listed above. In addition, there is one extra
+function, <b>pcre16_utf16_to_host_byte_order()</b>. This is a utility function
+that converts a UTF-16 character string to host byte order if necessary. The
+other 16-bit functions expect the strings they are passed to be in host byte
+order.
+</P>
+<P>
+The <i>input</i> and <i>output</i> arguments of
+<b>pcre16_utf16_to_host_byte_order()</b> may point to the same address, that is,
+conversion in place is supported. The output buffer must be at least as long as
+the input.
+</P>
+<P>
+The <i>length</i> argument specifies the number of 16-bit data units in the
+input string; a negative value specifies a zero-terminated string.
+</P>
+<P>
+If <i>byte_order</i> is NULL, it is assumed that the string starts off in host
+byte order. This may be changed by byte-order marks (BOMs) anywhere in the
+string (commonly as the first character).
+</P>
+<P>
+If <i>byte_order</i> is not NULL, a non-zero value of the integer to which it
+points means that the input starts off in host byte order, otherwise the
+opposite order is assumed. Again, BOMs in the string can change this. The final
+byte order is passed back at the end of processing.
+</P>
+<P>
+If <i>keep_boms</i> is not zero, byte-order mark characters (0xfeff) are copied
+into the output string. Otherwise they are discarded.
+</P>
+<P>
+The result of the function is the number of 16-bit units placed into the output
+buffer, including the zero terminator if the string was zero-terminated.
+</P>
+<br><a name="SEC12" href="#TOC1">SUBJECT STRING OFFSETS</a><br>
+<P>
+The lengths and starting offsets of subject strings must be specified in 16-bit
+data units, and the offsets within subject strings that are returned by the
+matching functions are in also 16-bit units rather than bytes.
+</P>
+<br><a name="SEC13" href="#TOC1">NAMED SUBPATTERNS</a><br>
+<P>
+The name-to-number translation table that is maintained for named subpatterns
+uses 16-bit characters. The <b>pcre16_get_stringtable_entries()</b> function
+returns the length of each entry in the table as the number of 16-bit data
+units.
+</P>
+<br><a name="SEC14" href="#TOC1">OPTION NAMES</a><br>
+<P>
+There are two new general option names, PCRE_UTF16 and PCRE_NO_UTF16_CHECK,
+which correspond to PCRE_UTF8 and PCRE_NO_UTF8_CHECK in the 8-bit library. In
+fact, these new options define the same bits in the options word. There is a
+discussion about the
+<a href="pcreunicode.html#utf16strings">validity of UTF-16 strings</a>
+in the
+<a href="pcreunicode.html"><b>pcreunicode</b></a>
+page.
+</P>
+<P>
+For the <b>pcre16_config()</b> function there is an option PCRE_CONFIG_UTF16
+that returns 1 if UTF-16 support is configured, otherwise 0. If this option is
+given to <b>pcre_config()</b> or <b>pcre32_config()</b>, or if the
+PCRE_CONFIG_UTF8 or PCRE_CONFIG_UTF32 option is given to <b>pcre16_config()</b>,
+the result is the PCRE_ERROR_BADOPTION error.
+</P>
+<br><a name="SEC15" href="#TOC1">CHARACTER CODES</a><br>
+<P>
+In 16-bit mode, when PCRE_UTF16 is not set, character values are treated in the
+same way as in 8-bit, non UTF-8 mode, except, of course, that they can range
+from 0 to 0xffff instead of 0 to 0xff. Character types for characters less than
+0xff can therefore be influenced by the locale in the same way as before.
+Characters greater than 0xff have only one case, and no "type" (such as letter
+or digit).
+</P>
+<P>
+In UTF-16 mode, the character code is Unicode, in the range 0 to 0x10ffff, with
+the exception of values in the range 0xd800 to 0xdfff because those are
+"surrogate" values that are used in pairs to encode values greater than 0xffff.
+</P>
+<P>
+A UTF-16 string can indicate its endianness by special code knows as a
+byte-order mark (BOM). The PCRE functions do not handle this, expecting strings
+to be in host byte order. A utility function called
+<b>pcre16_utf16_to_host_byte_order()</b> is provided to help with this (see
+above).
+</P>
+<br><a name="SEC16" href="#TOC1">ERROR NAMES</a><br>
+<P>
+The errors PCRE_ERROR_BADUTF16_OFFSET and PCRE_ERROR_SHORTUTF16 correspond to
+their 8-bit counterparts. The error PCRE_ERROR_BADMODE is given when a compiled
+pattern is passed to a function that processes patterns in the other
+mode, for example, if a pattern compiled with <b>pcre_compile()</b> is passed to
+<b>pcre16_exec()</b>.
+</P>
+<P>
+There are new error codes whose names begin with PCRE_UTF16_ERR for invalid
+UTF-16 strings, corresponding to the PCRE_UTF8_ERR codes for UTF-8 strings that
+are described in the section entitled
+<a href="pcreapi.html#badutf8reasons">"Reason codes for invalid UTF-8 strings"</a>
+in the main
+<a href="pcreapi.html"><b>pcreapi</b></a>
+page. The UTF-16 errors are:
+<pre>
+  PCRE_UTF16_ERR1  Missing low surrogate at end of string
+  PCRE_UTF16_ERR2  Invalid low surrogate follows high surrogate
+  PCRE_UTF16_ERR3  Isolated low surrogate
+  PCRE_UTF16_ERR4  Non-character
+</PRE>
+</P>
+<br><a name="SEC17" href="#TOC1">ERROR TEXTS</a><br>
+<P>
+If there is an error while compiling a pattern, the error text that is passed
+back by <b>pcre16_compile()</b> or <b>pcre16_compile2()</b> is still an 8-bit
+character string, zero-terminated.
+</P>
+<br><a name="SEC18" href="#TOC1">CALLOUTS</a><br>
+<P>
+The <i>subject</i> and <i>mark</i> fields in the callout block that is passed to
+a callout function point to 16-bit vectors.
+</P>
+<br><a name="SEC19" href="#TOC1">TESTING</a><br>
+<P>
+The <b>pcretest</b> program continues to operate with 8-bit input and output
+files, but it can be used for testing the 16-bit library. If it is run with the
+command line option <b>-16</b>, patterns and subject strings are converted from
+8-bit to 16-bit before being passed to PCRE, and the 16-bit library functions
+are used instead of the 8-bit ones. Returned 16-bit strings are converted to
+8-bit for output. If both the 8-bit and the 32-bit libraries were not compiled,
+<b>pcretest</b> defaults to 16-bit and the <b>-16</b> option is ignored.
+</P>
+<P>
+When PCRE is being built, the <b>RunTest</b> script that is called by "make
+check" uses the <b>pcretest</b> <b>-C</b> option to discover which of the 8-bit,
+16-bit and 32-bit libraries has been built, and runs the tests appropriately.
+</P>
+<br><a name="SEC20" href="#TOC1">NOT SUPPORTED IN 16-BIT MODE</a><br>
+<P>
+Not all the features of the 8-bit library are available with the 16-bit
+library. The C++ and POSIX wrapper functions support only the 8-bit library,
+and the <b>pcregrep</b> program is at present 8-bit only.
+</P>
+<br><a name="SEC21" href="#TOC1">AUTHOR</a><br>
+<P>
+Philip Hazel
+<br>
+University Computing Service
+<br>
+Cambridge CB2 3QH, England.
+<br>
+</P>
+<br><a name="SEC22" href="#TOC1">REVISION</a><br>
+<P>
+Last updated: 12 May 2013
+<br>
+Copyright &copy; 1997-2013 University of Cambridge.
+<br>
+<p>
+Return to the <a href="index.html">PCRE index page</a>.
+</p>

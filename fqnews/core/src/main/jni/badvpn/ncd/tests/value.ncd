@@ -1,0 +1,240 @@
+process main {
+    value({"A", {"B", "C"}, {{"D"}, "E"}}) v;
+    val_equal(v, {"A", {"B", "C"}, {{"D"}, "E"}}) a;
+    assert(a);
+
+    v->get("1") w;
+    val_equal(w, {"B", "C"}) a;
+    assert(a);
+
+    w->delete();
+    val_equal(v, {"A", {{"D"}, "E"}}) a;
+    assert(a);
+
+    v->getpath({"1", "1"}) f;
+    val_equal(f, "E") a;
+    assert(a);
+
+    value(["hello":{"Hello", "Good evening!"}, "goodbye":{"Bye", "See you"}]) v;
+    val_equal(v, ["hello":{"Hello", "Good evening!"}, "goodbye":{"Bye", "See you"}]) a;
+    assert(a);
+
+    val_equal(v.keys, {"goodbye", "hello"}) a;
+    assert(a);
+
+    v->get("hello") h;
+    val_equal(h, {"Hello", "Good evening!"}) a;
+    assert(a);
+
+    v->get("goodbye") g;
+    val_equal(g, {"Bye", "See you"}) a;
+    assert(a);
+
+    g->delete();
+    val_equal(v, ["hello":{"Hello", "Good evening!"}]) a;
+    assert(a);
+
+    h->delete();
+    val_equal(v, []);
+    assert(a);
+
+    v->delete();
+    strcmp(v.exists, "false") a;
+    assert(a);
+
+    value({"D", "F", "H"}) v;
+    v->insert("0", "A") a; # ADFH
+    v->insert("1", "B") b; # ABDFH
+    v->insert("5", "I") i; # ABDFHI
+    val_equal(v, {"A", "B", "D", "F", "H", "I"}) a;
+    assert(a);
+
+    value(["k1":"v1", "k2":"v2", "k3":"v3"]) v;
+    v->insert("k0", "v0") v0; # k0=v0 k1=v1 k2=v2 k3=v3
+    v->insert("k0", "V0") V0; # k0=V0 k1=v1 k2=v2 k3=v3
+    val_equal(v0, "v0") a;
+    assert(a);
+    val_equal(V0, "V0") a;
+    assert(a);
+
+    value({"D", "F", "H"}) v;
+    v->remove("0"); # FH
+    v->remove("1"); # F
+    val_equal(v, {"F"}) a;
+    assert(a);
+
+    value(["k1":"v1", "k2":"v2", "k3":"v3"]) v;
+    v->remove("k1");
+    v->remove("k3");
+    val_equal(v, ["k2":"v2"]) a;
+    assert(a);
+
+    value(["k1":"v1", "k2":"v2", "k3":"v3"]) v;
+    v->try_get("k1") v1;
+    v->try_get("k7") v7;
+    val_equal(v1.exists, "true") a;
+    assert(a);
+    val_equal(v7.exists, "false") a;
+    assert(a);
+
+    value(["k1":"v1", "k2":"v2", "k3":"v3"]) v;
+    imperative("<none>", {}, "check1", {}, "10000");
+    v->insert_undo("k1", "V1") V1;
+    strcmp(V1, "V1") a;
+    assert(a);
+    v->insert_undo("k4", "V4");
+    v->remove("k2");
+    val_equal(v, ["k1":"V1", "k3":"v3", "k4":"V4"]) a;
+    assert(a);
+
+    value({"a", "b", "c"}) v;
+    v->replace("0", "A");
+    v->replace("1", "B");
+    v->replace("2", "C");
+    v->replace("3", "D");
+    val_equal(v, {"A", "B", "C", "D"}) a;
+    assert(a);
+
+    value({"a", "b", "c"}) v;
+    imperative("<none>", {}, "check2", {}, "10000");
+    v->replace_undo("0", "A");
+    v->replace_undo("1", "B");
+    v->replace_undo("2", "C");
+    v->replace_undo("3", "D");
+    val_equal(v, {"A", "B", "C", "D"}) a;
+    assert(a);
+
+    value("A") v;
+    v->reset("B");
+    val_equal(v, "B") a;
+    assert(a);
+
+    value({"a", "c"}) v;
+    v->insert_undo("1", "b") vb;
+    val_equal(v, {"a", "b", "c"}) a;
+    assert(a);
+    val_equal(vb, "b") a;
+    assert(a);
+    vb->reset("B");
+    val_equal(v, {"a", "c"}) a;
+    assert(a);
+    val_equal(vb, "B") a;
+    assert(a);
+
+    value({"a", "b", "c"}) v;
+    v->get("1") vb;
+    vb->replace_this("B") vB;
+    val_equal(vb, "b") a;
+    assert(a);
+    val_equal(vB, "B") a;
+    assert(a);
+    v->get("1") vB2;
+    val_equal(vB2, "B") a;
+    assert(a);
+
+    value(["a":"va", "b":"vb", "c":"vc"]) v;
+    v->get("b") vb;
+    vb->replace_this("vB") vB;
+    val_equal(vB, "vB") a;
+    assert(a);
+    val_equal(vb, "vb") a;
+    assert(a);
+    v->get("b") vB2;
+    val_equal(vB2, "vB") a;
+    assert(a);
+
+    value({"a", "b", "c"}) v;
+    v->get("1") vb;
+    imperative("<none>", {}, "check3", {}, "10000");
+    vb->replace_this_undo("B") vB;
+    val_equal(vb, "b") a;
+    assert(a);
+    val_equal(vB, "B") a;
+    assert(a);
+    v->get("1") vB2;
+    val_equal(vB2, "B") a;
+    assert(a);
+
+    value(["a":"va", "b":"vb", "c":"vc"]) v;
+    v->get("b") vb;
+    imperative("<none>", {}, "check4", {}, "10000");
+    vb->replace_this_undo("vB") vB;
+    val_equal(vB, "vB") a;
+    assert(a);
+    val_equal(vb, "vb") a;
+    assert(a);
+    v->get("b") vB2;
+    val_equal(vB2, "vB") a;
+    assert(a);
+    
+    value("") v;
+    v->append("ab");
+    v->append("cde");
+    v->append(v);
+    v->append("");
+    v->append("f");
+    val_equal(v, "abcdeabcdef") a;
+    assert(a);
+    
+    value({}) v;
+    v->insert("1") ins_v;
+    v->insert("2");
+    v->insert("3");
+    v->insert("4");
+    v->append("5");
+    v->append("6");
+    val_equal(v, {"1", "2", "3", "4", "5", "6"})  a;
+    assert(a);
+    val_equal(ins_v, "1") a;
+    assert(a);
+    
+    value({}) v;
+    imperative("<none>", {}, "check5", {}, "10000");
+    v->insert_undo("1");
+    v->insert_undo("2");
+    v->insert_undo("3");
+    v->insert_undo("4");
+    val_equal(v, {"1", "2", "3", "4"})  a;
+    assert(a);
+    
+    concat("hello", "world") cnc;
+    value(cnc) v;
+    val_equal(v, "helloworld") a;
+    assert(a);
+    v->substr("2") sub_v;
+    val_equal(sub_v, "lloworld") a;
+    assert(a);
+    v->append("!!");
+    val_equal(v, "helloworld!!") a;
+    assert(a);
+    v->substr("1") sub_v;
+    val_equal(sub_v, "elloworld!!") a;
+    assert(a);
+    
+    exit("0");
+}
+
+template check1 {
+    val_equal(_caller.v, ["k1":"v1", "k3":"v3"]) a;
+    assert(a);
+}
+
+template check2 {
+    val_equal(_caller.v, {"a", "b", "c"}) a;
+    assert(a);
+}
+
+template check3 {
+    val_equal(_caller.v, {"a", "b", "c"}) a;
+    assert(a);
+}
+
+template check4 {
+    val_equal(_caller.v, ["a":"va", "b":"vb", "c":"vc"]) a;
+    assert(a);
+}
+
+template check5 {
+    val_equal(_caller.v, {}) a;
+    assert(a);
+}

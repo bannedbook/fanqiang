@@ -1,0 +1,48 @@
+process main {
+    var("FOO BAR BAZ QUX goo") x;
+    regex_replace(x, {"FOO", "BAR", "goo"}, {"BAR", "bar", "GOO"}) y;
+    strcmp(y, "BAR bar BAZ QUX GOO") a;
+    assert(a);
+
+    var("hello world") x;
+    regex_replace(x, {"^hello"}, {"Hello,"}) y;
+    strcmp(y, "Hello, world") a;
+    assert(a);
+
+    var("hello world") x;
+    regex_replace(x, {"goodbye"}, {"hello"}) y;
+    strcmp(y, "hello world") a;
+    assert(a);
+
+    var("hello world") x;
+    regex_replace(x, {"hello world"}, {"hello NCD"}) y;
+    strcmp(y, "hello NCD") a;
+    assert(a);
+
+    var("hello world") x;
+    regex_replace(x, {"wor"}, {"Wor"}) y;
+    strcmp(y, "hello World") a;
+    assert(a);
+
+    var("hello world") x;
+    regex_replace(x, {"ell", "llo"}, {"ELL", "LLO"}) y;
+    strcmp(y, "hELLo world") a;
+    assert(a);
+
+    var("hello world") x;
+    regex_replace(x, {"ell", "el"}, {"ELL", "EL"}) y;
+    strcmp(y, "hELLo world") a;
+    assert(a);
+
+    var("hello world") x;
+    regex_replace(x, {"el", "lo"}, {"EL", "LO"}) y;
+    strcmp(y, "hELLO world") a;
+    assert(a);
+
+    var("hello world") x;
+    regex_replace(x, {"ell", "ll"}, {"ELL", "LL"}) y;
+    strcmp(y, "hELLo world") a;
+    assert(a);
+
+    exit("0");
+}

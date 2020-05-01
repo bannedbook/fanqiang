@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<item
+		android:id="@+id/menu_entries__search"
+		android:icon="@drawable/ic_search_white_24dp"
+		android:title="@android:string/search_go"
+		app:showAsAction="collapseActionView|always"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+	<item
+		android:id="@+id/menu_entries__share"
+		android:title="@string/menu_share"
+		app:showAsAction="never" />
+
+	<item
+		android:id="@+id/menu_entries__settings"
+		android:title="@string/menu_settings"
+		app:showAsAction="never"/>
+
+	<item
+		android:id="@+id/menu_entries__about"
+		android:title="@string/about_flym"
+		app:showAsAction="never"/>
+</menu>

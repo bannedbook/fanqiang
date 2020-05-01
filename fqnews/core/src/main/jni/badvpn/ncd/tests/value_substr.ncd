@@ -1,0 +1,25 @@
+process foo {
+    value("0123456789") str;
+
+    str->substr("0") sub;
+    strcmp(sub, str) a;
+    assert(a);
+
+    str->substr("1") sub;
+    strcmp(sub, "123456789") a;
+    assert(a);
+
+    str->substr("1", "0") sub;
+    strcmp(sub, "") a;
+    assert(a);
+
+    str->substr("1", "9") sub;
+    strcmp(sub, "123456789") a;
+    assert(a);
+
+    str->substr("1", "8") sub;
+    strcmp(sub, "12345678") a;
+    assert(a);
+
+    exit("0");
+}

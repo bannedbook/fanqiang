@@ -1,0 +1,124 @@
+#!/bin/bash
+#
+# Script to run Shadowsocks in daemon mode at boot time.
+# ScriptAuthor: icyboy
+# Revision 1.0 - 14th Sep 2013
+#====================================================================
+# Run level information:
+# chkconfig: 2345 99 99
+# Description: lightweight secured socks5 proxy
+# processname: ss-server
+# Author: Max Lv <max.c.lv@gmail.com>;
+# Run "/sbin/chkconfig --add shadowsocks" to add the Run levels.
+#====================================================================
+
+#====================================================================
+# Paths and variables and system checks.
+
+# Source function library
+. /etc/rc.d/init.d/functions
+
+# Check that networking is up.
+#
+[ ${NETWORKING} ="yes" ] || exit 0
+
+# Daemon
+NAME=shadowsocks-server
+DAEMON=/usr/bin/ss-server
+
+# Path to the configuration file.
+#
+CONF=/etc/shadowsocks-libev/config.json
+
+#USER="nobody"
+#GROUP="nobody"
+
+# Take care of pidfile permissions
+mkdir /var/run/$NAME 2>/dev/null || true
+#chown "$USER:$GROUP" /var/run/$NAME
+
+# Check the configuration file exists.
+#
+if [ ! -f $CONF ] ; then
+echo "The configuration file cannot be found!"
+exit 0
+fi
+
+# Path to the lock file.
+#
+LOCK_FILE=/var/lock/subsys/shadowsocks
+
+# Path to the pid file.
+#
+PID=/var/run/$NAME/pid
+
+
+#====================================================================
+
+#====================================================================
+# Run controls:
+
+RETVAL=0
+
+# Start shadowsocks as daemon.
+#
+start() {
+if [ -f $LOCK_FILE ]; then
+echo "$NAME is already running!"
+exit 0
+else
+echo -n $"Starting ${NAME}: "
+#daemon --check $DAEMON --user $USER "$DAEMON -f $PID -c $CONF > /dev/null"
+daemon $DAEMON -c $CONF -f $PID
+fi
+
+RETVAL=$?
+[ $RETVAL -eq 0 ] && success
+echo
+[ $RETVAL -eq 0 ] && touch $LOCK_FILE
+return $RETVAL
+}
+
+
+# Stop shadowsocks.
+#
+stop() {
+echo -n $"Shutting down ${NAME}: "
+killproc -p ${PID}
+RETVAL=$?
+[ $RETVAL -eq 0 ]
+rm -f $LOCK_FILE
+rm -f ${PID}
+echo
+return $RETVAL
+}
+
+# See how we were called.
+case "$1" in
+start)
+start
+;;
+stop)
+stop
+;;
+restart)
+stop
+start
+;;
+condrestart)
+if [ -f $LOCK_FILE ]; then
+stop
+start
+RETVAL=$?
+fi
+;;
+status)
+status $DAEMON
+RETVAL=$?
+;;
+*)
+echo $"Usage: $0 {start|stop|restart|condrestart|status}"
+RETVAL=1
+esac
+
+exit $RETVAL

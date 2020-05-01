@@ -1,0 +1,51 @@
+.TH PCRE_COPY_NAMED_SUBSTRING 3 "24 June 2012" "PCRE 8.30"
+.SH NAME
+PCRE - Perl-compatible regular expressions
+.SH SYNOPSIS
+.rs
+.sp
+.B #include <pcre.h>
+.PP
+.nf
+.B int pcre_copy_named_substring(const pcre *\fIcode\fP,
+.B "     const char *\fIsubject\fP, int *\fIovector\fP,"
+.B "     int \fIstringcount\fP, const char *\fIstringname\fP,"
+.B "     char *\fIbuffer\fP, int \fIbuffersize\fP);"
+.sp
+.B int pcre16_copy_named_substring(const pcre16 *\fIcode\fP,
+.B "     PCRE_SPTR16 \fIsubject\fP, int *\fIovector\fP,"
+.B "     int \fIstringcount\fP, PCRE_SPTR16 \fIstringname\fP,"
+.B "     PCRE_UCHAR16 *\fIbuffer\fP, int \fIbuffersize\fP);"
+.sp
+.B int pcre32_copy_named_substring(const pcre32 *\fIcode\fP,
+.B "     PCRE_SPTR32 \fIsubject\fP, int *\fIovector\fP,"
+.B "     int \fIstringcount\fP, PCRE_SPTR32 \fIstringname\fP,"
+.B "     PCRE_UCHAR32 *\fIbuffer\fP, int \fIbuffersize\fP);"
+.fi
+.
+.SH DESCRIPTION
+.rs
+.sp
+This is a convenience function for extracting a captured substring, identified
+by name, into a given buffer. The arguments are:
+.sp
+  \fIcode\fP          Pattern that was successfully matched
+  \fIsubject\fP       Subject that has been successfully matched
+  \fIovector\fP       Offset vector that \fBpcre[16|32]_exec()\fP used
+  \fIstringcount\fP   Value returned by \fBpcre[16|32]_exec()\fP
+  \fIstringname\fP    Name of the required substring
+  \fIbuffer\fP        Buffer to receive the string
+  \fIbuffersize\fP    Size of buffer
+.sp
+The yield is the length of the substring, PCRE_ERROR_NOMEMORY if the buffer was
+too small, or PCRE_ERROR_NOSUBSTRING if the string name is invalid.
+.P
+There is a complete description of the PCRE native API in the
+.\" HREF
+\fBpcreapi\fP
+.\"
+page and a description of the POSIX API in the
+.\" HREF
+\fBpcreposix\fP
+.\"
+page.

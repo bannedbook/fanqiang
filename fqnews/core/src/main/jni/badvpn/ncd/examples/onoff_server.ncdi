@@ -1,0 +1,82 @@
+include_guard "onoff_server"
+
+template onoff_server_main {
+    alias("_arg0") socket_path;
+
+    depend_scope() depsc;
+    process_manager() mgr;
+
+    sys.request_server({"unix", socket_path}, "onoff_server__request_handler", {});
+}
+
+template onoff_server_onoff {
+    alias(_arg0) main;
+    alias("_arg1") onoff_id;
+    alias("_arg2") default_state;
+
+    main.mgr->start(onoff_id, "onoff_server__id_proc", {onoff_id, default_state});
+    main.depsc->depend({onoff_id}) id_proc;
+
+    id_proc.blk->use();
+}
+
+template onoff_server__id_proc {
+    alias("_caller") main;
+    alias("_arg0") onoff_id;
+    alias("_arg1") default_state;
+
+    blocker() blk;
+    If (default_state) {
+        blk->up();
+    };
+    main.depsc->provide(onoff_id);
+}
+
+template onoff_server__request_handler {
+    alias("_caller") main;
+
+    try("onoff_server__try_request", {});
+
+    _request->reply({"error", "Bad request."});
+    _request->finish();
+}
+
+template onoff_server__try_request {
+    alias("_caller.main") main;
+    alias("_caller._request") request;
+
+    value(request.data) data;
+
+    val_equal(data.type, "list") a;
+    _try->assert(a);
+
+    num_greater_equal(data.length, "1") a;
+    _try->assert(a);
+
+    data->get("0") request_cmd;
+    val_equal(request_cmd, "set_onoff") is_set_onoff;
+
+    If (is_set_onoff) {
+        num_equal(data.length, "3") a;
+        _try->assert(a);
+
+        data->get("1") onoff_id;
+        data->get("2") new_state;
+
+        main.mgr->start(onoff_id, "onoff_server__id_proc", {onoff_id, new_state});
+        main.depsc->depend({onoff_id}) id_proc;
+
+        val_equal(new_state, "true") is_on;
+        If (is_on) {
+            id_proc.blk->up();
+        } Else {
+            id_proc.blk->down();
+        };
+    }
+    Else {
+        _try->assert("false");
+    };
+
+    request->reply({"OK", "state has been set"});
+    request->finish();
+}

@@ -1,0 +1,64 @@
+process main {
+    var("hello") x;
+    provide("A");
+    depend("A") d;
+    val_equal(d.x, "hello") a;
+    assert(a);
+    d.x->set("world");
+    val_equal(d.x, "world") a;
+    assert(a);
+
+    var("hello") x;
+    provide("B");
+    val_equal(x, "world") a;
+    assert(a);
+
+    var("hello") x;
+    provide("C");
+    val_equal(x, "hello") a;
+    assert(a);
+    depend("C_done");
+    val_equal(x, "world") a;
+    assert(a);
+
+    var("hello") x;
+    blocker() blk;
+    provide("D");
+    val_equal(x, "hello") a;
+    assert(a);
+    blk->up();
+    val_equal(x, "0") a;
+    assert(a);
+    blk->down();
+    blk->up();
+    val_equal(x, "1") a;
+    assert(a);
+
+    exit("0");
+}
+
+process proc1 {
+    depend("B") dep;
+    dep.x->set("world");
+}
+
+process proc2 {
+    depend("C") dep;
+    sleep("0", "0");
+    dep.x->set("world");
+    provide("C_done");
+}
+
+process proc3 {
+    depend("D") dep;
+    dep.blk->use();
+    provide("E");
+}
+
+process proc4 {
+    var("0") i;
+    depend("E") dep;
+    dep.dep.x->set(i);
+    num_add(i, "1") j;
+    i->set(j);
+}

@@ -1,0 +1,87 @@
+process main {
+    num_lesser("6", "7") r;
+    assert(r);
+
+    num_lesser("7", "7") r;
+    not(r) a;
+    assert(a);
+
+    num_greater("7", "6") r;
+    assert(r);
+
+    num_greater("7", "7") r;
+    not(r) a;
+    assert(a);
+
+    num_lesser_equal("7", "7") r;
+    assert(r);
+
+    num_lesser_equal("8", "7") r;
+    not(r) a;
+    assert(a);
+
+    num_greater_equal("7", "7") r;
+    assert(r);
+
+    num_greater_equal("7", "8") r;
+    not(r) a;
+    assert(a);
+
+    num_equal("7", "7") r;
+    assert(r);
+
+    num_equal("6", "7") r;
+    not(r) a;
+    assert(a);
+
+    num_equal("7", "6") r;
+    not(r) a;
+    assert(a);
+
+    num_different("7", "6") a;
+    assert(a);
+
+    num_different("7", "007") a;
+    not(a) a;
+    assert(a);
+
+    num_add("4", "7") r;
+    strcmp(r, "11") a;
+    assert(a);
+
+    num_subtract("4", "3") r;
+    strcmp(r, "1") a;
+    assert(a);
+
+    num_multiply("4", "5") r;
+    strcmp(r, "20") a;
+    assert(a);
+
+    num_divide("7", "3") r;
+    strcmp(r, "2") a;
+    assert(a);
+
+    num_modulo("7", "3") r;
+    strcmp(r, "1") a;
+    assert(a);
+
+    num_add("18446744073709551615", "1") r;
+    assert(r.is_error);
+
+    num_subtract("0", "1") r;
+    assert(r.is_error);
+
+    num_multiply("9223372036854775808", "2") r;
+    assert(r.is_error);
+
+    num_divide("4", "0") r;
+    assert(r.is_error);
+    
+    num_modulo("4", "0") r;
+    assert(r.is_error);
+    
+    num_add("1", "1") r;
+    assert_false(r.is_error);
+
+    exit("0");
+}

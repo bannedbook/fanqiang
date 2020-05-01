@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>pcresample specification</title>
+</head>
+<body bgcolor="#FFFFFF" text="#00005A" link="#0066FF" alink="#3399FF" vlink="#2222BB">
+<h1>pcresample man page</h1>
+<p>
+Return to the <a href="index.html">PCRE index page</a>.
+</p>
+<p>
+This page is part of the PCRE HTML documentation. It was generated automatically
+from the original man page. If there is any nonsense in it, please consult the
+man page, in case the conversion went wrong.
+<br>
+<br><b>
+PCRE SAMPLE PROGRAM
+</b><br>
+<P>
+A simple, complete demonstration program, to get you started with using PCRE,
+is supplied in the file <i>pcredemo.c</i> in the PCRE distribution. A listing of
+this program is given in the
+<a href="pcredemo.html"><b>pcredemo</b></a>
+documentation. If you do not have a copy of the PCRE distribution, you can save
+this listing to re-create <i>pcredemo.c</i>.
+</P>
+<P>
+The demonstration program, which uses the original PCRE 8-bit library, compiles
+the regular expression that is its first argument, and matches it against the
+subject string in its second argument. No PCRE options are set, and default
+character tables are used. If matching succeeds, the program outputs the
+portion of the subject that matched, together with the contents of any captured
+substrings.
+</P>
+<P>
+If the -g option is given on the command line, the program then goes on to
+check for further matches of the same regular expression in the same subject
+string. The logic is a little bit tricky because of the possibility of matching
+an empty string. Comments in the code explain what is going on.
+</P>
+<P>
+If PCRE is installed in the standard include and library directories for your
+operating system, you should be able to compile the demonstration program using
+this command:
+<pre>
+  gcc -o pcredemo pcredemo.c -lpcre
+</pre>
+If PCRE is installed elsewhere, you may need to add additional options to the
+command line. For example, on a Unix-like system that has PCRE installed in
+<i>/usr/local</i>, you can compile the demonstration program using a command
+like this:
+<pre>
+  gcc -o pcredemo -I/usr/local/include pcredemo.c -L/usr/local/lib -lpcre
+</pre>
+In a Windows environment, if you want to statically link the program against a
+non-dll <b>pcre.a</b> file, you must uncomment the line that defines PCRE_STATIC
+before including <b>pcre.h</b>, because otherwise the <b>pcre_malloc()</b> and
+<b>pcre_free()</b> exported functions will be declared
+<b>__declspec(dllimport)</b>, with unwanted results.
+</P>
+<P>
+Once you have compiled and linked the demonstration program, you can run simple
+tests like this:
+<pre>
+  ./pcredemo 'cat|dog' 'the cat sat on the mat'
+  ./pcredemo -g 'cat|dog' 'the dog sat on the cat'
+</pre>
+Note that there is a much more comprehensive test program, called
+<a href="pcretest.html"><b>pcretest</b>,</a>
+which supports many more facilities for testing regular expressions and both
+PCRE libraries. The
+<a href="pcredemo.html"><b>pcredemo</b></a>
+program is provided as a simple coding example.
+</P>
+<P>
+If you try to run
+<a href="pcredemo.html"><b>pcredemo</b></a>
+when PCRE is not installed in the standard library directory, you may get an
+error like this on some operating systems (e.g. Solaris):
+<pre>
+  ld.so.1: a.out: fatal: libpcre.so.0: open failed: No such file or directory
+</pre>
+This is caused by the way shared library support works on those systems. You
+need to add
+<pre>
+  -R/usr/local/lib
+</pre>
+(for example) to the compile command to get round this problem.
+</P>
+<br><b>
+AUTHOR
+</b><br>
+<P>
+Philip Hazel
+<br>
+University Computing Service
+<br>
+Cambridge CB2 3QH, England.
+<br>
+</P>
+<br><b>
+REVISION
+</b><br>
+<P>
+Last updated: 10 January 2012
+<br>
+Copyright &copy; 1997-2012 University of Cambridge.
+<br>
+<p>
+Return to the <a href="index.html">PCRE index page</a>.
+</p>

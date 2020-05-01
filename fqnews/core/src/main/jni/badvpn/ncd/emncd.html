@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NCD in Javascript</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<script src="emncd.js"></script>
+
+<script>
+
+var cfunc_emncd_start = Module.cwrap('emncd_start', 'null', ['string']);
+var cfunc_emncd_stop = Module.cwrap('emncd_stop', 'null', []);
+
+function on_start ()
+{
+    var code = document.getElementById('codetext').value;
+    
+    var loglevel = 0;
+    for (i = 0; i <= 5; i++) {
+        if (document.getElementById('loglevel' + i).checked) {
+            loglevel = i;
+        }
+    }
+
+    cfunc_emncd_start(code, loglevel);
+}
+
+function on_stop ()
+{
+    cfunc_emncd_stop();
+}
+
+function load_example (num)
+{
+    document.getElementById('codetext').value = document.getElementById('example' + num).value;
+}
+
+</script>
+
+This is a quick port of my <a href="http://code.google.com/p/badvpn/wiki/NCD">NCD programming language</a>
+to Javascript using the <a href="https://github.com/kripken/emscripten">Emscripten</a> compiler.
+<br />
+
+Please open the Javascript console so you can see the output (Chrome: CTRL+Shift+J. Firefox: CTRL+Shift+K).
+<br />
+
+<textarea id="example1" style="display:none;">
+process hello {
+    println("hello, world");
+    exit("0");
+}
+</textarea>
+
+<textarea id="example2" style="display:none;">
+process foo {
+    println("Starting up, please wait...");
+    rprintln("Goodbye World!");
+
+    sleep("500", "300"); # sleeps 500ms on init and 300ms on deinit
+
+    println("Hello World!");
+    rprintln("Shutting down, please wait...");
+}
+</textarea>
+
+<textarea id="example3" style="display:none;">
+process hello {
+    var("0") ctr;
+
+    blocker() blk;
+    blk->up();
+    blk->use();
+
+    num_modulo(ctr, "3") m_three;
+    num_modulo(ctr, "5") m_five;
+    num_equal(m_three, "0") d_three;
+    num_equal(m_five, "0") d_five;
+    and(d_three, d_five) d_three_five;
+
+    If (d_three_five) {
+        var("fizzbuzz") text;
+    } Elif (d_three) {
+        var("fizz") text;
+    } Elif (d_five) {
+        var("buzz") text;
+    } else {
+        var(ctr) text;
+    } branch;
+
+    println(branch.text);
+
+    num_add(ctr, "1") i;
+    num_modulo(i, "20") i;
+    ctr->set(i);
+
+    sleep("100", "0");
+    blk->downup();
+
+}
+</textarea>
+
+<textarea id="example4" style="display:none;">
+process main {
+    var({"0", "1", "3", "2", "2", "3", "1", "1", "6", "end"}) list;
+    value(["1":"one", "2":"two", "3":"three"]) map;
+
+    call("replace", {"_caller.list", "_caller.map"}) replace;
+
+    to_string(replace.result) str;
+    println(str);
+    exit("0");
+}
+
+template replace {
+    alias(_arg0) list;
+    alias(_arg1) map;
+
+    value({}) new_list;
+    Foreach (list As elem) {
+        map->try_get(elem) y;
+        If (y.exists) {
+            new_list->insert(new_list.length, y);
+        } Else {
+            new_list->insert(new_list.length, elem);
+        };
+    };
+
+    alias("new_list") result;
+}
+</textarea>
+
+<textarea id="example5" style="display:none;">
+process hello {
+    println("Hello, NCD in Javascript!");
+    println("Will now wait 2 seconds.");
+    rprintln("Goodbye.");
+
+    sleep("2000", "3000");
+    rprintln("Waiting 3 seconds before dying.");
+
+    call("func", {"FirstArg", "SecondArg"});
+    
+    var({"one", "two", "three"}) list;
+    to_string(list) str;
+    println(str);
+    
+    Foreach (list As elem) {
+        println("start ", elem);
+        rprintln("stop ", elem);
+    };
+
+    println("We're finished. Press \"Request termination\" to unwind us.");
+    rprintln("Terminating...");
+}
+
+template func {
+    println("func here, my args are: ", _arg0, " ", _arg1);
+    rprintln("func going away");
+}
+</textarea>
+
+<textarea id="example6" style="display:none;">
+process main {
+    # Turing machine specification.
+    var("B") blank;
+    var([
+        {"0", "0"}:{"0", "0", "right"},
+        {"0", "1"}:{"1", "x", "right"},
+        {"1", "1"}:{"1", "1", "right"},
+        {"1", "0"}:{"2", "0", "right"},
+        {"2", "0"}:{"2", "0", "right"},
+        {"2", "1"}:{"3", "1", "right"},
+        {"3", "1"}:{"3", "1", "right"},
+        {"3", "0"}:{"4", "1", "left"},
+        {"3", "B"}:{"4", "1", "left"},
+        {"4", "1"}:{"4", "1", "left"},
+        {"4", "0"}:{"5", "0", "left"},
+        {"5", "0"}:{"5", "0", "left"},
+        {"5", "1"}:{"6", "1", "left"},
+        {"5", "x"}:{"h", "x", "stay"},
+        {"6", "1"}:{"6", "1", "left"},
+        {"6", "x"}:{"0", "x", "right"},
+        {"6", "0"}:{"0", "0", "right"}
+    ]) rules;
+    var("0") initial_state;
+    var({}) initial_tape_left;
+    var({
+        "1", "1", "1", "1", "0", "0", "1", "1", "1", "1"
+    }) initial_tape_right;
+
+    # Perform the computation, stopping when no rule matches.
+    call("turing", {blank, rules, initial_state, initial_tape_left, initial_tape_right}) results;
+
+    # Print results.
+    to_string(results.tape_left) tape_left;
+    to_string(results.tape_right) tape_right;
+    to_string({results.side, results.pos}) head_pos;
+    to_string(results.state) head_state;
+    println("Tape L: ", tape_left);
+    println("Tape R: ", tape_right);
+    println("Head position: ", head_pos);
+    println("Head state: ", head_state);
+
+    exit("0");
+}
+
+template turing {
+    alias("_arg0") blank;
+    value(_arg1) rules;
+    alias("_arg2") initial_state;
+    alias("_arg3") initial_tape_left;
+    alias("_arg4") initial_tape_right;
+
+    # Head state.
+    var(initial_state) state;
+
+    # Tape. Positions go like this: ... L2 L1 L0 R0 R1 R2 ... 
+    value(initial_tape_left) tape_left;
+    value(initial_tape_right) tape_right;
+
+    # Make sure each side of the tape has at least one symbol so we can flip easily.
+    tape_left->insert(tape_left.length, blank);
+    tape_right->insert(tape_right.length, blank);
+
+    # Head position.
+    var("right") side;
+    var("0") pos;
+
+    # Enter loop.
+    blocker() loop_blk;
+    loop_blk->up();
+    loop_blk->use();
+
+    # Get symbol under head.
+    concat("tape_", side) tape_name;
+    alias(tape_name) cur_tape;
+    cur_tape->get(pos) symbol;
+
+    # Look for a matching rule.
+    rules->try_get({state, symbol}) rule;
+
+    If (rule.exists) {
+        # Extract directions from rule.
+        rule->get("0") new_state;
+        rule->get("1") new_symbol;
+        rule->get("2") move;
+
+        # Change head state.
+        state->set(new_state);
+
+        # Replace symbol under head.
+        cur_tape->remove(pos);
+        cur_tape->insert(pos, new_symbol);
+
+        # Branch based on how we move.
+        strcmp(move, side) is_outside;
+        strcmp(move, "stay") is_stay;
+        strcmp(pos, "0") is_zero;
+        If (is_outside) {
+            # Increment position.
+            num_add(pos, "1") new_pos;
+            pos->set(new_pos);
+
+            # If the new position is out of range, extend tape.
+            strcmp(pos, cur_tape.length) need_extend;
+            If (need_extend) {
+                cur_tape->insert(pos, blank);
+            };
+        } elif (is_stay) {
+            # Nop.
+            getargs();
+        } elif (is_zero) {
+            # Flip side, leave pos at zero.
+            side->set(move);
+        } else {
+            # Decrement position.
+            num_subtract(pos, "1") new_pos;
+            pos->set(new_pos);
+        };
+
+        # Continue loop.
+        loop_blk->downup();
+    };
+}
+</textarea>
+
+Examples:
+<button onclick="load_example(1)">Hello World</button>
+<button onclick="load_example(2)">Sleep</button>
+<button onclick="load_example(3)">FizzBuzz</button>
+<button onclick="load_example(4)">Replace</button>
+<button onclick="load_example(5)">Foreach, call</button>
+<button onclick="load_example(6)">Turing Machine</button>
+<br />
+
+<textarea rows=30 cols=80 id="codetext">
+process hello {
+    println("hello, world");
+    exit("0");
+}
+</textarea>
+<br />
+
+Loglevel: 
+<input type="radio" name="loglevel" id="loglevel0"> None
+<input type="radio" name="loglevel" id="loglevel1"> Error
+<input type="radio" name="loglevel" id="loglevel2" checked> Warning
+<input type="radio" name="loglevel" id="loglevel3"> Notice
+<input type="radio" name="loglevel" id="loglevel4"> Info
+<input type="radio" name="loglevel" id="loglevel5"> Debug <br />
+
+<button onclick="on_start()">Start NCD</button>
+<button onclick="on_stop()">Request termination</button>
+<br />
+Note: if you get the interpreter stuck and unable to terminate, just refresh the page
+
+</body>
+</html>

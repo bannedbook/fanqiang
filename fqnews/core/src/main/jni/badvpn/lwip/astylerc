@@ -1,0 +1,22 @@
+# lwIP astyle formatting options
+
+# NOT FINISHED - DON'T USE
+
+# braces and indent
+style=otbs
+indent=spaces=2
+attach-extern-c
+#attach-closing-while
+# indentation
+indent-switches
+#max-continuation-indent=40
+# padding
+pad-oper
+pad-comma
+pad-header
+align-pointer=name
+# formatting
+break-one-line-headers
+keep-one-line-blocks
+# don't use "other options" (e.g. formatted) in this file
+# send them as additional command line options

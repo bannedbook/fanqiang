@@ -1,0 +1,54 @@
+.TH PCRE_STUDY 3 " 24 June 2012" "PCRE 8.30"
+.SH NAME
+PCRE - Perl-compatible regular expressions
+.SH SYNOPSIS
+.rs
+.sp
+.B #include <pcre.h>
+.PP
+.nf
+.B pcre_extra *pcre_study(const pcre *\fIcode\fP, int \fIoptions\fP,
+.B "     const char **\fIerrptr\fP);"
+.sp
+.B pcre16_extra *pcre16_study(const pcre16 *\fIcode\fP, int \fIoptions\fP,
+.B "     const char **\fIerrptr\fP);"
+.sp
+.B pcre32_extra *pcre32_study(const pcre32 *\fIcode\fP, int \fIoptions\fP,
+.B "     const char **\fIerrptr\fP);"
+.fi
+.
+.SH DESCRIPTION
+.rs
+.sp
+This function studies a compiled pattern, to see if additional information can
+be extracted that might speed up matching. Its arguments are:
+.sp
+  \fIcode\fP       A compiled regular expression
+  \fIoptions\fP    Options for \fBpcre[16|32]_study()\fP
+  \fIerrptr\fP     Where to put an error message
+.sp
+If the function succeeds, it returns a value that can be passed to
+\fBpcre[16|32]_exec()\fP or \fBpcre[16|32]_dfa_exec()\fP via their \fIextra\fP
+arguments.
+.P
+If the function returns NULL, either it could not find any additional
+information, or there was an error. You can tell the difference by looking at
+the error value. It is NULL in first case.
+.P
+The only option is PCRE_STUDY_JIT_COMPILE. It requests just-in-time compilation
+if possible. If PCRE has been compiled without JIT support, this option is
+ignored. See the
+.\" HREF
+\fBpcrejit\fP
+.\"
+page for further details.
+.P
+There is a complete description of the PCRE native API in the
+.\" HREF
+\fBpcreapi\fP
+.\"
+page and a description of the POSIX API in the
+.\" HREF
+\fBpcreposix\fP
+.\"
+page.

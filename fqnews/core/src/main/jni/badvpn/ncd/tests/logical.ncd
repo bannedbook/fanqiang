@@ -1,0 +1,46 @@
+process main {
+    var("true") t;
+    var("Faalse") f;
+
+    and(t, f) r;
+    strcmp(r, "false") a;
+    assert(a);
+
+    and(f, t) r;
+    strcmp(r, "false") a;
+    assert(a);
+
+    and(f, f) r;
+    strcmp(r, "false") a;
+    assert(a);
+
+    and(t, t) r;
+    strcmp(r, "true") a;
+    assert(a);
+
+    or(t, f) r;
+    strcmp(r, "true") a;
+    assert(a);
+
+    or(f, t) r;
+    strcmp(r, "true") a;
+    assert(a);
+
+    or(t, t) r;
+    strcmp(r, "true") a;
+    assert(a);
+
+    or(f, f) r;
+    strcmp(r, "false") a;
+    assert(a);
+
+    not(f) r;
+    strcmp(r, "true") a;
+    assert(a);
+
+    not(t) r;
+    strcmp(r, "false") a;
+    assert(a);
+
+    exit("0");
+}

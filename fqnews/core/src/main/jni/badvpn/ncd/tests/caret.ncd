@@ -1,0 +1,9 @@
+process main {
+    var(^foo) x;
+    assert(@val_equal(x, {"foo"}));
+
+    var(^foo.bar.ba09.z) x;
+    assert(@val_equal(x, {"foo", "bar", "ba09", "z"}));
+
+    exit("0");
+}

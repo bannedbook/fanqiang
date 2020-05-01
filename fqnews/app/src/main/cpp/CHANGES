@@ -1,0 +1,546 @@
+14 May 2014: Polipo 1.1.1:
+
+  * Fix a typo that would cause a crash when connecting to a SOCKS
+    server identified by a DNS CNAME.  Thanks to soflare.
+  * Fix a typo that could cause an infinite loop when tunnelling.
+    Thanks to xnoreq for the extensive debugging session.
+  * Fix incorrect error handling that would cause a crash when sending
+    PUT or POST to the local server.
+  * Various improvements to the Windows port.  Thanks to xnoreq.
+
+14 April 2014: Polipo 1.1.0:
+
+  * Proper va_list handling for AMD64 and other RISC-like architectures
+    (Juliusz Chroboczek and Aleksandar Kuktin).
+  * Implemented work-around for broken Content-Range headers.
+  * Use 1024 instead of 32 as the length of the listen queue.
+  * Implemented the ability to control the permissions set on the log file.
+  * Implemented the ability to scrub private information from logs.
+  * Fixed a bug that could cause incorrect logging to syslog (thanks
+    to Sami Farin).
+  * Tweaked the portable version of mktime_gmt.  This will hopefully
+    fix the time issues on Windows.  Thanks to MaxWell and Greg.
+  * Changed chunk allocator to use larger arenas on 64-bit arches.
+  * Fixed a bug that could prevent saving objects on disk.  Thanks to
+    Ming Fu.
+  * Fixed a bug that could prevent parsing large headers.  Thanks to
+    Ming Fu.
+  * Fixed an issue that could cause crash messages to go into the disk
+    cache.
+  * Fixed a bug that could cause the default chunk memory to be incorrect
+    on FreeBSD machines.  Thanks to Frank Behrens.
+  * Fixed a number of bugs in the validation of Range requests.  Thanks to
+    Ken Brazier.
+  * Inhibited range requests for non-200 instances, as this breaks some
+    client software.  Thanks to Ken Brazier.
+  * Fix a integer overflow in processing client requests.
+  * Implement authentication on tunnelled connections.  Thanks to
+    Stephen Dolan.
+  * Implement ability to include Cache-Control: no-transform in all
+    requests.  Thanks to Nick Osborn.
+  * Fix a bug in the DNS code that would cause us to ignore CNAMES
+    after a DNS timeout.
+  * Fixed a crash that occurs when a server sends a malformed
+    Cache-Control: header (CVE-2009-3305). Thanks to Stefan Fritsch.
+  * Removed support for read-only caches.  Nobody ever used it.
+  * Changed the default value of diskCacheWriteoutOnClose to 64kB.
+  * Cleaned up naming of Windows support functions. Thanks to Honglei Jiang.
+  * Added support for forbidden tunnels (thanks to Richard Zidlicky).
+  * Fixed a bug that prevented parsing of extremely long literal IPv6
+    addresses (thanks to Jan Braun).
+  * Added support for DOS-style absolute pathnames.  Thanks to Gisle Vanem.
+  * Fixed a bug that could cause infinite revalidation loops.  Thanks to
+    David Rothlisberger.
+  * Fixed a bug that could provide incorrect caching information to clients.
+    Thanks to William Manley.
+  * Support MSVC 2010.  Thanks to Greg Hazel.
+  * Work-around buggy clients that send HTTP:// in uppercase.  Thanks
+    to David Rothlisberger.
+  * Save Cache-Control values to the disk cache.  Thanks to Ruben Alleres.
+  * Allow ~ in logFile.  Thanks to P.J. Hades.
+  * Fixed a bug that could cause infinite revalidation loops with servers
+    that perform sloppy packetisation (IIS, I'm looking at you).
+  * Fail expectations on the local interface.  This might or might not be
+    what CVE-2011-3596 is about, difficult to say since nobody is speaking
+    to me.
+
+31 January 2010: Polipo 1.0.4.1:
+
+  Cherry-picked fixes from 1.0.5.  Thanks to Julien Cristau.
+
+  * Fixed an integer overflow that may lead to a crash
+    (http://secunia.com/advisories/37607/). Discovered by Jeremy Brown.
+    (CVE-2009-4413)
+  * Fixed a crash that occurs when a server sends a malformed
+    Cache-Control: header (CVE-2009-3305). Patch from Stefan Fritsch.
+  * Prevent an infinite loop when a bodyless 204 or 1xx response is encountered
+  * Don't crash when we get an error while waiting for 100 continue status.
+
+8 January 2008: Polipo 1.0.4:
+
+  * Fixed the handling of tunnels with a parent proxy (thanks to
+    Richard Šputa).
+  * Fixed a bug that could cause connections to be shut down when
+    a server used the old (RFC 2068) semantics of ``100 Continue''
+    (thanks to Thomas Wiesel).
+  * Fixed a crash when a request URL was larger than 10 kB (thanks to
+    Fabian Keil).
+  * Fixed a possible failure to read client requests larger than one
+    chunk.
+
+6 October 2007: Polipo 1.0.3
+
+  * Changed the default for chunkMemory: it is now 24 MB or
+    one-quarter of physical memory, whichever is smaller.
+  * Support for logging to syslog (thanks to Nix).
+  * Made atom reference counts 32-bit longs; this should fix
+    problems that people were seeing when running Polipo with
+    humongous in-memory caches.
+  * Added Git, Jabber and CVS to default tunnelAllowedPorts.
+  * Fixed a bug that could cause URL matching to fail when using
+    anchored regular expressions (thanks to phuel).
+
+26 August 2007: Polipo 1.0.2:
+
+  * Fixed a crash that could happen with entities more than 2GB in
+    size.  Such entities are still not supported, but Polipo
+    should no longer crash.
+  * Minor HTTP compliance fixes, due to testing with Co-Advisor.
+  * Fixed a crash that would happen when a POST request was aborted
+    by the server.  Reported by Tero Pelander.
+  * Worked around a DNS-related bug that I'm unable to track down,
+    waiting for a proper fix.
+
+25 June 2007: Polipo 1.0.1:
+
+  * Made Polipo slightly more aggressive when speaking to
+    HTTP/1.0 servers (thanks to Fabian Keil for noticing that).
+  * Fixed a crash that would happen when a client used
+    Cache-Control: only-if-cached, and the object was not in cache.
+    (Reported by F. Zappa, A. Patala and V. Ghosal.)
+  * Fixed a descriptor leak when running under Windows.
+  * Made Polipo optionally drop connections after servicing
+    a number of connections (maxConnectionAge and maxConnectionRequests).
+
+6 March 2007: Polipo 1.0.0
+
+  * No changes since 0.9.99.2.
+
+7 February 2007: Polipo 0.9.99.2
+
+  * Fixed a buffer overflow in urlDirname (the 0.9 branch is not
+    vulnerable) (reported by J. P. Larocque).
+  * Implemented use of IPv6 temporary source addresses (Frank Behrens).
+  * Disabled use of unaligned range requests by default.  This is
+    controlled by the variable allowUnalignedRangeRequests (reported
+    by Chris Moore).
+  * Fixed descriptor leaks in SOCKS error handling (reported by
+    Roger Dingledine).
+  * Implemented maxSideBuffering.
+
+6 February 2007: Polipo 0.9.12
+
+  * Fixed incorrect caching of redirects (reported by Lawrence Lu).
+  * Fixed a possible hang when falling back to gethostbyname
+    (reported by Chris Moore).
+
+28 December 2006: Polipo 0.9.99.1
+
+  * Validation improvements and bug fixes.
+  * Don't use cached data when receiving the output from an HTTP/1.0 CGI.
+  * Allowed tunnelling of IMAP and POP traffic by default.
+  * Changed the disk cache expiry and indexing functions to use chunks.
+  * Made the disk cache unreadable by others by default.
+  * Fixed a bug that could cause stale data to be served after
+    a connection failure (reported by Hondza).
+  * Fixed computation of age and rtt for pipelined requests.
+  * Fixed incorrect cachability of redirects (reported by J.-P. Larocque).
+  * Fixed a bug that would cause uncachable objects to become
+    cachable after being reloaded from the on-disk cache (reported
+    by J.-P. Larocque).
+  * Implemented dontTrustVaryETag.
+
+7 December 2006: Polipo 0.9.11
+
+  * Fixed a crash that could happen when a network interface went down
+    while a DNS query was in progress (reported by Francesco Zappa).
+
+20 November 2006: Polipo 0.9.99.0:
+
+  * Implemented large buffers for headers larger than a chunk's worth.
+  * Made the HTTP parser lax by default (ignores unknown headers).
+  * Implemented the infrastructure for local POST requests and
+    implemented a real configuration interface (thanks to Theo Honohan).
+  * Made timeouts user-configurable and enforced an invariant between
+    timeouts.
+  * Made logging configurable at runtime (thanks to Frank Behrens).
+  * Implemented the infrastructure for asynchronous handling of 
+    forbidden URLs.
+  * Implemented the ability to redirect instead of returning an
+    error for forbidden URLs.
+  * Implemented support for Squid-style redirectors.
+  * Implemented User-configurable uncacheable URLs, analogous to
+    forbidden URLs (thanks to Joachim Haga).
+  * Implemented the ability to avoid caching pages with cookies
+    and redirects.
+  * Implemented maxPipelineTrain, which can be used to moderate
+  * Polipo's eagerness to pipeline.
+  * Unified parentHost and parentPort into parentProxy.
+  * Ported Polipo to native Windows (thanks to Dan Kennedy).
+  * Implemented disableVia.
+  * Implemented SOCKS support.
+  * Made disableVia and cacheIsShared to be true by default.
+  * Increased the default value of serverMaxSlots to 8.
+  * Made the disk cache code quote all characters except for a
+    small number of ``known safe'' ones.  This is an incompatible
+    change to the on-disk format.
+  * Changed HTTP parser to pass all Pragma headers to the next
+    hop; this should make some media players work through Polipo.
+  * Changed the connection scheduler to avoid pipelining when
+    there are idle connections to a given server.
+  * Made Polipo obey parentProxy when tunnelling (proxying https).
+  * Changed the default value of allowedPorts to be slightly more
+    permissive.
+  * Implemented tweakables for selectively disabling parts of the
+    configuration interface.  Indexing and listing known servers
+    are now disabled by default.
+  * Hide variables containing passwords.
+  * Fixed a bug that could cause incorrect validation when speaking
+    to an HTTP/1.0 server.
+  * Fixed a bug that could cause incorrect validation of Vary objects.
+  * Fixed a crash in the redirector code.
+  * Made disableVia the default, and changed the default value of idleTime.
+  * Made polipo delay serving of partial objects until after a
+    a successful validation.  This should fix Mozilla's prefetching.
+  * On 64-bit platforms, made CHUNK_SIZE default to 8kB.
+
+2 September 2006: Polipo 0.9.10:
+
+  * Fixed a crash when a client closes a connection at just the
+    wrong time.
+  * Fixed a crash that could happen when a server returned incorrect
+    headers and closed the connection at just the wrong time.
+  * Fixed restarting of connections on a server-side read error;
+    this should avoid the ``connection reset by peer'' problem.
+  * Corrected work-around for DNS servers that export both AAAA and CNAME.
+  * Fix incorrect error handling when overflowing the buffer when saving
+    an entity to disk.
+  * IPv6 tweaks for OpenBSD (thanks to Jun-ichiro itojun Hagino).
+  * Fixed incorrect error-handling on failure to parse a date.
+  * Fixed a deadlock when a tunnel is shut down and the buffer is
+    full.
+  * Fixed an incorrect use of va_start (guaranteed crash on AMD64).
+  * Fixed a possible race condition with a heavily pipelining client.
+  * Fixed a crash due to incorrect handling of write errors in POST.
+
+23 September 2005: Polipo 0.9.9:
+
+  * Fixed a bug that could cause objects to be incorrectly
+    determined to be dynamic (thanks to Joachim B. Haga).
+  * Fixed a bug that could cause the local web server to expose
+    files that are not under the local root (thanks to Wessel
+    Dankers).
+  * Fixed an off-by-one bug when parsing NL-terminated headers.
+  * Made Polipo forget about failures when finishing on the client side.
+  * Polipo now sends Host headers even when speaking to an upstream
+    proxy.  Some proxies take RFC 2616 literally, and require that
+    (thanks to Zoltan Ivanfi).
+  * Fixed some bugs in staleness computation, and implemented
+    server-side max-age directives (oops!) (thanks to Charley Chu).
+
+24 January 2005: Polipo 0.9.8:
+
+  * Backported the lax HTTP parser from the head branch.
+  * Fixed a race condition that could cause a crash if a single
+    object was being superseded twice at the same time.
+  * Fixed an incorrect test that caused Polipo to pipeline to all
+    HTTP/1.1 servers, even when they were determined as broken (thanks
+    to Daniel Koukola).
+  * Implemented maxPipelineTrain.
+  * Tweaked for uclibc (thanks to Detlef Riekenberg).
+
+27 December 2004: Polipo 0.9.7:
+
+  * Fixed a possible crash when tunnelling.
+  * Fixed spurious updates of object sizes when connection is dropped
+    by the client.
+  * Fixed parsing of URLs with explicit port number (thanks to
+    Frank Behrens).
+  * Fixed a possible crash when exiting POST in error.
+  * Fixed a protocol violation when an empty object is not superseded.
+
+31 October 2004: Polipo 0.9.6:
+  * Fixed a possible crash in ServeObject.
+  * Fixed two possible crashes when relaxTransparency is not false.
+  * Modified the config file parser to make it possible to have
+    backslashes in atoms.
+  * Fixed a violated invariant (leading to a crash) when superseding
+    objects.
+  * Fixed a possible crash in ClientFinish when a pipelined request
+    carries no object.
+  * Fixed a bug in handling of client-side Expect: 100-continue
+    (reported by Charley Chu).
+  * Fixed a scheduling bug that caused server-side requests to be
+    issued in the order opposite to a client-side pipeline (many
+    thanks to Joachim Haga).
+  * Abort when the config file couldn't be parsed (thanks to
+    Joachim Haga).
+  * Fixed error handling in POST and PUT requests, which could
+    cause a crash on an I/O error.
+
+17 June 2004: Polipo 0.9.5:
+  * Implemented upstream proxy authentication (HTTP Basic only).
+  * Fixed a possible crash when unable to schedule servicing a request.
+  * Fixed a possible crash when tunnelling (proxying https).
+  * Fixed signedness issues to make allowedClients work on PPC
+    (from Gergely Nagy).
+
+10 May 2004: Polipo 0.9.4:
+  * Fixed a bug (introduced in 0.9.3) that could cause a crash when
+    the download of an object was interrupted and then immediately restarted.
+  * Fixed a bug that could cause stale non-200 replies to be served.
+  * Fixed compilation on FreeBSD 5.2.1 (from Samuel Tardieu).
+  * Fixed definition of *_ROOT in diskcache.c
+
+6 April 2004: Polipo 0.9.3:
+  * Fix incorrect handling of EPIPE when tunnelling; this could cause
+    crashes if a peer closed a connection when we're writing.
+  * Fix a race condition that could cause ``error message lost in transit''
+    errors if a request was cancelled during connect.
+  * Check for exitFlag in workToDo: faster reaction to signals.
+
+28 March 2004: Polipo 0.9.2:
+  * Fixed a bug that could cause crashes when writing out small
+    objects (thanks to Frank Behrens).
+  * Made buffer allocation in httpParseHeaders dynamic.
+  * Fixed the declaration of pipelineAdditionalRequests.
+  * Fixed a bug that could cause empty directories to be missed
+    when expiring the disk cache.
+  * Switched the forbidden file to use extended regexps, the
+    previous usage was non-portable (thanks to Frank Behrens).
+
+9 March 2004: Polipo 0.9.1:
+  * Fixed a bug that could cause chunked encoding failures when
+    going from a 1.0 server to a 1.1 client.
+  * Fixed a bug that prevented comments after some config lines
+    (thanks to Tom Huckstep).
+  * Fixed a possible buffer overflow in dnsDecodeReply.
+  * Fixed portability to systems where rmdir returns EEXIST
+    instead of ENOTEMPTY.
+  * Fixed error handling on fork failures in fillSpecialObject.
+  * Fixed handling of EINTR in wait in specialRequestHandler.
+  * Fixed a bug that caused objects with no headers to fail.
+  * Fixed a minor memory leak in the config file parser.
+  * Minor build fixes for NetBSD.
+  * Added the 68020 and later to the list of architectures that
+    support unaligned access.
+
+18 February 2004: Polipo 0.9:
+  * Reworked the DNS code to parse ids even when a reply's qdcount
+    is 0.  No longer falls back to gethostbyname when DNS server
+    returns FormErr.
+  * Made the DNS code parse resolv.conf.
+
+11 Feburary 2004: Polipo 0.8.99.3:
+  * Minor changes to work around Cygwin mis-design.
+  * Fixed printing of n-state variables.
+  * Fixed proxyOffline handling.
+  * Fixed a bug that would cause errors to be reported with the
+    wrong content-type.
+  * Fixed a bug that would cause ``object vanished'' errors when
+    using HEAD for revalidation.
+  * Fixed a bug that could cause failed requests due to ``client
+    reset connection'' errors.
+
+24 January 2004: Polipo 0.8.99.2:
+  * Cleaned up authentication.
+  * Made authenticated replies cachable in one of the cases allowed
+    by RFC 2616.
+  * Fixed a bug that could, under some circumstances, cause a
+    password-protected object to be cached and returned to a
+    non-authorized client.
+  * Implemented 100-continue, controlled by the variable expectContinue.
+  * Implemented tristate, 4- and 5-state variables.  Split
+    proxyOffline into proxyOffline and relaxTransparency.  This is
+    an incompatible change to the config file format.
+  * Cleaned up the handling of allowed port ranges.  New
+    configuration variable allowedPorts (and new type intlist).
+  * Implemented tunnelling through the CONNECT method (https proxying).
+  * Will now read a request body on error (avoids a deadlock).
+  * Reworked the PUT/POST code to read the reply eagerly rather
+    than waiting for the write to finish (avoids writing the full
+    body on error and avoids the same deadlock as above).
+  * Made server addresses sticky: will now remember which of a
+    servers addresses worked last time, and use that address first.
+
+16 january 2004: Polipo 0.8.99.1:
+  * Fixed an expiry bug that caused DNS queries to be repeated on
+    each request.
+  * Added the variable ``preciseExpiry'' that prevents trusting
+    the mtime during expiry.
+
+14 January 2004: Polipo 0.8.99.0:
+  * Implemented IP address-based authentication.
+  * Implemented HTTP ``basic'' authentication.
+  * Implemented variable body offsets for the on-disk cache; this
+    makes the on-disk cache format incompatible with previous versions.
+  * Made the number of server slots configurable.
+  * Partially rewrote the disk cache code.
+  * Fixed a file descriptor leak in the early error handling code.
+  * Fixed a bug in the base64 encoder; this makes the on-disk cache
+    format incompatible with previous versions.
+  * Implemented proper reporting for 100-Continue replies
+    (100-Continue is not implemented yet).
+  * Made the number of server slots configurable at runtime.
+
+9 January 2004: Polipo 0.8.4:
+  * Log file is now line buffered.
+  * Will reopen the log file on SIGUSR1 and SIGUSR2.
+  * censoredHeaders now defaults to none, and censorReferer to 0.
+  * Fixed a memory allocation bug that could cause a crash.
+
+21 December 2003: Polipo 0.8.3:
+  * Fixed a potential buffer overflow on C89 systems in snnprintf.
+  * Fixed checking of Via headers.
+  * Added configurable log file.
+  * Added code to run as a daemon.
+  * Made the resolver grok names ending in a ``.''.
+  * Changed Makefile to fit Debian better.
+
+7 December 2003: Polipo 0.8.2:
+  * Implemented a version of fts for SVR4 systems.
+  * Implemented a version of mktime_gmt that doesn't use setenv.
+  * Fixed code used to determine FQDN.
+  * More unaligned access fixes.
+  * Disabled queryIPv6 when there is no IPv6 support in kernel.
+  * Enabled IPv6 support by default on FreeBSD and NetBSD.
+
+2 December 2003: Polipo 0.8.1:
+
+  * Fix a possible crash when doing a POST on a busy server.
+  * Fix a possible crash when socket(2) fails; implement switching
+    to a different address when socket(2) fails (e.g. when
+    accessing a double-stack host from an IPv4-only client).
+  * Fix a problem with servers stuck in the ``probing'' state.
+  * Work around a bug in Konqueror that strips question marks from
+    URLs.
+  * Fix incorrect error handling when dealing with connection
+    failures.
+  * Fix a compile problem in dns.c.
+  * Remove dependency on SSL, include MD5 code instead.
+  * Fix signedness of s_maxage.
+
+23 November 2003: Polipo 0.8:
+
+  * IPv6 support, on both the client and server side, including
+    DNS support and RFC 2732.
+  * Reworked the DNS code.
+  * Made it possible to compile without any particular resolver
+    and without the on-disk cache.
+  * Fixed a problem with the chunking encoder.
+  * Made the config file parser grok octal and hex values, allowed
+    colons and tildes in unquoted strings.
+  * Implemented tilde expansion in some config variables.
+  * Made Polipo slightly less eager to honour range requests for
+    dynamic instances.  Marked generated objects as dynamic. These
+    changes should solve some of the problems with PMM.
+  * Implemented the If-Range header (on both the client and server side).
+  * Implemented support for range requests smaller than one chunk
+    (and hence for pmmSize being smaller than CHUNK_SIZE).
+  * Fixed a bug that caused a deadlock (until a server timeout)
+    when doing a POST/PUT request with no free connection slots.
+  * Fixed a problem when diskCacheRoot didn't end in `/'.
+  * Fixed a refcounting problem that could cause Polipo to crash
+    on a DNS timeout.
+  * Fixed an alignment problem that could cause crashes on 
+    architectures that don't like unaligned memory accesses
+    (thanks to Rob Byrnes).
+  * Fixed a bug with the disk cache that caused spurious ``disk
+    entry changed behind our back'' warnings (and in principle
+    could cause data corruption, although that's very unlikely).
+  * Made opening connections slightly less aggressive -- Polipo
+    would sometimes open two connections where only one was needed.
+  * Modified client-side code to notice client shutdowns earlier
+    and notify the server side straight away.
+
+7 October 2003: Polipo 0.7
+
+  * Made the Request function a method of objects.
+  * Fixed a bug that could sometimes cause data corruption.
+  * Fixed a bug that could cause sending of incorrect data to
+    the client on a range request.
+  * Fixed POST and PUT requests.
+  * Fixed a bug that could sometimes cause a POST request to use a
+    stale connection.
+  * Included code to do poor man's multiplexing.
+  * Will now open multiple connections to non-persistent servers.
+  * Fixed a bug that could lead to idle connections dying without
+    being noticed.
+  * Fixed probing for pipelining.
+  * Actually use the new time function introduced in 0.5.
+  * Fixed a bug in strcasecmp_n.
+  * forbiddenFile can now be a directory.
+
+26 September 2003: Polipo 0.6
+
+  * Fixed precondition handling.
+  * Fixed a bug that could lead to lockups when revalidating an object.
+
+27 June 2003: Polipo 0.5
+
+  * Made the presence of a reader or writer explicit on the client side.
+  * Reworked closing client connections.
+  * Reworked reporting of server-side errors.
+  * Made buffer allocation lazy; idle clients and servers no longer
+    use up buffers.
+  * Reworked UTC time handling to use timegm(3) when available.
+
+12 March 2003: Polipo 0.4
+
+  * Implemented expiry of the on-disk cache.
+  * Implemented reliable aborting of connections; Polipo should no
+  * longer deadlock when a server falls into a black hole.
+  * Changed direct reads to be more aggressive by using readv in
+    three pieces.
+  * Changed serving of chunked data to be more eager about
+    serving a chunk's end marker.
+  * Implemented better reporting of DNS errors.
+  * Fixed a deadlock with pipelining on the client side.
+  * Removed most of the remaining copies when reading on the
+  * server side.
+  * Fixed a bug that caused some headers to disappear in transit.
+  * Fixed a possible livelock when reading chunked encoding.
+  * Fixed an overflow when pipelining on the server side.
+  * Fixed generation of indexes from the on-disk cache.
+  * Fixed a DNS crash when falling back on gethostbyname.
+
+1 March 2003: Polipo 0.3
+
+  * Implemented retrying of timed-out DNS requests.
+  * Implemented configuration mechanisms for case-insensitive atoms,
+    time values and atom lists; censoredHeaders can now be configured.
+  * No longer censors User-Agent.  Blame Beppe and Alain.
+  * Changed the handling of hop-by-hop HTTP headers to deal with multiple
+    Connection headers.
+  * Made client-side errors and successful revalidation no longer
+    close the connection.
+  * Fixed a bug that caused the allocation of an extraneous 2MB (!)
+    at startup.  Polipo can run in 100KB once again.
+  * Fixed a refcounting bug and some incorrect frees that could
+    lead to crashes when recovering from a server-side error.
+  * Fixed a bug with POST/PUT that could trigger a failed assertion.
+  * Made sure that POST/PUT don't get scheduled in multiple pieces.
+
+17 February 2003: Polipo 0.2
+
+  * Fixed an incorrect assertion that could cause crashes when the
+    server is fast.
+  * Fixed (hopefully) logic for 304 replies.
+  * Minor tweaks to scheduling that cause some speed increase when the
+    client is pipelining and the server is fast.
+  * Minor bug fixes and cleanups.
+  * Macro-ified do_log and friends.
+
+3 February 2003: Polipo 0.1
+
+  * Initial public release.

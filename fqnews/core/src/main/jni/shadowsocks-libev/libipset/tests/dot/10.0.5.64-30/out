@@ -1,0 +1,134 @@
+strict digraph bdd {
+    t1 [shape=box, label=1];
+    n1 [shape=circle,label=32];
+    n1 -> t1 [style=dashed,color=red]
+    high1 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n1 -> high1 [style=solid,color=black]
+    n2 [shape=circle,label=31];
+    n2 -> n1 [style=dashed,color=red]
+    n2 -> t1 [style=solid,color=black]
+    n3 [shape=circle,label=30];
+    n3 -> n2 [style=dashed,color=red]
+    high3 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n3 -> high3 [style=solid,color=black]
+    n4 [shape=circle,label=29];
+    n4 -> n3 [style=dashed,color=red]
+    high4 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n4 -> high4 [style=solid,color=black]
+    n5 [shape=circle,label=28];
+    n5 -> n4 [style=dashed,color=red]
+    high5 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n5 -> high5 [style=solid,color=black]
+    n6 [shape=circle,label=27];
+    n6 -> n5 [style=dashed,color=red]
+    high6 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n6 -> high6 [style=solid,color=black]
+    n7 [shape=circle,label=26];
+    low7 [shape=circle,label=""]
+    n7 -> low7 [style=dashed,color=red]
+    n7 -> n6 [style=solid,color=black]
+    n8 [shape=circle,label=25];
+    n8 -> n7 [style=dashed,color=red]
+    high8 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n8 -> high8 [style=solid,color=black]
+    n9 [shape=circle,label=24];
+    low9 [shape=circle,label=""]
+    n9 -> low9 [style=dashed,color=red]
+    n9 -> n8 [style=solid,color=black]
+    n10 [shape=circle,label=23];
+    n10 -> n9 [style=dashed,color=red]
+    high10 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n10 -> high10 [style=solid,color=black]
+    n11 [shape=circle,label=22];
+    low11 [shape=circle,label=""]
+    n11 -> low11 [style=dashed,color=red]
+    n11 -> n10 [style=solid,color=black]
+    n12 [shape=circle,label=21];
+    n12 -> n11 [style=dashed,color=red]
+    high12 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n12 -> high12 [style=solid,color=black]
+    n13 [shape=circle,label=20];
+    n13 -> n12 [style=dashed,color=red]
+    high13 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n13 -> high13 [style=solid,color=black]
+    n14 [shape=circle,label=19];
+    n14 -> n13 [style=dashed,color=red]
+    high14 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n14 -> high14 [style=solid,color=black]
+    n15 [shape=circle,label=18];
+    n15 -> n14 [style=dashed,color=red]
+    high15 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n15 -> high15 [style=solid,color=black]
+    n16 [shape=circle,label=17];
+    n16 -> n15 [style=dashed,color=red]
+    high16 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n16 -> high16 [style=solid,color=black]
+    n17 [shape=circle,label=16];
+    n17 -> n16 [style=dashed,color=red]
+    high17 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n17 -> high17 [style=solid,color=black]
+    n18 [shape=circle,label=15];
+    n18 -> n17 [style=dashed,color=red]
+    high18 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n18 -> high18 [style=solid,color=black]
+    n19 [shape=circle,label=14];
+    n19 -> n18 [style=dashed,color=red]
+    high19 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n19 -> high19 [style=solid,color=black]
+    n20 [shape=circle,label=13];
+    n20 -> n19 [style=dashed,color=red]
+    high20 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n20 -> high20 [style=solid,color=black]
+    n21 [shape=circle,label=12];
+    n21 -> n20 [style=dashed,color=red]
+    high21 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n21 -> high21 [style=solid,color=black]
+    n22 [shape=circle,label=11];
+    n22 -> n21 [style=dashed,color=red]
+    high22 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n22 -> high22 [style=solid,color=black]
+    n23 [shape=circle,label=10];
+    n23 -> n22 [style=dashed,color=red]
+    high23 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n23 -> high23 [style=solid,color=black]
+    n24 [shape=circle,label=9];
+    n24 -> n23 [style=dashed,color=red]
+    high24 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n24 -> high24 [style=solid,color=black]
+    n25 [shape=circle,label=8];
+    n25 -> n24 [style=dashed,color=red]
+    high25 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n25 -> high25 [style=solid,color=black]
+    n26 [shape=circle,label=7];
+    low26 [shape=circle,label=""]
+    n26 -> low26 [style=dashed,color=red]
+    n26 -> n25 [style=solid,color=black]
+    n27 [shape=circle,label=6];
+    n27 -> n26 [style=dashed,color=red]
+    high27 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n27 -> high27 [style=solid,color=black]
+    n28 [shape=circle,label=5];
+    low28 [shape=circle,label=""]
+    n28 -> low28 [style=dashed,color=red]
+    n28 -> n27 [style=solid,color=black]
+    n29 [shape=circle,label=4];
+    n29 -> n28 [style=dashed,color=red]
+    high29 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n29 -> high29 [style=solid,color=black]
+    n30 [shape=circle,label=3];
+    n30 -> n29 [style=dashed,color=red]
+    high30 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n30 -> high30 [style=solid,color=black]
+    n31 [shape=circle,label=2];
+    n31 -> n30 [style=dashed,color=red]
+    high31 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n31 -> high31 [style=solid,color=black]
+    n32 [shape=circle,label=1];
+    n32 -> n31 [style=dashed,color=red]
+    high32 [shape=circle,fixedsize=true,height=0.25,width=0.25,label=""]
+    n32 -> high32 [style=solid,color=black]
+    n33 [shape=circle,label=0];
+    low33 [shape=circle,label=""]
+    n33 -> low33 [style=dashed,color=red]
+    n33 -> n32 [style=solid,color=black]
+}

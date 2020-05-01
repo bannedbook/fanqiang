@@ -1,0 +1,7 @@
+version=4
+
+opts="repack,compression=xz, \
+   dversionmangle=s/\+ds\d*$//,repacksuffix=+ds, \
+   filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%shadowsocks-libev_$1.orig.tar.gz%" \
+   https://github.com/shadowsocks/shadowsocks-libev/tags \
+   (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+	purge)
+		rm -f /etc/shadowsocks-libev/config.json
+		test -f /etc/shadowsocks-libev/* \
+			|| rm -r /etc/shadowsocks-libev/
+		;;
+	remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+		exit 0
+		;;
+	*)
+		echo "postrm called with unknown argument \`$1'" >&2
+		exit 0
+		;;
+esac
+
+#DEBHELPER#
+
+exit 0

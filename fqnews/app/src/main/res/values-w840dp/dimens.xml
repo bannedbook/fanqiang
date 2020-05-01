@@ -1,0 +1,5 @@
+<resources>
+
+    <dimen name="container_horizontal_padding_end">0dp</dimen>
+
+</resources>

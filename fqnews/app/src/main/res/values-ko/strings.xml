@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ Copyright (c) 2014 Changwoo Ryu
+ Copyright (c) 2010-2012 Stefan Handschuh
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+-->
+<resources>
+
+    <!-- GENERAL -->
+    <string name="app_name">FQNews</string>
+    <string name="about_flym">플라임 정보</string>
+    <string name="welcome_title">플라임 사용을 환영합니다. 피드를 추가하시겠습니까?</string>
+    <string name="welcome_title_with_opml_import">Would you like to import previous FQNews feeds?</string>
+    <string name="cannot_find_feeds">No feeds has been found</string>
+    <string name="menu_settings">설정</string>
+    <string name="menu_edit_feed">피드 편집</string>
+    <string name="menu_reorder">Reorder feeds</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_enable_full_text_retrieval">Enable full text retrieval</string>
+    <string name="menu_disable_full_text_retrieval">Disable full text retrieval</string>
+    <string name="menu_all_read">모두 읽은 것으로 표시</string>
+    <string name="flym_feeds">플라임 피드</string>
+    <string name="error">오류</string>
+    <string name="network_error">네트워크가 준비되지 않았습니다</string>
+    <string name="drawer_explanation">Welcome!\n\nLong press on the feeds to see options ▼</string>
+    <string name="drawer_fetch_error_explanation">Some of your feeds did not refresh correctly ▼</string>
+    <string name="about_screen_info">I\'m publishing this application as free and open-source software under GPLv3 licence. Feel free to modify it as long as you keep it open-source as well.</string>
+
+    <!-- FEEDS -->
+    <string name="feeds">피드</string>
+    <string name="menu_add_group">그룹 추가</string>
+    <string name="menu_import">OPML에서 가져오기</string>
+    <string name="menu_export">OPML로 내보내기</string>
+    <string name="storage_request_explanation">To be able to import or export the feeds from or to a file, you must allow the application to access to the storage memory.</string>
+    <string name="error_feed_export">내보내기가 실패했습니다. 쓰기 가능한 SD 카드 저장소가 마운트되어 있는지 확인하십시오.</string>
+    <string name="feed_search">피드 검색</string>
+    <string name="feed_search_hint">Enter feed link or keyword</string>
+    <string name="feed_added">Feed added to the list</string>
+    <string name="question_delete_feed">정말로 이 피드를 삭제하시겠습니까?</string>
+    <string name="question_delete_group">정말로 이 그룹과 이 안의 피드를 모두 삭제하시겠습니까?</string>
+    <string name="add_group_title">그룹 이름 선택</string>
+    <string name="message_exported_to">%s에 내보냄</string>
+    <string name="to_group_title">피드 옮기기 동작</string>
+    <string name="to_group_message">피드를 그룹 안에 넣을 수도 있고 위에 놓을 수도 있습니다. 어떻게 하시겠습니까?</string>
+    <string name="to_group_above">그룹 위</string>
+    <string name="to_group_into">그룹 안</string>
+    <string name="google_news_top_stories">주요 뉴스</string>
+    <string name="google_news_world">국제</string>
+    <string name="google_news_business">경제</string>
+    <string name="google_news_science_technology">과학 &amp; 기술</string>
+    <string name="google_news_entertainment">연예</string>
+    <string name="google_news_sports">스포츠</string>
+    <string name="google_news_health">건강</string>
+    <string name="feed_name">Feed name</string>
+    <string name="feed_link">Feed link</string>
+
+    <!-- ENTRIES -->
+    <string name="all_entries">All entries</string>
+    <string name="menu_star">별표</string>
+    <string name="menu_unstar">별표 취소</string>
+    <string name="menu_share">공유</string>
+    <string name="menu_mark_as_unread">읽은 것으로 표시</string>
+    <string name="get_full_text">전체 텍스트 가져오기</string>
+    <string name="original_text">원래 텍스트 가져오기</string>
+	<string name="open_in_browser">브라우저에서 보기</string>
+    <string name="cant_open_link">이 링크에 대한 프로그램이 없습니다</string>
+    <string name="unreads">Unreads</string>
+    <string name="all">All</string>
+    <string name="favorites">Favorites</string>
+    <string name="no_entries">No items\nPlease pull down to refresh</string>
+    <string name="undo">Undo</string>
+    <string name="marked_as_read">Marked as read</string>
+    <string name="marked_as_unread">Marked as unread</string>
+
+    <!-- SETTINGS -->
+    <string name="settings_category_refresh">자동 새로 고침</string>
+    <string name="settings_refresh_enabled">자동 새로 고침 사용</string>
+    <string name="settings_refresh_enabled_description">피드 자동 새로 고침 기능을 사용</string>
+    <string name="settings_refresh_enable_notifications">Display refresh notifications</string>
+    <string name="settings_refresh_enable_notifications_description">Show a system notification when a refresh is completed</string>
+    <string name="settings_refresh_interval">새로 고침 간격</string>
+    <string name="settings_category_keep_time">Time to keep entries</string>
+    <string name="settings_keep_time">항목을 저장할 시간</string>
+    <string name="settings_keep_time_unread">Time that the unread entries will be kept</string>
+    <string name="settings_category_content_presentation">내용 표시</string>
+    <string name="settings_display_images">이미지 표시</string>
+    <string name="settings_display_images_description">항목에서 이미지 표시</string>
+    <string name="settings_preload_image_mode">이미지 미리 읽기</string>
+    <string name="settings_font_size">글자 크기</string>
+    <string name="settings_refresh_wifi_only">Wi-Fi에서만 새로 고침</string>
+    <string name="settings_refresh_wifi_only_description">Wi-Fi를 사용할 때만 자동으로 새로 고침</string>
+    <string name="settings_category_filter">Filters</string>
+    <string name="settings_remove_duplicates_description_title">Remove duplicates</string>
+    <string name="settings_remove_duplicates_description">Checks the title of newly downloaded item and skips when one with the same title is already present</string>
+    <string name="filter">Remove items containing keywords (coma-separated list)</string>
+	<string name="filter_title">Blacklist</string>
+    <string name="settings_theme">Theme</string>
+    <string name="open_browser_direct">Open entries directly in your default browser</string>
+    <string name="open_browser_direct_title">Open in browser</string>
+    <string name="refresh_on_startup">Refreshes your feeds when launching the app</string>
+    <string name="refresh_on_startup_title">Refresh on startup</string>
+
+    <plurals name="number_of_new_entries">
+        <item quantity="other">새 항목 %d개</item>
+    </plurals>
+
+    <string-array name="settings_intervals">
+        <item>5분</item>
+        <item>15분</item>
+        <item>30분</item>
+        <item>1시간</item>
+        <item>2시간</item>
+        <item>6시간</item>
+        <item>12시간</item>
+        <item>1일</item>
+    </string-array>
+    <string-array name="settings_keep_times">
+        <item>1일</item>
+        <item>2일</item>
+        <item>4일</item>
+        <item>1주</item>
+        <item>2주</item>
+        <item>1달</item>
+        <item>2달</item>
+        <item>3달</item>
+        <item>계속</item>
+    </string-array>
+    <string-array name="settings_font_sizes">
+        <item>-2</item>
+        <item>-1</item>
+        <item>표준 크기</item>
+        <item>+1</item>
+        <item>+2</item>
+        <item>+3</item>
+    </string-array>
+    <string-array name="settings_preload_image_modes">
+        <item>안 함</item>
+        <item>Wi-Fi를 통해서만</item>
+        <item>언제나</item>
+    </string-array>
+    <string-array name="settings_themes">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Black</item>
+    </string-array>
+
+</resources>

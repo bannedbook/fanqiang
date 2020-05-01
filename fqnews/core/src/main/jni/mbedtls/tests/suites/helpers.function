@@ -1,0 +1,635 @@
+#line 2 "suites/helpers.function"
+/*----------------------------------------------------------------------------*/
+/* Headers */
+
+#include <stdlib.h>
+
+#if defined(MBEDTLS_PLATFORM_C)
+#include "mbedtls/platform.h"
+#else
+#include <stdio.h>
+#define mbedtls_fprintf    fprintf
+#define mbedtls_snprintf   snprintf
+#define mbedtls_calloc     calloc
+#define mbedtls_free       free
+#define mbedtls_exit       exit
+#define mbedtls_time       time
+#define mbedtls_time_t     time_t
+#define MBEDTLS_EXIT_SUCCESS EXIT_SUCCESS
+#define MBEDTLS_EXIT_FAILURE EXIT_FAILURE
+#endif
+
+#if defined(MBEDTLS_MEMORY_BUFFER_ALLOC_C)
+#include "mbedtls/memory_buffer_alloc.h"
+#endif
+
+#if defined(MBEDTLS_CHECK_PARAMS)
+#include "mbedtls/platform_util.h"
+#include <setjmp.h>
+#endif
+
+#ifdef _MSC_VER
+#include <basetsd.h>
+typedef UINT8 uint8_t;
+typedef INT32 int32_t;
+typedef UINT32 uint32_t;
+#define strncasecmp _strnicmp
+#define strcasecmp _stricmp
+#else
+#include <stdint.h>
+#endif
+
+#include <string.h>
+
+#if defined(__unix__) || (defined(__APPLE__) && defined(__MACH__))
+#include <unistd.h>
+#include <strings.h>
+#endif
+
+/* Type for Hex parameters */
+typedef struct data_tag
+{
+    uint8_t *   x;
+    uint32_t    len;
+} data_t;
+
+/*----------------------------------------------------------------------------*/
+/* Status and error constants */
+
+#define DEPENDENCY_SUPPORTED            0   /* Dependency supported by build */
+#define KEY_VALUE_MAPPING_FOUND         0   /* Integer expression found */
+#define DISPATCH_TEST_SUCCESS           0   /* Test dispatch successful */
+
+#define KEY_VALUE_MAPPING_NOT_FOUND     -1  /* Integer expression not found */
+#define DEPENDENCY_NOT_SUPPORTED        -2  /* Dependency not supported */
+#define DISPATCH_TEST_FN_NOT_FOUND      -3  /* Test function not found */
+#define DISPATCH_INVALID_TEST_DATA      -4  /* Invalid test parameter type.
+                                               Only int, string, binary data
+                                               and integer expressions are
+                                               allowed */
+#define DISPATCH_UNSUPPORTED_SUITE      -5  /* Test suite not supported by the
+                                               build */
+
+typedef enum
+{
+    PARAMFAIL_TESTSTATE_IDLE = 0,           /* No parameter failure call test */
+    PARAMFAIL_TESTSTATE_PENDING,            /* Test call to the parameter failure
+                                             * is pending */
+    PARAMFAIL_TESTSTATE_CALLED              /* The test call to the parameter
+                                             * failure function has been made */
+} paramfail_test_state_t;
+
+
+/*----------------------------------------------------------------------------*/
+/* Macros */
+
+/**
+ * \brief   This macro tests the expression passed to it as a test step or
+ *          individual test in a test case.
+ *
+ *          It allows a library function to return a value and return an error
+ *          code that can be tested.
+ *
+ *          When MBEDTLS_CHECK_PARAMS is enabled, calls to the parameter failure
+ *          callback, MBEDTLS_PARAM_FAILED(), will be assumed to be a test
+ *          failure.
+ *
+ *          This macro is not suitable for negative parameter validation tests,
+ *          as it assumes the test step will not create an error.
+ *
+ * \param   TEST    The test expression to be tested.
+ */
+#define TEST_ASSERT( TEST )                                 \
+    do {                                                    \
+       if( ! (TEST) )                                       \
+       {                                                    \
+          test_fail( #TEST, __LINE__, __FILE__ );           \
+          goto exit;                                        \
+       }                                                    \
+    } while( 0 )
+
+#if defined(MBEDTLS_CHECK_PARAMS) && !defined(MBEDTLS_PARAM_FAILED_ALT)
+/**
+ * \brief   This macro tests the statement passed to it as a test step or
+ *          individual test in a test case. The macro assumes the test will fail
+ *          and will generate an error.
+ *
+ *          It allows a library function to return a value and tests the return
+ *          code on return to confirm the given error code was returned.
+ *
+ *          When MBEDTLS_CHECK_PARAMS is enabled, calls to the parameter failure
+ *          callback, MBEDTLS_PARAM_FAILED(), are assumed to indicate the
+ *          expected failure, and the test will pass.
+ *
+ *          This macro is intended for negative parameter validation tests,
+ *          where the failing function may return an error value or call
+ *          MBEDTLS_PARAM_FAILED() to indicate the error.
+ *
+ * \param   PARAM_ERROR_VALUE   The expected error code.
+ *
+ * \param   TEST                The test expression to be tested.
+ */
+#define TEST_INVALID_PARAM_RET( PARAM_ERR_VALUE, TEST )                     \
+    do {                                                                    \
+        test_info.paramfail_test_state = PARAMFAIL_TESTSTATE_PENDING;       \
+        if( (TEST) != (PARAM_ERR_VALUE) ||                                  \
+            test_info.paramfail_test_state != PARAMFAIL_TESTSTATE_CALLED )  \
+        {                                                                   \
+            test_fail( #TEST, __LINE__, __FILE__ );                         \
+            goto exit;                                                      \
+        }                                                                   \
+   } while( 0 )
+
+/**
+ * \brief   This macro tests the statement passed to it as a test step or
+ *          individual test in a test case. The macro assumes the test will fail
+ *          and will generate an error.
+ *
+ *          It assumes the library function under test cannot return a value and
+ *          assumes errors can only be indicated byt calls to
+ *          MBEDTLS_PARAM_FAILED().
+ *
+ *          When MBEDTLS_CHECK_PARAMS is enabled, calls to the parameter failure
+ *          callback, MBEDTLS_PARAM_FAILED(), are assumed to indicate the
+ *          expected failure. If MBEDTLS_CHECK_PARAMS is not enabled, no test
+ *          can be made.
+ *
+ *          This macro is intended for negative parameter validation tests,
+ *          where the failing function can only return an error by calling
+ *          MBEDTLS_PARAM_FAILED() to indicate the error.
+ *
+ * \param   TEST                The test expression to be tested.
+ */
+#define TEST_INVALID_PARAM( TEST )                                          \
+    do {                                                                    \
+        memcpy(jmp_tmp, param_fail_jmp, sizeof(jmp_buf));                   \
+        if( setjmp( param_fail_jmp ) == 0 )                                 \
+        {                                                                   \
+            TEST;                                                           \
+            test_fail( #TEST, __LINE__, __FILE__ );                         \
+            goto exit;                                                      \
+        }                                                                   \
+        memcpy(param_fail_jmp, jmp_tmp, sizeof(jmp_buf));                   \
+    } while( 0 )
+#endif /* MBEDTLS_CHECK_PARAMS && !MBEDTLS_PARAM_FAILED_ALT */
+
+/**
+ * \brief   This macro tests the statement passed to it as a test step or
+ *          individual test in a test case. The macro assumes the test will not fail.
+ *
+ *          It assumes the library function under test cannot return a value and
+ *          assumes errors can only be indicated by calls to
+ *          MBEDTLS_PARAM_FAILED().
+ *
+ *          When MBEDTLS_CHECK_PARAMS is enabled, calls to the parameter failure
+ *          callback, MBEDTLS_PARAM_FAILED(), are assumed to indicate the
+ *          expected failure. If MBEDTLS_CHECK_PARAMS is not enabled, no test
+ *          can be made.
+ *
+ *          This macro is intended to test that functions returning void
+ *          accept all of the parameter values they're supposed to accept - eg
+ *          that they don't call MBEDTLS_PARAM_FAILED() when a parameter
+ *          that's allowed to be NULL happens to be NULL.
+ *
+ *          Note: for functions that return something other that void,
+ *          checking that they accept all the parameters they're supposed to
+ *          accept is best done by using TEST_ASSERT() and checking the return
+ *          value as well.
+ *
+ *          Note: this macro is available even when #MBEDTLS_CHECK_PARAMS is
+ *          disabled, as it makes sense to check that the functions accept all
+ *          legal values even if this option is disabled - only in that case,
+ *          the test is more about whether the function segfaults than about
+ *          whether it invokes MBEDTLS_PARAM_FAILED().
+ *
+ * \param   TEST                The test expression to be tested.
+ */
+#define TEST_VALID_PARAM( TEST )                                    \
+    TEST_ASSERT( ( TEST, 1 ) );
+
+#define assert(a) if( !( a ) )                                      \
+{                                                                   \
+    mbedtls_fprintf( stderr, "Assertion Failed at %s:%d - %s\n",   \
+                             __FILE__, __LINE__, #a );              \
+    mbedtls_exit( 1 );                                             \
+}
+
+/*
+ * 32-bit integer manipulation macros (big endian)
+ */
+#ifndef GET_UINT32_BE
+#define GET_UINT32_BE(n,b,i)                            \
+{                                                       \
+    (n) = ( (uint32_t) (b)[(i)    ] << 24 )             \
+        | ( (uint32_t) (b)[(i) + 1] << 16 )             \
+        | ( (uint32_t) (b)[(i) + 2] <<  8 )             \
+        | ( (uint32_t) (b)[(i) + 3]       );            \
+}
+#endif
+
+#ifndef PUT_UINT32_BE
+#define PUT_UINT32_BE(n,b,i)                            \
+{                                                       \
+    (b)[(i)    ] = (unsigned char) ( (n) >> 24 );       \
+    (b)[(i) + 1] = (unsigned char) ( (n) >> 16 );       \
+    (b)[(i) + 2] = (unsigned char) ( (n) >>  8 );       \
+    (b)[(i) + 3] = (unsigned char) ( (n)       );       \
+}
+#endif
+
+
+/*----------------------------------------------------------------------------*/
+/* Global variables */
+
+static struct
+{
+    paramfail_test_state_t paramfail_test_state;
+    int failed;
+    const char *test;
+    const char *filename;
+    int line_no;
+}
+test_info;
+
+#if defined(MBEDTLS_PLATFORM_C)
+mbedtls_platform_context platform_ctx;
+#endif
+
+#if defined(MBEDTLS_CHECK_PARAMS)
+jmp_buf param_fail_jmp;
+jmp_buf jmp_tmp;
+#endif
+
+/*----------------------------------------------------------------------------*/
+/* Helper flags for complex dependencies */
+
+/* Indicates whether we expect mbedtls_entropy_init
+ * to initialize some strong entropy source. */
+#if defined(MBEDTLS_TEST_NULL_ENTROPY) ||             \
+    ( !defined(MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES) && \
+      ( !defined(MBEDTLS_NO_PLATFORM_ENTROPY)  ||     \
+         defined(MBEDTLS_HAVEGE_C)             ||     \
+         defined(MBEDTLS_ENTROPY_HARDWARE_ALT) ||     \
+         defined(ENTROPY_NV_SEED) ) )
+#define ENTROPY_HAVE_STRONG
+#endif
+
+
+/*----------------------------------------------------------------------------*/
+/* Helper Functions */
+
+static void test_fail( const char *test, int line_no, const char* filename )
+{
+    test_info.failed = 1;
+    test_info.test = test;
+    test_info.line_no = line_no;
+    test_info.filename = filename;
+}
+
+static int platform_setup()
+{
+    int ret = 0;
+#if defined(MBEDTLS_PLATFORM_C)
+    ret = mbedtls_platform_setup( &platform_ctx );
+#endif /* MBEDTLS_PLATFORM_C */
+    return( ret );
+}
+
+static void platform_teardown()
+{
+#if defined(MBEDTLS_PLATFORM_C)
+    mbedtls_platform_teardown( &platform_ctx );
+#endif /* MBEDTLS_PLATFORM_C */
+}
+
+#if defined(MBEDTLS_CHECK_PARAMS)
+void mbedtls_param_failed( const char *failure_condition,
+                           const char *file,
+                           int line )
+{
+    /* If we are testing the callback function...  */
+    if( test_info.paramfail_test_state == PARAMFAIL_TESTSTATE_PENDING )
+    {
+        test_info.paramfail_test_state = PARAMFAIL_TESTSTATE_CALLED;
+    }
+    else
+    {
+        /* ...else we treat this as an error */
+
+        /* Record the location of the failure, but not as a failure yet, in case
+         * it was part of the test */
+        test_fail( failure_condition, line, file );
+        test_info.failed = 0;
+
+        longjmp( param_fail_jmp, 1 );
+    }
+}
+#endif
+
+#if defined(__unix__) || (defined(__APPLE__) && defined(__MACH__))
+static int redirect_output( FILE** out_stream, const char* path )
+{
+    int stdout_fd = dup( fileno( *out_stream ) );
+
+    if( stdout_fd == -1 )
+    {
+        return -1;
+    }
+
+    fflush( *out_stream );
+    fclose( *out_stream );
+    *out_stream = fopen( path, "w" );
+
+    if( *out_stream == NULL )
+    {
+        close( stdout_fd );
+        return -1;
+    }
+
+    return stdout_fd;
+}
+
+static int restore_output( FILE** out_stream, int old_fd )
+{
+    fflush( *out_stream );
+    fclose( *out_stream );
+
+    *out_stream = fdopen( old_fd, "w" );
+    if( *out_stream == NULL )
+    {
+        return -1;
+    }
+
+    return 0;
+}
+
+static void close_output( FILE* out_stream )
+{
+    fclose( out_stream );
+}
+#endif /* __unix__ || __APPLE__ __MACH__ */
+
+static int unhexify( unsigned char *obuf, const char *ibuf )
+{
+    unsigned char c, c2;
+    int len = strlen( ibuf ) / 2;
+    assert( strlen( ibuf ) % 2 == 0 ); /* must be even number of bytes */
+
+    while( *ibuf != 0 )
+    {
+        c = *ibuf++;
+        if( c >= '0' && c <= '9' )
+            c -= '0';
+        else if( c >= 'a' && c <= 'f' )
+            c -= 'a' - 10;
+        else if( c >= 'A' && c <= 'F' )
+            c -= 'A' - 10;
+        else
+            assert( 0 );
+
+        c2 = *ibuf++;
+        if( c2 >= '0' && c2 <= '9' )
+            c2 -= '0';
+        else if( c2 >= 'a' && c2 <= 'f' )
+            c2 -= 'a' - 10;
+        else if( c2 >= 'A' && c2 <= 'F' )
+            c2 -= 'A' - 10;
+        else
+            assert( 0 );
+
+        *obuf++ = ( c << 4 ) | c2;
+    }
+
+    return len;
+}
+
+static void hexify( unsigned char *obuf, const unsigned char *ibuf, int len )
+{
+    unsigned char l, h;
+
+    while( len != 0 )
+    {
+        h = *ibuf / 16;
+        l = *ibuf % 16;
+
+        if( h < 10 )
+            *obuf++ = '0' + h;
+        else
+            *obuf++ = 'a' + h - 10;
+
+        if( l < 10 )
+            *obuf++ = '0' + l;
+        else
+            *obuf++ = 'a' + l - 10;
+
+        ++ibuf;
+        len--;
+    }
+}
+
+/**
+ * Allocate and zeroize a buffer.
+ *
+ * If the size if zero, a pointer to a zeroized 1-byte buffer is returned.
+ *
+ * For convenience, dies if allocation fails.
+ */
+static unsigned char *zero_alloc( size_t len )
+{
+    void *p;
+    size_t actual_len = ( len != 0 ) ? len : 1;
+
+    p = mbedtls_calloc( 1, actual_len );
+    assert( p != NULL );
+
+    memset( p, 0x00, actual_len );
+
+    return( p );
+}
+
+/**
+ * Allocate and fill a buffer from hex data.
+ *
+ * The buffer is sized exactly as needed. This allows to detect buffer
+ * overruns (including overreads) when running the test suite under valgrind.
+ *
+ * If the size if zero, a pointer to a zeroized 1-byte buffer is returned.
+ *
+ * For convenience, dies if allocation fails.
+ */
+static unsigned char *unhexify_alloc( const char *ibuf, size_t *olen )
+{
+    unsigned char *obuf;
+
+    *olen = strlen( ibuf ) / 2;
+
+    if( *olen == 0 )
+        return( zero_alloc( *olen ) );
+
+    obuf = mbedtls_calloc( 1, *olen );
+    assert( obuf != NULL );
+
+    (void) unhexify( obuf, ibuf );
+
+    return( obuf );
+}
+
+/**
+ * This function just returns data from rand().
+ * Although predictable and often similar on multiple
+ * runs, this does not result in identical random on
+ * each run. So do not use this if the results of a
+ * test depend on the random data that is generated.
+ *
+ * rng_state shall be NULL.
+ */
+static int rnd_std_rand( void *rng_state, unsigned char *output, size_t len )
+{
+#if !defined(__OpenBSD__)
+    size_t i;
+
+    if( rng_state != NULL )
+        rng_state  = NULL;
+
+    for( i = 0; i < len; ++i )
+        output[i] = rand();
+#else
+    if( rng_state != NULL )
+        rng_state = NULL;
+
+    arc4random_buf( output, len );
+#endif /* !OpenBSD */
+
+    return( 0 );
+}
+
+/**
+ * This function only returns zeros
+ *
+ * rng_state shall be NULL.
+ */
+static int rnd_zero_rand( void *rng_state, unsigned char *output, size_t len )
+{
+    if( rng_state != NULL )
+        rng_state  = NULL;
+
+    memset( output, 0, len );
+
+    return( 0 );
+}
+
+typedef struct
+{
+    unsigned char *buf;
+    size_t length;
+} rnd_buf_info;
+
+/**
+ * This function returns random based on a buffer it receives.
+ *
+ * rng_state shall be a pointer to a rnd_buf_info structure.
+ *
+ * The number of bytes released from the buffer on each call to
+ * the random function is specified by per_call. (Can be between
+ * 1 and 4)
+ *
+ * After the buffer is empty it will return rand();
+ */
+static int rnd_buffer_rand( void *rng_state, unsigned char *output, size_t len )
+{
+    rnd_buf_info *info = (rnd_buf_info *) rng_state;
+    size_t use_len;
+
+    if( rng_state == NULL )
+        return( rnd_std_rand( NULL, output, len ) );
+
+    use_len = len;
+    if( len > info->length )
+        use_len = info->length;
+
+    if( use_len )
+    {
+        memcpy( output, info->buf, use_len );
+        info->buf += use_len;
+        info->length -= use_len;
+    }
+
+    if( len - use_len > 0 )
+        return( rnd_std_rand( NULL, output + use_len, len - use_len ) );
+
+    return( 0 );
+}
+
+/**
+ * Info structure for the pseudo random function
+ *
+ * Key should be set at the start to a test-unique value.
+ * Do not forget endianness!
+ * State( v0, v1 ) should be set to zero.
+ */
+typedef struct
+{
+    uint32_t key[16];
+    uint32_t v0, v1;
+} rnd_pseudo_info;
+
+/**
+ * This function returns random based on a pseudo random function.
+ * This means the results should be identical on all systems.
+ * Pseudo random is based on the XTEA encryption algorithm to
+ * generate pseudorandom.
+ *
+ * rng_state shall be a pointer to a rnd_pseudo_info structure.
+ */
+static int rnd_pseudo_rand( void *rng_state, unsigned char *output, size_t len )
+{
+    rnd_pseudo_info *info = (rnd_pseudo_info *) rng_state;
+    uint32_t i, *k, sum, delta=0x9E3779B9;
+    unsigned char result[4], *out = output;
+
+    if( rng_state == NULL )
+        return( rnd_std_rand( NULL, output, len ) );
+
+    k = info->key;
+
+    while( len > 0 )
+    {
+        size_t use_len = ( len > 4 ) ? 4 : len;
+        sum = 0;
+
+        for( i = 0; i < 32; i++ )
+        {
+            info->v0 += ( ( ( info->v1 << 4 ) ^ ( info->v1 >> 5 ) )
+                            + info->v1 ) ^ ( sum + k[sum & 3] );
+            sum += delta;
+            info->v1 += ( ( ( info->v0 << 4 ) ^ ( info->v0 >> 5 ) )
+                            + info->v0 ) ^ ( sum + k[( sum>>11 ) & 3] );
+        }
+
+        PUT_UINT32_BE( info->v0, result, 0 );
+        memcpy( out, result, use_len );
+        len -= use_len;
+        out += 4;
+    }
+
+    return( 0 );
+}
+
+int hexcmp( uint8_t * a, uint8_t * b, uint32_t a_len, uint32_t b_len )
+{
+    int ret = 0;
+    uint32_t i = 0;
+
+    if( a_len != b_len )
+        return( -1 );
+
+    for( i = 0; i < a_len; i++ )
+    {
+        if( a[i] != b[i] )
+        {
+            ret = -1;
+            break;
+        }
+    }
+    return ret;
+}

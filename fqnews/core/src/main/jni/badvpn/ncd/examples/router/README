@@ -1,0 +1,36 @@
+NCD Router Example
+
+-- Operation ---
+
+These are the NCD scripts I run on my home router.
+Three network interfaces are being configured:
+
+1. The LAN interface.
+The DHCP server is started for this interface, and also a DNS server (unbound).
+2. The Internet interface.
+This is a PPPoE interface with NAT.
+3. The ServerIf interface.
+This one behaves similarly to the LAN interface, except that there is no DHCP server.
+The intention is to put servers here so you can restrict communication not only between Internet and the servers,
+but also between LAN and the servers (though this configuration doesn't actually do the latter).
+
+Hosts on the LAN and ServerIf interfaces can access the Internet, and source NAT is used here.
+Additionally, it is possible to add port forwardings (DNAT) from the Internet interface to either
+of those two interfaces. These can be managed with the scripts {list,add,remove}-port-forwarding.
+The list of port forwarding is stored in the file /var/lib/ncd-port-forwardings.ncdvalue.
+However, you should NOT modify this file while NCD is running. You should not modify it at all, because
+NCD may accidentally overwrite your changes. Just use the scripts.
+
+Iptables is used to filter incoming connections from the Internet interface.
+Exceptions can be added; for example, there's a commented line in template network_internet_pppoe_preup which allows access to the local SSH server.
+To allow access to servers running on other hosts (LAN or ServerIf interface), a port forwarding should be added dynamically.
+
+-- Installation --
+
+The following pppd patch is required for PPPoE to work:
+https://code.google.com/p/ambro-gentoo-overlay/source/browse/trunk/net-dialup/ppp/files/pppd-configurable-paths.patch
+
+Copy ncd.conf to /etc/, and copy all other files here into a new directory /etc/ncd-network.
+Explanation: ncd.conf just loads network.ncdi, which is where the bulk of the configuration is defined.
+Make the {list,add,remove}-port-forwarding scripts executable. Additionally, if your NCD interpreter is not located at /usr/bin/badvpn-ncd,
+adjust the interpreter paths inside them.

@@ -1,0 +1,74 @@
+/* BEGIN_HEADER */
+#include "mbedtls/pk.h"
+#include "mbedtls/pem.h"
+#include "mbedtls/oid.h"
+/* END_HEADER */
+
+/* BEGIN_DEPENDENCIES
+ * depends_on:MBEDTLS_PK_PARSE_C:MBEDTLS_PK_WRITE_C:MBEDTLS_BIGNUM_C:MBEDTLS_FS_IO
+ * END_DEPENDENCIES
+ */
+
+/* BEGIN_CASE depends_on:MBEDTLS_PEM_WRITE_C */
+void pk_write_pubkey_check( char * key_file )
+{
+    mbedtls_pk_context key;
+    unsigned char buf[5000];
+    unsigned char check_buf[5000];
+    int ret;
+    FILE *f;
+    size_t ilen;
+
+    memset( buf, 0, sizeof( buf ) );
+    memset( check_buf, 0, sizeof( check_buf ) );
+
+    mbedtls_pk_init( &key );
+    TEST_ASSERT( mbedtls_pk_parse_public_keyfile( &key, key_file ) == 0 );
+
+    ret = mbedtls_pk_write_pubkey_pem( &key, buf, sizeof( buf ));
+    TEST_ASSERT( ret == 0 );
+
+    f = fopen( key_file, "r" );
+    TEST_ASSERT( f != NULL );
+    ilen = fread( check_buf, 1, sizeof( check_buf ), f );
+    fclose( f );
+
+    TEST_ASSERT( ilen == strlen( (char *) buf ) );
+    TEST_ASSERT( memcmp( (char *) buf, (char *) check_buf, ilen ) == 0 );
+
+exit:
+    mbedtls_pk_free( &key );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_PEM_WRITE_C */
+void pk_write_key_check( char * key_file )
+{
+    mbedtls_pk_context key;
+    unsigned char buf[5000];
+    unsigned char check_buf[5000];
+    int ret;
+    FILE *f;
+    size_t ilen;
+
+    memset( buf, 0, sizeof( buf ) );
+    memset( check_buf, 0, sizeof( check_buf ) );
+
+    mbedtls_pk_init( &key );
+    TEST_ASSERT( mbedtls_pk_parse_keyfile( &key, key_file, NULL ) == 0 );
+
+    ret = mbedtls_pk_write_key_pem( &key, buf, sizeof( buf ));
+    TEST_ASSERT( ret == 0 );
+
+    f = fopen( key_file, "r" );
+    TEST_ASSERT( f != NULL );
+    ilen = fread( check_buf, 1, sizeof( check_buf ), f );
+    fclose( f );
+
+    TEST_ASSERT( ilen == strlen( (char *) buf ) );
+    TEST_ASSERT( memcmp( (char *) buf, (char *) check_buf, ilen ) == 0 );
+
+exit:
+    mbedtls_pk_free( &key );
+}
+/* END_CASE */

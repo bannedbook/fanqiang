@@ -1,0 +1,137 @@
+/* BEGIN_HEADER */
+#include "mbedtls/pk.h"
+#include "mbedtls/pem.h"
+#include "mbedtls/oid.h"
+/* END_HEADER */
+
+/* BEGIN_DEPENDENCIES
+ * depends_on:MBEDTLS_PK_PARSE_C:MBEDTLS_BIGNUM_C
+ * END_DEPENDENCIES
+ */
+
+/* BEGIN_CASE depends_on:MBEDTLS_RSA_C:MBEDTLS_FS_IO */
+void pk_parse_keyfile_rsa( char * key_file, char * password, int result )
+{
+    mbedtls_pk_context ctx;
+    int res;
+    char *pwd = password;
+
+    mbedtls_pk_init( &ctx );
+
+    if( strcmp( pwd, "NULL" ) == 0 )
+        pwd = NULL;
+
+    res = mbedtls_pk_parse_keyfile( &ctx, key_file, pwd );
+
+    TEST_ASSERT( res == result );
+
+    if( res == 0 )
+    {
+        mbedtls_rsa_context *rsa;
+        TEST_ASSERT( mbedtls_pk_can_do( &ctx, MBEDTLS_PK_RSA ) );
+        rsa = mbedtls_pk_rsa( ctx );
+        TEST_ASSERT( mbedtls_rsa_check_privkey( rsa ) == 0 );
+    }
+
+exit:
+    mbedtls_pk_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_RSA_C:MBEDTLS_FS_IO */
+void pk_parse_public_keyfile_rsa( char * key_file, int result )
+{
+    mbedtls_pk_context ctx;
+    int res;
+
+    mbedtls_pk_init( &ctx );
+
+    res = mbedtls_pk_parse_public_keyfile( &ctx, key_file );
+
+    TEST_ASSERT( res == result );
+
+    if( res == 0 )
+    {
+        mbedtls_rsa_context *rsa;
+        TEST_ASSERT( mbedtls_pk_can_do( &ctx, MBEDTLS_PK_RSA ) );
+        rsa = mbedtls_pk_rsa( ctx );
+        TEST_ASSERT( mbedtls_rsa_check_pubkey( rsa ) == 0 );
+    }
+
+exit:
+    mbedtls_pk_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_FS_IO:MBEDTLS_ECP_C */
+void pk_parse_public_keyfile_ec( char * key_file, int result )
+{
+    mbedtls_pk_context ctx;
+    int res;
+
+    mbedtls_pk_init( &ctx );
+
+    res = mbedtls_pk_parse_public_keyfile( &ctx, key_file );
+
+    TEST_ASSERT( res == result );
+
+    if( res == 0 )
+    {
+        mbedtls_ecp_keypair *eckey;
+        TEST_ASSERT( mbedtls_pk_can_do( &ctx, MBEDTLS_PK_ECKEY ) );
+        eckey = mbedtls_pk_ec( ctx );
+        TEST_ASSERT( mbedtls_ecp_check_pubkey( &eckey->grp, &eckey->Q ) == 0 );
+    }
+
+exit:
+    mbedtls_pk_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_FS_IO:MBEDTLS_ECP_C */
+void pk_parse_keyfile_ec( char * key_file, char * password, int result )
+{
+    mbedtls_pk_context ctx;
+    int res;
+
+    mbedtls_pk_init( &ctx );
+
+    res = mbedtls_pk_parse_keyfile( &ctx, key_file, password );
+
+    TEST_ASSERT( res == result );
+
+    if( res == 0 )
+    {
+        mbedtls_ecp_keypair *eckey;
+        TEST_ASSERT( mbedtls_pk_can_do( &ctx, MBEDTLS_PK_ECKEY ) );
+        eckey = mbedtls_pk_ec( ctx );
+        TEST_ASSERT( mbedtls_ecp_check_privkey( &eckey->grp, &eckey->d ) == 0 );
+    }
+
+exit:
+    mbedtls_pk_free( &ctx );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_RSA_C */
+void pk_parse_key( data_t * buf, char * result_str, int result )
+{
+    mbedtls_pk_context pk;
+    unsigned char output[2000];
+    ((void) result_str);
+
+    mbedtls_pk_init( &pk );
+
+    memset( output, 0, 2000 );
+
+
+    TEST_ASSERT( mbedtls_pk_parse_key( &pk, buf->x, buf->len, NULL, 0 ) == ( result ) );
+    if( ( result ) == 0 )
+    {
+        TEST_ASSERT( 1 );
+    }
+
+exit:
+    mbedtls_pk_free( &pk );
+}
+/* END_CASE */

@@ -1,0 +1,53 @@
+#!/bin/sh
+
+set -e
+
+# POSIX-compliant maint function recommend by devref
+# to check for the existence of a command
+# https://www.debian.org/doc/manuals/developers-reference/ch06.html#bpp-debian-maint-scripts
+pathfind() {
+	OLDIFS="$IFS"
+	IFS=:
+	for p in $PATH; do
+		if [ -x "$p/$*" ]; then
+		IFS="$OLDIFS"
+		return 0
+		fi
+	done
+	IFS="$OLDIFS"
+	return 1
+}
+
+case "$1" in
+	configure|reconfigure)
+		pathfind setcap && setcap \
+			cap_net_bind_service+ep /usr/bin/ss-local \
+			cap_net_bind_service,cap_net_admin+ep /usr/bin/ss-redir \
+			cap_net_bind_service+ep /usr/bin/ss-server \
+			cap_net_bind_service+ep /usr/bin/ss-tunnel
+		if [ ! -f /etc/shadowsocks-libev/config.json ]; then
+			set +e
+			pathfind apg
+			if [ $? -eq 0 ]; then
+				passwd=$(apg -n 1 -M ncl)
+			else
+				passwd=$(pwgen 12 1)
+			fi
+			set -e
+			mkdir -p /etc/shadowsocks-libev
+			sed "s/barfoo!/$passwd/" /usr/share/shadowsocks-libev/config.json \
+				> /etc/shadowsocks-libev/config.json
+		fi
+		;;
+	abort-upgrade|abort-remove|abort-deconfigure)
+		exit 0
+		;;
+	*)
+		echo "postinst called with unknown argument \`$1'" >&2
+		exit 0
+		;;
+esac
+
+#DEBHELPER#
+
+exit 0

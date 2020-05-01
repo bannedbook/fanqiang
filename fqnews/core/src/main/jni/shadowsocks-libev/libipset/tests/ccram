@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ "$1" = "--cram" ]; then
+    shift
+    CRAM="$1"
+    shift
+else
+    CRAM=cram
+fi
+
+if [ "$1" = "--tests" ]; then
+    shift
+    TESTS="$1"
+    shift
+else
+    TESTS=../tests
+fi
+
+PATH="$PWD/src:$PATH" \
+  "$CRAM" "$@" "$TESTS"

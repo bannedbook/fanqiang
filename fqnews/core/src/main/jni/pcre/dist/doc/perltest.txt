@@ -1,0 +1,42 @@
+The perltest program
+--------------------
+
+The perltest.pl script tests Perl's regular expressions; it has the same
+specification as pcretest, and so can be given identical input, except that
+input patterns can be followed only by Perl's lower case modifiers and certain
+other pcretest modifiers that are either handled or ignored:
+
+  /+   recognized and handled by perltest
+  /++  the second + is ignored
+  /8   recognized and handled by perltest
+  /J   ignored
+  /K   ignored
+  /W   ignored
+  /S   ignored
+  /SS  ignored
+  /Y   ignored
+
+The pcretest \Y escape in data lines is removed before matching. The data lines
+are processed as Perl double-quoted strings, so if they contain " $ or @
+characters, these have to be escaped. For this reason, all such characters in
+the Perl-compatible testinput1 file are escaped so that they can be used for
+perltest as well as for pcretest. The special upper case pattern modifiers such
+as /A that pcretest recognizes, and its special data line escapes, are not used
+in the Perl-compatible test file. The output should be identical, apart from
+the initial identifying banner.
+
+The perltest.pl script can also test UTF-8 features. It recognizes the special
+modifier /8 that pcretest uses to invoke UTF-8 functionality. The testinput4
+and testinput6 files can be fed to perltest to run compatible UTF-8 tests.
+However, it is necessary to add "use utf8; require Encode" to the script to
+make this work correctly. I have not managed to find a way to handle this
+automatically.
+
+The other testinput files are not suitable for feeding to perltest.pl, since
+they make use of the special upper case modifiers and escapes that pcretest
+uses to test certain features of PCRE. Some of these files also contain
+malformed regular expressions, in order to check that PCRE diagnoses them
+correctly.
+
+Philip Hazel
+January 2012

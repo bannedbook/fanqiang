@@ -1,0 +1,1026 @@
+/-- This set of tests is for UTF-16 and UTF-32 support, and is relevant only to
+    the 16- and 32-bit libraries. --/
+    
+< forbid W 
+
+/ÃÃÃxxx/8?DZSS
+**Failed: invalid UTF-8 string cannot be converted to UTF-16
+
+/abc/8
+    Ã]
+**Failed: invalid UTF-8 string cannot be used as input in UTF mode
+
+/X(\C{3})/8
+    X\x{11234}Y
+ 0: X\x{11234}Y
+ 1: \x{11234}Y
+    X\x{11234}YZ
+ 0: X\x{11234}Y
+ 1: \x{11234}Y
+
+/X(\C{4})/8
+    X\x{11234}YZ
+ 0: X\x{11234}YZ
+ 1: \x{11234}YZ
+    X\x{11234}YZW
+ 0: X\x{11234}YZ
+ 1: \x{11234}YZ
+
+/X\C*/8
+    XYZabcdce
+ 0: XYZabcdce
+
+/X\C*?/8
+    XYZabcde
+ 0: X
+
+/X\C{3,5}/8
+    Xabcdefg
+ 0: Xabcde
+    X\x{11234}Y
+ 0: X\x{11234}Y
+    X\x{11234}YZ
+ 0: X\x{11234}YZ
+    X\x{11234}\x{512}
+ 0: X\x{11234}\x{512}
+    X\x{11234}\x{512}YZ
+ 0: X\x{11234}\x{512}YZ
+    X\x{11234}\x{512}\x{11234}Z
+ 0: X\x{11234}\x{512}\x{11234}
+
+/X\C{3,5}?/8
+    Xabcdefg
+ 0: Xabc
+    X\x{11234}Y
+ 0: X\x{11234}Y
+    X\x{11234}YZ
+ 0: X\x{11234}Y
+    X\x{11234}\x{512}YZ
+ 0: X\x{11234}\x{512}
+    *** Failers
+No match
+    X\x{11234}
+No match
+
+/a\Cb/8
+    aXb
+ 0: aXb
+    a\nb
+ 0: a\x{0a}b
+
+/a\C\Cb/8
+    a\x{12257}b
+ 0: a\x{12257}b
+    a\x{12257}\x{11234}b
+No match
+    ** Failers
+No match
+    a\x{100}b
+No match
+
+/ab\Cde/8
+    abXde
+ 0: abXde
+
+/-- Check maximum character size --/
+
+/\x{ffff}/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{ffff}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{ffff}
+No need char
+
+/\x{10000}/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{10000}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{d800}
+Need char = \x{dc00}
+
+/\x{100}/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{100}
+No need char
+
+/\x{1000}/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{1000}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{1000}
+No need char
+
+/\x{10000}/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{10000}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{d800}
+Need char = \x{dc00}
+
+/\x{100000}/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100000}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{dbc0}
+Need char = \x{dc00}
+
+/\x{10ffff}/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{10ffff}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{dbff}
+Need char = \x{dfff}
+
+/[\x{ff}]/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{ff}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{ff}
+No need char
+
+/[\x{100}]/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{100}
+No need char
+
+/\x80/8DZ
+------------------------------------------------------------------
+        Bra
+        \x80
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{80}
+No need char
+
+/\xff/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{ff}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{ff}
+No need char
+
+/\x{D55c}\x{ad6d}\x{C5B4}/DZ8
+------------------------------------------------------------------
+        Bra
+        \x{d55c}\x{ad6d}\x{c5b4}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{d55c}
+Need char = \x{c5b4}
+    \x{D55c}\x{ad6d}\x{C5B4}
+ 0: \x{d55c}\x{ad6d}\x{c5b4}
+
+/\x{65e5}\x{672c}\x{8a9e}/DZ8
+------------------------------------------------------------------
+        Bra
+        \x{65e5}\x{672c}\x{8a9e}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{65e5}
+Need char = \x{8a9e}
+    \x{65e5}\x{672c}\x{8a9e}
+ 0: \x{65e5}\x{672c}\x{8a9e}
+
+/\x{80}/DZ8
+------------------------------------------------------------------
+        Bra
+        \x80
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{80}
+No need char
+
+/\x{084}/DZ8
+------------------------------------------------------------------
+        Bra
+        \x{84}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{84}
+No need char
+
+/\x{104}/DZ8
+------------------------------------------------------------------
+        Bra
+        \x{104}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{104}
+No need char
+
+/\x{861}/DZ8
+------------------------------------------------------------------
+        Bra
+        \x{861}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{861}
+No need char
+
+/\x{212ab}/DZ8
+------------------------------------------------------------------
+        Bra
+        \x{212ab}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{d844}
+Need char = \x{deab}
+
+/-- This one is here not because it's different to Perl, but because the way
+the captured single-byte is displayed. (In Perl it becomes a character, and you
+can't tell the difference.) --/
+
+/X(\C)(.*)/8
+    X\x{1234}
+ 0: X\x{1234}
+ 1: \x{1234}
+ 2: 
+    X\nabc
+ 0: X\x{0a}abc
+ 1: \x{0a}
+ 2: abc
+
+/-- This one is here because Perl gives out a grumbly error message (quite
+correctly, but that messes up comparisons). --/
+
+/a\Cb/8
+    *** Failers
+No match
+    a\x{100}b
+ 0: a\x{100}b
+
+/[^ab\xC0-\xF0]/8SDZ
+------------------------------------------------------------------
+        Bra
+        [\x00-`c-\xbf\xf1-\xff] (neg)
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: \x00 \x01 \x02 \x03 \x04 \x05 \x06 \x07 \x08 \x09 \x0a 
+  \x0b \x0c \x0d \x0e \x0f \x10 \x11 \x12 \x13 \x14 \x15 \x16 \x17 \x18 \x19 
+  \x1a \x1b \x1c \x1d \x1e \x1f \x20 ! " # $ % & ' ( ) * + , - . / 0 1 2 3 4 
+  5 6 7 8 9 : ; < = > ? @ A B C D E F G H I J K L M N O P Q R S T U V W X Y 
+  Z [ \ ] ^ _ ` c d e f g h i j k l m n o p q r s t u v w x y z { | } ~ \x7f 
+  \x80 \x81 \x82 \x83 \x84 \x85 \x86 \x87 \x88 \x89 \x8a \x8b \x8c \x8d \x8e 
+  \x8f \x90 \x91 \x92 \x93 \x94 \x95 \x96 \x97 \x98 \x99 \x9a \x9b \x9c \x9d 
+  \x9e \x9f \xa0 \xa1 \xa2 \xa3 \xa4 \xa5 \xa6 \xa7 \xa8 \xa9 \xaa \xab \xac 
+  \xad \xae \xaf \xb0 \xb1 \xb2 \xb3 \xb4 \xb5 \xb6 \xb7 \xb8 \xb9 \xba \xbb 
+  \xbc \xbd \xbe \xbf \xf1 \xf2 \xf3 \xf4 \xf5 \xf6 \xf7 \xf8 \xf9 \xfa \xfb 
+  \xfc \xfd \xfe \xff 
+    \x{f1}
+ 0: \x{f1}
+    \x{bf}
+ 0: \x{bf}
+    \x{100}
+ 0: \x{100}
+    \x{1000}
+ 0: \x{1000}
+    *** Failers
+ 0: *
+    \x{c0}
+No match
+    \x{f0}
+No match
+
+/Ä€{3,4}/8SDZ
+------------------------------------------------------------------
+        Bra
+        \x{100}{3}
+        \x{100}?+
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{100}
+Need char = \x{100}
+Subject length lower bound = 3
+No starting char list
+  \x{100}\x{100}\x{100}\x{100\x{100}
+ 0: \x{100}\x{100}\x{100}
+
+/(\x{100}+|x)/8SDZ
+------------------------------------------------------------------
+        Bra
+        CBra 1
+        \x{100}++
+        Alt
+        x
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 1
+Options: utf
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: x \xff 
+
+/(\x{100}*a|x)/8SDZ
+------------------------------------------------------------------
+        Bra
+        CBra 1
+        \x{100}*+
+        a
+        Alt
+        x
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 1
+Options: utf
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: a x \xff 
+
+/(\x{100}{0,2}a|x)/8SDZ
+------------------------------------------------------------------
+        Bra
+        CBra 1
+        \x{100}{0,2}+
+        a
+        Alt
+        x
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 1
+Options: utf
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: a x \xff 
+
+/(\x{100}{1,2}a|x)/8SDZ
+------------------------------------------------------------------
+        Bra
+        CBra 1
+        \x{100}
+        \x{100}{0,1}+
+        a
+        Alt
+        x
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 1
+Options: utf
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: x \xff 
+
+/\x{100}/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{100}
+No need char
+
+/a\x{100}\x{101}*/8DZ
+------------------------------------------------------------------
+        Bra
+        a\x{100}
+        \x{101}*+
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = 'a'
+Need char = \x{100}
+
+/a\x{100}\x{101}+/8DZ
+------------------------------------------------------------------
+        Bra
+        a\x{100}
+        \x{101}++
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = 'a'
+Need char = \x{101}
+
+/[^\x{c4}]/DZ
+------------------------------------------------------------------
+        Bra
+        [^\x{c4}]
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+No options
+No first char
+No need char
+
+/[\x{100}]/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{100}
+No need char
+    \x{100}
+ 0: \x{100}
+    Z\x{100}
+ 0: \x{100}
+    \x{100}Z
+ 0: \x{100}
+    *** Failers
+No match
+
+/[\xff]/DZ8
+------------------------------------------------------------------
+        Bra
+        \x{ff}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{ff}
+No need char
+    >\x{ff}<
+ 0: \x{ff}
+
+/[^\xff]/8DZ
+------------------------------------------------------------------
+        Bra
+        [^\x{ff}]
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+
+/\x{100}abc(xyz(?1))/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}abc
+        CBra 1
+        xyz
+        Recurse
+        Ket
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 1
+Options: utf
+First char = \x{100}
+Need char = 'z'
+
+/\777/8I
+Capturing subpattern count = 0
+Options: utf
+First char = \x{1ff}
+No need char
+  \x{1ff}
+ 0: \x{1ff}
+  \777
+ 0: \x{1ff}
+
+/\x{100}+\x{200}/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}++
+        \x{200}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{100}
+Need char = \x{200}
+
+/\x{100}+X/8DZ
+------------------------------------------------------------------
+        Bra
+        \x{100}++
+        X
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = \x{100}
+Need char = 'X'
+
+/^[\QÄ€\E-\QÅ\E/BZ8
+Failed: missing terminating ] for character class at offset 13
+
+/X/8
+    \x{d800}
+Error -10 (bad UTF-16 string) offset=0 reason=1
+    \x{d800}\?
+No match
+    \x{da00}
+Error -10 (bad UTF-16 string) offset=0 reason=1
+    \x{da00}\?
+No match
+    \x{dc00}
+Error -10 (bad UTF-16 string) offset=0 reason=3
+    \x{dc00}\?
+No match
+    \x{de00}
+Error -10 (bad UTF-16 string) offset=0 reason=3
+    \x{de00}\?
+No match
+    \x{dfff}
+Error -10 (bad UTF-16 string) offset=0 reason=3
+    \x{dfff}\?
+No match
+    \x{110000}
+** Failed: character \x{110000} is greater than 0x10ffff and so cannot be converted to UTF-16
+    \x{d800}\x{1234}
+Error -10 (bad UTF-16 string) offset=1 reason=2
+
+/(*UTF16)\x{11234}/
+  abcd\x{11234}pqr
+ 0: \x{11234}
+
+/(*UTF)\x{11234}/I
+Capturing subpattern count = 0
+Options: utf
+First char = \x{d804}
+Need char = \x{de34}
+  abcd\x{11234}pqr
+ 0: \x{11234}
+
+/(*UTF-32)\x{11234}/
+Failed: (*VERB) not recognized or malformed at offset 5
+
+/(*CRLF)(*UTF16)(*BSR_UNICODE)a\Rb/I
+Capturing subpattern count = 0
+Options: bsr_unicode utf
+Forced newline sequence: CRLF
+First char = 'a'
+Need char = 'b'
+
+/(*CRLF)(*UTF32)(*BSR_UNICODE)a\Rb/I
+Failed: (*VERB) not recognized or malformed at offset 12
+
+/\h/SI8
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: \x09 \x20 \xa0 \xff 
+    ABC\x{09}
+ 0: \x{09}
+    ABC\x{20}
+ 0:  
+    ABC\x{a0}
+ 0: \x{a0}
+    ABC\x{1680}
+ 0: \x{1680}
+    ABC\x{180e}
+ 0: \x{180e}
+    ABC\x{2000}
+ 0: \x{2000}
+    ABC\x{202f}
+ 0: \x{202f}
+    ABC\x{205f}
+ 0: \x{205f}
+    ABC\x{3000}
+ 0: \x{3000}
+
+/\v/SI8
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: \x0a \x0b \x0c \x0d \x85 \xff 
+    ABC\x{0a}
+ 0: \x{0a}
+    ABC\x{0b}
+ 0: \x{0b}
+    ABC\x{0c}
+ 0: \x{0c}
+    ABC\x{0d}
+ 0: \x{0d}
+    ABC\x{85}
+ 0: \x{85}
+    ABC\x{2028}
+ 0: \x{2028}
+
+/\h*A/SI8
+Capturing subpattern count = 0
+Options: utf
+No first char
+Need char = 'A'
+Subject length lower bound = 1
+Starting chars: \x09 \x20 A \xa0 \xff 
+    CDBABC
+ 0: A
+    \x{2000}ABC 
+ 0: \x{2000}A
+
+/\R*A/SI8<bsr_unicode>
+Capturing subpattern count = 0
+Options: bsr_unicode utf
+No first char
+Need char = 'A'
+Subject length lower bound = 1
+Starting chars: \x0a \x0b \x0c \x0d A \x85 \xff 
+    CDBABC
+ 0: A
+    \x{2028}A  
+ 0: \x{2028}A
+
+/\v+A/SI8
+Capturing subpattern count = 0
+Options: utf
+No first char
+Need char = 'A'
+Subject length lower bound = 2
+Starting chars: \x0a \x0b \x0c \x0d \x85 \xff 
+
+/\s?xxx\s/8SI
+Capturing subpattern count = 0
+Options: utf
+No first char
+Need char = 'x'
+Subject length lower bound = 4
+Starting chars: \x09 \x0a \x0b \x0c \x0d \x20 x 
+
+/\sxxx\s/I8ST1
+Capturing subpattern count = 0
+Options: utf
+No first char
+Need char = 'x'
+Subject length lower bound = 5
+Starting chars: \x09 \x0a \x0b \x0c \x0d \x20 \x85 \xa0 
+    AB\x{85}xxx\x{a0}XYZ
+ 0: \x{85}xxx\x{a0}
+    AB\x{a0}xxx\x{85}XYZ
+ 0: \x{a0}xxx\x{85}
+
+/\S \S/I8ST1
+Capturing subpattern count = 0
+Options: utf
+No first char
+Need char = ' '
+Subject length lower bound = 3
+Starting chars: \x00 \x01 \x02 \x03 \x04 \x05 \x06 \x07 \x08 \x0e \x0f 
+  \x10 \x11 \x12 \x13 \x14 \x15 \x16 \x17 \x18 \x19 \x1a \x1b \x1c \x1d \x1e 
+  \x1f ! " # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @ A B C 
+  D E F G H I J K L M N O P Q R S T U V W X Y Z [ \ ] ^ _ ` a b c d e f g h 
+  i j k l m n o p q r s t u v w x y z { | } ~ \x7f \x80 \x81 \x82 \x83 \x84 
+  \x86 \x87 \x88 \x89 \x8a \x8b \x8c \x8d \x8e \x8f \x90 \x91 \x92 \x93 \x94 
+  \x95 \x96 \x97 \x98 \x99 \x9a \x9b \x9c \x9d \x9e \x9f \xa1 \xa2 \xa3 \xa4 
+  \xa5 \xa6 \xa7 \xa8 \xa9 \xaa \xab \xac \xad \xae \xaf \xb0 \xb1 \xb2 \xb3 
+  \xb4 \xb5 \xb6 \xb7 \xb8 \xb9 \xba \xbb \xbc \xbd \xbe \xbf \xc0 \xc1 \xc2 
+  \xc3 \xc4 \xc5 \xc6 \xc7 \xc8 \xc9 \xca \xcb \xcc \xcd \xce \xcf \xd0 \xd1 
+  \xd2 \xd3 \xd4 \xd5 \xd6 \xd7 \xd8 \xd9 \xda \xdb \xdc \xdd \xde \xdf \xe0 
+  \xe1 \xe2 \xe3 \xe4 \xe5 \xe6 \xe7 \xe8 \xe9 \xea \xeb \xec \xed \xee \xef 
+  \xf0 \xf1 \xf2 \xf3 \xf4 \xf5 \xf6 \xf7 \xf8 \xf9 \xfa \xfb \xfc \xfd \xfe 
+  \xff 
+    \x{a2} \x{84}
+ 0: \x{a2} \x{84}
+    A Z
+ 0: A Z
+
+/a+/8
+    a\x{123}aa\>1
+ 0: aa
+    a\x{123}aa\>2
+ 0: aa
+    a\x{123}aa\>3
+ 0: a
+    a\x{123}aa\>4
+No match
+    a\x{123}aa\>5
+Error -24 (bad offset value)
+    a\x{123}aa\>6
+Error -24 (bad offset value)
+
+/\x{1234}+/iS8I
+Capturing subpattern count = 0
+Options: caseless utf
+First char = \x{1234}
+No need char
+Subject length lower bound = 1
+No starting char list
+
+/\x{1234}+?/iS8I
+Capturing subpattern count = 0
+Options: caseless utf
+First char = \x{1234}
+No need char
+Subject length lower bound = 1
+No starting char list
+
+/\x{1234}++/iS8I
+Capturing subpattern count = 0
+Options: caseless utf
+First char = \x{1234}
+No need char
+Subject length lower bound = 1
+No starting char list
+
+/\x{1234}{2}/iS8I
+Capturing subpattern count = 0
+Options: caseless utf
+First char = \x{1234}
+Need char = \x{1234}
+Subject length lower bound = 2
+No starting char list
+
+/[^\x{c4}]/8DZ
+------------------------------------------------------------------
+        Bra
+        [^\x{c4}]
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+
+/X+\x{200}/8DZ
+------------------------------------------------------------------
+        Bra
+        X++
+        \x{200}
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+Options: utf
+First char = 'X'
+Need char = \x{200}
+
+/\R/SI8
+Capturing subpattern count = 0
+Options: utf
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: \x0a \x0b \x0c \x0d \x85 \xff 
+
+/-- Check bad offset --/
+
+/a/8
+    \x{10000}\>1
+Error -11 (bad UTF-16 offset)
+    \x{10000}ab\>1
+Error -11 (bad UTF-16 offset)
+    \x{10000}ab\>2
+ 0: a
+    \x{10000}ab\>3
+No match
+    \x{10000}ab\>4
+No match
+    \x{10000}ab\>5
+Error -24 (bad offset value)
+
+/í¼€/8
+Failed: invalid UTF-16 string at offset 0
+
+/\w+\x{C4}/8BZ
+------------------------------------------------------------------
+        Bra
+        \w++
+        \x{c4}
+        Ket
+        End
+------------------------------------------------------------------
+    a\x{C4}\x{C4}
+ 0: a\x{c4}
+
+/\w+\x{C4}/8BZT1
+------------------------------------------------------------------
+        Bra
+        \w+
+        \x{c4}
+        Ket
+        End
+------------------------------------------------------------------
+    a\x{C4}\x{C4}
+ 0: a\x{c4}\x{c4}
+    
+/\W+\x{C4}/8BZ
+------------------------------------------------------------------
+        Bra
+        \W+
+        \x{c4}
+        Ket
+        End
+------------------------------------------------------------------
+    !\x{C4}
+ 0: !\x{c4}
+ 
+/\W+\x{C4}/8BZT1
+------------------------------------------------------------------
+        Bra
+        \W++
+        \x{c4}
+        Ket
+        End
+------------------------------------------------------------------
+    !\x{C4}
+ 0: !\x{c4}
+
+/\W+\x{A1}/8BZ
+------------------------------------------------------------------
+        Bra
+        \W+
+        \x{a1}
+        Ket
+        End
+------------------------------------------------------------------
+    !\x{A1}
+ 0: !\x{a1}
+ 
+/\W+\x{A1}/8BZT1
+------------------------------------------------------------------
+        Bra
+        \W+
+        \x{a1}
+        Ket
+        End
+------------------------------------------------------------------
+    !\x{A1}
+ 0: !\x{a1}
+
+/X\s+\x{A0}/8BZ
+------------------------------------------------------------------
+        Bra
+        X
+        \s++
+        \x{a0}
+        Ket
+        End
+------------------------------------------------------------------
+    X\x20\x{A0}\x{A0}
+ 0: X \x{a0}
+
+/X\s+\x{A0}/8BZT1
+------------------------------------------------------------------
+        Bra
+        X
+        \s+
+        \x{a0}
+        Ket
+        End
+------------------------------------------------------------------
+    X\x20\x{A0}\x{A0}
+ 0: X \x{a0}\x{a0}
+
+/\S+\x{A0}/8BZ
+------------------------------------------------------------------
+        Bra
+        \S+
+        \x{a0}
+        Ket
+        End
+------------------------------------------------------------------
+    X\x{A0}\x{A0}
+ 0: X\x{a0}\x{a0}
+
+/\S+\x{A0}/8BZT1
+------------------------------------------------------------------
+        Bra
+        \S++
+        \x{a0}
+        Ket
+        End
+------------------------------------------------------------------
+    X\x{A0}\x{A0}
+ 0: X\x{a0}
+
+/\x{a0}+\s!/8BZ
+------------------------------------------------------------------
+        Bra
+        \x{a0}++
+        \s
+        !
+        Ket
+        End
+------------------------------------------------------------------
+    \x{a0}\x20!
+ 0: \x{a0} !
+
+/\x{a0}+\s!/8BZT1
+------------------------------------------------------------------
+        Bra
+        \x{a0}+
+        \s
+        !
+        Ket
+        End
+------------------------------------------------------------------
+    \x{a0}\x20!
+ 0: \x{a0} !
+
+/(*UTF)abc/9
+Failed: setting UTF is disabled by the application at offset 0
+
+/abc/89
+Failed: setting UTF is disabled by the application at offset 0
+
+/-- End of testinput18 --/

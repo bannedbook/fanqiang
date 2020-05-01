@@ -1,0 +1,27 @@
+#  This file is part of shadowsocks-libev.
+#
+#  Shadowsocks-libev is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 3 of the License, or
+#  (at your option) any later version.
+#
+#  This is a template unit file. Users may copy and rename the file into
+#  config directories to make new service instances. See systemd.unit(5)
+#  for details.
+
+[Unit]
+Description=Shadowsocks-Libev Custom Client Service for %I
+Documentation=man:ss-local(1)
+After=network-online.target
+
+[Service]
+Type=simple
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+ExecStart=/usr/bin/ss-local -c /etc/shadowsocks-libev/%i.json
+User=nobody
+Group=nobody
+LimitNOFILE=32768
+
+[Install]
+WantedBy=multi-user.target
+

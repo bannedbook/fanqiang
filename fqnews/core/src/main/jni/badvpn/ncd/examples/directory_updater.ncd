@@ -1,0 +1,72 @@
+#
+# Watches a directory and runs an update program whenever something
+# changes. This is race-free, and if the directory changes while the
+# update is running, it will be done again.
+#
+# NOTE: the update should not modify the directory. If it does, the
+#       the result will be endless and constant updating.
+#
+
+process watcher {
+    # Blocker object used to trigger an update.
+    blocker() blk;
+
+    # State: updating - if updater script is running
+    #        updating_dirty - if something changed while
+    #                         script was running
+    var("false") updating;
+    var("false") updating_dirty;
+
+    # Start update process.
+    spawn("updater", {});
+
+    # Wait for directory event.
+    # CHANGE THIS
+    sys.watch_directory("/home/ambro") watcher;
+
+    # Print event details (e.g. "added somefile").
+    println(watcher.filename, " ", watcher.event_type);
+
+    # If updating is in progress, mark dirty.
+    If (updating) {
+        updating_dirty->set("true");
+    };
+
+    # Request update. This makes use() proceed forward.
+    blk->up();
+
+    # Wait for next event (execution moves up).
+    watcher->nextevent();
+}
+
+template updater {
+    # Wait for update request.
+    _caller.blk->use();
+
+    # Wait some time.
+    sleep("1000", "0");
+
+    # We're about to start update script - set updating
+    # variable and mark as non dirty.
+    _caller.updating_dirty->set("false");
+    _caller.updating->set("true");
+
+    println("Update started");
+
+    # CHANGE THIS
+    sleep("3000", "0");
+    #runonce({"/bin/echo", "Updater speaking"}, {"keep_stdout", "keep_stderr"});
+
+    println("Update finished");
+
+    # No longer running update script.
+    _caller.updating->set("false");
+
+    # If something changed while script was running, restart
+    # update; else wait for next update request.
+    If (_caller.updating_dirty) {
+        _caller.blk->downup();
+    } else {
+        _caller.blk->down();
+    };
+}

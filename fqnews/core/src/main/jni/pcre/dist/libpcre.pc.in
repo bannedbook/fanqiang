@@ -1,0 +1,13 @@
+# Package Information for pkg-config
+
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: libpcre
+Description: PCRE - Perl compatible regular expressions C library with 8 bit character support
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lpcre
+Libs.private: @PTHREAD_CFLAGS@ @PTHREAD_LIBS@
+Cflags: -I${includedir} @PCRE_STATIC_CFLAG@

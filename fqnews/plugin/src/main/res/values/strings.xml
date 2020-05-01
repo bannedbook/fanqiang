@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="proxy_cat">Server Settings</string>
+    <string name="feature_cat">Feature Settings</string>
+    <string name="unsaved_changes_prompt">Changes not saved. Do you want to save?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="apply">Apply</string>
+    <string name="browse">Browse…</string>
+    <string name="file_manager_missing">Please install a file manager like MiXplorer</string>
+    <string name="update">Update</string>
+    <string name="update_success">Update success</string>
+    <string name="update_fail">Update failed</string>
+</resources>

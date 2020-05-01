@@ -1,0 +1,20 @@
+include "onoff_server.ncdi"
+
+process main {
+    call("onoff_server_main", {"/home/ambro/onoff.socket"}) onoff_server;
+
+    process_manager() mgr;
+    mgr->start("service1", {});
+    #mgr->start("service2", {});
+}
+
+template service1 {
+    alias("_caller") main;
+
+    call("onoff_server_onoff", {"_caller.main.onoff_server", "ServiceId1", "true"});
+
+    println("service1 up");
+    rprintln("service1 down");
+
+    # Do your stuff.
+}

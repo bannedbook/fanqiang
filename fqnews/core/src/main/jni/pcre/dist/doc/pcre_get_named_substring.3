@@ -1,0 +1,54 @@
+.TH PCRE_GET_NAMED_SUBSTRING 3 "24 June 2012" "PCRE 8.30"
+.SH NAME
+PCRE - Perl-compatible regular expressions
+.SH SYNOPSIS
+.rs
+.sp
+.B #include <pcre.h>
+.PP
+.nf
+.B int pcre_get_named_substring(const pcre *\fIcode\fP,
+.B "     const char *\fIsubject\fP, int *\fIovector\fP,"
+.B "     int \fIstringcount\fP, const char *\fIstringname\fP,"
+.B "     const char **\fIstringptr\fP);"
+.sp
+.B int pcre16_get_named_substring(const pcre16 *\fIcode\fP,
+.B "     PCRE_SPTR16 \fIsubject\fP, int *\fIovector\fP,"
+.B "     int \fIstringcount\fP, PCRE_SPTR16 \fIstringname\fP,"
+.B "     PCRE_SPTR16 *\fIstringptr\fP);"
+.sp
+.B int pcre32_get_named_substring(const pcre32 *\fIcode\fP,
+.B "     PCRE_SPTR32 \fIsubject\fP, int *\fIovector\fP,"
+.B "     int \fIstringcount\fP, PCRE_SPTR32 \fIstringname\fP,"
+.B "     PCRE_SPTR32 *\fIstringptr\fP);"
+.fi
+.
+.SH DESCRIPTION
+.rs
+.sp
+This is a convenience function for extracting a captured substring by name. The
+arguments are:
+.sp
+  \fIcode\fP          Compiled pattern
+  \fIsubject\fP       Subject that has been successfully matched
+  \fIovector\fP       Offset vector that \fBpcre[16|32]_exec()\fP used
+  \fIstringcount\fP   Value returned by \fBpcre[16|32]_exec()\fP
+  \fIstringname\fP    Name of the required substring
+  \fIstringptr\fP     Where to put the string pointer
+.sp
+The memory in which the substring is placed is obtained by calling
+\fBpcre[16|32]_malloc()\fP. The convenience function
+\fBpcre[16|32]_free_substring()\fP can be used to free it when it is no longer
+needed. The yield of the function is the length of the extracted substring,
+PCRE_ERROR_NOMEMORY if sufficient memory could not be obtained, or
+PCRE_ERROR_NOSUBSTRING if the string name is invalid.
+.P
+There is a complete description of the PCRE native API in the
+.\" HREF
+\fBpcreapi\fP
+.\"
+page and a description of the POSIX API in the
+.\" HREF
+\fBpcreposix\fP
+.\"
+page.

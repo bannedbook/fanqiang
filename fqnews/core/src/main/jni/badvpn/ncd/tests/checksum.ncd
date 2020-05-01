@@ -1,0 +1,9 @@
+process main {
+    var(@checksum(@inverted_sum_bytes, "")) x;
+    assert(@val_equal(x, "255"));
+    
+    var(@checksum(@inverted_sum_bytes, "\x01\x02\xFF")) x;
+    assert(@val_equal(x, "253"));
+    
+    exit("0");
+}

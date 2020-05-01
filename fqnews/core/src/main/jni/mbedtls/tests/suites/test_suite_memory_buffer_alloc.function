@@ -1,0 +1,261 @@
+/* BEGIN_HEADER */
+#include "mbedtls/memory_buffer_alloc.h"
+#define TEST_SUITE_MEMORY_BUFFER_ALLOC
+
+/* END_HEADER */
+
+/* BEGIN_DEPENDENCIES
+ * depends_on:MBEDTLS_MEMORY_BUFFER_ALLOC_C
+ * END_DEPENDENCIES
+ */
+
+/* BEGIN_SUITE_HELPERS */
+static int check_pointer( void *p )
+{
+    if( p == NULL )
+        return( -1 );
+
+    if( (size_t) p % MBEDTLS_MEMORY_ALIGN_MULTIPLE != 0 )
+        return( -1 );
+
+    return( 0 );
+}
+/* END_SUITE_HELPERS */
+
+/* BEGIN_CASE depends_on:MBEDTLS_SELF_TEST */
+void mbedtls_memory_buffer_alloc_self_test(  )
+{
+    TEST_ASSERT( mbedtls_memory_buffer_alloc_self_test( 1 ) == 0 );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_MEMORY_DEBUG */
+void memory_buffer_alloc_free_alloc( int a_bytes, int b_bytes, int c_bytes,
+                                     int d_bytes, int free_a, int free_b,
+                                     int free_c, int free_d, int e_bytes,
+                                     int f_bytes )
+{
+    unsigned char buf[1024];
+    unsigned char *ptr_a = NULL, *ptr_b = NULL, *ptr_c = NULL, *ptr_d = NULL,
+                    *ptr_e = NULL, *ptr_f = NULL;
+
+    size_t reported_blocks;
+    size_t allocated_bytes = 0, reported_bytes;
+
+    mbedtls_memory_buffer_alloc_init( buf, sizeof( buf ) );
+
+    mbedtls_memory_buffer_set_verify( MBEDTLS_MEMORY_VERIFY_ALWAYS );
+
+    if( a_bytes > 0 )
+    {
+        ptr_a = mbedtls_calloc( a_bytes, sizeof(char) );
+        TEST_ASSERT( check_pointer( ptr_a ) == 0 );
+
+        allocated_bytes += a_bytes * sizeof(char);
+    }
+
+    if( b_bytes > 0 )
+    {
+        ptr_b = mbedtls_calloc( b_bytes, sizeof(char) );
+        TEST_ASSERT( check_pointer( ptr_b ) == 0 );
+
+        allocated_bytes += b_bytes * sizeof(char);
+    }
+
+    if( c_bytes > 0 )
+    {
+        ptr_c = mbedtls_calloc( c_bytes, sizeof(char) );
+        TEST_ASSERT( check_pointer( ptr_c ) == 0 );
+
+        allocated_bytes += c_bytes * sizeof(char);
+    }
+
+    if( d_bytes > 0 )
+    {
+        ptr_d = mbedtls_calloc( d_bytes, sizeof(char) );
+        TEST_ASSERT( check_pointer( ptr_d ) == 0 );
+
+        allocated_bytes += d_bytes * sizeof(char);
+    }
+
+    mbedtls_memory_buffer_alloc_cur_get( &reported_bytes, &reported_blocks );
+    TEST_ASSERT( reported_bytes == allocated_bytes );
+
+    if( free_a )
+    {
+        mbedtls_free( ptr_a );
+        ptr_a = NULL;
+        TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+
+        allocated_bytes -= a_bytes * sizeof(char);
+    }
+
+    if( free_b )
+    {
+        mbedtls_free( ptr_b );
+        ptr_b = NULL;
+        TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+
+        allocated_bytes -= b_bytes * sizeof(char);
+    }
+
+    if( free_c )
+    {
+        mbedtls_free( ptr_c );
+        ptr_c = NULL;
+        TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+
+        allocated_bytes -= c_bytes * sizeof(char);
+    }
+
+    if( free_d )
+    {
+        mbedtls_free( ptr_d );
+        ptr_d = NULL;
+        TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+
+        allocated_bytes -= d_bytes * sizeof(char);
+    }
+
+    mbedtls_memory_buffer_alloc_cur_get( &reported_bytes, &reported_blocks );
+    TEST_ASSERT( reported_bytes == allocated_bytes );
+
+    if( e_bytes > 0 )
+    {
+        ptr_e = mbedtls_calloc( e_bytes, sizeof(char) );
+        TEST_ASSERT( check_pointer( ptr_e ) == 0 );
+    }
+
+    if( f_bytes > 0 )
+    {
+        ptr_f = mbedtls_calloc( f_bytes, sizeof(char) );
+        TEST_ASSERT( check_pointer( ptr_f ) == 0 );
+    }
+
+    /* Once blocks are reallocated, the block allocated to the memory request
+     * may be bigger than the request itself, which is indicated by the reported
+     * bytes, and makes it hard to know what the reported size will be, so
+     * we don't check the size after blocks have been reallocated. */
+
+    if( ptr_a != NULL )
+    {
+        mbedtls_free( ptr_a );
+        ptr_a = NULL;
+        TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+    }
+
+    if( ptr_b != NULL )
+    {
+        mbedtls_free( ptr_b );
+        ptr_b = NULL;
+        TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+    }
+
+    if( ptr_c != NULL )
+    {
+        mbedtls_free( ptr_c );
+        ptr_c = NULL;
+        TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+    }
+
+    if( ptr_d != NULL )
+    {
+        mbedtls_free( ptr_d );
+        ptr_d = NULL;
+        TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+    }
+
+    if( ptr_e != NULL )
+    {
+        mbedtls_free( ptr_e );
+        ptr_e = NULL;
+        TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+    }
+
+    if( ptr_f != NULL )
+    {
+        mbedtls_free( ptr_f );
+        ptr_f = NULL;
+    }
+
+    mbedtls_memory_buffer_alloc_cur_get( &reported_bytes, &reported_blocks );
+    TEST_ASSERT( reported_bytes == 0 );
+
+    TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+
+exit:
+    mbedtls_memory_buffer_alloc_free( );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_MEMORY_DEBUG */
+void memory_buffer_alloc_oom_test(  )
+{
+    unsigned char buf[1024];
+    unsigned char *ptr_a = NULL, *ptr_b = NULL, *ptr_c = NULL;
+    size_t reported_blocks, reported_bytes;
+
+    (void)ptr_c;
+
+    mbedtls_memory_buffer_alloc_init( buf, sizeof( buf ) );
+
+    mbedtls_memory_buffer_set_verify( MBEDTLS_MEMORY_VERIFY_ALWAYS );
+
+    ptr_a = mbedtls_calloc( 432, sizeof(char) );
+    TEST_ASSERT( check_pointer( ptr_a ) == 0 );
+
+    ptr_b = mbedtls_calloc( 432, sizeof(char) );
+    TEST_ASSERT( check_pointer( ptr_b ) == 0 );
+
+    ptr_c = mbedtls_calloc( 431, sizeof(char) );
+    TEST_ASSERT( ptr_c == NULL );
+
+    mbedtls_memory_buffer_alloc_cur_get( &reported_bytes, &reported_blocks );
+    TEST_ASSERT( reported_bytes >= 864 && reported_bytes <= sizeof(buf) );
+
+    mbedtls_free( ptr_a );
+    ptr_a = NULL;
+    TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+
+    mbedtls_free( ptr_b );
+    ptr_b = NULL;
+    TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+
+    mbedtls_memory_buffer_alloc_cur_get( &reported_bytes, &reported_blocks );
+    TEST_ASSERT( reported_bytes == 0 );
+
+    TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+
+exit:
+    mbedtls_memory_buffer_alloc_free( );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_MEMORY_DEBUG */
+void memory_buffer_small_buffer( )
+{
+    unsigned char buf[1];
+
+    mbedtls_memory_buffer_alloc_init( buf, sizeof( buf ) );
+    TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() != 0 );
+}
+/* END_CASE */
+
+/* BEGIN_CASE depends_on:MBEDTLS_MEMORY_DEBUG */
+void memory_buffer_underalloc( )
+{
+    unsigned char buf[100];
+    size_t i;
+
+    mbedtls_memory_buffer_alloc_init( buf, sizeof( buf ) );
+    for( i = 1; i < MBEDTLS_MEMORY_ALIGN_MULTIPLE; i++ )
+    {
+        TEST_ASSERT( mbedtls_calloc( 1,
+                     (size_t)-( MBEDTLS_MEMORY_ALIGN_MULTIPLE - i ) ) == NULL );
+        TEST_ASSERT( mbedtls_memory_buffer_alloc_verify() == 0 );
+    }
+
+exit:
+    mbedtls_memory_buffer_alloc_free();
+}
+/* END_CASE */

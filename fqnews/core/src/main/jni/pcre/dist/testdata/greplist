@@ -1,0 +1,7 @@
+This is a file of patterns for testing the -f option. Don't include any blank
+lines because they will match everything! This is no longer true, so have one.
+
+pattern
+line by itself
+
+End of the list of patterns.

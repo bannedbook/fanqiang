@@ -1,0 +1,10 @@
+{
+    "server":"127.0.0.1",
+    "server_port":8389,
+    "local_port":1081,
+    "password":"salsa20_password",
+    "timeout":60,
+    "method":"chacha20-ietf-poly1305",
+    "local":"127.0.0.1",
+    "fast_open":false
+}

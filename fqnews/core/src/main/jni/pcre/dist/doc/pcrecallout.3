@@ -1,0 +1,255 @@
+.TH PCRECALLOUT 3 "12 November 2013" "PCRE 8.34"
+.SH NAME
+PCRE - Perl-compatible regular expressions
+.SH SYNOPSIS
+.rs
+.sp
+.B #include <pcre.h>
+.PP
+.SM
+.B int (*pcre_callout)(pcre_callout_block *);
+.PP
+.B int (*pcre16_callout)(pcre16_callout_block *);
+.PP
+.B int (*pcre32_callout)(pcre32_callout_block *);
+.
+.SH DESCRIPTION
+.rs
+.sp
+PCRE provides a feature called "callout", which is a means of temporarily
+passing control to the caller of PCRE in the middle of pattern matching. The
+caller of PCRE provides an external function by putting its entry point in the
+global variable \fIpcre_callout\fP (\fIpcre16_callout\fP for the 16-bit
+library, \fIpcre32_callout\fP for the 32-bit library). By default, this
+variable contains NULL, which disables all calling out.
+.P
+Within a regular expression, (?C) indicates the points at which the external
+function is to be called. Different callout points can be identified by putting
+a number less than 256 after the letter C. The default value is zero.
+For example, this pattern has two callout points:
+.sp
+  (?C1)abc(?C2)def
+.sp
+If the PCRE_AUTO_CALLOUT option bit is set when a pattern is compiled, PCRE
+automatically inserts callouts, all with number 255, before each item in the
+pattern. For example, if PCRE_AUTO_CALLOUT is used with the pattern
+.sp
+  A(\ed{2}|--)
+.sp
+it is processed as if it were
+.sp
+(?C255)A(?C255)((?C255)\ed{2}(?C255)|(?C255)-(?C255)-(?C255))(?C255)
+.sp
+Notice that there is a callout before and after each parenthesis and
+alternation bar. If the pattern contains a conditional group whose condition is
+an assertion, an automatic callout is inserted immediately before the
+condition. Such a callout may also be inserted explicitly, for example:
+.sp
+  (?(?C9)(?=a)ab|de)
+.sp
+This applies only to assertion conditions (because they are themselves
+independent groups).
+.P
+Automatic callouts can be used for tracking the progress of pattern matching.
+The
+.\" HREF
+\fBpcretest\fP
+.\"
+program has a pattern qualifier (/C) that sets automatic callouts; when it is
+used, the output indicates how the pattern is being matched. This is useful
+information when you are trying to optimize the performance of a particular
+pattern.
+.
+.
+.SH "MISSING CALLOUTS"
+.rs
+.sp
+You should be aware that, because of optimizations in the way PCRE compiles and
+matches patterns, callouts sometimes do not happen exactly as you might expect.
+.P
+At compile time, PCRE "auto-possessifies" repeated items when it knows that
+what follows cannot be part of the repeat. For example, a+[bc] is compiled as
+if it were a++[bc]. The \fBpcretest\fP output when this pattern is anchored and
+then applied with automatic callouts to the string "aaaa" is:
+.sp
+  --->aaaa
+   +0 ^        ^
+   +1 ^        a+
+   +3 ^   ^    [bc]
+  No match
+.sp
+This indicates that when matching [bc] fails, there is no backtracking into a+
+and therefore the callouts that would be taken for the backtracks do not occur.
+You can disable the auto-possessify feature by passing PCRE_NO_AUTO_POSSESS
+to \fBpcre_compile()\fP, or starting the pattern with (*NO_AUTO_POSSESS). If
+this is done in \fBpcretest\fP (using the /O qualifier), the output changes to
+this:
+.sp
+  --->aaaa
+   +0 ^        ^
+   +1 ^        a+
+   +3 ^   ^    [bc]
+   +3 ^  ^     [bc]
+   +3 ^ ^      [bc]
+   +3 ^^       [bc]
+  No match
+.sp
+This time, when matching [bc] fails, the matcher backtracks into a+ and tries
+again, repeatedly, until a+ itself fails.
+.P
+Other optimizations that provide fast "no match" results also affect callouts.
+For example, if the pattern is
+.sp
+  ab(?C4)cd
+.sp
+PCRE knows that any matching string must contain the letter "d". If the subject
+string is "abyz", the lack of "d" means that matching doesn't ever start, and
+the callout is never reached. However, with "abyd", though the result is still
+no match, the callout is obeyed.
+.P
+If the pattern is studied, PCRE knows the minimum length of a matching string,
+and will immediately give a "no match" return without actually running a match
+if the subject is not long enough, or, for unanchored patterns, if it has
+been scanned far enough.
+.P
+You can disable these optimizations by passing the PCRE_NO_START_OPTIMIZE
+option to the matching function, or by starting the pattern with
+(*NO_START_OPT). This slows down the matching process, but does ensure that
+callouts such as the example above are obeyed.
+.
+.
+.SH "THE CALLOUT INTERFACE"
+.rs
+.sp
+During matching, when PCRE reaches a callout point, the external function
+defined by \fIpcre_callout\fP or \fIpcre[16|32]_callout\fP is called (if it is
+set). This applies to both normal and DFA matching. The only argument to the
+callout function is a pointer to a \fBpcre_callout\fP or
+\fBpcre[16|32]_callout\fP block. These structures contains the following
+fields:
+.sp
+  int           \fIversion\fP;
+  int           \fIcallout_number\fP;
+  int          *\fIoffset_vector\fP;
+  const char   *\fIsubject\fP;           (8-bit version)
+  PCRE_SPTR16   \fIsubject\fP;           (16-bit version)
+  PCRE_SPTR32   \fIsubject\fP;           (32-bit version)
+  int           \fIsubject_length\fP;
+  int           \fIstart_match\fP;
+  int           \fIcurrent_position\fP;
+  int           \fIcapture_top\fP;
+  int           \fIcapture_last\fP;
+  void         *\fIcallout_data\fP;
+  int           \fIpattern_position\fP;
+  int           \fInext_item_length\fP;
+  const unsigned char *\fImark\fP;       (8-bit version)
+  const PCRE_UCHAR16  *\fImark\fP;       (16-bit version)
+  const PCRE_UCHAR32  *\fImark\fP;       (32-bit version)
+.sp
+The \fIversion\fP field is an integer containing the version number of the
+block format. The initial version was 0; the current version is 2. The version
+number will change again in future if additional fields are added, but the
+intention is never to remove any of the existing fields.
+.P
+The \fIcallout_number\fP field contains the number of the callout, as compiled
+into the pattern (that is, the number after ?C for manual callouts, and 255 for
+automatically generated callouts).
+.P
+The \fIoffset_vector\fP field is a pointer to the vector of offsets that was
+passed by the caller to the matching function. When \fBpcre_exec()\fP or
+\fBpcre[16|32]_exec()\fP is used, the contents can be inspected, in order to
+extract substrings that have been matched so far, in the same way as for
+extracting substrings after a match has completed. For the DFA matching
+functions, this field is not useful.
+.P
+The \fIsubject\fP and \fIsubject_length\fP fields contain copies of the values
+that were passed to the matching function.
+.P
+The \fIstart_match\fP field normally contains the offset within the subject at
+which the current match attempt started. However, if the escape sequence \eK
+has been encountered, this value is changed to reflect the modified starting
+point. If the pattern is not anchored, the callout function may be called
+several times from the same point in the pattern for different starting points
+in the subject.
+.P
+The \fIcurrent_position\fP field contains the offset within the subject of the
+current match pointer.
+.P
+When the \fBpcre_exec()\fP or \fBpcre[16|32]_exec()\fP is used, the
+\fIcapture_top\fP field contains one more than the number of the highest
+numbered captured substring so far. If no substrings have been captured, the
+value of \fIcapture_top\fP is one. This is always the case when the DFA
+functions are used, because they do not support captured substrings.
+.P
+The \fIcapture_last\fP field contains the number of the most recently captured
+substring. However, when a recursion exits, the value reverts to what it was
+outside the recursion, as do the values of all captured substrings. If no
+substrings have been captured, the value of \fIcapture_last\fP is -1. This is
+always the case for the DFA matching functions.
+.P
+The \fIcallout_data\fP field contains a value that is passed to a matching
+function specifically so that it can be passed back in callouts. It is passed
+in the \fIcallout_data\fP field of a \fBpcre_extra\fP or \fBpcre[16|32]_extra\fP
+data structure. If no such data was passed, the value of \fIcallout_data\fP in
+a callout block is NULL. There is a description of the \fBpcre_extra\fP
+structure in the
+.\" HREF
+\fBpcreapi\fP
+.\"
+documentation.
+.P
+The \fIpattern_position\fP field is present from version 1 of the callout
+structure. It contains the offset to the next item to be matched in the pattern
+string.
+.P
+The \fInext_item_length\fP field is present from version 1 of the callout
+structure. It contains the length of the next item to be matched in the pattern
+string. When the callout immediately precedes an alternation bar, a closing
+parenthesis, or the end of the pattern, the length is zero. When the callout
+precedes an opening parenthesis, the length is that of the entire subpattern.
+.P
+The \fIpattern_position\fP and \fInext_item_length\fP fields are intended to
+help in distinguishing between different automatic callouts, which all have the
+same callout number. However, they are set for all callouts.
+.P
+The \fImark\fP field is present from version 2 of the callout structure. In
+callouts from \fBpcre_exec()\fP or \fBpcre[16|32]_exec()\fP it contains a
+pointer to the zero-terminated name of the most recently passed (*MARK),
+(*PRUNE), or (*THEN) item in the match, or NULL if no such items have been
+passed. Instances of (*PRUNE) or (*THEN) without a name do not obliterate a
+previous (*MARK). In callouts from the DFA matching functions this field always
+contains NULL.
+.
+.
+.SH "RETURN VALUES"
+.rs
+.sp
+The external callout function returns an integer to PCRE. If the value is zero,
+matching proceeds as normal. If the value is greater than zero, matching fails
+at the current point, but the testing of other matching possibilities goes
+ahead, just as if a lookahead assertion had failed. If the value is less than
+zero, the match is abandoned, the matching function returns the negative value.
+.P
+Negative values should normally be chosen from the set of PCRE_ERROR_xxx
+values. In particular, PCRE_ERROR_NOMATCH forces a standard "no match" failure.
+The error number PCRE_ERROR_CALLOUT is reserved for use by callout functions;
+it will never be used by PCRE itself.
+.
+.
+.SH AUTHOR
+.rs
+.sp
+.nf
+Philip Hazel
+University Computing Service
+Cambridge CB2 3QH, England.
+.fi
+.
+.
+.SH REVISION
+.rs
+.sp
+.nf
+Last updated: 12 November 2013
+Copyright (c) 1997-2013 University of Cambridge.
+.fi

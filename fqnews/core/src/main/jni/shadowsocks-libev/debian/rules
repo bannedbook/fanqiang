@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+# Security Hardening
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+override_dh_auto_install:
+	find src/ -name '*.la' -delete
+	dh_auto_install
+
+override_dh_auto_configure:
+	# Whether to have stack-protector is decided by dpkg-buildflags.
+	# So --disable-ssp here should be safe. See Bug#829498
+	dh_auto_configure -- \
+		--enable-shared \
+		--disable-ssp
+
+override_dh_installchangelogs:
+	dh_installchangelogs -XChanges
+
+%:
+	dh $@

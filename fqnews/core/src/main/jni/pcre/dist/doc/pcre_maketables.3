@@ -1,0 +1,33 @@
+.TH PCRE_MAKETABLES 3 "24 June 2012" "PCRE 8.30"
+.SH NAME
+PCRE - Perl-compatible regular expressions
+.SH SYNOPSIS
+.rs
+.sp
+.B #include <pcre.h>
+.PP
+.SM
+.B const unsigned char *pcre_maketables(void);
+.PP
+.B const unsigned char *pcre16_maketables(void);
+.PP
+.B const unsigned char *pcre32_maketables(void);
+.
+.SH DESCRIPTION
+.rs
+.sp
+This function builds a set of character tables for character values less than
+256. These can be passed to \fBpcre[16|32]_compile()\fP to override PCRE's
+internal, built-in tables (which were made by \fBpcre[16|32]_maketables()\fP when
+PCRE was compiled). You might want to do this if you are using a non-standard
+locale. The function yields a pointer to the tables.
+.P
+There is a complete description of the PCRE native API in the
+.\" HREF
+\fBpcreapi\fP
+.\"
+page and a description of the POSIX API in the
+.\" HREF
+\fBpcreposix\fP
+.\"
+page.

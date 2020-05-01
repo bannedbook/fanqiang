@@ -1,0 +1,39 @@
+Public key write check RSA
+depends_on:MBEDTLS_RSA_C:MBEDTLS_BASE64_C
+pk_write_pubkey_check:"data_files/server1.pubkey"
+
+Public key write check RSA 4096
+depends_on:MBEDTLS_RSA_C:MBEDTLS_BASE64_C
+pk_write_pubkey_check:"data_files/rsa4096_pub.pem"
+
+Public key write check EC 192 bits
+depends_on:MBEDTLS_ECP_C:MBEDTLS_BASE64_C:MBEDTLS_ECP_DP_SECP192R1_ENABLED
+pk_write_pubkey_check:"data_files/ec_pub.pem"
+
+Public key write check EC 521 bits
+depends_on:MBEDTLS_ECP_C:MBEDTLS_BASE64_C:MBEDTLS_ECP_DP_SECP521R1_ENABLED
+pk_write_pubkey_check:"data_files/ec_521_pub.pem"
+
+Public key write check EC Brainpool 512 bits
+depends_on:MBEDTLS_ECP_C:MBEDTLS_BASE64_C:MBEDTLS_ECP_DP_BP512R1_ENABLED
+pk_write_pubkey_check:"data_files/ec_bp512_pub.pem"
+
+Private key write check RSA
+depends_on:MBEDTLS_RSA_C:MBEDTLS_BASE64_C
+pk_write_key_check:"data_files/server1.key"
+
+Private key write check RSA 4096
+depends_on:MBEDTLS_RSA_C:MBEDTLS_BASE64_C
+pk_write_key_check:"data_files/rsa4096_prv.pem"
+
+Private key write check EC 192 bits
+depends_on:MBEDTLS_ECP_C:MBEDTLS_BASE64_C:MBEDTLS_ECP_DP_SECP192R1_ENABLED
+pk_write_key_check:"data_files/ec_prv.sec1.pem"
+
+Private key write check EC 521 bits
+depends_on:MBEDTLS_ECP_C:MBEDTLS_BASE64_C:MBEDTLS_ECP_DP_SECP521R1_ENABLED
+pk_write_key_check:"data_files/ec_521_prv.pem"
+
+Private key write check EC Brainpool 512 bits
+depends_on:MBEDTLS_ECP_C:MBEDTLS_BASE64_C:MBEDTLS_ECP_DP_BP512R1_ENABLED
+pk_write_key_check:"data_files/ec_bp512_prv.pem"

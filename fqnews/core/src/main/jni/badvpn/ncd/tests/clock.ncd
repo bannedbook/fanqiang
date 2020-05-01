@@ -1,0 +1,11 @@
+process main {
+    var(@clock_get_ms()) t0;
+    backtrack_point() again;
+    var(@clock_get_ms()) t1;
+    assert(@num_greater_equal(t1, t0));
+    If (@num_equal(t1, t0)) {
+        again->go();
+    };
+    
+    exit("0");
+}

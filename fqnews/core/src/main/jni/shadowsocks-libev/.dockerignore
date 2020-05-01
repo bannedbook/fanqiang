@@ -1,0 +1,27 @@
+# General
+.dockerignore
+.git
+.gitmodules
+.gitignore
+.github
+AUTHORS
+Changes
+COPYING
+INSTALL
+LICENSE
+README.md
+
+# Code formatting
+.uncrustify.cfg
+code-format.bat
+code-format.sh
+
+# CI & CD
+.travis.yml
+tests
+
+# OS-specific packaging, etc.
+debian
+scripts/build_deb.sh
+rpm
+completions

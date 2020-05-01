@@ -1,0 +1,166 @@
+/^[\w]+/
+    *** Failers
+No match
+    École
+No match
+
+/^[\w]+/Lfrench
+    École
+ 0: École
+
+/^[\w]+/
+    *** Failers
+No match
+    École
+No match
+
+/^[\W]+/
+    École
+ 0: \xc9
+
+/^[\W]+/Lfrench
+    *** Failers
+ 0: *** 
+    École
+No match
+
+/[\b]/
+    \b
+ 0: \x08
+    *** Failers
+No match
+    a
+No match
+
+/[\b]/Lfrench
+    \b
+ 0: \x08
+    *** Failers
+No match
+    a
+No match
+
+/^\w+/
+    *** Failers
+No match
+    École
+No match
+
+/^\w+/Lfrench
+    École
+ 0: École
+
+/(.+)\b(.+)/
+    École
+ 0: \xc9cole
+ 1: \xc9
+ 2: cole
+
+/(.+)\b(.+)/Lfrench
+    *** Failers
+ 0: *** Failers
+ 1: *** 
+ 2: Failers
+    École
+No match
+
+/École/i
+    École
+ 0: \xc9cole
+    *** Failers
+No match
+    école
+No match
+
+/École/iLfrench
+    École
+ 0: École
+    école
+ 0: école
+
+/\w/IS
+Capturing subpattern count = 0
+No options
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: 0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P 
+  Q R S T U V W X Y Z _ a b c d e f g h i j k l m n o p q r s t u v w x y z 
+
+/\w/ISLfrench
+Capturing subpattern count = 0
+No options
+No first char
+No need char
+Subject length lower bound = 1
+Starting chars: 0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P 
+  Q R S T U V W X Y Z _ a b c d e f g h i j k l m n o p q r s t u v w x y z 
+  ƒ Š Œ Ž š œ ž Ÿ ª ² ³ µ ¹ º À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï Ð Ñ Ò Ó Ô Õ Ö 
+  Ø Ù Ú Û Ü Ý Þ ß à á â ã ä å æ ç è é ê ë ì í î ï ð ñ ò ó ô õ ö ø ù ú û ü ý 
+  þ ÿ 
+
+/^[\xc8-\xc9]/iLfrench
+    École
+ 0: É
+    école
+ 0: é
+
+/^[\xc8-\xc9]/Lfrench
+    École
+ 0: É
+    *** Failers 
+No match
+    école
+No match
+
+/\W+/Lfrench
+    >>>\xaa<<<
+ 0: >>>
+    >>>\xba<<< 
+ 0: >>>
+
+/[\W]+/Lfrench
+    >>>\xaa<<<
+ 0: >>>
+    >>>\xba<<< 
+ 0: >>>
+
+/[^[:alpha:]]+/Lfrench
+    >>>\xaa<<<
+ 0: >>>
+    >>>\xba<<< 
+ 0: >>>
+
+/\w+/Lfrench
+    >>>\xaa<<<
+ 0: ª
+    >>>\xba<<< 
+ 0: º
+
+/[\w]+/Lfrench
+    >>>\xaa<<<
+ 0: ª
+    >>>\xba<<< 
+ 0: º
+
+/[[:alpha:]]+/Lfrench
+    >>>\xaa<<<
+ 0: ª
+    >>>\xba<<< 
+ 0: º
+    
+/[[:alpha:]][[:lower:]][[:upper:]]/DZLfrench 
+------------------------------------------------------------------
+        Bra
+        [A-Za-z\x83\x8a\x8c\x8e\x9a\x9c\x9e\x9f\xaa\xb5\xba\xc0-\xd6\xd8-\xf6\xf8-\xff]
+        [a-z\x83\x9a\x9c\x9e\xaa\xb5\xba\xdf-\xf6\xf8-\xff]
+        [A-Z\x8a\x8c\x8e\x9f\xc0-\xd6\xd8-\xde]
+        Ket
+        End
+------------------------------------------------------------------
+Capturing subpattern count = 0
+No options
+No first char
+No need char
+
+/ End of testinput3 /

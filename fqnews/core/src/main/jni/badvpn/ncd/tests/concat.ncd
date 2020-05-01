@@ -1,0 +1,19 @@
+process main {
+    concat("Hello", "", "World") x;
+    strcmp(x, "HelloWorld") a;
+    assert(a);
+
+    concat("\x00\x00", "\x00") x;
+    strcmp(x, "\x00\x00\x00") a;
+    assert(a);
+
+    concatv({"Hello", "", "World"}) x;
+    strcmp(x, "HelloWorld") a;
+    assert(a);
+
+    concatv({"\x00\x00", "\x00"}) x;
+    strcmp(x, "\x00\x00\x00") a;
+    assert(a);
+
+    exit("0");
+}
