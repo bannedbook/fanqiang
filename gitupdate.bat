@@ -3,6 +3,6 @@ git pull origin master
 git add -A
 git commit -m "update"
 git push origin master
-git tag -a "FQNews-v5.0.6.8" -m "FQNews v5.0.6.8"
+git tag -a "FQNews-v1.0.0" -m "FQNews-v1.0.0"
 git push origin --tags
 pause
