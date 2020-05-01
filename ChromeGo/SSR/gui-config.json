@@ -2,9 +2,9 @@
 	"configs" : [
 		{
 			"remarks" : "",
-			"id" : "5E1CF322D8AEDB692E8EF4A44C5E0AB2",
+			"id" : "840BC665037A34E4C21CD840BB45A061",
 			"server" : "170.178.171.71",
-			"server_port" : 33333,
+			"server_port" : 80,
 			"server_udp_port" : 0,
 			"password" : "dongtaiwang.com",
 			"method" : "rc4",
