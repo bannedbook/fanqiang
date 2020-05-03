@@ -1,5 +1,6 @@
 # 翻墙-科学上网、翻墙工具、翻墙教程项目库。
 <ul >
+    <li class="Box-row"><a href="https://github.com/bannedbook/fanqiang/wiki/%E7%A6%81%E9%97%BB%E7%BD%91%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E6%96%B0%E9%97%BBAPP">安卓翻墙新闻APP(FQNews APP)</a></li>
     <li class="Box-row">
           <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6#JWBrowser">禁闻浏览器（JWBrowser）</a></strong>
         </li>
@@ -15,7 +16,9 @@
         <li class="Box-row">
           <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/XX-Net%E7%BF%BB%E5%A2%99">XX Net翻墙</a></strong>
         </li>
-
+  <li>
+      <strong><a href="https://github.com/fqnews/bnews" class="wiki-page-link">免翻墙：每日热点禁闻</a></strong>
+    </li>
   <li class="Box-row">
           <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md">自建V2ray服务器翻墙简明教程</a></strong>
         </li>
