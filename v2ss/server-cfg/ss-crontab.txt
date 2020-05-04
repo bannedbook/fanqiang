@@ -9,17 +9,6 @@
 58 3 * * * > /var/log/btmp
 58 4 * * * /usr/bin/rm /var/log/*.gz
 58 5 * * * /usr/bin/rm /var/log/*.1
-28 4 * * * /etc/init.d/shadowsocks-libev restart
+*/120 * * * * /etc/init.d/shadowsocks-libev restart
 * * * * * bash /etc/shadowsocks-libev/ss_nginx_check.sh
-* * * * * sleep 5; bash /etc/shadowsocks-libev/ss_nginx_check.sh
-* * * * * sleep 10; bash /etc/shadowsocks-libev/ss_nginx_check.sh
-* * * * * sleep 15; bash /etc/shadowsocks-libev/ss_nginx_check.sh
-* * * * * sleep 20; bash /etc/shadowsocks-libev/ss_nginx_check.sh
-* * * * * sleep 25; bash /etc/shadowsocks-libev/ss_nginx_check.sh
-* * * * * sleep 30; bash /etc/shadowsocks-libev/ss_nginx_check.sh
-* * * * * sleep 35; bash /etc/shadowsocks-libev/ss_nginx_check.sh
-* * * * * sleep 40; bash /etc/shadowsocks-libev/ss_nginx_check.sh
-* * * * * sleep 45; bash /etc/shadowsocks-libev/ss_nginx_check.sh
-* * * * * sleep 50; bash /etc/shadowsocks-libev/ss_nginx_check.sh
-* * * * * sleep 55; bash /etc/shadowsocks-libev/ss_nginx_check.sh
 
