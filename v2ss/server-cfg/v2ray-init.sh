@@ -19,4 +19,8 @@ wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cf
 wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cfg/resolv.conf  -O -> resolv.conf
 cp resolv.conf /etc/resolv.conf
 service v2ray start
-cat /etc/v2ray/config.json
+apt-get -y install nginx
+wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cfg/v2ss-nginx.conf  -O -> /etc/nginx/nginx.conf
+nginx -t
+nginx -s reload
+
