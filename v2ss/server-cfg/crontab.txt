@@ -9,8 +9,8 @@
 */1 * * * * > /var/log/messages
 58 2 * * * > /var/log/auth.log
 58 3 * * * > /var/log/btmp
-58 4 * * * /usr/bin/rm /var/log/*.gz
-58 5 * * * /usr/bin/rm /var/log/*.1
+58 4 * * * rm /var/log/*.gz
+58 5 * * * rm /var/log/*.1
 28 4 * * * /sbin/service v2ray restart
 @reboot /sbin/service v2ray restart
 * * * * * bash /etc/v2ray/v2ray_check.sh
