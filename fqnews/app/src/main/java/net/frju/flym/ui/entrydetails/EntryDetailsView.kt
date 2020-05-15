@@ -101,7 +101,7 @@ class EntryDetailsView @JvmOverloads constructor(context: Context, attrs: Attrib
                 try {
                     if (url.startsWith(FILE_SCHEME)) {
                         val file = File(url.replace(FILE_SCHEME, ""))
-                        val contentUri = getUriForFile(context, "net.frju.flym.fileprovider", file)
+                        val contentUri = getUriForFile(context, "jww.feed.fqnews.fileprovider", file)
                         val intent = Intent(Intent.ACTION_VIEW)
                         intent.setDataAndType(contentUri, "image/jpeg")
                         context.startActivity(intent)

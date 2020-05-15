@@ -115,7 +115,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="net.frju.flym.fileprovider"
+            android:authorities="jww.feed.fqnews.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

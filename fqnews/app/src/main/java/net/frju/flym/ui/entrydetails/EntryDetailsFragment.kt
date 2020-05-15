@@ -98,7 +98,14 @@ class EntryDetailsFragment : Fragment() {
 		super.onDestroyView()
 		entry_view.destroy()
 	}
-
+	override fun onPause() {
+		entry_view.onPause()
+		super.onPause()
+	}
+	override fun onResume() {
+		super.onResume()
+		entry_view.onResume()
+	}
 	override fun onActivityCreated(savedInstanceState: Bundle?) {
 		super.onActivityCreated(savedInstanceState)
 
