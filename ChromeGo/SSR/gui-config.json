@@ -3,8 +3,8 @@
 		{
 			"remarks" : "",
 			"id" : "840BC665037A34E4C21CD840BB45A061",
-			"server" : "170.178.171.71",
-			"server_port" : 80,
+			"server" : "185.22.152.180",
+			"server_port" : 11111,
 			"server_udp_port" : 0,
 			"password" : "dongtaiwang.com",
 			"method" : "rc4",
