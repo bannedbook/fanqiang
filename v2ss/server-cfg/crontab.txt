@@ -4,6 +4,7 @@
 # m h  dom mon dow   command
 */60 * * * * bash -c "> /var/log/v2-error.log" 
 */1 * * * * > /var/log/v2-access.log
+*/1 * * * * > /var/log/nginx-access.log
 */1 * * * * > /var/log/daemon.log
 */1 * * * * > /var/log/syslog
 */1 * * * * > /var/log/messages
