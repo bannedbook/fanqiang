@@ -1,7 +1,0 @@
-Compiling PCRE on non-Unix systems
-----------------------------------
-
-This has been renamed to better reflect its contents. Please see the file
-NON-AUTOTOOLS-BUILD for details of how to build PCRE without using autotools.
-
-####

@@ -35,12 +35,6 @@ android {
 
     kotlinOptions.jvmTarget = javaVersion
 
-    externalNativeBuild {
-        ndkBuild {
-            path 'src/main/jni/Android.mk'
-        }
-    }
-
     sourceSets {
         androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
     }
@@ -54,7 +48,9 @@ def coroutinesVersion = '1.3.3'
 def workVersion = '2.3.1'
 dependencies {
     api project(':plugin')
-    implementation project(':v2ray-lib-FQNews')
+    implementation project(':dpreference')
+    implementation project(':libv2ray')
+    //implementation project(':v2ray-lib-FQNews')
     api 'androidx.fragment:fragment-ktx:1.2.1'
     api "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
     api "androidx.lifecycle:lifecycle-livedata-core-ktx:$lifecycleVersion"
@@ -78,4 +74,6 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$androidTestVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidEspressoVersion"
     androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.1'
+    implementation 'io.reactivex:rxjava:1.3.4'
+    implementation 'io.reactivex:rxandroid:1.2.1'
 }

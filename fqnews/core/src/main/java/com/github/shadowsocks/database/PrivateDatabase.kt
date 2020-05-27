@@ -32,7 +32,7 @@ import com.github.shadowsocks.utils.Key
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Profile::class, KeyValuePair::class, SSRSub::class], version = 30)
+@Database(entities = [Profile::class, KeyValuePair::class, SSRSub::class], version = 31)
 @TypeConverters(Profile.SubscriptionStatus::class)
 abstract class PrivateDatabase : RoomDatabase() {
     companion object {
@@ -43,7 +43,8 @@ abstract class PrivateDatabase : RoomDatabase() {
                         Migration27,
                         Migration28,
                         Migration29,
-                        Migration30
+                        Migration30,
+                        Migration31
                 )
                 allowMainThreadQueries()
                 enableMultiInstanceInvalidation()
@@ -83,5 +84,16 @@ abstract class PrivateDatabase : RoomDatabase() {
     object Migration30 : Migration(29, 30) {
         override fun migrate(database: SupportSQLiteDatabase) =
                 database.execSQL("ALTER TABLE `Profile` ADD COLUMN `elapsed` INTEGER NOT NULL DEFAULT 0")
+    }
+    object Migration31 : Migration(30, 31) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("ALTER TABLE `Profile` ADD COLUMN `profileType` TEXT NOT NULL DEFAULT 'ss'")
+            database.execSQL("ALTER TABLE `Profile` ADD COLUMN `alterId` INTEGER NOT NULL DEFAULT 64")
+            database.execSQL("ALTER TABLE `Profile` ADD COLUMN `network` TEXT NOT NULL DEFAULT 'tcp'")
+            database.execSQL("ALTER TABLE `Profile` ADD COLUMN `headerType` TEXT NOT NULL DEFAULT ''")
+            database.execSQL("ALTER TABLE `Profile` ADD COLUMN `requestHost` TEXT NOT NULL DEFAULT ''")
+            database.execSQL("ALTER TABLE `Profile` ADD COLUMN `path` TEXT NOT NULL DEFAULT ''")
+            database.execSQL("ALTER TABLE `Profile` ADD COLUMN `streamSecurity` TEXT NOT NULL DEFAULT ''")
+        }
     }
 }

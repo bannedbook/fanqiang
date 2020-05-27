@@ -49,7 +49,7 @@ class SplashActivity : AppCompatActivity() {
 
         localBroadcastManager!!.registerReceiver(object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
-                Log.e("onReceive1", SystemClock.elapsedRealtime().toString()+" set dataLoadingComplete to true")
+                //Log.e("onReceive1", SystemClock.elapsedRealtime().toString()+" set dataLoadingComplete to true")
                 dataLoadingComplete = true
             }
         }, IntentFilter(VpnEncrypt.ACTION_PROXY_START_COMPLETE))
@@ -63,7 +63,7 @@ class SplashActivity : AppCompatActivity() {
                 }
             }, IntentFilter(VpnEncrypt.ACTION_PROXY_START_COMPLETE))
 
-            Log.e("dataLoadingComplete",SystemClock.elapsedRealtime().toString()+" "+dataLoadingComplete.toString())
+            //Log.e("dataLoadingComplete",SystemClock.elapsedRealtime().toString()+" "+dataLoadingComplete.toString())
             if (dataLoadingComplete) {
                 localBroadcastManager!!.sendBroadcast(Intent(VpnEncrypt.ACTION_PROXY_START_COMPLETE))
             }

@@ -195,14 +195,14 @@
     <string name="auto_update_servers">"自动更新服务器"</string>
     <string name="auto_update_servers_summary">"应用启动后自动更新VPN服务器"</string>
     <string name = "get_free_servers">启用第三方服务器</string>
-    <string name = "get_free_servers_summary">从网络抓取第三方免费服务器，安全性未知</string>
+    <string name = "get_free_servers_summary">抓取网络上的免费服务器，安全性未知</string>
     <string name="title_ping_all_server">测试全部配置Tcping</string>
     <string name="title_real_ping_all_server">测试全部配置真连接</string>
     <string name="title_retest_invalid_servers">再测无效服务器</string>
     <string name="title_remove_invalid_servers">删除无效/按组排序</string>
     <string name="title_sort_servers_by_speed">按测速结果排序</string>
     <string name="toast_test_ended">啊!测试结束啦!</string>
-    <string name="toast_test_interrupted">"服务器：%s或前一个服务器导致测试中断，请检查之。并请确保安装了simple-obfs插件"</string>
+    <string name="toast_test_interrupted">"服务器：%s或前一个服务器导致测试中断，请检查/刪除之"</string>
     <string name="recommended_site_1">"<![CDATA[
 <html xmlns='http://www.w3.org/1999/xhtml' dir='ltr' lang='zh-CN'>
 <head profile='http://gmpg.org/xfn/11'>

@@ -1,8 +1,0 @@
-#!/bin/sh
-
-export ROOT="<root>"
-export MINGW="/home/<user>/mingw/cross_win32"
-
-export PATH="$MINGW/bin:$PATH"
-
-exec /usr/bin/cmake -DCMAKE_TOOLCHAIN_FILE="$ROOT/toolchain.cmake" "$@"

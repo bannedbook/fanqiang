@@ -1,3 +1,0 @@
-strict digraph bdd {
-    t1 [shape=box, label=1];
-}

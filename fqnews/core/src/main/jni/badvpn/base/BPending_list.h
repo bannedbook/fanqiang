@@ -1,4 +1,0 @@
-#define SLINKEDLIST_PARAM_NAME BPending__List
-#define SLINKEDLIST_PARAM_FEATURE_LAST 0
-#define SLINKEDLIST_PARAM_TYPE_ENTRY struct BSmallPending_s
-#define SLINKEDLIST_PARAM_MEMBER_NODE pending_node

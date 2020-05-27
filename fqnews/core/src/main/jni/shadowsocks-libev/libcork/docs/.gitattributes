@@ -1,2 +1,0 @@
-*.graffle      -diff -whitespace
-/*.[1-9]       -diff -whitespace

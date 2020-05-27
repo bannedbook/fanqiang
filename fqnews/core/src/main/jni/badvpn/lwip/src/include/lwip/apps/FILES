@@ -1,2 +1,0 @@
-This directory contains application headers.
-Every application shall provide one api file APP.h and optionally one options file APP_opts.h

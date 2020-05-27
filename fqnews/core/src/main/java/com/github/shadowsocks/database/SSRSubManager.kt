@@ -234,20 +234,14 @@ object SSRSubManager {
         try {
             val response = getResponse(url,"aes")
             var limit = -1
-            val ssrProfiles = Profile.findAllSSRUrls(response, Core.currentProfile?.first)
-            val ssPofiles = Profile.findAllSSUrls(response, Core.currentProfile?.first)
-            var profiles:List<Profile>? = null
-            if(ssrProfiles!=null && ssPofiles!=null) {
-                ssrProfiles.addAll(ssPofiles)
-                profiles=ssrProfiles.toList()
-            }
-            else if(ssPofiles==null) {
-                profiles = ssrProfiles.toList()
-            }
-            else {
-                profiles = ssPofiles.toList()
-            }
-
+            var profilesSet:MutableSet<Profile> = LinkedHashSet<Profile>()
+            //val ssrProfiles = Profile.findAllSSRUrls(response, Core.currentProfile?.first)
+            //val ssPofiles = Profile.findAllSSUrls(response, Core.currentProfile?.first)
+            val v2Profiles= Profile.findAllVmessUrls(response, Core.currentProfile?.first)
+            //profilesSet.addAll(ssPofiles)
+            //profilesSet.addAll(ssrProfiles)
+            profilesSet.addAll(v2Profiles)
+            var profiles:List<Profile>? = profilesSet.toList()
             if (profiles.isNullOrEmpty()) return null
             val new = SSRSub(url = url, url_group = VpnEncrypt.vpnGroupName)
             profiles.forEach { it.url_group = VpnEncrypt.vpnGroupName }

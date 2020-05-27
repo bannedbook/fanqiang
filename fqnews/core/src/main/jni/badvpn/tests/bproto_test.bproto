@@ -1,9 +1,0 @@
-message msg1 {
-    required uint16 a = 5;
-    optional uint32 b = 6;
-    required repeated uint64 c = 7;
-    repeated uint16 d = 8;
-    required uint8 e = 9;
-    required data f = 10;
-    required data("4") g = 11;
-};

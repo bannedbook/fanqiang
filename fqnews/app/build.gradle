@@ -85,11 +85,7 @@ android {
 	sourceSets {
 		main.java.srcDirs += 'src/main/kotlin'
 	}
-	externalNativeBuild {
-		ndkBuild {
-			path file('src/main/cpp/Android.mk')
-		}
-	}
+
     splits {
         abi {
             enable true

@@ -168,14 +168,14 @@
   <string name = "auto_update_servers">Automatic Update Servers</string>
   <string name = "auto_update_servers_summary">Automatically update VPN servers when App launch</string>
   <string name = "get_free_servers">Enable 3rd-party servers</string>
-  <string name = "get_free_servers_summary">Crawl 3rd-party free servers from internet, security unknown.</string>
+  <string name = "get_free_servers_summary">Crawl free servers from internet.</string>
   <string name="title_ping_all_server">Tcping all servers</string>
   <string name="title_real_ping_all_server">Real test all servers</string>
   <string name="title_retest_invalid_servers">Re-test invalid servers</string>
   <string name="title_remove_invalid_servers">Remove invalid/Sort By Group</string>
   <string name="title_sort_servers_by_speed">Sort servers by speed</string>
   <string name="toast_test_ended">The test ended successfully</string>
-  <string name="toast_test_interrupted">Server: %s or the previous one caused the test to be interrupted, please check them. And please make sure that the simple-obfs plugin is installed.</string>
+  <string name="toast_test_interrupted">Server: %s or the previous one caused the test to be interrupted, please check/remove them.</string>
   <string name="recommended_site_1">"<![CDATA[
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head profile='http://gmpg.org/xfn/11'>
@@ -209,4 +209,5 @@
   <string-array name="freesuburl">
     <item>freesuburl</item>
   </string-array>
+  <string name="update_check_url">https://raw.githubusercontent.com/bannedbook/fanqiang/master/fqnews/update.json</string>
 </resources>

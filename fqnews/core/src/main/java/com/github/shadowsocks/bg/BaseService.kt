@@ -119,7 +119,8 @@ object BaseService {
                 repeat(count) {
                     try {
                         work(callbacks.getBroadcastItem(it))
-                    } catch (_: RemoteException) {
+                    } catch (e: RemoteException) {
+                        printLog(e)
                     } catch (e: Exception) {
                         printLog(e)
                     }
@@ -218,8 +219,12 @@ object BaseService {
         fun onBind(intent: Intent): IBinder? = if (intent.action == Action.SERVICE) data.binder else null
 
         fun forceLoad() {
+
             val (profile, fallback) = Core.currentProfile
                     ?: return stopRunner(false, (this as Context).getString(R.string.profile_empty))
+
+            Log.e("reload:",profile.name)
+
             if (profile.host.isEmpty() || profile.password.isEmpty() ||
                     fallback != null && (fallback.host.isEmpty() || fallback.password.isEmpty())) {
                 stopRunner(false, (this as Context).getString(R.string.proxy_empty))
@@ -297,7 +302,10 @@ object BaseService {
                 data.changeState(State.Stopped, msg)
 
                 // stop the service if nothing has bound to it
-                if (restart) startRunner() else {
+                if (restart) {
+                    Log.e("restart","")
+                    startRunner()
+                } else {
                     BootReceiver.enabled = false
                     stopSelf()
                 }

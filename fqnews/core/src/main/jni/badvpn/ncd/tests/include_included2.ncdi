@@ -1,5 +1,0 @@
-include_guard "include_included2"
-
-template incl_tmpl2 {
-    var("good2") x;
-}

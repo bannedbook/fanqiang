@@ -21,6 +21,7 @@
 package com.github.shadowsocks.utils
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.content.*
 import android.content.pm.PackageInfo
 import android.content.res.Resources
@@ -148,3 +149,130 @@ fun printLog(t: Throwable) {
 }
 
 fun Preference.remove() = parent!!.removePreference(this)
+
+/**
+ * parseInt
+ */
+fun parseInt(str: String): Int {
+    try {
+        return Integer.parseInt(str)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        return 0
+    }
+}
+
+/**
+ * package path
+ */
+fun packagePath(context: Context): String {
+    var path = context.filesDir.toString()
+    path = path.replace("files", "")
+    //path += "tun2socks"
+
+    return path
+}
+
+fun isIpv6Address(value: String): Boolean {
+    var addr = value
+    if (addr.indexOf("[") == 0 && addr.lastIndexOf("]") > 0) {
+        addr = addr.drop(1)
+        addr = addr.dropLast(addr.count() - addr.lastIndexOf("]"))
+    }
+    val regV6 = Regex("^((?:[0-9A-Fa-f]{1,4}))?((?::[0-9A-Fa-f]{1,4}))*::((?:[0-9A-Fa-f]{1,4}))?((?::[0-9A-Fa-f]{1,4}))*|((?:[0-9A-Fa-f]{1,4}))((?::[0-9A-Fa-f]{1,4})){7}$")
+    return regV6.matches(addr)
+}
+
+/**
+ * readTextFromAssets
+ */
+fun readTextFromAssets(app: Application, fileName: String): String {
+    val content = app.assets.open(fileName).bufferedReader().use {
+        it.readText()
+    }
+    return content
+}
+
+/**
+ * is ip address
+ */
+fun isIpAddress(value: String): Boolean {
+    try {
+        var addr = value
+        if (addr.isEmpty() || addr.isBlank()) {
+            return false
+        }
+        //CIDR
+        if (addr.indexOf("/") > 0) {
+            val arr = addr.split("/")
+            if (arr.count() == 2 && Integer.parseInt(arr[1]) > 0) {
+                addr = arr[0]
+            }
+        }
+
+        // "::ffff:192.168.173.22"
+        // "[::ffff:192.168.173.22]:80"
+        if (addr.startsWith("::ffff:") && '.' in addr) {
+            addr = addr.drop(7)
+        } else if (addr.startsWith("[::ffff:") && '.' in addr) {
+            addr = addr.drop(8).replace("]", "")
+        }
+
+        // addr = addr.toLowerCase()
+        var octets = addr.split('.').toTypedArray()
+        if (octets.size == 4) {
+            if(octets[3].indexOf(":") > 0) {
+                addr = addr.substring(0, addr.indexOf(":"))
+            }
+            return isIpv4Address(addr)
+        }
+
+        // Ipv6addr [2001:abc::123]:8080
+        return isIpv6Address(addr)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        return false
+    }
+}
+
+fun isIpv4Address(value: String): Boolean {
+    val regV4 = Regex("^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$")
+    return regV4.matches(value)
+}
+
+fun Long.toSpeedString() = toTrafficString() + "/s"
+const val threshold = 1000
+const val divisor = 1024F
+fun Long.toTrafficString(): String {
+    if (this < threshold)
+        return "$this B"
+
+    val kib = this / divisor
+    if (kib < threshold)
+        return "${kib.toShortString()} KB"
+
+    val mib = kib / divisor
+    if (mib < threshold)
+        return "${mib.toShortString()} MB"
+
+    val gib = mib / divisor
+    if (gib < threshold)
+        return "${gib.toShortString()} GB"
+
+    val tib = gib / divisor
+    if (tib < threshold)
+        return "${tib.toShortString()} TB"
+
+    val pib = tib / divisor
+    if (pib < threshold)
+        return "${pib.toShortString()} PB"
+
+    return "∞"
+}
+
+private fun Float.toShortString(): String {
+    val s = toString()
+    if (s.length <= 4)
+        return s
+    return s.substring(0, 4).removeSuffix(".")
+}

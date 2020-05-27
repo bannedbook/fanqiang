@@ -28,6 +28,7 @@ import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.SystemClock
 import android.os.UserManager
@@ -43,8 +44,8 @@ import androidx.work.Configuration
 import androidx.work.WorkManager
 import com.crashlytics.android.Crashlytics
 import com.github.shadowsocks.acl.Acl
-import com.github.shadowsocks.aidl.ShadowsocksConnection
 import com.github.shadowsocks.bg.ProxyService
+import com.github.shadowsocks.bg.V2RayTestService
 import com.github.shadowsocks.core.R
 import com.github.shadowsocks.database.Profile
 import com.github.shadowsocks.database.ProfileManager
@@ -57,6 +58,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
 import io.fabric.sdk.android.Fabric
 import kotlinx.coroutines.*
+import me.dozen.dpreference.DPreference
 import java.io.File
 import java.io.IOException
 import java.net.*
@@ -64,9 +66,9 @@ import kotlin.reflect.KClass
 
 object Core {
     const val TAG = "Core"
-
     lateinit var app: Application
         @VisibleForTesting set
+    val defaultDPreference by lazy { DPreference(app, app.packageName + "_preferences") }
     lateinit var configureIntent: (Context) -> PendingIntent
     val activity by lazy { app.getSystemService<ActivityManager>()!! }
     val connectivity by lazy { app.getSystemService<ConnectivityManager>()!! }
@@ -97,9 +99,58 @@ object Core {
         DataStore.profileId = result.id
         return result
     }
+
+    fun isInternetAvailable(context: Context): Boolean {
+        var result = false
+        val connectivityManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val networkCapabilities = connectivityManager.activeNetwork ?: return false
+            val actNw =
+                    connectivityManager.getNetworkCapabilities(networkCapabilities) ?: return false
+            result = when {
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                else -> false
+            }
+        } else {
+            connectivityManager.run {
+                connectivityManager.activeNetworkInfo?.run {
+                    result = when (type) {
+                        ConnectivityManager.TYPE_WIFI -> true
+                        ConnectivityManager.TYPE_MOBILE -> true
+                        ConnectivityManager.TYPE_ETHERNET -> true
+                        else -> false
+                    }
+
+                }
+            }
+        }
+        return result
+    }
+
+    fun checkLocalProxy(wait:Long=5000L){
+        var ttt = 0
+        while (tcping("127.0.0.1", DataStore.portProxy) < 0 || tcping("127.0.0.1", VpnEncrypt.HTTP_PROXY_PORT) < 0) {
+            if (ttt == 10) break;
+            Thread.sleep(500)
+            ttt++
+        }
+        //Thread.sleep(wait)
+    }
     //Import built-in subscription
     fun pickSingleServer(activity:Activity) = GlobalScope.async{
         Log.e("pickSingleServer ","...")
+
+        if (!isInternetAvailable(app)){
+            Log.e("isConnectedToNetwork ","not")
+            activity.runOnUiThread(){alertMessage("网络不可用仅限离线阅读，连接互联网后，请重起本APP",activity)}
+            Thread.sleep(5_000)
+            LocalBroadcastManager.getInstance(activity).sendBroadcast(Intent(VpnEncrypt.ACTION_PROXY_START_COMPLETE))
+            return@async
+        }
+
         var testMsg="搜索服务器，请稍候"
         activity.runOnUiThread{showMessage(testMsg)}
         var  builtinSubUrls  = app.resources.getStringArray(R.array.builtinSubUrls)
@@ -110,119 +161,66 @@ object Core {
         val profiles = ProfileManager.getAllProfilesByGroup(VpnEncrypt.vpnGroupName) ?: emptyList()
         if (profiles.isNullOrEmpty()) {
             Log.e("------","profiles empty, return@async")
-            activity.runOnUiThread(){alertMessage("网络连接异常，连接互联网后，请重起本APP",activity)}
+            activity.runOnUiThread(){alertMessage("网络连接异常仅限离线阅读，连接互联网后，请重起本APP",activity)}
             Thread.sleep(5_000)
-            LocalBroadcastManager.getInstance(activity).sendBroadcast(Intent(VpnEncrypt.ACTION_INTERNET_FAIL))
-            return@async
-        }
-
-        //testMsg+="."
-        //activity.runOnUiThread(){showMessage(testMsg)}
-
-        val theProfile=profiles.random() //随机取一个，避免集中压力到第一个
-        switchProfile(theProfile.id)
-        startService()
-
-        Thread.sleep(5_000)
-
-        //testMsg+="."
-        //activity.runOnUiThread(){showMessage(testMsg)}
-
-        val selectedProfileDelay = testConnection2(theProfile)
-        Log.e("test proxy:",theProfile.name+", delay:"+selectedProfileDelay)
-        if(selectedProfileDelay>0 && selectedProfileDelay<3600000){
             LocalBroadcastManager.getInstance(activity).sendBroadcast(Intent(VpnEncrypt.ACTION_PROXY_START_COMPLETE))
             return@async
         }
 
-        for (i in profiles.indices) {
-            if (!profiles[i].isBuiltin())continue
-            if (profiles[i].id == theProfile.id)continue
+        var i=(0..profiles.size).random()
+        var theProfile= profiles[i] //随机取一个，避免集中压力到第一个
+        switchProfile(theProfile.id)
+        startService()
+        checkLocalProxy()
+        var selectedProfileDelay = testConnection2(theProfile)
+        Log.e("test proxy:",theProfile.name+", delay:"+selectedProfileDelay)
+
+        if(selectedProfileDelay>0 && selectedProfileDelay<3600000 && profiles.size==1){
+            LocalBroadcastManager.getInstance(activity).sendBroadcast(Intent(VpnEncrypt.ACTION_PROXY_START_COMPLETE))
+            return@async
+        }
+
+        var kkk=0
+        var selecti=i
+        while (i < profiles.size) {
+            if (kkk==profiles.size)break
+            kkk++
+            i++
+            if (i==profiles.size)i=0
+            if (tcping(profiles[i].host, profiles[i].remotePort) <0)continue
             switchProfile(profiles[i].id)
             reloadService()
 
             testMsg+="."
             activity.runOnUiThread(){showMessage(testMsg)}
-
-            Thread.sleep(5_000)
-
-            //testMsg+="."
-            //activity.runOnUiThread(){showMessage(testMsg)}
+            checkLocalProxy()
 
             var delay = testConnection2(profiles[i])
             Log.e("test proxy:", profiles[i].name+", delay:"+delay)
+            if (delay<selectedProfileDelay){
+                selectedProfileDelay=delay
+                selecti=i
+            }
 
-            if(delay>0 && delay<3600000){
+            if(selectedProfileDelay>0 && selectedProfileDelay<3600000 && kkk>=2){
+                if (selecti!=i){
+                    Log.e("select quik one",profiles[selecti].name.toString())
+                    switchProfile(profiles[selecti].id)
+                    reloadService()
+                    checkLocalProxy()
+                }
+                else Log.e("last one is quik",profiles[selecti].name.toString())
+
                 LocalBroadcastManager.getInstance(activity).sendBroadcast(Intent(VpnEncrypt.ACTION_PROXY_START_COMPLETE))
                 return@async
             }
         }
 
-        activity.runOnUiThread(){alertMessage("暂无可用服务器，无法更新新闻，请检查网络状态后重启APP",activity)}
+        activity.runOnUiThread(){alertMessage("暂无可用服务器，仅限离线阅读，请检查网络状态后重启APP",activity)}
         Thread.sleep(5_000)
         LocalBroadcastManager.getInstance(activity).sendBroadcast(Intent(VpnEncrypt.ACTION_PROXY_START_COMPLETE))
     }
-    //Import built-in subscription
-    fun updateBuiltinServers(activity:Activity){
-        Log.e("updateBuiltinServers ","...")
-        GlobalScope.launch {
-            var  builtinSubUrls  = app.resources.getStringArray(R.array.builtinSubUrls)
-            for (i in 0 until builtinSubUrls.size) {
-                var builtinSub=SSRSubManager.create(builtinSubUrls.get(i),"aes")
-                if (builtinSub != null) break
-            }
-            val profiles = ProfileManager.getAllProfilesByGroup(VpnEncrypt.vpnGroupName)
-            if (profiles.isNullOrEmpty()) {
-                Log.e("------","profiles empty, return@launch")
-                activity.runOnUiThread {alertMessage("网络连接异常，连接互联网后，请重起本APP",activity)}
-                return@launch
-            }
 
-            var selectedProfileId=profiles.first().id
-            switchProfile(selectedProfileId)
-            startService()
-            var testMsg="测试通道，请稍候."
-
-            activity.runOnUiThread {showMessage(testMsg)}
-            Thread.sleep(5_000)
-            var selectedProfileDelay = testConnection2(profiles.first())
-            testMsg+="."
-            activity.runOnUiThread {showMessage(testMsg)}
-
-
-            Log.e("test proxy:",profiles.first().name+", delay:"+selectedProfileDelay)
-            for (i in 1 until profiles.size) {
-                if (!profiles.get(i).isBuiltin())continue
-                switchProfile(profiles.get(i).id)
-                reloadService()
-                Thread.sleep(5_000)
-                var delay = testConnection2(profiles.get(i))
-
-                testMsg+="."
-                activity.runOnUiThread {showMessage(testMsg)}
-
-                Log.e("test proxy:",profiles.get(i).name+", delay:"+delay)
-                if(delay < selectedProfileDelay){
-                    selectedProfileDelay=delay
-                    selectedProfileId=profiles.get(i).id
-                }
-            }
-
-            if(DataStore.profileId!=selectedProfileId){
-                switchProfile(selectedProfileId)
-                reloadService()
-            }
-
-            activity.runOnUiThread(){showMessage("通道就绪！")}
-            /*
-            Thread.sleep(2_000)
-            val openURL = Intent(Intent.ACTION_VIEW)
-            openURL.data = Uri.parse("https://www.bannedbook.org/bnews/fq/?utm_source=org.mobile.jinwang")
-            openURL.setClassName(activity.applicationContext,activity.javaClass.name);
-            activity.startActivity(openURL)
-            */
-        }
-    }
     private val URLConnection.responseLength: Long
         get() = if (Build.VERSION.SDK_INT >= 24) contentLengthLong else contentLength.toLong()
 
@@ -266,36 +264,6 @@ object Core {
             conn?.disconnect()
         }
         return result
-    }
-
-    fun tcping(url: String, port: Int,timeout:Int=5000): Long {
-        var time = -1L
-        for (k in 0 until 1) {
-            val one = socketConnectTime(url, port,timeout)
-            if (one != -1L  )
-                if(time == -1L || one < time) {
-                    time = one
-                }
-        }
-        return time
-    }
-    private fun socketConnectTime(url: String, port: Int,timeout:Int=5000): Long {
-        try {
-            val start = System.currentTimeMillis()
-            val socket = Socket()
-            var socketAddress = InetSocketAddress(url, port)
-            socket.connect(socketAddress,timeout)
-            val time = System.currentTimeMillis() - start
-            socket.close()
-            return time
-        } catch (e: UnknownHostException) {
-            Log.e("tcping",e.readableMessage)
-        } catch (e: IOException) {
-            Log.e("tcping",e.readableMessage)
-        } catch (e: Exception) {
-            Log.e("tcping",e.readableMessage)
-        }
-        return -1
     }
     /**
      * import free sub
@@ -378,7 +346,7 @@ object Core {
             if (Build.VERSION.SDK_INT >= 28) PackageManager.GET_SIGNING_CERTIFICATES
             else @Suppress("DEPRECATION") PackageManager.GET_SIGNATURES)!!
 
-    fun startService() = ContextCompat.startForegroundService(app, Intent(app, ShadowsocksConnection.serviceClass))
+    fun startService() = ContextCompat.startForegroundService(app, Intent(app, V2RayTestService::class.java))
     fun reloadService() = app.sendBroadcast(Intent(Action.RELOAD).setPackage(app.packageName))
     fun stopService() = app.sendBroadcast(Intent(Action.CLOSE).setPackage(app.packageName))
     fun startServiceForTest() = app.startService(Intent(app, ProxyService::class.java).putExtra("test","go"))
@@ -401,5 +369,38 @@ object Core {
         dialog?.show()
         }
         catch (t:Throwable){}
+    }
+
+    /**
+     * tcping
+     */
+    fun tcping(url: String, port: Int,timeout:Int=5000): Long {
+        var time = -1L
+        for (k in 0 until 1) {
+            val one = socketConnectTime(url, port,timeout)
+            if (one != -1L  )
+                if(time == -1L || one < time) {
+                    time = one
+                }
+        }
+        return time
+    }
+    private fun socketConnectTime(url: String, port: Int,timeout:Int=5000): Long {
+        try {
+            val start = System.currentTimeMillis()
+            val socket = Socket()
+            var socketAddress = InetSocketAddress(url, port)
+            socket.connect(socketAddress,timeout)
+            val time = System.currentTimeMillis() - start
+            socket.close()
+            return time
+        } catch (e: UnknownHostException) {
+            Log.e("tcping",e.readableMessage)
+        } catch (e: IOException) {
+            Log.e("tcping",e.readableMessage)
+        } catch (e: Exception) {
+            Log.e("tcping",e.readableMessage)
+        }
+        return -1
     }
 }

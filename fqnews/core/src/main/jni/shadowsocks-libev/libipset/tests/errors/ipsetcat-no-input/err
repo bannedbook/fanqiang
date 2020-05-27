@@ -1,2 +1,0 @@
-ipsetcat: You must specify exactly one input file.
-Usage: ipsetcat [options] <input filename>

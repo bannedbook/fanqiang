@@ -33,6 +33,12 @@
         <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing"
                    android:value="true" />
         <service
+            android:name="com.github.shadowsocks.bg.V2RayTestService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":bg">
+        </service>
+        <service
             android:name="com.github.shadowsocks.bg.ProxyService"
             android:process=":bg"
             android:directBootAware="true"

@@ -24,6 +24,7 @@ import SpeedUpVPN.VpnEncrypt
 import android.annotation.TargetApi
 import android.net.Uri
 import android.os.Parcelable
+import android.text.TextUtils
 import android.util.Base64
 import android.util.Log
 import android.util.LongSparseArray
@@ -34,10 +35,7 @@ import com.github.shadowsocks.plugin.PluginOptions
 import com.github.shadowsocks.preference.DataStore
 import com.github.shadowsocks.utils.Key
 import com.github.shadowsocks.utils.parsePort
-import com.google.gson.JsonArray
-import com.google.gson.JsonElement
-import com.google.gson.JsonObject
-import com.google.gson.JsonPrimitive
+import com.google.gson.*
 import kotlinx.android.parcel.Parcelize
 import org.json.JSONArray
 import org.json.JSONObject
@@ -45,6 +43,8 @@ import java.io.Serializable
 import java.net.URI
 import java.net.URISyntaxException
 import java.util.*
+import com.github.shadowsocks.utils.*
+
 
 @Entity
 @Parcelize
@@ -80,6 +80,15 @@ data class Profile(
         var elapsed: Long = 0,
         var userOrder: Long = 0,
 
+        var profileType: String="ss",   // vmess or ss ,vmess for v2ray
+        //for v2ray
+        var alterId: Int = 64,
+        var network: String = "tcp",  //tcp,kcp,ws,h2,quic
+        var headerType: String = "",  //伪装类型（type）
+        var requestHost: String = "", //伪装域名（host）
+        var path: String = "",        // ws path, h2 path , quic加密密钥
+        var streamSecurity: String = "",  //底层传输安全 tls 或 ""
+
         @Ignore // not persisted in db, only used by direct boot
         var dirty: Boolean = false
 ) : Parcelable, Serializable {
@@ -103,6 +112,7 @@ data class Profile(
     }
 
     companion object {
+        const val VMESS_PROTOCOL: String = "vmess://"
         private const val TAG = "ShadowParser"
         private const val serialVersionUID = 1L
         private const val sponsored = "198.199.101.152"
@@ -118,7 +128,59 @@ data class Profile(
         private val decodedPattern_ssr_protocolparam = "(?i)(.*)[?&]protoparam=([A-Za-z0-9_=-]*)(.*)".toRegex()
         private val decodedPattern_ssr_groupparam = "(?i)(.*)[?&]group=([A-Za-z0-9_=-]*)(.*)".toRegex()
 
+        private val pattern_vmess = "(?i)vmess://([A-Za-z0-9_=-]+)".toRegex()
+
         private fun base64Decode(data: String) = String(Base64.decode(data.replace("=", ""), Base64.URL_SAFE), Charsets.UTF_8)
+
+        fun findAllVmessUrls(data: CharSequence?, feature: Profile? = null) = pattern_vmess.findAll(data
+                ?: "").map {
+            val server = it.groupValues[1]
+            val profile = Profile()
+            feature?.copyFeatureSettingsTo(profile)
+            try {
+                val indexSplit = server.indexOf("?")
+                if (indexSplit > 0) {
+                    null
+                    //profile = ResolveVmess4Kitsunebi(server,subid)
+                } else {
+                    var result = server.replace(VMESS_PROTOCOL, "")
+                    result = base64Decode(result)
+                    if (TextUtils.isEmpty(result)) {
+                        null
+                    }
+                    //Log.e("VmessQRCode::class.java",VmessQRCode::class.java.toString())
+                    var vmessQRCode = VmessQRCode()
+                    vmessQRCode = Gson().fromJson(result, vmessQRCode::class.java)
+                    if (TextUtils.isEmpty(vmessQRCode.add)
+                            || TextUtils.isEmpty(vmessQRCode.port)
+                            || TextUtils.isEmpty(vmessQRCode.id)
+                            || TextUtils.isEmpty(vmessQRCode.aid)
+                            || TextUtils.isEmpty(vmessQRCode.net)
+                    ) {
+                        null
+                    }
+                    profile.profileType = "vmess"
+                    profile.method = "auto"
+                    profile.network = "tcp"
+                    profile.headerType = "none"
+                    profile.host = vmessQRCode.add
+                    profile.name = vmessQRCode.ps
+                    if (profile.name==VpnEncrypt.v2vpnRemark)profile.name = profile.host.substring(0,5)+"..."
+                    profile.remotePort = parseInt(vmessQRCode.port)
+                    profile.password = vmessQRCode.id
+                    profile.alterId = parseInt(vmessQRCode.aid)
+                    profile.network = vmessQRCode.net
+                    profile.headerType = vmessQRCode.type
+                    profile.requestHost = vmessQRCode.host
+                    profile.path = vmessQRCode.path
+                    profile.streamSecurity = vmessQRCode.tls
+                    profile
+                }
+            } catch (e: IllegalArgumentException) {
+                Log.e(TAG, "Invalid SSR URI: ${it.value}")
+                null
+            }
+        }.filterNotNull().toMutableSet()
 
         fun findAllSSRUrls(data: CharSequence?, feature: Profile? = null) = pattern_ssr.findAll(data
                 ?: "").map {
@@ -153,60 +215,7 @@ data class Profile(
             }
         }.filterNotNull().toMutableSet()
 
-        fun findAllSSUrls(data: CharSequence?, feature: Profile? = null) = pattern.findAll(data
-                ?: "").map {
-            val uri = it.value.toUri()
-            try {
-                if (uri.userInfo == null) {
-                    val match = legacyPattern.matchEntire(String(Base64.decode(uri.host, Base64.NO_PADDING)))
-                    if (match != null) {
-                        val profile = Profile()
-                        feature?.copyFeatureSettingsTo(profile)
-                        profile.method = match.groupValues[1].toLowerCase(Locale.ENGLISH)
-                        profile.password = match.groupValues[2]
-                        profile.host = match.groupValues[3]
-                        profile.remotePort = match.groupValues[4].toInt()
-                        profile.plugin = uri.getQueryParameter(Key.plugin)
-                        profile.name = uri.fragment.toString()
-                        profile
-                    } else {
-                        Log.e(TAG, "Unrecognized URI: ${it.value}")
-                        null
-                    }
-                } else {
-                    val match = userInfoPattern.matchEntire(String(Base64.decode(uri.userInfo,
-                            Base64.NO_PADDING or Base64.NO_WRAP or Base64.URL_SAFE)))
-                    if (match != null) {
-                        val profile = Profile()
-                        feature?.copyFeatureSettingsTo(profile)
-                        profile.method = match.groupValues[1]
-                        profile.password = match.groupValues[2]
-                        // bug in Android: https://code.google.com/p/android/issues/detail?id=192855
-                        try {
-                            val javaURI = URI(it.value)
-                            profile.host = javaURI.host ?: ""
-                            if (profile.host.firstOrNull() == '[' && profile.host.lastOrNull() == ']') {
-                                profile.host = profile.host.substring(1, profile.host.length - 1)
-                            }
-                            profile.remotePort = javaURI.port
-                            profile.plugin = uri.getQueryParameter(Key.plugin)
-                            profile.name = uri.fragment ?: ""
-                            profile
-                        } catch (e: URISyntaxException) {
-                            Log.e(TAG, "Invalid URI: ${it.value}")
-                            null
-                        }
-                    } else {
-                        Log.e(TAG, "Unknown user info: ${it.value}")
-                        null
-                    }
-                }
-            } catch (e: IllegalArgumentException) {
-                Log.e(TAG, "Invalid base64 detected: ${it.value}")
-                null
-            }
-        }.filterNotNull().toMutableSet()
-
+        fun findAllSSUrls(data: CharSequence?, feature: Profile? = null) = findAllUrls(data,feature).toMutableSet()
         fun findAllUrls(data: CharSequence?, feature: Profile? = null) = pattern.findAll(data ?: "").map {
             val uri = it.value.toUri()
             try {

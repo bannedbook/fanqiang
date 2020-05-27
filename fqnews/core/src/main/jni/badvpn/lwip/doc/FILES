@@ -1,9 +1,0 @@
-doxygen/       - Configuration files and scripts to create the lwIP doxygen source
-                 documentation (found at http://www.nongnu.org/lwip/)
-
-savannah.txt   - How to obtain the current development source code.
-contrib.txt    - How to contribute to lwIP as a developer.
-rawapi.txt     - The documentation for the core API of lwIP.
-                 Also provides an overview about the other APIs and multithreading.
-sys_arch.txt   - The documentation for a system abstraction layer of lwIP.
-ppp.txt        - Documentation of the PPP interface for lwIP.

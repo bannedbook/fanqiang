@@ -37,6 +37,7 @@ object Key {
     const val serviceMode = "serviceMode"
     const val modeProxy = "proxy"
     const val modeVpn = "vpn"
+    const val v2rayVpn = "v2rayVpn"
     const val modeTransproxy = "transproxy"
     const val shareOverLan = "shareOverLan"
     const val portProxy = "portProxy"

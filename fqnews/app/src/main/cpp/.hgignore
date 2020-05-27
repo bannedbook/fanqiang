@@ -1,7 +1,0 @@
-syntax: glob
-
-polipo
-polipo.info
-core
-html
-*.o

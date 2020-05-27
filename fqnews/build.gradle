@@ -12,8 +12,8 @@ buildscript {
         junitVersion = '4.12'
         androidTestVersion = '1.2.0'
         androidEspressoVersion = '3.2.0'
-        versionCode = 125
-        versionName = "1.0.2"
+        versionCode = 130
+        versionName = "1.0.3"
     }
     repositories {
         google()
@@ -21,10 +21,10 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.0-beta05'
+        classpath 'com.android.tools.build:gradle:4.0.0-rc01'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.0.0-beta04'
         classpath 'com.google.gms:google-services:4.3.3'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.0.0'
-        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.8.0'
+        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.9.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }

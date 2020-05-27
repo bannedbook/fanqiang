@@ -1,3 +1,0 @@
-apk add --update alpine-sdk
-
-. $(dirname $0)/build

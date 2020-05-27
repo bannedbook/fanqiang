@@ -207,14 +207,14 @@
     <string name="auto_update_servers">"自動更新服務器"</string>
     <string name="auto_update_servers_summary">"應用啟動後自動更新VPN服務器"</string>
     <string name = "get_free_servers">啟用第三方伺服器</string>
-    <string name = "get_free_servers_summary">從網絡抓取第三方免費伺服器，安全性未知</string>
+    <string name = "get_free_servers_summary">抓取網絡上的免費伺服器</string>
     <string name="title_ping_all_server">測試全部配置Tcping</string>
     <string name="title_real_ping_all_server">測試全部配置真連接</string>
     <string name="title_retest_invalid_servers">再測無效伺服器</string>
     <string name="title_remove_invalid_servers">刪除無效/按組排序</string>
     <string name="title_sort_servers_by_speed">按測速結果排序</string>
     <string name="toast_test_ended">啊!測試結束啦!</string>
-    <string name="toast_test_interrupted">"伺服器：%s或前一個伺服器導致測試中斷，請檢查之。並請確保安裝了simple-obfs插件。"</string>
+    <string name="toast_test_interrupted">"伺服器：%s或前一個伺服器導致測試中斷，請檢查/刪除之"</string>
     <string name="recommended_site_1"><![CDATA[
     <html>
     <body style=\'margin:0;padding:0;font-size:14px;text-align:right\'>
@@ -235,7 +235,7 @@
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 </head>
     <body style=\'margin:0 auto;padding:5px 0;font-size:14px;text-align:center\'>
-      <a href=\'https://www.bannedbook.org/bnews/zh-tw/?utm_source=speedup.vpn.b5\' style=\'color:#e4f2fd\'>中美港臺時事熱點：每日火爆新聞，焦點評論</a>
+      <a href=\'https://www.bannedbook.org/bnews/zh-tw/?utm_source=ssvpn.b5\' style=\'color:#e4f2fd\'>中美港臺時事熱點：每日火爆新聞，焦點評論</a>
     </body>
     </html>
   ]]>"</string>

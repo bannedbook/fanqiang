@@ -1,7 +1,0 @@
-name: ipset
-build_dependencies:
-  - pkg-config
-  - check >= 0.9.4
-dependencies:
-  - libcork >= 0.12.0
-license: BSD

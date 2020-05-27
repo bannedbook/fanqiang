@@ -1,12 +1,0 @@
----------------------------- Test U1 ------------------------------
-1:X one
-2:X two3:X three4:X four5:X five
-6:X six
-7:X seven8:X eight 9:X nine 10:X ten
-RC=0
----------------------------- Test U2 ------------------------------
-12-Before 111
-13-Before 222 14-Before 33315:Match
-16-After 111
-17-After 222 18-After 333
-RC=0

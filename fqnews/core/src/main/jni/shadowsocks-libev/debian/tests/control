@@ -1,3 +1,0 @@
-Test-Command: bash tests/test.sh
-Depends: @, python, curl, dnsutils
-Restrictions: allow-stderr

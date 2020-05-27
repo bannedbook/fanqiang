@@ -1,6 +1,0 @@
-extraction:
-  cpp:
-     configure:
-        command:
-        - ./autogen.sh
-        - ./configure
