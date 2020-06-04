@@ -13,5 +13,5 @@ del "..\daze.bat_backup"
 ren "..\daze.bat"  daze.bat_backup
 copy /y "%~dp0daze.bat" ..\daze.bat
 del "%~dp0daze.bat"
-ECHO.&ECHO.已更新完成最新可用DAZE配置,请按回车键或空格键启动程序！ &PAUSE >NUL 2>NUL
+ECHO.&ECHO.已更新完成最新DAZE配置,请按回车键或空格键启动程序！ &PAUSE >NUL 2>NUL
 exit

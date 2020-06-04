@@ -13,6 +13,6 @@ del "..\config.ini_backup"
 ren "..\config.ini"  config.ini_backup
 copy /y "%~dp0config.ini" ..\config.ini
 del "%~dp0config.ini"
-ECHO.&ECHO.已更新完成最新可用Lightsocks配置，请按任意键，软件会自动启动浏览器和代理软件. &PAUSE >NUL 2>NUL
+ECHO.&ECHO.已更新完成最新Lightsocks配置，请按任意键，软件会自动启动浏览器和代理软件. &PAUSE >NUL 2>NUL
 exit
 

@@ -1,8 +1,8 @@
 @Echo Off
 Title 从Coding.net云端更新 Trojan 最新配置
 cd /d %~dp0
-..\..\wget --ca-certificate=ca-bundle.crt -c https://cdn.jsdelivr.net/gh/Alvin9999/pac2@latest/config.json
-..\..\wget --ca-certificate=ca-bundle.crt -c https://cdn.jsdelivr.net/gh/Alvin9999/pac2@latest/crt/private.crt
+..\..\wget --no-check-certificate https://cdn.jsdelivr.net/gh/Alvin9999/pac2@latest/config.json
+..\..\wget --no-check-certificate https://cdn.jsdelivr.net/gh/Alvin9999/pac2@latest/crt/private.crt
 
 if exist config.json goto startcopy
 echo ip更新失败，请试试另外一个，如果都不行，请反馈kebi2014@gmail.com
