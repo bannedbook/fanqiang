@@ -24,11 +24,11 @@ start "" "ssr-client.exe"
 cd ..
 rem echo 等待翻墙软件启动，请稍候...
 IF EXIST %~dp0Browser\chrome.exe (
-    start %~dp0Browser\chrome.exe --user-data-dir=%~dp0chrome-user-data --proxy-server=127.0.0.1:1080 https://www.bannedbook.org/bnews/fq/?utm_source=SSR
+    start %~dp0Browser\chrome.exe --user-data-dir=%~dp0chrome-user-data --proxy-server="socks5://127.0.0.1:1080" --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE 127.0.0.1" https://www.bannedbook.org/bnews/fq/?utm_source=SSROT
 ) ELSE (
 	%SystemRoot%\System32\reg.exe query "HKLM\Software\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe" >nul 2>&1
 	IF  not errorlevel 1 (
-		start chrome.exe --user-data-dir=%~dp0chrome-user-data --proxy-server=127.0.0.1:1080 https://www.bannedbook.org/bnews/fq/?utm_source=SSR
+		start chrome.exe --user-data-dir=%~dp0chrome-user-data --proxy-server="socks5://127.0.0.1:1080" --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE 127.0.0.1" https://www.bannedbook.org/bnews/fq/?utm_source=SSROT
 	) else ( 
 		echo Chrome浏览器不存在或没有正确安装，请尝试重新安装Chrome浏览器
 		echo 或者采用以下办法：
