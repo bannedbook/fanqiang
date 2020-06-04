@@ -13,16 +13,16 @@
   "vmess": [
     {
       "configVersion": 2,
-      "address": "www.free6666.net",
+      "address": "tr1.freedom101.xyz",
       "port": 443,
-      "id": "9718c20b-a171-43da-b9f6-1ffc0792d7dd",
-      "alterId": 8,
+      "id": "b01b3907-955c-487c-acb2-61d71919acc6",
+      "alterId": 2,
       "security": "auto",
       "network": "ws",
-      "remarks": "https://github.com/Alvin9999/new-pac/wiki/",
+      "remarks": "tr1.freedom101.xyz",
       "headerType": "none",
-      "requestHost": "www.free6666.net",
-      "path": "/f4be5506/",
+      "requestHost": "tr1.freedom101.xyz",
+      "path": "/2a606f24/",
       "streamSecurity": "tls",
       "allowInsecure": "",
       "configType": 1,
@@ -45,13 +45,20 @@
     "readBufferSize": 2,
     "writeBufferSize": 2
   },
-  "sysAgentEnabled": false,
   "listenerType": 0,
-  "urlGFWList": "",
+  "speedTestUrl": "http://speedtest-sgp1.digitalocean.com/10mb.test",
+  "speedPingTestUrl": "https://www.google.com/generate_204",
+  "urlGFWList": "https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt",
   "allowLANConn": false,
+  "enableStatistics": false,
+  "keepOlderDedupl": false,
+  "statisticsFreshRate": 0,
   "remoteDNS": "",
-  "subItem": null,
+  "defAllowInsecure": false,
+  "subItem": [],
   "uiItem": {
-    "mainQRCodeWidth": 600
-  }
+    "mainSize": "0, 0",
+    "mainLvColWidth": {}
+  },
+  "userPacRule": []
 }

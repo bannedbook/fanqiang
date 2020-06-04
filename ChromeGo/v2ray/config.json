@@ -1,4 +1,5 @@
 {
+  "policy": null,
   "log": {
     "access": "",
     "error": "",
@@ -6,6 +7,7 @@
   },
   "inbounds": [
     {
+      "tag": "proxy",
       "port": 10808,
       "listen": "127.0.0.1",
       "protocol": "socks",
@@ -20,6 +22,7 @@
         "auth": "noauth",
         "udp": false,
         "ip": null,
+        "address": null,
         "clients": null
       },
       "streamSettings": null
@@ -32,11 +35,11 @@
       "settings": {
         "vnext": [
           {
-            "address": "www.free6666.net",
+            "address": "tr1.freedom101.xyz",
             "port": 443,
             "users": [
               {
-                "id": "bc0abab8-a0e7-40dd-8e20-7acabed8625a",
+                "id": "b01b3907-955c-487c-acb2-61d71919acc6",
                 "alterId": 2,
                 "email": "t@t.tt",
                 "security": "auto"
@@ -51,23 +54,24 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "allowInsecure": true,
-          "serverName": "www.free6666.net"
+          "allowInsecure": false,
+          "serverName": "tr1.freedom101.xyz"
         },
         "tcpSettings": null,
         "kcpSettings": null,
         "wsSettings": {
           "connectionReuse": true,
-          "path": "/6aa0a068/",
+          "path": "/2a606f24/",
           "headers": {
-            "Host": "www.free6666.net"
+            "Host": "tr1.freedom101.xyz"
           }
         },
         "httpSettings": null,
         "quicSettings": null
       },
       "mux": {
-        "enabled": true
+        "enabled": true,
+        "concurrency": 8
       }
     },
     {
@@ -95,9 +99,22 @@
       "mux": null
     }
   ],
+  "stats": null,
+  "api": null,
   "dns": null,
   "routing": {
     "domainStrategy": "IPIfNonMatch",
-    "rules": []
+    "rules": [
+      {
+        "type": "field",
+        "port": null,
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "ip": null,
+        "domain": null
+      }
+    ]
   }
 }
