@@ -35,3 +35,4 @@ captures
 *~
 *.swp
 *.bak
+libv2ray/*
