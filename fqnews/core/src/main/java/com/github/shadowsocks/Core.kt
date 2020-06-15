@@ -308,7 +308,6 @@ object Core {
             setExecutor { GlobalScope.launch { it.run() } }
             setTaskExecutor { GlobalScope.launch { it.run() } }
         }.build())
-        UpdateCheck.enqueue() //google play Publishing, prohibiting self-renewal
 
         // handle data restored/crash
         if (Build.VERSION.SDK_INT >= 24 && DataStore.directBootAware &&

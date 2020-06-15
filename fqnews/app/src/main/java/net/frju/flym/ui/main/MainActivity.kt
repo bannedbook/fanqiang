@@ -38,6 +38,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.shadowsocks.Core
+import com.github.shadowsocks.work.UpdateCheck
 import com.rometools.opml.feed.opml.Attribute
 import com.rometools.opml.feed.opml.Opml
 import com.rometools.opml.feed.opml.Outline
@@ -304,6 +305,7 @@ class MainActivity : AppCompatActivity(), MainNavigator, AnkoLogger {
 		AutoRefreshJobService.initAutoRefresh(this)
 
 		handleImplicitIntent(intent)
+		UpdateCheck.enqueue() //google play Publishing, prohibiting self-renewal
 	}
 
 	private fun addBnewsFeeds(){
