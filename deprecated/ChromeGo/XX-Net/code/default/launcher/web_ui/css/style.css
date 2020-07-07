@@ -1,0 +1,401 @@
+html, body {
+    font-family: "Microsoft YaHei", "Segoe UI Light", "Segoe UI", "Heiti SC";
+    margin: 0;
+    padding: 0;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family:  "Microsoft YaHei", "Segoe UI Light", "Segoe UI", "Heiti SC" !important;
+}
+
+a {
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+select {
+    border: 2px solid #bdc3c7;
+    color: #34495e;
+    display: inline-block;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    padding: 8px 5px;
+    height: 41px;
+    text-indent: 6px;
+    width: 100%;
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+    -webkit-transition: border .25s linear,color .25s linear;
+       -moz-transition: border .25s linear,color .25s linear;
+         -o-transition: border .25s linear,color .25s linear;
+            transition: border .25s linear,color .25s linear;
+}
+
+button.btn-danger,
+button[type=submit] {
+    margin-top: 10px;
+}
+
+select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+div#header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+div#header div#logo {
+    padding: 4px 0;
+}
+
+div#header div#logo img {
+    height: 32px;
+    max-height: 32px;
+}
+
+#version_on_logo {
+    margin: 0 5px;
+    font-size: 70%;
+}
+
+div#header a#resize-window-trigger,
+div#header a#quit-trigger {
+    display: block;
+    padding-top: 8px;
+}
+
+div#header img {
+    max-height: 22px;
+}
+
+
+div#content {
+    margin: 40px auto 0;
+    padding: 40px 0 40px;
+}
+
+div#content div#sidebar a {
+    text-decoration: none;
+}
+
+div#content h2 {
+    margin: 0 0 20px;
+}
+
+div#content div.alert p.message {
+    margin-bottom: 0;
+}
+
+div#content form div.row-fluid {
+    margin-bottom: 10px;
+}
+
+div#content div.row-fluid > div.span4 > label {
+    font-weight: bold;
+    margin: 10px 0 0;
+}
+div#content div.row-fluid > div.span3 > label {
+    font-weight: bold;
+    margin: 10px 0 0;
+}
+div#content div.row-fluid > div.span2 > label {
+    font-weight: bold;
+    margin: 10px 0 0;
+}
+div#content div.row-fluid > div.span1 > label {
+    font-weight: bold;
+    margin: 10px 0 0;
+}
+
+div#content form div.row-fluid > div.span4 > label > a {
+    font-weight: normal;
+    text-decoration: none;
+}
+
+div#content input[type=text],
+div#content input[type=number],
+div#content input[type=password] {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+div#content div#advanced-options,
+div#content div#module-switch {
+    padding-left: 20px;
+}
+
+div#content textarea {
+    color: #34495e;
+    height: 285px;
+    max-width: 100%;
+    resize: none;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+div#content ul.nav-tabs {
+    margin-bottom: 0;
+}
+
+div#content div.tab-content {
+    border: 1px solid #ddd;
+    border-top: none;
+    min-height: 360px;
+    padding: 20px 10px;
+}
+
+/* Style for config.html in PHP-Proxy */
+div#content form#gae_proxy-php-config div.row-fluid div.span4 label[for=enable-php-proxy] {
+    margin-top: 5px;
+}
+
+div#content form#gae_proxy-php-config div.row-fluid div.span4 label[for=enable-php-proxy] > a {
+    font-weight: normal;
+    text-decoration: none;
+}
+
+/* Style for status.html */
+table#status td {
+    word-wrap: break-word;
+}
+
+table#plan th {
+    text-align:center;
+}
+table#plan td {
+    text-align:center;
+    vertical-align:middle;
+}
+table#quota_list_table th {
+    text-align:center;
+}
+table#quota_list_table td {
+    text-align:center;
+    vertical-align:middle;
+}
+
+div#report-issue-modal {
+    position: fixed;
+}
+
+/* Style for logging.html */
+div#log {
+    background-color: #f4f6f6;
+    border: 2px solid #d5dbdb;
+    border-radius: 6px;
+    color: #34495e;
+    font-size: 14.994px;
+    height: 285px;
+    line-height: 24px;
+    max-width: 100%;
+    overflow-y: auto;
+    padding: 5px 11px;
+    text-indent: 0;
+}
+
+div#log > p {
+    margin-bottom: 0;
+    word-wrap: break-word;
+}
+
+td#working-appid {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+/* Styles for deploy.html */
+div#content div#deploy p.tip {
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* Styles for about.html */
+div#content div#about a {
+    text-decoration: none;
+}
+
+div#content div#about div.row-fluid div.span4 {
+    font-weight: bold;
+}
+
+div#content div#thanks ul {
+    list-style: none;
+    margin: 0;
+}
+
+div#content div#thanks li {
+    line-height: 150%;
+}
+
+/* Styles for config.html in System */
+div#content div#options div.row-fluid {
+    margin-bottom: 10px;
+}
+
+div#content div#options div.row-fluid div.span4, .bold {
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+#noob-info {
+    padding: 10px;
+    margin: 40px 0;
+    color: #b94a48;
+    background-color: #f2dede;
+    border:1px solid;
+    border-color: #eed3d7;
+    border-radius: 4px;
+    transition: color .3s,background .3s,border .3s;
+}
+
+#noob-info.hard {
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+#noob-info.fluent {
+    color: #146C98;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+#update-notify, .popnotify {
+    padding: 6px;
+    margin: 10px 0;
+    background-color: #dff0d8;
+    border:1px solid;
+    border-color: #cfe0c8;
+    border-radius: 4px;
+    transition: color .3s,background .3s,border .3s;
+    
+}
+#update-message{
+    font-size: 120%;
+    color: #507050;
+}
+.update-notify-action {
+    float: right;
+    color: #0072E3;
+    cursor: pointer;
+    margin: 0 6px;
+}
+
+#update-notify-close {
+    float: right;
+    cursor: pointer;
+    margin-left: 7px;
+    color: #b94a48;
+    
+}
+
+#details, #update-options, #modules-manager{
+    overflow: hidden;
+}
+
+/* Style for config.html in X-Tunnel */
+.modal h5 {
+    margin: 0;
+}
+
+div#info.tab-pane div.section {
+    margin-bottom: 20px;
+}
+
+div#info.tab-pane form#login-form,
+div#info.tab-pane form#register-form {
+    max-width: 640px;
+}
+
+div#info.tab-pane div#account-information p, 
+div#help.tab-pane p {
+    margin-top: 10px;
+}
+
+div#plans.tab-pane h1.price {
+    text-align: center;
+}
+
+div#plans.tab-pane ul.details {
+    color: #8e8e8e;
+    list-style: none;
+    margin: 0;
+}
+
+div#plans.tab-pane ul.details div.span4.text-right {
+    color: #747474;
+    font-weight: bold;
+}
+
+div#history.tab-pane > div.row-fluid {
+    margin-bottom: 10px;
+}
+
+div#history.tab-pane h4 {
+    padding-top: 5px;    
+}
+
+/* Smaller than standard 1200 (devices and browsers) */
+@media only screen and (max-width: 1199px) {
+}
+
+/* Portrait size to standard 1200 (devices and browsers) */
+@media only screen and (min-width: 960px) and (max-width: 1199px) {
+    div.container {
+        width: 960px;
+    }
+}
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    div.container {
+        width: 768px;
+    }
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+    div#header {
+        margin: 0;
+    }
+
+    div#header div.span8 {
+        display: none;
+    }
+
+    div#header div#logo {
+        text-align: center;
+    }
+
+    div#content {
+        padding: 0;
+    }
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    div.container {
+        width: 480px;
+    }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+    div.container {
+        width: 320px;
+    }
+}

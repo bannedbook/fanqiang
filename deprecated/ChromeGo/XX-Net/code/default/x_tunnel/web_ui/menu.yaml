@@ -1,0 +1,32 @@
+module_title: X-Tunnel
+menu_sort_id: 3
+sub_menus: {
+  1:{
+    title: {{ _( "Configuration" ) }},
+    url: config
+  },
+  2:{
+    title: {{ _( "Status" ) }},
+    url: status
+  },
+  3:{
+    title: {{ _("Log") }},
+    url: logging
+  },
+  4:{
+    title: {{ _("Cloudflare") }}{{ _("Front") }}{{ _("Log") }},
+    url: cloudflare_front_logging
+  },
+  5:{
+    title: {{ _("Cloudfront") }}{{ _("Front") }}{{ _("Log") }},
+    url: cloudfront_front_logging
+  },
+  6:{
+    title: {{ _("Heroku") }}{{ _("Front") }}{{ _("Log") }},
+    url: heroku_front_logging
+  },
+  7:{
+    title: {{ _("TLS-Relay") }}{{ _("Front") }}{{ _("Log") }},
+    url: tls_relay_front_logging
+  },
+}

@@ -1,0 +1,136 @@
+<div id="log-container" class="row-fluid">
+    <div id="log" class="span12"></div> <!-- #log -->
+</div> <!-- #log-container -->
+
+<style type="text/css">
+    .DUMMY { color: black }
+    .DEBUG { color: #21610b }
+    .INFO { color: blue }
+    .WARNING { color: #ff8000 }
+    .ERROR { color: #fe2e2e }
+    .CRITICAL { color: #d7df01 }
+</style>
+<!-- JavaScript -->
+<script type="text/javascript">
+    title('{{ _("GAEProxy Log") }}');
+</script>
+<script type="text/javascript">
+    $(function () {
+        resizeLogWindow();
+    });
+    $(window).resize(function () {
+        resizeLogWindow();
+    });
+</script>
+<script type="text/javascript">
+    function resizeLogWindow() {
+        var windowHeight    = $(window).height(),
+            preservedHeight = 170;
+
+        $('#log').css('height', windowHeight - preservedHeight);
+    }
+</script>
+<script type="text/javascript">
+    $(function() {
+        window.previousOffset     = 0;
+        window.offset             = 1;
+        window.logLineNum         = 0;
+        window.isAutoScrollLog    = true;
+        window.isgetLogProcessing = false;
+
+        var timer = $.timer(function () {
+            getLog();
+        });
+        timer.set({
+            time: 500,
+            autostart: true
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        getLog();
+    });
+</script>
+<script type="text/javascript">
+    $('#log').scroll(function () {
+        var preservedHeight = $('#log').height() + 10,
+            scrollHeight    = $('#log')[0].scrollHeight,
+            scrollTop       = $('#log').scrollTop();
+
+        window.isAutoScrollLog = (scrollTop + preservedHeight === scrollHeight);
+    });
+</script>
+<script type="text/javascript">
+    function scrollLog() {
+        if (window.isAutoScrollLog) {
+            $('#log').scrollTop($('#log')[0].scrollHeight);
+        }
+    }
+</script>
+<script type="text/javascript">
+    function getLog() {
+        if ( window.isgetLogProcessing ) { return }
+        if ( !window.isAutoScrollLog ) { return }
+        window.isgetLogProcessing = true;
+        var pageRequests = {
+            'cmd': 'get_new',
+            'last_no': offset
+        };
+        $.ajax({
+            type: 'GET',
+            url: '/module/gae_proxy/control/log',
+            data: pageRequests,
+            dataType: 'JSON',
+            success: function (result) {
+                var newlines = document.createDocumentFragment();
+                var newlineNum = 0;
+                $.each(result, function (lineNumber, log) {
+                    window.offset = lineNumber;
+
+                    var logTemplate = '<p class="%s">%s</p>\n';
+                    if (window.previousOffset != window.offset) {
+                        var newline = $(logTemplate.format(getLogLevel(log), log));
+                        $(newlines).append(newline);
+                        newlineNum += 1;
+                    }
+                });
+                window.logLineNum += newlineNum;
+                $('#log').append(newlines);
+                var maxLineNum = 1000;
+                var cutStep = 10;
+                if (window.logLineNum > maxLineNum + cutStep) {
+                    var numToCut = window.logLineNum - maxLineNum;
+                    var textblock = $('#log').html();
+                    var lines = textblock.split('\n');
+                    lines.splice(0, numToCut);
+                    var newtext = lines.join('\n');
+                    $('#log').html(newtext);
+                    window.logLineNum -= numToCut;
+                }
+
+                scrollLog();
+                window.previousOffset = window.offset;
+                window.isgetLogProcessing = false;
+            },
+            error: function (xml, info, obj) {
+                window.isgetLogProcessing = false;
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    function getLogLevel(log) {
+        if (log.indexOf('[DEBUG]') != -1) {
+            return 'DEBUG';
+        } else if (log.indexOf('[INFO]') != -1) {
+            return 'INFO';
+        } else if (log.indexOf('[WARNING]') != -1) {
+            return 'WARNING';
+        } else if (log.indexOf('[ERROR]') != -1) {
+            return 'ERROR';
+        } else if (log.indexOf('[CRITICAL]') != -1) {
+            return 'CRITICAL';
+        } else return 'DUMMY';
+    }
+</script>

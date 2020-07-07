@@ -1,0 +1,117 @@
+
+        <form method="POST" onSubmit="return false;">
+            <div class="row-fluid">
+                <div class="span3">
+                    <label for="auto-adjust-scan-ip-thread-num">{{ _("Auto-adjust scan thread count") }}<a href="https://github.com/XX-net/XX-Net/wiki/GoAgent-Auto-adjust-scan-ip-thread-num" target="_blank">({{ _("Help") }})</a></label>
+                </div> <!-- .span3 -->
+                <div class="span9">
+                    <input id="auto-adjust-scan-ip-thread-num" type="checkbox" data-toggle="switch"/>
+                </div> <!-- .span9 -->
+            </div> <!-- .row-fluid -->
+            <div class="row-fluid">
+                <div class="span3">
+                    <label for="scan-ip-thread-num">{{ _("Max scan thread count") }}
+                        (0~<span id="display-max-scan-thread"></span>)</label>
+                </div> <!-- .span3 -->
+                <div class="span6">
+                    <input id="scan-ip-thread-num" type="number" min="0"/>
+                </div> <!-- .span6 -->
+            </div> <!-- .row-fluid -->
+            <div class="row-fluid">
+                <div class="span3">
+                    <label for="use-ipv6">{{ _( "IP mode" ) }}</label>
+                </div> <!-- .span4 -->
+                <div class="span6">
+                    <select id="use-ipv6">
+                        <option value="auto">{{ _( "AUTO" ) }}</option>
+                        <option value="force_ipv4">{{ _( "Force-IPv4" ) }}</option>
+                        <option value="force_ipv6">{{ _( "Force-IPv6" ) }}</option>
+                    </select>
+                </div> <!-- .span8 -->
+            </div> <!-- .row-fluid -->
+            <div class="row-fluid">
+                <div class="span3">
+                    <label for="ip-range-content">{{ _("IP range list") }}(<a href="https://github.com/XX-net/XX-Net/wiki/GoAgent-Scan-Ip-Range-Format" target="_blank">{{ _("Supporting formats") }}</a>)</label>
+                </div> <!-- .span3 -->
+                <div class="span9">
+                    <textarea id="ip-range-content" rows="10"></textarea>
+                </div> <!-- .span9 -->
+            </div> <!-- .row-fluid -->
+            <div class="row-fluid">
+                <div class="span12">
+                    <button class="btn btn-primary btn-block" id="submit" type="submit">{{ _("Submit") }}</button>
+                </div> <!-- .span12 -->
+            </div> <!-- .row-fluid -->
+        </form>
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle=switch]').wrap('<div class="switch" />').parent().bootstrapSwitch();
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/module/gae_proxy/control/config?cmd=get_config',
+            dataType: 'JSON',
+            success: function (result) {
+                if (result['auto_adjust_scan_ip_thread_num'] != 0) {
+                    $("#auto-adjust-scan-ip-thread-num").parent().removeClass('switch-off');
+                    $("#auto-adjust-scan-ip-thread-num").parent().addClass('switch-on');
+
+                    $("#auto-adjust-scan-ip-thread-num").prop('checked', true);
+                }
+                $('#scan-ip-thread-num').val(result['scan_ip_thread_num']);
+
+                $('#use-ipv6').val(result['use_ipv6']);
+            },
+            error: function () {
+                tip('{{ _("Failed reading the settings.") }}', 'error');
+            }
+        });
+    });
+
+    $('#ip-range-content').load('/module/gae_proxy/control/scan_ip?cmd=get_range');
+</script>
+<script type="text/javascript">
+    $(function () {
+        window.MAX_SCAN_THREAD = 30;
+        $('#scan-ip-thread-num').attr("max", window.MAX_SCAN_THREAD);
+        $('#display-max-scan-thread').text(window.MAX_SCAN_THREAD);
+    });
+</script>
+<script type="text/javascript">
+    $('#submit').click(function () {
+        // set_auto_adjust_scan_ip_thread_num
+        var isChecked = $("#auto-adjust-scan-ip-thread-num").is(':checked');
+
+        // scan-ip-thread-num
+        var scanIpThreadNum = $('#scan-ip-thread-num').val();
+        if (scanIpThreadNum > window.MAX_SCAN_THREAD) {
+            tip('{{ _("Scan IP thread is larger than the max number.") }}', 'error');
+            return;
+        }
+
+        // ip-range
+        var ipRangeContent = $('#ip-range-content').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/module/gae_proxy/control/scan_ip?cmd=update',
+            data: {
+                "auto_adjust_scan_ip_thread_num": isChecked ? 1 : 0,
+                "scan_ip_thread_num": scanIpThreadNum,
+                "ip_range": ipRangeContent,
+                "use_ipv6": $('#use-ipv6').val()
+            },
+            dataType: 'JSON',
+            success: function (result) {
+                if (result['res'] == 'success') {
+                    tip('{{ _("Settings saved successfully.") }}', 'success');
+                } else {
+                    tip('{{ _("Unkown error occurred.") }}', 'error');
+                }
+            }
+        });
+    });
+</script>

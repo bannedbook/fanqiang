@@ -1,0 +1,72 @@
+<form method="POST" onSubmit="onSubmit(); return false;">
+
+    <div class="row-fluid">
+        <div class="span12">
+            <button class="btn btn-primary btn-block" type="submit">{{ _( "Clean Cache" ) }}</button>
+        </div> <!-- .span12 -->
+    </div> <!-- .row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span2">
+            <label for="domain-cache-list">{{ _( "Domain Cache" ) }}</label>
+        </div> <!-- .span2 -->
+        <div class="span10">
+            <textarea id="domain-cache-list" rows="50" wrap="off"></textarea>
+        </div> <!-- .span10 -->
+    </div> <!-- .row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span2">
+            <label for="ip-cache-list">{{ _( "IP Cache" ) }}</label>
+        </div> <!-- .span2 -->
+        <div class="span10">
+            <textarea id="ip-cache-list" rows="50" wrap="off"></textarea>
+        </div> <!-- .span10 -->
+    </div> <!-- .row-fluid -->
+
+</form> <!-- #import-export-ip -->
+
+<script type="text/javascript">
+    function loadCacheList() {
+        $.ajax({
+            type: 'POST',
+            url: '/module/smart_router/control/cache',
+            data: {},
+            dataType: 'JSON',
+            success: function (result) {
+                if (result['res'] == 'success') {
+                    {
+                        $('#domain-cache-list').val(result['domain_cache_list']);
+                        $('#ip-cache-list').val(result['ip_cache_list']);
+                    }
+                } else {
+                    displayErrorMessage();
+                }
+            },
+            error: function () {
+                displayErrorMessage();
+            }
+        });
+    }
+
+    loadCacheList();
+
+    function onSubmit() {
+        var postData = {
+            'cmd': "clean"
+        };
+        $.ajax({
+            type: 'POST',
+            url: '/module/smart_router/control/cache',
+            data: postData,
+            dataType: 'JSON',
+            success: function (result) {
+                loadCacheList();
+                tip('{{ _( "Clean Cache successfully." ) }}', 'success');
+            },
+            error: function () {
+                displayErrorMessage();
+            }
+        });
+    }
+</script>

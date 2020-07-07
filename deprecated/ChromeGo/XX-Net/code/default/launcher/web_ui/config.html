@@ -1,0 +1,55 @@
+
+<ul class="nav nav-tabs">
+    <li class="active"><a class="config_tab" id="general" data-toggle="tab">{{ _( "General Settings" ) }}</a></li>
+    <li><a class="config_tab" id="update" data-toggle="tab">{{ _( "System Version" ) }}</a></li>
+    <li><a class="config_tab" id="proxy" data-toggle="tab">{{ _( "LAN Proxy Setting" ) }}</a></li>
+</ul>
+
+<div id="config_content" class="tab-content">
+    <div id="tab_content" class="tab-pane fade in active">
+    </div>
+</div>
+
+
+<!-- JavaScript -->
+<script type="text/javascript">
+    title('{{ _( "System Configuration" ) }}');
+</script>
+
+<script type="text/javascript">
+    $(".config_tab").click(function () {
+        var id = $(this).attr('id');
+        var url = "/module/launcher/config_" + id + ".html";
+        $("#tab_content").load(url);
+    });
+    $("#tab_content").load("/module/launcher/config_general.html");
+</script>
+
+<script type="text/javascript">
+    function restartingService(serviceNameSlug) {
+        var serviceName     = '',
+            restatingTime   = 5,
+            messageTemplate = '{{ _( "Configuring the service[%s]. This page will refresh within %s seconds." ) }}';
+
+        switch (serviceNameSlug) {
+            case 'gae_proxy_enable':
+                serviceName = '{{ _( "GAE Proxy" ) }}';
+                break;
+            case 'x_tunnel_enable':
+                serviceName = '{{ _( "X-Tunnel" ) }}';
+                break;
+            case 'smart_router_enable':
+                serviceName = '{{ _( "Smart Router" ) }}';
+                break;
+            default:
+                serviceName = 'Unknown';
+                break;
+        }
+
+        tip(messageTemplate.format(serviceName, restatingTime), 'warning');
+
+        setTimeout(function () {
+            location.reload();
+        }, restatingTime * 1000);
+    }
+</script>

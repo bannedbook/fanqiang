@@ -1,0 +1,25 @@
+
+<ul class="nav nav-tabs">
+    <li class="active"><a class="config_tab" id="general" data-toggle="tab">{{ _( "General" ) }}</a></li>
+    <li><a class="config_tab" id="rules" data-toggle="tab">{{ _( "Rules" ) }}</a></li>
+    <li><a class="config_tab" id="cache" data-toggle="tab">{{ _( "Cache" ) }}</a></li>
+</ul>
+
+<div id="config_content" class="tab-content">
+    <div id="tab_content" class="tab-pane fade in active">
+    </div>
+</div>
+
+
+<!-- JavaScript -->
+<script type="text/javascript">
+    title('{{ _( "Smart Router Configuration" ) }}');
+</script>
+<script type="text/javascript">
+    $(".config_tab").click(function () {
+        var id = $(this).attr('id');
+        var url = "/module/smart_router/config_" + id + ".html";
+        $("#tab_content").load(url);
+    });
+    $("#tab_content").load("/module/smart_router/config_general.html");
+</script>

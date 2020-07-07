@@ -1,0 +1,173 @@
+<div id="options">
+
+    <div class="row-fluid">
+        <div class="span4">
+            <label for="country">{{ _( "Country" ) }}</label>
+        </div>
+        <div class="span4">
+            <select id="country">
+                <!-- <option value="de_DE">Deutsch</option> -->
+                <option value="CN">{{ _("China" ) }}</option>
+                <!-- <option value="es_VE">Español</option> -->
+                <option value="XX">{{ _("Other" ) }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span4">
+            <label for="pac-policy">{{ _( "PAC Policy" ) }}</label>
+        </div>
+        <div class="span4">
+            <select id="pac-policy">
+                <option value="black_GAE">{{ _("Black->GAEProxy" ) }}</option>
+                <option value="black_X-Tunnel">{{ _("Black->X-Tunnel" ) }}</option>
+                <option value="smart-router">{{ _("All Smart-Router" ) }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span4">{{ _( "Auto-Try Direct" ) }}</div> <!-- .span4 -->
+        <div class="span8">
+            <input id="auto-direct" type="checkbox" data-toggle="switch"/>
+        </div> <!-- .span8 -->
+    </div> <!-- .row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span4">{{ _( "Use IPv6 preferentially when Auto-Try Direct" ) }}</div> <!-- .span4 -->
+        <div class="span8">
+            <input id="auto-direct6" type="checkbox" data-toggle="switch"/>
+        </div> <!-- .span8 -->
+    </div> <!-- .row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span4">{{ _( "Auto-Try GAEProxy" ) }}</div> <!-- .span4 -->
+        <div class="span8">
+            <input id="auto-gae" type="checkbox" data-toggle="switch"/>
+        </div> <!-- .span8 -->
+    </div> <!-- .row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span4">{{ _( "Enable Fake CA" ) }}</div> <!-- .span4 -->
+        <div class="span8">
+            <input id="enable_fake_ca" type="checkbox" data-toggle="switch"/>
+        </div> <!-- .span8 -->
+    </div> <!-- .row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span4">{{ _( "Block Advertisement" ) }}</div> <!-- .span4 -->
+        <div class="span8">
+            <input id="block_advertisement" type="checkbox" data-toggle="switch"/>
+        </div> <!-- .span8 -->
+    </div> <!-- .row-fluid -->
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle=switch]').wrap('<div class="switch" />').parent().bootstrapSwitch();
+    });
+</script>
+<script type="text/javascript">
+    function getSmartRouterConfig() {
+        $.ajax({
+            type: 'POST',
+            url: '/module/smart_router/control/config',
+            success: function (result) {
+                if (result['auto_direct'] != 0) {
+                    $("#auto-direct").parent().removeClass('switch-off');
+                    $("#auto-direct").parent().addClass('switch-on');
+
+                    $("#auto-direct").prop('checked', true);
+                }
+                if (result['auto_direct6'] != 0) {
+                    $("#auto-direct6").parent().removeClass('switch-off');
+                    $("#auto-direct6").parent().addClass('switch-on');
+
+                    $("#auto-direct6").prop('checked', true);
+                }
+
+                if (result['auto_gae'] != 0) {
+                    $("#auto-gae").parent().removeClass('switch-off');
+                    $("#auto-gae").parent().addClass('switch-on');
+
+                    $("#auto-gae").prop('checked', true);
+                }
+                if (result['enable_fake_ca'] != 0) {
+                    $("#enable_fake_ca").parent().removeClass('switch-off');
+                    $("#enable_fake_ca").parent().addClass('switch-on');
+
+                    $("#enable_fake_ca").prop('checked', true);
+                }
+                if (result['block_advertisement'] != 0) {
+                    $("#block_advertisement").parent().removeClass('switch-off');
+                    $("#block_advertisement").parent().addClass('switch-on');
+
+                    $("#block_advertisement").prop('checked', true);
+                }
+                $("#country").val(result['country']);
+                $("#pac-policy").val(result['pac_policy']);
+            },
+            error: function () {
+                displayErrorMessage();
+            }
+        });
+    }
+
+    getSmartRouterConfig();
+</script>
+<script type="text/javascript">
+    function setSmartRouterConfig(key, value) {
+        var pageRequests = {
+            'cmd': 'set'
+        };
+        pageRequests[key] = value;
+        debugger;
+
+        $.ajax({
+            type: 'POST',
+            url: '/module/smart_router/control/config',
+            data: pageRequests,
+            dataType: 'JSON',
+            success: function (result) {
+                if (result['res'] == 'success') {
+                    tip('{{ _( "Settings saved successfully." ) }}', 'success');
+                } else {
+                    displayErrorMessage();
+                }
+            },
+            error: function () {
+                displayErrorMessage();
+            }
+        });
+    }
+
+    $('#country').change(function () {
+        setSmartRouterConfig("country", $('#country').val());
+    });
+
+    $('#pac-policy').change(function () {
+        setSmartRouterConfig("pac_policy", $('#pac-policy').val());
+    });
+
+    $('#auto-direct').change(function () {
+        setSmartRouterConfig("auto_direct", $(this).is(':checked') ? 1 : 0);
+    });
+
+    $('#auto-direct6').change(function () {
+        setSmartRouterConfig("auto_direct6", $(this).is(':checked') ? 1 : 0);
+    });
+
+    $('#auto-gae').change(function () {
+        setSmartRouterConfig("auto_gae", $(this).is(':checked') ? 1 : 0);
+    });
+
+    $('#enable_fake_ca').change(function () {
+        setSmartRouterConfig("enable_fake_ca", $(this).is(':checked') ? 1 : 0);
+    });
+
+    $('#block_advertisement').change(function () {
+        setSmartRouterConfig("block_advertisement", $(this).is(':checked') ? 1 : 0);
+    });
+</script>

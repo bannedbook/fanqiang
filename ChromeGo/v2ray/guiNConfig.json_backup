@@ -45,20 +45,13 @@
     "readBufferSize": 2,
     "writeBufferSize": 2
   },
+  "sysAgentEnabled": false,
   "listenerType": 0,
-  "speedTestUrl": "http://speedtest-sgp1.digitalocean.com/10mb.test",
-  "speedPingTestUrl": "https://www.google.com/generate_204",
-  "urlGFWList": "https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt",
+  "urlGFWList": "",
   "allowLANConn": false,
-  "enableStatistics": false,
-  "keepOlderDedupl": false,
-  "statisticsFreshRate": 0,
   "remoteDNS": "",
-  "defAllowInsecure": false,
-  "subItem": [],
+  "subItem": null,
   "uiItem": {
-    "mainSize": "0, 0",
-    "mainLvColWidth": {}
-  },
-  "userPacRule": []
+    "mainQRCodeWidth": 600
+  }
 }

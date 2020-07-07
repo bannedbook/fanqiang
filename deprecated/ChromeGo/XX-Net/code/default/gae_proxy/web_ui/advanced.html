@@ -1,0 +1,32 @@
+<ul class="nav nav-tabs">
+    <li><a class="advanced_tab" id="scan_setting" data-toggle="tab">{{ _( "Scan Settings" ) }}</a></li>
+    <li><a class="advanced_tab" id="import_ip" data-toggle="tab">{{ _( "Import IP" ) }}</a></li>
+    <li><a class="advanced_tab" id="export_ip" data-toggle="tab">{{ _( "Export IP" ) }}</a></li>
+    <li><a class="advanced_tab" id="check_ip" data-toggle="tab">{{ _( "Check IP" ) }}</a></li>
+    <li><a class="advanced_tab" id="ipv6_tunnel" data-toggle="tab">{{ _( "IPv6 Tunnel" ) }}</a></li>
+    <li><a class="advanced_tab" id="global_setting" data-toggle="tab">{{ _( "Global Settings" ) }}</a></li>
+</ul>
+<div id="advanced_content" class="tab-content">
+    <div id="tab_content" class="tab-pane fade in active">
+    </div>
+</div>
+<script type="text/javascript">
+    title('{{ _("GAEProxy Advanced Configuration") }}');
+</script>
+<script type="text/javascript">
+    $(".advanced_tab").click(function () {
+        var id = $(this).attr('id');
+        var url = "/module/gae_proxy/" + id + ".html";
+        $("#tab_content").load(url);
+        location.hash = "#" + id;
+    });
+    if (location.hash == "") {
+        var id = "scan_setting";
+    } else {
+        var id = location.hash.substr(1);
+    }
+    location.hash = "#" + id;
+    $(location.hash).parent().addClass("active");
+    var url = "/module/gae_proxy/" + id + ".html";
+    $("#tab_content").load(url);
+</script>

@@ -1,0 +1,42 @@
+<form method="POST" onSubmit="onSubmit(); return false;">
+    <div class="row-fluid">
+        <div class="span2">
+            <label for="ip-list">{{ _( "IP list" ) }}</label>
+        </div> <!-- .span2 -->
+        <div class="span10">
+            <textarea id="ip-list" rows="10"></textarea>
+        </div> <!-- .span10 -->
+    </div> <!-- .row-fluid -->
+    <div class="row-fluid">
+        <div class="span12">
+            <button class="btn btn-primary btn-block" type="submit">{{ _( "Run" ) }}</button>
+        </div> <!-- .span12 -->
+    </div> <!-- .row-fluid -->
+</form> <!-- #import-export-ip -->
+
+<script type="text/javascript">
+    function onSubmit() {
+        var ipList = $('#ip-list').val();
+
+        return doImportAction(ipList);
+    }
+</script>
+<script type="text/javascript">
+    function doImportAction(ipList) {
+        var postData = {
+            'ipList': ipList
+        };
+        $.ajax({
+            type: 'POST',
+            url: '/module/gae_proxy/control/importip?cmd=importip',
+            data: postData,
+            dataType: 'JSON',
+            success: function (result) {
+                tip('{{ _( "Success import ") }}' + result['res'] + '{{ _( " IP.") }}', 'success');
+            },
+            error: function () {
+                tip('{{ _( "Failed importing IP.") }}');
+            }
+        });
+    }
+</script>
