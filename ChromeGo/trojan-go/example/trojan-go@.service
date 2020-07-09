@@ -1,0 +1,17 @@
+[Unit]
+Description=Trojan-Go - An unidentifiable mechanism that helps you bypass GFW
+Documentation=https://p4gefau1t.github.io/trojan-go/
+After=network.target network-online.target nss-lookup.target mysql.service mariadb.service mysqld.service
+
+[Service]
+Type=simple
+StandardError=journal
+User=nobody
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+ExecStart=/usr/bin/trojan-go -config /etc/trojan-go/%i.json
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

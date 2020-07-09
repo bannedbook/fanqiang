@@ -1,0 +1,78 @@
+Usage: naive { OPTIONS | [/path/to/config.json] }
+
+Description:
+
+    naive is a proxy to transport traffic as Chromium traffic. It can be
+    used as both the client and the server or together.
+
+    There are two ways to specify options. The first is through command
+    line flags: naive OPTIONS. The second is through a JSON
+    configuration file. If there are no command line flags or path
+    specified, it will try to read from "config.json" by default.
+
+    The syntax of config.json fields are mapped exactly to command line
+    flags, e.g.
+
+        {
+          "proxy": "https://user:pass@example.org"
+        }
+
+    is exactly the same as --proxy=https://user:pass@example.org.  All
+    command line flags must have string values in config.json, except if
+    the flags are boolean then they must have boolean values too.
+
+Options:
+
+    -h, --help
+
+        Shows help message.
+
+    --version
+
+        Prints version
+
+    --listen=<proto>://[addr][:port]
+
+        Listens at addr:port with protocol <proto>. Allowed values for
+        proto: "socks", "http", "redir". The default proto is socks.
+        The default addr is 0.0.0.0. The default port is 1080.
+
+        For redirecting local traffic from the same machine:
+
+        iptables -t nat -A OUTPUT -p tcp -d ... -j REDIRECT --to-ports 1080
+
+        For redirecting forwarded traffic on a router:
+
+        iptables -t nat -A PREROUTING -p tcp -d ... -j REDIRECT --to-ports 1080
+
+    --proxy=<proto>://[<user>:<pass>@]<hostname>[:<port>]
+
+        Routes traffic via the proxy server. Allowed values for proto:
+        "https", "quic". The value of port is inferred from proto if not
+        specified.
+
+        If this option is not set, connects to origin server directly.
+
+    --padding
+
+        Obfuscates traffic by adding length paddings.
+
+    --host-resolver-rules=...
+
+        This is the same as Chromium's flag of the same name. Google it
+        as the full description is too technical.
+
+    --log=[<path>]
+
+        Saves log to the file at <path>. If <path> is empty, prints to
+        console.
+
+        If this option is not set, no log is saved for privacy.
+
+    --log-net-log=<path>
+
+        Saves NetLog. View at https://netlog-viewer.appspot.com/.
+
+    --ssl-key-log-file=<path>
+
+        Saves SSL keys for Wireshark inspection.

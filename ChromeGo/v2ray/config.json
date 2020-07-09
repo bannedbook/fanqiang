@@ -35,12 +35,12 @@
       "settings": {
         "vnext": [
           {
-            "address": "tr1.freedom101.xyz",
+            "address": "107.167.18.43",
             "port": 443,
             "users": [
               {
-                "id": "b01b3907-955c-487c-acb2-61d71919acc6",
-                "alterId": 2,
+                "id": "418048af-a293-4b99-9b0c-98ca3580dd23",
+                "alterId": 64,
                 "email": "t@t.tt",
                 "security": "auto"
               }
@@ -54,16 +54,16 @@
         "network": "ws",
         "security": "tls",
         "tlsSettings": {
-          "allowInsecure": false,
-          "serverName": "tr1.freedom101.xyz"
+          "allowInsecure": true,
+          "serverName": "www.7921769.xyz"
         },
         "tcpSettings": null,
         "kcpSettings": null,
         "wsSettings": {
           "connectionReuse": true,
-          "path": "/2a606f24/",
+          "path": "/footers",
           "headers": {
-            "Host": "tr1.freedom101.xyz"
+            "Host": "www.7921769.xyz"
           }
         },
         "httpSettings": null,

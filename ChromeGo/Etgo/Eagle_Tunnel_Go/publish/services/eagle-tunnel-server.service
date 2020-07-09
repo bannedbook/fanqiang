@@ -1,0 +1,11 @@
+[Unit]
+Description=Eagle Tunnel Service
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/et -c /etc/eagle-tunnel.d/server.conf
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

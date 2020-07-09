@@ -1,7 +1,7 @@
 @Echo Off
 Title 从GitHub云端更新 SS 配置文件
 cd /d %~dp0
-..\..\wget --ca-certificate=ca-bundle.crt -c https://gitlab.com/free9999/ipupdate/-/raw/master/ssr/ssconfig.txt
+..\..\wget --no-check-certificate https://gitlab.com/free9999/ipupdate/-/raw/master/ssr/ssconfig.txt
 
 if exist ssconfig.txt goto startcopy
 echo ip更新失败，请试试另外一个，如果都不行，请反馈kebi2014@gmail.com

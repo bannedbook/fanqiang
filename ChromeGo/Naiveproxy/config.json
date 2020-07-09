@@ -1,0 +1,6 @@
+{
+  "listen": "socks://127.0.0.1:1080",
+  "proxy": "https://8e23:827fb663-2814-4347-9bd1-b67bf6cf00b7@tr6.freedom104.xyz",
+  "padding": true,
+  "log": ""
+}

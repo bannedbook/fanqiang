@@ -1,7 +1,7 @@
 @Echo Off
 Title 从GitHub云端更新 DAZE 最新配置
 cd /d %~dp0
-..\..\wget --ca-certificate=ca-bundle.crt -c https://gitlab.com/free9999/ipupdate/-/raw/master/DAZE/daze.bat
+..\..\wget --no-check-certificate https://gitlab.com/free9999/ipupdate/-/raw/master/DAZE/daze.bat
 
 if exist daze.bat goto startcopy
 echo ip更新失败，请试试ip_2更新
