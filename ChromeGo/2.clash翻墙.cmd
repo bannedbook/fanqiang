@@ -11,11 +11,11 @@ if errorlevel 2 goto ip2
 if errorlevel 1 goto ip1
 
 :ip2
-start /wait "" "%~dp0Goflyway\ip_Update\ip_2.bat"
+start /wait "" "%~dp0clash\ip_Update\ip_2.bat"
 goto startfq
 
 :ip1
-start /wait "" "%~dp0Goflyway\ip_Update\ip_1.bat"
+start /wait "" "%~dp0clash\ip_Update\ip_1.bat"
 goto startfq
 
 :startfq
