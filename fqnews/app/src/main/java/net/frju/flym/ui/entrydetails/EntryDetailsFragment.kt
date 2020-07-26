@@ -19,6 +19,7 @@ package net.frju.flym.ui.entrydetails
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -47,7 +48,6 @@ import org.jetbrains.anko.support.v4.browse
 import org.jetbrains.anko.support.v4.share
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.annotations.NotNull
-
 
 class EntryDetailsFragment : Fragment() {
 
@@ -290,6 +290,33 @@ class EntryDetailsFragment : Fragment() {
         }
     }
 
+    private lateinit var adView: AdView
+    private var initialLayoutComplete = false
+    // Determine the screen width (less decorations) to use for the ad width.
+    // If the ad hasn't been laid out, default to the full screen width.
+    private val adSize: AdSize
+        get() {
+            val display = activity?.windowManager?.defaultDisplay
+            val outMetrics = DisplayMetrics()
+            display?.getMetrics(outMetrics)
+            val density = outMetrics.density
+            var adWidthPixels = ad_view_container.width.toFloat()
+            if (adWidthPixels == 0f) {
+                adWidthPixels = outMetrics.widthPixels.toFloat()
+            }
+
+            val adWidth = (adWidthPixels / density).toInt()
+            return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity, adWidth)
+        }
+    private fun loadBanner() {
+        adView.adUnitId=getString(R.string.banner_adUnitId)
+        adView.adSize = adSize
+        // Log.e("adSize",adView.adSize.width.toString()+","+adView.adSize.height.toString())
+        // Create an ad request.
+        val adRequest = AdRequest.Builder().build()
+        // Start loading the ad in the background.
+        adView.loadAd(adRequest)
+    }
     fun setEntry(entryId: String, allEntryIds: List<String>) {
         this.entryId = entryId
         this.allEntryIds = allEntryIds
@@ -308,13 +335,21 @@ class EntryDetailsFragment : Fragment() {
 								?: entryWithFeed?.entry?.description.orEmpty() else entryWithFeed?.entry?.description.orEmpty()
 						if (!contentText.contains("https://www.youtube.com/embed/")) {
 							MobileAds.initialize(activity) {}
-							val mAdView: AdView = activity!!.findViewById(R.id.adView)
-							val adRequest = AdRequest.Builder().build()
-							mAdView.loadAd(adRequest)
-							val adsHeight: Int = AdSize.SMART_BANNER.getHeightInPixels(activity)
-							activity!!.swipe_view.bottomPadding = adsHeight + 5
+                            adView = AdView(activity)
+                            ad_view_container.addView(adView)
+                            // Since we're loading the banner based on the adContainerView size, we need to wait until this
+                            // view is laid out before we can get the width.
+                            ad_view_container.viewTreeObserver.addOnGlobalLayoutListener {
+                                if (!initialLayoutComplete) {
+                                    initialLayoutComplete = true
+                                    loadBanner()
+                                    val adsHeight: Int = adView.adSize.getHeightInPixels(activity)
+                                    swipe_view.bottomPadding = adsHeight + 5
+                                }
+                            }
 						}
 					} catch (e: Exception) {
+                        //e.printStackTrace()
 						Log.e("ads---", e.message)
 					}
 

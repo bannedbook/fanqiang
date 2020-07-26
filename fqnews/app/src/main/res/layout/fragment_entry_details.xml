@@ -52,7 +52,16 @@
 
     </me.thanel.swipeactionview.SwipeActionView>
 
-    <com.google.android.gms.ads.AdView
+    <RelativeLayout
+        android:layout_below="@id/swipe_view"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        android:id="@+id/ad_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </RelativeLayout>
+
+<!--    <com.google.android.gms.ads.AdView
         android:layout_below="@id/swipe_view"
         android:id="@+id/adView"
         android:layout_width="match_parent"
@@ -62,5 +71,5 @@
         android:layout_gravity="bottom"
         android:background="@android:color/transparent"
         app:adSize="SMART_BANNER"
-        app:adUnitId="ca-app-pub-2194043486084479/5355559146" />
+        app:adUnitId="@string/banner_adUnitId" />-->
 </FrameLayout>

@@ -17,7 +17,6 @@
 
 package net.frju.flym.ui.entries
 
-import SpeedUpVPN.VpnEncrypt
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
@@ -40,7 +39,6 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.*
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
-import com.github.shadowsocks.utils.printLog
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.formats.NativeAdOptions
 import com.google.android.gms.ads.formats.UnifiedNativeAd
@@ -129,7 +127,7 @@ class EntriesFragment : Fragment() {
 					var viewHolder = recycler_view.findViewHolderForAdapterPosition(i)
 					if(viewHolder==null)continue
 					viewHolder = viewHolder as ViewHolder
-					if (i<9) {
+					if (i<5) {
 						viewHolder.populateUnifiedNativeAdView(nativeAd!!, nativeAdView!!)
 						// might be in the middle of a layout after scrolling, need to wait
 						withContext(Dispatchers.Main) { adapter.notifyItemChanged(i) }
@@ -137,13 +135,11 @@ class EntriesFragment : Fragment() {
 					}
 				}catch (ex:Exception){
 					Log.e("ssvpn",ex.message,ex)
-					printLog(ex)
 					continue
 				}
 			}
 		}catch (e:Exception){
 			Log.e("ssvpn",e.message,e)
-			printLog(e)
 		}
 	}
 
@@ -265,9 +261,9 @@ class EntriesFragment : Fragment() {
 			}
 		}
 
-		MobileAds.initialize(activity,"ca-app-pub-2194043486084479~7068327579")
+		MobileAds.initialize(activity,activity?.getString(R.string.admob_appid))
 		mInterstitialAd = InterstitialAd(activity)
-		mInterstitialAd.adUnitId = "ca-app-pub-2194043486084479/2288264870"
+		mInterstitialAd.adUnitId = activity?.getString(R.string.interstitial_adUnitId)
 	}
 
 	private fun initDataObservers() {
@@ -569,9 +565,9 @@ class EntriesFragment : Fragment() {
 
 			onClick {
 				//Log.e("ads", "click news.")
-				VpnEncrypt.newsClickCount++
-				if (VpnEncrypt.newsClickCount%5==0L)mInterstitialAd.loadAd(AdRequest.Builder().build())
-				if (VpnEncrypt.newsClickCount%5==1L && mInterstitialAd.isLoaded) {
+				PrefConstants.newsClickCount++
+				if (PrefConstants.newsClickCount%5==0L)mInterstitialAd.loadAd(AdRequest.Builder().build())
+				if (PrefConstants.newsClickCount%5==1L && mInterstitialAd.isLoaded) {
 					//Log.e("ads", "The interstitial loaded.")
 					mInterstitialAd.show()
 				} else {
@@ -654,7 +650,7 @@ class EntriesFragment : Fragment() {
 				nativeAdView = layoutInflater.inflate(R.layout.ad_unified, adContainer, false) as UnifiedNativeAdView
 				AdLoader.Builder(context,
 						//"ca-app-pub-3940256099942544/2247696110" //test ads
-						"ca-app-pub-2194043486084479/2721000405"
+						activity?.getString(R.string.native_adUnitId)
 				).apply {
 					forUnifiedNativeAd { unifiedNativeAd ->
 						// You must call destroy on old ads when you are done with them,

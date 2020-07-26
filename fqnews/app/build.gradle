@@ -17,21 +17,75 @@ def getCurrentFlavor() {
         return "debug"
     }
 }
+def getCurrentProductFlavor() {
+	Gradle gradle = getGradle()
+	String  tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+
+	Pattern pattern
+
+	if( tskReqStr.contains( "assemble" ) )
+		pattern = Pattern.compile("assemble(\\w+)(Release|Debug)")
+	else
+		pattern = Pattern.compile("generate(\\w+)(Release|Debug)")
+
+	Matcher matcher = pattern.matcher( tskReqStr )
+
+	if( matcher.find() )
+		return matcher.group(1).toLowerCase()
+	else
+	{
+		println "NO MATCH FOUND"
+		return ""
+	}
+}
 androidExtensions {
 	experimental = true
 }
 
 android {
 	compileSdkVersion rootProject.compileSdkVersion
-    archivesBaseName = "fqnews"
+    archivesBaseName = "android"
 	defaultConfig {
-		applicationId "jww.feed.fqnews"
 		minSdkVersion rootProject.minSdkVersion
 		targetSdkVersion rootProject.sdkVersion
         versionCode rootProject.versionCode
         versionName rootProject.versionName
     }
-
+	flavorDimensions "site"
+	productFlavors {
+		fqnews {
+			dimension "site"
+			applicationId "jww.feed.fqnews"
+			resValue 'string', 'applicationId', applicationId
+			resValue 'string', 'admob_appid', "ca-app-pub-2194043486084479~7068327579"
+			resValue 'string', 'banner_adUnitId', "ca-app-pub-2194043486084479/5355559146"
+			resValue 'string', 'native_adUnitId', "ca-app-pub-2194043486084479/2721000405"
+			resValue 'string', 'interstitial_adUnitId', "ca-app-pub-2194043486084479/2288264870"
+		}
+		hwnews {
+			dimension "site"
+			applicationId "jww.app.hwnews"
+			resValue 'string', 'applicationId', applicationId
+			resValue 'string', 'admob_appid', "ca-app-pub-2194043486084479~6551626678"
+			resValue 'string', 'banner_adUnitId', "ca-app-pub-2194043486084479/8986218326"
+			resValue 'string', 'native_adUnitId', "ca-app-pub-2194043486084479/1107728300"
+			resValue 'string', 'interstitial_adUnitId', "ca-app-pub-2194043486084479/3159176573"
+		}
+		aunews {
+			dimension "site"
+			applicationId "au.news"
+			resValue 'string', 'applicationId', applicationId
+			resValue 'string', 'admob_appid', "ca-app-pub-2194043486084479~5403890486"
+			resValue 'string', 'banner_adUnitId', "ca-app-pub-2194043486084479/1636584608"
+			resValue 'string', 'native_adUnitId', "ca-app-pub-2194043486084479/8959992113"
+			resValue 'string', 'interstitial_adUnitId', "ca-app-pub-2194043486084479/3248199117"
+		}
+	}
+	sourceSets {
+		fqnews.setRoot('src/fqnews')
+		hwnews.setRoot('src/hwnews')
+		aunews.setRoot('src/aunews')
+	}
 	compileOptions {
 		sourceCompatibility javaVersion
 		targetCompatibility javaVersion
@@ -86,12 +140,14 @@ android {
 		main.java.srcDirs += 'src/main/kotlin'
 	}
 
-    splits {
+	if(getCurrentProductFlavor()=='fqnews'){
+	splits {
         abi {
             enable true
             universalApk true
         }
     }
+	}
 }
 
 kapt {
@@ -101,7 +157,18 @@ kapt {
 }
 
 dependencies {
-    implementation project(':core')
+	fqnewsImplementation project(':core')
+
+	hwnewsImplementation project(':plugin')
+	hwnewsApi "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+	hwnewsApi "androidx.lifecycle:lifecycle-livedata-core-ktx:$lifecycleVersion"
+	hwnewsApi "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+
+	aunewsImplementation project(':plugin')
+	aunewsApi "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+	aunewsApi "androidx.lifecycle:lifecycle-livedata-core-ktx:$lifecycleVersion"
+	aunewsApi "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
 
 	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -136,7 +203,7 @@ dependencies {
 	implementation "com.github.bumptech.glide:glide:$glide_version"
 	kapt "com.github.bumptech.glide:compiler:$glide_version"
 
-	implementation 'androidx.core:core-ktx:1.2.0'
+	implementation 'androidx.core:core-ktx:1.3.0'
 	implementation 'androidx.paging:paging-runtime:2.1.2'
 	implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 	implementation 'org.jsoup:jsoup:1.12.1'
@@ -149,7 +216,7 @@ dependencies {
 	implementation 'net.dankito.readability4j:readability4j:1.0.4'
 	implementation 'pub.devrel:easypermissions:1.2.0'
 	implementation 'com.rometools:rome-opml:1.12.2'
-	implementation 'com.google.android.gms:play-services-ads:18.3.0'
+	implementation 'com.google.android.gms:play-services-ads:19.2.0'
 }
 
 ext.abiCodes = ['armeabi-v7a': 1, 'arm64-v8a': 2, x86: 3, x86_64: 4]

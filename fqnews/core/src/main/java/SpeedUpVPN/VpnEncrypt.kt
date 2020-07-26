@@ -17,7 +17,6 @@ object VpnEncrypt{
     const val testing="test..."
     const val ACTION_PROXY_START_COMPLETE = "SpeedUpVPN.ACTION_PROXY_START_COMPLETE"
     const val ACTION_INTERNET_FAIL = "SpeedUpVPN.ACTION_INTERNET_FAIL"
-    @JvmStatic var newsClickCount = 1L
     const val SOCK_PROXY_PORT = 10808
     const val HTTP_PROXY_PORT = 58300
     const val enableLocalDns =  false

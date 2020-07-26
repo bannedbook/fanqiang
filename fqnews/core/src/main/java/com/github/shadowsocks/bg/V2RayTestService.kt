@@ -150,8 +150,8 @@ class V2RayTestService : Service() , BaseService.Interface {
                 }, broadname, null)
                 data.closeReceiverRegistered = true
             }
-            Log.e("data.notification","FQNews代理-"+activeProfile.formattedName)
-            data.notification = createNotification("FQNews代理-"+activeProfile.formattedName)
+
+            data.notification = createNotification("FQNews-"+activeProfile.formattedName)
             data.changeState(BaseService.State.Connecting)
 
 

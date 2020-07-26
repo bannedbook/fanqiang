@@ -21,7 +21,6 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.vansuita.materialabout.builder.AboutBuilder
-import net.fred.feedex.BuildConfig
 import net.fred.feedex.R
 import net.frju.flym.utils.setupTheme
 

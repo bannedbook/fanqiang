@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="启动中..."
+        android:text=""
         android:textColor="#fff"
         android:textSize="30sp"
         android:textStyle="bold" />

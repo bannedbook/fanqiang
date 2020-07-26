@@ -2,10 +2,8 @@
 <resources>
 
     <!-- GENERAL -->
-    <string name="app_name">FQNews</string>
-    <string name="about_flym">About FQNews</string>
-    <string name="welcome_title">Welcome to FQNews. Would you like to add a feed?</string>
-    <string name="welcome_title_with_opml_import">Would you like to import previous FQNews feeds?</string>
+    <string name="welcome_title">Welcome, Would you like to add a feed?</string>
+    <string name="welcome_title_with_opml_import">Would you like to import previous APP feeds?</string>
     <string name="cannot_find_feeds">No feeds have been found</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_edit_feed">Edit feed</string>
@@ -14,13 +12,13 @@
     <string name="menu_enable_full_text_retrieval">Enable full text retrieval</string>
     <string name="menu_disable_full_text_retrieval">Disable full text retrieval</string>
     <string name="menu_all_read">Mark all as read</string>
-    <string name="flym_feeds">FQNews feeds</string>
+    <string name="flym_feeds">feeds</string>
     <string name="error">Error</string>
     <string name="network_error">The network is not set up</string>
     <string name="drawer_explanation">Welcome!\n\nLong press on the feeds to see options ▼</string>
     <string name="drawer_fetch_error_explanation">Some of your feeds did not refresh correctly ▼</string>
     <string name="about_screen_info">I\'m publishing this application as free and open-source software under GPLv3 licence. Feel free to modify it as long as you keep it open-source as well.</string>
-    <string name="about_info" translatable="false">FQNews is free and open-source APP under GPLv3 licence, base on SS VPN and Flym News Reader.</string>
+    <string name="about_info" translatable="false">This is free and open-source APP under GPLv3 licence, base on V2ray VPN and Flym News Reader.</string>
 
     <!-- FEEDS -->
     <string name="feeds">Feeds</string>
