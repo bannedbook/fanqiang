@@ -3,7 +3,10 @@
 网上流传一些v2ray一键安装脚本，有的用起来挺方便，但个人更喜欢采用官方脚本，官方脚本更加安全可靠，你懂得。
 
 V2RAY官方的安装脚本命令为(SSH连接VPS后执行)：<br>
-`bash <(curl -L -s https://github.com/v2fly/fhs-install-v2ray)`
+```
+bash <(curl -L -s https://github.com/v2fly/fhs-install-v2ray)
+
+```
 
 > 如果提示 curl: command not found 的错误，这是你的系统精简的太干净了，curl都没有安装，所以需要安先装 curl:<br>
 `apt-get install -y curl`
