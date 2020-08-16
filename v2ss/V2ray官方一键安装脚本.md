@@ -4,12 +4,11 @@
 
 V2RAY官方的安装脚本命令为(SSH连接VPS后执行)：<br>
 ```
-bash <(curl -L -s https://github.com/v2fly/fhs-install-v2ray)
-
+apt-get install -y curl
+curl -L -s https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh | bash
+curl -L -s https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh | bash
+systemctl enable v2ray
 ```
-
-> 如果提示 curl: command not found 的错误，这是你的系统精简的太干净了，curl都没有安装，所以需要安先装 curl:<br>
-`apt-get install -y curl`
 
 复制上面的安装脚本命令到VPS服务器里，复制代码用鼠标右键的复制，然后在vps里面右键粘贴进去，因为ctrl+c和ctrl+v无效。接着按回车键，脚本会自动安装。
 
