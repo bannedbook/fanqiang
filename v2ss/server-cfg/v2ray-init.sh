@@ -3,7 +3,8 @@ set -x
 #trap read debug
 apt-get update
 apt-get install curl wget -y
-bash <(curl -L -s https://github.com/v2fly/fhs-install-v2ray)
+curl -L -s https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh | bash
+curl -L -s https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh | bash
 iptables -A OUTPUT -p tcp --dport 25 -j REJECT
 hostbakfile=/etc/hosts_bak
 if [ -f "$hostbakfile" ]; then
