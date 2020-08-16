@@ -6,7 +6,6 @@ V2RAY官方的安装脚本命令为(SSH连接VPS后执行)：<br>
 ```
 apt-get install -y curl
 curl -L -s https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh | bash
-curl -L -s https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh | bash
 systemctl enable v2ray
 ```
 
@@ -15,8 +14,10 @@ systemctl enable v2ray
 <b>广告插播，如果你觉得自己折腾VPS太麻烦，可以考虑这个服务哦（非本库服务）：</b><br>
 <a href="https://github.com/killgcd/justmysocks/blob/master/README.md"><img src="https://raw.githubusercontent.com/killgcd/justmysocks/master/images/bwgss.jpg" alt="搬瓦工翻墙 Just My Socks"></a>
 
-安装成功后需要自己准备一个配置文件：<br>
-
+安装成功后需要自己准备一个配置文件，可以参考我的配置文件，请自行修改端口、uuid等参数(执行下面的命令下载参考配置文件)：<br>
+```
+wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cfg/v2/config.json  -O -> /usr/local/etc/v2ray/config.json
+```
 
 安装完成后，请执行：
 `service v2ray restart` ,以确保v2ray启动成功。
@@ -27,7 +28,7 @@ systemctl enable v2ray
 
 测试V2Ray配置文件：
 
-`/usr/bin/v2ray/v2ray -test -config /etc/v2ray/config.json`
+`/usr/local/bin/v2ray -test -config /usr/local/etc/v2ray/config.json`
 
 本文属于bannedbook系列翻墙教程的一部分，请继续阅读<a href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md" >自建V2ray服务器简明教程</a>的其它章节。也欢迎体验我们提供的免费翻墙软件和教程：
 <ul>
