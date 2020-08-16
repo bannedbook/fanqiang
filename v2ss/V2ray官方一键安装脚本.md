@@ -15,11 +15,8 @@ systemctl enable v2ray
 <b>广告插播，如果你觉得自己折腾VPS太麻烦，可以考虑这个服务哦（非本库服务）：</b><br>
 <a href="https://github.com/killgcd/justmysocks/blob/master/README.md"><img src="https://raw.githubusercontent.com/killgcd/justmysocks/master/images/bwgss.jpg" alt="搬瓦工翻墙 Just My Socks"></a>
 
-安装成功后输出提示大略如下：<br>
-`PORT:33333`<br>
-`UUID:b9a7e7ac-e9f2-4ac2-xxxx-xxxxxxxxxx`<br>
-`Created symlink /etc/systemd/system/multi-user.target.wants/v2ray.service → /etc/systemd/system/v2ray.service.`<br>
-`V2Ray v4.22.1 is installed.`<br>
+安装成功后需要自己准备一个配置文件：<br>
+
 
 安装完成后，请执行：
 `service v2ray restart` ,以确保v2ray启动成功。
