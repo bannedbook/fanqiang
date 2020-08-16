@@ -14,9 +14,9 @@ else
     cp -f /etc/hosts /etc/hosts_bak
 fi
 wget https://raw.githubusercontent.com/bannedbook/blockporn/master/hosts.txt  -O ->> /etc/hosts
-echo '* soft nofile 51200' >> /etc/security/limits.conf
-echo '* hard nofile 51200' >> /etc/security/limits.conf
-ulimit -n 51200
+echo '* soft nofile 65535' >> /etc/security/limits.conf
+echo '* hard nofile 65535' >> /etc/security/limits.conf
+ulimit -n 65535
 wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cfg/sysctl.conf  -O -> /etc/sysctl.conf
 sysctl -p
 wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cfg/v2ray.service  -O -> /etc/systemd/system/v2ray.service
