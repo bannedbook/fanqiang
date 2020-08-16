@@ -6,6 +6,7 @@ V2RAY官方的安装脚本命令为(SSH连接VPS后执行)：<br>
 ```
 apt-get install -y curl
 curl -L -s https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh | bash
+curl -L -s https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh | bash
 systemctl enable v2ray
 ```
 
