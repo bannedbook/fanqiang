@@ -26,11 +26,14 @@ wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cf
 cp resolv.conf /etc/resolv.conf
 #below need step to step
 apt-get install -y iptables-persistent
-apt-get -y install nginx
+#apt-get -y install nginx
 #above need step to step
 wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cfg/v2ss-nginx.conf  -O -> /etc/nginx/nginx.conf
-nginx -t
-nginx -s reload
+#nginx -t
+#nginx -s reload
+service sendmail stop
+apt -y remove exim4 exim4-base exim4-config exim4-daemon-light Postfix sendmail
+rm /etc/init.d/sendmail
 /usr/sbin/service v2ray restart
 /sbin/service v2ray restart
 wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cfg/v2ray_check.sh  -O -> /etc/v2ray/v2ray_check.sh
