@@ -32,7 +32,9 @@ wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cf
 #nginx -t
 #nginx -s reload
 service sendmail stop
-apt -y remove exim4 exim4-base exim4-config exim4-daemon-light Postfix sendmail
+apt -y remove exim4 exim4-base exim4-config exim4-daemon-light
+apt -y remove Postfix
+apt -y remove  sendmail
 rm /etc/init.d/sendmail
 /usr/sbin/service v2ray restart
 /sbin/service v2ray restart
