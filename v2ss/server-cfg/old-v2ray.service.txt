@@ -20,6 +20,6 @@ ExecStart=/usr/bin/v2ray/v2ray -config /etc/v2ray/config.json
 Restart=on-failure
 # Don't restart in the case of configuration error
 RestartPreventExitStatus=23
-LimitNOFILE=51200
+LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
