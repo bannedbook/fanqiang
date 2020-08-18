@@ -10,10 +10,10 @@
     "ssl": {
         "sni": "your-domain-name.com"
     },
-    "mux" :{
+    "mux": {
         "enabled": true
     },
-    "router":{
+    "router": {
         "enabled": true,
         "bypass": [
             "geoip:cn",
@@ -27,6 +27,8 @@
         "proxy": [
             "geosite:geolocation-!cn"
         ],
-        "default_policy": "proxy"
+        "default_policy": "proxy",
+        "geoip": "/usr/share/trojan-go/geoip.dat",
+        "geosite": "/usr/share/trojan-go/geosite.dat"
     }
 }

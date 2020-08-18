@@ -13,17 +13,17 @@
   "vmess": [
     {
       "configVersion": 2,
-      "address": "tr11.freedom101.xyz",
-      "port": 443,
-      "id": "42f49cc3-35b0-4636-aec6-290a286b6cd7",
+      "address": "45.147.201.190",
+      "port": 49014,
+      "id": "436ce0ac-c2e9-48a5-978b-8bf093b32097",
       "alterId": 16,
       "security": "auto",
       "network": "ws",
-      "remarks": "tr11.freedom101.xyz",
+      "remarks": "https://git.io/v9999",
       "headerType": "none",
       "requestHost": "",
-      "path": "/ray",
-      "streamSecurity": "tls",
+      "path": "",
+      "streamSecurity": "",
       "allowInsecure": "",
       "configType": 1,
       "testResult": "",
@@ -45,13 +45,30 @@
     "readBufferSize": 2,
     "writeBufferSize": 2
   },
-  "sysAgentEnabled": false,
   "listenerType": 0,
-  "urlGFWList": "",
+  "speedTestUrl": "http://speedtest-sgp1.digitalocean.com/10mb.test",
+  "speedPingTestUrl": "https://www.google.com/generate_204",
+  "urlGFWList": "https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt",
   "allowLANConn": false,
+  "enableStatistics": false,
+  "keepOlderDedupl": false,
+  "statisticsFreshRate": 0,
   "remoteDNS": "",
-  "subItem": null,
+  "defAllowInsecure": false,
+  "subItem": [],
   "uiItem": {
-    "mainQRCodeWidth": 600
-  }
+    "mainSize": "160, 28",
+    "mainLvColWidth": {
+      "def": 30,
+      "configType": 80,
+      "remarks": 100,
+      "address": 120,
+      "port": 50,
+      "security": 90,
+      "network": 70,
+      "subRemarks": 50,
+      "testResult": 70
+    }
+  },
+  "userPacRule": []
 }

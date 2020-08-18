@@ -2,6 +2,7 @@
 Description=Trojan-Go - An unidentifiable mechanism that helps you bypass GFW
 Documentation=https://p4gefau1t.github.io/trojan-go/
 After=network.target network-online.target nss-lookup.target mysql.service mariadb.service mysqld.service
+Wants=network-online.target
 
 [Service]
 Type=simple

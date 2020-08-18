@@ -4,7 +4,7 @@ cd /d %~dp0
 ..\..\wget --no-check-certificate https://cdn.jsdelivr.net/gh/Alvin9999/pac2@latest/goflyway.ini
 
 if exist goflyway.ini goto startcopy
-echo ip更新失败，请试试ip_1更新
+echo ip更新失败，请试试其它ip更新
 pause
 exit
 :startcopy

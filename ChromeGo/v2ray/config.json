@@ -23,7 +23,8 @@
         "udp": false,
         "ip": null,
         "address": null,
-        "clients": null
+        "clients": null,
+        "decryption": null
       },
       "streamSettings": null
     }
@@ -35,14 +36,15 @@
       "settings": {
         "vnext": [
           {
-            "address": "107.167.18.43",
-            "port": 443,
+            "address": "tr30.free9999.net",
+            "port": 36892,
             "users": [
               {
-                "id": "418048af-a293-4b99-9b0c-98ca3580dd23",
-                "alterId": 64,
+                "id": "e84a1971-eb51-4600-8e49-16ab960b7f28",
+                "alterId": 233,
                 "email": "t@t.tt",
-                "security": "auto"
+                "security": "auto",
+                "encryption": null
               }
             ]
           }
@@ -52,19 +54,14 @@
       },
       "streamSettings": {
         "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": true,
-          "serverName": "www.7921769.xyz"
-        },
+        "security": null,
+        "tlsSettings": null,
         "tcpSettings": null,
         "kcpSettings": null,
         "wsSettings": {
           "connectionReuse": true,
-          "path": "/footers",
-          "headers": {
-            "Host": "www.7921769.xyz"
-          }
+          "path": null,
+          "headers": null
         },
         "httpSettings": null,
         "quicSettings": null

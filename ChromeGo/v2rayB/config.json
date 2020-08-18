@@ -12,7 +12,7 @@
       "listen": "127.0.0.1",
       "protocol": "socks",
       "sniffing": {
-        "enabled": false,
+        "enabled": true,
         "destOverride": [
           "http",
           "tls"
@@ -20,10 +20,11 @@
       },
       "settings": {
         "auth": "noauth",
-        "udp": false,
+        "udp": true,
         "ip": null,
         "address": null,
-        "clients": null
+        "clients": null,
+        "decryption": null
       },
       "streamSettings": null
     }
@@ -31,47 +32,36 @@
   "outbounds": [
     {
       "tag": "proxy",
-      "protocol": "vmess",
+      "protocol": "shadowsocks",
       "settings": {
-        "vnext": [
+        "vnext": null,
+        "servers": [
           {
-            "address": "107.167.18.43",
-            "port": 443,
-            "users": [
-              {
-                "id": "418048af-a293-4b99-9b0c-98ca3580dd23",
-                "alterId": 64,
-                "email": "t@t.tt",
-                "security": "auto"
-              }
-            ]
+            "email": null,
+            "address": "192.240.99.182",
+            "method": "aes-256-cfb",
+            "ota": false,
+            "password": "eIW0Dnk69454e6nSwuspv9DmS201tQ0D",
+            "port": 8097,
+            "level": 1,
+            "users": null
           }
         ],
-        "servers": null,
         "response": null
       },
       "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "serverName": "www.7921769.xyz"
-        },
+        "network": "tcp",
+        "security": null,
+        "tlsSettings": null,
         "tcpSettings": null,
         "kcpSettings": null,
-        "wsSettings": {
-          "connectionReuse": true,
-          "path": "/footers",
-          "headers": {
-            "Host": "www.7921769.xyz"
-          }
-        },
+        "wsSettings": null,
         "httpSettings": null,
         "quicSettings": null
       },
       "mux": {
-        "enabled": true,
-        "concurrency": 8
+        "enabled": false,
+        "concurrency": -1
       }
     },
     {

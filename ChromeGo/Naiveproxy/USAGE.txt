@@ -1,78 +1,84 @@
-Usage: naive { OPTIONS | [/path/to/config.json] }
+Usage: naive --listen=... --proxy=...
+       naive [/path/to/config.json]
 
 Description:
 
-    naive is a proxy to transport traffic as Chromium traffic. It can be
-    used as both the client and the server or together.
+  naive is a proxy that transports traffic in Chromium's pattern.
+  It works as both a proxy client and a proxy server or together.
 
-    There are two ways to specify options. The first is through command
-    line flags: naive OPTIONS. The second is through a JSON
-    configuration file. If there are no command line flags or path
-    specified, it will try to read from "config.json" by default.
+  Options in the form of `naive --listen=... --proxy=...` can also be
+  specified using a JSON file:
 
-    The syntax of config.json fields are mapped exactly to command line
-    flags, e.g.
+    {
+      "listen": "...",
+      "proxy": "..."
+    }
 
-        {
-          "proxy": "https://user:pass@example.org"
-        }
-
-    is exactly the same as --proxy=https://user:pass@example.org.  All
-    command line flags must have string values in config.json, except if
-    the flags are boolean then they must have boolean values too.
+  Uses "config.json" by default if run without arguments.
 
 Options:
 
-    -h, --help
+  -h, --help
 
-        Shows help message.
+    Shows help message.
 
-    --version
+  --version
 
-        Prints version
+    Prints version.
 
-    --listen=<proto>://[addr][:port]
+  --listen=<proto>://[addr][:port]
 
-        Listens at addr:port with protocol <proto>. Allowed values for
-        proto: "socks", "http", "redir". The default proto is socks.
-        The default addr is 0.0.0.0. The default port is 1080.
+    Listens at addr:port with protocol <proto>.
 
-        For redirecting local traffic from the same machine:
+    Available proto: socks, http, redir.
+    Default proto, addr, port: socks, 0.0.0.0, 1080.
 
-        iptables -t nat -A OUTPUT -p tcp -d ... -j REDIRECT --to-ports 1080
+    * http: Supports only proxying https:// URLs, no http://.
 
-        For redirecting forwarded traffic on a router:
+    * redir: Works with certain iptables setup.
 
-        iptables -t nat -A PREROUTING -p tcp -d ... -j REDIRECT --to-ports 1080
+      (Redirecting locally originated traffic)
+      iptables -t nat -A OUTPUT -d $proxy_server_ip -j RETURN
+      iptables -t nat -A OUTPUT -p tcp -j REDIRECT --to-ports 1080
 
-    --proxy=<proto>://[<user>:<pass>@]<hostname>[:<port>]
+      (Redirecting forwarded traffic on a router)
+      iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-ports 1080
 
-        Routes traffic via the proxy server. Allowed values for proto:
-        "https", "quic". The value of port is inferred from proto if not
-        specified.
+      Also activates a DNS resolver on the same UDP port. Similar iptables
+      rules can redirect DNS queries to this resolver. The resolver returns
+      artificial addresses that are translated back to the original domain
+      names in proxy requests and then resolved remotely.
 
-        If this option is not set, connects to origin server directly.
+      The artificial results are not saved for privacy, so restarting the
+      resolver may cause downstream to cache stale results.
 
-    --padding
+  --proxy=<proto>://<user>:<pass>@<hostname>[:<port>]
 
-        Obfuscates traffic by adding length paddings.
+    Routes traffic via the proxy server. Connects directly by default.
+    Available proto: https, quic. Infers port by default.
 
-    --host-resolver-rules=...
+  --extra-headers=...
 
-        This is the same as Chromium's flag of the same name. Google it
-        as the full description is too technical.
+    Appends extra headers in requests to the proxy server.
+    Multiple headers are separated by CRLF.
 
-    --log=[<path>]
+  --host-resolver-rules="MAP proxy.example.com 1.2.3.4"
 
-        Saves log to the file at <path>. If <path> is empty, prints to
-        console.
+    Statically resolves a domain name to an IP address.
 
-        If this option is not set, no log is saved for privacy.
+  --resolver-range=CIDR
 
-    --log-net-log=<path>
+    Uses this range in the builtin resolver. Default: 100.64.0.0/10.
 
-        Saves NetLog. View at https://netlog-viewer.appspot.com/.
+  --log=[<path>]
 
-    --ssl-key-log-file=<path>
+    Saves log to the file at <path>. If path is empty, prints to
+    console. No log is saved or printed by default for privacy.
 
-        Saves SSL keys for Wireshark inspection.
+  --log-net-log=<path>
+
+    Saves NetLog. View at https://netlog-viewer.appspot.com/.
+
+  --ssl-key-log-file=<path>
+
+    Saves SSL keys for Wireshark inspection.

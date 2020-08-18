@@ -12,10 +12,12 @@
         "key": "your_key.key",
         "sni": "your-domain-name.com"
     },
-    "router":{
+    "router": {
         "enabled": true,
         "block": [
             "geoip:private"
-        ]
+        ],
+        "geoip": "/usr/share/trojan-go/geoip.dat",
+        "geosite": "/usr/share/trojan-go/geosite.dat"
     }
 }

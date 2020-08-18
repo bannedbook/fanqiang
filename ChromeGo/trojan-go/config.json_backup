@@ -2,12 +2,12 @@
   "run_type": "client",
   "local_addr": "127.0.0.1",
   "local_port": 1080,
-  "remote_addr": "tr9.freedom103.xyz",
+  "remote_addr": "tr7.freedom103.xyz",
   "remote_port": 443,
   "log_level": 1,
   "log_file": "",
   "password": [
-    "ff50f3e456"
+    "91ae6ad67e"
   ],
   "buffer_size": 32,
   "dns": [],
@@ -58,9 +58,9 @@
   },
   "websocket": {
     "enabled": true,
-    "path": "/b40a7366",
-    "hostname": "tr9.freedom103.xyz",
-    "obfuscation_password": "40e46b8d04",
+    "path": "/a95ccf8c",
+    "hostname": "tr7.freedom103.xyz",
+    "obfuscation_password": "9b8c39830a",
     "double_tls": true,
     "ssl": {
       "verify": true,

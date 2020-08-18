@@ -1,12 +1,12 @@
 {
 	"configs" : [
 		{
-			"remarks" : "洛杉矶H",
-			"id" : "C78A7AC1A00D752C5BC9641F1F041A09",
-			"server" : "64.32.6.195",
-			"server_port" : 2330,
+			"remarks" : "莫斯科",
+			"id" : "D2A5AE345D6E2B85C2B82E9A132D6303",
+			"server" : "45.144.2.9",
+			"server_port" : 11111,
 			"server_udp_port" : 0,
-			"password" : "dongtaiwang.com 9nice",
+			"password" : "dongtaiwang.com 2ab",
 			"method" : "rc4",
 			"protocol" : "origin",
 			"protocolparam" : "",

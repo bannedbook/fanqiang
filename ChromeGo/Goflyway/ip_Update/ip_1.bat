@@ -4,7 +4,7 @@ cd /d %~dp0
 ..\..\wget --no-check-certificate https://gitlab.com/free9999/ipupdate/-/raw/master/goflyway/goflyway.bat
 
 if exist goflyway.bat goto startcopy
-echo ip更新失败，请试试ip_2更新
+echo ip更新失败，请试试其它ip更新
 pause
 exit
 :startcopy
