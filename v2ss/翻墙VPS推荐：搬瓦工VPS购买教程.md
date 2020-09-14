@@ -66,7 +66,7 @@
 <li>价格：49.99 美元/年</li>
 </ul>
 </div>
-<div><b>CN2 GIA ECOMMERCE 20GB（暂缺货）</b> <a href="https://bwh88.net/aff.php?aff=57057&amp;pid=87" target="_blank" rel="noopener noreferrer">  直达通道（季付35.99方案）</a>
+<div><b>CN2 GIA ECOMMERCE 20GB</b> <a href="https://bwh88.net/aff.php?aff=57057&amp;pid=87" target="_blank" rel="noopener noreferrer">  直达通道（季付35.99方案）</a>
 <ul>
 <li>CPU：2 核</li>
 <li>内存：1 GB</li>
@@ -104,23 +104,23 @@ DC3 CN2</td><td><a href="https://bwh88.net/aff.php?aff=57057&amp;pid=58" target=
  <strong>(最推荐)</strong></td><td>1GB</td><td>2核</td><td>20GB</td><td>1TB</td><td>2.5Gbps</td><td> <strong>$65.99/半年<br>
 $119.99/年</strong></td><td>DC6 CN2 GIA-E<br>
 DC9 CN2 GIA</td><td><a href="https://bwh88.net/aff.php?aff=57057&amp;pid=87" target="_blank" rel="noopener noreferrer">购买</a><br>
-(缺货)</td>
+</td>
 </tr>
 <tr>
 	<td><strong>CN2 GIA-E</strong></td><td>2GB</td><td>3核</td><td>40GB</td><td>2TB</td><td>2.5Gbps</td><td>$69.99/季度<br>
 $229.99/年</td><td>DC6 CN2 GIA-E<br>
 DC9 CN2 GIA</td><td><a href="https://bwh88.net/aff.php?aff=57057&amp;pid=88" target="_blank" rel="noopener noreferrer">购买</a><br>
-(缺货)</td>
+</td>
 </tr>
 <tr>
 	<td>CN2 GIA</td><td>4GB</td><td>4核</td><td>80GB</td><td>3TB</td><td>1Gbps</td><td>$32.99/月<br>
 $339.99/年</td><td>DC9 CN2 GIA</td><td><a href="https://bwh88.net/aff.php?aff=57057&amp;pid=74" target="_blank" rel="noopener noreferrer">购买</a><br>
-(缺货)</td>
+</td>
 </tr>
 <tr>
 	<td>CN2 GIA</td><td>8GB</td><td>6核</td><td>160GB</td><td>5TB</td><td>1Gbps</td><td>$62.99/月<br>
 $645.99/年</td><td>DC9 CN2 GIA</td><td><a href="https://bwh88.net/aff.php?aff=57057&amp;pid=75" target="_blank" rel="noopener noreferrer">购买</a><br>
-(缺货)</td>
+</td>
 </tr>
 <tr>
 	<td><strong>HK</strong></td><td>2GB</td><td>2核</td><td>40GB</td><td>0.5TB</td><td>1Gbps</td><td>$89.99/月<br>
