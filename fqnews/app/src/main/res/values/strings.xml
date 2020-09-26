@@ -2,6 +2,7 @@
 <resources>
 
     <!-- GENERAL -->
+    <string name="native_ads_label">Sponsored Links</string>
     <string name="welcome_title">Welcome, Would you like to add a feed?</string>
     <string name="welcome_title_with_opml_import">Would you like to import previous APP feeds?</string>
     <string name="cannot_find_feeds">No feeds have been found</string>

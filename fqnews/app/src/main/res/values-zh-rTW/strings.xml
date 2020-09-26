@@ -24,6 +24,7 @@
 <resources>
 
     <!-- GENERAL -->
+    <string name="native_ads_label">贊助商連結</string>
     <string name="welcome_title">歡迎使用，需要添加一個訂閱源嗎？</string>
     <string name="welcome_title_with_opml_import">是否要導入舊版APP中的訂閱源？</string>
     <string name="cannot_find_feeds">未發現訂閱源</string>
