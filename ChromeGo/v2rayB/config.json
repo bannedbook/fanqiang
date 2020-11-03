@@ -57,7 +57,8 @@
         "kcpSettings": null,
         "wsSettings": null,
         "httpSettings": null,
-        "quicSettings": null
+        "quicSettings": null,
+        "xtlsSettings": null
       },
       "mux": {
         "enabled": false,

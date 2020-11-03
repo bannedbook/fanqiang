@@ -1,9 +1,9 @@
 {
   "configs": [
     {
-      "server": "45.136.245.89",
-      "server_port": 12000,
-      "password": "dongtaiwang.com 9nice",
+      "server": "5.180.77.247",
+      "server_port": 12345,
+      "password": "dongtaiwang.com 666nice",
       "method": "aes-256-gcm",
       "plugin": "",
       "plugin_opts": "",

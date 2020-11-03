@@ -1,15 +1,13 @@
 {
-  "version": "4.1.10.0",
+  "version": "4.2.0.1",
   "configs": [
     {
-      "server": "45.147.201.102",
+      "server": "89.163.224.127",
       "server_port": 20001,
-      "password": "12345",
+      "password": "dongtaiwang.com",
       "method": "aes-256-gcm",
       "plugin": "Kcptun.exe",
-      "plugin_opts": "",
       "plugin_args": "-l %SS_LOCAL_HOST%:%SS_LOCAL_PORT% -r %SS_REMOTE_HOST%:%SS_REMOTE_PORT% --key qazwsxedc --crypt aes-192 --mode fast3 --autoexpire 60",
-      "remarks": "",
       "timeout": 5
     }
   ],
@@ -19,18 +17,21 @@
   "enabled": false,
   "shareOverLan": false,
   "isDefault": false,
-  "isIPv6Enabled": false,
   "localPort": 1080,
   "portableMode": true,
   "showPluginOutput": false,
   "pacUrl": null,
-  "gfwListUrl": null,
   "useOnlinePac": false,
   "secureLocalPac": true,
   "availabilityStatistics": false,
   "autoCheckUpdate": true,
   "checkPreRelease": false,
   "isVerboseLogging": false,
+  "isIPv6Enabled": false,
+  "generateLegacyUrl": false,
+  "geositeUrl": null,
+  "geositeGroup": "geolocation-!cn",
+  "geositeBlacklistMode": true,
   "logViewer": {
     "topMost": false,
     "wrapText": false,

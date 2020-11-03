@@ -1,14 +1,12 @@
 {
+  "version": "4.2.0.1",
   "configs": [
     {
-      "server": "5.180.77.247",
+      "server": "104.233.152.244",
       "server_port": 12345,
-      "password": "dongtaiwang.com 666nice",
+      "password": "dongtaiwang.com 123abc",
       "method": "aes-256-gcm",
-      "plugin": "",
-      "plugin_opts": "",
-      "plugin_args": "",
-      "remarks": "",
+      "remarks": "https://git.io/v9999 圣何塞",
       "timeout": 5
     }
   ],
@@ -20,13 +18,19 @@
   "isDefault": false,
   "localPort": 1080,
   "portableMode": true,
+  "showPluginOutput": false,
   "pacUrl": null,
   "useOnlinePac": false,
   "secureLocalPac": true,
-  "availabilityStatistics": false,
-  "autoCheckUpdate": false,
+  "availabilityStatistics": true,
+  "autoCheckUpdate": true,
   "checkPreRelease": false,
   "isVerboseLogging": false,
+  "isIPv6Enabled": false,
+  "generateLegacyUrl": false,
+  "geositeUrl": null,
+  "geositeGroup": "geolocation-!cn",
+  "geositeBlacklistMode": true,
   "logViewer": {
     "topMost": false,
     "wrapText": false,
@@ -40,7 +44,10 @@
     "proxyType": 0,
     "proxyServer": "",
     "proxyPort": 0,
-    "proxyTimeout": 3
+    "proxyTimeout": 3,
+    "useAuth": false,
+    "authUser": "",
+    "authPwd": ""
   },
   "hotkey": {
     "SwitchSystemProxy": "",

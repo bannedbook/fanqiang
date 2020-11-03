@@ -13,19 +13,19 @@
   "vmess": [
     {
       "configVersion": 2,
-      "address": "tr30.free9999.net",
-      "port": 36892,
-      "id": "e84a1971-eb51-4600-8e49-16ab960b7f28",
-      "alterId": 233,
-      "security": "auto",
-      "network": "ws",
-      "remarks": "https://git.io/v9999 ",
-      "headerType": "none",
+      "address": "120.232.194.9",
+      "port": 104,
+      "id": "mC7qrHw3",
+      "alterId": 0,
+      "security": "aes-128-gcm",
+      "network": "",
+      "remarks": "https://github.com/Alvin9999/new-pac/wiki ip1",
+      "headerType": "",
       "requestHost": "",
       "path": "",
       "streamSecurity": "",
       "allowInsecure": "",
-      "configType": 1,
+      "configType": 3,
       "testResult": "",
       "subid": ""
     }
@@ -54,21 +54,10 @@
   "keepOlderDedupl": false,
   "statisticsFreshRate": 0,
   "remoteDNS": "",
-  "defAllowInsecure": false,
+  "defaultAllowInsecure": "false",
   "subItem": [],
   "uiItem": {
-    "mainSize": "160, 28",
-    "mainLvColWidth": {
-      "def": 30,
-      "configType": 80,
-      "remarks": 100,
-      "address": 120,
-      "port": 50,
-      "security": 90,
-      "network": 70,
-      "subRemarks": 50,
-      "testResult": 70
-    }
+    "mainQRCodeWidth": 600
   },
   "userPacRule": []
 }
