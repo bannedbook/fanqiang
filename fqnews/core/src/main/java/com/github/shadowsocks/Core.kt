@@ -42,7 +42,6 @@ import androidx.core.content.getSystemService
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.work.Configuration
 import androidx.work.WorkManager
-import com.crashlytics.android.Crashlytics
 import com.github.shadowsocks.acl.Acl
 import com.github.shadowsocks.bg.ProxyService
 import com.github.shadowsocks.bg.V2RayTestService
@@ -56,7 +55,6 @@ import com.github.shadowsocks.utils.*
 import com.github.shadowsocks.work.UpdateCheck
 import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
-import io.fabric.sdk.android.Fabric
 import kotlinx.coroutines.*
 import me.dozen.dpreference.DPreference
 import java.io.File
@@ -101,6 +99,9 @@ object Core {
     }
 
     fun isInternetAvailable(context: Context): Boolean {
+        return true
+        //isInternetAvailable 此函数失效，原因不明，正常网络判断为网络不可用2020-11-12日之前
+
         var result = false
         val connectivityManager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -302,7 +303,6 @@ object Core {
 
         // overhead of debug mode is minimal: https://github.com/Kotlin/kotlinx.coroutines/blob/f528898/docs/debugging.md#debug-mode
         System.setProperty(DEBUG_PROPERTY_NAME, DEBUG_PROPERTY_VALUE_ON)
-        Fabric.with(deviceStorage, Crashlytics())   // multiple processes needs manual set-up
         FirebaseApp.initializeApp(deviceStorage)
         WorkManager.initialize(deviceStorage, Configuration.Builder().apply {
             setExecutor { GlobalScope.launch { it.run() } }

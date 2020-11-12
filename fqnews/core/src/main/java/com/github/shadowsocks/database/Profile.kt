@@ -128,9 +128,20 @@ data class Profile(
         private val decodedPattern_ssr_protocolparam = "(?i)(.*)[?&]protoparam=([A-Za-z0-9_=-]*)(.*)".toRegex()
         private val decodedPattern_ssr_groupparam = "(?i)(.*)[?&]group=([A-Za-z0-9_=-]*)(.*)".toRegex()
 
-        private val pattern_vmess = "(?i)vmess://([A-Za-z0-9_=-]+)".toRegex()
+        private val pattern_vmess = "(?i)vmess://(.*)".toRegex()
 
         private fun base64Decode(data: String) = String(Base64.decode(data.replace("=", ""), Base64.URL_SAFE), Charsets.UTF_8)
+        /**
+         * base64 decode
+         */
+        fun decodeForVmess(text: String): String {
+            try {
+                return Base64.decode(text, Base64.NO_WRAP).toString(charset("UTF-8"))
+            } catch (e: Exception) {
+                e.printStackTrace()
+                return ""
+            }
+        }
 
         fun findAllVmessUrls(data: CharSequence?, feature: Profile? = null) = pattern_vmess.findAll(data
                 ?: "").map {
@@ -144,7 +155,7 @@ data class Profile(
                     //profile = ResolveVmess4Kitsunebi(server,subid)
                 } else {
                     var result = server.replace(VMESS_PROTOCOL, "")
-                    result = base64Decode(result)
+                    result = decodeForVmess(result)
                     if (TextUtils.isEmpty(result)) {
                         null
                     }

@@ -58,11 +58,13 @@ dependencies {
     api "androidx.room:room-runtime:$roomVersion"
     api "androidx.work:work-runtime-ktx:$workVersion"
     api "androidx.work:work-gcm:$workVersion"
-    api 'com.crashlytics.sdk.android:crashlytics:2.10.1'
     api 'com.google.android.gms:play-services-oss-licenses:17.0.0'
     api 'com.google.code.gson:gson:2.8.6'
-    api 'com.google.firebase:firebase-analytics:17.4.3'
-    api 'com.google.firebase:firebase-config:19.1.4'
+    // Add the Firebase Crashlytics SDK.
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
+    // Recommended: Add the Google Analytics SDK.
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation 'com.google.firebase:firebase-config:19.2.0'
     api 'dnsjava:dnsjava:2.1.9'
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion"

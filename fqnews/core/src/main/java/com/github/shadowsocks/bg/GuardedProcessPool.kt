@@ -27,9 +27,9 @@ import android.system.Os
 import android.system.OsConstants
 import android.util.Log
 import androidx.annotation.MainThread
-import com.crashlytics.android.Crashlytics
 import com.github.shadowsocks.Core
 import com.github.shadowsocks.utils.Commandline
+import com.github.shadowsocks.utils.printLog
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import java.io.File
@@ -63,10 +63,10 @@ class GuardedProcessPool(private val onFatal: suspend (IOException) -> Unit) : C
             try {
                 while (true) {
                     thread(name = "stderr-$cmdName") {
-                        streamLogger(process.errorStream) { Crashlytics.log(Log.ERROR, cmdName, it) }
+                        streamLogger(process.errorStream) { printLog(Log.ERROR, cmdName, it) }
                     }
                     thread(name = "stdout-$cmdName") {
-                        streamLogger(process.inputStream) { Crashlytics.log(Log.VERBOSE, cmdName, it) }
+                        streamLogger(process.inputStream) { printLog(Log.VERBOSE, cmdName, it) }
                         // this thread also acts as a daemon thread for waitFor
                         runBlocking { exitChannel.send(process.waitFor()) }
                     }
@@ -76,17 +76,17 @@ class GuardedProcessPool(private val onFatal: suspend (IOException) -> Unit) : C
                     when {
                         SystemClock.elapsedRealtime() - startTime < 1000 -> throw IOException(
                                 "$cmdName exits too fast (exit code: $exitCode)")
-                        exitCode == 128 + OsConstants.SIGKILL -> Crashlytics.log(Log.WARN, TAG, "$cmdName was killed")
-                        else -> Crashlytics.logException(IOException("$cmdName unexpectedly exits with code $exitCode"))
+                        exitCode == 128 + OsConstants.SIGKILL -> printLog(Log.WARN, TAG, "$cmdName was killed")
+                        else -> printLog(IOException("$cmdName unexpectedly exits with code $exitCode"))
                     }
-                    Crashlytics.log(Log.DEBUG, TAG,
+                    printLog(Log.DEBUG, TAG,
                             "restart process: ${Commandline.toString(cmd)} (last exit code: $exitCode)")
                     start()
                     running = true
                     onRestartCallback?.invoke()
                 }
             } catch (e: IOException) {
-                Crashlytics.log(Log.WARN, TAG, "error occurred. stop guard: " + Commandline.toString(cmd))
+                printLog(Log.WARN, TAG, "error occurred. stop guard: " + Commandline.toString(cmd))
                 GlobalScope.launch(Dispatchers.Main) { onFatal(e) }
             } finally {
                 if (running) withContext(NonCancellable) {  // clean-up cannot be cancelled
@@ -94,9 +94,9 @@ class GuardedProcessPool(private val onFatal: suspend (IOException) -> Unit) : C
                         try {
                             Os.kill(pid.get(process) as Int, OsConstants.SIGTERM)
                         } catch (e: ErrnoException) {
-                            if (e.errno != OsConstants.ESRCH) Crashlytics.logException(e)
+                            if (e.errno != OsConstants.ESRCH) printLog(e)
                         } catch (e: ReflectiveOperationException) {
-                            Crashlytics.logException(e)
+                            printLog(e)
                         }
                         if (withTimeoutOrNull(500) { exitChannel.receive() } != null) return@withContext
                     }
@@ -115,7 +115,7 @@ class GuardedProcessPool(private val onFatal: suspend (IOException) -> Unit) : C
 
     @MainThread
     fun start(cmd: List<String>, onRestartCallback: (suspend () -> Unit)? = null) {
-        Crashlytics.log(Log.DEBUG, TAG, "start process: " + Commandline.toString(cmd))
+        printLog(Log.DEBUG, TAG, "start process: " + Commandline.toString(cmd))
         Guard(cmd).apply {
             start() // if start fails, IOException will be thrown directly
             launch { looper(onRestartCallback) }

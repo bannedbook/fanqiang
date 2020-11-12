@@ -23,13 +23,13 @@ package com.github.shadowsocks.acl
 import android.content.Context
 import android.util.Log
 import androidx.recyclerview.widget.SortedList
-import com.crashlytics.android.Crashlytics
 import com.github.shadowsocks.Core
 import com.github.shadowsocks.net.Subnet
 import com.github.shadowsocks.preference.DataStore
 import com.github.shadowsocks.utils.BaseSorter
 import com.github.shadowsocks.utils.URLSorter
 import com.github.shadowsocks.utils.asIterable
+import com.github.shadowsocks.utils.printLog
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.runBlocking
@@ -159,7 +159,7 @@ class Acl {
             val child = Acl().fromReader(connect(url).getInputStream().bufferedReader(), bypass)
             child.flatten(depth - 1, connect)
             if (bypass != child.bypass) {
-                Crashlytics.log(Log.WARN, TAG, "Imported network ACL has a conflicting mode set. " +
+                printLog("Imported network ACL has a conflicting mode set. " +
                         "This will probably not work as intended. URL: $url")
                 child.subnets.clear() // subnets for the different mode are discarded
                 child.bypass = bypass

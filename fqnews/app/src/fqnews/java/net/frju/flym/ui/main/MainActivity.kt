@@ -101,7 +101,6 @@ class MainActivity : AppCompatActivity(), MainNavigator, AnkoLogger {
 	private val feedAdapter = FeedAdapter(feedGroups)
 
 	override fun onCreate(savedInstanceState: Bundle?) {
-		//Crashlytics.getInstance().crash() // Force a crash
 		doAsync {
 			if (Core.tcping("127.0.0.1", VpnEncrypt.HTTP_PROXY_PORT) == -1L) {
 				App.instance.initializeProxy()

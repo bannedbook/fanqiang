@@ -34,7 +34,6 @@ import android.system.Os
 import android.util.Base64
 import android.util.Log
 import androidx.core.os.bundleOf
-import com.crashlytics.android.Crashlytics
 import com.github.shadowsocks.Core
 import com.github.shadowsocks.Core.app
 import com.github.shadowsocks.bg.BaseService
@@ -151,7 +150,7 @@ object PluginManager {
         try {
             initNativeFaster(provider)?.also { return it to options }
         } catch (t: Throwable) {
-            Crashlytics.log(Log.WARN, TAG, "Initializing native plugin faster mode failed")
+            printLog(Log.WARN, TAG,"Initializing native plugin faster mode failed")
             failure = t
         }
 
@@ -162,7 +161,7 @@ object PluginManager {
         try {
             return initNativeFast(app.contentResolver, options, uri)?.let { it to options }
         } catch (t: Throwable) {
-            Crashlytics.log(Log.WARN, TAG, "Initializing native plugin fast mode failed")
+            printLog("Initializing native plugin fast mode failed")
             failure?.also { t.addSuppressed(it) }
             failure = t
         }

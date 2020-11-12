@@ -95,7 +95,6 @@ class MainActivity : AppCompatActivity(), MainNavigator, AnkoLogger {
     private val feedAdapter = FeedAdapter(feedGroups)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //Crashlytics.getInstance().crash() // Force a crash
         setupNoActionBarTheme()
 
         super.onCreate(savedInstanceState)

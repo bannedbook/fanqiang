@@ -25,7 +25,7 @@ import android.system.Os
 import android.system.OsConstants
 import android.text.TextUtils
 import android.util.Log
-import com.crashlytics.android.Crashlytics
+import com.github.shadowsocks.utils.printLog
 import java.io.File
 import java.io.IOException
 
@@ -49,8 +49,8 @@ object Executable {
             } catch (e: ErrnoException) {
                 if (e.errno != OsConstants.ESRCH) {
                     e.printStackTrace()
-                    Crashlytics.log(Log.WARN, "kill", "SIGKILL ${exe.absolutePath} (${process.name}) failed")
-                    Crashlytics.logException(e)
+                    printLog(Log.WARN, "kill", "SIGKILL ${exe.absolutePath} (${process.name}) failed")
+                    printLog(e)
                 }
             }
         }

@@ -36,7 +36,6 @@ import android.util.Log
 import android.util.TypedValue
 import androidx.annotation.AttrRes
 import androidx.preference.Preference
-import com.crashlytics.android.Crashlytics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -143,11 +142,20 @@ fun Resources.Theme.resolveResourceId(@AttrRes resId: Int): Int {
 val Intent.datas get() = listOfNotNull(data) + (clipData?.asIterable()?.mapNotNull { it.uri } ?: emptyList())
 
 fun printLog(t: Throwable) {
-    Crashlytics.logException(t)
+    //Crashlytics.logException(t)
     Log.e("Utils","printLog",t)
     t.printStackTrace()
 }
+fun printLog(s: String) {
+    Log.e("printLog",s)
+}
+fun printLog(logLever:Int,tag:String,s: String?) {
+    if (logLever==Log.WARN)
+        Log.w(tag,s)
+    if (logLever==Log.ERROR)
+        Log.e(tag,s)
 
+}
 fun Preference.remove() = parent!!.removePreference(this)
 
 /**
