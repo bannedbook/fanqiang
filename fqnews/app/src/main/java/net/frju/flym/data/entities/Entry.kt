@@ -19,17 +19,19 @@ package net.frju.flym.data.entities
 
 import android.content.Context
 import android.os.Parcelable
-import android.text.Html
 import android.text.format.DateFormat
 import android.text.format.DateUtils
+import androidx.core.text.HtmlCompat
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.rometools.rome.feed.synd.SyndEntry
 import kotlinx.android.parcel.Parcelize
+import net.fred.feedex.R
 import net.frju.flym.utils.sha1
-import java.util.*
+import java.util.Date
+import java.util.UUID
 
 
 @Parcelize
@@ -62,17 +64,20 @@ data class Entry(@PrimaryKey
 			}
 }
 
-fun SyndEntry.toDbFormat(feed: Feed): Entry {
-	val item = Entry()
-	item.id = (feed.id.toString() + "_" + (link ?: uri ?: title
-	?: UUID.randomUUID().toString())).sha1()
-	item.feedId = feed.id
-    @Suppress("DEPRECATION")
-    item.title = Html.fromHtml(title).toString()
-	item.description = contents.getOrNull(0)?.value ?: description?.value
-	item.link = link
-	//TODO item.imageLink = null
-	item.author = author
+fun SyndEntry.toDbFormat(context: Context, feed: Feed): Entry {
+    val item = Entry()
+    item.id = (feed.id.toString() + "_" + (link ?: uri ?: title
+    ?: UUID.randomUUID().toString())).sha1()
+    item.feedId = feed.id
+    if (title != null) {
+        item.title = HtmlCompat.fromHtml(title, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
+    } else {
+        item.title = context.getString(R.string.entry_default_title)
+    }
+    item.description = contents.getOrNull(0)?.value ?: description?.value
+    item.link = link
+    //TODO item.imageLink = null
+    item.author = author
 
 	val date = publishedDate ?: updatedDate
 	item.publicationDate = if (date?.before(item.publicationDate) == true) date else item.publicationDate

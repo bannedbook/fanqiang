@@ -29,6 +29,9 @@ abstract class FeedDao {
     @get:Query("SELECT * FROM feeds WHERE isGroup = 0")
     abstract val allNonGroupFeeds: List<Feed>
 
+    @Query("SELECT * FROM feeds WHERE isGroup = 0 and groupId = :groupId")
+    abstract fun allFeedsInGroup(groupId: Long): List<Feed>
+
     @get:Query("SELECT * FROM feeds ORDER BY groupId DESC, displayPriority ASC, feedId ASC")
     abstract val all: List<Feed>
 

@@ -12,8 +12,8 @@ buildscript {
         junitVersion = '4.12'
         androidTestVersion = '1.2.0'
         androidEspressoVersion = '3.2.0'
-        versionCode = 195
-        versionName = "1.1.6"
+        versionCode = 215
+        versionName = "1.1.9"
     }
     repositories {
         google()

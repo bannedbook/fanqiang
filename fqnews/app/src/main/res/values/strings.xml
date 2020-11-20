@@ -68,6 +68,7 @@
     <string name="marked_as_unread">Marked as unread</string>
 
     <!-- SETTINGS -->
+    <string name="entry_default_title">Untitled</string>
     <string name="settings_category_refresh">Automated refresh</string>
     <string name="settings_refresh_enabled">Enable automatic refresh</string>
     <string name="settings_refresh_enabled_description">Enable the automatic refresh of feeds</string>
