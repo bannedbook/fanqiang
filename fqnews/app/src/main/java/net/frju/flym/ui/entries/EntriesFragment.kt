@@ -20,6 +20,7 @@ package net.frju.flym.ui.entries
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.text.TextUtils
@@ -133,13 +134,13 @@ class EntriesFragment : Fragment() {
 						withContext(Dispatchers.Main) { adapter.notifyItemChanged(i) }
 						break
 					}
-				}catch (ex:Exception){
-					Log.e("ssvpn",ex.message,ex)
+				}catch (ex: Exception){
+					Log.e("ssvpn", ex.message, ex)
 					continue
 				}
 			}
-		}catch (e:Exception){
-			Log.e("ssvpn",e.message,e)
+		}catch (e: Exception){
+			Log.e("ssvpn", e.message, e)
 		}
 	}
 
@@ -261,7 +262,7 @@ class EntriesFragment : Fragment() {
 			}
 		}
 
-		MobileAds.initialize(activity,activity?.getString(R.string.admob_appid))
+		MobileAds.initialize(activity, activity?.getString(R.string.admob_appid))
 		mInterstitialAd = InterstitialAd(activity)
 		mInterstitialAd.adUnitId = activity?.getString(R.string.interstitial_adUnitId)
 	}
@@ -586,7 +587,7 @@ class EntriesFragment : Fragment() {
 		}
 
 		fun populateUnifiedNativeAdView(nativeAd: UnifiedNativeAd, adView: UnifiedNativeAdView) {
-			// Set other ad assets.
+/*			// Set other ad assets.
 			adView.headlineView = adView.findViewById(R.id.ad_headline)
 			adView.bodyView = adView.findViewById(R.id.ad_body)
 			adView.callToActionView = adView.findViewById(R.id.ad_call_to_action)
@@ -638,9 +639,19 @@ class EntriesFragment : Fragment() {
 			// This method tells the Google Mobile Ads SDK that you have finished populating your
 			// native ad view with this native ad.
 			adView.setNativeAd(nativeAd)
-			//adView.setBackgroundColor(Color.WHITE) //Adding dividing line for ads
-			//adContainer.setPadding(0,1,0,0)  //Adding dividing line for ads
 			adContainer.addView(adView)
+*/
+
+			val imageBannerView = ImageView(activity)
+			imageBannerView.setImageResource(R.drawable.v2free)
+			imageBannerView.setOnClickListener{
+				val intent = Intent()
+				intent.action = Intent.ACTION_VIEW
+				intent.addCategory(Intent.CATEGORY_BROWSABLE)
+				intent.data = Uri.parse("https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA")
+				startActivity(intent)
+			}
+			adContainer.addView(imageBannerView)
 			adHost = this
 		}
 
