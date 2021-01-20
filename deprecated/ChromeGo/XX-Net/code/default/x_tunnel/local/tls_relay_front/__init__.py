@@ -1,2 +1,0 @@
-
-from front import front
