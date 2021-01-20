@@ -1,0 +1,67 @@
+<div id="about">
+    <div class="row-fluid">
+        <div class="span3"><strong>{{ _( "Version" ) }}</strong></div> <!-- .span4 -->
+        <div class="span8" id="about_current_version"> </div> <!-- .span8 -->
+    </div> <!-- .div.fluid -->
+    <div class="row-fluid">
+        <div class="span3"><strong>{{ _( "Project main page" ) }}</strong></div> <!-- .span4 -->
+        <div class="span3"><a href="https://github.com/XX-net/XX-Net" target="_blank">XX-Net@GitHub</a></div> <!-- .span8 -->
+        <div class="span3"><a href="https://gitlab.com/XX-net/XX-Net" target="_blank">XX-Net@GitLab</a></div> <!-- .span8 -->
+    </div> <!-- .div.fluid -->
+    <div class="row-fluid">
+        <div class="span3"><strong>{{ _( "Bug feedback" ) }}</strong></div> <!-- .span4 -->
+        <div class="span8">
+            <a href="https://github.com/XX-net/XX-Net/issues" target="_blank">GitHub@XX-Net/Issues</a>
+            ({{ _( "When submitting a bug, please attach " ) }}<a href="http://127.0.0.1:8085/?module=gae_proxy&menu=status" target="_blank">{{ _( "the status page " ) }}</a>{{ _( "info and " ) }}<a href="http://127.0.0.1:8085/?module=gae_proxy&menu=logging" target="_blank">{{ _( "the log page " ) }}</a>{{ _( "contents" ) }})
+        </div> <!-- .span8 -->
+    </div> <!-- .div.fluid -->
+    <div class="row-fluid">
+        <div class="span3"><strong>Wiki</strong></div> <!-- .span4 -->
+        <div class="span8">
+            <a href="https://github.com/XX-net/XX-Net/wiki" target="_blank">GitHub@XX-Net/Wiki</a>
+        </div> <!-- .span8 -->
+    </div> <!-- .div.fluid -->
+    <div class="row-fluid">
+        <div class="span3"><strong>Twitter</strong></div> <!-- .span4 -->
+        <div class="span8">
+            <a href="https://twitter.com/XXNetDev" target="_blank">@XXNetDev</a>
+        </div> <!-- .span8 -->
+    </div> <!-- .div.fluid -->
+    <div class="row-fluid">
+        <div class="span3"><strong>Google+</strong></div> <!-- .span4 -->
+        <div class="span8">
+            <a href="https://plus.google.com/communities/101215702940766881013" target="_blank">XXNet+</a>
+        </div> <!-- .span8 -->
+    </div> <!-- .div.fluid -->
+</div> <!-- #about -->
+<div id="thanks">
+    <h3>{{ _( "Thanks to the following projects" ) }}</h3>
+    <ol>
+        <li>Google</li>
+        <li>Cloudflare</li>
+        <li>GoAgent</li>
+        <li>goagentfindip</li>
+        <li>GoGoTester</li>
+        <li>EasyGoAgent</li>
+        <li>fqrouter</li>
+        <li>Xndroid</li>
+    </ol>
+</div> <!-- #thanks -->
+<!-- JavaScript -->
+<script type="text/javascript">
+    title('{{ _( "About XX-Net" ) }}');
+</script>
+<script type="text/javascript">
+    var pageRequests = {
+        'cmd': 'get_version'
+    };
+    $.ajax({
+        type: 'GET',
+        url: '/config',
+        data: pageRequests,
+        dataType: 'JSON',
+        success: function (result) {
+            document.getElementById("about_current_version").appendChild(document.createTextNode(result['current_version']));
+        }
+    });
+</script>

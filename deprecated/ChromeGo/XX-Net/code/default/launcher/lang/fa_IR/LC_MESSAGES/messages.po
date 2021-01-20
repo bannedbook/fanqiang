@@ -1,0 +1,219 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-11-19 10:30+0800\n"
+"PO-Revision-Date: 2015-12-06 09:18+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fa_IR\n"
+"Language-Team: fa_IR <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+msgid "Version"
+msgstr ""
+
+msgid "Project main page"
+msgstr "صفحه اصلی پروژه"
+
+msgid "Bug feedback"
+msgstr "بازخورد اشکال"
+
+msgid "When submitting a bug, please attach "
+msgstr "هنگام ارسال یک اشکال، لطفا ضمیمه"
+
+msgid "the status page "
+msgstr "صفحه وضعیت "
+
+msgid "info and "
+msgstr "اطلاعات و "
+
+msgid "the log page "
+msgstr "صفحه ورود به سیستم "
+
+msgid "contents"
+msgstr "فهرست"
+
+msgid "Thanks the following projects"
+msgstr "تشکر از پروژه های زیر"
+
+msgid "About XX-Net"
+msgstr "درباره XX-Net"
+
+msgid "General Settings"
+msgstr ""
+
+msgid "System Update"
+msgstr ""
+
+msgid "Proxy Setting"
+msgstr ""
+
+msgid "System configuration options"
+msgstr "گزینه های پیکربندی سیستم"
+
+msgid "Settings saved successfully."
+msgstr "تنظیمات با موفقیت ذخیره شده است."
+
+msgid "Language"
+msgstr "زبان"
+
+msgid "Auto-Startup"
+msgstr "خودکار راه اندازی"
+
+msgid "Popup Status Page on Startup"
+msgstr "پنجره وضعیت صفحه در راه اندازی"
+
+msgid "Enable Remote Web Control"
+msgstr "کنترل از راه دور را فعال کنید وب"
+
+msgid "Help"
+msgstr "کمک"
+
+msgid "Display System Tray(Restarting XX-Net Required)"
+msgstr "نمایش سینی سیستم (شروع مجدد _XX-Net_ مورد نیاز)"
+
+msgid "Run as Green Software"
+msgstr ""
+
+msgid "Module management"
+msgstr "ماژول مدیریت"
+
+msgid "Enable"
+msgstr "فعال کردن"
+
+msgid "Configuring the service[%s]. This page will refresh within %s seconds."
+msgstr "پیکربندی سرویس [٪ s] را. این صفحه را در عرض٪ s ثانیه تازه کردن."
+
+msgid "GAE Proxy"
+msgstr "GAE پروکسی"
+
+msgid "X_tunnel proxy"
+msgstr ""
+
+msgid "LAN proxy(Generally not needed)"
+msgstr ""
+
+msgid "Proxy type"
+msgstr ""
+
+msgid "Proxy IP address or domain name"
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "User name"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Failed reading the settings."
+msgstr ""
+
+msgid "Wait for checking setting..."
+msgstr ""
+
+msgid "Settings saved successfully"
+msgstr ""
+
+msgid "Failed saving settings"
+msgstr ""
+
+msgid "Auto-Upgrade to"
+msgstr "خودکار ارتقا به"
+
+msgid "Do not upgrade"
+msgstr "ارتقاء نکنید"
+
+msgid "Notice stable version"
+msgstr ""
+
+msgid "Stable version"
+msgstr "نسخه پایدار"
+
+msgid "Notice test version"
+msgstr ""
+
+msgid "Test version"
+msgstr "نسخه آزمایشی"
+
+msgid "Check the latest version"
+msgstr "بررسی آخرین نسخه"
+
+msgid "Current version"
+msgstr "نسخه فعلی"
+
+msgid "Version of the test one"
+msgstr "نسخه از آزمون یک"
+
+msgid "Update now"
+msgstr "به روز رسانی در حال حاضر"
+
+msgid "Version of the stable one"
+msgstr "نسخه از یکی از با ثبات"
+
+msgid "All versions download page"
+msgstr ""
+
+msgid "(Remote Web Control Enabled)"
+msgstr ""
+
+msgid "Adaptive width"
+msgstr ""
+
+msgid "Exit the program"
+msgstr ""
+
+msgid "Remind me later"
+msgstr ""
+
+msgid "Do not remind me this version"
+msgstr ""
+
+msgid "View changes"
+msgstr ""
+
+msgid "Exited successfully"
+msgstr "موفقیت خارج"
+
+msgid "Exitting failed"
+msgstr "Exitting شکست خورده"
+
+msgid "Exitting failed. A network error occurred."
+msgstr "Exitting شکست خورده است. یک خطای شبکه رخ داده است."
+
+msgid "Unkown error occured. Please refresh the page and try again"
+msgstr "خطای ناشناخته رخ داد. لطفا صفحه را تازه کنید و دوباره امتحان "
+
+msgid "Updating in progress ..."
+msgstr "به روز رسانی در حال انجام ..."
+
+msgid "New "
+msgstr ""
+
+msgid "Downloading ..."
+msgstr ""
+
+msgid "Download completed"
+msgstr ""
+
+msgid "System"
+msgstr "سیستم"
+
+msgid "Configuration"
+msgstr "پیکربندی"
+
+msgid "About"
+msgstr "در باره"
+
+
+

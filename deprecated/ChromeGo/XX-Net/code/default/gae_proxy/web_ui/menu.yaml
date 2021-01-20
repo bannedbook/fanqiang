@@ -1,0 +1,24 @@
+module_title: GAEProxy
+menu_sort_id: 1
+sub_menus: {
+  1:{
+    title: {{ _("Status") }},
+    url: status
+  },
+  2:{
+    title: {{ _("Configuration") }},
+    url: config
+  },
+  3:{
+    title: {{ _("Deploy Server") }},
+    url: deploy
+  },
+  4:{
+    title: {{ _("Advanced") }},
+    url: advanced
+  },
+  5:{
+    title: {{ _("Log") }},
+    url: logging
+  }
+}

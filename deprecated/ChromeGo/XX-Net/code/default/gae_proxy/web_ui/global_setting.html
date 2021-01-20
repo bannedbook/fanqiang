@@ -1,0 +1,93 @@
+
+        <form method="POST" onSubmit="return false;">
+            <div class="row-fluid">
+                <div class="span3" title="{{ _( "Switch ON to submit setting level") }}">
+                    <label for="submit-setting-level">{{ _( "Submit setting level") }}</label>
+                </div> <!-- .span3 -->
+                <div class="span9">
+                    <input id="submit-setting-level" type="checkbox" data-toggle="switch"/>
+                </div> <!-- .span9 -->
+            </div> <!-- .row-fluid -->
+            <div class="row-fluid" title="{{ _( "Passive mode consumes less system resources") }}">
+                <div class="span3">
+                    <label for="setting-level">{{ _( "Setting level" ) }}</label>
+                </div> <!-- .span4 -->
+                <div class="span6">
+                    <select id="setting-level">
+                        <option value="passive">{{ _( "Passive" ) }}</option>
+                        <option value="conservative">{{ _( "Conservative" ) }}</option>
+                        <option value="normal">{{ _( "Normal" ) }}</option>
+                        <option value="radical">{{ _( "Radical" ) }}</option>
+                        <option value="extreme">{{ _( "Extreme" ) }}</option>
+                    </select>
+                </div> <!-- .span8 -->
+            </div> <!-- .row-fluid -->
+            <div class="row-fluid">
+                <div class="span3" title="{{ _( "Customized an adequate value for your network connection. large values will provide a larger bandwidth limit, but may result in tunnel connection unstable.") }}">
+                    <label for="connect-receive-buffer">{{ _("Connect receive buffer size") }}
+                        (8~2048KB)</label>
+                </div> <!-- .span3 -->
+                <div class="span6">
+                    <input id="connect-receive-buffer" type="number" min="8" max="2048"/>
+                </div> <!-- .span6 -->
+            </div> <!-- .row-fluid -->
+            <div class="row-fluid">
+                <div class="span12">
+                    <button class="btn btn-primary btn-block" id="submit" type="submit">{{ _("Submit") }}</button>
+                </div> <!-- .span12 -->
+            </div> <!-- .row-fluid -->
+        </form>
+
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle=switch]').wrap('<div class="switch" />').parent().bootstrapSwitch();
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/module/gae_proxy/control/config?cmd=get_config',
+            dataType: 'JSON',
+            success: function (result) {
+                $('#setting-level').val(result['setting_level']);
+                $('#connect-receive-buffer').val(parseInt(Number(result['connect_receive_buffer']) / 1024));
+            },
+            error: function () {
+                tip('{{ _("Failed reading the settings.") }}', 'error');
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $('#submit').click(function () {
+        var isChecked = $("#submit-setting-level").is(':checked');
+
+        var connect_receive_buffer = Number($('#connect-receive-buffer').val());
+        connect_receive_buffer = Math.max(Math.min(connect_receive_buffer, 2048), 8);
+        $('#connect-receive-buffer').val(connect_receive_buffer);
+
+        $.ajax({
+            type: 'POST',
+            url: '/module/gae_proxy/control/config?cmd=set_config_level',
+            data: {
+                "setting_level": isChecked ? $('#setting-level').val() : null,
+                "connect_receive_buffer": connect_receive_buffer * 1024
+            },
+            dataType: 'JSON',
+            success: function (result) {
+                if (result['res'] == 'success') {
+                    tip('{{ _("Settings saved successfully.") }}', 'success');
+
+                    if (isChecked) {
+                        $("#submit-setting-level").parent().removeClass('switch-on');
+                        $("#submit-setting-level").parent().addClass('switch-off');
+                        $("#submit-setting-level").prop('checked', false);
+                    }
+                } else {
+                    tip('{{ _("Unkown error occurred.") }}', 'error');
+                }
+            }
+        });
+    });
+</script>

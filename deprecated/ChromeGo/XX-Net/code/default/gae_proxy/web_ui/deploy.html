@@ -1,0 +1,243 @@
+<h2>{{ _( "Deploy XX-Net onto GAE" ) }}</h2>
+<div class="alert alert-info fade in">
+    <p class="message">{{ _( "Current status: " ) }}{{ _( "idle" ) }}</p>
+</div> <!-- .alert -->
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#authentication" data-toggle="tab">{{ _( "Authorization" ) }}</a></li>
+    <li><a href="#logs" data-toggle="tab">{{ _( "Log" ) }}</a></li>
+</ul>
+<div id="deploy" class="tab-content">
+    <div id="authentication" class="tab-pane fade in active">
+        <form method="POST" onSubmit="return false;">
+            <div class="row-fluid">
+                <div class="span4">
+                    <label for="gae-appid">GAE AppID (<a href="https://github.com/XX-net/XX-Net/wiki/how-to-create-my-appids" target="_blank">{{ _( "How to apply" ) }}</a>)</label>
+                </div> <!-- .span4 -->
+                <div class="span8">
+                    <input id="gae-appid" type="text" placeholder='{{ _("Delimit multiple AppIDs with |") }}'/>
+                </div> <!-- .span8 -->
+            </div> <!-- .row-fluid -->
+            <div class="row-fluid">
+                <div class="span4">
+                    <label for="show-debug-log">{{ _( "Show Debug Log" ) }}</label>
+                </div> <!-- .span4 -->
+                <div class="span8">
+                    <input id="show-debug-log" type="checkbox" data-toggle="switch"/>
+                </div> <!-- .span8 -->
+            </div> <!-- .row-fluid -->
+            <div class="row-fluid">
+                <div class="span12">
+                    <button class="btn btn-primary btn-block" type="submit">{{ _("Start to deploy") }}</button>
+                </div> <!-- .span12 -->
+            </div> <!-- .row-fluid -->
+        </form>
+        <p class="tip">* {{ _( "Auth window will popup, make sure don't block popup in browser." ) }}</p>
+    </div> <!-- #authentication -->
+    <div id="logs" class="tab-pane fade">
+        <div id="log" class="span12"></div>
+    </div> <!-- #log -->
+</div> <!-- #tab-content -->
+
+<!-- JavaScript -->
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle=switch]').wrap('<div class="switch" />').parent().bootstrapSwitch();
+    });
+
+    $('#show-debug-log').parent().removeClass('switch-off');
+</script>
+<script type="text/javascript">
+    $(function () {
+        window.status = 'init';
+        window.isAutoScrollLog = true;
+
+        window.timer = $.timer(function () {
+            getDeployStatus();
+        });
+
+        window.timer.set({
+            time: 1000,
+            autostart: true
+        });
+    });
+</script>
+<script type="text/javascript">
+    $('#log').scroll(function () {
+        var preservedHeight = $('#log').height() + 10,
+            scrollHeight    = $('#log')[0].scrollHeight,
+            scrollTop       = $('#log').scrollTop();
+
+        window.isAutoScrollLog = (scrollTop + preservedHeight === scrollHeight);
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        resizeLogWindow();
+    });
+
+    $(window).resize(function () {
+        resizeLogWindow();
+    });
+
+    function resizeLogWindow() {
+        var windowHeight = $(window).height(),
+            preservedHeight = 300;
+
+        $('#log').css('height', windowHeight - preservedHeight);
+    }
+</script>
+<script type="text/javascript">
+    function updateLog(logContent) {
+        $('#log').html(logContent.replace(/\n/g, '<br>'));
+    }
+
+    function getDeployStatus() {
+        $.ajax({
+            type: 'GET',
+            url: '/module/gae_proxy/control/deploy?cmd=get_log',
+            dataType: 'JSON',
+            success: function (result) {
+                if (window.status == 'running') {
+                    if (result['status'] == 'init') {
+                        window.timer.stop();
+                        $('.alert').html('{{ _("Current status: ") }}{{ _("XX-Net was reset.") }}');
+
+                        changeButtonStatus('start');
+                    } else if (result['status'] == 'running') {
+                        updateLog(result['log']);
+                    } else if (result['status'] == 'finished') {
+                        window.timer.stop();
+                        window.status = 'finished';
+                        $('.alert').html('{{ _("Current status: ") }}{{ _("Deployment completed.") }} <br>{{ _("Please go to ") }}<a href="/?module=gae_proxy&menu=config">{{ _("the configuration page ") }}</a>{{ _("to set AppID to enable them.") }}');
+
+                        updateLog(result['log']);
+                        changeButtonStatus('start');
+                    } else {
+                        window.timer.stop();
+                        $('.alert').html('{{ _("Current status: ") }}{{ _("An exception occurred.") }}<br>{{ _("The exception info: ") }}' + result['status']);
+
+                        updateLog(result['log']);
+                    }
+                } else { // window.status == 'init' || window.status == 'finished' || undefined
+                    if (result['status'] == 'init') {
+                        window.timer.stop();
+                        $('.alert').html('{{ _("Current status: ") }}{{ _("idle") }}');
+                    } else if (result['status'] == 'running') {
+                        window.status = 'running';
+                        $('.alert').html('{{ _("Current status: ") }}{{ _("deploying ...") }}');
+
+                        updateLog(result['log']);
+                        changeButtonStatus('cancel');
+                    } else if (result['status'] == 'finished') {
+                        window.timer.stop();
+                        window.status = 'finished';
+                        $('.alert').html('{{ _("Current status: ") }}{{ _("Deployment completed.") }}');
+
+                        updateLog(result['log']);
+                    } else {
+                        window.timer.stop();
+                        $('.alert').html('{{ _("Current status: ") }}{{ _("An exception occurred.") }}<br>{{ _("The exception info: ") }}' + result['status']);
+                        updateLog(result['log']);
+                    }
+                }
+                if (window.isAutoScrollLog == true) {
+                    $('#log').scrollTop($('#log')[0].scrollHeight);
+                }
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    function changeButtonStatus(status) {
+        if (status == 'start') {
+            $('button.btn').removeClass('btn-danger');
+            $('button.btn').addClass('btn-primary');
+            $('button.btn').html('{{ _("Start to deploy") }}');
+        } else if (status == 'cancel') {
+            $('button.btn').removeClass('btn-primary');
+            $('button.btn').addClass('btn-danger');
+            $('button.btn').html('{{ _("Terminate deploying") }}');
+        }
+    }
+</script>
+<script type="text/javascript">
+    $('button.btn').click(function () {
+        if ($('button.btn').html() == '{{ _("Start to deploy") }}') {
+            onStart();
+        } else if ($('button.btn').html() == '{{ _("Terminate deploying") }}') {
+            onCancel();
+        }
+    });
+</script>
+<script type="text/javascript">
+    function onStart() {
+        var appId        = $('#gae-appid').val();
+        var debug        = $('#show-debug-log').is(':checked') ? 1 : 0;
+        var errorMessage = getErrorMessage(appId);
+
+        if (errorMessage.length != 0) {
+            $('.alert').removeClass('alert-info');
+            $('.alert').addClass('alert-error');
+            $('.alert').html(errorMessage);
+            return;
+        } else {
+            $('.alert').removeClass('alert-error');
+            $('.alert').addClass('alert-info');
+        }
+
+        deployProcess(appId, debug);
+        changeButtonStatus('cancel');
+    }
+</script>
+<script type="text/javascript">
+    function onCancel() {
+        $.ajax({
+            type: 'POST',
+            url: '/module/gae_proxy/control/deploy?cmd=cancel',
+            dataType: 'JSON',
+            success: function (result) {
+                changeButtonStatus('start');
+                $('.alert').html('{{ _("Current status: ") }}{{ _("Deployment cancelled.") }}');
+            },
+            error: function (result) {
+                $('.alert').html('{{ _("Current status: ") }} {{ _("An exception occurred.") }}<br>{{ _("The exception info: ") }}' + result);
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    function getErrorMessage(appId) {
+        var errorMessage = '';
+
+        if (appId.length == 0 || !isAppIdValid(appId)) {
+            errorMessage += '{{ _("Your AppID is either empty or invalid.") }}<br>';
+        }
+
+        return errorMessage;
+    }
+</script>
+<script type="text/javascript">
+    function deployProcess(appId, debug) {
+        var authentication = {
+            'appid': appId,
+            'debug': debug
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/module/gae_proxy/control/deploy?cmd=deploy',
+            data: authentication,
+            dataType: 'JSON',
+            success: function (result) {
+                window.timer.play();
+                $('.nav-tabs a:last').tab('show');
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    function isAppIdValid(appId) {
+        var pattern = new RegExp(/^[0-9a-z\-|]+$/i);
+        return pattern.test(appId);
+    }
+</script>
