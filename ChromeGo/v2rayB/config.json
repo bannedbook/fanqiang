@@ -38,11 +38,11 @@
         "servers": [
           {
             "email": null,
-            "address": "192.240.99.182",
-            "method": "aes-256-cfb",
+            "address": "2.58.241.3",
+            "method": "aes-256-gcm",
             "ota": false,
-            "password": "eIW0Dnk69454e6nSwuspv9DmS201tQ0D",
-            "port": 8097,
+            "password": "J9Y2ncrdPEC38gwydNFFGBna",
+            "port": 35294,
             "level": 1,
             "users": null
           }

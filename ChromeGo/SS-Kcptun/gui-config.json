@@ -2,7 +2,7 @@
   "version": "4.2.0.1",
   "configs": [
     {
-      "server": "89.163.224.127",
+      "server": "89.163.157.59",
       "server_port": 20001,
       "password": "dongtaiwang.com",
       "method": "aes-256-gcm",

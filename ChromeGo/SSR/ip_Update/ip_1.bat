@@ -1,5 +1,5 @@
 @Echo Off
-Title 从GitHub云端更新 SS 配置文件
+Title 从GitHub云端更新 SSR 配置文件
 cd /d %~dp0
 ..\..\wget --no-check-certificate https://gitlab.com/free9999/ipupdate/-/raw/master/ssr/ssconfig.txt
 

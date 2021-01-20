@@ -13,21 +13,22 @@
   "vmess": [
     {
       "configVersion": 2,
-      "address": "120.232.194.9",
-      "port": 104,
-      "id": "mC7qrHw3",
+      "address": "tr5.free5555.xyz",
+      "port": 443,
+      "id": "5a82e792-d5f7-409b-835b-29e0137c6664",
       "alterId": 0,
-      "security": "aes-128-gcm",
-      "network": "",
-      "remarks": "https://github.com/Alvin9999/new-pac/wiki ip1",
-      "headerType": "",
-      "requestHost": "",
-      "path": "",
-      "streamSecurity": "",
-      "allowInsecure": "",
-      "configType": 3,
+      "security": "auto",
+      "network": "ws",
+      "remarks": "https://github.com/Alvin9999/new-pac/wiki ip2洛杉矶45",
+      "headerType": "none",
+      "requestHost": "tr5.free5555.xyz",
+      "path": "/ray",
+      "streamSecurity": "tls",
+      "allowInsecure": "false",
+      "configType": 1,
       "testResult": "",
-      "subid": ""
+      "subid": "",
+      "flow": ""
     }
   ],
   "muxEnabled": true,
@@ -54,10 +55,21 @@
   "keepOlderDedupl": false,
   "statisticsFreshRate": 0,
   "remoteDNS": "",
-  "defaultAllowInsecure": "false",
+  "defAllowInsecure": false,
   "subItem": [],
   "uiItem": {
-    "mainQRCodeWidth": 600
+    "mainSize": "968, 632",
+    "mainLvColWidth": {
+      "def": 30,
+      "configType": 80,
+      "remarks": 100,
+      "address": 249,
+      "port": 50,
+      "security": 90,
+      "network": 70,
+      "subRemarks": 50,
+      "testResult": 70
+    }
   },
   "userPacRule": []
 }
