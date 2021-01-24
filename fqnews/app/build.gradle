@@ -80,11 +80,21 @@ android {
 			resValue 'string', 'native_adUnitId', "ca-app-pub-2194043486084479/8959992113"
 			resValue 'string', 'interstitial_adUnitId', "ca-app-pub-2194043486084479/3248199117"
 		}
+		fqnews2 {
+			dimension "site"
+			applicationId "jww.feed.fqnews2"
+			resValue 'string', 'applicationId', applicationId
+			resValue 'string', 'admob_appid', "ca-app-pub-2194043486084479~6090891748"
+			resValue 'string', 'banner_adUnitId', "ca-app-pub-2194043486084479/2969070238"
+			resValue 'string', 'native_adUnitId', "ca-app-pub-2194043486084479/2813991710"
+			resValue 'string', 'interstitial_adUnitId', "ca-app-pub-2194043486084479/5707748368"
+		}
 	}
 	sourceSets {
 		fqnews.setRoot('src/fqnews')
 		hwnews.setRoot('src/hwnews')
 		aunews.setRoot('src/aunews')
+		fqnews2.setRoot('src/fqnews2')
 	}
 	compileOptions {
 		sourceCompatibility javaVersion
@@ -140,7 +150,7 @@ android {
 		main.java.srcDirs += 'src/main/kotlin'
 	}
 
-	if(getCurrentProductFlavor()=='fqnews'){
+	if(getCurrentProductFlavor()=='fqnews' || getCurrentProductFlavor()=='fqnews2'){
 	splits {
         abi {
             enable true
@@ -158,6 +168,7 @@ kapt {
 
 dependencies {
 	fqnewsImplementation project(':core')
+	fqnews2Implementation project(':core')
 
 	hwnewsImplementation project(':plugin')
 	hwnewsApi "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
@@ -206,6 +217,7 @@ dependencies {
 	implementation 'androidx.core:core-ktx:1.3.0'
 	implementation 'androidx.paging:paging-runtime:2.1.2'
 	implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.preference:preference-ktx:1.1.1'
 	implementation 'org.jsoup:jsoup:1.12.1'
 	implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 	implementation 'com.github.Tunous:SwipeActionView:1.3.0'

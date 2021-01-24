@@ -11,7 +11,7 @@
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintBottom_toTopOf="@+id/list_ad_view_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -50,6 +50,16 @@
             android:src="@drawable/ic_read_all_white_24dp" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+	<FrameLayout
+		app:layout_constraintTop_toBottomOf="@+id/coordinator"
+		app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+		android:gravity="center_horizontal"
+		android:layout_gravity="bottom"
+		android:background="@android:color/transparent"
+		android:id="@+id/list_ad_view_container"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+	</FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
 		android:id="@+id/bottom_navigation"
