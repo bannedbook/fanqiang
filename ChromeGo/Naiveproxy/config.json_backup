@@ -1,7 +1,0 @@
-{
-  "listen": "socks://127.0.0.1:1080",
-  "proxy": "https://fafafa:Nq2lZQdMQNlRT@tr12.free9999.net",
-  "padding": true,
-  "log": ""
-}
-

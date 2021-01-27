@@ -18,12 +18,14 @@
 package net.frju.flym.ui.entrydetails
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -348,6 +350,22 @@ class EntryDetailsFragment : Fragment() {
                                 }
                             }
 						}
+                        else{
+                            val imageBannerView = ImageView(activity)
+                            imageBannerView.setImageResource(R.drawable.v2free)
+                            imageBannerView.setOnClickListener{
+                                val intent = Intent()
+                                intent.action = Intent.ACTION_VIEW
+                                intent.addCategory(Intent.CATEGORY_BROWSABLE)
+                                intent.data = Uri.parse("https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA")
+                                //fqnews2
+                                //intent.data = Uri.parse("https://github.com/vpn69/tea/blob/main/V2Ray%E6%9C%BA%E5%9C%BA%E6%8E%A8%E8%8D%90.md")
+                                startActivity(intent)
+                            }
+                            ad_view_container.addView(imageBannerView)
+                            val adsHeight: Int = imageBannerView.drawable.intrinsicHeight
+                            swipe_view.bottomPadding = adsHeight + 5
+                        }
 					} catch (e: Exception) {
                         //e.printStackTrace()
 						Log.e("ads---", e.message)

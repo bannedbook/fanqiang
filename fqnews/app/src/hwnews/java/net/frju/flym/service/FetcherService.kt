@@ -29,9 +29,9 @@ import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
 import android.os.Handler
-import android.text.Html
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.core.text.HtmlCompat
 import com.rometools.rome.io.SyndFeedInput
 import com.rometools.rome.io.XmlReader
 import net.dankito.readability4j.extended.Readability4JExtended
@@ -61,6 +61,7 @@ import java.net.CookiePolicy
 import java.util.concurrent.ExecutorCompletionService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import kotlin.math.max
 
 
 class FetcherService : IntentService(FetcherService::class.java.simpleName) {
@@ -73,7 +74,7 @@ class FetcherService : IntentService(FetcherService::class.java.simpleName) {
 
 		private val HTTP_CLIENT: OkHttpClient = OkHttpClient.Builder()
 				.connectTimeout(10, TimeUnit.SECONDS)
-				.readTimeout(10, TimeUnit.SECONDS)
+				.readTimeout(20, TimeUnit.SECONDS)
 				.cookieJar(JavaNetCookieJar(COOKIE_MANAGER))
 				.build()
 
@@ -116,14 +117,14 @@ class FetcherService : IntentService(FetcherService::class.java.simpleName) {
 				return
 			}
 
-			when {
-				ACTION_MOBILIZE_FEEDS == action -> {
-					mobilizeAllEntries()
-					downloadAllImages()
-				}
-				ACTION_DOWNLOAD_IMAGES == action -> downloadAllImages()
-				else -> { // == Constants.ACTION_REFRESH_FEEDS
-					context.putPrefBoolean(PrefConstants.IS_REFRESHING, true)
+            when (action) {
+                ACTION_MOBILIZE_FEEDS -> {
+                    mobilizeAllEntries()
+                    downloadAllImages()
+                }
+                ACTION_DOWNLOAD_IMAGES -> downloadAllImages()
+                else -> { // == Constants.ACTION_REFRESH_FEEDS
+                    context.putPrefBoolean(PrefConstants.IS_REFRESHING, true)
 
 					val readEntriesKeepTime = context.getPrefString(PrefConstants.KEEP_TIME, "4")!!.toLong() * 86400000L
 					val readEntriesKeepDate = if (readEntriesKeepTime > 0) System.currentTimeMillis() - readEntriesKeepTime else 0
@@ -135,21 +136,21 @@ class FetcherService : IntentService(FetcherService::class.java.simpleName) {
 					deleteOldEntries(unreadEntriesKeepDate, 0)
 					COOKIE_MANAGER.cookieStore.removeAll() // Cookies are important for some sites, but we clean them each times
 
-					// We need to use the more recent date in order to be sure to not see old entries again
-					val acceptMinDate = Math.max(readEntriesKeepDate, unreadEntriesKeepDate)
+                    // We need to use the more recent date in order to be sure to not see old entries again
+                    val acceptMinDate = max(readEntriesKeepDate, unreadEntriesKeepDate)
 
-					var newCount = 0
-					if (feedId == 0L) {
-						newCount = refreshFeeds(acceptMinDate)
-					} else {
-						App.db.feedDao().findById(feedId)?.let {
-							try {
-								newCount = refreshFeed(it, acceptMinDate)
-							} catch (e: Exception) {
-								error("Can't fetch feed ${it.link}", e)
-							}
-						}
-					}
+                    var newCount = 0
+                    if (feedId == 0L || App.db.feedDao().findById(feedId)?.isGroup == true) {
+                        newCount = refreshFeeds(feedId, acceptMinDate)
+                    } else {
+                        App.db.feedDao().findById(feedId)?.let {
+                            try {
+                                newCount = refreshFeed(it, acceptMinDate)
+                            } catch (e: Exception) {
+                                error("Can't fetch feed ${it.link}", e)
+                            }
+                        }
+                    }
 
 					showRefreshNotification(newCount)
 					mobilizeAllEntries()
@@ -209,7 +210,7 @@ class FetcherService : IntentService(FetcherService::class.java.simpleName) {
 							.setTicker(text)
 							.setWhen(System.currentTimeMillis())
 							.setAutoCancel(true)
-							.setContentTitle(context.getString(R.string.app_name) +" "+ context.getString(R.string.flym_feeds))
+							.setContentTitle(context.getString(R.string.flym_feeds))
 							.setContentText(text)
 
 						context.notificationManager.notify(0, notifBuilder.build())
@@ -223,15 +224,14 @@ class FetcherService : IntentService(FetcherService::class.java.simpleName) {
 		fun shouldDownloadPictures(): Boolean {
 			val fetchPictureMode = context.getPrefString(PrefConstants.PRELOAD_IMAGE_MODE, PrefConstants.PRELOAD_IMAGE_MODE__WIFI_ONLY)
 
-			if (context.getPrefBoolean(PrefConstants.DISPLAY_IMAGES, true)) {
-				if (PrefConstants.PRELOAD_IMAGE_MODE__ALWAYS == fetchPictureMode) {
-					return true
-				} else if (PrefConstants.PRELOAD_IMAGE_MODE__WIFI_ONLY == fetchPictureMode) {
-					if (App.context.connectivityManager.activeNetworkInfo?.type == ConnectivityManager.TYPE_WIFI) {
-						return true
-					}
-				}
-			}
+            if (context.getPrefBoolean(PrefConstants.DISPLAY_IMAGES, true)) {
+                if (PrefConstants.PRELOAD_IMAGE_MODE__ALWAYS == fetchPictureMode) {
+                    return true
+                } else if (PrefConstants.PRELOAD_IMAGE_MODE__WIFI_ONLY == fetchPictureMode
+                        && context.connectivityManager.activeNetworkInfo?.type == ConnectivityManager.TYPE_WIFI) {
+                    return true
+                }
+            }
 
 			return false
 		}
@@ -293,19 +293,19 @@ class FetcherService : IntentService(FetcherService::class.java.simpleName) {
 									Readability4JExtended(link, Jsoup.parse(input, null, link)).parse().articleContent?.html()?.let {
 										val mobilizedHtml = HtmlUtils.improveHtmlContent(it, getBaseUrl(link))
 
-										@Suppress("DEPRECATION")
-										if (entry.description == null || Html.fromHtml(mobilizedHtml).length > Html.fromHtml(entry.description).length) { // If the retrieved text is smaller than the original one, then we certainly failed...
-											if (downloadPictures) {
-												val imagesList = HtmlUtils.getImageURLs(mobilizedHtml)
-												if (imagesList.isNotEmpty()) {
-													if (entry.imageLink == null) {
-														entry.imageLink = HtmlUtils.getMainImageURL(imagesList)
-													}
-													imgUrlsToDownload[entry.id] = imagesList
-												}
-											} else if (entry.imageLink == null) {
-												entry.imageLink = HtmlUtils.getMainImageURL(mobilizedHtml)
-											}
+                                        val entryDescription = entry.description
+                                        if (entryDescription == null || HtmlCompat.fromHtml(mobilizedHtml, HtmlCompat.FROM_HTML_MODE_LEGACY).length > HtmlCompat.fromHtml(entryDescription, HtmlCompat.FROM_HTML_MODE_LEGACY).length) { // If the retrieved text is smaller than the original one, then we certainly failed...
+                                            if (downloadPictures) {
+                                                val imagesList = HtmlUtils.getImageURLs(mobilizedHtml)
+                                                if (imagesList.isNotEmpty()) {
+                                                    if (entry.imageLink == null) {
+                                                        entry.imageLink = HtmlUtils.getMainImageURL(imagesList)
+                                                    }
+                                                    imgUrlsToDownload[entry.id] = imagesList
+                                                }
+                                            } else if (entry.imageLink == null) {
+                                                entry.imageLink = HtmlUtils.getMainImageURL(mobilizedHtml)
+                                            }
 
 											success = true
 
@@ -359,7 +359,7 @@ class FetcherService : IntentService(FetcherService::class.java.simpleName) {
 			}
 		}
 
-		private fun refreshFeeds(acceptMinDate: Long): Int {
+        private fun refreshFeeds(feedId: Long, acceptMinDate: Long): Int {
 
 			val executor = Executors.newFixedThreadPool(THREAD_NUMBER) { r ->
 				Thread(r).apply {
@@ -368,29 +368,34 @@ class FetcherService : IntentService(FetcherService::class.java.simpleName) {
 			}
 			val completionService = ExecutorCompletionService<Int>(executor)
 
-			var globalResult = 0
+            var globalResult = 0
+            val feeds: List<Feed>
+            if (feedId == 0L) {
+                feeds = App.db.feedDao().allNonGroupFeeds
+            } else {
+                feeds = App.db.feedDao().allFeedsInGroup(feedId)
+            }
 
-			val feeds = App.db.feedDao().allNonGroupFeeds
-			for (feed in feeds) {
-				completionService.submit {
-					var result = 0
-					try {
-						result = refreshFeed(feed, acceptMinDate)
-					} catch (e: Exception) {
-						error("Can't fetch feedWithCount ${feed.link}", e)
-					}
+            for (feed in feeds) {
+                completionService.submit {
+                    var result = 0
+                    try {
+                        result = refreshFeed(feed, acceptMinDate)
+                    } catch (e: Exception) {
+                        error("Can't fetch feedWithCount ${feed.link}", e)
+                    }
 
 					result
 				}
 			}
 
-			for (i in 0 until feeds.size) {
-				try {
-					val f = completionService.take()
-					globalResult += f.get()
-				} catch (ignored: Exception) {
-				}
-			}
+            for (i in feeds.indices) {
+                try {
+                    val f = completionService.take()
+                    globalResult += f.get()
+                } catch (ignored: Exception) {
+                }
+            }
 
 			executor.shutdownNow() // To purge observeAll threads
 
@@ -408,7 +413,7 @@ class FetcherService : IntentService(FetcherService::class.java.simpleName) {
 				createCall(feed.link).execute().use { response ->
 					val input = SyndFeedInput()
 					val romeFeed = input.build(XmlReader(response.body!!.byteStream()))
-					entries.addAll(romeFeed.entries.asSequence().filter { it.publishedDate?.time ?: Long.MAX_VALUE > acceptMinDate }.map { it.toDbFormat(feed) })
+					entries.addAll(romeFeed.entries.asSequence().filter { it.publishedDate?.time ?: Long.MAX_VALUE > acceptMinDate }.map { it.toDbFormat(context, feed) })
 					feed.update(romeFeed)
 				}
 			} catch (t: Throwable) {
@@ -435,15 +440,16 @@ class FetcherService : IntentService(FetcherService::class.java.simpleName) {
 			if (filterKeywordString.isNotBlank()) {
 				val keywordLists = filterKeywordString.split(',').map { it.trim() }
 
-				if (keywordLists.isNotEmpty()) {
-					entries.removeAll { entry ->
-						keywordLists.any {
-							entry.title?.contains(it, true) == true ||
-									entry.description?.contains(it, true) == true
-						}
-					}
-				}
-			}
+                if (keywordLists.isNotEmpty()) {
+                    entries.removeAll { entry ->
+                        keywordLists.any {
+                            entry.title?.contains(it, true) == true ||
+                                    entry.description?.contains(it, true) == true ||
+                                    entry.author?.contains(it, true) == true
+                        }
+                    }
+                }
+            }
 
 			val feedBaseUrl = getBaseUrl(feed.link)
 			var foundExisting = false
@@ -511,9 +517,8 @@ class FetcherService : IntentService(FetcherService::class.java.simpleName) {
 			if (!File(tempImgPath).exists() && !File(finalImgPath).exists()) {
 				IMAGE_FOLDER_FILE.mkdir() // create images dir
 
-				// Compute the real URL (without "&eacute;", ...)
-				@Suppress("DEPRECATION")
-				val realUrl = Html.fromHtml(imgUrl).toString()
+                // Compute the real URL (without "&eacute;", ...)
+                val realUrl = HtmlCompat.fromHtml(imgUrl, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
 
 				try {
 					createCall(realUrl).execute().use { response ->
@@ -541,14 +546,14 @@ class FetcherService : IntentService(FetcherService::class.java.simpleName) {
 				// We need to exclude favorite entries images to this cleanup
 				val favoriteIds = App.db.entryDao().favoriteIds
 
-				IMAGE_FOLDER_FILE.listFiles().forEach { file ->
-					// If old file and not part of a favorite entry
-					if (file.lastModified() < keepDateBorderTime && !favoriteIds.any { file.name.startsWith(it + ID_SEPARATOR) }) {
-						file.delete()
-					}
-				}
-			}
-		}
+                IMAGE_FOLDER_FILE.listFiles()?.forEach { file ->
+                    // If old file and not part of a favorite entry
+                    if (file.lastModified() < keepDateBorderTime && !favoriteIds.any { file.name.startsWith(it + ID_SEPARATOR) }) {
+                        file.delete()
+                    }
+                }
+            }
+        }
 
 		private fun getBaseUrl(link: String): String {
 			var baseUrl = link

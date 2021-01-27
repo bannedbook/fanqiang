@@ -24,6 +24,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.text.TextUtils
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
 import android.widget.*
@@ -44,9 +45,13 @@ import com.google.android.gms.ads.*
 import com.google.android.gms.ads.formats.NativeAdOptions
 import com.google.android.gms.ads.formats.UnifiedNativeAd
 import com.google.android.gms.ads.formats.UnifiedNativeAdView
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_entries.*
+import kotlinx.android.synthetic.main.fragment_entries.refresh_layout
+import kotlinx.android.synthetic.main.fragment_entry_details.*
 import kotlinx.android.synthetic.main.view_entry.view.*
 import kotlinx.android.synthetic.main.view_main_containers.*
+import kotlinx.android.synthetic.main.view_main_containers.toolbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import net.fred.feedex.R
@@ -111,34 +116,22 @@ class EntriesFragment : Fragment() {
 	private fun tryBindAd() = lifecycleScope.launchWhenStarted {
 		if(layoutManager==null)return@launchWhenStarted
 		try {
-			val fp = layoutManager!!.findFirstVisibleItemPosition()
 
-			if (fp < 0) return@launchWhenStarted
-			for (i in object : Iterator<Int> {
-				var first = fp
-				var last = layoutManager!!.findLastCompletelyVisibleItemPosition()
-				var flipper = false
-				override fun hasNext() = first <= last
-				override fun next(): Int {
-					flipper = !flipper
-					return if (flipper) first++ else last--
-				}
-			}.asSequence().toList().reversed()) {
+			//val fp = layoutManager!!.findFirstVisibleItemPosition()
+			val fp = 0
 				try {
-					var viewHolder = recycler_view.findViewHolderForAdapterPosition(i)
-					if(viewHolder==null)continue
+					var viewHolder: RecyclerView.ViewHolder? = recycler_view.findViewHolderForAdapterPosition(fp)
+							?: return@launchWhenStarted
 					viewHolder = viewHolder as ViewHolder
-					if (i<5) {
+					if (fp==0) {
 						viewHolder.populateUnifiedNativeAdView(nativeAd!!, nativeAdView!!)
 						// might be in the middle of a layout after scrolling, need to wait
-						withContext(Dispatchers.Main) { adapter.notifyItemChanged(i) }
-						break
+						withContext(Dispatchers.Main) { adapter.notifyItemChanged(fp) }
 					}
 				}catch (ex: Exception){
 					Log.e("ssvpn", ex.message, ex)
-					continue
 				}
-			}
+
 		}catch (e: Exception){
 			Log.e("ssvpn", e.message, e)
 		}
@@ -265,6 +258,50 @@ class EntriesFragment : Fragment() {
 		MobileAds.initialize(activity, activity?.getString(R.string.admob_appid))
 		mInterstitialAd = InterstitialAd(activity)
 		mInterstitialAd.adUnitId = activity?.getString(R.string.interstitial_adUnitId)
+
+		//MobileAds.initialize(activity) {}
+		adView = AdView(activity)
+		list_ad_view_container  = requireActivity().findViewById(R.id.list_ad_view_container)
+		list_ad_view_container.addView(adView)
+		// Since we're loading the banner based on the adContainerView size, we need to wait until this
+		// view is laid out before we can get the width.
+		list_ad_view_container.viewTreeObserver.addOnGlobalLayoutListener {
+			if (!initialLayoutComplete) {
+				initialLayoutComplete = true
+				loadBanner()
+				//val adsHeight: Int = adView.adSize.getHeightInPixels(activity)
+				//swipe_view.bottomPadding = adsHeight + 5
+			}
+		}
+	}
+
+	private lateinit var adView: AdView
+	private var initialLayoutComplete = false
+	private lateinit var list_ad_view_container: FrameLayout
+	// Determine the screen width (less decorations) to use for the ad width.
+	// If the ad hasn't been laid out, default to the full screen width.
+	private val adSize: AdSize
+		get() {
+			val display = activity?.windowManager?.defaultDisplay
+			val outMetrics = DisplayMetrics()
+			display?.getMetrics(outMetrics)
+			val density = outMetrics.density
+			var adWidthPixels = list_ad_view_container.width.toFloat()
+			if (adWidthPixels == 0f) {
+				adWidthPixels = outMetrics.widthPixels.toFloat()
+			}
+
+			val adWidth = (adWidthPixels / density).toInt()
+			return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(activity, adWidth)
+		}
+	private fun loadBanner() {
+		adView.adUnitId=getString(R.string.banner_adUnitId)
+		adView.adSize = adSize
+		// Log.e("adSize",adView.adSize.width.toString()+","+adView.adSize.height.toString())
+		// Create an ad request.
+		val adRequest = AdRequest.Builder().build()
+		// Start loading the ad in the background.
+		adView.loadAd(adRequest)
 	}
 
 	private fun initDataObservers() {
@@ -649,6 +686,8 @@ class EntriesFragment : Fragment() {
 				intent.action = Intent.ACTION_VIEW
 				intent.addCategory(Intent.CATEGORY_BROWSABLE)
 				intent.data = Uri.parse("https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA")
+				//fqnews2
+				//intent.data = Uri.parse("https://github.com/vpn69/tea/blob/main/V2Ray%E6%9C%BA%E5%9C%BA%E6%8E%A8%E8%8D%90.md")
 				startActivity(intent)
 			}
 			adContainer.addView(imageBannerView)

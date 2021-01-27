@@ -53,7 +53,7 @@
     </me.thanel.swipeactionview.SwipeActionView>
 
     <RelativeLayout
-        android:layout_below="@id/swipe_view"
+        android:gravity="center_horizontal"
         android:layout_gravity="bottom"
         android:background="@android:color/transparent"
         android:id="@+id/ad_view_container"
