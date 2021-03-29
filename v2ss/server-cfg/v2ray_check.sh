@@ -8,7 +8,7 @@ else
 echo "$DATE: The v2ray is ok" >> /dev/null
 fi
 
-MM=`ps -ef |grep /usr/sbin/nginx |grep -v grep |wc -l`
+MM=`ps -ef |grep nginx |grep -v grep |wc -l`
 if [ "$MM" == "0" ]; then 
 /usr/sbin/nginx
 echo "$DATE: The nginx is down and restart" >> /var/log/ss_nginx_check.log 

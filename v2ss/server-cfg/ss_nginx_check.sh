@@ -8,7 +8,7 @@ else
 echo "$DATE: The ss-server is ok" >> /dev/null
 fi
 
-MM=`ps -ef |grep /usr/sbin/nginx |grep -v grep |wc -l`
+MM=`ps -ef |grep nginx |grep -v grep |wc -l`
 if [ "$MM" == "0" ]; then 
 /sbin/reboot
 /usr/sbin/reboot
