@@ -1,0 +1,14 @@
+[Unit]
+Description=Air-Universe - main Service
+After=network.target
+Wants=xray.service
+
+[Service]
+Type=simple
+User=root
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/local/bin/au -c /usr/local/etc/au/au.json > /var/log/au.log
+
+[Install]
+WantedBy=multi-user.target
