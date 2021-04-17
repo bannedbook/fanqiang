@@ -246,8 +246,8 @@ class V2RayTestService : Service() , BaseService.Interface {
             }
         }
 
-        override fun prepare(): Long {
-            return 0
+        override fun prepare(): String {
+            return ""
         }
 
         override fun protect(l: Long) = 1.toLong()

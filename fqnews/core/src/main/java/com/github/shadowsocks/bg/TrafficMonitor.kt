@@ -32,7 +32,7 @@ import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
-class TrafficMonitor(statFile: File) {
+open class TrafficMonitor(statFile: File) {
     val thread = object : LocalSocketListener("TrafficMonitor-" + statFile.name, statFile) {
         private val buffer = ByteArray(16)
         private val stat = ByteBuffer.wrap(buffer).order(ByteOrder.LITTLE_ENDIAN)
@@ -57,7 +57,7 @@ class TrafficMonitor(statFile: File) {
     private var dirty = false
     private var persisted: TrafficStats? = null
 
-    fun requestUpdate(): Pair<TrafficStats, Boolean> {
+    open fun requestUpdate(): Pair<TrafficStats, Boolean> {
         val now = SystemClock.elapsedRealtime()
         val delta = now - timestampLast
         timestampLast = now
