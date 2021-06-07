@@ -1,8 +1,10 @@
 # shadowsocks-android plugin framework
 
-[Documentation](doc.md) \| [Change log](changes.md)
+[Documentation](doc.md) | [Change log](CHANGES.md)
 
-Support library for easier development on [shadowsocks plugin](https://github.com/shadowsocks/shadowsocks-org/issues/28) for Android. Also includes some useful resources to easily get consistent styling with the main app.
+Support library for easier development on [shadowsocks
+ plugin](https://github.com/shadowsocks/shadowsocks-org/issues/28) for Android. Also includes some
+ useful resources to easily get consistent styling with the main app.
 
 ## Official plugins
 
@@ -14,17 +16,25 @@ These are some plugins ready to use on shadowsocks-android.
 
 ## Developer's guide
 
-This library is designed with Java interoperability in mind so theoretically you can use this library with other languages and/or build tools but there isn't documentation for that yet. This guide is written for Scala + SBT. Contributions are welcome.
+This library is designed with Java interoperability in mind so theoretically you can use this
+ library with other languages and/or build tools but there isn't documentation for that yet. This
+ guide is written for Scala + SBT. Contributions are welcome.
 
 ### Package name
 
-There are no arbitrary restrictions/requirements on package name, component name and content provider authority, but you're suggested to follow the format in this documentations. For package name, use `com.github.shadowsocks.plugin.$PLUGIN_ID` if it only contains a single plugin to prevent duplicated plugins. In some places hyphens are not accepted, for example package name. In that case, hyphens `-` should be changed into underscores `_`. For example, the package name for `obfs-local` would probably be `com.github.shadowsocks.plugin.obfs_local`.
+There are no arbitrary restrictions/requirements on package name, component name and content
+ provider authority, but you're suggested to follow the format in this documentations. For package
+ name, use `com.github.shadowsocks.plugin.$PLUGIN_ID` if it only contains a single plugin to
+ prevent duplicated plugins. In some places hyphens are not accepted, for example package name. In
+ that case, hyphens `-` should be changed into underscores `_`. For example, the package name for
+ `obfs-local` would probably be `com.github.shadowsocks.plugin.obfs_local`.
 
 ### Add dependency
 
-First you need to add this library to your dependencies. This library is written mostly in Kotlin but can also work with Java-only projects:
+First you need to add this library to your dependencies.
+This library is written mostly in Kotlin but can also work with Java-only projects:
 
-```text
+```gradle
 implementation 'com.github.shadowsocks:plugin:$LATEST_VERSION'
 ```
 
@@ -35,14 +45,12 @@ First you need to get your native binary compiling on Android platform.
 * [Sample project for C](https://github.com/shadowsocks/simple-obfs-android/tree/4f82c4a4e415d666e70a7e2e60955cb0d85c1615);
 * [Sample project for Go](https://github.com/shadowsocks/v2ray-plugin-android/tree/172bd4cec0276112828614482fb646b79dbf1540).
 
-In addition to functionalities of a normal plugin, it has to support these additional flags that may get passed through arguments:
+In addition to functionalities of a normal plugin, it has to support these additional flags that
+ may get passed through arguments:
 
 * `-V`: VPN mode. In this case, the plugin should pass all file descriptors that needs protecting
-
-  from VPN connections \(i.e. its traffic will not be forwarded through the VPN\) through an
-
+  from VPN connections (i.e. its traffic will not be forwarded through the VPN) through an
   ancillary message to `./protect_path`;
-
 * `--fast-open`: TCP fast open enabled.
 
 ### Implement a binary provider
@@ -69,7 +77,7 @@ class BinaryProvider : NativePluginProvider() {
 
 Then add it to your manifest:
 
-```markup
+```xml
 <manifest>
     ...
     <application>
@@ -103,13 +111,18 @@ Then add it to your manifest:
 
 ### Add user interfaces
 
-You should add to your plugin app a configuration activity or a help activity or both if you're going to use `ConfigurationActivity.fallbackToManualEditor`.
+You should add to your plugin app a configuration activity or a help activity or both if you're
+ going to use `ConfigurationActivity.fallbackToManualEditor`.
 
 #### Configuration activity
 
-This is used if found instead of a manual input dialog when user clicks "Configure..." in the main app. This gives you maximum freedom of the user interface. To implement this, you need to extend `ConfigurationActivity` and you will get current options via `onInitializePluginOptions(PluginOptions)` and you can invoke `saveChanges(PluginOptions)` or `discardChanges()` before `finish()` or `fallbackToManualEditor()`. Then add it to your manifest:
+This is used if found instead of a manual input dialog when user clicks "Configure..." in the main
+ app. This gives you maximum freedom of the user interface. To implement this, you need to extend
+ `ConfigurationActivity` and you will get current options via
+ `onInitializePluginOptions(PluginOptions)` and you can invoke `saveChanges(PluginOptions)` or
+ `discardChanges()` before `finish()` or `fallbackToManualEditor()`. Then add it to your manifest:
 
-```markup
+```xml
 <manifest>
     ...
     <application>
@@ -130,9 +143,12 @@ This is used if found instead of a manual input dialog when user clicks "Configu
 
 #### Help activity/callback
 
-This is started when user taps "?" in manual editor. To implement this, you need to extend `HelpCallback` if you want a simple dialog with help message as `CharSequence` or `HelpActivity` if you want to provide custom user interface, implement the required methods, then add it to your manifest:
+This is started when user taps "?" in manual editor. To implement this, you need to extend
+ `HelpCallback` if you want a simple dialog with help message as `CharSequence` or `HelpActivity`
+ if you want to provide custom user interface, implement the required methods, then add it to your
+ manifest:
 
-```markup
+```xml
 <manifest>
     ...
     <application>
@@ -152,4 +168,3 @@ This is started when user taps "?" in manual editor. To implement this, you need
 ```
 
 Great. Now your plugin is ready to use.
-
