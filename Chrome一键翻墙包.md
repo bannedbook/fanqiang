@@ -8,7 +8,7 @@ ChromeGo，Chrome一键翻墙包
 
 **注意**：第一次使用SS/SSR时，需要安装 NET Framework 4.0 ，不然无法正常运行，[微软官网](https://www.microsoft.com/zh-cn/download/details.aspx?id=17718)下载。
 
-[Chrome一键翻墙包下载](#chromego下载地址)、[火狐一键翻墙包](https://github.com/bannedbook/fanqiang/wiki/%E7%81%AB%E7%8B%90firefox%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85)、[安卓手机翻墙](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6)、[自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)、[自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)
+[Chrome一键翻墙包下载](#chromego-xia-zai-di-zhi)、[火狐一键翻墙包](https://github.com/bannedbook/fanqiang/wiki/%E7%81%AB%E7%8B%90firefox%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85)、[安卓手机翻墙](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6)、[自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)、[自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)
 
 **推荐：**  
 [![V2free翻墙-不限流量、高速稳定、性价比超强](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2free.jpg)](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)
@@ -25,7 +25,7 @@ ChromeGo，Chrome一键翻墙包
 下载解压后请务必阅读其中的使用说明文档。本软件需要调用Chrome浏览器翻墙，如果还没安装chrome，需自行[下载安装Chrome浏览器](https://github.com/bannedbook/fanqiang/wiki/Chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD)，已安装Chrome浏览器，但仍然[提示找不到Chrome.exe的解决办法](https://github.com/bannedbook/fanqiang/issues/432)。
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### ChromeGo下载地址<a name="chromego下载地址"></a>
+### ChromeGo下载地址<a name="chromego-xia-zai-di-zhi"></a>
 
 > 如果下载速度慢，可以用 [FDM下载工具](https://www.freedownloadmanager.org/zh/)来下载，这个FDM下载工具如果官方网站下载慢，也可以百度搜索下载安装。然后用这个FDM来下载这里的软件。如果chrome提示此文件存在危险，请选择保留危险文件，是误报。
 > 
