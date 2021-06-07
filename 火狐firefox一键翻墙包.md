@@ -7,14 +7,16 @@
 
 **选择指南**：按照翻墙启动脚本的数字序号依次尝试。由于国内网络环境不同、地区不同，封锁强度会不同，所以使用效果会有差别，有的地区几乎所有的软件都能使用，有的只能用几款，因此具体哪款软件适合你的网络环境，需要你自己来尝试。
 
-所有软件的解压密码一律为：jww,压缩包文件的格式是7z，如果解压出错，用7z解压软件来解压（[7z解压软件下载地址](https://sparanoid.com/lab/7z/)），解压目标路径中不要包含中文或空格，否则可能会出现运行火狐后闪退的情况，比如解压到桌面就有可能出现这个情况。
-
-[火狐一键翻墙包下载](#xia-zai-di-zhi)、[Chrome一键翻墙包](https://github.com/bannedbook/fanqiang/wiki/Chrome%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85)、[安卓手机翻墙](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6)、[自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)、[自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) **推荐：**  
-[![V2free翻墙-不限流量、高速稳定、性价比超强](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2free.jpg)](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)
-
 ### 更新通告
 
 **2021年5月25日更新公告 更新若干翻墙工具。 win10系统的防火墙可能会起网络阻碍作用，如果多款工具更新ip后无法正常使用，可以把防火墙和杀毒软件关闭再试试看。** 第一次使用SSR时，需要安装 NET Framework 4.0 ，不然无法正常运行，微软官网下载。 使用方法：下载后解压，按文件夹里面的《使用说明（必看）》操作。第一次使用或发现不好用的时候记得按照使用说明更新一下ip。
+
+所有软件的解压密码一律为：jww,压缩包文件的格式是7z，如果解压出错，用7z解压软件来解压（[7z解压软件下载地址](https://sparanoid.com/lab/7z/)），解压目标路径中不要包含中文或空格，否则可能会出现运行火狐后闪退的情况，比如解压到桌面就有可能出现这个情况。
+
+[火狐一键翻墙包下载](#xia-zai-di-zhi)、[Chrome一键翻墙包](https://github.com/bannedbook/fanqiang/wiki/Chrome%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85)、[安卓手机翻墙](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6)、[自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)、[自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 
+
+**推荐：**  
+[![V2free翻墙-不限流量、高速稳定、性价比超强](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2free.jpg)](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)
 
 ### 下载地址<a name="xia-zai-di-zhi"></a>
 
