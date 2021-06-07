@@ -17,28 +17,28 @@ ChromeGo，Chrome一键翻墙包
 
 *   **2021年5月25日更新公告。 win10系统的防火墙可能会起网络阻碍作用，如果多款工具更新ip后无法正常使用，可以把防火墙和杀毒软件关闭再试试看。** 更新ip，一些工具升级，添加v2free翻墙通道。 注意：第一次使用SSR时，需要安装 NET Framework 4.0 ，不然无法正常运行，微软官网下载。 使用方法：下载后解压，按文件夹里面的《使用说明（必看）》操作。不好用的时候记得按照使用说明更新一下ip。
     
-    ### 重要通告：
-    
-    *   所有软件的解压密码一律为：jww,压缩包文件的格式是7z，如果解压出错，用7z解压软件来解压（[7z解压软件下载地址](https://sparanoid.com/lab/7z/)），**解压目标路径中不要包含中文或空格**
-    *   内存低于2G的电脑建议用[火狐版（这里）](https://github.com/bannedbook/fanqiang/wiki/%E7%81%AB%E7%8B%90firefox%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85)。
-    
-    下载解压后请务必阅读其中的使用说明文档。本软件需要调用Chrome浏览器翻墙，如果还没安装chrome，需自行[下载安装Chrome浏览器](https://github.com/bannedbook/fanqiang/wiki/Chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD)，已安装Chrome浏览器，但仍然[提示找不到Chrome.exe的解决办法](https://github.com/bannedbook/fanqiang/issues/432)。
-    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    
-    ### ChromeGo下载地址
-    
-    > 如果下载速度慢，可以用 [FDM下载工具](https://www.freedownloadmanager.org/zh/)来下载，这个FDM下载工具如果官方网站下载慢，也可以百度搜索下载安装。然后用这个FDM来下载这里的软件。如果chrome提示此文件存在危险，请选择保留危险文件，是误报。
-    > 
-    > 1.  [ChromeGo下载点](https://d1.dns999.cf/ChromeGo.7z)
-    > 2.  [ChromeGo下载点](https://d1.dns888.ml/ChromeGo.7z)
-    > 3.  [ChromeGo下载点](https://download.ru/files/FXMfUpK3)
-    > 4.  [ChromeGo下载点](https://d2.dns888.ml/ChromeGo.7z)
-    > 5.  [ChromeGo下载点](https://github.com/bannedbook/fanqiang/releases)
-    
-    下载解压后请务必阅读其中的使用说明文档。本软件需要调用Chrome浏览器翻墙，如果还没安装chrome，需自行[下载安装Chrome浏览器](https://github.com/bannedbook/fanqiang/wiki/Chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD)，已安装Chrome浏览器，但仍然[提示找不到Chrome.exe的解决办法](https://github.com/bannedbook/fanqiang/issues/432)。
-    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    
-    ### (如果已安装Chrome，但是仍然出现 “Windows找不到文件chrome.exe”，请看这里[#178](https://github.com/bannedbook/fanqiang/issues/178))。
-    
-    本页面短网址：https://bit.ly/ChromeGo https://git.io/fanqiang https://x.co/chromefq
-    ----------------------------------------------------------------------------
+### 重要通告：
+
+*   所有软件的解压密码一律为：jww,压缩包文件的格式是7z，如果解压出错，用7z解压软件来解压（[7z解压软件下载地址](https://sparanoid.com/lab/7z/)），**解压目标路径中不要包含中文或空格**
+*   内存低于2G的电脑建议用[火狐版（这里）](https://github.com/bannedbook/fanqiang/wiki/%E7%81%AB%E7%8B%90firefox%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85)。
+
+下载解压后请务必阅读其中的使用说明文档。本软件需要调用Chrome浏览器翻墙，如果还没安装chrome，需自行[下载安装Chrome浏览器](https://github.com/bannedbook/fanqiang/wiki/Chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD)，已安装Chrome浏览器，但仍然[提示找不到Chrome.exe的解决办法](https://github.com/bannedbook/fanqiang/issues/432)。
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### ChromeGo下载地址
+
+> 如果下载速度慢，可以用 [FDM下载工具](https://www.freedownloadmanager.org/zh/)来下载，这个FDM下载工具如果官方网站下载慢，也可以百度搜索下载安装。然后用这个FDM来下载这里的软件。如果chrome提示此文件存在危险，请选择保留危险文件，是误报。
+> 
+> 1.  [ChromeGo下载点](https://d1.dns999.cf/ChromeGo.7z)
+> 2.  [ChromeGo下载点](https://d1.dns888.ml/ChromeGo.7z)
+> 3.  [ChromeGo下载点](https://download.ru/files/FXMfUpK3)
+> 4.  [ChromeGo下载点](https://d2.dns888.ml/ChromeGo.7z)
+> 5.  [ChromeGo下载点](https://github.com/bannedbook/fanqiang/releases)
+
+下载解压后请务必阅读其中的使用说明文档。本软件需要调用Chrome浏览器翻墙，如果还没安装chrome，需自行[下载安装Chrome浏览器](https://github.com/bannedbook/fanqiang/wiki/Chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD)，已安装Chrome浏览器，但仍然[提示找不到Chrome.exe的解决办法](https://github.com/bannedbook/fanqiang/issues/432)。
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### (如果已安装Chrome，但是仍然出现 “Windows找不到文件chrome.exe”，请看这里[#178](https://github.com/bannedbook/fanqiang/issues/178))。
+
+本页面短网址：https://bit.ly/ChromeGo https://git.io/fanqiang https://x.co/chromefq
+----------------------------------------------------------------------------
