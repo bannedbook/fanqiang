@@ -1,4 +1,5 @@
 ###如何捐献AppID:
+
 1. 用Google 帐号申请appid  
    * 推荐jinwen-开头  
    * 请不要带有apple，android，ios，mobile会导致部分网站出错
@@ -15,8 +16,6 @@
 
   * 将freeman105@gmail.com填入 成员，选择角色选 项目/所有者，点击 添加 按钮<br>  
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/gae/DonateAppid/Snap5.jpg)
-<br>
-
 
 ####备注：
 * 为保证公共appid的管理，捐献后会删除捐献人的权限重新部署。  
