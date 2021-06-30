@@ -58,6 +58,8 @@ SSH连接VPS成功后，会出现如上图所示，之后就可以复制粘贴li
 
 这里我们采用v2ray官方的一键安装脚本，见教程：[V2ray官方一键安装脚本](https://github.com/bannedbook/fanqiang/blob/master/v2ss/V2ray%E5%AE%98%E6%96%B9%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC.md)
 
+注意：vultr debian 10 现在防火墙好像默认只开了 ssh 端口，所以需要[手工开通vultr debian 10防火墙端口](https://github.com/bannedbook/fanqiang/issues/669#issuecomment-871351813)
+
 ***
 
 **第五步：V2ray客户端配置**
