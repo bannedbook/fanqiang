@@ -1,6 +1,7 @@
 <h1>苹果iPhone、ios翻墙方法</h1>
 
 **一、注册机场，获取免费翻墙节点**
+
 [![免费公益机场-不限流量](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/freenode.jpg)](https://2rss.cf/auth/register?code=cd79)
 
 点击注册链接：<a href="https://2rss.cf/auth/register?code=cd79" target="_blank">2rss.cf</a>，注册后在该网站用户中心获取订阅链接，根据其用户中心的快速使用帮助下的iOS栏的文档操作即可。
