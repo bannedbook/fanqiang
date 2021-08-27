@@ -4,6 +4,6 @@ git add -A
 git commit -m "update"
 git push origin master
 rem git tag -a "FQNews-v1.2.1" -m "FQNews-v1.2.1"
-git tag -a "ChromeGo-v20210713" -m "ChromeGo-v20210713"
+git tag -a "ChromeGo-v202108" -m "ChromeGo-v202108"
 git push origin --tags
 pause
