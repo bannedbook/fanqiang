@@ -1,0 +1,29 @@
+{
+    "rules": [
+      {
+        "type": "field",
+        "outboundTag": "block",
+        "protocol": [
+          "bittorrent"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "block",
+        "port": "22,25"
+      },
+      {
+        "type": "field",
+        "ip": [
+            "127.0.0.1/32",
+            "10.0.0.0/8",
+            "fc00::/7",
+            "fe80::/10",
+            "172.16.0.0/12",
+          "255.255.255.255"
+        ],
+        "outboundTag": "block"
+      }
+    ],
+    "strategy": "rules"
+}

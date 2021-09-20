@@ -1,0 +1,17 @@
+[
+    {
+        "tag": "IPv4_out",
+        "protocol": "freedom"
+    },
+    {
+        "tag": "IPv6_out",
+        "protocol": "freedom",
+        "settings": {
+            "domainStrategy": "UseIPv6"
+        }
+    },
+    {
+        "protocol": "blackhole",
+        "tag": "block"
+    }
+]
