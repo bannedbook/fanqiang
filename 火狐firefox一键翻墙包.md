@@ -9,7 +9,7 @@
 
 ### 更新通告
 
-**2021年8月27日更新公告 更新若干翻墙工具。 win10系统的防火墙可能会起网络阻碍作用，如果多款工具更新ip后无法正常使用，可以把防火墙和杀毒软件关闭再试试看。** 第一次使用SSR/ss/v2ray时，或许需要安装 [NET Framework 4.6](https://dotnet.microsoft.com/download/dotnet-framework/net46)或更高版本 ，不然无法正常运行。 使用方法：下载后解压，按文件夹里面的《使用说明（必看）》操作。第一次使用或发现不好用的时候记得按照使用说明更新一下ip。
+**2021年9月10日更新公告 更新若干翻墙工具。 win10系统的防火墙可能会起网络阻碍作用，如果多款工具更新ip后无法正常使用，可以把防火墙和杀毒软件关闭再试试看。** 第一次使用SSR/ss/v2ray时，或许需要安装 [NET Framework 4.6](https://dotnet.microsoft.com/download/dotnet-framework/net46)或更高版本 ，不然无法正常运行。 使用方法：下载后解压，按文件夹里面的《使用说明（必看）》操作。第一次使用或发现不好用的时候记得按照使用说明更新一下ip。
 
 所有软件的解压密码一律为：jww,压缩包文件的格式是7z，如果解压出错，用7z解压软件来解压（[7z解压软件下载地址](https://sparanoid.com/lab/7z/)），解压目标路径中不要包含中文或空格，否则可能会出现运行火狐后闪退的情况，比如解压到桌面就有可能出现这个情况。
 
@@ -25,7 +25,6 @@
 > 1.  [FirefoxFQ.7z](https://d1.dns999.cf/FirefoxFQ.7z)
 > 2.  [FirefoxFQ.7z](https://d1.dns888.ml/FirefoxFQ.7z)
 > 3.  [FirefoxFQ.7z](https://d2.dns888.ml/FirefoxFQ.7z)
-> 4.  [FirefoxFQ下载](https://github.com/killgcd/FirefoxFQ)
-> 5.  [更多翻墙软件](https://github.com/bannedbook/fanqiang/wiki)
+> 4.  [更多翻墙软件](https://github.com/bannedbook/fanqiang/wiki)
 
 #### 本页面短网址：https://bit.ly/firefoxgo https://git.io/firefox 或 https://x.co/firefq
