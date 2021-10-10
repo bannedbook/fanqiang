@@ -23,11 +23,12 @@ Shadowsocks 是在 Android 平台上的客户端软件，支持 Shadowsocks 协�
 ## 配置 Shadowsocks
 
 打开 Shadowsocks 点击左上角的加号图标，选择从剪贴板导入。
-
+<kbd>
 ![2](https://i.loli.net/2019/02/12/5c629cccb9991.png)
-
+</kbd>
+<kbd>
 ![3](https://i.loli.net/2019/02/12/5c629ce0c821b.png)
-
+</kbd>
 ## 开始使用
 
 点击选择您需要的节点，随后点击下方的 小飞机图标 连接即可。
