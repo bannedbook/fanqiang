@@ -9,9 +9,8 @@ Surfboard 是在 Android 平台上的客户端软件，支持 Shadowsocks 协议
 ## 应用下载
 
 以下是各平台该应用的下载地址。
+[https://play.google.com](https://play.google.com/store/apps/details?id=com.getsurfboard&hl=zh)
 
-- Android：[https://play.google.com](https://play.google.com/store/apps/details?id=com.getsurfboard&hl=zh)
-- ...
 
 此处您需要自行操作，参与测试并下载安装应用，完成后打开该应用，登录 HockeyAPP 的账户。
 
