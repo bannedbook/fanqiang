@@ -25,7 +25,7 @@ Clash for Android 是安卓系统上的一款综合翻墙软件，支持v2ray/vm
 --------
 Clash for Android 为免费 app ，已于 2019.12.10 上架 Google Play 。
 
-Clash for Android下载：[本站下载](/ssr-download/clash.apk ':ignore') 、[Google Play](https://play.google.com/store/apps/details?id=com.github.kr328.clash)
+Clash for Android下载：[本站下载](https://v2free.org/ssr-download/clash.apk ':ignore') 、[Google Play](https://play.google.com/store/apps/details?id=com.github.kr328.clash)
  
 安卓手机使用 Chrome 浏览器可能遇到无法下载的情况，可复制教程链接到其它浏览器尝试下载。
   

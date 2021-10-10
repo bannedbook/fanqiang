@@ -17,7 +17,7 @@ Shadowsocks 是在 Android 平台上的客户端软件，支持 Shadowsocks 协�
 
 ## 获取节点
 
-点击此处回到 [用户中心](/user)，在快速使用中选择 Android 一栏，点击 SS 类型下的 **全部 URL**。
+点击此处回到 [用户中心](https://v2free.org/user)，在快速使用中选择 Android 一栏，点击 SS 类型下的 **全部 URL**。
 
 ![1](https://i.loli.net/2019/02/12/5c629c55314d9.png ':size=600')
 

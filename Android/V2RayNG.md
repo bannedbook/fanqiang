@@ -46,4 +46,4 @@ V2rayNG 是在 Android 平台上的客户端软件，支持 VMess 及 Shadowsock
 
 此方法更新节点不太方便，推荐首选上文介绍的订阅链接导入方法。
 
-从[V2free用户中心](/user ':ignore')，拷贝全部节点URL后(不是订阅链接)，在V2RayNG主界面点右上角 "+" 按钮，再点：从剪贴板导入。
+从[V2free用户中心](https://v2free.org/user ':ignore')，拷贝全部节点URL后(不是订阅链接)，在V2RayNG主界面点右上角 "+" 按钮，再点：从剪贴板导入。
