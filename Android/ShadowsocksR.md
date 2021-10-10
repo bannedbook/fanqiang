@@ -4,20 +4,18 @@
 
 ShadowsocksR(R) 是在 Android 平台上的客户端软件，支持 ShadowsocksR 协议。
 
-!> 目前 ShadowsocksR 主分支已经停止更新维护，此客户端也不再有任何更新。在未来的 Android 系统版本上很可能将无法正常使用。
+目前 ShadowsocksR 主分支已经停止更新维护，此客户端也不再有任何更新。在未来的 Android 系统版本上很可能将无法正常使用。
 
 ## 应用下载
 
 以下是各平台该应用的下载地址。
 
-- Android：SSR 停更
+- Android：[SpeedUp VPN](https://github.com/bannedbook/SpeedUp.VPN)
 - Android：[SSRR](https://github.com/shadowsocksrr/shadowsocksr-android/releases)
-- ...
 
 ## 获取订阅
 
-从[V2ray机场](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)获取[V2ray订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)，或者也可以找[免费订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)
-[cinwell website](/sublink?type=ssr ':include :type=markdown')
+从[V2ray机场，该机场暂无SSR节点，但有V2ray和SS节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)获取[V2ray订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)，或者也可以找[免费订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)
 
 机场 **订阅链接** 非常重要，你应当把它当做密码一样妥善保管。
 
