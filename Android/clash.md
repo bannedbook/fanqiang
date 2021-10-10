@@ -42,7 +42,7 @@ Clash for Android 支持两种导入节点及配置文档的方式：
 
 ### 3.1 快速订阅
 
-登录您的机场获取Clash订阅，推荐机场：
+登录您的机场获取Clash订阅，推荐免费公益机场-V2free机场：
 
 [![免费公益机场-不限流量](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/freenode.jpg)](https://w1.v2dns.xyz/auth/register?code=cd79)
 
