@@ -49,20 +49,20 @@ Clash for Android 支持两种导入节点及配置文档的方式：
 !> 这个 **订阅链接** 非常重要，你应当把它当做密码一样妥善保管。
   
 复制好了Clash订阅之后打开Clash for Android应用程序。请点击`配置`。  
-[![IMG_7843.JPG](/Clash_files/1072376875.jpg "IMG_7843.JPG")](https://v2free.org/doc/#/Android/Clash_files/1072376875.jpg)  
+![IMG_7843.JPG](https://v2free.org/doc/#/Android/Clash_files/1072376875.jpg)  
 请在新弹出的窗口中点击`新配置`。  
-[![IMG_7844.JPG](/Clash_files/1118270140.jpg "IMG_7844.JPG")](https://v2free.org/doc/#/Android/Clash_files/1118270140.jpg)  
+![IMG_7844.JPG](https://v2free.org/doc/#/Android/Clash_files/1118270140.jpg)  
 然后选择`从URL导入`。在对应地方填写订阅地址并保存。  
-[![IMG_7845.JPG](/Clash_files/2169466048.jpg "IMG_7845.JPG")](https://v2free.org/doc/#/Android/Clash_files/2169466048.jpg)  
-[![IMG_7847.JPG](/Clash_files/3843008539.jpg "IMG_7847.JPG")](https://v2free.org/doc/#/Android/Clash_files/3843008539.jpg)  
-[![IMG_7849.JPG](/Clash_files/932669651.jpg "IMG_7849.JPG")](https://v2free.org/doc/#/Android/Clash_files/932669651.jpg)  
+![IMG_7845.JPG](https://v2free.org/doc/#/Android/Clash_files/2169466048.jpg)  
+![IMG_7847.JPG](https://v2free.org/doc/#/Android/Clash_files/3843008539.jpg)  
+![IMG_7849.JPG](https://v2free.org/doc/#/Android/Clash_files/932669651.jpg)  
 点击节点右侧的三个点按钮，可以修改订阅设置。如图：  
-[![IMG_7850.JPG](/Clash_files/1168337143.jpg "IMG_7850.JPG")](https://v2free.org/doc/#/Android/Clash_files/1168337143.jpg)  
+![IMG_7850.JPG](https://v2free.org/doc/#/Android/Clash_files/1168337143.jpg)  
 提示：机场服务器信息可能会不定时更新，若出现大面积节点超时现象，可尝试刷新订阅。  
 返回首页。点击开关，即可进行代理。会提示是否同意创建VPN，请点击`允许`。  
-[![IMG_7851.JPG](/Clash_files/2409469823.jpg "IMG_7851.JPG")](https://v2free.org/doc/#/Android/Clash_files/2409469823.jpg)  
+![IMG_7851.JPG](https://v2free.org/doc/#/Android/Clash_files/2409469823.jpg)  
 开启代理后，可以点击中间的代理选项卡，进入策略组面板，在这里可以切换节点。直接点击你想要的节点即可进行切换。  
-[![IMG_7852.JPG](/Clash_files/2753500055.jpg "IMG_7852.JPG")](https://v2free.org/doc/#/Android/Clash_files/2753500055.jpg)  
+![IMG_7852.JPG](https://v2free.org/doc/#/Android/Clash_files/2753500055.jpg)  
 点击⚡图标可以进行延迟测试，测试结果将显示在节点名称右侧。  
 
 Clash for Android 测试延迟的方法为从目标 policy 返回 http response header 数据包的时间，并不是简单的 ping 。  
@@ -76,54 +76,54 @@ Clash for Android 测试延迟的方法为从目标 policy 返回 http response 
 *   改变代理组（策略组）排序
 *   改变代理（节点）排序
 *   前缀合并（即节点名字前缀相同的进行归类显示）  
-    [![IMG_7853.JPG](/Clash_files/550116317.jpg "IMG_7853.JPG")](https://v2free.org/doc/#/Android/Clash_files/550116317.jpg)  
-    [![IMG_7854.JPG](/Clash_files/838427780.jpg "IMG_7854.JPG")](https://v2free.org/doc/#/Android/Clash_files/838427780.jpg)
+    ![IMG_7853.JPG](https://v2free.org/doc/#/Android/Clash_files/550116317.jpg)  
+    ![IMG_7854.JPG](https://v2free.org/doc/#/Android/Clash_files/838427780.jpg)
 
 ### 3.2 本地文件导入
 
 点击 `配置` 👉 `新配置` 👉 `从文件导入`，然后从本地文件夹选择自己要导入的配置文档。  
 某些厂商的ROM可能报如下错误，请选择其他文件管理器导入。  
-[![10](/Clash_files/romfault.png)](/Clash_files/romfault.png)
+![10](/Clash_files/romfault.png)
 
 ### 3.3 查询日志
 
 点击`日志`面板，然后选择`Clash日志捕捉工具`即可抓取日志。默认是关闭日志的，以防内存溢出。  
-[![IMG_7857.JPG](/Clash_files/1404728428.jpg "IMG_7857.JPG")](https://v2free.org/doc/#/Android/Clash_files/1404728428.jpg)  
-[![IMG_7858.JPG](/Clash_files/1836797657.jpg "IMG_7858.JPG")](https://v2free.org/doc/#/Android/Clash_files/1836797657.jpg)  
-[![IMG_7859.JPG](/Clash_files/2336060890.jpg "IMG_7859.JPG")](https://v2free.org/doc/#/Android/Clash_files/2336060890.jpg)
+![IMG_7857.JPG](https://v2free.org/doc/#/Android/Clash_files/1404728428.jpg)  
+![IMG_7858.JPG](https://v2free.org/doc/#/Android/Clash_files/1836797657.jpg)  
+![IMG_7859.JPG](https://v2free.org/doc/#/Android/Clash_files/2336060890.jpg)
 
 ### 3.4 其它设置
 
-[![IMG_7860.JPG](/Clash_files/3789481771.jpg "IMG_7860.JPG")](https://v2free.org/doc/#/Android/Clash_files/3789481771.jpg)  
-[![IMG_7862.JPG](/Clash_files/454476014.jpg "IMG_7862.JPG")](https://v2free.org/doc/#/Android/Clash_files/454476014.jpg)
+![IMG_7860.JPG](https://v2free.org/doc/#/Android/Clash_files/3789481771.jpg)  
+![IMG_7862.JPG](https://v2free.org/doc/#/Android/Clash_files/454476014.jpg)
 
 ### 3.5 分应用代理
 
 点击`设置` 👉 `网络`，最下方可以设置`分应用代理`。  
 点击`访问控制模式`可以切换黑白名单。自行理解即可。  
 点击`访问控制应用包列表`即可选择应用。  
-[![IMG_7863.JPG](/Clash_files/1278124387.jpg "IMG_7863.JPG")](https://v2free.org/doc/#/Android/Clash_files/1278124387.jpg)
+![IMG_7863.JPG](https://v2free.org/doc/#/Android/Clash_files/1278124387.jpg)
 
 ### 3.6 切换代理模式
 
 #### 3.6.1 2.0.18及之前版本
 
 如果是2.0.18及之前的版本，代理模式设置路径为`代理` → `模式`，如图：  
-[![IMG_7853.JPG](/Clash_files/550116317.jpg "IMG_7853.JPG")](https://v2free.org/doc/#/Android/Clash_files/550116317.jpg)  
-[![IMG_7854.JPG](/Clash_files/838427780.jpg "IMG_7854.JPG")](https://v2free.org/doc/#/Android/Clash_files/838427780.jpg)
+![IMG_7853.JPG](https://v2free.org/doc/#/Android/Clash_files/550116317.jpg)  
+![IMG_7854.JPG](https://v2free.org/doc/#/Android/Clash_files/838427780.jpg)
 
 #### 3.6.2 2.1.1之后的版本
 
 如果是2.1.1之后的版本，代理模式设置路径为`设置` → `覆写` → `模式`，如图：  
-[![IMG_4577.JPG](/Clash_files/1118590743.jpg "IMG_4577.JPG")](https://v2free.org/doc/#/Android/Clash_files/1118590743.jpg)  
-[![IMG_4579.JPG](/Clash_files/3855851416.jpg "IMG_4579.JPG")](https://v2free.org/doc/#/Android/Clash_files/3855851416.jpg)  
-[![IMG_4578.JPG](/Clash_files/1753717891.jpg "IMG_4578.JPG")](https://v2free.org/doc/#/Android/Clash_files/1753717891.jpg)
+![IMG_4577.JPG](https://v2free.org/doc/#/Android/Clash_files/1118590743.jpg)  
+![IMG_4579.JPG](https://v2free.org/doc/#/Android/Clash_files/3855851416.jpg)  
+![IMG_4578.JPG](https://v2free.org/doc/#/Android/Clash_files/1753717891.jpg)
 
 ### 3.7 语言设置
 
 语言设置路径：`Settings` → `Interface` → `Language` → `Simplified Chinese`  
 `设置` 👉 `界面` 👉 `语言` 👉 `简体中文`  
-[![IMG_7864.JPG](/Clash_files/3362312117.jpg "IMG_7864.JPG")](https://v2free.org/doc/#/Android/Clash_files/3362312117.jpg)  
+![IMG_7864.JPG](https://v2free.org/doc/#/Android/Clash_files/3362312117.jpg)  
 若当前系统语言为简体中文，则软件默认显示简体中文。  
 若当前系统语言为繁體中文或其它语言，则默认显示English。
 
@@ -132,8 +132,8 @@ Clash for Android 测试延迟的方法为从目标 policy 返回 http response 
 Clash for Android现已适配暗黑模式。  
 入口：`设置` 👉 `界面` 👉 `暗黑模式`  
 开启后效果如图：  
-[![IMG_7865.JPG](/Clash_files/59156606.jpg "IMG_7865.JPG")](https://v2free.org/doc/#/Android/Clash_files/59156606.jpg)  
-[![IMG_7866.JPG](/Clash_files/382223072.jpg "IMG_7866.JPG")](https://v2free.org/doc/#/Android/Clash_files/382223072.jpg)
+![IMG_7865.JPG](https://v2free.org/doc/#/Android/Clash_files/59156606.jpg)  
+![IMG_7866.JPG](https://v2free.org/doc/#/Android/Clash_files/382223072.jpg)
 
 4\. 常见的订阅错误报告
 -------------
@@ -158,21 +158,21 @@ Clash for Android现已适配暗黑模式。
 ### 5.1 始终开启VPN
 
 以RealmeX(Android 10)为例，点击`设定` 👉 `其他无线连接` 👉 `VPN`,打开`一律与VPN保持连线`。  
-[![IMG_7868.JPG](/Clash_files/1483525553.jpg "IMG_7868.JPG")](https://v2free.org/doc/#/Android/Clash_files/1483525553.jpg)  
-[![IMG_7869.JPG](/Clash_files/2937852562.jpg "IMG_7869.JPG")](https://v2free.org/doc/#/Android/Clash_files/2937852562.jpg)  
-[![IMG_7872.JPG](/Clash_files/2475363784.jpg "IMG_7872.JPG")](https://v2free.org/doc/#/Android/Clash_files/2475363784.jpg)  
-[![IMG_7873.JPG](/Clash_files/1266218543.jpg "IMG_7873.JPG")](https://v2free.org/doc/#/Android/Clash_files/1266218543.jpg)
+![IMG_7868.JPG](https://v2free.org/doc/#/Android/Clash_files/1483525553.jpg)  
+![IMG_7869.JPG](https://v2free.org/doc/#/Android/Clash_files/2937852562.jpg)  
+![IMG_7872.JPG](https://v2free.org/doc/#/Android/Clash_files/2475363784.jpg)  
+![IMG_7873.JPG](https://v2free.org/doc/#/Android/Clash_files/1266218543.jpg)
 
 ### 5.2 省电策略/允许后台运行
 
 长按Clash图标，选择`应用程式资讯`。  
 勾选`允许自动啓动`和`允许其他应用程式关联啓动`。  
 点击`耗电保护`,选择`允许背景执行`。  
-[![IMG_7874.JPG](/Clash_files/722228769.jpg "IMG_7874.JPG")](https://v2free.org/doc/#/Android/Clash_files/722228769.jpg)  
-[![IMG_7875.JPG](/Clash_files/1110606495.jpg "IMG_7875.JPG")](https://v2free.org/doc/#/Android/Clash_files/1110606495.jpg)  
-[![IMG_7876.JPG](/Clash_files/74665642.jpg "IMG_7876.JPG")](https://v2free.org/doc/#/Android/Clash_files/74665642.jpg)
+![IMG_7874.JPG](https://v2free.org/doc/#/Android/Clash_files/722228769.jpg)  
+![IMG_7875.JPG](https://v2free.org/doc/#/Android/Clash_files/1110606495.jpg)  
+![IMG_7876.JPG](https://v2free.org/doc/#/Android/Clash_files/74665642.jpg)
 
 ### 5.3 通知栏快速启动
 
-[![IMG_7878.JPG](/Clash_files/1192405662.jpg "IMG_7878.JPG")](https://v2free.org/doc/#/Android/Clash_files/1192405662.jpg)  
-[![IMG_7879.JPG](/Clash_files/2936823915.jpg "IMG_7879.JPG")](https://v2free.org/doc/#/Android/Clash_files/2936823915.jpg)
+![IMG_7878.JPG](https://v2free.org/doc/#/Android/Clash_files/1192405662.jpg)  
+![IMG_7879.JPG](https://v2free.org/doc/#/Android/Clash_files/2936823915.jpg)
