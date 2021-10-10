@@ -27,13 +27,13 @@ ShadowsocksR(R) 是在 Android 平台上的客户端软件，支持 ShadowsocksR
 
 点击右下角的加号按钮，在弹出的选项中选择「添加/升级 SSR 订阅」。
 
-![1](https://i.loli.net/2019/01/13/5c3a7bac1fee1.jpeg ':size=600')
+![1](https://i.loli.net/2019/01/13/5c3a7bac1fee1.jpeg)
 
 随后点击添加订阅地址，在弹出的输入框中粘贴上方 **获取订阅** 中的订阅链接并点击 **确定**。
 
 打开上方的自动更新，然后点击 **确定并升级**。
 
-![2](https://i.loli.net/2019/01/13/5c3a7cd642f58.png ':size=200')
+![2](https://i.loli.net/2019/01/13/5c3a7cd642f58.png)
 
 ## 开始使用
 

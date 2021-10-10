@@ -28,13 +28,13 @@ Surfboard 是在 Android 平台上的客户端软件，支持 Shadowsocks 协议
 
 随后点击右下角的加号按钮，在弹出的选项中选择「Download from url」。
 
-![1](https://v2free.org/docs/SSPanel/Android/images/Surfboard-1.jpeg ':size=600')
+![1](https://v2free.org/docs/SSPanel/Android/images/Surfboard-1.jpeg)
 
 在弹出的输入框中粘贴上方 **获取订阅** 中的订阅链接并点击 **Download**，此时 APP 会下载该配置。
 
 随后点击右下角图标保存，在弹出的窗口中输入本站名称并点击 **OK**。
 
-![2](https://v2free.org/docs/SSPanel/Android/images/Surfboard-2.jpeg ':size=600')
+![2](https://v2free.org/docs/SSPanel/Android/images/Surfboard-2.jpeg)
 
 ## 开始使用
 
@@ -44,6 +44,6 @@ Surfboard 是在 Android 平台上的客户端软件，支持 Shadowsocks 协议
 
 随后底部导航栏中第一个「Switch」进入状态页面，点击右下角播放按钮即可。
 
-![3](https://v2free.org/docs/SSPanel/Android/images/Surfboard-3.png ':size=200')
+![3](https://v2free.org/docs/SSPanel/Android/images/Surfboard-3.png)
 
 如操作系统提示添加 VPN 配置，请点击 运行 并验证您的 密码、指纹等。

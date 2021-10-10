@@ -18,15 +18,15 @@ Shadowsocks 是在 Android 平台上的客户端软件，支持 Shadowsocks 协�
 
 一般在机场的用户中心，比如 [V2free机场用户中心](https://v2free.org/user)，在快速使用中选择 Android 一栏，点击 SS 类型下的 **全部 URL**。
 
-![1](https://i.loli.net/2019/02/12/5c629c55314d9.png ':size=600')
+![1](https://i.loli.net/2019/02/12/5c629c55314d9.png)
 
 ## 配置 Shadowsocks
 
 打开 Shadowsocks 点击左上角的加号图标，选择从剪贴板导入。
 
-![2](https://i.loli.net/2019/02/12/5c629cccb9991.png ':size=200')
+![2](https://i.loli.net/2019/02/12/5c629cccb9991.png)
 
-![3](https://i.loli.net/2019/02/12/5c629ce0c821b.png ':size=200')
+![3](https://i.loli.net/2019/02/12/5c629ce0c821b.png)
 
 ## 开始使用
 

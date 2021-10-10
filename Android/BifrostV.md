@@ -20,11 +20,11 @@ BifrostV 是在 Android 平台上的客户端软件，支持 VMess 及 Shadowsoc
 
 打开 BifrostV 点击左上角的加号图标选择 **导入**，随后点击 **从 URL 导入**。
 
-![1](https://i.loli.net/2019/02/13/5c63064d21248.png ':size=600')
+![1](https://i.loli.net/2019/02/13/5c63064d21248.png)
 
 在弹出的输入框中粘贴上方 **获取订阅** 中的订阅链接并点击 **好的**。
 
-![2](https://i.loli.net/2019/02/13/5c6306e90f89f.png ':size=200')
+![2](https://i.loli.net/2019/02/13/5c6306e90f89f.png)
 
 ## 开始使用
 
