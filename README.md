@@ -28,9 +28,7 @@
           <li class="Box-row">
           <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7">v2ray免费账号</a></strong>
         </li>
-        <li class="Box-row">
-          <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/Goflyway%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7">Goflyway免费账号</a></strong>
-        </li>
+
           <li class="Box-row">
           <strong><a class="d-block" href="https://github.com/bannedbook/fanqiang/wiki/%E8%8B%B9%E6%9E%9C%E7%94%B5%E8%84%91MAC%E7%BF%BB%E5%A2%99">苹果电脑MAC翻墙</a></strong>
         </li>
