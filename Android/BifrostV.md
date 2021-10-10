@@ -8,10 +8,7 @@ BifrostV 是在 Android 平台上的客户端软件，支持 VMess 及 Shadowsoc
 
 以下是各平台该应用的下载地址。
 
-- Google Play：[BifrostV](https://play.google.com/store/apps/details?id=com.github.dawndiy.bifrostv&hl=zh)
-- ...
-
-*请注意，官方仅有 Google Play 下载地址，您可能需要先进行科学下载才能使用该客户端。*
+[BifrostV](https://apkpure.com/bifrostv/com.github.dawndiy.bifrostv)
 
 ## 获取订阅
 
