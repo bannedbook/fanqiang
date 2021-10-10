@@ -30,7 +30,7 @@ Surfboard 是在 Android 平台上的客户端软件，支持 Shadowsocks 协议
 
 ![1](https://v2free.org/docs/SSPanel/Android/images/Surfboard-1.jpeg ':size=600')
 
-在弹出的输入框中粘贴上方 **获取订阅** 中的订阅链接并点击 **Download**，此时 APP 会下载该配置。
+在弹出的输入框中粘贴上方 **获取订阅** 中的订阅链接并点击 **Download**，此时 APP 会下载该配置。
 
 随后点击右下角图标保存，在弹出的窗口中输入本站名称并点击 **OK**。
 
