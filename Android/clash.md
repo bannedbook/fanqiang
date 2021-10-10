@@ -48,7 +48,7 @@ Clash for Android 支持两种导入节点及配置文档的方式：
 
 [cinwell website](/sublink?type=clash ':include :type=markdown')
 
-!> 这个 **订阅链接** 非常重要，你应当把它当做密码一样妥善保管。
+机场 **订阅链接** 非常重要，你应当把它当做密码一样妥善保管。
   
 复制好了Clash订阅之后打开Clash for Android应用程序。请点击`配置`。  
 [![IMG_7843.JPG](/Clash_files/1072376875.jpg "IMG_7843.JPG")](/Clash_files/1072376875.jpg)  

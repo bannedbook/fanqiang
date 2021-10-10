@@ -14,9 +14,8 @@ V2free 是在 Android 平台上的客户端软件，支持 VMess/Vless 及 Shado
 
 此处将显示您的V2free机场订阅链接，请注意为登录状态：
 
-[cinwell website](/sublink?type=v2ray ':include :type=markdown')
 
-!> 这个 **订阅链接** 非常重要，你应当把它当做密码一样妥善保管。
+机场 **订阅链接** 非常重要，你应当把它当做密码一样妥善保管。
 
 ### V2free导入订阅链接
 
