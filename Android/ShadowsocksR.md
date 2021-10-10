@@ -10,7 +10,7 @@ ShadowsocksR(R) 是在 Android 平台上的客户端软件，支持 ShadowsocksR
 
 以下是各平台该应用的下载地址。
 
-- Android：[SpeedUp VPN](https://github.com/bannedbook/SpeedUp.VPN)
+- Android：[SpeedUp VPN](https://github.com/bannedbook/SpeedUp.VPN)  ，SpeedUp VPN内置免费SSR节点，以及大量第三方免费节点。
 - Android：[SSRR](https://github.com/shadowsocksrr/shadowsocksr-android/releases)
 
 ## 获取订阅
