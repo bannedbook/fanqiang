@@ -23,7 +23,7 @@ Clash for Android 是安卓系统上的一款综合翻墙软件，支持v2ray/vm
 --------
 Clash for Android 为免费 app ，已于 2019.12.10 上架 Google Play 。
 
-Clash for Android下载：[本站下载](/ssr-download/clash.apk ':ignore') 、[Google Play](https://play.google.com/store/apps/details?id=com.github.kr328.clash)
+[Clash for Android下载](https://github.com/Kr328/ClashForAndroid) 
  
 安卓手机使用 Chrome 浏览器可能遇到无法下载的情况，可复制教程链接到其它浏览器尝试下载。
   
@@ -42,11 +42,12 @@ Clash for Android 支持两种导入节点及配置文档的方式：
 
 ### 3.1 快速订阅
 
-此处将显示您的订阅链接，请注意为登录状态：
+登录您的机场获取Clash订阅，推荐机场：
+[![免费公益机场-不限流量](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/freenode.jpg)](https://w1.v2dns.xyz/auth/register?code=cd79)
 
-[cinwell website](/sublink?type=clash ':include :type=markdown')
-
-!> 这个 **订阅链接** 非常重要，你应当把它当做密码一样妥善保管。
+点击注册链接：<a href="https://w1.v2dns.xyz/auth/register?code=cd79" target="_blank">w1.v2dns.xyz</a>，注册后在该网站用户中心获取订阅链接或拷贝全部节点 URL，根据其用户中心的快速使用帮助下的相应操作系统的帮助文档操作即可。
+注册后免费获得1024M初始流量，每日[签到](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/checkin.jpg)可获得300-500M免费流量。更有不限流量节点可用。
+注册登录后，用个人邀请链接 邀请新用户注册还可获得流量奖励，如果新用户成为付费用户，你还可以赚取高达20%终生佣金奖励。
   
 复制好了Clash订阅之后打开Clash for Android应用程序。请点击`配置`。  
 ![IMG_7843.JPG](https://v2free.org/docs/SSPanel/Android/Clash_files/1072376875.jpg)  
