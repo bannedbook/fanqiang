@@ -23,7 +23,7 @@ V2free 是在 Android 平台上的客户端软件，支持 VMess/Vless 及 Shado
 ![1](https://v2free.org/docs/SSPanel/Android/images/v2free1.png)
 ![2](https://v2free.org/docs/SSPanel/Android/images/v2free2.png)
 
-点击右上角的加号按钮，在 编辑订阅 的 地址输入框中粘贴上方 **[获取订阅](#获取订阅)** 中的订阅链接，然后点确定按钮（如下图）。
+点击右上角的加号按钮，在 编辑订阅 的 地址输入框中粘贴上方 **获取订阅** 中的订阅链接，然后点确定按钮（如下图）。
 
 ![3](https://v2free.org/docs/SSPanel/Android/images/v2free3.png)
 ![4](https://v2free.org/docs/SSPanel/Android/images/v2free4.png)
