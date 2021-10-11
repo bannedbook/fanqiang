@@ -2,22 +2,20 @@
 
 ## 应用概述
 
-Surfboard 是在 Android 平台上的客户端软件，支持 Shadowsocks 协议。
+Surfboard 是一款运行在 Android 系统上的网络代理工具，兼容 Surge 2 配置，可以直接将 Surge 2 标准的配置文件导入使用。
+支持 SS / Vmess 协议，不支持 SSR 。
 
 目前此应用程序仍然处于测试版，因此界面和功能在未来都可能发生改动。同时，其 [开发商已经宣布](https://twitter.com/getsurfboard/status/1023485591839621120)  Surfboard 未来将是一个「付费应用」，但具体授权方式的价格层暂未公布。
 
 ## 应用下载
 
-以下是各平台该应用的下载地址。
 [https://play.google.com](https://play.google.com/store/apps/details?id=com.getsurfboard&hl=zh)
 
-
-此处您需要自行操作，参与测试并下载安装应用，完成后打开该应用，登录 HockeyAPP 的账户。
+下载安装应用，完成后打开该应用。
 
 ## 获取订阅
 
-从[V2ray机场](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)获取[V2ray订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)，或者也可以找[免费订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)
-[cinwell website](/sublink?type=surfboard ':include :type=markdown')
+注册机场获取节点订阅链接或者找免费的订阅链接。这里我们推荐一个[V2ray机场，有免费节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)获取[V2ray订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)，或者也可以找[免费订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)
 
 机场 **订阅链接** 非常重要，你应当把它当做密码一样妥善保管。
 
