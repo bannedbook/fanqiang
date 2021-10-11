@@ -6,8 +6,6 @@ Shadowsocks 是在 Android 平台上的客户端软件，支持 Shadowsocks 协�
 
 ## 应用下载
 
-以下是各平台该应用的下载地址。
-
 - Android：[Shadowsocks](https://github.com/shadowsocks/shadowsocks-android/releases)
 - Android：[V2ray-plugin-Android](https://github.com/shadowsocks/v2ray-plugin-android/releases)
 - Android：[Simple-obfs-Android](https://github.com/shadowsocks/simple-obfs-android/releases)
@@ -16,7 +14,11 @@ Shadowsocks 是在 Android 平台上的客户端软件，支持 Shadowsocks 协�
 
 ## 获取节点
 
-一般在机场的用户中心，比如 [V2free机场用户中心](https://v2free.org/user)，在快速使用中选择 Android 一栏，点击 SS 类型下的 **全部 URL**。
+注册机场获取SS节点URL或者找[免费SS节点](https://github.com/bannedbook/fanqiang/wiki/%E5%85%8D%E8%B4%B9ss%E8%B4%A6%E5%8F%B7)。
+
+这里我们推荐一个[V2ray机场，有SS免费节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)获取[V2ray订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)，或者也可以找[免费订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)
+
+一般在机场的用户中心，比如 ，在快速使用中选择 Android 一栏，点击 SS 类型下的 **全部 URL**。
 
 ![1](https://i.loli.net/2019/02/12/5c629c55314d9.png)
 
