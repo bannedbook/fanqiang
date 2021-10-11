@@ -12,7 +12,7 @@ V2free 是在 Android 平台上的客户端软件，支持 VMess/Vless 及 Shado
 
 ### 获取订阅链接
 
-从[V2ray机场](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)获取[V2ray订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)，或者也可以找[免费订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)
+注册机场获取节点订阅链接或者找免费的订阅链接。这里我们推荐一个[V2ray机场，有免费节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)获取[V2ray订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)，或者也可以找[免费订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)
 
 机场 **订阅链接** 非常重要，你应当把它当做密码一样妥善保管。
 
@@ -69,4 +69,4 @@ V2free APP的全局路由默认选项为：代理所有流量。如需设置国�
 
 此方法更新节点不太方便，推荐首选上文介绍的订阅链接导入方法。
 
-从[V2free用户中心](https://v2free.org/user ':ignore')，拷贝全部节点URL后(不是订阅链接)，在V2free主界面点右上角 "+" 按钮，再点：从剪贴板导入。
+拷贝全部节点URL后(不是订阅链接)，在V2free主界面点右上角 "+" 按钮，再点：从剪贴板导入。
