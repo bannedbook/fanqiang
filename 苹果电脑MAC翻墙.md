@@ -11,9 +11,6 @@
 <ul class="task-list">
 特别推出，苹果电脑MAC翻墙链接,请点击下面的链接
 
-<li>
-      <strong><a href="https://github.com/fqnews/bnews/blob/master/readme.md#tt" class="wiki-page-link">免翻墙：每日热点禁闻</a></strong>
-    </li>
  <li>
           <strong><a href="https://github.com/bannedbook/fanqiang/wiki/%E5%85%8D%E8%B4%B9ss%E8%B4%A6%E5%8F%B7">免费ss账号</a></strong>
         </li>  

@@ -11,9 +11,6 @@
 
 <ul class="task-list">
 相关阅读：
-<li>
-      <strong><a href="https://github.com/fqnews/bnews/blob/master/readme.md#tt" class="wiki-page-link">免翻墙：每日热点禁闻</a></strong>
-    </li>
  <li>
           <strong><a href="https://github.com/bannedbook/fanqiang/wiki/%E5%85%8D%E8%B4%B9ss%E8%B4%A6%E5%8F%B7">免费ss账号</a></strong>
         </li>  
@@ -72,4 +69,3 @@ Fair VPN安装步骤及使用方法：
 <h2>
 本页短网址：https://bit.ly/iphonefq      https://git.io/ifq
 </h2>
-<img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/deprecated/ios/jw.jpg" border="0" alt="iphone翻墙">
