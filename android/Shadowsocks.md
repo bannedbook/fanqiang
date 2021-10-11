@@ -1,8 +1,8 @@
-# 安卓翻墙APP：Shadowsocks 教程
+# 安卓翻墙APP：Shadowsocks for Android 教程
 
 ## 应用概述
 
-Shadowsocks 是在 Android 平台上的客户端软件，支持 Shadowsocks 协议。
+Shadowsocks for Android 是在 Android 平台上的客户端软件，支持 Shadowsocks 协议。
 
 ## 应用下载
 
