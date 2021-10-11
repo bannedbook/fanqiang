@@ -26,11 +26,11 @@
 
 **下载Chrome一键翻墙包**
 
-[Chrome一键翻墙包](https://github.com/bannedbook/fanqiang/wiki/Chrome%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85)，下载后解压到文件夹，打开ChromeGo目录启动翻墙脚本。 
+[Chrome一键翻墙包](https://github.com/bannedbook/fanqiang/wiki/Chrome%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85)
 
 **使用Chrome一键翻墙包**
 
-请首先自行安装Google Chrome 浏览器，然后下载本软件，本软件会自动调用Google Chrome 浏览器翻墙。 下载本项目后，解压出来，请不要解压到含有中文或空格的目录路径，请不要不解压就直接从压缩包里运行！不解压会出错！ 下载后，请认真阅读里面的使用帮助说明，然后 0.xx-10.xx翻墙 可依次尝试。 自动回复最新翻墙信息网址：freeman105@gmail.com，邮箱不解答问题,如需反馈交流，请[点我](https://github.com/bannedbook/fanqiang/issues)或加入翻墙电报群: 
+请首先自行安装Google Chrome 浏览器，然后下载Chrome一键翻墙包，本软件会自动调用Google Chrome 浏览器翻墙。 下载后，解压出来，请不要解压到含有中文或空格的目录路径，请不要不解压就直接从压缩包里运行！不解压会出错！ 下载后，请认真阅读里面的使用帮助说明，然后 0.xx-10.xx翻墙 可依次尝试。 自动回复最新翻墙信息网址：freeman105@gmail.com，邮箱不解答问题,如需反馈交流，请[点我](https://github.com/bannedbook/fanqiang/issues)或加入翻墙电报群: 
 https://t.me/fqchat 
 
 **版权声明**  
