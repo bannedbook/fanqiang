@@ -14,6 +14,14 @@
 *   [iphone翻墙](https://github.com/bannedbook/fanqiang/wiki/iphone%E7%BF%BB%E5%A2%99)
 *   [TorBrowser一键翻墙包](https://github.com/bannedbook/fanqiang/wiki/TorBrowser%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85)
 
+## [Windows V2ray/SS/SSR 翻墙教程](windows)
+
+  * [Clash for Windows 翻墙教程](ClashDotNetFramework.md)
+  * [V2rayN 教程](V2RayN.md)
+  * [SSTap教程](SSTap.md)
+  * [Windows翻墙之SSR教程](ShadowsocksR.md)
+  * [TorBrowser+V2rayN配置使用教程](tor-v2ray.md)
+
 ## ChromeGo - Chrome一键翻墙包 
 
 一个集成Goflyway、v2ray、Daze、SSR、Brook、Lightsocks、trojan、蓝灯、psiphon等N多翻墙工具的电脑翻墙包（推荐按前面所列顺序依次尝试），所有工具全部内置免费服务器，长期更新。由于国内网络环境复杂、地区不同，网络运营商不同，封锁情况都不同，所以使用效果会有差别，有的地区几乎所有的软件都能使用，有的只能用几款，因此具体哪款软件适合你的网络环境，需要你自己来尝试。 
