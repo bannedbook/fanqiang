@@ -22,6 +22,42 @@
   * [Windows翻墙之SSR教程](windows/ShadowsocksR.md)
   * [TorBrowser+V2rayN配置使用教程](windows/tor-v2ray.md)
 
+## [iPhone/iPad/iOS V2ray/SS 翻墙APP教程](ios)
+
+  * [iphone翻墙](https://github.com/bannedbook/fanqiang/wiki/iphone%E7%BF%BB%E5%A2%99)
+  * [注册苹果美区 Apple ID 帐号并购买APP指南](ios/AppleID.md)
+  * [Iphone/iPad通过电脑局域网共享翻墙](ios/fqByLan.md)
+  * [Potatso Lite 教程](ios/PotatsoLite.md)
+  * [Shadowrocket小火箭配置使用教程](ios/Shadowrocket.md)
+  * [Kitsunebi 教程](ios/Kitsunebi.md)
+  * [Quantumult X 配置使用简易教程](ios/QuantumultX.md)
+  * [iOS翻墙之Surge教程](ios/Surge.md)
+  * [iOS翻墙之Quantumult教程](ios/Quantumult_sub.md)
+  * [iOS翻墙之导入 Quantumult 完整配置教程](ios/Quantumult_conf.md)
+
+## [Android 安卓翻墙APP教程](android)
+
+  * [V2free安卓翻墙教程](android/v2free.md)
+  * [Clash for android 教程](android/clash.md)
+  * [BifrostV 教程](android/BifrostV.md)
+  * [Shadowsocks for android 教程](android/Shadowsocks.md)
+  * [SSR 安卓翻墙教程](android/ShadowsocksR.md)
+  * [Surfboard 教程](android/Surfboard.md)
+  * [V2RayNG 教程](android/V2RayNG.md)
+
+## [Mac翻墙软件教程](macos)
+
+  * [苹果电脑MAC翻墙](https://github.com/bannedbook/fanqiang/wiki/%E8%8B%B9%E6%9E%9C%E7%94%B5%E8%84%91MAC%E7%BF%BB%E5%A2%99)
+  * [macOS翻墙之ClashX翻墙教程](macos/ClashX.md)
+  * [macOS翻墙之V2rayU教程](macos/V2RayN.md)
+  * [macOS翻墙之Surge教程](macos/Surge.md)
+  * [macOS翻墙之V2rayX教程](macos/V2rayX.md)
+  
+## [路由器翻墙教程](router)
+
+  * [梅林路由器翻墙教程](router/Merlin.md)
+  * [OpenWRT路由器翻墙教程](router/OpenWRT.md)  
+
 ## ChromeGo - Chrome一键翻墙包 
 
 一个集成Goflyway、v2ray、Daze、SSR、Brook、Lightsocks、trojan、蓝灯、psiphon等N多翻墙工具的电脑翻墙包（推荐按前面所列顺序依次尝试），所有工具全部内置免费服务器，长期更新。由于国内网络环境复杂、地区不同，网络运营商不同，封锁情况都不同，所以使用效果会有差别，有的地区几乎所有的软件都能使用，有的只能用几款，因此具体哪款软件适合你的网络环境，需要你自己来尝试。 
