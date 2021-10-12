@@ -16,11 +16,11 @@
 
 ## [Windows V2ray/SS/SSR 翻墙教程](windows)
 
-  * [Clash for Windows 翻墙教程](ClashDotNetFramework.md)
-  * [V2rayN 教程](V2RayN.md)
-  * [SSTap教程](SSTap.md)
-  * [Windows翻墙之SSR教程](ShadowsocksR.md)
-  * [TorBrowser+V2rayN配置使用教程](tor-v2ray.md)
+  * [Clash for Windows 翻墙教程](windows/ClashDotNetFramework.md)
+  * [V2rayN 教程](windows/V2RayN.md)
+  * [SSTap教程](windows/SSTap.md)
+  * [Windows翻墙之SSR教程](windows/ShadowsocksR.md)
+  * [TorBrowser+V2rayN配置使用教程](windows/tor-v2ray.md)
 
 ## ChromeGo - Chrome一键翻墙包 
 
