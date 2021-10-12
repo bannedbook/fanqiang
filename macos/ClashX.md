@@ -45,6 +45,8 @@ ClashX 是一个拥有 GUI 界面基于 Clash 可自定义规则的 macOS 代理
 
 ![1](https://v2free.org/docs/SSPanel/macOS/images/clashx2.jpg)
 
+如果程序打不开，请参考：[打开来自身份不明开发者的 Mac App1](https://support.apple.com/zh-cn/guide/mac-help/mh40616/mac)或[https://www.jianshu.com/p/3a5ceb412f15](https://www.jianshu.com/p/3a5ceb412f15)
+
 点击菜单栏中 ClashX 的图标，选择 配置 => 托管配置 => 管理，
 
 ![2](https://v2free.org/docs/SSPanel/macOS/images/ClashX-2.png)
