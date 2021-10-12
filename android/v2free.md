@@ -6,13 +6,17 @@ V2free 是在 Android 平台上的客户端软件，支持 VMess/Vless 及 Shado
 
 ## 应用下载
 
-[V2free下载](https://v2free.org/ssr-download/v2free.apk ':ignore')
+[V2free下载](https://v2free.org/ssr-download/v2free.apk)
 
 ## 通过订阅链接将V2ray节点导入V2free
 
 ### 获取订阅链接
 
-注册机场获取节点订阅链接或者找免费的订阅链接。这里我们推荐一个[V2ray机场，有免费节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)获取[V2ray订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)，或者也可以找[免费订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)
+注册机场以获取节点订阅链接或者找免费的订阅链接。
+
+这里我们推荐一个[V2ray机场，有免费V2ray和SS节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)，[点击注册](https://w1.v2dns.xyz/auth/register?code=cd79)，注册后在该机场用户中心拷贝订阅链接。
+注册后免费获得1024M初始流量，每日[签到](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/checkin.jpg)可获得300-500M免费流量。更有不限流量节点可用。
+注册登录后，用个人邀请链接 邀请新用户注册还可获得流量奖励，如果新用户成为付费用户，你还可以赚取高达20%终生佣金奖励。
 
 机场 **订阅链接** 非常重要，你应当把它当做密码一样妥善保管。
 
