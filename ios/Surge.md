@@ -7,7 +7,7 @@ Surge 是在 iOS 平台上的客户端软件，支持 Shadowsocks 协议。
 目前 Surge 已经被 Apple 根据政府要求从中国大陆区的 App Store 移除，之前在中国大陆商店购买此软件的用户将不能获得更新或重新下载。
 
 Surge 目前最新版本为 Surge 4，可直接在非中国大陆区的 AppStore 搜到，免费下载安装。
-Surge 的网络代理功能需要解锁 Pro 授权，可通过 AppStore 内购或[访问其官网进行购买](https://nssurge.com/buy_now)。
+Surge 的网络代理功能需要解锁 Pro 授权，可通过 AppStore 内购。
 iOS 3个设备的授权价格49.99美元。免费版无法进行科学上网，无购买意愿的朋友可以忽略此APP。
 
 ## 应用下载
@@ -36,7 +36,7 @@ iOS 3个设备的授权价格49.99美元。免费版无法进行科学上网，�
 
 ![1](https://v2free.org/docs/SSPanel/iOS/images/surge-1.jpg)
 
-点击下方的「从 URL 下载配置」，在弹出的输入框中粘贴上方 **[获取订阅](#获取订阅)** 中您对应的 Surge 版本的订阅链接并点击 **好的**，此时 APP 会自动下载并切换到该配置。
+点击下方的「从 URL 下载配置」，在弹出的 输入框中粘贴上方 **[获取订阅](#获取订阅)** 中您对应的 Surge 版本的订阅链接并点击 **好的**，此时  APP 会自动下载并切换到该配置。
 
 ![2](https://v2free.org/docs/SSPanel/iOS/images/surge-2.jpg)
 

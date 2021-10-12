@@ -12,7 +12,7 @@ Quantumult X 是一款付费APP，7.99美元，需要用美区等AppleID账号�
 
 Quantumult X 在中国大陆区App Store已被下架。需要在商店里登录非中国大陆区的AppleID并付费下载该应用。
 
-自己注册美区号购买或者找代购美区应用。盗版和多账户下载已被开发者限制，无法使用正常功能。
+自己[注册美区号](AppleID.md)购买或者找代购美区应用。盗版和多账户下载已被开发者限制，无法使用正常功能。
 
 https://apps.apple.com/us/app/quantumult-x/id1443988620
 

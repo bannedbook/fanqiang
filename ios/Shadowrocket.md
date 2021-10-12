@@ -41,7 +41,7 @@ Shadowrocket 是在 iOS 平台上的客户端软件，支持 Shadowsocks、Shado
 
 ## 配置 Shadowrocket
 
-打开 Shadowrocket，点击底部导航栏的「设置」进入设置页面，随后往下划至最底部，进入「服务器订阅」子页面。
+打开 Shadowrocket，点击底部导航栏的「设置」进入设置页面，随后往下划至 最底部，进入「服务器订阅」子页面。
 
 将「打开时更新」的开关 **打开**。
 
