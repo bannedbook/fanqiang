@@ -2,8 +2,8 @@
 
 用路由器翻墙的好处显而易见，最大的优势是它能让一个网域内的所有设备共享一个安全链接，免除家庭或办公室里为每台设备单独购买、安装翻墙工具的花费和麻烦，尤其是对人数与设备众多的办公室环境下能省下不少钱。因此通过路由器来翻墙，仍然是很多地方最经济的翻墙上网途径。
 
-  * [梅林路由器翻墙教程](Merlin.md)
-  * [OpenWRT路由器翻墙教程](OpenWRT.md)
+  * [梅林路由器翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/router/Merlin.md)
+  * [OpenWRT路由器翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/router/OpenWRT.md)
   
 ## 相关阅读
 *   [V2ray机场，V2ray/SS免费翻墙节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)

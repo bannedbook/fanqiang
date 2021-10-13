@@ -1,10 +1,10 @@
 # Windows V2ray/SS/SSR 翻墙教程
 
-  * [Clash for Windows 翻墙教程](ClashDotNetFramework.md)
-  * [V2rayN 教程](V2RayN.md)
-  * [SSTap教程](SSTap.md)
-  * [Windows翻墙之SSR教程](ShadowsocksR.md)
-  * [TorBrowser+V2rayN配置使用教程](tor-v2ray.md)
+  * [Clash for Windows 翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/windows/ClashDotNetFramework.md)
+  * [V2rayN 教程](https://github.com/bannedbook/fanqiang/blob/master/windows/V2RayN.md)
+  * [SSTap教程](https://github.com/bannedbook/fanqiang/blob/master/windows/SSTap.md)
+  * [Windows翻墙之SSR教程](https://github.com/bannedbook/fanqiang/blob/master/windows/ShadowsocksR.md)
+  * [TorBrowser+V2rayN配置使用教程](https://github.com/bannedbook/fanqiang/blob/master/windows/tor-v2ray.md)
   
 ## 相关阅读
 *   [V2ray机场，V2ray/SS免费翻墙节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)

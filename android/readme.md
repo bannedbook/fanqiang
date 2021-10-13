@@ -1,12 +1,12 @@
 # Android 安卓翻墙教程
 
-  * [V2free 安卓翻墙教程](v2free.md)
-  * [Clash for android 教程](clash.md)
-  * [BifrostV 教程](BifrostV.md)
-  * [Shadowsocks for android 教程](Shadowsocks.md)
-  * [SSR 安卓翻墙教程](ShadowsocksR.md)
-  * [Surfboard 教程](Surfboard.md)
-  * [V2RayNG 教程](V2RayNG.md)
+  * [V2free 安卓翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md)
+  * [Clash for android 教程](https://github.com/bannedbook/fanqiang/blob/master/android/clash.md)
+  * [BifrostV 教程](https://github.com/bannedbook/fanqiang/blob/master/android/BifrostV.md)
+  * [Shadowsocks for android 教程](https://github.com/bannedbook/fanqiang/blob/master/android/Shadowsocks.md)
+  * [SSR 安卓翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/android/ShadowsocksR.md)
+  * [Surfboard 教程](https://github.com/bannedbook/fanqiang/blob/master/android/Surfboard.md)
+  * [V2RayNG 教程](https://github.com/bannedbook/fanqiang/blob/master/android/V2RayNG.md)
   
 ## 相关阅读
 *   [V2ray机场，V2ray/SS免费翻墙节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)

@@ -1,10 +1,10 @@
 # Mac翻墙软件教程
 
   * [苹果电脑MAC翻墙](https://github.com/bannedbook/fanqiang/wiki/%E8%8B%B9%E6%9E%9C%E7%94%B5%E8%84%91MAC%E7%BF%BB%E5%A2%99)
-  * [macOS翻墙之ClashX翻墙教程](ClashX.md)
-  * [macOS翻墙之V2rayU教程](V2RayN.md)
-  * [macOS翻墙之Surge教程](Surge.md)
-  * [macOS翻墙之V2rayX教程](V2rayX.md)
+  * [macOS翻墙之ClashX翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/macos/ClashX.md)
+  * [macOS翻墙之V2rayU教程](https://github.com/bannedbook/fanqiang/blob/master/macos/V2RayN.md)
+  * [macOS翻墙之Surge教程](https://github.com/bannedbook/fanqiang/blob/master/macos/Surge.md)
+  * [macOS翻墙之V2rayX教程](https://github.com/bannedbook/fanqiang/blob/master/macos/V2rayX.md)
   
 ## 相关阅读
 *   [V2ray机场，V2ray/SS免费翻墙节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)

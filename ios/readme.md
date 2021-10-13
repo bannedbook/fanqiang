@@ -1,15 +1,15 @@
 # iPhone/iPad V2ray/SS 翻墙APP教程
 
   * [iphone翻墙](https://github.com/bannedbook/fanqiang/wiki/iphone%E7%BF%BB%E5%A2%99)
-  * [注册苹果美区 Apple ID 帐号并购买APP指南](AppleID.md)
-  * [Iphone/iPad通过电脑局域网共享翻墙](fqByLan.md)
-  * [Potatso Lite 教程](PotatsoLite.md)
-  * [Shadowrocket小火箭配置使用教程](Shadowrocket.md)
-  * [Kitsunebi 教程](Kitsunebi.md)
-  * [Quantumult X 配置使用简易教程](QuantumultX.md)
-  * [iOS翻墙之Surge教程](Surge.md)
-  * [iOS翻墙之Quantumult教程](Quantumult_sub.md)
-  * [iOS翻墙之导入 Quantumult 完整配置教程](Quantumult_conf.md)
+  * [注册苹果美区 Apple ID 帐号并购买APP指南](https://github.com/bannedbook/fanqiang/blob/master/ios/AppleID.md)
+  * [Iphone/iPad通过电脑局域网共享翻墙](https://github.com/bannedbook/fanqiang/blob/master/ios/fqByLan.md)
+  * [Potatso Lite 教程](https://github.com/bannedbook/fanqiang/blob/master/ios/PotatsoLite.md)
+  * [Shadowrocket小火箭配置使用教程](https://github.com/bannedbook/fanqiang/blob/master/ios/Shadowrocket.md)
+  * [Kitsunebi 教程](https://github.com/bannedbook/fanqiang/blob/master/ios/Kitsunebi.md)
+  * [Quantumult X 配置使用简易教程](https://github.com/bannedbook/fanqiang/blob/master/ios/QuantumultX.md)
+  * [iOS翻墙之Surge教程](https://github.com/bannedbook/fanqiang/blob/master/ios/Surge.md)
+  * [iOS翻墙之Quantumult教程](https://github.com/bannedbook/fanqiang/blob/master/ios/Quantumult_sub.md)
+  * [iOS翻墙之导入 Quantumult 完整配置教程](https://github.com/bannedbook/fanqiang/blob/master/ios/Quantumult_conf.md)
   
 ## 相关阅读
 *   [V2ray机场，V2ray/SS免费翻墙节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)
