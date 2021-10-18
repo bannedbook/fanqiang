@@ -5,10 +5,10 @@
 <b>广告插播，如果你觉得自己折腾VPS太麻烦，可以考虑这个服务哦（非本库服务）：</b><br>
 <a href="https://github.com/killgcd/justmysocks/blob/master/README.md"><img src="https://raw.githubusercontent.com/killgcd/justmysocks/master/images/bwgss.jpg" alt="搬瓦工翻墙 Just My Socks"></a>
 
-Vultr注册地址：https://www.vultr.com/?ref=8442917-6G
+Vultr注册地址：https://www.vultr.com/?ref=8941510-8H
 （新用户通过此活动链接注册，可获赠100美元，有效期1个月，为了获得100美元赠送必须绑定信用卡或Paypal。Vultr 云主机在全球15个数据中心可选，KVM框架，最低2.5美元/月。）如果以后这个vultr注册地址被墙了，那么就用<a href="https://github.com/bannedbook/fanqiang/wiki/Chrome%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85">翻墙软件</a>打开，或者用[ss/ssr免费账号](https://github.com/bannedbook/fanqiang/wiki/%E5%85%8D%E8%B4%B9ss%E8%B4%A6%E5%8F%B7)
 
-<a href="https://www.vultr.com/?ref=8442917-6G"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
+<a href="https://www.vultr.com/?ref=8941510-8H"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
 
 虽然是英文界面，但是现在的浏览器都有网页翻译功能，鼠标点击右键，选择网页翻译即可翻译成中文。
 
@@ -24,7 +24,7 @@ Vultr注册地址：https://www.vultr.com/?ref=8442917-6G
 |40美元/月 |  4cpu | 8G  |160G | 1Gbps |  4000G |
 |80美元/月 |  6cpu | 16G |320G |1Gbps  |5000G   | (**获赠送100美元可玩这个**) 
 
-**注意：2.5美元套餐只提供ipv6，如果你用不了ipv6，那么你可以买3.5美元的套餐。另外，并非所有地区都有3.5美元的套餐，需要自己去看。由于资源的短缺，有的地区有时候有3.5美元的套餐，有时候没有，一般5美元的每个机房都有保障，也可以用5美元的。不过，用我们的[推荐链接](https://www.vultr.com/?ref=8442917-6G)注册，马上赠送100美元哦，看看如果100美元到帐的话，可以搞个大服务器玩一下，虽然带宽都是1G，但大服务器性能好，应该会稍快一些。建议直接搞一个$80一个月的试试看，因为100美元有效期只有一个月，不用的话，30天后反正也就没了，所以不如先玩个大的，切记切记快到一个月时记得删除服务器，再换成小的即可。**
+**注意：2.5美元套餐只提供ipv6，如果你用不了ipv6，那么你可以买3.5美元的套餐。另外，并非所有地区都有3.5美元的套餐，需要自己去看。由于资源的短缺，有的地区有时候有3.5美元的套餐，有时候没有，一般5美元的每个机房都有保障，也可以用5美元的。不过，用我们的[推荐链接](https://www.vultr.com/?ref=8941510-8H)注册，马上赠送100美元哦，看看如果100美元到帐的话，可以搞个大服务器玩一下，虽然带宽都是1G，但大服务器性能好，应该会稍快一些。建议直接搞一个$80一个月的试试看，因为100美元有效期只有一个月，不用的话，30天后反正也就没了，所以不如先玩个大的，切记切记快到一个月时记得删除服务器，再换成小的即可。**
 
 **重要的话重复一遍，如果用赠送金额搞了大服务器，切记切记快到一个月时记得删除服务器，再换成小的即可，如果你豪气，不在乎这点钱，也可以忽略这句话哦。**
 
