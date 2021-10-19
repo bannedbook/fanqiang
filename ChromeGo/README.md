@@ -4,7 +4,7 @@ ChromeGo，Chrome一键翻墙包
 一个集成10个不同的翻墙通道，包括clash、clashB、v2ray、v2rayb、v2go、SSR、SS、Lantern、psiphon，所有工具全部内置免费服务器，长期更新。由于国内网络环境复杂、地区不同，网络运营商不同，封锁情况都不同，所以使用效果会有差别，有的地区几乎所有的软件都能使用，有的只能用几款，因此具体哪款软件适合你的网络环境，需要你自己来尝试。支持我们请点右上角star按赞、Fork转发。  
   
 
-**注意**：软件都是采用加密方式的，但为了更稳定、更安全的翻墙，建议卸载国产杀毒软件，至少翻墙时不要用它们！因为很多国产杀毒软件，比如360安全卫生、360杀毒软件、腾讯管家、金山卫士等不仅仅会起干扰作用，造成软件无法正常使用或速度变慢，它们与金盾工程有千丝万缕的关系!其实win10自带的defender就有杀毒的功能，如果还需要安全软件，可以用[推荐的杀毒软件](https://tiandixing.org/viewtopic.php?f=25&t=193535)，免费的，而且不会干扰翻墙。
+**注意**：软件都是采用加密方式的，但为了更稳定、更安全的翻墙，建议卸载国产杀毒软件，至少翻墙时不要用它们！因为很多国产杀毒软件，比如360安全卫生、360杀毒软件、腾讯管家、金山卫士等不仅仅会起干扰作用，造成软件无法正常使用或速度变慢，它们与金盾工程有千丝万缕的关系! 可以使用[windows自带的defender杀毒软件](https://docs.microsoft.com/zh-cn/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-windows?view=o365-worldwide)。
 
 **注意**：第一次使用SS/SSR/v2ray时，或许需要安装 NET Framework 4.6 或更高版本 ，不然无法正常运行，[微软官网](https://dotnet.microsoft.com/download/dotnet-framework/net46)下载。
 
