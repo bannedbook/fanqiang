@@ -1,12 +1,5 @@
 <h1>自建V2ray服务器简明教程</h1>
 
-转载修订自：<a href="https://github.com/Alvin9999/new-pac/wiki/%E8%87%AA%E5%BB%BAv2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%99%E7%A8%8B" target="_blank"> Alvin9999的自建v2ray服务器教程</a>，主要修改部分：<br>
-1、改用V2ray官方一键安装脚本<br>
-2、简化网络加速方案<br>
-3、SSH客户端改为使用Git for Windows。
-
-***
-
 **自建v2ray教程很简单，整个教程分简单几步**：
 
 购买VPS服务器、一键加速VPS服务器、安装V2ray服务端
@@ -66,7 +59,7 @@ SSH连接VPS成功后，会出现如上图所示，之后就可以复制粘贴li
 
 本文主要以Windows客户端为例，介绍Windows版V2ray客户端的安装配置，请参见：[Windows版V2ray客户端安装配置指南](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Windows%E7%89%88V2ray%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.md)
 
-关于更多平台的客户端使用，请参考：[v2ray各平台图文使用教程](https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%90%84%E5%B9%B3%E5%8F%B0%E5%9B%BE%E6%96%87%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B)
+关于更多平台的客户端使用，请参考：[v2ray各平台图文使用教程](https://github.com/bannedbook/fanqiang#windows-v2rayssssr-%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B)
 
 ***
 

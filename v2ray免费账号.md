@@ -34,14 +34,14 @@ VPS推荐：
 
 ### v2ray客户端下载及使用方法
 
-windows客户端：[v2rayN(第三方开发)](https://v2free.org/doc/#/Windows/V2RayN)
+[Windows客户端教程](https://github.com/bannedbook/fanqiang/tree/master/windows#windows-v2rayssssr-%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B)
 
-Mac客户端：[v2rayX（第三方开发）](https://v2free.org/doc/#/macOS/V2rayX.html) 或 [v2rayU（第三方开发）](https://v2free.org/doc/#/macOS/V2RayU) 
+[Mac客户端教程](https://github.com/bannedbook/fanqiang/tree/master/macos) 
 
 Linux客户端：[Qv2ray](https://github.com/lhy0403/Qv2ray/releases)
 
-安卓客户端：[v2ray VPN](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6#v2vpn)
+安卓客户端：[v2ray VPN](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6#v2vpn)、[安卓客户端教程](https://github.com/bannedbook/fanqiang/tree/master/android#android-%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B)
 
-iOS客户端：[Shadowrocket小火箭配置使用教程](https://v2free.org/doc/#/iOS/Shadowrocket) 、[iOS注册美区Apple ID教程](https://github.com/Alvin9999/new-pac/wiki/iOS%E6%B3%A8%E5%86%8C%E7%BE%8E%E5%8C%BAApple-ID%E6%95%99%E7%A8%8B) 
+iOS客户端：[iOS注册美区Apple ID教程](https://github.com/bannedbook/fanqiang/tree/master/ios/AppleID.md) 、 [iOS客户端教程](https://github.com/bannedbook/fanqiang/tree/master/ios#iphoneipad-v2rayss-%E7%BF%BB%E5%A2%99app%E6%95%99%E7%A8%8B)
 
-路由器：[OpenWRT路由器翻墙教程](https://v2free.org/doc/#/Router/OpenWRT) 、 [梅林路由器翻墙教程](https://v2free.org/doc/#/Router/Merlin)
+路由器：[OpenWRT路由器翻墙教程](https://github.com/bannedbook/fanqiang/tree/master/router/OpenWRT.md) 、 [梅林路由器翻墙教程](https://github.com/bannedbook/fanqiang/tree/master/router/Merlin.md)

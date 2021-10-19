@@ -1,5 +1,18 @@
 <h1>苹果iPhone、ios翻墙方法</h1>
 
+## [iPhone/iPad/iOS V2ray/SS 翻墙APP教程](https://github.com/bannedbook/fanqiang/tree/master/ios)
+
+  * [iphone翻墙](https://github.com/bannedbook/fanqiang/wiki/iphone%E7%BF%BB%E5%A2%99)
+  * [注册苹果美区 Apple ID 帐号并购买APP指南](https://github.com/bannedbook/fanqiang/tree/master/ios/AppleID.md)
+  * [Iphone/iPad通过电脑局域网共享翻墙](https://github.com/bannedbook/fanqiang/tree/master/ios/fqByLan.md)
+  * [Potatso Lite 教程](https://github.com/bannedbook/fanqiang/tree/master/ios/PotatsoLite.md)
+  * [Shadowrocket小火箭配置使用教程](https://github.com/bannedbook/fanqiang/tree/master/ios/Shadowrocket.md)
+  * [Kitsunebi 教程](https://github.com/bannedbook/fanqiang/tree/master/ios/Kitsunebi.md)
+  * [Quantumult X 配置使用简易教程](https://github.com/bannedbook/fanqiang/tree/master/ios/QuantumultX.md)
+  * [iOS翻墙之Surge教程](https://github.com/bannedbook/fanqiang/tree/master/ios/Surge.md)
+  * [iOS翻墙之Quantumult教程](https://github.com/bannedbook/fanqiang/tree/master/ios/Quantumult_sub.md)
+  * [iOS翻墙之导入 Quantumult 完整配置教程](https://github.com/bannedbook/fanqiang/tree/master/ios/Quantumult_conf.md)
+
 **一、注册机场，获取免费翻墙节点**
 
 [![免费公益机场-不限流量](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/freenode.jpg)](https://w1.v2dns.xyz/auth/register?code=cd79)
@@ -64,8 +77,12 @@ Fair VPN安装步骤及使用方法：
 
 **三、美区商店购买其它付费APP**
 
-如果有美区AppleID的话，可以直接上AppStore下载Shadowrocket、Potatso Lite、Potatso、wingy、Kitsunebi等。美区AppleID可以淘宝购买，也可以自己注册，[iOS注册美区Apple ID教程](https://github.com/Alvin9999/new-pac/wiki/iOS%E6%B3%A8%E5%86%8C%E7%BE%8E%E5%8C%BAApple-ID%E6%95%99%E7%A8%8B)，需要花钱的话，需要购买美区礼品卡，可以到www.offgamers.com 购买支持微信、银联卡，或淘宝购买。shadowrocket正版美区商店2.99美元，offgamers.com美区礼品卡最低3美元，这点比淘宝好，淘宝礼品卡最低5美元 。
+如果有美区AppleID的话，可以直接上AppStore下载Shadowrocket、Potatso Lite、Potatso、wingy、Kitsunebi等。美区AppleID可以淘宝购买，也可以自己注册，[iOS注册美区Apple ID教程](https://github.com/bannedbook/fanqiang/tree/master/ios/AppleID.md)，需要花钱的话，需要购买美区礼品卡，可以到www.offgamers.com 购买支持微信、银联卡，或淘宝购买。shadowrocket正版美区商店2.99美元，offgamers.com美区礼品卡最低3美元，这点比淘宝好，淘宝礼品卡最低5美元 。
 
 <h2>
-本页短网址：https://bit.ly/iphonefq      https://git.io/ifq
+本页短网址：
+
+https://bit.ly/iphonefq    
+  
+https://git.io/ifq
 </h2>
