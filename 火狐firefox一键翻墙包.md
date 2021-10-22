@@ -9,9 +9,9 @@
 
 ### 更新通告
 
-**2021年10月10日更新公告 更新若干翻墙工具。 win10系统的防火墙可能会起网络阻碍作用，如果多款工具更新ip后无法正常使用，可以把防火墙和杀毒软件关闭再试试看。** 第一次使用SSR/ss/v2ray时，或许需要安装 [NET Framework 4.6](https://dotnet.microsoft.com/download/dotnet-framework/net46)或更高版本 ，不然无法正常运行。 使用方法：下载后解压，按文件夹里面的《使用说明（必看）》操作。第一次使用或发现不好用的时候记得按照使用说明更新一下ip。
+**2021年10月21日更新公告 更新ip。 win10系统的防火墙可能会起网络阻碍作用，如果多款工具更新ip后无法正常使用，可以把防火墙和杀毒软件关闭再试试看。** 第一次使用SSR/ss/v2ray时，或许需要安装 [NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework/net48)或更高版本 ，不然无法正常运行。 使用方法：下载后解压，按文件夹里面的《使用说明（必看）》操作。第一次使用或发现不好用的时候记得按照使用说明更新一下ip。
 
-所有软件的解压密码一律为：jww,压缩包文件的格式是7z，如果解压出错，用7z解压软件来解压（[7z解压软件下载地址](https://sparanoid.com/lab/7z/)），解压目标路径中不要包含中文或空格，否则可能会出现运行火狐后闪退的情况，比如解压到桌面就有可能出现这个情况。
+所有软件的解压密码一律为：jww,压缩包文件的格式是7z，如果解压出错，用7z解压软件来解压（[7z解压软件下载地址](https://www.7-zip.org/download.html)），解压目标路径中不要包含中文或空格，否则可能会出现运行火狐后闪退的情况，比如解压到桌面就有可能出现这个情况。
 
 [火狐一键翻墙包下载](#xia-zai-di-zhi)、[Chrome一键翻墙包](https://github.com/bannedbook/fanqiang/wiki/Chrome%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85)、[安卓手机翻墙](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6)、[自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)、[自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 
 
