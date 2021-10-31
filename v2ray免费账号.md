@@ -6,9 +6,7 @@
 注册后免费获得1024M初始流量，每日[签到](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/checkin.jpg)可获得300-500M免费流量。更有不限流量节点可用。
 注册登录后，用个人邀请链接 邀请新用户注册还可获得流量奖励，如果新用户成为付费用户，你还可以赚取高达20%终生佣金奖励。
 
-[V2free机场](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)庆祝开业一周年，推出9折优惠码一枚：1year
-除3元试用套餐外的所有套餐都可以使用，有效期至:2021-10-30 21:24:42
-该优惠码每个用户限使用一次。
+[V2free机场](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)庆祝开业一周年，继9折优惠码活动结束后，推出充值送现金活动，无论新老用户，从 2021-10-31 11:05:00 到 2021-11-06 23:00:00 止，充值金额大于等于100元，即赠送充值金额的10%到账户余额。  
 
 ***
 
