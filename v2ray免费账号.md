@@ -24,9 +24,9 @@
 
 VPS推荐：
 
-[Vultr](https://www.vultr.com/?ref=8941510-8H) （vps最低2.5美元/月，vultr全球17个服务器位置可选，包括日本、韩国、新加坡、洛杉矶、德国、荷兰等。支持支付宝和paypal付款。）
+[Vultr](https://www.vultr.com/?ref=6999340) （vps最低2.5美元/月，vultr全球17个服务器位置可选，包括日本、韩国、新加坡、洛杉矶、德国、荷兰等。支持支付宝和paypal付款。）
 
-<a href="https://www.vultr.com/?ref=8941510-8H"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
+<a href="https://www.vultr.com/?ref=6999340"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
 
 
 

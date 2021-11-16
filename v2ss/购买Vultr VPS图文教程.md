@@ -5,10 +5,10 @@
 <b>广告插播，如果你觉得自己折腾VPS太麻烦，可以考虑这个服务哦（非本库服务）：</b><br>
 <a href="https://github.com/killgcd/justmysocks/blob/master/README.md"><img src="https://raw.githubusercontent.com/killgcd/justmysocks/master/images/bwgss.jpg" alt="搬瓦工翻墙 Just My Socks"></a>
 
-Vultr注册地址：https://www.vultr.com/?ref=8941510-8H
-（新用户通过此活动链接注册，可获赠100美元，有效期1个月，为了获得100美元赠送必须绑定信用卡或Paypal。Vultr 云主机在全球15个数据中心可选，KVM框架，最低2.5美元/月。）如果以后这个vultr注册地址被墙了，那么就用<a href="https://github.com/bannedbook/fanqiang/wiki/Chrome%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85">翻墙软件</a>打开，或者用[ss/ssr免费账号](https://github.com/bannedbook/fanqiang/wiki/%E5%85%8D%E8%B4%B9ss%E8%B4%A6%E5%8F%B7)
+Vultr注册地址：https://www.vultr.com/?ref=6999340
+如果以后这个vultr注册地址被墙了，那么就用<a href="https://github.com/bannedbook/fanqiang/wiki/Chrome%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85">翻墙软件</a>打开，或者用[ss免费账号](https://github.com/bannedbook/fanqiang/wiki/%E5%85%8D%E8%B4%B9ss%E8%B4%A6%E5%8F%B7)
 
-<a href="https://www.vultr.com/?ref=8941510-8H"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
+<a href="https://www.vultr.com/?ref=6999340"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
 
 虽然是英文界面，但是现在的浏览器都有网页翻译功能，鼠标点击右键，选择网页翻译即可翻译成中文。
 
@@ -22,11 +22,9 @@ Vultr注册地址：https://www.vultr.com/?ref=8941510-8H
 |10美元/月 |  单核 | 2G  | 55G | 1Gbps |  2000G | 
 |20美元/月 |  2cpu | 4G  |80G  | 1Gbps |  3000G | 
 |40美元/月 |  4cpu | 8G  |160G | 1Gbps |  4000G |
-|80美元/月 |  6cpu | 16G |320G |1Gbps  |5000G   | (**获赠送100美元可玩这个**) 
+|80美元/月 |  6cpu | 16G |320G |1Gbps  |5000G   |
 
-**注意：2.5美元套餐只提供ipv6，如果你用不了ipv6，那么你可以买3.5美元的套餐。另外，并非所有地区都有3.5美元的套餐，需要自己去看。由于资源的短缺，有的地区有时候有3.5美元的套餐，有时候没有，一般5美元的每个机房都有保障，也可以用5美元的。不过，用我们的[推荐链接](https://www.vultr.com/?ref=8941510-8H)注册，马上赠送100美元哦，看看如果100美元到帐的话，可以搞个大服务器玩一下，虽然带宽都是1G，但大服务器性能好，应该会稍快一些。建议直接搞一个$80一个月的试试看，因为100美元有效期只有一个月，不用的话，30天后反正也就没了，所以不如先玩个大的，切记切记快到一个月时记得删除服务器，再换成小的即可。**
-
-**重要的话重复一遍，如果用赠送金额搞了大服务器，切记切记快到一个月时记得删除服务器，再换成小的即可，如果你豪气，不在乎这点钱，也可以忽略这句话哦。**
+**注意：2.5美元套餐只提供ipv6，如果你用不了ipv6，那么你可以买3.5美元的套餐。另外，并非所有地区都有3.5美元的套餐，需要自己去看。由于资源的短缺，有的地区有时候有3.5美元的套餐，有时候没有，一般5美元的每个机房都有保障，也可以用5美元的。**
 
 vultr实际上是折算成小时来计费的，比如服务器是5美元1个月，那么每小时收费为5/30/24=0.0069美元 会自动从账号中扣费，只要保证账号有钱即可。如果你部署的服务器实测后速度不理想，你可以把它删掉（destroy），重新换个地区的服务器来部署，方便且实用。因为新的服务器就是新的ip，所以当ip被墙时这个方法很有用。当ip被墙时，为了保证新开的服务器ip和原先的ip不一样，先开新服务器，开好后再删除旧服务器即可。在账号的Billing选项里可以看到账户余额。
 
