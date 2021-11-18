@@ -7,8 +7,8 @@
 
 ### [注册机场，获取免费SS账号](https://w1.v2dns.xyz/auth/register?code=cd79)
 
-[V2free机场](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)庆祝开业一周年，继9折优惠码活动结束后，推出充值送现金活动，无论新老用户，从 2021-10-31 11:05:00 到 2021-11-06 23:00:00 止，充值金额大于等于100元，即赠送充值金额的10%到账户余额。  
-
+教育网的网友如果打不开上面的链接，请使用这个链接：
+https://cdn.v2free.net/auth/register?code=cd79
 
 ### 推荐免费翻墙软件（内置免费高速SSR服务器，长期更新）
 
