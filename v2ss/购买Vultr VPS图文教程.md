@@ -5,10 +5,15 @@
 <b>广告插播，如果你觉得自己折腾VPS太麻烦，可以考虑这个服务哦（非本库服务）：</b><br>
 <a href="https://github.com/killgcd/justmysocks/blob/master/README.md"><img src="https://raw.githubusercontent.com/killgcd/justmysocks/master/images/bwgss.jpg" alt="搬瓦工翻墙 Just My Socks"></a>
 
-Vultr注册地址：https://www.vultr.com/?ref=6999340
+Vultr注册地址（新用户注册赠送100美元）：
+
+https://www.vultr.com/?ref=8941510-8H
+
+Vultr云主机新用户注册赠送100美元活动正在进行中，注意，必须是新用户，并通过[此引荐链接](https://www.vultr.com/?ref=8941510-8H) 注册、并绑定信用卡或Payapl，即可获得100美元余额赠送。
+
 如果以后这个vultr注册地址被墙了，那么就用<a href="https://github.com/bannedbook/fanqiang/wiki/Chrome%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85">翻墙软件</a>打开，或者用[ss免费账号](https://github.com/bannedbook/fanqiang/wiki/%E5%85%8D%E8%B4%B9ss%E8%B4%A6%E5%8F%B7)
 
-<a href="https://www.vultr.com/?ref=6999340"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
+<a href="https://www.vultr.com/?ref=8941510-8H"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
 
 虽然是英文界面，但是现在的浏览器都有网页翻译功能，鼠标点击右键，选择网页翻译即可翻译成中文。
 
@@ -39,7 +44,7 @@ vultr实际上是折算成小时来计费的，比如服务器是5美元1个月�
 
 ![](https://raw.githubusercontent.com/Alvin9999/pac2/master/vultr/vultr1.PNG)
 
-服务器位置首选美国西海岸的 Los Angeles、或者亚洲的东京、新加坡，当然其它国家地区都可以尝试。建议在[Vultr测速网站](https://sgp-ping.vultr.com/?ref=6999340)选择各个不同的Server Location下载测试一下，然后再根据测试情况选择。 要在自己电脑上 ping 那个ip ，不要在网页上直接ping，ping 的时候，看每一行 里 time ，越小越好；还可以下载那个100m的文件测试数据传输速度。
+服务器位置首选美国西海岸的 Los Angeles、或者亚洲的东京、新加坡，当然其它国家地区都可以尝试。建议在[Vultr测速网站](https://sgp-ping.vultr.com/?ref=8941510-8H)选择各个不同的Server Location下载测试一下，然后再根据测试情况选择。 要在自己电脑上 ping 那个ip ，不要在网页上直接ping，ping 的时候，看每一行 里 time ，越小越好；还可以下载那个100m的文件测试数据传输速度。
 
 ![](https://raw.githubusercontent.com/Alvin9999/pac2/master/vultr/vultr2.PNG)
 

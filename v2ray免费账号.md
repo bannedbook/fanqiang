@@ -26,9 +26,11 @@ https://cdn.v2free.net/auth/register?code=cd79
 
 VPS推荐：
 
-[Vultr](https://www.vultr.com/?ref=6999340) （vps最低2.5美元/月，vultr全球17个服务器位置可选，包括日本、韩国、新加坡、洛杉矶、德国、荷兰等。支持支付宝和paypal付款。）
+Vultr云主机新用户注册赠送100美元活动正在进行中，注意，必须是新用户，并通过[此引荐链接](https://www.vultr.com/?ref=8941510-8H) 注册、并绑定信用卡或Payapl，即可获得100美元余额赠送。
 
-<a href="https://www.vultr.com/?ref=6999340"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
+[Vultr](https://www.vultr.com/?ref=8941510-8H) （vps最低2.5美元/月，vultr全球17个服务器位置可选，包括日本、韩国、新加坡、洛杉矶、德国、荷兰等。支持支付宝和paypal付款。）
+
+<a href="https://www.vultr.com/?ref=8941510-8H"><img src="https://www.vultr.com/media/banner_2.png" width="468" height="60"></a>
 
 
 
