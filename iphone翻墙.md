@@ -20,7 +20,7 @@ V2free机场注册后免费获得1024M初始流量，每日[签到](https://raw.
 
 先在苹果机上点击并安装[TestFlight](https://apps.apple.com/us/app/testflight/id899247664)软件，TestFlight下载地址：https://apps.apple.com/us/app/testflight/id899247664
 
-然后[安装Fair VPN](https://testflight.apple.com/join/sdBZzV82)
+然后[安装Fair VPN](https://testflight.apple.com/join/sdBZzV82) （开发者暂停了新用户加入，过段时间看看情况再打开）
 
 Fair Plus VPN下载地址：
 https://testflight.apple.com/join/sdBZzV82
