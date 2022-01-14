@@ -1,5 +1,6 @@
-安装 clash for linux
-------------------
+#Clash for linux 翻墙教程
+
+##安装 clash for linux
 
 下载最新版本 clash：[https://github.com/Dreamacro/clash/releases](https://github.com/Dreamacro/clash/releases)
 
@@ -25,8 +26,7 @@
 
 然后按 Ctrl+c 退出clash程序。
 
-下载 clash 配置文件
-------------------
+##下载 clash 配置文件
 
 登录您的机场获取Clash订阅配置文件，推荐免费公益机场-V2free机场：
 
@@ -50,8 +50,7 @@ https://cdn.v2free.net/auth/register?code=cd79
 
     ./clash
 
-配置Linux 或者 浏览器使用Clash代理，以 ubunutu 为例
----------------
+##配置Linux 或者 浏览器使用Clash代理，以 ubunutu 为例
 
 同時启用 HTTP 代理和 Socks5 代理。
 
