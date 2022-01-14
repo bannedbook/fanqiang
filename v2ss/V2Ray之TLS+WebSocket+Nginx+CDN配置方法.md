@@ -141,7 +141,7 @@ http {
         {
           "id": "de20d937-ca8f-af14-ea07-20b45447d371",
           "level": 1,
-          "alterId": 64
+          "alterId": 0
         }
       ]
     },
@@ -229,7 +229,7 @@ http {
             "users": [
               {
                 "id": "de20d937-ca8f-af14-ea07-20b45447d371",
-                "alterId": 64
+                "alterId": 0
               }
             ]
           }

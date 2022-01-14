@@ -20,7 +20,7 @@ WebSocket 的配置其实很简单，基于前文 V2Ray+TLS 基础上， 我们 
         "clients": [
           {
             "id": "23ad6b10-8d1a-40f7-8ad0-e3e35cd38297",  
-            "alterId": 64
+            "alterId": 0
           }
         ]
       },
@@ -75,7 +75,7 @@ WebSocket 的配置其实很简单，基于前文 V2Ray+TLS 基础上， 我们 
             "users": [
               {
                 "id": "23ad6b10-8d1a-40f7-8ad0-e3e35cd38297",
-                "alterId": 64
+                "alterId": 0
               }
             ]
           }

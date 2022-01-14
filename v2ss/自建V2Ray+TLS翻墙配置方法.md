@@ -261,7 +261,7 @@ $ sudo ~/.acme.sh/acme.sh --installcert -d mydomain.me -d www.mydomain.me -d v01
         "clients": [
           {
             "id": "23ad6b10-8d1a-40f7-8ad0-e3e35cd38297",  
-            "alterId": 64
+            "alterId": 0
           }
         ]
       },
@@ -316,7 +316,7 @@ $ sudo ~/.acme.sh/acme.sh --installcert -d mydomain.me -d www.mydomain.me -d v01
             "users": [
               {
                 "id": "23ad6b10-8d1a-40f7-8ad0-e3e35cd38297",
-                "alterId": 64
+                "alterId": 0
               }
             ]
           }

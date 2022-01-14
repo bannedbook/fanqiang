@@ -46,7 +46,7 @@
             "users": [
               {
                 "id": "b9a7e7ac-e9f2-4ac2-xxxx-xxxxxxxxxx",  // 用户 ID，必须与服务器端配置相同
-                "alterId": 64 // 此处的值也应当与服务器相同
+                "alterId": 0
               }
             ]
           }
@@ -99,7 +99,7 @@
                         "users": [
                             {
                                 "id": "b9a7e7ac-e9f2-4ac2-xxxx-xxxxxxxxxx",
-                                "alterId": 64
+                                "alterId": 0
                             }
                         ]
                     }
