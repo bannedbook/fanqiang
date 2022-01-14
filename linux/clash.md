@@ -2,7 +2,7 @@
 
 ## 安装 clash for linux
 
-下载最新版本 clash：[https://github.com/Dreamacro/clash/releases](https://github.com/Dreamacro/clash/releases)
+下载 clash：[https://github.com/Dreamacro/clash/releases](https://github.com/Dreamacro/clash/releases)
 
 ![](https://v2free.org/docs/SSPanel/linux/clash_files/1946477.png)
 
