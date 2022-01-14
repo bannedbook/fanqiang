@@ -30,8 +30,6 @@
 
 登录您的机场获取Clash订阅配置文件，推荐免费公益机场-V2free机场：
 
-[![免费公益机场-不限流量](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/freenode.jpg)](https://w1.v2dns.xyz/auth/register?code=cd79)
-
 点击注册链接：<a href="https://w1.v2dns.xyz/auth/register?code=cd79" target="_blank">w1.v2dns.xyz</a>，注册后在该网站用户中心获取clash订阅链接.
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
