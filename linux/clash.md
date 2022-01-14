@@ -38,7 +38,7 @@ https://cdn.v2free.net/auth/register?code=cd79
 注册后免费获得1024M初始流量，每日[签到](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/checkin.jpg)可获得300-500M免费流量。
 注册登录后，用个人邀请链接 邀请新用户注册还可获得流量奖励，如果新用户成为付费用户，你还可以赚取高达20%终生佣金奖励。
 
-!> 安全提示： **V2free机场的Clash订阅** 已默认实现国内外流量分流，一般国内网站不走代理。
+**安全提示： V2free机场的Clash订阅** 已默认实现国内外流量分流，一般国内网站不走代理。
 
 用wget下载clash配置文件，替换默认的配置文件，下面的wget命令后面的 `你的Clash订阅链接网址`  ，用上面的实际的clash订阅链接替换。
 
