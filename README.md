@@ -58,6 +58,8 @@
   * [梅林路由器翻墙教程](https://github.com/bannedbook/fanqiang/tree/master/router/Merlin.md)
   * [OpenWRT路由器翻墙教程](https://github.com/bannedbook/fanqiang/tree/master/router/OpenWRT.md)
 
+## [Linux翻墙教程](https://github.com/bannedbook/fanqiang/tree/master/linux)
+
 ## ChromeGo - Chrome一键翻墙包 
 
 一个集成Goflyway、v2ray、Daze、SSR、Brook、Lightsocks、trojan、蓝灯、psiphon等N多翻墙工具的电脑翻墙包（推荐按前面所列顺序依次尝试），所有工具全部内置免费服务器，长期更新。由于国内网络环境复杂、地区不同，网络运营商不同，封锁情况都不同，所以使用效果会有差别，有的地区几乎所有的软件都能使用，有的只能用几款，因此具体哪款软件适合你的网络环境，需要你自己来尝试。 
