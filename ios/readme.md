@@ -2,7 +2,7 @@
 
 **第一步、注册机场，获取免费翻墙节点**
 
-[![免费公益机场-不限流量](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/freenode.jpg)](https://w1.v2dns.xyz/auth/register?code=cd79)
+[![免费公益机场-不限流量](https://v2free.org/images/fbyt2.jpg)](https://w1.v2dns.xyz/auth/register?code=cd79)
 
 这里推荐V2free机场，点击注册链接：<a href="https://w1.v2dns.xyz/auth/register?code=cd79" target="_blank">w1.v2dns.xyz</a>，注册后在该网站用户中心拷贝 *V2Ray/SS节点* 订阅链接备用，然后在第二步中把订阅链接添加到Fair Plus VPN里即可使用。
 
@@ -10,49 +10,17 @@
 https://cdn.v2free.net/auth/register?code=cd79
 
 V2free机场注册后免费获得1024M初始流量，每日[签到](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/checkin.jpg)【登录其网站用户中心底部点签到按钮】可获得300-500M免费流量。
-注册登录后，用个人邀请链接 邀请新用户注册还可获得流量奖励，如果新用户成为付费用户，你还可以赚取高达20%终生佣金奖励。
+注册登录后，用个人邀请链接 邀请新用户注册还可获得流量奖励。
 
-**第二步、利用TestFlight安装免费Fair Plus VPN 并导入翻墙节点**
+**第二步、[注册苹果美区 Apple ID 帐号并购买APP指南](https://github.com/bannedbook/fanqiang/blob/master/ios/AppleID.md)**
 
-**Fair VPN当前版本1.0.7，支持ssr、ss、trojan、v2ray，支持苹果手机iPhone和iPAD。**
+2022年起，为抵御防火墙主动探测，V2ray官方强制启用vmess aead加密。iOS平台目前仅小火箭、QuantumultX（需升级到最新版）、Surge（需升级到最新版）才能支持vmess aead加密。 ios平台其它app暂不支持vmess aead加密。
 
-安装方法1（推荐）：
+这里推荐购买小火箭APP，安装小火箭APP后添加机场订阅链接，导入节点。[Shadowrocket小火箭配置使用教程](https://github.com/bannedbook/fanqiang/blob/master/ios/Shadowrocket.md)
 
-先在苹果机上点击并安装[TestFlight](https://apps.apple.com/us/app/testflight/id899247664)软件，TestFlight下载地址：https://apps.apple.com/us/app/testflight/id899247664
+Fair+ 目前不支持vmess aead加密，使用了我们推荐的V2free机场的朋友，将无法使用机场的vmess节点，但仍然可以使用机场的SS节点。
 
-然后[安装Fair VPN](https://testflight.apple.com/join/sdBZzV82)
-
-Fair Plus VPN下载地址：
-https://testflight.apple.com/join/sdBZzV82
-
-Fair VPN安装步骤及使用方法：
-
-安装TestFlight之后，点击上方Fair Plus VPN下载地址，点击“安装”。
-
-![](https://cdn.jsdelivr.net/gh/Alvin9999/pac2/fairvpn/fairvpn1.jpg)
-
-安装完成之后，手机桌面上会有一个Fair+图标，点击Fair+图标。软件分两部分，一部分是内置浏览器，另外一部分是VPN设置。点击VPN设置。从上往下依次是VPN开关按钮、4种添加VPN节点方法。
-
-在添加机场的订阅链接之前，建议点最底部“删除所有VPN”按钮，因估计内置的大多数节点已失效，为避免很多无效节点混淆使用效果，所以先删除它们。
-
-然后点“导入订阅VPN”按钮，粘贴第一步拷贝的 机场V2ray订阅链接，点 确定，这样就导入了翻墙节点。
-
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/fairvpn2.jpg)
-
-导入节点成功后，可以 点 “测试VPN延迟”，测试结束后， 选中某个节点，第一次使用会弹出是否允许VPN提醒，点击允许。
-
-![](https://cdn.jsdelivr.net/gh/Alvin9999/pac2/fairvpn/fairvpn4.jpg)
-
-返回软件界面后，打开VPN开关即可。
-
-需要提醒的是，切换 VPN 线路需要断开重连。
-
-![](https://cdn.jsdelivr.net/gh/Alvin9999/pac2/fairvpn/fairvpn5.jpg)
-
-Fair Plus VPN安装方法2：
-
-用中国以外地区苹果帐号登录应用商店，然后安装[Fair VPN](https://apps.apple.com/us/app/id1533873488)，地址：https://apps.apple.com/us/app/id1533873488
-
+导入SS节点的方法是，从机场用户中心 拷贝全部SS节点URL ，导入到windows上的V2rayN软件中，然后再从V2rayN里 批量导出分享URL至剪贴板（多选），粘贴到记事本，发到手机上，然后逐个逐个的导入到Fair+ 里面。
 
 **三、其它iOS翻墙教程**
 
@@ -71,7 +39,7 @@ Fair Plus VPN安装方法2：
   * [免费SS/SSR账号](https://github.com/bannedbook/fanqiang/wiki/%E5%85%8D%E8%B4%B9ss%E8%B4%A6%E5%8F%B7)
   * [免费v2ray账号](https://github.com/bannedbook/fanqiang/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
 
-如果有美区AppleID的话，可以直接上AppStore下载Shadowrocket、Potatso Lite、Potatso、wingy、Kitsunebi等。美区AppleID可以淘宝购买，也可以自己注册，[iOS注册美区Apple ID教程](https://github.com/bannedbook/fanqiang/tree/master/ios/AppleID.md)，需要花钱的话，需要购买美区礼品卡，可以到www.offgamers.com 购买支持微信、银联卡，或淘宝购买。shadowrocket正版美区商店2.99美元，offgamers.com美区礼品卡最低3美元，这点比淘宝好，淘宝礼品卡最低5美元 。
+如果有美区AppleID的话，可以直接上AppStore下载Shadowrocket（小火箭）、Potatso Lite(不支持v2ray，仅能使用ss)、QuantumultX、Surge 等。美区AppleID可以淘宝购买，也可以自己注册，[iOS注册美区Apple ID教程](https://github.com/bannedbook/fanqiang/tree/master/ios/AppleID.md)，需要花钱的话，需要购买美区礼品卡，可以到www.offgamers.com 购买支持微信、银联卡，或淘宝购买。shadowrocket正版美区商店2.99美元，offgamers.com美区礼品卡最低3美元，这点比淘宝好，淘宝礼品卡最低5美元 。
 
 <h2>
 本页短网址：
