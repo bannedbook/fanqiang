@@ -15,7 +15,7 @@
     {
       "type": "field",
       "ip": [
-        "geoip:private",	  
+        "geoip:private",
         "127.0.0.1/32",
         "10.0.0.0/8",
         "fc00::/7",
