@@ -5,10 +5,11 @@
 
 ***
 
-### [注册机场，获取免费SS账号](https://w1.v2dns.xyz/auth/register?code=cd79)
+### [注册机场，获取免费V2ray翻墙节点，有10来个免费翻墙节点](https://w1.v2dns.xyz/auth/register?code=cd79)
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
-https://cdn.v2free.net/auth/register?code=cd79
+https://cdn.v2free.net/auth/register?code=cd79  
+
 
 ### 推荐免费翻墙软件（内置免费高速SSR服务器，长期更新）
 
@@ -20,7 +21,7 @@ https://cdn.v2free.net/auth/register?code=cd79
 
 ### 获取免费SSR账号的方法，下载[安卓版SpeedUp VPN](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6#ssrvpn)，并在设置中开启第三方服务器，会下载到很多免费SSR服务器，然后可以在APP里面做批量测试校验，然后就可以使用了，也可以从APP导出到其它平台使用。
 
-如果你没有安卓手机，[请点这里](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)。
+如果你没有安卓手机，[请点这里，全平台翻墙方案，注册获取10个免费翻墙节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)。
 
 ***
 
