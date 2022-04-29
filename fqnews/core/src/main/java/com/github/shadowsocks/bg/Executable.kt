@@ -49,7 +49,7 @@ object Executable {
             } catch (e: ErrnoException) {
                 if (e.errno != OsConstants.ESRCH) {
                     e.printStackTrace()
-                    printLog(Log.WARN, "kill", "SIGKILL ${exe.absolutePath} (${process.name}) failed")
+                    printLog("SIGKILL ${exe.absolutePath} (${process.name}) failed")
                     printLog(e)
                 }
             }

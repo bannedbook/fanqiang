@@ -32,7 +32,7 @@ import com.github.shadowsocks.utils.Key
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Profile::class, KeyValuePair::class, SSRSub::class], version = 31)
+@Database(entities = [Profile::class, KeyValuePair::class, SSRSub::class], version = 32)
 @TypeConverters(Profile.SubscriptionStatus::class)
 abstract class PrivateDatabase : RoomDatabase() {
     companion object {
@@ -94,6 +94,14 @@ abstract class PrivateDatabase : RoomDatabase() {
             database.execSQL("ALTER TABLE `Profile` ADD COLUMN `requestHost` TEXT NOT NULL DEFAULT ''")
             database.execSQL("ALTER TABLE `Profile` ADD COLUMN `path` TEXT NOT NULL DEFAULT ''")
             database.execSQL("ALTER TABLE `Profile` ADD COLUMN `streamSecurity` TEXT NOT NULL DEFAULT ''")
+        }
+    }
+    object Migration32 : Migration(31, 32) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("ALTER TABLE `Profile` ADD COLUMN `allowInsecure` TEXT NOT NULL DEFAULT 'false'")
+            database.execSQL("ALTER TABLE `Profile` ADD COLUMN `SNI` TEXT NOT NULL DEFAULT ''")
+            database.execSQL("ALTER TABLE `Profile` ADD COLUMN `xtlsflow` TEXT NOT NULL DEFAULT ''")
+            database.execSQL("update Profile set profileType ='shadowsocks' where profileType='ss'")
         }
     }
 }

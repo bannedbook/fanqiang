@@ -12,8 +12,11 @@ data class VmessBean(var guid: String = "123456",
                      var requestHost: String = "",
                      var path: String = "",
                      var streamSecurity: String = "",
-                     var configType: Int = 1,   //Vmess = 1 Custom = 2 Shadowsocks = 3  Socks = 4
-                     var configVersion: Int = 1,
+                     var allowInsecure: String = "false", //跳过证书验证
+                     var SNI: String ="",
+                     var flow: String ="",
+                     var configType: String = AppConfig.EConfigType.vmess,
+                     var configVersion: Int = 2,
                      var testResult: String = "",
                      var subid: String = "",
                      var remoteDns: String = "1.1.1.1",

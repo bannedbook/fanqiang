@@ -30,6 +30,7 @@ import android.util.Log
 import android.util.LongSparseArray
 import androidx.core.net.toUri
 import androidx.room.*
+import com.github.shadowsocks.Core
 import com.github.shadowsocks.plugin.PluginConfiguration
 import com.github.shadowsocks.plugin.PluginOptions
 import com.github.shadowsocks.preference.DataStore
@@ -44,6 +45,7 @@ import java.net.URI
 import java.net.URISyntaxException
 import java.util.*
 import com.github.shadowsocks.utils.*
+import java.net.URLEncoder
 
 
 @Entity
@@ -57,10 +59,9 @@ data class Profile(
 
         var host: String = sponsored,
         var remotePort: Int = 8388,
-        var password: String = "u1rRWTssNv0p",
+        var password: String = "",
         var method: String = "aes-256-cfb",
 
-        var route: String = "bypass-lan-china",
         var remoteDns: String = "1.1.1.1",
         var proxyApps: Boolean = false,
         var bypass: Boolean = false,
@@ -80,14 +81,20 @@ data class Profile(
         var elapsed: Long = 0,
         var userOrder: Long = 0,
 
-        var profileType: String="ss",   // vmess or ss ,vmess for v2ray
+        var profileType: String=AppConfig.EConfigType.vless,   // vmess|shadowsocks|vless
+        var route: String = "all",
         //for v2ray
         var alterId: Int = 64,
-        var network: String = "tcp",  //tcp,kcp,ws,h2,quic
+        var network: String = "tcp",  //tcp,kcp,ws,h2,quic,grpc
         var headerType: String = "",  //伪装类型（type）
         var requestHost: String = "", //伪装域名（host）
         var path: String = "",        // ws path, h2 path , quic加密密钥
-        var streamSecurity: String = "",  //底层传输安全 tls 或 ""
+
+        var xtlsflow: String="", //for vless xtls only
+
+        var streamSecurity: String = "",  //底层传输安全 tls、 "xtls" 或 ""
+        var allowInsecure: String = "false", //跳过证书验证
+        var SNI: String ="",
 
         @Ignore // not persisted in db, only used by direct boot
         var dirty: Boolean = false
@@ -113,22 +120,24 @@ data class Profile(
 
     companion object {
         const val VMESS_PROTOCOL: String = "vmess://"
-        private const val TAG = "ShadowParser"
+        const val VLESS_PROTOCOL: String = "vless://"
+        private const val TAG = "ssvpnParser"
         private const val serialVersionUID = 1L
         private const val sponsored = "198.199.101.152"
         private val pattern =
-                """(?i)ss://[-a-zA-Z0-9+&@#/%?=.~*'()|!:,;\[\]]*[-a-zA-Z0-9+&@#/%=.~*'()|\[\]]""".toRegex()
+                """(?m)^(?i)ss://[-a-zA-Z0-9+&@#/%?=.~*'()|!:,;\[\]]*[-a-zA-Z0-9+&@#/%=.~*'()|\[\]]""".toRegex()
         private val userInfoPattern = "^(.+?):(.*)$".toRegex()
         private val legacyPattern = "^(.+?):(.*)@(.+?):(\\d+?)$".toRegex()
 
-        private val pattern_ssr = "(?i)ssr://([A-Za-z0-9_=-]+)".toRegex()
+        private val pattern_vless = "(?m)^(?i)vless://(.*)".toRegex()
+        private val pattern_ssr = "(?m)^(?i)ssr://([A-Za-z0-9_=-]+)".toRegex()
         private val decodedPattern_ssr = "(?i)^((.+):(\\d+?):(.*):(.+):(.*):(.+)/(.*))".toRegex()
         private val decodedPattern_ssr_obfsparam = "(?i)(.*)[?&]obfsparam=([A-Za-z0-9_=-]*)(.*)".toRegex()
         private val decodedPattern_ssr_remarks = "(?i)(.*)[?&]remarks=([A-Za-z0-9_=-]*)(.*)".toRegex()
         private val decodedPattern_ssr_protocolparam = "(?i)(.*)[?&]protoparam=([A-Za-z0-9_=-]*)(.*)".toRegex()
         private val decodedPattern_ssr_groupparam = "(?i)(.*)[?&]group=([A-Za-z0-9_=-]*)(.*)".toRegex()
 
-        private val pattern_vmess = "(?i)vmess://(.*)".toRegex()
+        private val pattern_vmess = "(?m)^(?i)vmess://(.*)".toRegex()
 
         private fun base64Decode(data: String) = String(Base64.decode(data.replace("=", ""), Base64.URL_SAFE), Charsets.UTF_8)
         /**
@@ -143,6 +152,68 @@ data class Profile(
             }
         }
 
+        fun profileFromVmessBean(vmess: VmessBean, profile:Profile): Profile {
+            profile.profileType = vmess.configType
+            profile.remoteDns=vmess.remoteDns
+            profile.host=vmess.address
+            profile.alterId=vmess.alterId
+            profile.headerType=vmess.headerType
+            profile.password=vmess.id
+            profile.network=vmess.network
+            profile.path=vmess.path
+            profile.remotePort=vmess.port
+            profile.name=vmess.remarks
+            profile.requestHost=vmess.requestHost
+            profile.method=vmess.security
+            profile.streamSecurity=vmess.streamSecurity
+            profile.allowInsecure=vmess.allowInsecure
+            profile.SNI=vmess.SNI
+            profile.xtlsflow=vmess.flow
+            profile.url_group=vmess.subid
+
+            if(vmess.route=="0")profile.route="all"
+            else if(vmess.route=="1")profile.route="bypass-lan"
+            else if(vmess.route=="2")profile.route="bypass-china"
+            else if(vmess.route=="3")profile.route="bypass-lan-china"
+            else profile.route="all"
+
+            return profile
+        }
+
+
+        private fun ResolveVmess4Kitsunebi(server: String): VmessBean {
+            val vmess = VmessBean()
+            vmess.configType=AppConfig.EConfigType.vmess
+            var result = server.replace(VMESS_PROTOCOL, "")
+            val indexSplit = result.indexOf("?")
+            if (indexSplit > 0) {
+                result = result.substring(0, indexSplit)
+            }
+            result = decodeForVmess(result)
+
+            val arr1 = result.split('@')
+            if (arr1.count() != 2) {
+                return vmess
+            }
+            val arr21 = arr1[0].split(':')
+            val arr22 = arr1[1].split(':')
+            if (arr21.count() != 2 || arr21.count() != 2) {
+                return vmess
+            }
+
+            vmess.address = arr22[0]
+            vmess.port = parseInt(arr22[1])
+            vmess.security = arr21[0]
+            vmess.id = arr21[1]
+
+            vmess.security = "chacha20-poly1305"
+            vmess.network = "tcp"
+            vmess.headerType = "none"
+            vmess.remarks = "Alien"
+            vmess.alterId = 0
+
+            return vmess
+        }
         fun findAllVmessUrls(data: CharSequence?, feature: Profile? = null) = pattern_vmess.findAll(data
                 ?: "").map {
             val server = it.groupValues[1]
@@ -151,15 +222,14 @@ data class Profile(
             try {
                 val indexSplit = server.indexOf("?")
                 if (indexSplit > 0) {
-                    null
-                    //profile = ResolveVmess4Kitsunebi(server,subid)
+                    profileFromVmessBean(ResolveVmess4Kitsunebi(server),profile)
                 } else {
                     var result = server.replace(VMESS_PROTOCOL, "")
                     result = decodeForVmess(result)
+                    //Log.e("vmess://",result)
                     if (TextUtils.isEmpty(result)) {
                         null
                     }
-                    //Log.e("VmessQRCode::class.java",VmessQRCode::class.java.toString())
                     var vmessQRCode = VmessQRCode()
                     vmessQRCode = Gson().fromJson(result, vmessQRCode::class.java)
                     if (TextUtils.isEmpty(vmessQRCode.add)
@@ -170,13 +240,13 @@ data class Profile(
                     ) {
                         null
                     }
-                    profile.profileType = "vmess"
+                    profile.profileType= AppConfig.EConfigType.vmess
                     profile.method = "auto"
                     profile.network = "tcp"
                     profile.headerType = "none"
                     profile.host = vmessQRCode.add
                     profile.name = vmessQRCode.ps
-                    if (profile.name==VpnEncrypt.v2vpnRemark)profile.name = profile.host.substring(0,5)+"..."
+                    //if (profile.name==VpnEncrypt.v2vpnRemark)profile.name = profile.host.substring(0,5)+"..."
                     profile.remotePort = parseInt(vmessQRCode.port)
                     profile.password = vmessQRCode.id
                     profile.alterId = parseInt(vmessQRCode.aid)
@@ -185,13 +255,16 @@ data class Profile(
                     profile.requestHost = vmessQRCode.host
                     profile.path = vmessQRCode.path
                     profile.streamSecurity = vmessQRCode.tls
+                    profile.allowInsecure = vmessQRCode.allowInsecure?:"false"
+                    profile.SNI = vmessQRCode.sni?:""
                     profile
                 }
-            } catch (e: IllegalArgumentException) {
-                Log.e(TAG, "Invalid SSR URI: ${it.value}")
+            } catch (e: Exception) {
+                printLog(e)
+                Log.e(TAG, "Invalid Vmess URI: ${it.value}")
                 null
             }
-        }.filterNotNull().toMutableSet()
+        }.filterNotNull()
 
         fun findAllSSRUrls(data: CharSequence?, feature: Profile? = null) = pattern_ssr.findAll(data
                 ?: "").map {
@@ -201,6 +274,7 @@ data class Profile(
                 if (match != null) {
                     val profile = Profile()
                     feature?.copyFeatureSettingsTo(profile)
+                    profile.profileType= AppConfig.EConfigType.shadowsocks
                     profile.host = match.groupValues[2].toLowerCase(Locale.ENGLISH)
                     profile.remotePort = match.groupValues[3].toInt()
                     profile.method = match.groupValues[5].toLowerCase(Locale.ENGLISH)
@@ -224,10 +298,68 @@ data class Profile(
                 Log.e(TAG, "Invalid SSR URI: ${it.value}")
                 null
             }
-        }.filterNotNull().toMutableSet()
+        }.filterNotNull()
 
-        fun findAllSSUrls(data: CharSequence?, feature: Profile? = null) = findAllUrls(data,feature).toMutableSet()
-        fun findAllUrls(data: CharSequence?, feature: Profile? = null) = pattern.findAll(data ?: "").map {
+        fun findAllUrls(response: CharSequence?, feature: Profile? = null):MutableSet<Profile> {
+            var profilesSet:MutableSet<Profile> = LinkedHashSet<Profile>()
+            val ssrProfiles = findAllSSRUrls(response, feature)
+            val ssPofiles = findAllSSUrls(response, feature)
+            val vmessProfiles= findAllVmessUrls(response, feature)
+            val vlessProfiles= findAllVlessUrls(response, feature)
+            if(vlessProfiles.count()>0)profilesSet.addAll(vlessProfiles)
+            if(vmessProfiles.count()>0)profilesSet.addAll(vmessProfiles)
+            if(ssPofiles.count()>0)profilesSet.addAll(ssPofiles)
+            if(ssrProfiles.count()>0)profilesSet.addAll(ssrProfiles)
+            return profilesSet
+        }
+        fun findAllVlessUrls(data: CharSequence?, feature: Profile? = null) = pattern_vless.findAll(data ?: "").map {
+            try {
+                //Log.e("vless----",it.value)
+                val uri = it.value.toUri()
+                val profile = Profile()
+                feature?.copyFeatureSettingsTo(profile)
+                profile.profileType = AppConfig.EConfigType.vless
+                profile.password = uri.userInfo.toString()
+
+                // bug in Android: https://code.google.com/p/android/issues/detail?id=192855
+                val javaURI = URI(it.value)
+                profile.host = javaURI.host ?: ""
+                if (profile.host.firstOrNull() == '[' && profile.host.lastOrNull() == ']') {
+                    profile.host = profile.host.substring(1, profile.host.length - 1)
+                }
+                profile.remotePort = javaURI.port
+                profile.method = uri.getQueryParameter("encryption")?:"none"
+                profile.network = uri.getQueryParameter("type")!!
+                profile.headerType = uri.getQueryParameter("headerType")?:"none"
+                profile.requestHost = uri.getQueryParameter("host")?:""
+                profile.path = uri.getQueryParameter("path")?:"/"
+
+                if(profile.network == "h2" && profile.requestHost=="")profile.requestHost=profile.host
+
+                if(profile.network == "quic"){
+                    profile.requestHost=uri.getQueryParameter("quicSecurity")?:"none"
+                    profile.path = uri.getQueryParameter("key")?:""
+                }
+
+                if(profile.network == "kcp")profile.path = uri.getQueryParameter("seed")?:"seed"
+                if(profile.network == "tcp")profile.path = ""
+
+                profile.streamSecurity = uri.getQueryParameter("security")?:"tls"
+                profile.SNI = uri.getQueryParameter("sni")?:""
+                profile.xtlsflow = uri.getQueryParameter("flow")?:""
+
+                if(isIpAddress(profile.host) && profile.SNI=="" && profile.requestHost!="")profile.SNI=profile.requestHost
+
+                profile.name = uri.fragment ?: ""
+                profile
+            }
+            catch (e:Exception){
+                Log.e(TAG, "Invalid URI: ${it.value}")
+                null
+            }
+        }.filterNotNull()
+
+        fun findAllSSUrls(data: CharSequence?, feature: Profile? = null) = pattern.findAll(data ?: "").map {
             val uri = it.value.toUri()
             try {
                 if (uri.userInfo == null) {
@@ -235,6 +367,7 @@ data class Profile(
                     if (match != null) {
                         val profile = Profile()
                         feature?.copyFeatureSettingsTo(profile)
+                        profile.profileType= AppConfig.EConfigType.shadowsocks
                         profile.method = match.groupValues[1].toLowerCase(Locale.ENGLISH)
                         profile.password = match.groupValues[2]
                         profile.host = match.groupValues[3]
@@ -243,7 +376,7 @@ data class Profile(
                         profile.name = uri.fragment
                         profile
                     } else {
-                        Log.e(TAG, "Unrecognized URI: ${it.value}")
+                        Log.w(TAG, "Unrecognized URI")
                         null
                     }
                 } else {
@@ -252,6 +385,7 @@ data class Profile(
                     if (match != null) {
                         val profile = Profile()
                         feature?.copyFeatureSettingsTo(profile)
+                        profile.profileType= AppConfig.EConfigType.shadowsocks
                         profile.method = match.groupValues[1]
                         profile.password = match.groupValues[2]
                         // bug in Android: https://code.google.com/p/android/issues/detail?id=192855
@@ -374,6 +508,12 @@ data class Profile(
         @Query("SELECT * FROM `Profile` WHERE `id` = :id")
         operator fun get(id: Long): Profile?
 
+        @Query("SELECT * FROM `Profile` WHERE `host` = :host LIMIT 1")
+        fun getByHost(host: String): Profile?
+
+        @Query("SELECT * FROM `Profile` WHERE `host` = :host and `remotePort` = :port and `path` = :path and `profileType` = :profileType and `streamSecurity` = :streamSecurity and `SNI` = :SNI LIMIT 1")
+        fun getSameProfile(host: String,port:Int,path: String,profileType: String,streamSecurity: String,SNI: String): Profile?
+
         @Query("SELECT * FROM `Profile` WHERE `Subscription` != 2 ORDER BY `userOrder`")
         fun listActive(): List<Profile>
 
@@ -421,7 +561,7 @@ data class Profile(
         profile.udpdns = udpdns
     }
 
-    fun toUri(): Uri {
+    fun toSsUri(): Uri {
         val auth = Base64.encodeToString("$method:$password".toByteArray(),
                 Base64.NO_PADDING or Base64.NO_WRAP or Base64.URL_SAFE)
         val wrappedHost = if (host.contains(':')) "[$host]" else host
@@ -435,13 +575,97 @@ data class Profile(
         if (!name.isNullOrEmpty()) builder.fragment(name)
         return builder.build()
     }
+    fun toVmessUri(): String {
+        if (isBuiltin()) return ""
+        try {
+            val vmess = ProfileManager.profileToVmessBean(this)
+                val vmessQRCode = VmessQRCode()
+                vmessQRCode.v = vmess.configVersion.toString()
+                vmessQRCode.ps = vmess.remarks
+                vmessQRCode.add = vmess.address
+                vmessQRCode.port = vmess.port.toString()
+                vmessQRCode.id = vmess.id
+                vmessQRCode.aid = vmess.alterId.toString()
+                vmessQRCode.net = vmess.network
+                vmessQRCode.type = vmess.headerType
+                vmessQRCode.host = vmess.requestHost
+                vmessQRCode.path = vmess.path
+                vmessQRCode.tls = vmess.streamSecurity
+            vmessQRCode.sni = vmess.SNI
+            vmessQRCode.allowInsecure = vmess.allowInsecure
 
-    fun isSameAs(other: Profile): Boolean = other.host == host && other.remotePort == remotePort &&
-            other.password == password && other.method == method
+                val json = Gson().toJson(vmessQRCode)
+                val conf = VMESS_PROTOCOL + encodeForVmess(json)
+                return conf
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return ""
+        }
+    }
+    fun toVlessUri(): String {
+        if (isBuiltin()) return ""
+        try {
+            var conf = VLESS_PROTOCOL + password +"@"+host+":"+remotePort+"?encryption="+method
+            conf=conf+"&type="+network
 
-    override fun toString() = toUri().toString()
+            if(streamSecurity!="")conf=conf+"&security="+streamSecurity
+            if(SNI!="")conf=conf+"&sni="+SNI
+            if(allowInsecure!="false")conf=conf+"&allowInsecure="+allowInsecure
+            if(xtlsflow!="")conf=conf+"&flow="+xtlsflow
+            when (network){
+                "ws"  ->{
+                    if(path!="")conf=conf+"&path="+URLEncoder.encode(path?:"/", "utf-8")
+                    if(requestHost!="")conf=conf+"&host="+ URLEncoder.encode(requestHost, "utf-8")
+                }
+                "h2"  ->{
+                    if(path!="")conf=conf+"&path="+URLEncoder.encode(path?:"/", "utf-8")
+                    if(requestHost!="")conf=conf+"&host="+ URLEncoder.encode(requestHost, "utf-8")
+                }
+                "kcp"  ->{
+                    if(headerType!="")conf=conf+"&headerType="+headerType
+                    if(path!="")conf=conf+"&seed="+ URLEncoder.encode(path, "utf-8")
+                }
+                "quic"  ->{
+                    if(requestHost!="")conf=conf+"&quicSecurity="+requestHost
+                    if(headerType!="")conf=conf+"&headerType="+headerType
+                    if(requestHost!="" && requestHost!="none" && path!="")conf=conf+"&key="+ URLEncoder.encode(path, "utf-8")
+                }
+                "tcp"  ->{
+                    if(headerType!="")conf=conf+"&headerType="+headerType
+                    if(requestHost!="")conf=conf+"&host="+URLEncoder.encode(requestHost, "utf-8")
+                }
+                "grpc"  ->{
+
+                }
+                else  -> {
+
+                }
+            }
+
+            if (name!="")conf=conf+"#"+ URLEncoder.encode(name?:"", "utf-8")
+
+            return conf
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return ""
+        }
+    }
+    fun isSameAs(other: Profile): Boolean =
+        other.host == host && other.remotePort == remotePort && other.path==path
+                && other.profileType==profileType && other.streamSecurity==streamSecurity && other.SNI==SNI
+
+    override fun toString() : String {
+        if(profileType=="vmess")
+            return toVmessUri()
+        else if(profileType=="vless")
+            return toVlessUri()
+        else if (profileType=="ss" || profileType=="shadowsocks") // v5.1.28 before ss
+            return toSsUri().toString()
+        else return ""
+    }
 
     fun toJson(profiles: LongSparseArray<Profile>? = null): JSONObject = JSONObject().apply {
+        if (profileType=="vmess" || profileType=="vless")return@apply
         put("server", host)
         put("server_port", remotePort)
         put("password", password)
@@ -492,6 +716,18 @@ data class Profile(
         DataStore.plugin = plugin ?: ""
         DataStore.udpFallback = udpFallback
         DataStore.privateStore.remove(Key.dirty)
+        //add for vmess begin
+        DataStore.privateStore.putString(Key.profileType,profileType)
+        DataStore.privateStore.putString(Key.alterId,alterId.toString())
+        DataStore.privateStore.putString(Key.network,network)
+        DataStore.privateStore.putString(Key.headerType,headerType)
+        DataStore.privateStore.putString(Key.requestHost,requestHost)
+        DataStore.privateStore.putString(Key.path,path)
+        DataStore.privateStore.putString(Key.streamSecurity,streamSecurity)
+        DataStore.privateStore.putString(Key.allowInsecure,allowInsecure)
+        DataStore.privateStore.putString(Key.SNI,SNI)
+        DataStore.privateStore.putString(Key.xtlsflow,xtlsflow)
+        //add for vmess end
     }
 
     fun deserialize() {
@@ -515,6 +751,18 @@ data class Profile(
         individual = DataStore.individual
         plugin = DataStore.plugin
         udpFallback = DataStore.udpFallback
+        //add for v2ray begin
+        profileType=DataStore.privateStore.getString(Key.profileType) ?: AppConfig.EConfigType.vless
+        alterId=(DataStore.privateStore.getString(Key.alterId)?: "64").toInt()
+        network=DataStore.privateStore.getString(Key.network) ?: "tcp"
+        headerType=DataStore.privateStore.getString(Key.headerType) ?: ""
+        requestHost=DataStore.privateStore.getString(Key.requestHost) ?: ""
+        path=DataStore.privateStore.getString(Key.path) ?: ""
+        streamSecurity=DataStore.privateStore.getString(Key.streamSecurity) ?: ""
+        allowInsecure=DataStore.privateStore.getString(Key.allowInsecure) ?: "false"
+        SNI=DataStore.privateStore.getString(Key.SNI) ?: ""
+        xtlsflow=DataStore.privateStore.getString(Key.xtlsflow) ?: ""
+        //add for v2ray end
     }
     fun isBuiltin(): Boolean {
         return VpnEncrypt.vpnGroupName == url_group

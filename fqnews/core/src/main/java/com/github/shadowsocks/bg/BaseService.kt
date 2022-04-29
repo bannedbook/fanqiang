@@ -222,7 +222,7 @@ object BaseService {
             val (profile, fallback) = Core.currentProfile
                     ?: return stopRunner(false, (this as Context).getString(R.string.profile_empty))
 
-            Log.e("reload:",profile.name)
+            profile.name?.let { Log.e("reload:", it) }
 
             if (profile.host.isEmpty() || profile.password.isEmpty() ||
                     fallback != null && (fallback.host.isEmpty() || fallback.password.isEmpty())) {
@@ -233,7 +233,7 @@ object BaseService {
             when {
                 s == State.Stopped -> startRunner()
                 s.canStop -> stopRunner(true)
-                else -> printLog(Log.WARN, tag, "Illegal state when invoking use: $s")
+                else -> printLog("Illegal state when invoking use: $s")
             }
         }
 
@@ -272,7 +272,7 @@ object BaseService {
             // channge the state
             data.changeState(State.Stopping)
             GlobalScope.launch(Dispatchers.Main.immediate) {
-                Core.analytics.logEvent("stop", bundleOf(Pair(FirebaseAnalytics.Param.METHOD, tag)))
+                //Core.analytics.logEvent("stop", bundleOf(Pair(FirebaseAnalytics.Param.METHOD, tag)))
                 data.connectingJob?.cancelAndJoin() // ensure stop connecting first
                 this@Interface as Service
                 // we use a coroutineScope here to allow clean-up in parallel
@@ -347,7 +347,7 @@ object BaseService {
             }
 
             data.notification = createNotification(profile.formattedName)
-            Core.analytics.logEvent("start", bundleOf(Pair(FirebaseAnalytics.Param.METHOD, tag)))
+            //Core.analytics.logEvent("start", bundleOf(Pair(FirebaseAnalytics.Param.METHOD, tag)))
 
             data.changeState(State.Connecting)
             data.connectingJob = GlobalScope.launch(Dispatchers.Main) {

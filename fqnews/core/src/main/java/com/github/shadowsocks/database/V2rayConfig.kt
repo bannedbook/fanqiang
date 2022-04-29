@@ -40,7 +40,7 @@ data class V2rayConfig(
 
         data class OutSettingsBean(var vnext: List<VnextBean>?= listOf(VnextBean()),
                                    var servers: List<ServersBean>?=listOf(ServersBean()),
-                                   var response: Response=Response()) {
+                                   var response: Response?=Response()) {
 
             data class VnextBean(var address: String ="",
                                  var port: Int = 0,
@@ -48,8 +48,10 @@ data class V2rayConfig(
 
                 data class UsersBean(var id: String="",
                                      var alterId: Int=2,
+                                     var encryption: String="none",
                                      var security: String="",
-                                     var level: Int=2)
+                                     var level: Int=2,
+                                     var flow:String?="")
             }
 
             data class ServersBean(var address: String="",
@@ -65,10 +67,11 @@ data class V2rayConfig(
         data class StreamSettingsBean(var network: String="",
                                       var security: String="",
                                       var tcpSettings: TcpsettingsBean?=TcpsettingsBean(),
-                                      var kcpsettings: KcpsettingsBean?=KcpsettingsBean(),
-                                      var wssettings: WssettingsBean?=WssettingsBean(),
+                                      var kcpSettings: KcpsettingsBean?=KcpsettingsBean(),
+                                      var wsSettings: WssettingsBean?=WssettingsBean(),
                                       var httpsettings: HttpsettingsBean?=HttpsettingsBean(),
-                                      var tlssettings: TlssettingsBean?=TlssettingsBean(),
+                                      var tlsSettings: TlssettingsBean?=TlssettingsBean(),
+                                      var xtlsSettings: TlssettingsBean?=TlssettingsBean(),
                                       var quicsettings: QuicsettingBean?=QuicsettingBean()
         ) {
 
@@ -85,20 +88,20 @@ data class V2rayConfig(
                                        var downlinkCapacity: Int = 100,
                                        var congestion: Boolean = false,
                                        var readBufferSize: Int = 1,
+                                       var seed:String = "",
                                        var writeBufferSize: Int = 1,
                                        var header: HeaderBean = HeaderBean()) {
                 data class HeaderBean(var type: String = "none")
             }
 
-            data class WssettingsBean(var connectionReuse: Boolean = true,
-                                      var path: String = "",
+            data class WssettingsBean(var path: String = "",
                                       var headers: HeadersBean = HeadersBean()) {
                 data class HeadersBean(var Host: String = "")
             }
 
             data class HttpsettingsBean(var host: List<String> = ArrayList<String>(), var path: String = "")
 
-            data class TlssettingsBean(var allowInsecure: Boolean = true,
+            data class TlssettingsBean(var allowInsecure: Boolean = false,
                                        var serverName: String = "")
 
             data class QuicsettingBean(var security: String = "none",
@@ -108,7 +111,7 @@ data class V2rayConfig(
             }
         }
 
-        data class MuxBean(var enabled: Boolean = false)
+        data class MuxBean(var enabled: Boolean = false, var concurrency:Int = -1)
     }
 
     //data class DnsBean(var servers: List<String>)

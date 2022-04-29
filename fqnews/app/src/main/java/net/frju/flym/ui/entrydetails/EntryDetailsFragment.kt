@@ -368,7 +368,7 @@ class EntryDetailsFragment : Fragment() {
                         }
 					} catch (e: Exception) {
                         //e.printStackTrace()
-						Log.e("ads---", e.message)
+						Log.e("ads---", e.message?:"")
 					}
 
                     entry_view.setEntry(entryWithFeed, preferFullText)

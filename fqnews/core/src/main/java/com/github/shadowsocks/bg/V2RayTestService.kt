@@ -12,22 +12,20 @@ import android.os.ParcelFileDescriptor
 import android.os.StrictMode
 import android.util.Log
 import com.github.shadowsocks.BootReceiver
-import com.github.shadowsocks.Core
 import com.github.shadowsocks.Core.defaultDPreference
-import com.github.shadowsocks.aidl.ShadowsocksConnection
 import com.github.shadowsocks.core.R
 import com.github.shadowsocks.database.AppConfig
 import com.github.shadowsocks.database.Profile
 import com.github.shadowsocks.database.ProfileManager
-import com.github.shadowsocks.database.VmessBean
-import com.github.shadowsocks.net.DefaultNetworkListener
 import com.github.shadowsocks.preference.DataStore
-import com.github.shadowsocks.utils.*
+import com.github.shadowsocks.utils.Action
+import com.github.shadowsocks.utils.packagePath
+import com.github.shadowsocks.utils.printLog
+import com.github.shadowsocks.utils.readableMessage
 import go.Seq
 import kotlinx.coroutines.*
 import libv2ray.Libv2ray
 import libv2ray.V2RayVPNServiceSupportsSet
-import java.io.File
 import java.net.UnknownHostException
 
 class V2RayTestService : Service() , BaseService.Interface {
@@ -38,7 +36,6 @@ class V2RayTestService : Service() , BaseService.Interface {
             ServiceNotification(this, profileName, "service-proxy", true)
     override fun onBind(intent: Intent) = super.onBind(intent)
     override fun startRunner() {
-        //Log.e("startRunner","...")
         this as Context
         if (Build.VERSION.SDK_INT >= 26) startForegroundService(Intent(this, javaClass))
         else startService(Intent(this, javaClass))
@@ -55,6 +52,7 @@ class V2RayTestService : Service() , BaseService.Interface {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
         v2rayPoint.packageName = packagePath(applicationContext)
+        v2rayPoint.vpnMode=false
         Seq.setContext(applicationContext)
     }
 
@@ -62,7 +60,7 @@ class V2RayTestService : Service() , BaseService.Interface {
                 data.connectingJob = GlobalScope.launch(Dispatchers.Main) {
                     try {
                         activeProfile = ProfileManager.getProfile(DataStore.profileId)!!
-                        genStoreV2rayConfig()
+                        ProfileManager.genStoreV2rayConfig(activeProfile,true)
                         startV2ray()
                     } catch (_: CancellationException) {
                         // if the job was cancelled, it is canceller's responsibility to call stopRunner
@@ -77,51 +75,7 @@ class V2RayTestService : Service() , BaseService.Interface {
                 }
                 return START_NOT_STICKY
     }
-    fun profileToVmessBean(profile: Profile): VmessBean {
-        var vmess = VmessBean()
-        vmess.guid=profile.id.toString()
-        vmess.remoteDns=profile.remoteDns
-        vmess.address=profile.host
-        vmess.alterId=profile.alterId
-        vmess.headerType=profile.headerType
-        vmess.id=profile.password
-        vmess.network=profile.network
-        vmess.path=profile.path
-        vmess.port=profile.remotePort
-        vmess.remarks= profile.name.toString()
-        vmess.requestHost=profile.requestHost
-        vmess.security=profile.method
-        vmess.streamSecurity=profile.streamSecurity
-        vmess.subid=profile.url_group
-        vmess.testResult=profile.elapsed.toString()
 
-        if(profile.route=="all")vmess.route="0"
-        else if(profile.route=="bypass-lan")vmess.route="1"
-        else if(profile.route=="bypass-china")vmess.route="2"
-        else if(profile.route=="bypass-lan-china")vmess.route="3"
-        else vmess.route="0"
-
-        return vmess
-    }
-    /**
-     * gen and store v2ray config file
-     */
-    fun genStoreV2rayConfig(): Boolean {
-        try {
-            val result = V2rayConfigUtil.getV2rayConfig(Core.app, profileToVmessBean(activeProfile))
-            if (result.status) {
-                defaultDPreference.setPrefString(AppConfig.PREF_CURR_CONFIG, result.content)
-                defaultDPreference.setPrefString(AppConfig.PREF_CURR_CONFIG_GUID, activeProfile.id.toString())
-                defaultDPreference.setPrefString(AppConfig.PREF_CURR_CONFIG_NAME, activeProfile.name)
-                return true
-            } else {
-                return false
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return false
-        }
-    }
 
     override fun onLowMemory() {
         stopV2Ray()
@@ -141,7 +95,6 @@ class V2RayTestService : Service() , BaseService.Interface {
     private fun startV2ray() {
         if (!v2rayPoint.isRunning) {
             val broadname="$packageName.SERVICE"
-            //Log.e("broadname",broadname)
             if (!data.closeReceiverRegistered) {
                 registerReceiver(data.closeReceiver, IntentFilter().apply {
                     addAction(Action.RELOAD)
@@ -185,7 +138,6 @@ class V2RayTestService : Service() , BaseService.Interface {
         data.changeState(BaseService.State.Stopping)
         GlobalScope.launch(Dispatchers.Main.immediate) {
             data.connectingJob?.cancelAndJoin() // ensure stop connecting first
-            stopV2Ray()
             // clean up receivers
             val data = data
             if (data.closeReceiverRegistered) {
@@ -194,6 +146,7 @@ class V2RayTestService : Service() , BaseService.Interface {
             }
             data.notification?.destroy()
             data.notification = null
+            stopV2Ray()
             // change the state
             data.changeState(BaseService.State.Stopped, msg)
 

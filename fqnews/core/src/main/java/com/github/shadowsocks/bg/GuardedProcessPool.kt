@@ -63,10 +63,10 @@ class GuardedProcessPool(private val onFatal: suspend (IOException) -> Unit) : C
             try {
                 while (true) {
                     thread(name = "stderr-$cmdName") {
-                        streamLogger(process.errorStream) { printLog(Log.ERROR, cmdName, it) }
+                        streamLogger(process.errorStream) { printLog( it) }
                     }
                     thread(name = "stdout-$cmdName") {
-                        streamLogger(process.inputStream) { printLog(Log.VERBOSE, cmdName, it) }
+                        streamLogger(process.inputStream) { printLog(it) }
                         // this thread also acts as a daemon thread for waitFor
                         runBlocking { exitChannel.send(process.waitFor()) }
                     }
@@ -76,7 +76,7 @@ class GuardedProcessPool(private val onFatal: suspend (IOException) -> Unit) : C
                     when {
                         SystemClock.elapsedRealtime() - startTime < 1000 -> throw IOException(
                                 "$cmdName exits too fast (exit code: $exitCode)")
-                        exitCode == 128 + OsConstants.SIGKILL -> printLog(Log.WARN, TAG, "$cmdName was killed")
+                        exitCode == 128 + OsConstants.SIGKILL -> printLog("$cmdName was killed")
                         else -> printLog(IOException("$cmdName unexpectedly exits with code $exitCode"))
                     }
                     printLog(Log.DEBUG, TAG,

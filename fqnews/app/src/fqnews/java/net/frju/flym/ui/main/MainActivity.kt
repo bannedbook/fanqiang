@@ -377,7 +377,7 @@ class MainActivity : AppCompatActivity(), MainNavigator, AnkoLogger {
 		// Add feed urls from Share menu
 		if (intent?.action.equals(Intent.ACTION_SEND)) {
 			if (intent?.hasExtra(Intent.EXTRA_TEXT) == true) {
-				val search = intent.getStringExtra(Intent.EXTRA_TEXT)
+				val search = intent.getStringExtra(Intent.EXTRA_TEXT)?:"";
 				FeedSearchDialog(this, search).show()
 			}
 			setIntent(null)
@@ -418,11 +418,6 @@ class MainActivity : AppCompatActivity(), MainNavigator, AnkoLogger {
 		})
 		val dialog: AlertDialog? = builder?.create()
 		dialog?.show()
-	}
-
-	override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
-		super.onRestoreInstanceState(savedInstanceState)
-		feedAdapter.onRestoreInstanceState(savedInstanceState)
 	}
 
 	override fun onSaveInstanceState(outState: Bundle) {

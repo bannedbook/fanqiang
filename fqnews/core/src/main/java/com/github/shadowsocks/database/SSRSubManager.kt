@@ -237,7 +237,7 @@ object SSRSubManager {
             var profilesSet:MutableSet<Profile> = LinkedHashSet<Profile>()
             //val ssrProfiles = Profile.findAllSSRUrls(response, Core.currentProfile?.first)
             //val ssPofiles = Profile.findAllSSUrls(response, Core.currentProfile?.first)
-            val v2Profiles= Profile.findAllVmessUrls(response, Core.currentProfile?.first)
+            val v2Profiles= Profile.findAllUrls(response, Core.currentProfile?.first)
             //profilesSet.addAll(ssPofiles)
             //profilesSet.addAll(ssrProfiles)
             profilesSet.addAll(v2Profiles)

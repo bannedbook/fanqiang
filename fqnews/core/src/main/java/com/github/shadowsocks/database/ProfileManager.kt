@@ -22,15 +22,19 @@ package com.github.shadowsocks.database
 
 import SpeedUpVPN.VpnEncrypt
 import android.database.sqlite.SQLiteCantOpenDatabaseException
+import android.util.Base64
 import android.util.Log
 import android.util.LongSparseArray
 import com.github.shadowsocks.Core
+import com.github.shadowsocks.Core.defaultDPreference
 import com.github.shadowsocks.preference.DataStore
 import com.github.shadowsocks.utils.DirectBoot
+import com.github.shadowsocks.utils.V2rayConfigUtil
 import com.github.shadowsocks.utils.forEachTry
 import com.github.shadowsocks.utils.printLog
 import com.google.gson.JsonStreamParser
 import org.json.JSONArray
+import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
 import java.sql.SQLException
@@ -50,10 +54,21 @@ object ProfileManager {
 
     @Throws(SQLException::class)
     fun createProfile(profile: Profile = Profile()): Profile {
-        profile.id = 0
-        profile.userOrder = PrivateDatabase.profileDao.nextOrder() ?: 0
-        profile.id = PrivateDatabase.profileDao.create(profile)
-        listener?.onAdd(profile)
+        var existOne=PrivateDatabase.profileDao.getSameProfile(profile.host,profile.remotePort,profile.path,profile.profileType,profile.streamSecurity,profile.SNI)
+        if (existOne==null) {
+            profile.id = 0
+            profile.userOrder = PrivateDatabase.profileDao.nextOrder() ?: 0
+            profile.id = PrivateDatabase.profileDao.create(profile)
+            listener?.onAdd(profile)
+        }
+        else {
+            existOne.copyFeatureSettingsTo(profile)
+            profile.id=existOne.id
+            profile.tx=existOne.tx
+            profile.rx=existOne.rx
+            profile.elapsed=existOne.elapsed
+            updateProfile(profile)
+        }
         return profile
     }
 
@@ -209,21 +224,66 @@ object ProfileManager {
         emptyList()
     }
 
-    fun getFirstVPNServer(): Profile? {
+    fun getRandomVPNServer(): Profile? {
         try {
-            return getAllProfilesByGroup(VpnEncrypt.vpnGroupName)?.first()
+            val profiles=getAllProfilesByGroup(VpnEncrypt.vpnGroupName)
+            return if (profiles.isNotEmpty())
+                profiles.random()
+            else
+                getAllProfiles()?.random()
         } catch (ex: Exception) {
-            Log.e("speedup.vpn",this.javaClass.name+":"+ex.javaClass.name)
+            Log.e("getRandomVPNServer",this.javaClass.name+":"+ex.javaClass.name)
             return null
         }
     }
 
-    fun getRandomVPNServer(): Profile? {
+    fun profileToVmessBean(profile: Profile): VmessBean {
+        var vmess = VmessBean()
+        vmess.configType=profile.profileType
+        vmess.guid=profile.id.toString()
+        vmess.remoteDns=profile.remoteDns
+        vmess.address=profile.host
+        vmess.alterId=profile.alterId
+        vmess.headerType=profile.headerType
+        vmess.id=profile.password
+        vmess.network=profile.network
+        vmess.path=profile.path
+        vmess.port=profile.remotePort
+        vmess.remarks= profile.name.toString()
+        vmess.requestHost=profile.requestHost
+        vmess.security=profile.method
+        vmess.streamSecurity=profile.streamSecurity
+        vmess.allowInsecure=profile.allowInsecure
+        vmess.SNI=profile.SNI
+        vmess.flow = profile.xtlsflow
+        vmess.subid=profile.url_group
+        vmess.testResult=profile.elapsed.toString()
+
+        if(profile.route=="all")vmess.route="0"
+        else if(profile.route=="bypass-lan")vmess.route="1"
+        else if(profile.route=="bypass-china")vmess.route="2"
+        else if(profile.route=="bypass-lan-china")vmess.route="3"
+        else vmess.route="0"
+
+        return vmess
+    }
+    /**
+     * gen and store v2ray config file
+     */
+    fun genStoreV2rayConfig(activeProfile:Profile,isTest:Boolean=false): Boolean {
         try {
-            return getAllProfilesByGroup(VpnEncrypt.vpnGroupName)?.random()
-        } catch (ex: Exception) {
-            Log.e("speedup.vpn",this.javaClass.name+":"+ex.javaClass.name)
-            return null
+            val result = V2rayConfigUtil.getV2rayConfig(Core.app, profileToVmessBean(activeProfile),isTest)
+            if (result.status) {
+                defaultDPreference.setPrefString(AppConfig.PREF_CURR_CONFIG, result.content)
+                defaultDPreference.setPrefString(AppConfig.PREF_CURR_CONFIG_GUID, activeProfile.id.toString())
+                defaultDPreference.setPrefString(AppConfig.PREF_CURR_CONFIG_NAME, activeProfile.name)
+                return true
+            } else {
+                return false
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return false
         }
     }
 }

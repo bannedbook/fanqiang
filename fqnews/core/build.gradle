@@ -13,7 +13,6 @@ android {
         versionName rootProject.versionName
 
         consumerProguardFiles 'proguard-rules.pro'
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         externalNativeBuild {
             ndkBuild {
@@ -51,7 +50,7 @@ dependencies {
     implementation project(':dpreference')
     implementation project(':libv2ray')
     //implementation project(':v2ray-lib-FQNews')
-    api 'androidx.fragment:fragment-ktx:1.2.1'
+    api 'androidx.fragment:fragment-ktx:1.2.5'
     api "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
     api "androidx.lifecycle:lifecycle-livedata-core-ktx:$lifecycleVersion"
     api 'androidx.preference:preference:1.1.0'
@@ -65,7 +64,7 @@ dependencies {
     // Recommended: Add the Google Analytics SDK.
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
     implementation 'com.google.firebase:firebase-config:19.2.0'
-    api 'dnsjava:dnsjava:2.1.9'
+    api 'dnsjava:dnsjava:3.2.1'
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesVersion"
     api 'org.connectbot.jsocks:jsocks:1.0.0'

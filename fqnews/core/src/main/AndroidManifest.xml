@@ -74,8 +74,6 @@
 
         <service android:name="com.google.firebase.components.ComponentDiscoveryService"
                  android:directBootAware="true"/>
-        <provider android:name="com.crashlytics.android.CrashlyticsInitProvider"
-                  tools:node="remove"/>
         <provider android:name="com.google.firebase.provider.FirebaseInitProvider"
                   tools:node="remove"/>
         <service android:name="androidx.room.MultiInstanceInvalidationService"

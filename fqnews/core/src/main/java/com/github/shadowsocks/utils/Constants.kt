@@ -28,7 +28,16 @@ object Key {
     const val DB_PUBLIC = "config.db"
     const val DB_PROFILE = "profile.db"
 
+    const val profileType = "profileType"
+    const val alterId = "alterId"
+    const val network = "network"
+    const val headerType = "headerType"
+    const val requestHost = "requestHost"
+    const val path = "path"
+    const val streamSecurity = "streamSecurity"
+
     const val id = "profileId"
+    const val oldId = "oldProfileId"
     const val name = "profileName"
     const val group = "groupName"
 
@@ -63,6 +72,10 @@ object Key {
     const val method = "encMethod"
     const val remotePort = "remotePortNum"
     const val remoteDns = "remoteDns"
+
+    const val allowInsecure = "allowInsecure"
+    const val SNI = "SNI"
+    const val xtlsflow = "xtlsflow"
 
     const val plugin = "plugin"
     const val pluginConfigure = "plugin.configure"

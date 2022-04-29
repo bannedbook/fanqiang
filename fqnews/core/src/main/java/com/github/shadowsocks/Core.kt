@@ -52,7 +52,6 @@ import com.github.shadowsocks.database.SSRSubManager
 import com.github.shadowsocks.net.TcpFastOpen
 import com.github.shadowsocks.preference.DataStore
 import com.github.shadowsocks.utils.*
-import com.github.shadowsocks.work.UpdateCheck
 import com.google.firebase.FirebaseApp
 import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.coroutines.*
@@ -73,7 +72,6 @@ object Core {
     val notification by lazy { app.getSystemService<NotificationManager>()!! }
     val packageInfo: PackageInfo by lazy { getPackageInfo(app.packageName) }
     val deviceStorage by lazy { if (Build.VERSION.SDK_INT < 24) app else DeviceStorageApp(app) }
-    val analytics: FirebaseAnalytics by lazy { FirebaseAnalytics.getInstance(deviceStorage) }
     val directBootSupported by lazy {
         Build.VERSION.SDK_INT >= 24 && app.getSystemService<DevicePolicyManager>()?.storageEncryptionStatus ==
                 DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER
