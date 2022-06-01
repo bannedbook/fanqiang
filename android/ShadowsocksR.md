@@ -13,7 +13,7 @@ ShadowsocksR(R) 是在 Android 平台上的客户端软件，支持 ShadowsocksR
 
 ## 获取订阅
 
-从[V2ray机场，该机场暂无SSR节点，但有V2ray和SS节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)获取[V2ray订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)，或者也可以找[免费订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)
+从[V2ray机场，该机场暂无SSR节点，但有V2ray和SS节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)获取[V2ray订阅链接](https://w1.ddnsgo.xyz/auth/register?code=cd79)，或者也可以找[免费订阅链接](https://w1.ddnsgo.xyz/auth/register?code=cd79)
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
 https://cdn.v2free.net/auth/register?code=cd79

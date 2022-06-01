@@ -16,7 +16,7 @@ Shadowsocks for Android 是在 Android 平台上的客户端软件，支持 Shad
 
 注册机场获取SS节点URL或者找[免费SS节点](https://github.com/bannedbook/fanqiang/wiki/%E5%85%8D%E8%B4%B9ss%E8%B4%A6%E5%8F%B7)。
 
-这里我们推荐一个[V2ray机场，有SS免费节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)获取[V2ray订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)，或者也可以找[免费订阅链接](https://w1.v2dns.xyz/auth/register?code=cd79)
+这里我们推荐一个[V2ray机场，有SS免费节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)获取[V2ray订阅链接](https://w1.ddnsgo.xyz/auth/register?code=cd79)，或者也可以找[免费订阅链接](https://w1.ddnsgo.xyz/auth/register?code=cd79)
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
 https://cdn.v2free.net/auth/register?code=cd79

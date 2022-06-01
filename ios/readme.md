@@ -2,9 +2,9 @@
 
 **第一步、注册机场，获取免费翻墙节点**
 
-[![免费公益机场-不限流量](https://v2free.org/images/fbyt2.jpg)](https://w1.v2dns.xyz/auth/register?code=cd79)
+[![免费公益机场-不限流量](https://v2free.org/images/fbyt2.jpg)](https://w1.ddnsgo.xyz/auth/register?code=cd79)
 
-这里推荐V2free机场，点击注册链接：<a href="https://w1.v2dns.xyz/auth/register?code=cd79" target="_blank">w1.v2dns.xyz</a>，注册后在该网站用户中心拷贝 *V2Ray/SS节点* 订阅链接备用，然后在第二步中把订阅链接添加到Fair Plus VPN里即可使用。
+这里推荐V2free机场，点击注册链接：<a href="https://w1.ddnsgo.xyz/auth/register?code=cd79" target="_blank">w1.ddnsgo.xyz</a>，注册后在该网站用户中心拷贝 *V2Ray/SS节点* 订阅链接备用，然后在第二步中把订阅链接添加到Fair Plus VPN里即可使用。
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
 https://cdn.v2free.net/auth/register?code=cd79
