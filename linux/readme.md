@@ -6,9 +6,9 @@
 
 ![](https://v2free.org/docs/SSPanel/linux/clash_files/1946477.png)
 
-根据你的Linux版本选择相应的下载，我这里直接通过 wget 下载 clash-linux-amd64 版本。**建议不要使用1.9.0及更新版本。**
+根据你的Linux版本选择相应的下载，我这里直接通过 wget 下载 clash-linux-amd64 版本。
 
-    wget -O clash.gz https://github.com/Dreamacro/clash/releases/download/v1.7.1/clash-linux-amd64-v1.7.1.gz
+    wget -O clash.gz https://github.com/Dreamacro/clash/releases/download/v1.10.6/clash-linux-amd64-v1.10.6.gz
 
 解压到当前文件夹
 
