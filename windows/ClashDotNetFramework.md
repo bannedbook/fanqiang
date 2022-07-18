@@ -24,7 +24,7 @@ https://cdn.v2free.net/auth/register?code=cd79
 
 3\. 下载与安装
 ---------
-[点击下载ClashDotNetFramework](https://github.com/ClashDotNetFramework/ClashDotNetFramework/releases)
+[点击下载ClashDotNetFramework](https://github.com/bannedbook/fanqiang/releases)
 
 下载后解压全部文件，然后双击运行主程序即可。 
  
