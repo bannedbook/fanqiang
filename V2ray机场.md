@@ -1,6 +1,6 @@
 [![免费SS免费v2ray节点](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2free.jpg)](https://w1.ddnsgo.xyz/auth/register?code=cd79)
 
-[w1.ddnsgo.xyz](https://w1.ddnsgo.xyz/auth/register?code=cd79)是海外人士运营的高速翻墙服务，支持Windows/MAC/iOS/安卓/Linux/路由器等各平台高速翻墙：解锁大多数流媒体，1080P高清视频、4K高清视频秒开，超低延迟。普通无限流量节点+高速倍率流量优质节点二者相配合，可很好的平衡用户的预算和高端需求。时间就是金钱，花一点小钱，[提升翻墙体验](https://w1.ddnsgo.xyz/auth/register?code=cd79)非常划算，也可节省大把时间。注册也可获得免费SS/V2ray/vmess翻墙节点。
+[w1.ddnsgo.xyz](https://w1.ddnsgo.xyz/auth/register?code=cd79)是海外人士运营的高速翻墙服务，支持Windows/MAC/iOS/安卓/Linux/路由器等各平台高速翻墙：解锁大多数流媒体，1080P高清视频、4K高清视频秒开，超低延迟。普通无限流量节点+高速倍率流量优质节点二者相配合，可很好的平衡用户的预算和高端需求。时间就是金钱，花一点小钱，[提升翻墙体验](https://w1.ddnsgo.xyz/auth/register?code=cd79)非常划算，也可节省大把时间。注册也可获得免费V2ray/vmess翻墙节点。
 
 请大家使用我们的引荐链接：
 https://w1.ddnsgo.xyz/auth/register?code=cd79
