@@ -22,13 +22,13 @@ https://cdn.ddnsgo.xyz/auth/register?code=cd79
 
 ![](https://cdn.jsdelivr.net/gh/Alvin9999/pac2/v2fee/3.jpg)
 
-**打开商店——充值进行充值，充值方式：微信、支付宝、paypal和数字货币。**
+**打开商店——充值进行充值，充值方式：微信、支付宝、paypal和USDT数字货币。**
 
 ![](https://cdn.jsdelivr.net/gh/Alvin9999/pac2/v2fee/v2ray-003.PNG)
 
-**购买相应的套餐后，打开“用户中心”，在“快速使用”这里可以复制订阅链接以及所有节点信息，也可以在节点列表获取单个节点信息。**
+**购买相应的套餐后，在 用户中心 的 快速使用 处，点对应操作系统名称， 看相应教程和软件APP下载链接。 **
 
-![](https://cdn.jsdelivr.net/gh/Alvin9999/pac2/v2fee/6.jpg)
+![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/qstart.jpg)
 
 ![](https://cdn.jsdelivr.net/gh/Alvin9999/pac2/v2fee/8.jpg)
 
