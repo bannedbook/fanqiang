@@ -33,7 +33,7 @@
 点击注册链接：<a href="https://w1.ddnsgo.xyz/auth/register?code=cd79" target="_blank">w1.ddnsgo.xyz</a>，注册后在该网站用户中心获取clash订阅链接.
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
-https://cdn.v2free.net/auth/register?code=cd79
+https://cdn.ddnsgo.xyz/auth/register?code=cd79
 
 注册后免费获得1024M初始流量，每日[签到](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/checkin.jpg)可获得300-500M免费流量。
 注册登录后，用个人邀请链接 邀请新用户注册还可获得流量奖励，如果新用户成为付费用户，你还可以赚取高达20%终生佣金奖励。

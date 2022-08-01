@@ -6,7 +6,7 @@
 https://w1.ddnsgo.xyz/auth/register?code=cd79
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
-https://cdn.v2free.net/auth/register?code=cd79
+https://cdn.ddnsgo.xyz/auth/register?code=cd79
 
 **价格**
 

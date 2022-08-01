@@ -8,7 +8,7 @@
 ### [注册机场，获取免费V2ray翻墙节点，有10来个免费翻墙节点](https://w1.ddnsgo.xyz/auth/register?code=cd79)
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
-https://cdn.v2free.net/auth/register?code=cd79  
+https://cdn.ddnsgo.xyz/auth/register?code=cd79  
 
 
 ### 推荐免费翻墙软件（内置免费高速SSR服务器，长期更新）
