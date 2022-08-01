@@ -2,12 +2,11 @@
 
 [w1.ddnsgo.xyz](https://w1.ddnsgo.xyz/auth/register?code=cd79)是海外人士运营的高速翻墙服务，支持Windows/MAC/iOS/安卓/Linux/路由器等各平台高速翻墙：解锁大多数流媒体，1080P高清视频、4K高清视频秒开，超低延迟。普通无限流量节点+高速倍率流量优质节点二者相配合，可很好的平衡用户的预算和高端需求。时间就是金钱，花一点小钱，[提升翻墙体验](https://w1.ddnsgo.xyz/auth/register?code=cd79)非常划算，也可节省大把时间。注册也可获得免费SS/V2ray/vmess翻墙节点。
 
+请大家使用我们的引荐链接：
+https://w1.ddnsgo.xyz/auth/register?code=cd79
+
 教育网的网友如果打不开上面的链接，请使用这个链接：
-https://cdn.v2free.net/auth/register?code=cd79  
-
-**部分付费节点截图**
-
-![](https://cdn.jsdelivr.net/gh/Alvin9999/pac2/v2fee/v2ray-001.PNG)
+https://cdn.v2free.net/auth/register?code=cd79
 
 **价格**
 
