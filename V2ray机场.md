@@ -12,8 +12,6 @@ https://cdn.ddnsgo.xyz/auth/register?code=cd79
 
 月付20元、年付A套餐168元、年付B套餐258元、年付C套餐338元，[套餐购买](https://w1.ddnsgo.xyz/auth/register?code=cd79)
 
-![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2free-shop.jpg)
-
 ***
 
 **购买流程**
@@ -22,15 +20,11 @@ https://cdn.ddnsgo.xyz/auth/register?code=cd79
 
 ![](https://cdn.jsdelivr.net/gh/Alvin9999/pac2/v2fee/3.jpg)
 
-**打开商店——充值进行充值，充值方式：微信、支付宝、paypal和USDT数字货币。**
-
-![](https://cdn.jsdelivr.net/gh/Alvin9999/pac2/v2fee/v2ray-003.PNG)
-
-**购买相应的套餐后，在 用户中心 的 快速使用 处，点对应操作系统名称， 看相应教程和软件APP下载链接。 **
+**购买相应的套餐后，在 用户中心 的 快速使用 处，点对应操作系统名称， 看相应教程和软件APP下载链接。**
 
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/qstart.jpg)
 
 ![](https://cdn.jsdelivr.net/gh/Alvin9999/pac2/v2fee/8.jpg)
 
-有任何问题都可以发工单进行咨询。
+有任何售前问题都可以Livechat或发工单进行咨询。
 
