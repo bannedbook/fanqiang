@@ -5,7 +5,7 @@ V2rayN默认的socks5监听端口是10808，点V2rayN的"参数设置"可查看�
 然后再SSTap中添加SOCKS5代理
 127.0.0.1:10808
 
-这里我们推荐一个[V2ray机场，有免费V2ray和SS游戏友好节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)，[点击注册](https://w1.ddnsgo.xyz/auth/register?code=cd79)，注册后在该机场用户中心拷贝订阅链接。
+这里我们推荐一个[V2ray机场，有免费V2ray和SS游戏友好节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)，[点击注册](https://go.runba.cyou/auth/register?code=cd79)，注册后在该机场用户中心拷贝订阅链接。
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
 https://cdn.ddnsgo.xyz/auth/register?code=cd79

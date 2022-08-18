@@ -1,6 +1,6 @@
 ## v2ray免费账号（长期更新）
 
-点击注册链接：<a href="https://w1.ddnsgo.xyz/auth/register?code=cd79" target="_blank">w1.ddnsgo.xyz</a>，注册后在该网站用户中心获取订阅链接或拷贝全部节点 URL，根据其用户中心的快速使用帮助下的相应操作系统的帮助文档操作即可。
+点击注册链接：<a href="https://go.runba.cyou/auth/register?code=cd79" target="_blank">go.runba.cyou</a>，注册后在该网站用户中心获取订阅链接或拷贝全部节点 URL，根据其用户中心的快速使用帮助下的相应操作系统的帮助文档操作即可。
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
 https://cdn.ddnsgo.xyz/auth/register?code=cd79

@@ -22,7 +22,7 @@ iOS 3个设备的授权价格49.99美元。免费版无法进行科学上网，�
 
 注册机场以获取节点订阅链接或者找免费的订阅链接。
 
-这里我们推荐一个[V2ray机场，有免费V2ray和SS节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)，[点击注册](https://w1.ddnsgo.xyz/auth/register?code=cd79)，注册后在该机场拷贝surge订阅链接。
+这里我们推荐一个[V2ray机场，有免费V2ray和SS节点](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)，[点击注册](https://go.runba.cyou/auth/register?code=cd79)，注册后在该机场拷贝surge订阅链接。
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
 https://cdn.ddnsgo.xyz/auth/register?code=cd79
