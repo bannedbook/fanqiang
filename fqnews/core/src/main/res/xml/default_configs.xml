@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>proxy_url</key>
+        <value>https://socks123.azureedge.net/get.php</value>
+    </entry>
+</defaultsMap>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">@color/dark_color_primary</color>
+    <color name="color_primary_dark">@color/dark_color_primary_dark</color>
+    <color name="color_primary_text">@color/dark_color_primary_text</color>
+</resources>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:theme="@style/AppTheme.ActionBar.Details"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <me.thanel.swipeactionview.SwipeActionView
+        android:id="@+id/swipe_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_navigate_before_white_24dp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_navigate_next_white_24dp" />
+
+        <net.frju.flym.ui.views.SwipeRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?android:attr/actionBarSize">
+
+            <net.frju.flym.ui.entrydetails.EntryDetailsView
+                android:id="@+id/entry_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical" />
+        </net.frju.flym.ui.views.SwipeRefreshLayout>
+
+
+
+    </me.thanel.swipeactionview.SwipeActionView>
+
+    <RelativeLayout
+        android:gravity="center_horizontal"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        android:id="@+id/ad_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </RelativeLayout>
+
+<!--    <com.google.android.gms.ads.AdView
+        android:layout_below="@id/swipe_view"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        app:adSize="SMART_BANNER"
+        app:adUnitId="@string/banner_adUnitId" />-->
+</FrameLayout>

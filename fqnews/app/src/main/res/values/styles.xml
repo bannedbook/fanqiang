@@ -1,0 +1,118 @@
+<resources>
+
+    <!-- Base app theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorBackground">@color/colorBackground</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="colorReadState">@color/read_state</item>
+        <item name="colorColoredReadState">@color/colored_read_state</item>
+        <item name="colorQuoteBackground">@color/quote_background_dark</item>
+        <item name="colorQuoteLeft">@color/quote_left_dark</item>
+        <item name="colorArticleText">@color/article_text_dark</item>
+        <item name="colorSubtitle">@color/subtitle_dark</item>
+        <item name="colorSubtitleBorder">@color/subtitle_border_dark</item>
+    </style>
+
+    <style name="AppTheme.ActionBar" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.ActionBar.Details" parent="AppTheme.ActionBar" />
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- App Light theme -->
+    <style name="AppThemeLight" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryLight</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorBackground">@color/colorBackgroundLight</item>
+        <item name="android:windowBackground">@color/colorBackgroundLight</item>
+        <item name="colorReadState">@color/read_state_light</item>
+        <item name="colorColoredReadState">@color/colored_read_state_light</item>
+        <item name="colorQuoteBackground">@color/quote_background_light</item>
+        <item name="colorQuoteLeft">@color/quote_left_light</item>
+        <item name="colorArticleText">@color/article_text_light</item>
+        <item name="colorSubtitle">@color/subtitle_light</item>
+        <item name="colorSubtitleBorder">@color/subtitle_border_light</item>
+    </style>
+
+    <style name="AppThemeLight.ActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryLight</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppThemeLight.ActionBar.Details" parent="AppThemeLight.ActionBar" />
+
+    <style name="AppThemeLight.NoActionBar">
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Black theme -->
+    <style name="AppThemeBlack" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimaryBlack</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkBlack</item>
+        <item name="colorAccent">@color/colorAccentBlack</item>
+        <item name="colorBackground">@color/colorBackgroundBlack</item>
+        <item name="android:windowBackground">@color/colorBackgroundBlack</item>
+        <item name="colorReadState">@color/read_state_black</item>
+        <item name="colorColoredReadState">@color/colored_read_state_black</item>
+        <item name="colorQuoteBackground">@color/quote_background_black</item>
+        <item name="colorQuoteLeft">@color/quote_left_black</item>
+        <item name="colorArticleText">@color/article_text_black</item>
+        <item name="colorSubtitle">@color/subtitle_black</item>
+        <item name="colorSubtitleBorder">@color/subtitle_border_black</item>
+
+    </style>
+
+    <style name="AppThemeBlack.ActionBar" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimaryBlack</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkBlack</item>
+        <item name="colorAccent">@color/colorAccentBlack</item>
+        <item name="colorBackground">@color/colorBackgroundBlack</item>
+    </style>
+
+    <style name="AppThemeBlack.ActionBar.Details" parent="AppThemeBlack.ActionBar">
+    </style>
+
+    <style name="AppThemeBlack.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Transparent" parent="Theme.AppCompat">
+        <!--
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowNoTitle">true</item>
+        -->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Shadowsocks.AdAttribution">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:textColor">#00A191</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:text">@string/native_ads_label</item>
+        <item name="android:background">#FFCC66</item>
+
+    </style>
+</resources>

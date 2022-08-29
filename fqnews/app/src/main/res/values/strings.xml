@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- GENERAL -->
+    <string name="native_ads_label">Sponsored Links</string>
+    <string name="welcome_title">Welcome, Would you like to add a feed?</string>
+    <string name="welcome_title_with_opml_import">Would you like to import previous APP feeds?</string>
+    <string name="cannot_find_feeds">No feeds have been found</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_edit_feed">Edit feed</string>
+    <string name="menu_reorder">Reorder feeds</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_enable_full_text_retrieval">Enable full text retrieval</string>
+    <string name="menu_disable_full_text_retrieval">Disable full text retrieval</string>
+    <string name="menu_all_read">Mark all as read</string>
+    <string name="flym_feeds">feeds</string>
+    <string name="error">Error</string>
+    <string name="network_error">The network is not set up</string>
+    <string name="drawer_explanation">Welcome!\n\nLong press on the feeds to see options ▼</string>
+    <string name="drawer_fetch_error_explanation">Some of your feeds did not refresh correctly ▼</string>
+    <string name="about_screen_info">I\'m publishing this application as free and open-source software under GPLv3 licence. Feel free to modify it as long as you keep it open-source as well.</string>
+    <string name="about_info" translatable="false">This is free and open-source APP under GPLv3 licence, base on V2ray VPN and Flym News Reader.</string>
+
+    <!-- FEEDS -->
+    <string name="feeds">Feeds</string>
+    <string name="menu_add_group">Add group</string>
+    <string name="menu_import">Import from OPML</string>
+    <string name="menu_export">Export to OPML</string>
+    <string name="storage_request_explanation">To import or export feeds in a file, you must allow the application access to device storage.</string>
+    <string name="error_feed_export">The export has failed. Make sure you have a writable SD-card mounted.</string>
+    <string name="feed_search">Feed search</string>
+    <string name="feed_search_hint">Enter feed link or keyword</string>
+    <string name="feed_added">Feed added to the list</string>
+    <string name="question_delete_feed">Do you really want to delete this feed?</string>
+    <string name="question_delete_group">Do you really want to delete this group and all of its feeds?</string>
+    <string name="add_group_title">Select group name</string>
+    <string name="message_exported_to">Exported into %s.</string>
+    <string name="to_group_title">Feed move action</string>
+    <string name="to_group_message">You can either put this feed into or above this group. What do you want to do?</string>
+    <string name="to_group_above">Above the group</string>
+    <string name="to_group_into">Into the group</string>
+    <string name="google_news_top_stories">Top Stories</string>
+    <string name="google_news_world">World</string>
+    <string name="google_news_business">Business</string>
+    <string name="google_news_science_technology">Science &amp; Technology</string>
+    <string name="google_news_entertainment">Entertainment</string>
+    <string name="google_news_sports">Sports</string>
+    <string name="google_news_health">Health</string>
+    <string name="feed_name">Feed name</string>
+    <string name="feed_link">Feed link</string>
+
+    <!-- ENTRIES -->
+    <string name="all_entries">All entries</string>
+    <string name="menu_star">Star</string>
+    <string name="menu_unstar">Unstar</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_mark_as_unread">Mark as unread</string>
+    <string name="get_full_text">Retrieve the full text</string>
+    <string name="original_text">Show original text</string>
+    <string name="open_in_browser">See in browser</string>
+    <string name="cant_open_link">No application found for this link</string>
+    <string name="unreads">Unreads</string>
+    <string name="all">All</string>
+    <string name="favorites">Favorites</string>
+    <string name="no_entries">No items\nPlease pull down to refresh</string>
+    <string name="undo">Undo</string>
+    <string name="marked_as_read">Marked as read</string>
+    <string name="marked_as_unread">Marked as unread</string>
+
+    <!-- SETTINGS -->
+    <string name="entry_default_title">Untitled</string>
+    <string name="settings_category_refresh">Automated refresh</string>
+    <string name="settings_refresh_enabled">Enable automatic refresh</string>
+    <string name="settings_refresh_enabled_description">Enable the automatic refresh of feeds</string>
+    <string name="settings_refresh_enable_notifications">Display refresh notifications</string>
+    <string name="settings_refresh_enable_notifications_description">Show a system notification when a refresh is completed</string>
+    <string name="settings_refresh_interval">Refresh interval</string>
+    <string name="settings_category_keep_time">Time to keep entries</string>
+    <string name="settings_keep_time">Time that read entries will be kept</string>
+    <string name="settings_keep_time_unread">Time that unread entries will be kept</string>
+    <string name="settings_category_content_presentation">Content presentation</string>
+    <string name="settings_display_images">Display images</string>
+    <string name="settings_display_images_description">Display images in entries</string>
+    <string name="settings_preload_image_mode">Preload images</string>
+    <string name="settings_font_size">Text size</string>
+    <string name="settings_refresh_wifi_only">Refresh only over Wi-Fi</string>
+    <string name="settings_refresh_wifi_only_description">Automatic refresh will only be done if a Wi-Fi connection is available</string>
+    <string name="settings_category_filter">Filters</string>
+    <string name="settings_remove_duplicates_description_title">Remove duplicates</string>
+    <string name="settings_remove_duplicates_description">Checks the title of newly-downloaded items and skips when one with the same title is already present</string>
+    <string name="filter">Remove items containing keywords (comma-separated list)</string>
+    <string name="filter_title">Blacklist</string>
+    <string name="settings_theme">Theme</string>
+    <string name="open_browser_direct">Open entries directly in your default browser</string>
+    <string name="open_browser_direct_title">Open in browser</string>
+    <string name="refresh_on_startup">Refreshes your feeds when launching the app</string>
+    <string name="refresh_on_startup_title">Refresh on startup</string>
+
+    <plurals name="number_of_new_entries">
+        <item quantity="one">One new entry</item>
+        <item quantity="other">%d new entries</item>
+    </plurals>
+
+    <string-array name="settings_intervals">
+        <item>5 minutes</item>
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>6 hours</item>
+        <item>12 hours</item>
+        <item>1 day</item>
+    </string-array>
+    <string-array name="settings_keep_times">
+        <item>1 day</item>
+        <item>2 days</item>
+        <item>4 days</item>
+        <item>1 week</item>
+        <item>2 weeks</item>
+        <item>1 month</item>
+        <item>2 months</item>
+        <item>3 months</item>
+        <item>Forever</item>
+    </string-array>
+    <string-array name="settings_font_sizes">
+        <item>-2</item>
+        <item>-1</item>
+        <item>Standard</item>
+        <item>+1</item>
+        <item>+2</item>
+        <item>+3</item>
+    </string-array>
+    <string-array name="settings_preload_image_modes">
+        <item>Never</item>
+        <item>Only over Wi-Fi</item>
+        <item>Always</item>
+    </string-array>
+    <string-array name="settings_themes">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Black</item>
+    </string-array>
+</resources>

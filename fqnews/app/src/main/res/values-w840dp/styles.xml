@@ -1,0 +1,7 @@
+<resources>
+
+    <style name="AppTheme.ActionBar.Details" parent="AppTheme.ActionBar">
+        <item name="colorPrimary">@color/colorAccent</item>
+    </style>
+
+</resources>

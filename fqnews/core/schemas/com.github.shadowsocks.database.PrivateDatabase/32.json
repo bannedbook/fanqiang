@@ -1,0 +1,290 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 32,
+    "identityHash": "efd217c4d0b68d66bcc9cc6273138cd2",
+    "entities": [
+      {
+        "tableName": "Profile",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `host` TEXT NOT NULL, `remotePort` INTEGER NOT NULL, `password` TEXT NOT NULL, `method` TEXT NOT NULL, `route` TEXT NOT NULL, `remoteDns` TEXT NOT NULL, `proxyApps` INTEGER NOT NULL, `bypass` INTEGER NOT NULL, `udpdns` INTEGER NOT NULL, `url_group` TEXT NOT NULL, `ipv6` INTEGER NOT NULL, `metered` INTEGER NOT NULL, `individual` TEXT NOT NULL, `plugin` TEXT, `udpFallback` INTEGER, `subscription` INTEGER NOT NULL, `tx` INTEGER NOT NULL, `rx` INTEGER NOT NULL, `elapsed` INTEGER NOT NULL, `userOrder` INTEGER NOT NULL, `profileType` TEXT NOT NULL, `alterId` INTEGER NOT NULL, `network` TEXT NOT NULL, `headerType` TEXT NOT NULL, `requestHost` TEXT NOT NULL, `path` TEXT NOT NULL, `xtlsflow` TEXT NOT NULL, `streamSecurity` TEXT NOT NULL, `allowInsecure` TEXT NOT NULL, `SNI` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "host",
+            "columnName": "host",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "remotePort",
+            "columnName": "remotePort",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "password",
+            "columnName": "password",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "method",
+            "columnName": "method",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "route",
+            "columnName": "route",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "remoteDns",
+            "columnName": "remoteDns",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "proxyApps",
+            "columnName": "proxyApps",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bypass",
+            "columnName": "bypass",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "udpdns",
+            "columnName": "udpdns",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url_group",
+            "columnName": "url_group",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ipv6",
+            "columnName": "ipv6",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "metered",
+            "columnName": "metered",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "individual",
+            "columnName": "individual",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plugin",
+            "columnName": "plugin",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "udpFallback",
+            "columnName": "udpFallback",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "subscription",
+            "columnName": "subscription",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tx",
+            "columnName": "tx",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rx",
+            "columnName": "rx",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "elapsed",
+            "columnName": "elapsed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userOrder",
+            "columnName": "userOrder",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "profileType",
+            "columnName": "profileType",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "alterId",
+            "columnName": "alterId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "network",
+            "columnName": "network",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "headerType",
+            "columnName": "headerType",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "requestHost",
+            "columnName": "requestHost",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "path",
+            "columnName": "path",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "xtlsflow",
+            "columnName": "xtlsflow",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "streamSecurity",
+            "columnName": "streamSecurity",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "allowInsecure",
+            "columnName": "allowInsecure",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "SNI",
+            "columnName": "SNI",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "KeyValuePair",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`key` TEXT NOT NULL, `valueType` INTEGER NOT NULL, `value` BLOB NOT NULL, PRIMARY KEY(`key`))",
+        "fields": [
+          {
+            "fieldPath": "key",
+            "columnName": "key",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "valueType",
+            "columnName": "valueType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "value",
+            "columnName": "value",
+            "affinity": "BLOB",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "key"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "SSRSub",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `url` TEXT NOT NULL, `url_group` TEXT NOT NULL, `status` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url_group",
+            "columnName": "url_group",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'efd217c4d0b68d66bcc9cc6273138cd2')"
+    ]
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+	"identityHash": "dd7e9e52effd15fd1349c5cb84e150cd",
+    "entities": [
+      {
+        "tableName": "feeds",
+		"createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`feedId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `feedLink` TEXT NOT NULL, `feedTitle` TEXT, `feedImageLink` TEXT, `fetchError` INTEGER NOT NULL, `retrieveFullText` INTEGER NOT NULL, `isGroup` INTEGER NOT NULL, `groupId` INTEGER, `displayPriority` INTEGER NOT NULL, `lastManualActionUid` TEXT NOT NULL, FOREIGN KEY(`groupId`) REFERENCES `feeds`(`feedId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "feedId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "link",
+            "columnName": "feedLink",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "feedTitle",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "imageLink",
+            "columnName": "feedImageLink",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fetchError",
+            "columnName": "fetchError",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "retrieveFullText",
+            "columnName": "retrieveFullText",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isGroup",
+            "columnName": "isGroup",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "groupId",
+            "columnName": "groupId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "displayPriority",
+            "columnName": "displayPriority",
+            "affinity": "INTEGER",
+            "notNull": true
+		  },
+		  {
+			"fieldPath": "lastManualActionUid",
+			"columnName": "lastManualActionUid",
+			"affinity": "TEXT",
+			"notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "feedId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_feeds_groupId",
+            "unique": false,
+            "columnNames": [
+              "groupId"
+            ],
+            "createSql": "CREATE  INDEX `index_feeds_groupId` ON `${TABLE_NAME}` (`groupId`)"
+          },
+          {
+            "name": "index_feeds_feedId_feedLink",
+            "unique": true,
+            "columnNames": [
+              "feedId",
+              "feedLink"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_feeds_feedId_feedLink` ON `${TABLE_NAME}` (`feedId`, `feedLink`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "feeds",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "groupId"
+            ],
+            "referencedColumns": [
+              "feedId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "entries",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `feedId` INTEGER NOT NULL, `link` TEXT, `fetchDate` INTEGER NOT NULL, `publicationDate` INTEGER NOT NULL, `title` TEXT, `description` TEXT, `mobilizedContent` TEXT, `imageLink` TEXT, `author` TEXT, `read` INTEGER NOT NULL, `favorite` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`feedId`) REFERENCES `feeds`(`feedId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "feedId",
+            "columnName": "feedId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "link",
+            "columnName": "link",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fetchDate",
+            "columnName": "fetchDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "publicationDate",
+            "columnName": "publicationDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mobilizedContent",
+            "columnName": "mobilizedContent",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "imageLink",
+            "columnName": "imageLink",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "author",
+            "columnName": "author",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "read",
+            "columnName": "read",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "favorite",
+            "columnName": "favorite",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_entries_feedId",
+            "unique": false,
+            "columnNames": [
+              "feedId"
+            ],
+            "createSql": "CREATE  INDEX `index_entries_feedId` ON `${TABLE_NAME}` (`feedId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "feeds",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "feedId"
+            ],
+            "referencedColumns": [
+              "feedId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "tasks",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`entryId` TEXT NOT NULL, `imageLinkToDl` TEXT NOT NULL, `numberAttempt` INTEGER NOT NULL, PRIMARY KEY(`entryId`, `imageLinkToDl`), FOREIGN KEY(`entryId`) REFERENCES `entries`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "entryId",
+            "columnName": "entryId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageLinkToDl",
+            "columnName": "imageLinkToDl",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numberAttempt",
+            "columnName": "numberAttempt",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "entryId",
+            "imageLinkToDl"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_tasks_entryId",
+            "unique": false,
+            "columnNames": [
+              "entryId"
+            ],
+            "createSql": "CREATE  INDEX `index_tasks_entryId` ON `${TABLE_NAME}` (`entryId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "entries",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "entryId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+	  "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"dd7e9e52effd15fd1349c5cb84e150cd\")"
+    ]
+  }
+}

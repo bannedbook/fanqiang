@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto"
+	  xmlns:tools="http://schemas.android.com/tools"
+	  tools:context="net.frju.flym.ui.feeds.FeedListEditActivity">
+	<item
+		android:id="@+id/add_group"
+		android:title="@string/menu_add_group"
+		android:icon="@drawable/ic_create_new_folder_white_24dp"
+		app:showAsAction="ifRoom"/>
+</menu>

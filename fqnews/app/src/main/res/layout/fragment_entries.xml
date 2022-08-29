@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/list_ad_view_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <net.frju.flym.ui.views.SwipeRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <net.frju.flym.ui.views.EmptyRecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingTop="8dp"
+                android:paddingBottom="60dp"
+                android:scrollbars="vertical" />
+        </net.frju.flym.ui.views.SwipeRefreshLayout>
+
+		<TextView
+			android:id="@+id/empty_view"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:drawableTop="@drawable/ic_empty_gray_100dp"
+			android:layout_gravity="center"
+			android:gravity="center"
+			android:text="@string/no_entries"
+			android:textColor="@android:color/darker_gray" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/read_all_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_read_all_white_24dp" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+	<FrameLayout
+		app:layout_constraintTop_toBottomOf="@+id/coordinator"
+		app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+		android:gravity="center_horizontal"
+		android:layout_gravity="bottom"
+		android:background="@android:color/transparent"
+		android:id="@+id/list_ad_view_container"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+	</FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+		android:id="@+id/bottom_navigation"
+		android:layout_width="0dp"
+		android:layout_height="65dp"
+		android:layout_marginBottom="0dp"
+		android:layout_marginEnd="0dp"
+		android:layout_marginStart="0dp"
+		android:background="?attr/colorPrimary"
+		app:itemIconTint="@color/bottom_navigation_item"
+		app:itemTextColor="@color/bottom_navigation_item"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:menu="@menu/menu_bottom_navigation_items"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

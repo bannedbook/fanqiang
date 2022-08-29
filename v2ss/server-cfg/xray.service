@@ -1,0 +1,19 @@
+[Unit]
+Description=Air-Universe Xray service
+After=au.service
+BindsTo=au.service
+Wants=au.service
+
+[Service]
+User=root
+#CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+#AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+#NoNewPrivileges=true
+ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
+Restart=no
+RestartPreventExitStatus=23
+LimitNPROC=10000
+LimitNOFILE=1000000
+
+[Install]
+WantedBy=multi-user.target

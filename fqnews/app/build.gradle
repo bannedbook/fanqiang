@@ -1,0 +1,240 @@
+import com.android.build.OutputFile
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def getCurrentFlavor() {
+    String task = getGradle().getStartParameter().getTaskRequests().toString()
+    Matcher matcher = Pattern.compile("(assemble|generate)\\w*(Release|Debug)").matcher(task)
+    if (matcher.find()) return matcher.group(2).toLowerCase() else {
+        println "Warning: No match found for $task"
+        return "debug"
+    }
+}
+def getCurrentProductFlavor() {
+	Gradle gradle = getGradle()
+	String  tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+
+	Pattern pattern
+
+	if( tskReqStr.contains( "assemble" ) )
+		pattern = Pattern.compile("assemble(\\w+)(Release|Debug)")
+	else
+		pattern = Pattern.compile("generate(\\w+)(Release|Debug)")
+
+	Matcher matcher = pattern.matcher( tskReqStr )
+
+	if( matcher.find() )
+		return matcher.group(1).toLowerCase()
+	else
+	{
+		println "NO MATCH FOUND"
+		return ""
+	}
+}
+androidExtensions {
+	experimental = true
+}
+
+android {
+	compileSdkVersion rootProject.compileSdkVersion
+    archivesBaseName = "android"
+	defaultConfig {
+		minSdkVersion rootProject.minSdkVersion
+		targetSdkVersion rootProject.sdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+    }
+	flavorDimensions "site"
+	productFlavors {
+		fqnews {
+			dimension "site"
+			applicationId "jww.feed.fqnews"
+			resValue 'string', 'applicationId', applicationId
+			resValue 'string', 'admob_appid', "ca-app-pub-2194043486084479~7068327579"
+			resValue 'string', 'banner_adUnitId', "ca-app-pub-2194043486084479/5355559146"
+			resValue 'string', 'native_adUnitId', "ca-app-pub-2194043486084479/2721000405"
+			resValue 'string', 'interstitial_adUnitId', "ca-app-pub-2194043486084479/2288264870"
+		}
+		hwnews {
+			dimension "site"
+			applicationId "jww.app.hwnews"
+			resValue 'string', 'applicationId', applicationId
+			resValue 'string', 'admob_appid', "ca-app-pub-2194043486084479~6551626678"
+			resValue 'string', 'banner_adUnitId', "ca-app-pub-2194043486084479/8986218326"
+			resValue 'string', 'native_adUnitId', "ca-app-pub-2194043486084479/1107728300"
+			resValue 'string', 'interstitial_adUnitId', "ca-app-pub-2194043486084479/3159176573"
+		}
+		aunews {
+			dimension "site"
+			applicationId "au.news"
+			resValue 'string', 'applicationId', applicationId
+			resValue 'string', 'admob_appid', "ca-app-pub-2194043486084479~5403890486"
+			resValue 'string', 'banner_adUnitId', "ca-app-pub-2194043486084479/1636584608"
+			resValue 'string', 'native_adUnitId', "ca-app-pub-2194043486084479/8959992113"
+			resValue 'string', 'interstitial_adUnitId', "ca-app-pub-2194043486084479/3248199117"
+		}
+		fqnews2 {
+			dimension "site"
+			applicationId "jww.feed.fqnews2"
+			resValue 'string', 'applicationId', applicationId
+			resValue 'string', 'admob_appid', "ca-app-pub-2194043486084479~6090891748"
+			resValue 'string', 'banner_adUnitId', "ca-app-pub-2194043486084479/2969070238"
+			resValue 'string', 'native_adUnitId', "ca-app-pub-2194043486084479/2813991710"
+			resValue 'string', 'interstitial_adUnitId', "ca-app-pub-2194043486084479/5707748368"
+		}
+	}
+	sourceSets {
+		fqnews.setRoot('src/fqnews')
+		hwnews.setRoot('src/hwnews')
+		aunews.setRoot('src/aunews')
+		fqnews2.setRoot('src/fqnews2')
+	}
+	compileOptions {
+		sourceCompatibility javaVersion
+		targetCompatibility javaVersion
+
+		kotlinOptions {
+			jvmTarget = javaVersion
+		}
+	}
+
+	lintOptions {
+		// if true, stop the gradle build if errors are found
+		abortOnError true
+	}
+
+	Properties properties = new Properties()
+	properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+	signingConfigs {
+		debug {
+			if (properties.getProperty("KEYSTORE_PATH") != null) {
+				storeFile file(properties.getProperty("KEYSTORE_PATH"))
+				storePassword properties.getProperty("KEYSTORE_PASSWORD")
+				keyAlias properties.getProperty("KEY_ALIAS")
+				keyPassword properties.getProperty("KEY_PASSWORD")
+			}
+		}
+		release {
+			if (properties.getProperty("KEYSTORE_PATH") != null) {
+				storeFile file(properties.getProperty("KEYSTORE_PATH"))
+				storePassword properties.getProperty("KEYSTORE_PASSWORD")
+				keyAlias properties.getProperty("KEY_ALIAS")
+				keyPassword properties.getProperty("KEY_PASSWORD")
+			}
+		}
+	}
+
+	buildTypes {
+		release {
+			minifyEnabled true
+			shrinkResources true
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			if (properties.getProperty("KEYSTORE_PATH") != null) {
+				signingConfig signingConfigs.release
+			}
+            ndk {
+                abiFilters "arm64-v8a", "armeabi-v7a", "x86", "x86_64"
+            }
+		}
+	}
+
+	sourceSets {
+		main.java.srcDirs += 'src/main/kotlin'
+	}
+
+	if(getCurrentProductFlavor()=='fqnews' || getCurrentProductFlavor()=='fqnews2'){
+	splits {
+        abi {
+            enable true
+            universalApk true
+        }
+    }
+	}
+}
+
+kapt {
+	arguments {
+		arg("room.schemaLocation", "$projectDir/schemas")
+	}
+}
+
+dependencies {
+	fqnewsImplementation project(':core')
+	fqnews2Implementation project(':core')
+
+	hwnewsImplementation project(':plugin')
+	hwnewsApi "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+	hwnewsApi "androidx.lifecycle:lifecycle-livedata-core-ktx:$lifecycleVersion"
+	hwnewsApi "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+
+	aunewsImplementation project(':plugin')
+	aunewsApi "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+	aunewsApi "androidx.lifecycle:lifecycle-livedata-core-ktx:$lifecycleVersion"
+	aunewsApi "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+	implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+
+
+	implementation "androidx.room:room-runtime:$roomVersion"
+	kapt "androidx.room:room-compiler:$roomVersion"
+
+	// tor proxy
+	final def netCipherVersion = '2.0.0-alpha1'
+	implementation "info.guardianproject.netcipher:netcipher:$netCipherVersion"
+	implementation "info.guardianproject.netcipher:netcipher-webkit:$netCipherVersion"
+
+	implementation 'androidx.appcompat:appcompat:1.1.0'
+	implementation 'com.google.android.material:material:1.1.0'
+	implementation 'androidx.cardview:cardview:1.0.0'
+	implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+	def anko_version = '0.10.8'
+	implementation "org.jetbrains.anko:anko-sdk21:$anko_version"
+	implementation "org.jetbrains.anko:anko-sdk21-listeners:$anko_version"
+	implementation "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
+	implementation "org.jetbrains.anko:anko-design:$anko_version"
+
+	def okhttp_version = '4.2.0'
+	implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+	implementation "com.squareup.okhttp3:okhttp-urlconnection:$okhttp_version"
+
+	def glide_version = '4.11.0'
+	implementation "com.github.bumptech.glide:glide:$glide_version"
+	kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+	implementation 'androidx.core:core-ktx:1.3.0'
+	implementation 'androidx.paging:paging-runtime:2.1.2'
+	implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+	implementation 'org.jsoup:jsoup:1.12.1'
+	implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+	implementation 'com.github.Tunous:SwipeActionView:1.3.0'
+	implementation 'com.bignerdranch.android:expandablerecyclerview:3.0.0-RC1'
+	implementation 'com.github.mirrajabi:search-dialog:1.2.4'
+	implementation 'com.github.jrvansuita:MaterialAbout:0.2.3'
+	implementation 'q.rorbin:badgeview:1.1.3'
+	implementation 'net.dankito.readability4j:readability4j:1.0.4'
+	implementation 'pub.devrel:easypermissions:1.2.0'
+	implementation 'com.rometools:rome-opml:1.12.2'
+	implementation 'com.google.android.gms:play-services-ads:19.2.0'
+}
+
+ext.abiCodes = ['armeabi-v7a': 1, 'arm64-v8a': 2, x86: 3, x86_64: 4]
+if (getCurrentFlavor() == 'release') android.applicationVariants.all { variant ->
+    variant.outputs.each { output ->
+        def offset = project.ext.abiCodes.get(output.getFilter(OutputFile.ABI))
+        if (offset != null) output.versionCodeOverride = variant.versionCode + offset
+    }
+}

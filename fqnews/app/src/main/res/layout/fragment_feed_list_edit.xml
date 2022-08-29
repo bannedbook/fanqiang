@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<net.frju.flym.ui.views.DragNDropRecyclerView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/feedsList"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_marginBottom="0dp"
+	android:layout_marginEnd="0dp"
+	android:layout_marginStart="0dp"
+	android:layout_marginTop="0dp"
+	android:scrollbars="vertical"
+	tools:context="net.frju.flym.ui.feeds.FeedListEditFragment"/>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="net.fred.feedex">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="net.frju.flym.App"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:theme,label">
+        <activity android:name="net.frju.flym.ui.main.SplashActivity"
+            android:theme="@style/Theme.Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="net.frju.flym.ui.main.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.xml" />
+                <data android:pathPattern=".*\\.rss" />
+                <data android:pathPattern=".*/rss" />
+                <data android:pathPattern=".*rss/*" />
+                <data android:pathPattern=".*/feed" />
+                <data android:pathPattern=".*feed/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="feeds.feedburner.com" />
+                <data android:host="feedproxy.google.com" />
+                <data android:host="feeds2.feedburner.com" />
+                <data android:host="feedsproxy.google.com" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:mimeType="text/xml" />
+                <data android:mimeType="application/rss+xml" />
+                <data android:mimeType="application/rdf+xml" />
+                <data android:mimeType="application/atom+xml" />
+                <data android:mimeType="application/xml" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="feed" />
+                <data android:scheme="rss" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="net.frju.flym.ui.entrydetails.EntryDetailsActivity"
+            android:configChanges="orientation|screenSize"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="net.frju.flym.ui.feeds.FeedListEditActivity"
+            android:label="@string/feeds"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="net.frju.flym.ui.about.AboutActivity"
+            android:label="@string/about_flym"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="net.frju.flym.ui.settings.SettingsActivity"
+            android:label="@string/menu_settings"
+            android:launchMode="singleTask" />
+
+        <service
+            android:name="net.frju.flym.service.AutoRefreshJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:name="net.frju.flym.service.FetcherService" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider> 
+
+	<!-- Disable Samsung squircle launcher icon -->
+        <meta-data
+            android:name="com.samsung.android.icon_container.has_icon_container"
+            android:value="true" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_appid"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.vanniktech.maven.publish'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.sdkVersion
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "androidx.testgetRepositoryPassword().runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility javaVersion
+        targetCompatibility javaVersion
+    }
+
+    kotlinOptions.jvmTarget = javaVersion
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+mavenPublish {
+
+    targets {
+        uploadArchives {
+            releaseRepositoryUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            snapshotRepositoryUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+            repositoryUsername = findProperty('NEXUS_USERNAME') ?: ''
+            repositoryPassword = findProperty('NEXUS_PASSWORD') ?: ''
+        }
+    }
+}
+
+dependencies {
+    api 'androidx.core:core-ktx:1.3.0'
+    api 'androidx.drawerlayout:drawerlayout:1.1.0'  // https://android-developers.googleblog.com/2019/07/android-q-beta-5-update.html
+    api 'com.google.android.material:material:1.1.0'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test:runner:$androidTestVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidEspressoVersion"
+}
+repositories {
+    mavenCentral()
+}

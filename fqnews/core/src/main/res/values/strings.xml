@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="quick_toggle">Toggle</string>
+  <string name="send_email">Send email</string>
+
+  <!-- misc -->
+  <string name="service_mode">Service mode</string>
+  <string name="service_mode_proxy">Proxy only</string>
+  <string name="service_mode_vpn">VPN</string>
+  <string name="service_mode_transproxy">Transproxy</string>
+  <string name="share_over_lan">Share over LAN</string>
+  <string name="port_proxy">SOCKS5 proxy port</string>
+  <string name="port_local_dns">Local DNS port</string>
+  <string name="port_transproxy">Transproxy port</string>
+  <string name="port_http">HTTP proxy port</string>
+
+  <string name="remote_dns">Remote DNS</string>
+  <string name="traffic">%1$s↑\t%2$s↓</string>
+  <string name="stat_summary">Sent: \t\t\t\t\t%3$s\t↑\t%1$s\nReceived: \t%4$s\t↓\t%2$s</string>
+  <string name="speed">%s/s</string>
+  <string name="connection_test_pending">Check Connectivity</string>
+  <string name="connection_test_testing">Testing…</string>
+  <string name="connection_test_available">Success: HTTPS handshake took %dms</string>
+  <string name="connection_test_error">Fail to detect internet connection: %s</string>
+  <string name="connection_test_fail">Internet Unavailable</string>
+  <string name="connection_test_error_status_code">Error code: #%d</string>
+
+  <!-- proxy category -->
+  <string name="group_name">Group Name</string>
+  <string name="profile_name">Profile Name</string>
+  <string name="proxy">Server</string>
+  <string name="remote_port">Remote Port</string>
+  <string name="sitekey">Password</string>
+  <string name="enc_method">Encrypt Method</string>
+
+  <!-- feature category -->
+  <string name="ipv6">IPv6 Route</string>
+  <string name="ipv6_summary">Redirect IPv6 traffic to remote</string>
+  <string name="metered">Metered Hint</string>
+  <string name="metered_summary">Hint system to treat VPN as metered</string>
+  <string name="route_list">Route</string>
+  <string name="route_entry_all">All</string>
+  <string name="route_entry_bypass_lan">Bypass LAN</string>
+  <string name="route_entry_bypass_chn">Bypass mainland China</string>
+  <string name="route_entry_bypass_lan_chn">Bypass LAN &amp; mainland China</string>
+  <string name="route_entry_gfwlist">GFW List</string>
+  <string name="route_entry_chinalist">China List</string>
+  <string name="proxied_apps">Apps VPN mode</string>
+  <string name="proxied_apps_summary">Configure VPN mode for selected apps</string>
+  <string name="on">On</string>
+  <string name="off">Off</string>
+  <string name="proxied_apps_mode">Mode</string>
+  <string name="bypass_apps">Bypass</string>
+  <string name="bypass_apps_summary">Enable this option to bypass selected apps</string>
+  <string name="auto_connect">Auto Connect</string>
+  <string name="auto_connect_summary">Enable Shadowsocks on startup/app update if it was running before</string>
+  <string name="direct_boot_aware">Allow Toggling in Lock Screen</string>
+  <string name="direct_boot_aware_summary">Your selected profile information will be less protected</string>
+  <string name="tcp_fastopen_summary">Toggling might require ROOT permission</string>
+  <string name="tcp_fastopen_summary_unsupported">Unsupported kernel version: %s &lt; 3.7.1</string>
+  <string name="tcp_fastopen_failure">Toggle failed</string>
+  <plurals name="hosts_summary">
+    <item quantity="one">1 hostname configured</item>
+    <item quantity="other">%d hostnames configured</item>
+  </plurals>
+  <string name="udp_dns">Send DNS over UDP</string>
+  <string name="udp_dns_summary">Requires UDP forwarding on server side</string>
+  <string name="udp_fallback">UDP Fallback</string>
+
+  <!-- notification category -->
+  <string name="service_vpn">VPN Service</string>
+  <string name="service_proxy">Proxy Service</string>
+  <string name="service_transproxy">Transproxy Service</string>
+  <string name="forward_success">Shadowsocks started.</string>
+  <string name="invalid_server">Invalid server name</string>
+  <string name="service_failed">Failed to connect the remote server</string>
+  <string name="stop">Stop</string>
+  <string name="stopping">Shutting down…</string>
+  <string name="vpn_error">%s</string>
+  <string name="vpn_permission_denied">Permission denied to create a VPN service</string>
+  <string name="reboot_required">Failed to start VPN service. You might need to reboot your device.</string>
+  <string name="profile_invalid_input">No valid profile data found.</string>
+
+  <!-- alert category -->
+  <string name="profile_empty">Please select a profile</string>
+  <string name="proxy_empty">Proxy/Password should not be empty</string>
+  <string name="connect">Connect</string>
+
+  <!-- menu category -->
+  <string name="profiles">Profiles</string>
+  <string name="settings">Settings</string>
+  <string name="faq">FAQ</string>
+  <string name="faq_url">https://github.com/bannedbook/ssvpn/blob/master/.github/faq.md</string>
+  <string name="about">About</string>
+  <string name="about_title">SS VPN %s</string>
+  <string name="edit">Edit</string>
+  <string name="share">Share</string>
+  <string name="add_profile">Add Profile</string>
+  <string name="save_log">Save Log</string>
+  <string name="action_apply_all">Apply Settings to All Profiles</string>
+  <string name="action_export_more">Export…</string>
+  <string name="action_export_file">Export to file…</string>
+  <string name="action_export">Export to Clipboard</string>
+  <string name="action_import">Import from Clipboard</string>
+  <string name="action_import_file">Import from file…</string>
+  <string name="action_replace_file">Replace from file…</string>
+  <string name="action_export_msg">Successfully export!</string>
+  <string name="action_export_err">Failed to export.</string>
+  <string name="action_import_msg">Successfully import!</string>
+  <string name="action_import_err">Failed to import.</string>
+
+  <!-- profile -->
+  <string name="profile_config">Profile config</string>
+  <string name="delete">Remove</string>
+  <string name="delete_confirm_prompt">Are you sure you want to remove this profile?</string>
+  <string name="share_qr_nfc">QR code</string>
+  <string name="add_profile_dialog">Add this Shadowsocks Profile?</string>
+  <string name="add_profile_methods_scan_qr_code">Scan QR code</string>
+  <string name="add_profile_methods_manual_settings">Manual Settings</string>
+  <string name="add_profile_scanner_permission_required">Camera permission is required for scanning QR code.</string>
+  <plurals name="removed">
+    <item quantity="one">Removed</item>
+    <item quantity="other">%d items removed</item>
+  </plurals>
+  <string name="undo">Undo</string>
+
+  <!-- tasker -->
+  <string name="toggle_service_state">Start the service</string>
+  <string name="start_service_default">Connect to the current server</string>
+  <string name="start_service">Connect to %s</string>
+  <string name="stop_service">Switch to %s</string>
+  <string name="profile_default">Use the current profile</string>
+
+  <!-- status -->
+  <string name="connecting">Connecting…</string>
+  <string name="vpn_connected">Connected, tap to check connection</string>
+  <string name="not_connected">Not connected</string>
+
+  <!-- subscriptions -->
+  <string name="subscriptions">Subscriptions</string>
+  <string name="add_subscription">Add a subscription</string>
+  <string name="edit_subscription">Edit subscription</string>
+  <string name="update_subscription">Refresh servers from subscription</string>
+  <string name="service_subscription">Subscription Service</string>
+  <string name="service_subscription_working">Syncing subscriptions… (%d of %d)</string>
+  <string name="service_subscription_finishing">Finishing up…</string>
+
+  <!-- acl -->
+  <string name="custom_rules">Custom rules</string>
+  <string name="action_add_rule">Add rule(s)…</string>
+  <string name="acl_rule_templates_generic">Subnet or Hostname PCRE pattern</string>
+  <string name="acl_rule_templates_domain">Domain name and all its subdomain names</string>
+  <string name="acl_rule_online_config">URL to online config</string>
+  <string name="edit_rule">Edit rule</string>
+  <string name="cleartext_http_warning">Cleartext HTTP traffic is insecure</string>
+
+  <!-- plugin -->
+  <string name="plugin">Plugin</string>
+  <string name="plugin_configure">Configure…</string>
+  <string name="plugin_disabled">Disabled</string>
+  <string name="plugin_unknown">Unknown plugin %s</string>
+  <string name="plugin_untrusted">Warning: This plugin does not seem to come from a known trusted source.</string>
+  <string name="profile_plugin">Plugin: %s</string>
+  <string name="plugin_auto_connect_unlock_only">This plugin might not work with Auto Connect</string>
+  
+  <string name="update_servers">Update Servers</string>
+  <string name = "auto_update_servers">Automatic Update Servers</string>
+  <string name = "auto_update_servers_summary">Automatically update VPN servers when App launch</string>
+  <string name = "get_free_servers">Enable 3rd-party servers</string>
+  <string name = "get_free_servers_summary">Crawl free servers from internet.</string>
+  <string name="title_ping_all_server">Tcping all servers</string>
+  <string name="title_real_ping_all_server">Real test all servers</string>
+  <string name="title_retest_invalid_servers">Re-test invalid servers</string>
+  <string name="title_remove_invalid_servers">Remove invalid/Sort By Group</string>
+  <string name="title_sort_servers_by_speed">Sort servers by speed</string>
+  <string name="toast_test_ended">The test ended successfully</string>
+  <string name="toast_test_interrupted">Server: %s or the previous one caused the test to be interrupted, please check/remove them.</string>
+  <string name="recommended_site_1">"<![CDATA[
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head profile='http://gmpg.org/xfn/11'>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+</head>
+    <body style=\'margin:0;padding:0;font-size:14px;text-align:right\'>
+      <a href=\'https://www.theepochtimes.com/?utm_source=ss.vpn\' style=\'color:#e4f2fd\'>News</a>
+    </body>
+    </html>
+  ]]>"</string>
+  <string name="recommended_site_2"><![CDATA[
+    <html>
+    <body style=\'margin:0;padding:0;font-size:14px;text-align:right\'>
+      <a href=\'https://github.com/killgcd/justmysocks/blob/master/en.md#head\' style=\'color:#e4f2fd\'>Ad:SS Servers</a>
+    </body>
+    </html>
+  ]]></string>
+  <string name="recommended_news">"<![CDATA[
+<html xmlns='http://www.w3.org/1999/xhtml' dir='ltr' lang='zh-CN'>
+<head profile='http://gmpg.org/xfn/11'>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+</head>
+    <body style=\'margin:0 auto;padding:5px 0;font-size:14px;text-align:center\'>
+      <a href=\'https://play.google.com/store/apps/details?id=com.theepochtimes.news\' style=\'color:#e4f2fd\'>The Epoch Times: Live & Breaking News</a>
+    </body>
+    </html>
+  ]]>"</string>
+  <string-array name="builtinSubUrls">
+    <item>builtinSubUrls</item>
+  </string-array>
+  <string-array name="freesuburl">
+    <item>freesuburl</item>
+  </string-array>
+  <string name="update_check_url">https://raw.githubusercontent.com/bannedbook/fanqiang/master/fqnews/update.json</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- NavigationDrawer -->
+    <dimen name="nav_drawer_width">320dp</dimen>
+
+    <dimen name="entry_img_width">90dp</dimen>
+    <dimen name="entry_img_height">90dp</dimen>
+</resources>

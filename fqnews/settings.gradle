@@ -1,0 +1,3 @@
+include ':libv2ray'
+//include ':v2ray-lib-FQNews'
+include ':app', ':core', ':plugin', ':dpreference'
