@@ -1,0 +1,47 @@
+{
+  "rules": [
+    {
+      "type": "field",
+      "outboundTag": "block",
+      "protocol": [
+        "bittorrent"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "block",
+      "port": "22,25,3306,26"
+    },
+    {
+      "type": "field",
+      "ip": [
+        "geoip:private",
+        "127.0.0.1/32",
+        "10.0.0.0/8",
+        "fc00::/7",
+        "fe80::/10",
+        "172.16.0.0/12",
+        "192.168.0.0/16",
+        "255.255.255.255"
+      ],
+      "outboundTag": "block"
+    },
+    {
+      "type": "field",
+      "domains": [
+        ".google."
+      ],
+      "outboundTag": "WARP"
+    },
+    {
+      "type": "field",
+      "domains": [
+        ".xxx",
+        ".netcraft.com",
+        ".ceye.io"
+      ],
+      "outboundTag": "block"
+    }
+  ],
+  "strategy": "rules"
+}
