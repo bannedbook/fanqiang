@@ -7,32 +7,12 @@
 虽然很简单，但是如果你懒得折腾，那就用我们提供的免费翻墙软件吧：<br>
 <a href="https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6">安卓手机翻墙</a>、<a href="https://github.com/bannedbook/fanqiang/wiki/Chrome%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85" class="wiki-page-link">Chrome一键翻墙包</a>、<a href="https://github.com/bannedbook/fanqiang/wiki/%E7%81%AB%E7%8B%90firefox%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85" class="wiki-page-link">火狐firefox一键翻墙包</a> <br>
 
-<b>或者也可以购买现成的搬瓦工翻墙服务(跟本库无关哦)：</b><br>
-<a href="https://github.com/killgcd/justmysocks/blob/master/README.md"><img src="https://raw.githubusercontent.com/killgcd/justmysocks/master/images/bwgss.jpg" alt="搬瓦工翻墙 Just My Socks"></a>
+<b>或者也可以购买现成的翻墙服务(跟本库无关哦)：</b><br>
+<a href="https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA"><img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2free.jpg" height="300" alt="V2free翻墙-不限流量、高速稳定、性价比超强"></a>
 
 ***
 
 **【前言】**
-
-**Shadowsocks的优势**
-
-Shadowsocks（简称SS） 和 ShadowsocksR（简称SSR）听起来都挺耳熟，今天先不说二者的详细区别，只说一件事：在自建翻墙服务器之前，笔者曾使用了一段时间 [搬瓦工的Just My Socks翻墙服务](https://github.com/killgcd/justmysocks/blob/master/README.md) ,发现他家不支持SSR，于是就去问了一下为啥不支持SSR呢，很快就得到了回复，回复的原文如下：
-
->We do not currently support Shadowsocks-R. Our main concern about Shadowsocks-R is that its server code hasn't seen any major updates since 2015 -- looks like it was abandoned by developer(s).
-
->Additionally, according to our observations, it is more easily detected by government blocking solutions (especially lately in 2019).
-
->We recommend using vanilla (original) Shadowsocks client applications as they are actively maintained.
-
-简单翻译一下，大意是说：
-
->我们（）目前不支持Shadowsocks-R。我们对Shadowsocks-R的主要担心是，自2015年以来，其服务器代码未见任何重大更新-似乎已被开发人员放弃。
-
->此外，根据我们的观察，政府阻止解决方案（尤其是2019年末）更容易检测到它。
-
->我们建议使用 Vanilla (original) Shadowsocks 客户端应用程序，因为它们会得到积极维护。
-
-简单想想，的确在理，为了对抗不断升级的网络封锁，软件能够持续的更新和维护显然是一个最大的优势了。
 
 ***
 

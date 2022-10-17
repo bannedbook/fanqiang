@@ -25,7 +25,7 @@ https://cdn.runba.cyou/auth/register?code=cd79
 
 ***
 
-**如果你觉得免费账号速度不能满足自己的需求，同时也不想自己搭建服务器，那么你可以考虑搬瓦工官方付费ss服务-[Just My Socks](https://github.com/killgcd/justmysocks/blob/master/README.md)。要想保证自己未来100%能翻墙上网，最好掌握搭建翻墙服务器技能，同时也可以多备用不同的翻墙工具或者付费账号，以备不时之需。**
+**如果你觉得免费账号速度不能满足自己的需求，同时也不想自己搭建服务器，那么你可以考虑[付费ss服务](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)。要想保证自己未来100%能翻墙上网，最好掌握搭建翻墙服务器技能，同时也可以多备用不同的翻墙工具或者付费账号，以备不时之需。**
 
 **<a href="https://subconverter.speedupvpn.com/">机场翻墙订阅转换器-V2ray,Clash,SSR,SS等订阅链接在线转换</a>**
 

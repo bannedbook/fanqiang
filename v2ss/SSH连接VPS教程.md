@@ -7,7 +7,7 @@
 Windows用户推荐使用 Git for Windows 中 Git Bash 提供的 SSH 工具。Git for Windows 还提供有完整Linux/Unix 环境，可以顺便在Windows下学习Linux。</p>
 
 <b>广告插播，如果你觉得自己折腾VPS太麻烦，可以考虑这个服务哦（非本库服务）：</b><br>
-<a href="https://github.com/killgcd/justmysocks/blob/master/README.md"><img src="https://raw.githubusercontent.com/killgcd/justmysocks/master/images/bwgss.jpg" alt="搬瓦工翻墙 Just My Socks"></a>
+<a href="https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA"><img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2free.jpg" height="300" alt="V2free翻墙-不限流量、高速稳定、性价比超强"></a>
 
 <a href="https://git-for-windows.github.io/" rel="nofollow">下载Git for Windows</a>，下载安装后，可以直接<a href="https://zh.wikihow.com/%E6%89%93%E5%BC%80Windows%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6" rel="nofollow">打开Windows命令行</a>，然后输入：ssh root@ip 来连接服务器。 也可以使用Git for Windows的Git Bash终端窗口执行ssh命令。
 

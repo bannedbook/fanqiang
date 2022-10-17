@@ -3,7 +3,7 @@
 ## V2ray官方Windows客户端安装配置
 
 <b>广告插播，如果你觉得自己折腾VPS太麻烦，可以考虑这个服务哦（非本库服务）：</b><br>
-<a href="https://github.com/killgcd/justmysocks/blob/master/README.md"><img src="https://raw.githubusercontent.com/killgcd/justmysocks/master/images/bwgss.jpg" alt="搬瓦工翻墙 Just My Socks"></a>
+<a href="https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA"><img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2free.jpg" height="300" alt="V2free翻墙-不限流量、高速稳定、性价比超强"></a>
 
 点<a href="https://github.com/v2ray/v2ray-core/releases" target="_blank" rel="noopener">这里</a>下载 V2Ray 的 Windows 压缩包，如果是 32 位系统，下载 v2ray-windows-32.zip，如果是 64 位系统，下载 v2ray-windows-64.zip。 下载解压之后会有 v2ray.exe 和 config.json 这两个文件，v2ray.exe 是运行 v2ray 的文件，config.json 是配置文件。你可以通过记事本或其它的文本编辑器打开查看。
 

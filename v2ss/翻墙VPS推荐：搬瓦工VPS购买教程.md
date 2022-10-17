@@ -3,7 +3,7 @@
 <p>1）选择合适的搬瓦工方案，2）检查所选方案信息，3）注册搬瓦工账户进行购买，4）使用支付宝（或微信支付、PayPal、信用卡）付款完成购买。</p>
 
 <b>广告插播，如果你觉得自己折腾VPS太麻烦，可以考虑这个服务哦（非本库服务）：</b><br>
-<a href="https://github.com/killgcd/justmysocks/blob/master/README.md"><img src="https://raw.githubusercontent.com/killgcd/justmysocks/master/images/bwgss.jpg" alt="搬瓦工翻墙 Just My Socks"></a>
+<a href="https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA"><img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2free.jpg" height="300" alt="V2free翻墙-不限流量、高速稳定、性价比超强"></a>
 
 <b>搬瓦工VPS买前须知</b>
 <ul>
