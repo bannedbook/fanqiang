@@ -27,7 +27,7 @@ wget https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/server-cf
 
 测试V2Ray配置文件：
 
-`/usr/local/bin/v2ray -test -config /usr/local/etc/v2ray/config.json`
+`/usr/local/bin/v2ray test -config /usr/local/etc/v2ray/config.json`
 
 本文属于bannedbook系列翻墙教程的一部分，请继续阅读<a href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md" >自建V2ray服务器简明教程</a>的其它章节。也欢迎体验我们提供的免费翻墙软件和教程：
 <ul>
