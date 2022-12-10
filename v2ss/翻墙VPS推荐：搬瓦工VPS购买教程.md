@@ -14,8 +14,6 @@
 <li>为了配合我们的翻墙教程，请安装最新版Debian操作系统。</li>
 </ul>
 
-广告插播:[香港3网直连cn2 vps，很香很香，墙裂推荐，已被墙请翻墙访问](https://lihi1.com/pNSpM)
-
 本文属于bannedbook系列翻墙教程的一部分，相关教程如下：
 * [自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)	
 * [自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 
