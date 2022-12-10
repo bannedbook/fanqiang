@@ -1,6 +1,6 @@
 <h1>SSH连接VPS教程</h1>
 
-一般自己部署翻墙服务器的话，购买VPS服务器后，需要SSH连接服务器来执行几个简单的Linux命令（很简单，照着拷贝粘贴即可）。这里我们介绍一下SSH连接VPS的方法，以Vultr VPS为例，其它VPS也大同小异。[购买Vultr VPS图文教程，新用户赠送100美元](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%B4%AD%E4%B9%B0Vultr%20VPS%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B.md)
+一般自己部署翻墙服务器的话，购买VPS服务器后，需要SSH连接服务器来执行几个简单的Linux命令（很简单，照着拷贝粘贴即可）。这里我们介绍一下SSH连接VPS的方法，以Vultr VPS为例，其它VPS也大同小异。[购买Vultr VPS图文教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%B4%AD%E4%B9%B0Vultr%20VPS%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B.md)
 
 如果你是苹果电脑操作系统，更简单，无需下载安装任何软件，系统可以直接连接VPS。打开**终端**（Terminal），输入：ssh root@ip  其中“ip”替换成你VPS的ip, 按回车键，然后复制粘贴密码，按回车键即可登录。粘贴密码时有可能不显示密码，但不影响， [参考设置方法](http://www.cnblogs.com/ghj1976/archive/2013/04/19/3030159.html)  如果不能用MAC自带的终端连接的话，直接网上搜“MAC连接SSH的软件”，有很多，然后通过软件来连接vps服务器就行。
 

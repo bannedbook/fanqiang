@@ -26,7 +26,7 @@
 <li>密码填写 VPS 的 root 密码。</li>
 </ol>
 
-获取上面的 IP、端口(默认是22，可以不填)、密码等信息，可以参考： [购买Vultr VPS图文教程，新用户赠送100美元](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%B4%AD%E4%B9%B0Vultr%20VPS%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B.md)
+获取上面的 IP、端口(默认是22，可以不填)、密码等信息，可以参考： [购买Vultr VPS图文教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%B4%AD%E4%B9%B0Vultr%20VPS%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B.md)
 <p><strong>这里填写的信息其实就是 SSH 的端口和密码，跟SSH登录完全一样。</strong></p>
 <p>填写完成后，点击连接。</p>
 
