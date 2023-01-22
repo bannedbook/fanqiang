@@ -38,6 +38,7 @@
       "domains": [
         ".xxx",
         ".netcraft.com",
+		"uceprotect.net",
         ".ceye.io"
       ],
       "outboundTag": "block"
