@@ -1,5 +1,23 @@
 {
+  "domainMatcher": "hybrid",
   "rules": [
+    {
+      "type": "field",
+      "domains": [
+        ".google."
+      ],
+      "outboundTag": "WARP"
+    },
+    {
+      "type": "field",
+      "domains": [
+        ".xxx",
+        ".netcraft.com",
+        "uceprotect.net",
+        ".ceye.io"
+      ],
+      "outboundTag": "block"
+    },
     {
       "type": "field",
       "outboundTag": "block",
@@ -25,24 +43,6 @@
         "255.255.255.255"
       ],
       "outboundTag": "block"
-    },
-    {
-      "type": "field",
-      "domains": [
-        ".google."
-      ],
-      "outboundTag": "WARP"
-    },
-    {
-      "type": "field",
-      "domains": [
-        ".xxx",
-        ".netcraft.com",
-		"uceprotect.net",
-        ".ceye.io"
-      ],
-      "outboundTag": "block"
     }
-  ],
-  "strategy": "rules"
+  ]
 }
