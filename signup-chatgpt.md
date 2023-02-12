@@ -1,3 +1,5 @@
+# 中国大陆注册ChatGPT教程
+
 <img src="https://i1.wp.com/m1.aboluowang.com/uploadfile/2023/0212/20230212113811825.jpg" />
 
 注册ChatGPT需要中国大陆以外的手机验证，准备工作
@@ -5,14 +7,16 @@
 <strong>1.一个接码平台</strong>
 
 这里提供3个，都需要付费，免费的成功率低，不推荐
-https://sms-activate.org/cn/
-https://5sim.net/
-https://smspva.com/arenda.html
 
-2.准备好翻墙节点，最好是付费节点，免费的基本被ChatGPT屏蔽的差不多了。
+*https://sms-activate.org/cn/
+*https://5sim.net/
+*https://smspva.com/arenda.html
+
+<strong>2.准备好翻墙节点，最好是付费节点，免费的基本被ChatGPT屏蔽的差不多了。</strong>
+
 <strong>推荐</strong>：🔥<a href="https://www.bannedbook.org/forum23/topic22702.html" target="_blank" rel="noopener">全平台高速翻墙:高清视频秒开,超低延迟</a>
 
-3.开始注册
+<strong>3.开始注册</strong>
 
 打开 <a href="https://chat.openai.com/">https://chat.openai.com/</a>
 
