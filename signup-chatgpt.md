@@ -8,13 +8,13 @@
 
 这里提供3个，都需要付费，免费的成功率低，不推荐
 
-*https://sms-activate.org/cn/
-*https://5sim.net/
-*https://smspva.com/arenda.html
+* https://sms-activate.org/cn/
+* https://5sim.net/
+* https://smspva.com/arenda.html
 
 <strong>2.准备好翻墙节点，最好是付费节点，免费的基本被ChatGPT屏蔽的差不多了。</strong>
 
-<strong>推荐</strong>：🔥<a href="https://www.bannedbook.org/forum23/topic22702.html" target="_blank" rel="noopener">全平台高速翻墙:高清视频秒开,超低延迟</a>
+<strong>推荐</strong>：🔥<a href="https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">全平台高速翻墙:高清视频秒开,超低延迟</a>
 
 <strong>3.开始注册</strong>
 
