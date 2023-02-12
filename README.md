@@ -12,6 +12,7 @@
 *   [苹果电脑MAC翻墙](https://github.com/bannedbook/fanqiang/wiki/%E8%8B%B9%E6%9E%9C%E7%94%B5%E8%84%91MAC%E7%BF%BB%E5%A2%99)
 *   [iphone翻墙](https://github.com/bannedbook/fanqiang/wiki/iphone%E7%BF%BB%E5%A2%99)
 *   [TorBrowser一键翻墙包](https://github.com/bannedbook/fanqiang/wiki/TorBrowser%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85)
+*   [中国大陆注册ChatGPT教程](https://github.com/bannedbook/fanqiang/blob/master/signup-chatgpt.md#%E4%B8%AD%E5%9B%BD%E5%A4%A7%E9%99%86%E6%B3%A8%E5%86%8Cchatgpt%E6%95%99%E7%A8%8B)
 
 ## [Windows V2ray/SS/SSR 翻墙教程](https://github.com/bannedbook/fanqiang/tree/master/windows)
 
