@@ -18,7 +18,7 @@
 
 <strong>3.开始注册</strong>
 
-打开 <a href="https://chat.openai.com/">https://chat.openai.com/</a>
+翻墙挂好节点，美国欧洲日本新加坡韩国台湾都可以，打开 <a href="https://chat.openai.com/">https://chat.openai.com/</a>
 
 点击 Sign up，输入你的email地址，大陆邮箱也可以，海外邮箱更好。点击发到你邮箱的校验链接，从接码平台选一个手机号（目前可以和节点国家不一样）。完成手机验证，大概这样就完成了。
 
