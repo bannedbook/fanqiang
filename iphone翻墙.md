@@ -2,12 +2,12 @@
 
 **第一步、注册机场，获取免费翻墙节点**
 
-[![免费公益机场-不限流量](https://v2free.org/images/fbyt2.jpg)](https://go.runba.cyou/auth/register?code=cd79)
+[![免费公益机场-不限流量](https://v2free.org/images/fbyt2.jpg)](https://w1.v2free.top/auth/register?code=cd79)
 
-这里推荐V2free机场，点击注册链接：<a href="https://go.runba.cyou/auth/register?code=cd79" target="_blank">go.runba.cyou</a>，注册后在该网站用户中心拷贝 *V2Ray/SS节点* 订阅链接备用，然后在第二步中把订阅链接添加到Fair Plus VPN里即可使用。
+这里推荐V2free机场，点击注册链接：<a href="https://w1.v2free.top/auth/register?code=cd79" target="_blank">w1.v2free.top</a>，注册后在该网站用户中心拷贝 *V2Ray/SS节点* 订阅链接备用，然后在第二步中把订阅链接添加到Fair Plus VPN里即可使用。
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
-https://cdn.runba.cyou/auth/register?code=cd79
+https://cdn.v2free.top/auth/register?code=cd79
 
 V2free机场注册后免费获得1024M初始流量，每日[签到](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/checkin.jpg)【登录其网站用户中心底部点签到按钮】可获得300-500M免费流量。
 注册登录后，用个人邀请链接 邀请新用户注册还可获得流量奖励。
