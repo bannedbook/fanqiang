@@ -14,14 +14,14 @@
 
 **第一步：购买VPS服务器**
 
-[购买Vultr VPS图文教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%B4%AD%E4%B9%B0Vultr%20VPS%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B.md)
-或 [搬瓦工VPS购买教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E7%BF%BB%E5%A2%99VPS%E6%8E%A8%E8%8D%90%EF%BC%9A%E6%90%AC%E7%93%A6%E5%B7%A5VPS%E8%B4%AD%E4%B9%B0%E6%95%99%E7%A8%8B.md)
+[购买Vultr VPS图文教程](v2ss/%E8%B4%AD%E4%B9%B0Vultr%20VPS%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B.md)
+或 [搬瓦工VPS购买教程](v2ss/%E7%BF%BB%E5%A2%99VPS%E6%8E%A8%E8%8D%90%EF%BC%9A%E6%90%AC%E7%93%A6%E5%B7%A5VPS%E8%B4%AD%E4%B9%B0%E6%95%99%E7%A8%8B.md)
 
 ***
 
 **第二步：SSH连接服务器**
 
-[SSH连接VPS教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/SSH%E8%BF%9E%E6%8E%A5VPS%E6%95%99%E7%A8%8B.md)
+[SSH连接VPS教程](v2ss/SSH%E8%BF%9E%E6%8E%A5VPS%E6%95%99%E7%A8%8B.md)
 
 ![](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/ss/xshell2.png)
 
@@ -31,7 +31,7 @@ SSH连接VPS成功后，会出现如上图所示，之后就可以复制粘贴li
 
 **第三步：Google BBR 一键加速VPS服务器**
 
-[最简单的Google BBR 一键加速VPS教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84Google%20BBR%20%E4%B8%80%E9%94%AE%E5%8A%A0%E9%80%9FVPS%E6%95%99%E7%A8%8B.md)
+[最简单的Google BBR 一键加速VPS教程](v2ss/%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84Google%20BBR%20%E4%B8%80%E9%94%AE%E5%8A%A0%E9%80%9FVPS%E6%95%99%E7%A8%8B.md)
 
 ***
 
@@ -85,22 +85,22 @@ https://github.com/txthinking/brook/releases/download/v20200201/brook_windows_38
 
 我们可以在TLS+WebSocket基础上，再套上一个Web服务器，把Brook稍稍隐藏一下，详见：
 
-[Brook之TLS+WebSocket+Web服务器翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+[Brook之TLS+WebSocket+Web服务器翻墙教程](v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
 
 当封锁特别厉害的时候，或者IP被墙，可以再套上CDN，复活被墙VPS，详见：
 
-[Brook之TLS+WebSocket+CDN翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS+WebSocket+CDN%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+[Brook之TLS+WebSocket+CDN翻墙教程](v2ss/Brook%E4%B9%8BTLS+WebSocket+CDN%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
 
 ***
 
 ## 相关翻墙教程
 
 
-* [Brook之TLS+WebSocket+CDN翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BCDN%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+* [Brook之TLS+WebSocket+CDN翻墙教程](v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BCDN%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
 
-* [Brook之TLS+WebSocket+Web服务器翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+* [Brook之TLS+WebSocket+Web服务器翻墙教程](v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
 
-* [Brook之TLS+WebSocket翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+* [Brook之TLS+WebSocket翻墙教程](v2ss/Brook%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
 
 * <a href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md">自建V2ray服务器简明教程</a>
 

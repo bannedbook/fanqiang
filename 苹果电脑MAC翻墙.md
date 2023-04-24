@@ -13,15 +13,15 @@ V2free机场注册后免费获得1024M初始流量，每日[签到](https://raw.
 
 ## 第二步：下载ClashX软件，导入Clash订阅链接
 
-参见[macOS翻墙之ClashX翻墙教程](https://github.com/bannedbook/fanqiang/tree/master/macos/ClashX.md)
+参见[macOS翻墙之ClashX翻墙教程](macos/ClashX.md)
 
-## [更多Mac翻墙软件教程](https://github.com/bannedbook/fanqiang/tree/master/macos)
+## [更多Mac翻墙软件教程](macos)
 
   * [苹果电脑MAC翻墙](https://github.com/bannedbook/fanqiang/wiki/%E8%8B%B9%E6%9E%9C%E7%94%B5%E8%84%91MAC%E7%BF%BB%E5%A2%99)
-  * [macOS翻墙之ClashX翻墙教程](https://github.com/bannedbook/fanqiang/tree/master/macos/ClashX.md)
-  * [macOS翻墙之V2rayU教程](https://github.com/bannedbook/fanqiang/tree/master/macos/V2RayU.md)
-  * [macOS翻墙之Surge教程](https://github.com/bannedbook/fanqiang/tree/master/macos/Surge.md)
-  * [macOS翻墙之V2rayX教程](https://github.com/bannedbook/fanqiang/tree/master/macos/V2rayX.md)
+  * [macOS翻墙之ClashX翻墙教程](macos/ClashX.md)
+  * [macOS翻墙之V2rayU教程](macos/V2RayU.md)
+  * [macOS翻墙之Surge教程](macos/Surge.md)
+  * [macOS翻墙之V2rayX教程](macos/V2rayX.md)
   * [v2ray免费账号](https://github.com/bannedbook/fanqiang/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7)
   * [免费ss账号](https://github.com/bannedbook/fanqiang/wiki/%E5%85%8D%E8%B4%B9ss%E8%B4%A6%E5%8F%B7)
 

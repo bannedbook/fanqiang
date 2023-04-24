@@ -1,6 +1,6 @@
 # Brook之TLS+WebSocket+Web服务器翻墙教程
 
-接前文 [Brook之TLS+WebSocket翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md) ，本文将介绍Brook之TLS+WebSocket+Web服务器的翻墙方法。
+接前文 [Brook之TLS+WebSocket翻墙教程](v2ss/Brook%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md) ，本文将介绍Brook之TLS+WebSocket+Web服务器的翻墙方法。
 
 首先把VPS上的Brook进程停掉，然后以下面的命令重新启动：
 
@@ -29,7 +29,7 @@ www.mydomain.com
   }
 }
 ```
-如果你不会vi编辑文件，那么可以在本地编辑好这个文件，再上传到VPS服务器上。VPS传输文件教程请见： [使用FileZilla和VPS传输文件教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E4%BD%BF%E7%94%A8FileZilla%E5%92%8CVPS%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6%E6%95%99%E7%A8%8B.md)
+如果你不会vi编辑文件，那么可以在本地编辑好这个文件，再上传到VPS服务器上。VPS传输文件教程请见： [使用FileZilla和VPS传输文件教程](v2ss/%E4%BD%BF%E7%94%A8FileZilla%E5%92%8CVPS%E4%BC%A0%E8%BE%93%E6%96%87%E4%BB%B6%E6%95%99%E7%A8%8B.md)
 
 在本地编辑配置文件推荐使用 [Notepad++](https://notepad-plus-plus.org/downloads/) 这个开源免费的编辑器，非常好用。
 
@@ -47,11 +47,11 @@ https://caddyserver.com/v1/tutorial/beginner
 ## 相关翻墙教程
 
 
-* [Brook之TLS+WebSocket+CDN翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BCDN%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+* [Brook之TLS+WebSocket+CDN翻墙教程](v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BCDN%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
 
-* [Brook之TLS+WebSocket+Web服务器翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+* [Brook之TLS+WebSocket+Web服务器翻墙教程](v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
 
-* [Brook之TLS+WebSocket翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+* [Brook之TLS+WebSocket翻墙教程](v2ss/Brook%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
 
 * <a href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md">自建V2ray服务器简明教程</a>
 

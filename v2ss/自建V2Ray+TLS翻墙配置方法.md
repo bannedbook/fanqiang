@@ -4,14 +4,14 @@
 - 2020-02-26 bannedbook:为保护主域名免被封，增加子域名配置方式。
 - 2020-02-26 bannedbook:增加个人使用体验，增加域名注册推荐，启用Google BBR加速推荐。
 
-技术上，目前v2ray比[Shadowsocks翻墙](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)效果更好，据网络传言，2019年中期开始Shadowsocks能够被墙自动探测阻断，因此，目前[自建V2ray翻墙](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 就成了更加成熟和稳定的翻墙方案。
+技术上，目前v2ray比[Shadowsocks翻墙](v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)效果更好，据网络传言，2019年中期开始Shadowsocks能够被墙自动探测阻断，因此，目前[自建V2ray翻墙](v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 就成了更加成熟和稳定的翻墙方案。
 
-以个人实际感受而言，近期使用Shadowsocks翻墙即使是使用了新版的AEAD加密模式，也是一两周时间会被封端口，不得不定期更换Shadowsocks服务器监听端口。而同时在使用的v2ray（仅仅默认配置，未加TLS配置）则一直坚挺。而V2Ray+TLS翻墙模式，则比[V2Ray默认配置](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)更加安全稳定，翻墙效果更好，不易被检测，因此推荐愿意动手折腾的网友不妨折腾一下。
+以个人实际感受而言，近期使用Shadowsocks翻墙即使是使用了新版的AEAD加密模式，也是一两周时间会被封端口，不得不定期更换Shadowsocks服务器监听端口。而同时在使用的v2ray（仅仅默认配置，未加TLS配置）则一直坚挺。而V2Ray+TLS翻墙模式，则比[V2Ray默认配置](v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)更加安全稳定，翻墙效果更好，不易被检测，因此推荐愿意动手折腾的网友不妨折腾一下。
 
-线路上，最少用cn2，如果预算允许，最好上cn2 gia，推荐[搬瓦工VPS,可选cn2或cn2 gia线路](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E7%BF%BB%E5%A2%99VPS%E6%8E%A8%E8%8D%90%EF%BC%9A%E6%90%AC%E7%93%A6%E5%B7%A5VPS%E8%B4%AD%E4%B9%B0%E6%95%99%E7%A8%8B.md)。在2017年时，普通的cn2线路就可流畅看1080P youtube，但到2019、2020年，cn2线路则经常卡顿。
-在操作系统上，可加入最新的bbr技术,详见： [最简单的Google BBR 一键加速VPS教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84Google%20BBR%20%E4%B8%80%E9%94%AE%E5%8A%A0%E9%80%9FVPS%E6%95%99%E7%A8%8B.md)。BBR技术，可以更好地抢占带宽，从而达到同样带宽，速度更快的目的。
+线路上，最少用cn2，如果预算允许，最好上cn2 gia，推荐[搬瓦工VPS,可选cn2或cn2 gia线路](v2ss/%E7%BF%BB%E5%A2%99VPS%E6%8E%A8%E8%8D%90%EF%BC%9A%E6%90%AC%E7%93%A6%E5%B7%A5VPS%E8%B4%AD%E4%B9%B0%E6%95%99%E7%A8%8B.md)。在2017年时，普通的cn2线路就可流畅看1080P youtube，但到2019、2020年，cn2线路则经常卡顿。
+在操作系统上，可加入最新的bbr技术,详见： [最简单的Google BBR 一键加速VPS教程](v2ss/%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84Google%20BBR%20%E4%B8%80%E9%94%AE%E5%8A%A0%E9%80%9FVPS%E6%95%99%E7%A8%8B.md)。BBR技术，可以更好地抢占带宽，从而达到同样带宽，速度更快的目的。
 
-本文以[自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 为基础，介绍更加安全可靠的V2Ray+TLS翻墙配置方法。
+本文以[自建V2ray服务器简明教程](v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md) 为基础，介绍更加安全可靠的V2Ray+TLS翻墙配置方法。
 
 V2ray 从 v1.19 起引入了 TLS，TLS 中文译名是传输层安全，如果你没听说过，请 Google 了解一下。以下给出些我认为介绍较好的文章链接：
 
@@ -350,7 +350,7 @@ Hostname 中输入你的域名，点提交，过一会结果就出来了。
 
 ## 温馨提醒
 
-**V2Ray 的 TLS 不是伪装或混淆，这是完整、真正的 TLS。因此才需要域名和证书。下一篇我们将要介绍的 [V2ray WS(WebSocket)](https://github.com/bannedbook/fanqiang/blob/master/v2ss/V2Ray%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%96%B9%E6%B3%95.md) 也不是伪装。因此，V2ray搭建好后还可以套CDN【详见：[V2Ray之TLS+WebSocket+Nginx+CDN配置方法](https://github.com/bannedbook/fanqiang/blob/master/v2ss/V2Ray%E4%B9%8BTLS+WebSocket+Nginx+CDN%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95.md)】，套CDN不是一个必须的步骤，但套CDN可以有效保护IP，甚至被墙的ip也能复活，如果套国内CDN，据说速度可以飞起来。**  
+**V2Ray 的 TLS 不是伪装或混淆，这是完整、真正的 TLS。因此才需要域名和证书。下一篇我们将要介绍的 [V2ray WS(WebSocket)](v2ss/V2Ray%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%96%B9%E6%B3%95.md) 也不是伪装。因此，V2ray搭建好后还可以套CDN【详见：[V2Ray之TLS+WebSocket+Nginx+CDN配置方法](v2ss/V2Ray%E4%B9%8BTLS+WebSocket+Nginx+CDN%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95.md)】，套CDN不是一个必须的步骤，但套CDN可以有效保护IP，甚至被墙的ip也能复活，如果套国内CDN，据说速度可以飞起来。**  
 
 
 -----

@@ -17,10 +17,10 @@ https://cdn.v2free.top/auth/register?code=cd79
 * <a href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md">自建V2ray服务器简明教程</a>
 * <a href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2Ray%2BTLS%E7%BF%BB%E5%A2%99%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95.md">自建V2Ray+TLS翻墙配置方法</a>
 * <a href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/V2Ray%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%96%B9%E6%B3%95.md">V2Ray之TLS+WebSocket翻墙方法</a>
-* [V2Ray之TLS+WebSocket+Nginx+CDN配置方法](https://github.com/bannedbook/fanqiang/blob/master/v2ss/V2Ray%E4%B9%8BTLS+WebSocket+Nginx+CDN%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95.md)
-* [Brook之TLS+WebSocket+CDN翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BCDN%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
-* [Brook之TLS+WebSocket+Web服务器翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
-* [Brook之TLS+WebSocket翻墙教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/Brook%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+* [V2Ray之TLS+WebSocket+Nginx+CDN配置方法](v2ss/V2Ray%E4%B9%8BTLS+WebSocket+Nginx+CDN%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95.md)
+* [Brook之TLS+WebSocket+CDN翻墙教程](v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BCDN%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+* [Brook之TLS+WebSocket+Web服务器翻墙教程](v2ss/Brook%E4%B9%8BTLS%2BWebSocket%2BWeb%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+* [Brook之TLS+WebSocket翻墙教程](v2ss/Brook%E4%B9%8BTLS%2BWebSocket%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
 * <a title="自建Shadowsocks服务器简明教程" href="https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md">自建Shadowsocks服务器简明教程</a>
 * <a href="https://subconverter.speedupvpn.com/">机场翻墙订阅转换器-V2ray,Clash,SSR,SS等订阅链接在线转换</a>
 
@@ -38,14 +38,14 @@ VPS推荐：
 
 ### v2ray客户端下载及使用方法
 
-[Windows客户端教程](https://github.com/bannedbook/fanqiang/tree/master/windows#windows-v2rayssssr-%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B)
+[Windows客户端教程](windows#windows-v2rayssssr-%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B)
 
-[Mac客户端教程](https://github.com/bannedbook/fanqiang/tree/master/macos) 
+[Mac客户端教程](macos) 
 
 Linux客户端：[Qv2ray](https://github.com/lhy0403/Qv2ray/releases)
 
-安卓客户端：[v2ray VPN](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6#v2vpn)、[安卓客户端教程](https://github.com/bannedbook/fanqiang/tree/master/android#android-%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B)
+安卓客户端：[v2ray VPN](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6#v2vpn)、[安卓客户端教程](android#android-%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B)
 
-iOS客户端：[iOS注册美区Apple ID教程](https://github.com/bannedbook/fanqiang/tree/master/ios/AppleID.md) 、 [iOS客户端教程](https://github.com/bannedbook/fanqiang/tree/master/ios#iphoneipad-v2rayss-%E7%BF%BB%E5%A2%99app%E6%95%99%E7%A8%8B)
+iOS客户端：[iOS注册美区Apple ID教程](ios/AppleID.md) 、 [iOS客户端教程](ios#iphoneipad-v2rayss-%E7%BF%BB%E5%A2%99app%E6%95%99%E7%A8%8B)
 
-路由器：[OpenWRT路由器翻墙教程](https://github.com/bannedbook/fanqiang/tree/master/router/OpenWRT.md) 、 [梅林路由器翻墙教程](https://github.com/bannedbook/fanqiang/tree/master/router/Merlin.md)
+路由器：[OpenWRT路由器翻墙教程](router/OpenWRT.md) 、 [梅林路由器翻墙教程](router/Merlin.md)
