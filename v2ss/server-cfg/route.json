@@ -4,11 +4,11 @@
     {
       "type": "field",
       "domains": [
-        "domain:duckdns.org",
         ".xxx",
-        ".netcraft.com",
-        "uceprotect.net",
-        ".ceye.io"
+        "domain:duckdns.org",
+        "domain:netcraft.com",
+        "domain:uceprotect.net",
+        "domain:ceye.io"
       ],
       "outboundTag": "block"
     },
