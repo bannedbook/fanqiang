@@ -4,6 +4,7 @@
     {
       "type": "field",
       "domains": [
+        "domain:duckdns.org",
         ".xxx",
         ".netcraft.com",
         "uceprotect.net",
