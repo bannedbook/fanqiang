@@ -1,0 +1,62 @@
+{
+  "domainMatcher": "hybrid",
+  "rules": [
+    {
+      "type": "field",
+      "network": "udp",
+      "outboundTag": "block"
+    },
+    {
+      "type": "field",
+      "domains": [
+        "geosite:cn"
+      ],
+      "outboundTag": "block"
+    },
+    {
+      "type": "field",
+      "ip": [
+        "geoip:cn"
+      ],
+      "outboundTag": "block"
+    },
+    {
+      "type": "field",
+      "domains": [
+        ".xxx",
+        "domain:duckdns.org",
+        "domain:netcraft.com",
+        "domain:uceprotect.net",
+        "domain:ceye.io"
+      ],
+      "outboundTag": "block"
+    },
+    {
+      "type": "field",
+      "outboundTag": "block",
+      "protocol": [
+        "bittorrent"
+      ]
+    },
+    {
+      "type": "field",
+      "outboundTag": "block",
+      "port": "22,25,3306,993,465,587,110,995,143,26"
+    },
+    {
+      "type": "field",
+      "ip": [
+        "geoip:private",
+        "127.0.0.1/32",
+        "10.0.0.0/8",
+        "fc00::/7",
+        "fe80::/10",
+        "172.16.0.0/12",
+        "192.168.0.0/16",
+        "216.218.185.162",
+        "255.255.255.255"
+      ],
+      "outboundTag": "block"
+    }
+  ]
+}
