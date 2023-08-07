@@ -3,11 +3,6 @@
   "rules": [
     {
       "type": "field",
-      "network": "udp",
-      "outboundTag": "block"
-    },
-    {
-      "type": "field",
       "domains": [
         "geosite:cn",
         ".xxx",
@@ -23,7 +18,6 @@
       "type": "field",
       "ip": [
         "geoip:cn",
-        "geoip:private",
         "127.0.0.1/32",
         "10.0.0.0/8",
         "fc00::/7",
