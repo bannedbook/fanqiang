@@ -4,7 +4,7 @@ V2rayN配置使用教程
 应用概述
 ----
 
-V2rayN 是在 WIN 平台上的客户端软件，支持 VMess 协议。 
+V2rayN 是在 WIN 平台上的客户端软件，支持 VMess/SS 等协议。 
 
 V2rayN 要求系统安装有 [Microsoft .NET Framework 4.8](https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net48-web-installer) 或更高版本。如果程序启动不了，请先安装Microsoft .NET Framework 。
 
