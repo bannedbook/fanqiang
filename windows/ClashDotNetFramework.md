@@ -3,7 +3,7 @@
 1\. 简介
 ------
 
-ClashDotNetFramework 是基于.NET5的图形化 Clash 分支，似乎并非是开源软件，请根据您的情况选择是否使用。
+ClashDotNet 是基于.NET5的图形化 Clash 分支，目前这个ClashDotNet软件已经多年未更新了,问题比较多不建议使用了,推荐使用[V2rayN](https://github.com/bannedbook/fanqiang/blob/master/windows/V2RayN.md)。
 
 **支持的协议：** Vmess, Shadowsocks, Snell , SOCKS5 , ShadowsocksR，注意：目前不支持vless协议，vless节点会被显示为vmess并连接超时。
 
