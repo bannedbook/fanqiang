@@ -6,8 +6,6 @@ ChromeGoMac，Chrome一键翻墙包 Mac版
 
 **注意**：软件都是采用加密方式的，但为了更稳定、更安全的翻墙，建议卸载国产杀毒软件，至少翻墙时不要用它们！因为很多国产杀毒软件，比如360安全卫生、360杀毒软件、腾讯管家、金山卫士等不仅仅会起干扰作用，造成软件无法正常使用或速度变慢，它们与金盾工程有千丝万缕的关系! 可以使用[windows自带的defender杀毒软件](https://docs.microsoft.com/zh-cn/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-windows?view=o365-worldwide)。
 
-**注意**：第一次使用SS/SSR/v2ray时，或许需要安装 NET Framework 4.8 或更高版本 ，不然无法正常运行，[微软官网](https://dotnet.microsoft.com/download/dotnet-framework/net48)下载。
-
 [Chrome一键翻墙包下载](#chromego-xia-zai-di-zhi)、[EdgeGo-Edge一键翻墙包](https://github.com/bannedbook/fanqiang/tree/master/EdgeGo)、[火狐一键翻墙包](https://github.com/bannedbook/fanqiang/wiki/%E7%81%AB%E7%8B%90firefox%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85)、[安卓手机翻墙](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6)、[自建V2ray服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAV2ray%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)、[自建Shadowsocks服务器简明教程](https://github.com/bannedbook/fanqiang/blob/master/v2ss/%E8%87%AA%E5%BB%BAShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B.md)
 
 **推荐：**  
@@ -15,7 +13,7 @@ ChromeGoMac，Chrome一键翻墙包 Mac版
 
 ### 更新日志
 
-*   **2023年9月25日更新公告：若干更新，请下载新版。 win10系统的防火墙可能会起网络阻碍作用，如果多款工具更新ip后无法正常使用，可以把防火墙和杀毒软件关闭再试试看。**  使用方法：下载后解压，按文件夹里面的《使用说明（必看）》操作。第一次使用或不好用的时候记得按照使用说明更新一下ip。
+*   **2023年9月25日更新公告：若干更新，请下载新版。 系统的防火墙可能会起网络阻碍作用，如果多款工具更新ip后无法正常使用，可以把防火墙和杀毒软件关闭再试试看。**  使用方法：下载后解压，按文件夹里面的《使用说明（必看）》操作。第一次使用或不好用的时候记得按照使用说明更新一下ip。
     
 ### ChromeGoMac下载地址<a name="chromego-xia-zai-di-zhi"></a>
 
@@ -24,5 +22,5 @@ ChromeGoMac，Chrome一键翻墙包 Mac版
 > 1.  [ChromeGoMac下载点](https://d1a.wenxin-ai.top/ChromeGoMac.tar.gz)
 > 2.  [ChromeGoMac下载点](https://d1.wenxin-ai.top/ChromeGoMac.tar.gz)
 > 3.  [ChromeGoMac下载点](https://d2.wenxin-ai.top/ChromeGoMac.tar.gz)
-> 4.  [ChromeGo下载点](https://github.com/bannedbook/fanqiang/releases)
+> 4.  [ChromeGoMac下载点](https://github.com/bannedbook/fanqiang/releases)
 
