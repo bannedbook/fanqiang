@@ -14,18 +14,9 @@
       "servers": [
         {
           "address": "127.0.0.1",
-          "ota": false,
-          "port": 40000,
-          "level": 1
+          "port": 40000
         }
       ]
-    },
-    "streamSettings": {
-      "network": "tcp"
-    },
-    "mux": {
-      "enabled": false,
-      "concurrency": -1
     }
   },
   {
