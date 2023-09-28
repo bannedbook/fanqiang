@@ -33,12 +33,14 @@ ChromeGoMac，Chrome一键翻墙包 Mac版
 
 3. 解压程序
 
-   ```#首先查看文件名
+   ```
+   #首先查看文件名
    ls -rtl
    #如果文件名是 ChromeGoMac.tar
    tar -xvf ChromeGoMac.tar
    #如果文件名是 ChromeGoMac.tar.gz
-   tar -zxvf ChromeGoMac.tar.gz```
+   tar -zxvf ChromeGoMac.tar.gz
+   ```
 
 4. 进入程序文件夹
 
