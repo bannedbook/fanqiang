@@ -25,7 +25,7 @@ ChromeGoMac，Chrome一键翻墙包 Mac版
 
 ### 使用说明
 
-1. 下载后,比如下载到了下载文件夹
+1. 首先设置 [MAC允许未知来源的应用](https://github.com/bannedbook/fanqiang/blob/master/MAC%E5%85%81%E8%AE%B8%E6%9C%AA%E7%9F%A5%E6%9D%A5%E6%BA%90%E7%9A%84%E5%BA%94%E7%94%A8.md), 然后从上面的下载链接下载, 比如下载到了下载文件夹 
 
 2. 打开终端,输入下面的命令进入下载文件夹
 
