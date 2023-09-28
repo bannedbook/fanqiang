@@ -45,7 +45,7 @@ ChromeGoMac，Chrome一键翻墙包 Mac版
 4. 进入程序文件夹
 
 	```
-	cd ChromeGoMac
+	cd ~/Downloads/ChromeGoMac
 	ls -rtl
 	```
 	
