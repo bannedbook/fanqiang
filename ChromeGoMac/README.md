@@ -31,7 +31,7 @@ ChromeGoMac，Chrome一键翻墙包 Mac版
 
 	`cd ~/Downloads/`
 
-3. 解压程序(如果使用Safari浏览器下载,可能会自动解压,这一步或可省略)
+3. 解压程序
 
    ```
    #首先查看文件名
