@@ -4,7 +4,6 @@
 
 Windows类似方法参考: [Windows如何共享Wifi无线网卡翻墙热点给其它设备翻墙](https://github.com/bannedbook/fanqiang/blob/master/game/Windows%E5%A6%82%E4%BD%95%E5%85%B1%E4%BA%ABWifi%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E7%BF%BB%E5%A2%99%E7%83%AD%E7%82%B9%E7%BB%99%E5%85%B6%E5%AE%83%E8%AE%BE%E5%A4%87%E7%BF%BB%E5%A2%99.md)
 
-
 <p>之前有分享过 Surge 作为网关 DHCP 接管家里网络的教程，这几个月家里的设备一直这么使用非常稳定，电视手机直接科学上网也非常方便。但是：Surge 价格有点贵会劝退人，之前的教程也需要手动设置下使用 Surge 作为网关走代理（那是我设置问题）所以这次写下 ClashX Pro 的教程。</p>
 <p>使用 Clash 或者 Surge 软件作为网关我再赘述下我个人觉得的优点：</p>
 <ol>
