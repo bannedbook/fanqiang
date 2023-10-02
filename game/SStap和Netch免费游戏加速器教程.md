@@ -56,7 +56,7 @@ SSTap软件页面比较简洁，下面内嵌的广告页面已经无法正常显
  	<li>SS：Shadowsocks（简称SS）是一种基于Socks5代理方式的加密传输协议，也可以指实现这个协议的各种开发包。目前包使用Python、C、C++、C#、Go语言、Rust等编程语言开发，大部分主要实现（iOS平台的除外）采用Apache许可证、GPL、MIT许可证等多种自由软件许可协议开放源代码。Shadowsocks分为服务器端和客户端，在使用之前，需要先将服务器端程序部署到服务器上面，然后通过客户端连接并创建本地代理。</li>
  	<li>SSR：ShadowsocksR（简称SSR）是网名为breakwa11的用户发起的Shadowsocks分支，在Shadowsocks的基础上增加了一些资料混淆方式，称修复了部分安全问题并可以提高QoS优先级。</li>
 </ul>
-<strong>创建代理服务器，请访问：</strong><a href="https://uzbox.com/tech/google-cloud.html">免费游戏加速器：免费申请Google云，自建海外独立IP加速器</a>
+<strong>创建代理服务器，请访问：</strong><a href="https://github.com/bannedbook/fanqiang/wiki#%E8%87%AA%E5%BB%BA%E7%BF%BB%E5%A2%99%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%99%E7%A8%8B">自建翻墙服务器教程</a>
 
 代理节点支持手工添加，和订阅添加。
 
