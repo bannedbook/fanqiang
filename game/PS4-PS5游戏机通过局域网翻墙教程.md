@@ -1,4 +1,4 @@
-<h1>PS4使用Shadowsocks / V2Ray代理上网，加速游戏，以及下载游戏</h1>
+<h1>PS4-PS5游戏机通过局域网翻墙，加速游戏，以及下载游戏教程</h1>
 很多小伙伴的PS4不知道怎么代理上网，以至于下载游戏或者什么东西非常慢，于是这篇教程就出来了。
 
 PS4使用SS或者 v2ray 来代理需要满足2个条件：
@@ -6,6 +6,9 @@ PS4使用SS或者 v2ray 来代理需要满足2个条件：
 一台Windows系统的电脑
 
 当然，你还是得有一台PS4。
+
+**推荐：**  
+[![V2free翻墙-不限流量、高速稳定、性价比超强](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2free.jpg)](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)
 
 <strong>配置直接确保你SS帐号在电脑端能正常使用，PS4是使用电脑共享的网络使用SS账号的，PS4使用期间电脑必须开机联网打开SS。并且电脑和PS4必须在一个局域网内（可以理解成使用同一个路由器或者连接同一个 WIFI）。</strong>
 
@@ -67,7 +70,7 @@ Proxy(代理)服务器这里选择<strong>使用：</strong>
 
 <img src="images/QQ图片20170209205313-e1486644963938.jpg" alt="" width="1334" height="751" />
 
-<strong>然后地址填你电脑的IP，前面有说，Port(端口)码填1080，一般默认是1080</strong>，（<span style="color: #ff0000;"><strong>如果是 v2ray，这里应该是10809，就是 v2rayN 界面底下显示的 HTTP</strong></span>）如图：
+<strong>然后地址填你电脑的IP，前面有说，Port(端口)码填1080，一般默认是1080</strong>，（<span style="color: #ff0000;"><strong>如果是 v2rayN，这里应该是10811（具体看V2rayn软件底部状态栏的局域网共享http端口），就是 v2rayN 界面底下显示的 HTTP</strong></span>）
 
 <img src="images/QQ图片20170209205318-e1486644974910.jpg" alt="" width="1334" height="751" />
 
