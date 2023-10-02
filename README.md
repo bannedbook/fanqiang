@@ -62,6 +62,9 @@
 
 ## [Linux翻墙教程](https://github.com/bannedbook/fanqiang/tree/master/linux)
 
+## 游戏机翻墙教程
+  * [PS4-PS5游戏机通过局域网翻墙，加速游戏，以及下载游戏教程](https://github.com/bannedbook/fanqiang/blob/master/game/PS4-PS5%E6%B8%B8%E6%88%8F%E6%9C%BA%E9%80%9A%E8%BF%87%E5%B1%80%E5%9F%9F%E7%BD%91%E7%BF%BB%E5%A2%99%E6%95%99%E7%A8%8B.md)
+
 ## ChromeGo - Chrome一键翻墙包 
 
 一个集成Goflyway、v2ray、Daze、SSR、Brook、Lightsocks、trojan、蓝灯、psiphon等N多翻墙工具的电脑翻墙包（推荐按前面所列顺序依次尝试），所有工具全部内置免费服务器，长期更新。由于国内网络环境复杂、地区不同，网络运营商不同，封锁情况都不同，所以使用效果会有差别，有的地区几乎所有的软件都能使用，有的只能用几款，因此具体哪款软件适合你的网络环境，需要你自己来尝试。 
