@@ -175,9 +175,10 @@ Github 项目地址：<a href="https://github.com/NetchX/Netch" target="_blank"
 </ul>
 添加Netch订阅链接
 
-下面是网络上搜索到的Netch订阅链接，仅供测试使用。测试过程中发生的任何问题与本站无关。
+推荐购买机场套餐获取SS订阅链接。
 
-<code>http://121.4.209.91:8888/down/AnZWZKDstzLJ</code>
+**广告插入：**  
+[![V2free翻墙-不限流量、高速稳定、性价比超强](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2free.jpg)](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)
 
 <img src="https://uzbox.com/wp-content/uploads/2021/11/d9c5e1db2b3e94a8472916c9fa34f05c-1024x456.png"  alt="" width="731" height="326" />
 
