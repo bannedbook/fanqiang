@@ -214,4 +214,4 @@ Netch启动后，在网络连接中会多出一个aioCloud的网卡连接，这�
 Netch是一款开源的游戏加速工具，不同于SSTap那样需要通过添加规则来实现黑名单代理，通过扫描游戏目录获得需要代理的进程名进行代理。与此同时Netch避免了SSTap的NAT问题，使用SSTap加速部分P2P联机，对NAT类型有要求的游戏时，可能会因为NAT类型严格遇到无法加入联机，或者其他影响游戏体验的情况。
 <h3>新手入门推荐使用SSTap，进阶玩家推荐使用Netch！</h3>
 
-本文采用 CC BY-NC-SA 4.0 许可协议。来源链接：<a target="_blank" href="https://uzbox.com/tech/sstap-netch.html">SStap和Netch哪个免费游戏加速器好？</a>
+本文采用 CC BY-NC-SA 4.0 许可协议。原文链接：<a target="_blank" href="https://uzbox.com/tech/sstap-netch.html">SStap和Netch哪个免费游戏加速器好？</a>
