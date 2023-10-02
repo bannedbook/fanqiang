@@ -70,7 +70,7 @@ Proxy(代理)服务器这里选择<strong>使用：</strong>
 
 <img src="images/QQ图片20170209205313-e1486644963938.jpg" alt="" width="1334" height="751" />
 
-<strong>然后地址填你电脑的IP，前面有说，Port(端口)码填1080，一般默认是1080</strong>，（<span style="color: #ff0000;"><strong>如果是 v2rayN，这里应该是10811（具体看V2rayn软件底部状态栏的局域网共享http端口），就是 v2rayN 界面底下显示的 HTTP</strong></span>）
+<strong>然后地址填你电脑的IP，前面有说，Port(端口)码填1080，一般默认是1080</strong>，（<span style="color: #ff0000;"><strong>如果是 v2rayN，这里应该是10811（具体看V2rayn软件底部状态栏的局域网共享http端口）</strong></span>）
 
 <img src="images/QQ图片20170209205318-e1486644974910.jpg" alt="" width="1334" height="751" />
 
