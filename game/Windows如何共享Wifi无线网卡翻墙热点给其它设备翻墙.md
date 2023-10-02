@@ -71,4 +71,11 @@ Netch是一款开源的网络游戏工具，支持Socks5、55R、V2等协议，U
 
 <img src="https://raw.githubusercontent.com/Qiyuan-Z/blog-image/main/img/netch/TIM%E5%9B%BE%E7%89%8720200216133203.jpg" alt="" />
 
-本文采用CC BY-NC-SA 4.0</a> 许可协议, 文章作者: Qiyuan-Z, 原文链接: <a href="https://qiyuan-z.github.io/2020/02/16/%E5%A6%82%E4%BD%95%E7%BB%99%E7%83%AD%E7%82%B9%E7%BF%BB%E5%A2%99/">https://qiyuan-z.github.io/2020/02/16/%E5%A6%82%E4%BD%95%E7%BB%99%E7%83%AD%E7%82%B9%E7%BF%BB%E5%A2%99/</a>
+参考：
+
+[将 Windows 电脑用作移动热点](https://support.microsoft.com/zh-cn/windows/%E5%B0%86-windows-%E7%94%B5%E8%84%91%E7%94%A8%E4%BD%9C%E7%A7%BB%E5%8A%A8%E7%83%AD%E7%82%B9-c89b0fad-72d5-41e8-f7ea-406ad9036b85)
+
+有个别网友反馈说: 系统自带的热点分享不成，说需要下载 单独热点共享软件 [Connectify Installer](https://connectify.me) ， [Top 8 Free WiFi Hotspot Software For Windows](https://beebom.com/free-wifi-hotspot-software-windows/)
+
+本文采用CC BY-NC-SA 4.0</a> 许可协议, 文章作者: Qiyuan-Z, 原文链接: 
+<a href="https://qiyuan-z.github.io/2020/02/16/%E5%A6%82%E4%BD%95%E7%BB%99%E7%83%AD%E7%82%B9%E7%BF%BB%E5%A2%99/">https://qiyuan-z.github.io/2020/02/16/%E5%A6%82%E4%BD%95%E7%BB%99%E7%83%AD%E7%82%B9%E7%BF%BB%E5%A2%99/</a>
