@@ -7,8 +7,8 @@
 首先你需要：
 <ol>
  	<li>一台mac电脑；</li>
- 	<li>支持导入clash的节点列表（机场）；</li>
- 	<li>确定你的节点支持udp转发（比如我有些ss节点不行，会导致nat 类型 f，而ssr节点可以）。</li>
+ 	<li>支持导入clash的节点列表（机场）</li>
+ 	<li>确定你的节点支持udp协议</li>
 </ol>
 
 **推荐：**  
@@ -18,11 +18,11 @@
 
 1 下载安装clash x pro（注意，一定是pro才行，clashx没有增强模式，下载链接：<a href="https://install.appcenter.ms/users/clashx/apps/clashx-pro/distribution_groups/public" target="_blank" rel="nofollow noopener">https://install.appcenter.ms/users/clashx/apps/clashx-pro/distribution_groups/public</a>）；导入节点后，开启“设为系统代理” 和 “增强模式”
 
-<figure ><img  src="https://static.imtrq.com/wp-content/uploads/2022/01/clashns1.jpg"    width="379" height="161"  /></figure>
+<figure ><img  src="images/clashns1.jpg"    width="379" height="161"  /></figure>
 
 2 在本机的网络设置中查看本机ip
 
-<figure ><img  src="https://static.imtrq.com/wp-content/uploads/2022/01/clashns2.jpg"    width="642" height="366"  /></figure>
+<figure ><img  src="images/clashns2.jpg"    width="642" height="366"  /></figure>
 
 3 在switch的网络设置中，连接上和mac相同的WiFi，然后修改网络设置
 
@@ -30,14 +30,15 @@
 
 把网关和首选DNS改为电脑的IP，我的是192.168.3.2
 
-<figure ><img  src="https://static.imtrq.com/wp-content/uploads/2022/01/clashns4.jpg"    width="1280" height="720"  /></figure>
+<figure ><img  src="images/clashns4.jpg"    width="1280" height="720"  /></figure>
 
 4 点击保存，然后重新连接到网络，检测网络
 
-<figure ><img  src="https://static.imtrq.com/wp-content/uploads/2022/01/clashns3.jpg"    width="1280" height="720"  /></figure>
+<figure ><img  src="images/clashns3.jpg"    width="1280" height="720"  /></figure>
 
 可以看到我的IP地址变成了我选择的香港节点，NAT类型也变成了A。网速还是那样没变……
 
 
 本文采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议，原文链接：
+
 https://www.imtrq.com/archives/2908
