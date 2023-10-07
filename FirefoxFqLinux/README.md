@@ -41,14 +41,6 @@ Firefox一键翻墙包 Linux版
 	ls -rtl *.sh
    ```
 
-4. 进入程序文件夹
-
-	```
-	cd ~/Downloads/ChromeGoMac
-	ls -rtl
-	```
-	
-
 4. 启动翻墙,输入下面的命令
 
 	```
