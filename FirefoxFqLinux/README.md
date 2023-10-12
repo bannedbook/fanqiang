@@ -12,7 +12,7 @@ Firefox一键翻墙包 Linux版
 
 ### 更新日志
 
-*   **2023年10月7日更新公告：若干更新，请下载新版。 
+2023年10月7日更新公告：若干更新，请下载新版。 
     
 ### ChromeGoMac下载地址<a name="chromego-xia-zai-di-zhi"></a>
 
