@@ -4,7 +4,7 @@
 
 [![免费公益机场-不限流量](https://v2free.org/images/fbyt2.jpg)](https://w1.v2ai.top/auth/register?code=cd79)
 
-这里推荐V2free机场，点击注册链接：<a href="https://w1.v2ai.top/auth/register?code=cd79" target="_blank">w1.v2ai.top</a>，注册后在该网站用户中心拷贝 *V2Ray/SS节点* 订阅链接备用，然后在第二步中把订阅链接添加到Fair Plus VPN里即可使用。
+这里推荐V2free机场，点击注册链接：<a href="https://w1.v2ai.top/auth/register?code=cd79" target="_blank">w1.v2ai.top</a>，注册后在该网站用户中心拷贝 *V2Ray/SS节点* 订阅链接备用。
 
 教育网的网友如果打不开上面的链接，请使用这个链接：
 https://cdn.v2ai.top/auth/register?code=cd79
@@ -14,13 +14,9 @@ V2free机场注册后免费获得1024M初始流量，每日[签到](https://raw.
 
 **第二步、[注册苹果美区 Apple ID 帐号并购买APP指南](https://github.com/bannedbook/fanqiang/blob/master/ios/AppleID.md)**
 
-2022年起，为抵御防火墙主动探测，V2ray官方强制启用vmess aead加密。iOS平台目前仅小火箭、QuantumultX（需升级到最新版）、Surge（需升级到最新版）才能支持vmess aead加密。 ios平台其它app暂不支持vmess aead加密。
+2022年起，为抵御防火墙主动探测，V2ray官方强制启用vmess aead加密。iOS平台目前仅小火箭Shadowrocket、QuantumultX、Surge 等APP支持vmess aead加密。
 
 这里推荐购买小火箭APP，安装小火箭APP后添加机场订阅链接，导入节点。[Shadowrocket小火箭配置使用教程](https://github.com/bannedbook/fanqiang/blob/master/ios/Shadowrocket.md)
-
-Fair+ 目前不支持vmess aead加密，使用了我们推荐的V2free机场的朋友，将无法使用机场的vmess节点，但仍然可以使用机场的SS节点。
-
-导入SS节点的方法是，从机场用户中心 拷贝全部SS节点URL ，导入到windows上的V2rayN 4.29版（必须这个版本，高版本不行）中，然后再从V2rayN里 批量导出分享URL至剪贴板（多选），粘贴到记事本，发到手机上，然后逐个逐个的导入到Fair+ 里面。
 
 **三、其它iOS翻墙教程**
 
