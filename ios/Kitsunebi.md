@@ -1,8 +1,8 @@
-# Kitsunebi 教程
+# ~~Kitsunebi 教程~~
 
 ## 应用概述
 
-Kitsunebi 是在 iOS 平台上的客户端软件，支持 Shadowsocks 以及 VMess 协议。
+~~Kitsunebi~~【APP长期不更新，已废弃，建议使用[Shadowrocket](https://github.com/bannedbook/fanqiang/blob/master/ios/Shadowrocket.md)】 是在 iOS 平台上的客户端软件，支持 Shadowsocks 以及 VMess 协议。
 
 目前 Kitsunebi 已经被 Apple 根据政府要求从中国大陆区的 App Store 移除，之前在中国大陆商店购买此软件的用户将不能获得更新或重新下载。
 

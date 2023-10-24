@@ -30,13 +30,10 @@
   * [iphone翻墙](https://github.com/bannedbook/fanqiang/wiki/iphone%E7%BF%BB%E5%A2%99)
   * [注册苹果美区 Apple ID 帐号并购买APP指南](https://github.com/bannedbook/fanqiang/tree/master/ios/AppleID.md)
   * [Iphone/iPad通过电脑局域网共享翻墙](https://github.com/bannedbook/fanqiang/tree/master/ios/fqByLan.md)
-  * [Potatso Lite 教程](https://github.com/bannedbook/fanqiang/tree/master/ios/PotatsoLite.md)
+  * [Potatso教程](https://github.com/bannedbook/fanqiang/tree/master/ios/PotatsoLite.md)
   * [Shadowrocket小火箭配置使用教程](https://github.com/bannedbook/fanqiang/tree/master/ios/Shadowrocket.md)
-  * [Kitsunebi 教程](https://github.com/bannedbook/fanqiang/tree/master/ios/Kitsunebi.md)
   * [Quantumult X 配置使用简易教程](https://github.com/bannedbook/fanqiang/tree/master/ios/QuantumultX.md)
   * [iOS翻墙之Surge教程](https://github.com/bannedbook/fanqiang/tree/master/ios/Surge.md)
-  * [iOS翻墙之Quantumult教程](https://github.com/bannedbook/fanqiang/tree/master/ios/Quantumult_sub.md)
-  * [iOS翻墙之导入 Quantumult 完整配置教程](https://github.com/bannedbook/fanqiang/tree/master/ios/Quantumult_conf.md)
 
 ## [Android 安卓翻墙APP教程](https://github.com/bannedbook/fanqiang/tree/master/android)
 
