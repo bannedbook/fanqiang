@@ -14,7 +14,7 @@ V2free机场注册后免费获得1024M初始流量，每日[签到](https://raw.
 
 **第二步、[注册苹果美区 Apple ID 帐号并购买APP指南](https://github.com/bannedbook/fanqiang/blob/master/ios/AppleID.md)**
 
-2022年起，为抵御防火墙主动探测，V2ray官方强制启用vmess aead加密。iOS平台目前仅小火箭Shadowrocket、QuantumultX、Surge 等APP支持vmess aead加密。
+2022年起，为抵御防火墙主动探测，V2ray官方强制启用vmess aead加密。iOS平台有小火箭Shadowrocket、QuantumultX、Surge 等APP支持vmess aead加密。
 
 这里推荐购买小火箭APP，安装小火箭APP后添加机场订阅链接，导入节点。[Shadowrocket小火箭配置使用教程](https://github.com/bannedbook/fanqiang/blob/master/ios/Shadowrocket.md)
 
