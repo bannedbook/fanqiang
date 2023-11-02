@@ -1,6 +1,6 @@
 # 苹果电视Apple Tv翻墙指南
 
-苹果电视Apple Tv如何翻墙呢，有2种方法，首先就是苹果电视可以安装APP，在iOS系统中的翻墙app: QuantumultX 和 Surge都已支持Apple Tv，不过这2个APP都是付费APP, 那么有没有免费的方法呢，也是有的
+苹果电视Apple Tv如何翻墙呢，有2种方法，首先就是苹果电视可以安装APP，在iOS系统中的翻墙app: [QuantumultX](https://github.com/bannedbook/fanqiang/blob/master/ios/QuantumultX.md) 和 [Surge](https://github.com/bannedbook/fanqiang/blob/master/ios/Surge.md) 都已支持Apple Tv，不过这2个APP都是付费APP, 那么有没有免费的方法呢，也是有的
 
 **推荐：**
 
