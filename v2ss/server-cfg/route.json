@@ -5,6 +5,7 @@
       "type": "field",
       "domains": [
         ".xxx",
+        "domain:avacom-lms.com",
         "domain:pushnotificationws.com",
         "domain:duckdns.org",
         "domain:netcraft.com",
