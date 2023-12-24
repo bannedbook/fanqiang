@@ -16,11 +16,11 @@ https://github.com/MetaCubeX/mihomo/releases
 
 ![39509-crg2bid6yj.png](https://v2free.org/docs/SSPanel/linux/clash_files/1946477.png "39509-crg2bid6yj.png")
 
-根据你的Linux版本选择相应的下载，一般下载`linux-amd64`版本即可。如果 wget 下载不了的话，就用浏览器手工下载也行【如果用浏览器下载，下载后改名为 clash-linux.gz】。
+根据你的Linux版本选择相应的下载，一般下载`linux-amd64`版本即可。如果 wget 下载不了的话，就用浏览器手工下载也行
 
     wget -O clash-linux.gz https://github.com/MetaCubeX/mihomo/releases/download/v1.17.0/mihomo-linux-amd64-v1.17.0.gz
 	
-或者从本站下载: [clash-linux.gz](/ssr-download/clash-linux.gz ':ignore')
+如果用浏览器下载，下载后移动文件到  `~/.config/mihomo/` 并改名为 `clash-linux.gz`
 
 解压到当前文件夹
 
