@@ -66,7 +66,7 @@ https://cdn.v2ai.top/auth/register?code=cd79
 
 机场的 **订阅链接** 非常重要，你应当把它当做密码一样妥善保管。
 
-用wget下载clash配置文件（**重复执行就是更新订阅更新节点**），替换默认的配置文件，下面的wget命令后面的 `你的Clash订阅链接网址`  ，用上面的实际的clash订阅链接替换。**当然，你也可以用浏览器打开订阅链接，下载后拷贝或移动到~/.config/mihomo/目录替换覆盖config.yaml文件。**
+用wget下载clash配置文件（**重复执行就是更新订阅更新节点**），替换默认的配置文件，下面的wget命令后面的 `你的Clash订阅链接网址`  ，用你的机场的实际的clash订阅链接替换。**当然，你也可以用浏览器打开订阅链接，下载后拷贝或移动到~/.config/mihomo/目录替换覆盖config.yaml文件。**
 
 	wget -U "Mozilla/6.0" -O ~/.config/mihomo/config.yaml  你的Clash订阅链接网址
 
