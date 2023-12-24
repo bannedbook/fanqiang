@@ -46,13 +46,11 @@ https://github.com/MetaCubeX/mihomo/releases
 
 https://github.com/Dreamacro/maxmind-geoip/releases/latest/download/Country.mmdb
 
-或者从本站下载: [Country.mmdb](/ssr-download/Country.mmdb ':ignore') 
-
 下载后放到 `~/.config/mihomo/` 目录。
 
 ## 下载`GeoSite.dat`
 
-如果`GeoSite.dat`不能自动完成下载，请手工下载[GeoSite.dat](/ssr-download/GeoSite.dat ':ignore') 后放到 `~/.config/mihomo/` 目录.
+如果`GeoSite.dat`不能自动完成下载，请手工下载[GeoSite.dat](https://github.com/ewigl/mihomo/raw/master/GeoSite.dat) 后放到 `~/.config/mihomo/` 目录.
 
 ## 下载 clash 配置文件(更新订阅更新节点)
 
