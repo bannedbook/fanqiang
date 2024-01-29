@@ -6,15 +6,15 @@ V2ray.VPN 是在 Android 平台上的VPN APP，支持 VMess/Vless、Shadowsocks�
 
 ## 目录
 <ul>
-<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md?id=应用下载" rel="noopener">应用下载</a></li>
-<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md?id=获取订阅链接" rel="noopener">获取订阅链接</a></li>
-<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md?id=添加订阅链接" rel="noopener">添加订阅链接</a></li>
-<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md?id=更新订阅更新节点" rel="noopener">更新订阅更新节点</a></li>
-<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md?id=节点测速" rel="noopener">节点测速</a></li>
-<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md?id=路由设置和中国网站直连" rel="noopener">路由设置和中国网站直连</a></li>
-<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md?id=绕过局域网和分应用代理" rel="noopener">绕过局域网和分应用代理</a></li>
-<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md?id=开始使用" rel="noopener">开始使用</a></li>
-<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md?id=通过节点url导入节点" rel="noopener">通过节点url导入节点</a></li>
+<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md#user-content-应用下载" rel="noopener">应用下载</a></li>
+<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md#user-content-获取订阅链接" rel="noopener">获取订阅链接</a></li>
+<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md#user-content-添加订阅链接" rel="noopener">添加订阅链接</a></li>
+<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md#user-content-更新订阅更新节点" rel="noopener">更新订阅更新节点</a></li>
+<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md#user-content-节点测速" rel="noopener">节点测速</a></li>
+<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md#user-content-路由设置和中国网站直连" rel="noopener">路由设置和中国网站直连</a></li>
+<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md#user-content-绕过局域网和分应用代理" rel="noopener">绕过局域网和分应用代理</a></li>
+<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md#user-content-开始使用" rel="noopener">开始使用</a></li>
+<li><a href="https://github.com/bannedbook/fanqiang/blob/master/android/v2free.md#user-content-通过节点url导入节点" rel="noopener">通过节点url导入节点</a></li>
 </ul>
 
 ## 应用下载
@@ -34,7 +34,7 @@ V2ray.VPN 是在 Android 平台上的VPN APP，支持 VMess/Vless、Shadowsocks�
 
 注册任意机场获取V2ray订阅链接，推荐[V2ray机场](https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA)。
 
-!> 这个 **订阅链接** 相当于你的账号密码，跟你的账号是绑定的，你应当把它当做密码一样妥善保管。
+**订阅链接** 相当于你的账号密码，跟你的账号是绑定的，你应当把它当做密码一样妥善保管。
 
 ## 添加订阅链接
 
