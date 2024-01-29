@@ -1,3 +1,5 @@
+# V2ray.VPN 教程
+
 ## 应用概述
 
 V2ray.VPN 是在 Android 平台上的VPN APP，支持 VMess/Vless、Shadowsocks、Trojan、hysteria、hysteria2等协议，内置若干免费节点。
@@ -21,10 +23,10 @@ V2ray.VPN 是在 Android 平台上的VPN APP，支持 VMess/Vless、Shadowsocks�
  * [V2ray.VPN 谷歌商店下载](https://play.google.com/store/apps/details?id=free.v2ray.proxy.VPN)
 
 第一次启动，务必点`是`<br>
-![1](https://v2free.org/mages/v2free0.png)
+![1](https://v2free.org/docs/SSPanel/Android/images/v2free0.png)
 
 **请确保升级到6.3.1及以上版本**<br>
-![1](https://v2free.org/mages/v2free0a.png)
+![1](https://v2free.org/docs/SSPanel/Android/images/v2free0a.png)
 
 ## 获取订阅链接
 
@@ -40,26 +42,26 @@ V2ray.VPN 是在 Android 平台上的VPN APP，支持 VMess/Vless、Shadowsocks�
 
 打开 V2free 点击左上角的菜单图标打开侧边栏，随后点击 **分组** （如下图）。
 
-![1](https://v2free.org/mages/v2free1.png)<br>
-![2](https://v2free.org/mages/v2free2.png)
+![1](https://v2free.org/docs/SSPanel/Android/images/v2free1.png)<br>
+![2](https://v2free.org/docs/SSPanel/Android/images/v2free2.png)
 
 点击右上角的加号按钮，如下图<br>
-![3](https://v2free.org/mages/v2free3.png)<br>
+![3](https://v2free.org/docs/SSPanel/Android/images/v2free3.png)<br>
 分组名填写**V2free**，分组类型选**订阅**，如下图<br>
-![4](https://v2free.org/mages/v2free4a.jpg)<br>
+![4](https://v2free.org/docs/SSPanel/Android/images/v2free4a.jpg)<br>
 填写订阅链接， 在订阅链接输入框中粘贴 订阅链接，然后点确定按钮（如下图）<br>
-![4](https://v2free.org/mages/v2free4.png)<br>
+![4](https://v2free.org/docs/SSPanel/Android/images/v2free4.png)<br>
 自动更新设置，如下图<br>
-![4](https://v2free.org/mages/v2free4b.jpg)<br>
+![4](https://v2free.org/docs/SSPanel/Android/images/v2free4b.jpg)<br>
 填写设置完毕，点右上角的**对号**按钮<br>
 最后是导入节点的成功提示，如下图<br>
-![4](https://v2free.org/mages/v2free4c.jpg)
+![4](https://v2free.org/docs/SSPanel/Android/images/v2free4c.jpg)
 
 ## 更新订阅更新节点
 
 在分组界面，点**更新**按钮，即可手工更新节点（如下图）
 
-![5](https://v2free.org/mages/v2free5.png)
+![5](https://v2free.org/docs/SSPanel/Android/images/v2free5.png)
 
 提示：机场节点信息可能会不定时更新，若出现大面积节点不可用，或者从免费用户升级为VIP用户，请手工更新订阅。 
 
@@ -70,30 +72,30 @@ V2ray.VPN 是在 Android 平台上的VPN APP，支持 VMess/Vless、Shadowsocks�
 ## 节点测速
 
 点右上角的 三个点 按钮，再点 **连接测试**, 再点 **URL测试** （如下图）<br>
-![7](https://v2free.org/mages/v2free6.png)<br>
-![8](https://v2free.org/mages/v2free7.png)
+![7](https://v2free.org/docs/SSPanel/Android/images/v2free6.png)<br>
+![8](https://v2free.org/docs/SSPanel/Android/images/v2free7.png)
 
 ## 路由设置和中国网站直连
 点击左上角的菜单图标打开侧边栏，随后点击 **路由**<br>
-![11](https://v2free.org/mages/v2free10.png)<br>
+![11](https://v2free.org/docs/SSPanel/Android/images/v2free10.png)<br>
 往下拉，启用 **绕过 中国域名规则 和 中国IP规则**，就是让中国国内网址直连不走代理<br>
-![12](https://v2free.org/mages/v2free11.png)
+![12](https://v2free.org/docs/SSPanel/Android/images/v2free11.png)
 
 ## 绕过局域网和分应用代理
 
 点击左上角的菜单图标打开侧边栏，随后点击 **设置**<br>
-![1](https://v2free.org/mages/v2free1.png)<br>
-![9](https://v2free.org/mages/v2free8.png)<br>
+![1](https://v2free.org/docs/SSPanel/Android/images/v2free1.png)<br>
+![9](https://v2free.org/docs/SSPanel/Android/images/v2free8.png)<br>
 往下拉直到下图，启用**绕过局域网地址**和**在核心中绕过LAN**<br>
-![10](https://v2free.org/mages/v2free9.png)
+![10](https://v2free.org/docs/SSPanel/Android/images/v2free9.png)
 
 ## 开始使用
 点击左上角的菜单图标打开侧边栏，随后点击 **配置**<br>
-![12](https://v2free.org/mages/v2free12.png)<br>
+![12](https://v2free.org/docs/SSPanel/Android/images/v2free12.png)<br>
 点击选择您中意的节点（一般延时数值越小越快），点击主界面底部的小飞机按钮即可启动VPN连接。（如下图）<br>
-![12](https://v2free.org/mages/v2free13.png)<br>
+![12](https://v2free.org/docs/SSPanel/Android/images/v2free13.png)<br>
 如系统提示 VPN连接请求，请点击 **允许或确定** 并验证您的 密码、指纹等。<br>
-![12](https://v2free.org/mages/v2free14.png)<br>
+![12](https://v2free.org/docs/SSPanel/Android/images/v2free14.png)<br>
 启动vpn后，点选另一节点即可切换节点；再次点小飞机按钮可断开vpn。
 
 ## 通过节点url导入节点
