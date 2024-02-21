@@ -10,7 +10,7 @@ ClashX 是一个拥有 GUI 界面基于 Clash 可自定义规则的 macOS 代理
 
 以下是ClashX的下载地址。
 
-- 官方下载：[ClashX](https://github.com/yichengchen/clashX/releases)
+- 下载：[ClashX](https://github.com/bannedbook/ClashX/releases)
 
 下载ClashX的安装文件，文件格式为”dmg”格式，相当于一个光盘镜像文件。
 下载的文件一般放置于用户的”下载”文件夹，使用 Finder找到下载文件。
