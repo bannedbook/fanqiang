@@ -16,9 +16,9 @@ Firefox一键翻墙包 Linux版
     
 ### ChromeGoMac下载地址<a name="chromego-xia-zai-di-zhi"></a>
 
-> 1.  [ChromeGoMac下载点](https://d1a.wenxin-ai.top/FirefoxFqLinux.tar.gz)
-> 2.  [ChromeGoMac下载点](https://d1.wenxin-ai.top/FirefoxFqLinux.tar.gz)
-> 3.  [ChromeGoMac下载点](https://d2.wenxin-ai.top/FirefoxFqLinux.tar.gz)
+> 1.  [ChromeGoMac下载点](https://d1a.88888811.xyz/FirefoxFqLinux.tar.gz)
+> 2.  [ChromeGoMac下载点](https://d1.88888811.xyz/FirefoxFqLinux.tar.gz)
+> 3.  [ChromeGoMac下载点](https://d2.88888811.xyz/FirefoxFqLinux.tar.gz)
 > 4.  [ChromeGoMac下载点](https://github.com/bannedbook/fanqiang/releases)
 
 ### 使用说明
