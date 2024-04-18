@@ -77,7 +77,7 @@
     {
       "type": "field",
       "outboundTag": "block",
-      "port": "22,25,26,3306"
+      "port": "22,25,26,3306,7"
     }
   ]
 }
