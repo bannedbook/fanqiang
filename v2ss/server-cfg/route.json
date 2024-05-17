@@ -9,6 +9,9 @@
         "domain:duckdns.org",
         "domain:netcraft.com",
         "domain:uceprotect.net",
+		"domain:abusix.com",
+		"domain:xarf.org",
+		"domain:blocklist.de"
         "domain:ceye.io"
       ],
       "outboundTag": "block"
