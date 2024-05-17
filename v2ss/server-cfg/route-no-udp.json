@@ -15,7 +15,9 @@
         "domain:uceprotect.net",
 		"domain:abusix.com",
 		"domain:xarf.org",
-		"domain:blocklist.de"
+		"domain:blocklist.de",
+		"domain:bitninja.io",
+		"domain:bitninja.com",
         "domain:ceye.io"
       ],
       "outboundTag": "block"
