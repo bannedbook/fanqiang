@@ -1,0 +1,11 @@
+# 2.0.0-beta.5
+Jonas Kalderstam (6):
+  * [0ad40b9e] Fixed incorrect decoding during parsing for some feeds
+  * [d0b6ca47] Fixed color of icon in floating action bar to be white
+         (again)
+  * [fe52639e] Made 'Mark as read' from notification less interuptive
+  * [7c24c763] Fixed broken test
+  * [78da415a] Feeds are now sorted alphabetically in dialogs
+  * [1e2fe647] Added dialog for editing feed when viewing a tag (like for
+         delete)
+

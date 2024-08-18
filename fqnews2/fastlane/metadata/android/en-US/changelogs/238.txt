@@ -1,0 +1,21 @@
+# 2.1.7
+Alan (1):
+  * [93606b38] Updated Portuguese (Brazil) translation using Weblate
+
+ERYpTION (1):
+  * [40bb39a8] Updated Danish translation using Weblate
+
+Meiru (1):
+  * [26e075aa] Updated Japanese translation using Weblate
+
+Nikita Epifanov (1):
+  * [aab536a0] Updated Russian translation using Weblate
+
+WB (1):
+  * [09af6ab5] Updated Galician translation using Weblate
+
+bruh (1):
+  * [10e8db60] Updated Vietnamese translation using Weblate
+
+zmni (1):
+  * [3ff53b65] Updated Indonesian translatio

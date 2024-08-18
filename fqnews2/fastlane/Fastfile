@@ -1,0 +1,87 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Fetch latest version code from Google Play"
+  lane :get_latest_version do
+    track_version_codes = []
+
+    # Fetch latest codes
+    track_version_codes += google_play_track_version_codes(track: "production")
+    track_version_codes += google_play_track_version_codes(track: "beta")
+
+    track_version_codes.max
+  end
+
+  desc "Bumps version code in gradle file"
+  lane :bump_version_code do
+    path = '../app/build.gradle.kts'
+    re = /versionCode = (\d+)/
+
+    last_version_code = get_latest_version
+
+    s = File.read(path)
+    if (s[re, 1].to_i <= last_version_code) then
+      s[re, 1] = (last_version_code + 1).to_s
+
+      f = File.new(path, 'w')
+      f.write(s)
+      f.close
+    end
+  end
+
+  desc "Build play bundle"
+  lane :build_play_bundle do
+    gradle(task: "app:bundlePlay")
+  end
+
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do |options|
+    upload_to_play_store(
+      mapping: "app/build/outputs/mapping/play/mapping.txt",
+      aab: "app/build/outputs/bundle/play/app-play.aab",
+      track: options[:track],
+      skip_upload_apk: true
+    )
+  end
+
+  desc "Validate deployment of a new version to the Google Play"
+  lane :validate_deploy do |options|
+    upload_to_play_store(
+      mapping: "app/build/outputs/mapping/play/mapping.txt",
+      aab: "app/build/outputs/bundle/play/app-play.aab",
+      track: options[:track],
+      validate_only: true,
+      skip_upload_apk: true
+    )
+  end
+
+  desc "Build and deploy a new version to the Google Play"
+  lane :build_and_deploy do |options|
+    # Never change version for releases
+    build_play_bundle
+    deploy(options)
+  end
+
+  desc "Build and validate deployment of a new version to the Google Play"
+  lane :build_and_validate do |options|
+    # Validation should never fail so bump version
+    bump_version_code
+    build_play_bundle
+    validate_deploy(options)
+  end
+end

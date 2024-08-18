@@ -1,0 +1,1757 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+  <id>https://cowboyprogrammer.org/</id>
+  <title>Cowboy Programmer</title>
+  <updated>2018-03-05T23:00:00+02:00</updated>
+  <author>
+    <name>Space Cowboy</name>
+    <email>jonas@cowboyprogrammer.org</email>
+  </author>
+  <link rel="alternate" type="text/html" href="https://cowboyprogrammer.org/" />
+  <link rel="alternate" type="application/rss" href="https://cowboyprogrammer.org/index.xml" />
+  <link rel="alternate" type="application/json" href="https://cowboyprogrammer.org/feed.json" />
+  <generator>Hugo -- gohugo.io</generator>
+  <subtitle>Recent content in Cowboy Programmer on Cowboy Programmer</subtitle>
+  <icon>https://cowboyprogrammer.org/css/images/logo.png</icon>
+  <rights>Powered by [Hugo](//gohugo.io) and [Icarus Theme](http://themes.gohugo.io/theme/hugo-icarus/).</rights>
+
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2018/03/fixed-vs-variable-interest-rates/</id>
+    <link href="https://cowboyprogrammer.org/2018/03/fixed-vs-variable-interest-rates/" rel="alternate" />
+    <title>A comparison between fixed and variable interest rates</title>
+    <updated>2018-03-05T23:00:00+02:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <media:thumbnail url="https://cowboyprogrammer.org/images/2018/03/5y_avg_rates.en.png" />
+    
+    <summary type="html"><![CDATA[The data I am using is originally from SwedBank and all data and code is available at GitLab. The data contains interest rates at 5 years fixed term, 2 years fixed term, and 3 months fixed term (also called variable rate in Sweden) for those dates when any rate was changed. The first rates are from 1989-11-01 and the last are from 2018-02-12. Example of the data:
+  5y 2y 3m   Date        1989-11-22 13.]]></summary>
+    <content type="html"><![CDATA[<p>The data I am using is originally from <a href="http://hypotek.swedbank.se/rantor/historiska-rantor/">SwedBank</a> and all data and
+code is available at <a href="https://gitlab.com/spacecowboy/swedish-interest-rates">GitLab</a>. <a href="https://gitlab.com/spacecowboy/swedish-interest-rates/raw/master/swedish_interest_rates.csv">The data</a> contains interest
+rates at 5 years fixed term, 2 years fixed term, and 3 months fixed
+term (also called variable rate in Sweden) for those dates when any
+rate was changed. The first rates are from 1989-11-01 and the last are
+from 2018-02-12. Example of the data:</p>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>5y</th>
+      <th>2y</th>
+      <th>3m</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1989-11-22</th>
+      <td>13.50</td>
+      <td>13.50</td>
+      <td>12.75</td>
+    </tr>
+    <tr>
+      <th>1991-01-14</th>
+      <td>14.00</td>
+      <td>14.75</td>
+      <td>15.25</td>
+    </tr>
+    <tr>
+      <th>1993-01-13</th>
+      <td>12.75</td>
+      <td>13.00</td>
+      <td>13.75</td>
+    </tr>
+    <tr>
+      <th>1994-11-21</th>
+      <td>11.75</td>
+      <td>11.50</td>
+      <td>9.75</td>
+    </tr>
+    <tr>
+      <th>1996-03-12</th>
+      <td>9.85</td>
+      <td>8.95</td>
+      <td>9.10</td>
+    </tr>
+    <tr>
+      <th>2005-09-09</th>
+      <td>3.55</td>
+      <td>2.97</td>
+      <td>3.15</td>
+    </tr>
+    <tr>
+      <th>2005-10-03</th>
+      <td>3.69</td>
+      <td>3.09</td>
+      <td>3.15</td>
+    </tr>
+    <tr>
+      <th>2007-12-21</th>
+      <td>5.36</td>
+      <td>5.25</td>
+      <td>5.15</td>
+    </tr>
+    <tr>
+      <th>2008-01-24</th>
+      <td>5.13</td>
+      <td>4.94</td>
+      <td>5.15</td>
+    </tr>
+    <tr>
+      <th>2009-03-20</th>
+      <td>4.26</td>
+      <td>2.83</td>
+      <td>2.20</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To make the calculations more convenient I assume that loans are only
+fixed the first day of the month. Example:</p>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>5y</th>
+      <th>2y</th>
+      <th>3m</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1990-06-01</th>
+      <td>14.50</td>
+      <td>14.50</td>
+      <td>13.95</td>
+    </tr>
+    <tr>
+      <th>1992-03-01</th>
+      <td>12.50</td>
+      <td>13.00</td>
+      <td>14.75</td>
+    </tr>
+    <tr>
+      <th>1993-06-01</th>
+      <td>10.75</td>
+      <td>10.50</td>
+      <td>11.50</td>
+    </tr>
+    <tr>
+      <th>1998-02-01</th>
+      <td>6.70</td>
+      <td>6.40</td>
+      <td>5.80</td>
+    </tr>
+    <tr>
+      <th>2001-09-01</th>
+      <td>6.55</td>
+      <td>5.95</td>
+      <td>5.90</td>
+    </tr>
+    <tr>
+      <th>2004-11-01</th>
+      <td>4.85</td>
+      <td>3.90</td>
+      <td>3.65</td>
+    </tr>
+    <tr>
+      <th>2009-05-01</th>
+      <td>4.15</td>
+      <td>2.73</td>
+      <td>1.97</td>
+    </tr>
+    <tr>
+      <th>2010-08-01</th>
+      <td>3.99</td>
+      <td>2.90</td>
+      <td>2.17</td>
+    </tr>
+    <tr>
+      <th>2011-05-01</th>
+      <td>5.29</td>
+      <td>4.39</td>
+      <td>3.88</td>
+    </tr>
+    <tr>
+      <th>2011-11-01</th>
+      <td>4.59</td>
+      <td>4.14</td>
+      <td>4.35</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If we graph the interest rates we get:</p>
+
+<p><img src="/images/2018/03/rates.en.png" alt="Interest rates over time" /></p>
+
+<p>You can see a clear peak in the variable rate when the riksbank set
+the repo rate at 500% (mortgages &ldquo;only&rdquo; reached 24%). You can also see
+that during the early nineties the variable rate was higher than the
+fixed rates during relatively long periods. But to compare the actual
+cost over the fixed term we have to compare average rates.</p>
+
+<p>For example, let us compare the actual average rates from the first of
+July 1991 during 5 years for variable rate (11.96%) and 5 years fixed
+term (12.25%). Even though with variable rate you&rsquo;d have had a rate of
+24% during a quarter you&rsquo;d still pay less in total over the 5 years.</p>
+
+<p>If the same calculation is made for every month you can see how much
+you would have earned/lost depending on when you started your fixed
+term. Since 5 years is not evenly divisible by 2 years, the 2 years
+fixed term refers to what the average rate would have been during the
+first 5 of the 6 years.</p>
+
+<p><img src="/images/2018/03/5y_avg_rates.en.png" alt="Average interest rate over 5 years" /></p>
+
+<p>It&rsquo;s quite clear that variable rate has nearly always been the most
+profitable alternative. At three seperate occasions it would have been
+more profitable to pick a 5 year fixed term: at the of 1989, the
+beginning of 1997, and in the middle of 2005. I won&rsquo;t comment on the 2
+years fixed term since it&rsquo;s not a fair comparison to only look at 5 out of
+6 years.</p>
+
+<p>If we compare 2 years fixed term with variable rate:</p>
+
+<p><img src="/images/2018/03/2y_avg_rates.en.png" alt="Average interest rate over 2 years" /></p>
+
+<p>Also here the most profitable choice is generally the variable rate
+however during times of rising interest rates getting a fixed 2 year
+term has been the better choice on several occasions. An important
+difference to the 5 years term is that you&rsquo;re not locked in for long
+when the rates finally go down again (and you&rsquo;re able to switch to
+variable rate).</p>
+
+<p>If we compare all terms during 10 years:</p>
+
+<p><img src="/images/2018/03/10y_avg_rates.en.png" alt="Average interest rate over 10 years" /></p>
+
+<p>Here it is clear that the variable rate is the most profitable.</p>
+
+<p>Even though it has been possible at certain occasions (29 years and
+only 3 short occasions!) to get a fixed term for 5 years and pay less
+overall than with variable rate, I think it&rsquo;s far too improbable that
+one is able to do it at the right time. You&rsquo;re almost guaranteed to be
+paying more in the end.</p>
+
+<p>Getting a fixed term for 2 years is more probable to be profitable,
+but even here it is more probable not to be.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2016/10/reduce-colors-in-images/</id>
+    <link href="https://cowboyprogrammer.org/2016/10/reduce-colors-in-images/" rel="alternate" />
+    <title>Reduce the size of images even further by reducing number of colors with Gimp</title>
+    <updated>2016-10-21T00:27:00+02:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <media:thumbnail url="https://cowboyprogrammer.org/images/2017/10/gimp_image_mode_index.png" />
+    
+    <summary type="html"><![CDATA[In Gimp you go to Image in the top menu bar and select Mode followed by Indexed. Now you see a popup where you can select the number of colors for a generated optimum palette.
+You&rsquo;ll have to experiment a little because it will depend on your image.
+I used this approach to shrink the size of the cover image in the_zopfli post from a 37KB (JPG) to just 15KB (PNG, all PNG sizes listed include Zopfli compression btw).]]></summary>
+    <content type="html"><![CDATA[
+
+<p>In Gimp you go to <em>Image</em> in the top menu bar and select <em>Mode</em>
+followed by <em>Indexed</em>. Now you see a popup where you can select the
+number of colors for a generated optimum palette.</p>
+
+<p>You&rsquo;ll have to experiment a little because it will depend on your
+image.</p>
+
+<p>I used this approach to shrink the size of the cover image in
+<a href="/2016/08/zopfli_all_the_things/">the_zopfli post</a> from a 37KB (JPG) to just 15KB
+(PNG, all PNG sizes listed include Zopfli compression btw).</p>
+
+<h2 id="straight-jpg-to-png-conversion-124kb">Straight JPG to PNG conversion: 124KB</h2>
+
+<p><img src="/images/2017/10/zopfli_all_the_things.png" alt="PNG version RGB colors" /></p>
+
+<p>First off, I exported the JPG file as a PNG file. This PNG file had a
+whopping 124KB! Clearly there was some bloat being stored.</p>
+
+<h2 id="256-colors-40kb">256 colors: 40KB</h2>
+
+<p>Reducing from RGB to only 256 colors has no visible effect to my eyes.</p>
+
+<p><img src="/images/2017/10/zopfli_all_the_things_256.png" alt="256 colors" /></p>
+
+<h2 id="128-colors-34kb">128 colors: 34KB</h2>
+
+<p>Still no difference.</p>
+
+<p><img src="/images/2017/10/zopfli_all_the_things_128.png" alt="128 colors" /></p>
+
+<h2 id="64-colors-25kb">64 colors: 25KB</h2>
+
+<p>You can start to see some artifacting in the shadow behind the text.</p>
+
+<p><img src="/images/2017/10/zopfli_all_the_things_64.png" alt="64 colors" /></p>
+
+<h2 id="32-colors-15kb">32 colors: 15KB</h2>
+
+<p>In my opinion this is the sweet spot. The shadow artifacting is barely
+noticable but the size is significantly reduced.</p>
+
+<p><img src="/images/2017/10/zopfli_all_the_things_32.png" alt="32 colors" /></p>
+
+<h2 id="16-colors-11kb">16 colors: 11KB</h2>
+
+<p>Clear artifacting in the text shadow and the yellow (fire?) in the
+background has developed an outline.</p>
+
+<p><img src="/images/2017/10/zopfli_all_the_things_16.png" alt="16 colors" /></p>
+
+<h2 id="8-colors-7-3kb">8 colors: 7.3KB</h2>
+
+<p>The broom has shifted in color from a clear brown to almost grey. Text
+shadow is just a grey blob at this point. Even clearer outline
+developed on the yellow background.</p>
+
+<p><img src="/images/2017/10/zopfli_all_the_things_8.png" alt="8 colors" /></p>
+
+<h2 id="4-colors-4-3kb">4 colors: 4.3KB</h2>
+
+<p>Interestingly enough, I think 4 colors looks better than 8 colors. The outline in the background has disappeared because there&rsquo;s not enough color spectrum to render it. The broom is now black and filled areas tend to get a white separator to the outlines.</p>
+
+<p><img src="/images/2017/10/zopfli_all_the_things_4.png" alt="4 colors" /></p>
+
+<h2 id="2-colors-2-4kb">2 colors: 2.4KB</h2>
+
+<p>Well, at least the silhouette is well defined at this point I guess.</p>
+
+<p><img src="/images/2017/10/zopfli_all_the_things_2.png" alt="2 colors" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2016/10/dont-start-service-on-install-of-debian-package/</id>
+    <link href="https://cowboyprogrammer.org/2016/10/dont-start-service-on-install-of-debian-package/" rel="alternate" />
+    <title>Don&#39;t start service on installation of Debian package</title>
+    <updated>2016-10-19T00:00:00+02:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <media:thumbnail url="https://cowboyprogrammer.org/images/Ardebian_logo_512_0.png" />
+    
+    <summary type="html"><![CDATA[A clear difference between Debian/Ubuntu and for example Red Hat/Fedora is that packages which include system services will enable and start those services at install time in Debian/Ubuntu whereas they will not start automatically in Red Hat/Fedora.
+Sometimes it would be very convenient if the service would not start automatically, for example if you need to configure the service before starting it for the first time.
+To prevent the automatic start of system services at install time in Debian, just set the RUNLEVEL environment variable like so:]]></summary>
+    <content type="html"><![CDATA[<p>A clear difference between Debian/Ubuntu and for example Red
+Hat/Fedora is that packages which include system services will enable
+and start those services at install time in Debian/Ubuntu whereas they
+will not start automatically in Red Hat/Fedora.</p>
+
+<p>Sometimes it would be very convenient if the service would <em>not</em> start
+automatically, for example if you need to configure the service before
+starting it for the first time.</p>
+
+<p>To prevent the automatic start of system services at install time in
+Debian, just set the <code>RUNLEVEL</code> environment variable like so:</p>
+
+<pre><code>RUNLEVEL=1 apt install -y PKG_NAME
+</code></pre>
+
+<p>Then you are free to configure your system before you start the
+service for real:</p>
+
+<pre><code>systemctl enable PKG_NAME
+systemctl start PKG_NAME
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2016/09/reboot_machine_on_wrong_password/</id>
+    <link href="https://cowboyprogrammer.org/2016/09/reboot_machine_on_wrong_password/" rel="alternate" />
+    <title>Rebooting on wrong password</title>
+    <updated>2016-09-28T22:57:21+02:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <summary type="html"><![CDATA[Having an encrypted hard drive is all well and good, but chances are that if someone is gonna steal your laptop, it&rsquo;s probably not going to be turned off. Most likely, it will be stolen in a powered-on state. And so your encrypted hard drive doesn&rsquo;t increase your security at all since it&rsquo;s currently unlocked.
+In my mind, it&rsquo;s a slight improvement if the computer somehow can shutdown if someone is trying to gain access to it.]]></summary>
+    <content type="html"><![CDATA[
+
+<p>Having an encrypted hard drive is all well and good, but chances are
+that if someone is gonna steal your laptop, it&rsquo;s probably not going to
+be turned off. Most likely, it will be stolen in a powered-on
+state. And so your encrypted hard drive doesn&rsquo;t increase your security
+at all since it&rsquo;s currently unlocked.</p>
+
+<p>In my mind, it&rsquo;s a slight improvement if the computer somehow can
+shutdown if someone is trying to gain access to it. That way, the hard
+drive is no longer accessible and the number of possible attack
+vectors go down drastically. And so, if you type the wrong password 3
+times on my laptop, it shuts down.</p>
+
+<p>This is accomplished by using <code>PAM</code>, and its ability to invoke an
+arbitrary script as part of the login flow via <code>pam_exec.so</code>. The
+script itself looks like this:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">#!/bin/bash</span>
+<span style="color: #60a0b0; font-style: italic"># Do not add -eu, you need to allow empty variables here!</span>
+
+<span style="color: #60a0b0; font-style: italic"># To be used with PAM. Look in /etc/pam.d for the script that your</span>
+<span style="color: #60a0b0; font-style: italic"># screensaver etc uses. Typically it references common-account and common-auth.</span>
+<span style="color: #60a0b0; font-style: italic">#</span>
+<span style="color: #60a0b0; font-style: italic"># In common-auth, add this as the first line</span>
+<span style="color: #60a0b0; font-style: italic">#auth       optional     pam_exec.so debug /path/to/wrongpassword.sh</span>
+<span style="color: #60a0b0; font-style: italic">#</span>
+<span style="color: #60a0b0; font-style: italic"># In common-account, add this as the first line</span>
+<span style="color: #60a0b0; font-style: italic">#account    required     pam_exec.so debug /path/to/wrongpassword.sh</span>
+<span style="color: #60a0b0; font-style: italic">#</span>
+
+<span style="color: #bb60d5">COUNTFILE</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;/var/log/failed_login_count&quot;</span>
+
+<span style="color: #60a0b0; font-style: italic"># Make sure file exists</span>
+<span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">[</span> ! -f <span style="color: #4070a0">&quot;</span><span style="color: #70a0d0; font-style: italic">${</span><span style="color: #bb60d5">COUNFILE</span><span style="color: #70a0d0; font-style: italic">}</span><span style="color: #4070a0">&quot;</span> <span style="color: #666666">]</span>;<span style="color: #007020; font-weight: bold">then</span>
+  touch <span style="color: #4070a0">&quot;</span><span style="color: #70a0d0; font-style: italic">${</span><span style="color: #bb60d5">COUNTFILE</span><span style="color: #70a0d0; font-style: italic">}</span><span style="color: #4070a0">&quot;</span>
+  chmod <span style="color: #40a070">777</span> <span style="color: #4070a0">&quot;</span><span style="color: #70a0d0; font-style: italic">${</span><span style="color: #bb60d5">COUNTFILE</span><span style="color: #70a0d0; font-style: italic">}</span><span style="color: #4070a0">&quot;</span>
+<span style="color: #007020; font-weight: bold">fi</span>
+
+<span style="color: #60a0b0; font-style: italic"># Read value in it</span>
+<span style="color: #bb60d5">COUNT</span><span style="color: #666666">=</span><span style="color: #007020; font-weight: bold">$(</span>cat <span style="color: #4070a0">&quot;</span><span style="color: #70a0d0; font-style: italic">${</span><span style="color: #bb60d5">COUNTFILE</span><span style="color: #70a0d0; font-style: italic">}</span><span style="color: #4070a0">&quot;</span><span style="color: #007020; font-weight: bold">)</span>
+<span style="color: #60a0b0; font-style: italic"># Increment it</span>
+<span style="color: #bb60d5">COUNT</span><span style="color: #666666">=</span><span style="color: #007020; font-weight: bold">$((</span>COUNT+1<span style="color: #007020; font-weight: bold">))</span>
+<span style="color: #007020">echo</span> <span style="color: #4070a0">&quot;</span><span style="color: #70a0d0; font-style: italic">${</span><span style="color: #bb60d5">COUNT</span><span style="color: #70a0d0; font-style: italic">}</span><span style="color: #4070a0">&quot;</span> &gt; <span style="color: #4070a0">&quot;</span><span style="color: #70a0d0; font-style: italic">${</span><span style="color: #bb60d5">COUNTFILE</span><span style="color: #70a0d0; font-style: italic">}</span><span style="color: #4070a0">&quot;</span>
+
+<span style="color: #60a0b0; font-style: italic"># if authentication</span>
+<span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #4070a0">&quot;</span><span style="color: #70a0d0; font-style: italic">${</span><span style="color: #bb60d5">PAM_TYPE</span><span style="color: #70a0d0; font-style: italic">}</span><span style="color: #4070a0">&quot;</span> <span style="color: #666666">==</span> <span style="color: #4070a0">&quot;auth&quot;</span> <span style="color: #666666">]</span>; <span style="color: #007020; font-weight: bold">then</span>
+  <span style="color: #60a0b0; font-style: italic"># The count will be at 4 after 3 wrong tries</span>
+  <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #4070a0">&quot;</span><span style="color: #70a0d0; font-style: italic">${</span><span style="color: #bb60d5">COUNT</span><span style="color: #70a0d0; font-style: italic">}</span><span style="color: #4070a0">&quot;</span> -ge <span style="color: #40a070">4</span> <span style="color: #666666">]</span>; <span style="color: #007020; font-weight: bold">then</span>
+    <span style="color: #60a0b0; font-style: italic"># Shutdown in 1 min</span>
+    <span style="color: #60a0b0; font-style: italic">#/usr/bin/shutdown --no-wall -h +1</span>
+    <span style="color: #60a0b0; font-style: italic"># This is a hack because the line above gives a segfault in logind</span>
+    <span style="color: #007020">echo</span> <span style="color: #4070a0">&quot;0&quot;</span> &gt; <span style="color: #4070a0">&quot;</span><span style="color: #70a0d0; font-style: italic">${</span><span style="color: #bb60d5">COUNTFILE</span><span style="color: #70a0d0; font-style: italic">}</span><span style="color: #4070a0">&quot;</span>
+    systemctl poweroff
+  <span style="color: #007020; font-weight: bold">fi</span>
+<span style="color: #60a0b0; font-style: italic"># If authentication succeeded, and we are now in account phase</span>
+<span style="color: #007020; font-weight: bold">elif</span> <span style="color: #666666">[</span> <span style="color: #4070a0">&quot;</span><span style="color: #70a0d0; font-style: italic">${</span><span style="color: #bb60d5">PAM_TYPE</span><span style="color: #70a0d0; font-style: italic">}</span><span style="color: #4070a0">&quot;</span> <span style="color: #666666">==</span> <span style="color: #4070a0">&quot;account&quot;</span> <span style="color: #666666">]</span>; <span style="color: #007020; font-weight: bold">then</span>
+  <span style="color: #007020">echo</span> <span style="color: #4070a0">&quot;0&quot;</span> &gt; <span style="color: #4070a0">&quot;</span><span style="color: #70a0d0; font-style: italic">${</span><span style="color: #bb60d5">COUNTFILE</span><span style="color: #70a0d0; font-style: italic">}</span><span style="color: #4070a0">&quot;</span>
+  <span style="color: #60a0b0; font-style: italic"># Cancel shutdown which was just issued</span>
+  shutdown -c
+<span style="color: #007020; font-weight: bold">fi</span>
+
+<span style="color: #007020">exit</span> <span style="color: #40a070">0</span>
+</pre></div>
+
+<p>On my Debian system, PAM ends up looking at <code>/etc/pam.d/common-auth</code>
+and <code>/etc/pam.d/common-account</code>. These are invoked in different parts
+of the authentication flow. In <code>common-auth</code>, add this as the first
+line:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>auth optional pam_exec.so debug /path/to/wrongpassword.sh
+</pre></div>
+
+<p>And then in <code>common-account</code>, add this as the first line:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>account required pam_exec.so debug /path/to/wrongpassword.sh
+</pre></div>
+
+<p>You can try it immediately if it works. Lock your screen, and type the
+wrong password 4 times. If it works, your computer should shut down.</p>
+
+<h2 id="warning-do-not-enable-on-servers">WARNING: DO NOT ENABLE ON SERVERS</h2>
+
+<p>This is <strong>NOT</strong> something you want to do on any machine. Most notably,
+it&rsquo;s probably a huge mistake to copy this verbatim on a machine which
+accepts remote connections. In that case, you essentially enable
+anyone to DOS you by entering the wrong password via SSH or
+similarly. So don&rsquo;t do this if you allow remote connections to your
+machine (which shouldn&rsquo;t be a thing on a laptop).</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2016/08/zopfli_all_the_things/</id>
+    <link href="https://cowboyprogrammer.org/2016/08/zopfli_all_the_things/" rel="alternate" />
+    <title>Compress all the images!</title>
+    <updated>2016-08-26T13:17:40+02:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <media:thumbnail url="https://cowboyprogrammer.org/images/2017/10/zopfli_all_the_things_32.png" />
+    
+    <summary type="html"><![CDATA[Update 2016-11-22: Made the Makefile compatible with BSD sed (MacOS)
+One advantage that static sites, such as those built by Hugo, provide is fast loading times. Because there is no processing to be done, no server side rendering, no database lookups, loading times are just as fast as you can serve the files that make up the page. This means that bandwidth becomes the primary bottleneck, which incidentally is one of the factors used by Google to calculate your search ranking.]]></summary>
+    <content type="html"><![CDATA[
+
+<p><em>Update 2016-11-22: Made the Makefile compatible with BSD sed (MacOS)</em></p>
+
+<p>One advantage that static sites, such as those built by <a href="https://gohugo.io">Hugo</a>,
+provide is fast loading times. Because there is no processing to be
+done, no server side rendering, no database lookups, loading times are
+just as fast as you can serve the files that make up the page. This
+means that bandwidth becomes the primary bottleneck, which
+incidentally is
+<a href="https://webmasters.googleblog.com/2010/04/using-site-speed-in-web-search-ranking.html">one of the factors used by Google to calculate your search ranking</a>. See
+also
+<a href="https://developers.google.com/speed/pagespeed/insights">Pagespeed Insights</a>.</p>
+
+<h2 id="compressing-images">Compressing images</h2>
+
+<p>Because the largest pieces of a page typically consist of images, it
+stands to reason that if we can make the images smaller, we can make
+the page load faster. Luckily there exists methods that can compress
+images <em>losslessly</em>. That means that the quality stays exactly the
+same, the page only loads faster. That seemed like a no-brainer to me
+so I compressed all the images on the site using <a href="http://advsys.net/ken/utils.htm">PNGout</a> as
+<a href="https://blog.codinghorror.com/getting-the-most-out-of-png/">advised by Jeff Atwood</a>. I mean, who doesn&rsquo;t
+like free bandwidth?</p>
+
+<p>A new algorithm called <a href="https://github.com/google/zopfli">Zopfli</a> (open sourced by Google,
+<a href="https://blog.codinghorror.com/zopfli-optimization-literally-free-bandwidth/">also mentioned by Jeff</a>) claims even better
+results than PNGout though. Results on this site&rsquo;s images confirm
+those claims. Running the tool on images <em>already compressed by
+PNGout</em> gives output such as this:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>./zopflipng --prefix=&quot;zopfli_&quot; static/images/2014/Dec/Screenshot-from-2014-12-29-13-28-29.png
+Optimizing static/images/2014/Dec/Screenshot-from-2014-12-29-13-28-29.png
+Input size: 89420 (87K)
+Result size: 90361 (88K). Percentage of original: 101.052%
+Preserving original PNG since it was smaller
+
+./zopflipng --prefix=&quot;zopfli_&quot; static/images/2014/Jun/Jenkins_install_git.png
+Optimizing static/images/2014/Jun/Jenkins_install_git.png
+Input size: 189406 (184K)
+Result size: 166362 (162K). Percentage of original: 87.834%
+Result is smaller
+
+./zopflipng --prefix=&quot;zopfli_&quot; static/images/2014/Jun/jenkins_batch.png
+Optimizing static/images/2014/Jun/jenkins_batch.png
+Input size: 21933 (21K)
+Result size: 16255 (15K). Percentage of original: 74.112%
+Result is smaller
+
+./zopflipng --prefix=&quot;zopfli_&quot; static/images/2014/Jun/jenkins_build_step.png
+Optimizing static/images/2014/Jun/jenkins_build_step.png
+Input size: 8184 (7K)
+Result size: 6809 (6K). Percentage of original: 83.199%
+Result is smaller
+
+./zopflipng --prefix=&quot;zopfli_&quot; static/images/2014/Jun/jenkins_config_git.png
+Optimizing static/images/2014/Jun/jenkins_config_git.png
+Input size: 57897 (56K)
+Result size: 47164 (46K). Percentage of original: 81.462%
+Result is smaller
+</pre></div>
+
+<p>The first result in the example output shows a case where Zopfli would
+actually have made the file bigger (because it was already compressed
+by PNGout, remember). This is nothing you have to worry about because
+it&rsquo;s actually smart enough that it simply copies the original file in
+that case.</p>
+
+<p>Comparing to both before any compression, and PNGout, yielded the
+following results:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Mean relative size</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>Before</td>
+<td>1.00</td>
+</tr>
+
+<tr>
+<td>PNGout</td>
+<td>0.84</td>
+</tr>
+
+<tr>
+<td>ZopfliPNG</td>
+<td>0.77</td>
+</tr>
+
+</tbody>
+</table>
+
+<p><a href="https://en.wikipedia.org/wiki/Box_plot">Box plot</a> of results on all images:</p>
+
+<p><img src="/images/zopfli_boxplot.png" alt="Compression results" /></p>
+
+<p>Source files: <a href="/csv/before.csv">before.csv</a>,
+<a href="/csv/pngout.csv">pngout.csv</a>, <a href="/csv/zopfli.csv">zopfli.csv</a></p>
+
+<p>And this is with the default arguments. It is possible squeeze yet a
+couple of more bytes out of this if you&rsquo;re willing to wait longer.</p>
+
+<h2 id="automate-it-with-make">Automate it with Make</h2>
+
+<p>Another joy of using a simple static site is that it is possible to
+compose regular tools to do useful things. Tools like
+<a href="https://www.gnu.org/software/make/">Make</a>. And we can use Make to build the site, as well as
+compressing images which have not already been compressed. You could
+do it manually for each new image that you add of course but be
+honest, you <em>know</em> that you&rsquo;re gonna forget to do it at some point. So
+let&rsquo;s automate it instead!</p>
+
+<p>This is the Makefile that I use to build this site with, note that
+<code>public</code> depends on <code>$(PNG_SENTINELS)</code>, so I literally can&rsquo;t forget to
+compress any new images added:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #06287e">.PHONY</span><span style="color: #666666">:</span> help build server server-with-drafts clean zopfli
+
+<span style="color: #bb60d5">PNG_SENTINELS</span><span style="color: #666666">:=</span> <span style="color: #007020; font-weight: bold">$(</span>shell find . -path ./public -prune -o -name <span style="color: #4070a0">&#39;*.png&#39;</span> -print | sed <span style="color: #4070a0">&#39;s|\(.\+/\)\(.\+.png\)|\1.\2.zopfli|g&#39;</span><span style="color: #007020; font-weight: bold">)</span>
+
+<span style="color: #06287e">help</span><span style="color: #666666">:</span> <span style="color: #60a0b0; font-style: italic">## Print this help text</span>
+	@grep -E <span style="color: #4070a0">&#39;^[a-zA-Z_-]+:.*?## .*$$&#39;</span> <span style="color: #007020; font-weight: bold">$(</span>MAKEFILE_LIST<span style="color: #007020; font-weight: bold">)</span> | awk <span style="color: #4070a0">&#39;BEGIN {FS = &quot;:.*?## &quot;}; {printf &quot;\033[36m%-30s\033[0m %s\n&quot;, $$1, $$2}&#39;</span>
+
+<span style="color: #06287e">server</span><span style="color: #666666">:</span> <span style="color: #60a0b0; font-style: italic">## Run hugo server</span>
+	hugo server
+
+<span style="color: #06287e">server-with-drafts</span><span style="color: #666666">:</span> <span style="color: #60a0b0; font-style: italic">## Run hugo server and include drafts</span>
+	hugo server -D
+
+<span style="color: #06287e">build</span><span style="color: #666666">:</span> public <span style="color: #60a0b0; font-style: italic">## Build site (will also compress images using zopfli)</span>
+
+<span style="color: #06287e">zopfli</span><span style="color: #666666">:</span> <span style="color: #007020; font-weight: bold">$(</span><span style="color: #bb60d5">PNG_SENTINELS</span><span style="color: #007020; font-weight: bold">)</span> <span style="color: #60a0b0; font-style: italic">## Compress new images using zopfli</span>
+
+<span style="color: #06287e">clean</span><span style="color: #666666">:</span> <span style="color: #60a0b0; font-style: italic">## Remove the built directory</span>
+	@rm -rf public
+
+<span style="color: #06287e">public</span><span style="color: #666666">:</span> <span style="color: #007020; font-weight: bold">$(</span><span style="color: #bb60d5">PNG_SENTINELS</span><span style="color: #007020; font-weight: bold">)</span>
+	@rm -rf public
+	hugo
+
+<span style="color: #60a0b0; font-style: italic"># Zopfli sentinel rule, assumes zopflipng binary is in the same folder</span>
+<span style="color: #06287e">.%.png.zopfli</span><span style="color: #666666">:</span> %.png
+	./zopflipng --prefix<span style="color: #666666">=</span><span style="color: #4070a0">&quot;zopfli_&quot;</span> $&lt;
+	@mv <span style="color: #007020; font-weight: bold">$(</span>dir $&lt;<span style="color: #007020; font-weight: bold">)</span>zopfli_<span style="color: #007020; font-weight: bold">$(</span>notdir $&lt;<span style="color: #007020; font-weight: bold">)</span> $&lt;
+	@touch <span style="color: #bb60d5">$@</span>
+</pre></div>
+
+<p>For best performance, run make with parallel jobs (change 4 to your
+number CPUs): <code>make -j4 zopfli</code>.</p>
+
+<p>To know which files have already been compressed without actually
+running Zopfli on it again (which takes a while), sentinel files are
+created with this pattern: <code>.&lt;imgfilename&gt;.zopfli</code>.  Thus, the next
+time around, zopfli is only invoked for files which have <em>not</em> already
+been compressed, making it a one-time operation. And when everything
+has already been compressed, you&rsquo;ll just get this:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>make: Nothing to be done for &#39;zopfli&#39;.
+</pre></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2016/07/migrating_from_ghost_to_hugo/</id>
+    <link href="https://cowboyprogrammer.org/2016/07/migrating_from_ghost_to_hugo/" rel="alternate" />
+    <title>Migrating from Ghost to Hugo</title>
+    <updated>2016-07-25T23:55:38+02:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <media:thumbnail url="https://cowboyprogrammer.org/images/hugo-logo.png" />
+    
+    <summary type="html"><![CDATA[So I recently migrated this site from Ghost to Hugo after reading a nice article about the Hugo in Linux Voice #20 (funnily enough, the same issue also features an article about Ghost). I originally made the switch to Ghost from Jekyll back in 2014 or so mainly because I could not find a good theme to use. Ghost also seemed to have a lot of cool features and it&rsquo;s fun to try new things.]]></summary>
+    <content type="html"><![CDATA[
+
+<p>So I recently migrated this site from <a href="https://ghost.org">Ghost</a> to <a href="https://gohugo.io">Hugo</a>
+after reading a nice article about the Hugo in
+<a href="https://www.linuxvoice.com/download-linux-voice-issue-20/">Linux Voice #20</a> (funnily enough, the same issue also
+features an article about Ghost). I originally made the switch to
+Ghost from <a href="https://jekyllrb.com/">Jekyll</a> back in 2014 or so mainly because I could
+not find a good theme to use. Ghost also seemed to have a lot of cool
+features and it&rsquo;s fun to try new things.</p>
+
+<p>I think it&rsquo;s safe to say that I am hardly a prolific blogger. I mainly
+write about stuff which I personally cannot find on the web which I
+think should exist, because I will likely need it myself sometime in
+the future. So it&rsquo;s hardly a surprise that I am not in the target
+audience for Ghost.</p>
+
+<h2 id="things-about-ghost-which-annoy-me">Things about Ghost which annoy me</h2>
+
+<ul>
+<li>It&rsquo;s written in NodeJS &mdash; people who think JS is a good server
+language also tend to think that it&rsquo;s a good idea to depend on just
+about any package, and download it in every single build. Which
+becomes really <a href="http://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/">funny sometimes</a>.</li>
+<li>Poor selection of <a href="http://marketplace.ghost.org/">themes</a> &mdash; this is subjective of
+course, but it seems to me that the free options don&rsquo;t have much in
+terms of diversity. Heck, they even call it a <em>marketplace</em> which
+rubs me the wrong way.</li>
+<li>Themes end up being quite reliant on JS if you want necessary
+features like syntax highlighting on code snippets &mdash; I often
+browse with JS disabled and should be able to view my own site.</li>
+<li>Markdown parser treats newlines as significant &mdash; meaning you can&rsquo;t
+have properly aligned paragraphs in your editor.</li>
+</ul>
+
+<p>That last point irritates me deeply but it&rsquo;s not as bad as the next point.</p>
+
+<ul>
+<li>You can effectively lock an account by entering the wrong password 3
+times.</li>
+</ul>
+
+<p>This requires some explanation. So Ghost, targeting teams of bloggers
+really, naturally have an account system much like Wordpress. Now, as
+I was surveying the security status of other services I am running, I
+was wondering how Ghost handled someone trying to brute force your
+account and decided to simply try it out. Type the wrong password once
+too many, and this happens:</p>
+
+<p><img src="/images/ghost_wrong_password.png" alt="Ghost: typing the wrong password too many times locks your account" /></p>
+
+<p>It doesn&rsquo;t lock it for a single IP address (I tried from several), it
+locks the entire account.  Effectively, someone can just set up a
+script to try an account indefinitely simply with the intention to
+block someone from logging in.</p>
+
+<p>The log doesn&rsquo;t even show login attempts, so there is no way to
+implement sensible blocking strategies using something like <a href="http://www.fail2ban.org">fail2ban</a>.</p>
+
+<p>The whole thing left a bad taste my mouth so it was a very suitable timing to read an article on <a href="https://gohugo.io">Hugo</a>.</p>
+
+<h2 id="things-about-hugo-which-excite-me">Things about Hugo which excite me</h2>
+
+<ul>
+<li>Markdown parser treats newlines correctly</li>
+<li>It&rsquo;s a static site generator and not a service &mdash; this meant 100MB
+(10%) of RAM became available on my server and there is no account
+to hack (or block).</li>
+<li>Supports everything of Ghost (that I am aware of).</li>
+<li>The simplicity of Hugo makes it <a href="https://npf.io/2014/08/making-it-a-series/">quite painless</a> to
+do useful things compared to
+<a href="https://github.com/TryGhost/Ghost/issues/4818">ignored feature requests</a> for the same in Ghost.</li>
+<li>Can do server side syntax highlighting using Pygments.</li>
+<li>Some really nice <a href="http://themes.gohugo.io/">themes</a> are available, and they are
+all free.</li>
+</ul>
+
+<h2 id="migrating-all-data-from-ghost">Migrating all data from Ghost</h2>
+
+<p>Migrating from Ghost also turned about to be really painless. There
+were several scripts around for exactly this but they all turned out
+to be written in <a href="https://gist.github.com/vjeantet/d1f6cf824a2344dd6b4e">odd languages</a>, and did not actually
+migrate all the metadata in Ghost. So I wrote my own in Python with
+these <em>killer features</em>:</p>
+
+<ul>
+<li>Migrates tags.</li>
+<li>Migrates dates.</li>
+<li>Migrates drafts as drafts.</li>
+<li>Creates aliases in your posts which makes sure that old permalinks
+will still work!</li>
+<li>Migrates cover pictures as banner images, just select a theme which
+support them.</li>
+<li>Rewrites all relative links so they all still work (this includes
+images).</li>
+<li>Code blocks with language definitions like <code>```language-java</code>
+are changed to <code>```java</code>.</li>
+</ul>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">#!/usr/bin/env python3</span>
+<span style="color: #60a0b0; font-style: italic"># -*- coding: utf-8 -*-</span>
+<span style="color: #4070a0; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #4070a0; font-style: italic">A simple program which migrates an exported Ghost blog to Hugo.</span>
+<span style="color: #4070a0; font-style: italic">It assumes your blog is using the hugo-icarus theme, but should</span>
+<span style="color: #4070a0; font-style: italic">work for any theme. The script will migrate your posts, including</span>
+<span style="color: #4070a0; font-style: italic">tags and banner images. Furthermore, it will make sure that</span>
+<span style="color: #4070a0; font-style: italic">all your old post urls will keep working by adding aliases to them.</span>
+
+<span style="color: #4070a0; font-style: italic">The only thing you need to do yourself is copying the `images/`</span>
+<span style="color: #4070a0; font-style: italic">directory in your ghost directory to `static/images/` in your hugo</span>
+<span style="color: #4070a0; font-style: italic">directory. That way, all images will work. The script will rewrite</span>
+<span style="color: #4070a0; font-style: italic">all urls linking to `/content/images` to just `/images`.</span>
+<span style="color: #4070a0; font-style: italic">&#39;&#39;&#39;</span>
+
+<span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">argparse</span>
+<span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">json</span>
+<span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">datetime</span> <span style="color: #007020; font-weight: bold">import</span> date
+<span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">os</span> <span style="color: #007020; font-weight: bold">import</span> path
+<span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">collections</span> <span style="color: #007020; font-weight: bold">import</span> defaultdict
+<span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">re</span>
+
+_post <span style="color: #666666">=</span> <span style="color: #4070a0">&#39;&#39;&#39;</span>
+<span style="color: #4070a0">+++</span>
+<span style="color: #4070a0">date = &quot;{date}&quot;</span>
+<span style="color: #4070a0">draft = {draft}</span>
+<span style="color: #4070a0">title = &quot;&quot;&quot;{title}&quot;&quot;&quot;</span>
+<span style="color: #4070a0">slug = &quot;{slug}&quot;</span>
+<span style="color: #4070a0">tags = {tags}</span>
+<span style="color: #4070a0">banner = &quot;{banner}&quot;</span>
+<span style="color: #4070a0">aliases = {aliases}</span>
+<span style="color: #4070a0">+++</span>
+
+<span style="color: #4070a0">{markdown}</span>
+<span style="color: #4070a0">&#39;&#39;&#39;</span>
+
+
+<span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">migrate</span>(filepath, hugodir):
+    <span style="color: #4070a0; font-style: italic">&#39;&#39;&#39;</span>
+<span style="color: #4070a0; font-style: italic">    Parse the Ghost json file and write post files</span>
+<span style="color: #4070a0; font-style: italic">    &#39;&#39;&#39;</span>
+    <span style="color: #007020; font-weight: bold">with</span> <span style="color: #007020">open</span>(filepath, <span style="color: #4070a0">&quot;r&quot;</span>) <span style="color: #007020; font-weight: bold">as</span> fp:
+        ghost <span style="color: #666666">=</span> json<span style="color: #666666">.</span>load(fp)
+
+    data <span style="color: #666666">=</span> ghost[<span style="color: #4070a0">&#39;db&#39;</span>][<span style="color: #40a070">0</span>][<span style="color: #4070a0">&#39;data&#39;</span>]
+
+    tags <span style="color: #666666">=</span> {}
+    <span style="color: #007020; font-weight: bold">for</span> tag <span style="color: #007020; font-weight: bold">in</span> data[<span style="color: #4070a0">&quot;tags&quot;</span>]:
+        tags[tag[<span style="color: #4070a0">&quot;id&quot;</span>]] <span style="color: #666666">=</span> tag[<span style="color: #4070a0">&quot;name&quot;</span>]
+
+    posttags <span style="color: #666666">=</span> defaultdict(<span style="color: #007020">list</span>)
+
+    <span style="color: #007020; font-weight: bold">for</span> posttag <span style="color: #007020; font-weight: bold">in</span> data[<span style="color: #4070a0">&quot;posts_tags&quot;</span>]:
+        posttags[posttag[<span style="color: #4070a0">&quot;post_id&quot;</span>]]<span style="color: #666666">.</span>append(tags[posttag[<span style="color: #4070a0">&quot;tag_id&quot;</span>]])
+
+    <span style="color: #007020; font-weight: bold">for</span> post <span style="color: #007020; font-weight: bold">in</span> data[<span style="color: #4070a0">&#39;posts&#39;</span>]:
+        draft <span style="color: #666666">=</span> <span style="color: #4070a0">&quot;true&quot;</span> <span style="color: #007020; font-weight: bold">if</span> post[<span style="color: #4070a0">&quot;status&quot;</span>] <span style="color: #666666">==</span> <span style="color: #4070a0">&quot;draft&quot;</span> <span style="color: #007020; font-weight: bold">else</span> <span style="color: #4070a0">&quot;false&quot;</span>
+        ts <span style="color: #666666">=</span> <span style="color: #007020">int</span>(post[<span style="color: #4070a0">&quot;created_at&quot;</span>]) <span style="color: #666666">/</span> <span style="color: #40a070">1000</span>
+
+        banner <span style="color: #666666">=</span> <span style="color: #4070a0">&quot;&quot;</span> <span style="color: #007020; font-weight: bold">if</span> post[<span style="color: #4070a0">&quot;image&quot;</span>] <span style="color: #007020; font-weight: bold">is</span> <span style="color: #007020">None</span> <span style="color: #007020; font-weight: bold">else</span> post[<span style="color: #4070a0">&quot;image&quot;</span>]
+        <span style="color: #60a0b0; font-style: italic"># /content/ should not be part of uri anymore</span>
+        banner <span style="color: #666666">=</span> re<span style="color: #666666">.</span>sub(<span style="color: #4070a0">&quot;^.*/content[s]?/&quot;</span>, <span style="color: #4070a0">&quot;/&quot;</span>, banner)
+
+        target <span style="color: #666666">=</span> path<span style="color: #666666">.</span>join(hugodir, <span style="color: #4070a0">&quot;content/post&quot;</span>,
+                           <span style="color: #4070a0">&quot;{}.md&quot;</span><span style="color: #666666">.</span>format(post[<span style="color: #4070a0">&quot;slug&quot;</span>]))
+
+        aliases <span style="color: #666666">=</span> [<span style="color: #4070a0">&quot;/{}/&quot;</span><span style="color: #666666">.</span>format(post[<span style="color: #4070a0">&quot;slug&quot;</span>])]
+
+        <span style="color: #007020; font-weight: bold">print</span>(<span style="color: #4070a0">&quot;Migrating &#39;{}&#39; to {}&quot;</span><span style="color: #666666">.</span>format(post[<span style="color: #4070a0">&quot;title&quot;</span>],
+                                          target))
+
+        hugopost <span style="color: #666666">=</span> _post<span style="color: #666666">.</span>format(markdown<span style="color: #666666">=</span>post[<span style="color: #4070a0">&quot;markdown&quot;</span>],
+                                title<span style="color: #666666">=</span>post[<span style="color: #4070a0">&quot;title&quot;</span>],
+                                draft<span style="color: #666666">=</span>draft,
+                                slug<span style="color: #666666">=</span>post[<span style="color: #4070a0">&quot;slug&quot;</span>],
+                                date<span style="color: #666666">=</span>date<span style="color: #666666">.</span>fromtimestamp(ts)<span style="color: #666666">.</span>isoformat(),
+                                tags<span style="color: #666666">=</span>posttags[post[<span style="color: #4070a0">&quot;id&quot;</span>]],
+                                banner<span style="color: #666666">=</span>banner,
+                                aliases<span style="color: #666666">=</span>aliases)
+
+        <span style="color: #60a0b0; font-style: italic"># this is no longer relevant</span>
+        hugopost <span style="color: #666666">=</span> hugopost<span style="color: #666666">.</span>replace(<span style="color: #4070a0">&quot;```language-&quot;</span>, <span style="color: #4070a0">&quot;```&quot;</span>)
+        <span style="color: #60a0b0; font-style: italic"># /content/ should not be part of uri anymore</span>
+        hugopost <span style="color: #666666">=</span> hugopost<span style="color: #666666">.</span>replace(<span style="color: #4070a0">&quot;/content/&quot;</span>, <span style="color: #4070a0">&quot;/&quot;</span>)
+        hugopost <span style="color: #666666">=</span> re<span style="color: #666666">.</span>sub(<span style="color: #4070a0">&quot;^.*/content[s]?/&quot;</span>, <span style="color: #4070a0">&quot;/&quot;</span>, hugopost)
+
+        <span style="color: #007020; font-weight: bold">with</span> <span style="color: #007020">open</span>(target, <span style="color: #4070a0">&#39;w&#39;</span>) <span style="color: #007020; font-weight: bold">as</span> fp:
+            <span style="color: #007020; font-weight: bold">print</span>(hugopost, <span style="color: #007020">file</span><span style="color: #666666">=</span>fp)
+
+
+<span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">main</span>():
+    parser <span style="color: #666666">=</span> argparse<span style="color: #666666">.</span>ArgumentParser(
+        description<span style="color: #666666">=</span><span style="color: #4070a0">&quot;Migrate an exported Ghost blog to Hugo&quot;</span>)
+    req <span style="color: #666666">=</span> parser<span style="color: #666666">.</span>add_argument_group(title<span style="color: #666666">=</span><span style="color: #4070a0">&quot;required arguments&quot;</span>)
+    req<span style="color: #666666">.</span>add_argument(<span style="color: #4070a0">&quot;-f&quot;</span>, <span style="color: #4070a0">&quot;--file&quot;</span>, help<span style="color: #666666">=</span><span style="color: #4070a0">&quot;JSON file exported from Ghost&quot;</span>,
+                     required<span style="color: #666666">=</span><span style="color: #007020">True</span>)
+    req<span style="color: #666666">.</span>add_argument(<span style="color: #4070a0">&quot;-d&quot;</span>, <span style="color: #4070a0">&quot;--dir&quot;</span>, help<span style="color: #666666">=</span><span style="color: #4070a0">&quot;Directory (root) of Hugo site&quot;</span>,
+                     required<span style="color: #666666">=</span><span style="color: #007020">True</span>)
+
+    args <span style="color: #666666">=</span> parser<span style="color: #666666">.</span>parse_args()
+
+    migrate(args<span style="color: #666666">.</span>file, args<span style="color: #666666">.</span>dir)
+
+
+<span style="color: #007020; font-weight: bold">if</span> <span style="color: #bb60d5">__name__</span> <span style="color: #666666">==</span> <span style="color: #4070a0">&quot;__main__&quot;</span>:
+    main()
+</pre></div>
+
+<p>Next post, I might write about what changes I made to the theme, and
+some nifty Nginx tricks you can use to stay compatible with old links.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2016/05/set-refresh-rate-of-screen-from-script/</id>
+    <link href="https://cowboyprogrammer.org/2016/05/set-refresh-rate-of-screen-from-script/" rel="alternate" />
+    <title>Set refresh rate of screen from script</title>
+    <updated>2016-05-18T00:00:00+00:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <media:thumbnail url="https://cowboyprogrammer.org/images/2016/05/Selection_034.png" />
+    
+    <summary type="html"><![CDATA[Getting a great new 100 Hz Ultra Wide monitor does not come without its share of tweaking. So it turns out that the refresh you set on your monitor in Nvidia settings (as explained in a previous post does not apply to all the display ports. They apparently count as different screens with different settings or something.
+So, here&rsquo;s a handy script which you can add to your window manager&rsquo;s autostart applications to set the refresh rate and resolution of your screen, regardless of which actual port you use:]]></summary>
+    <content type="html"><![CDATA[<p>Getting a great new 100 Hz Ultra Wide monitor does not come without its share of tweaking. So it turns out that the refresh you set on your monitor in Nvidia settings (as explained in a <a href="https://cowboyprogrammer.org/nvidia-gsync-on-linux/">previous post</a> does not apply to all the display ports. They apparently count as different screens with different settings or something.</p>
+
+<p>So, here&rsquo;s a handy script which you can add to your window manager&rsquo;s autostart applications to set the refresh rate and resolution of your screen, regardless of which actual port you use:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">#!/bin/bash -eu</span>
+<span style="color: #bb60d5">RES</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;3440x1440&quot;</span>
+<span style="color: #bb60d5">RR</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;100&quot;</span>
+
+<span style="color: #60a0b0; font-style: italic"># Do for every output, so that it doesn&#39;t matter where you plug in</span>
+<span style="color: #60a0b0; font-style: italic"># your monitor.</span>
+<span style="color: #007020; font-weight: bold">for</span> output in <span style="color: #007020; font-weight: bold">$(</span>xrandr | grep <span style="color: #4070a0">&quot;DP-&quot;</span> | sed -e <span style="color: #4070a0">&quot;s/\(DP-.\).*/\1/&quot;</span><span style="color: #007020; font-weight: bold">)</span>; <span style="color: #007020; font-weight: bold">do</span>
+  <span style="color: #007020">echo</span> <span style="color: #4070a0">&quot;Trying to set mode on </span><span style="color: #bb60d5">$output</span><span style="color: #4070a0">&quot;</span>
+  <span style="color: #007020; font-weight: bold">if</span> xrandr --output <span style="color: #4070a0">&quot;</span><span style="color: #bb60d5">$output</span><span style="color: #4070a0">&quot;</span> --mode <span style="color: #4070a0">&quot;</span><span style="color: #bb60d5">$RES</span><span style="color: #4070a0">&quot;</span> -r <span style="color: #4070a0">&quot;</span><span style="color: #bb60d5">$RR</span><span style="color: #4070a0">&quot;</span>; <span style="color: #007020; font-weight: bold">then</span>
+    <span style="color: #007020">echo</span> <span style="color: #4070a0">&quot;Success: </span><span style="color: #bb60d5">$RES</span><span style="color: #4070a0"> </span><span style="color: #bb60d5">$RR</span><span style="color: #4070a0"> Hz set on </span><span style="color: #bb60d5">$output</span><span style="color: #4070a0">&quot;</span>
+  <span style="color: #007020; font-weight: bold">fi</span>
+<span style="color: #007020; font-weight: bold">done</span>
+</pre></div>
+
+<p>It iterates over all the display ports on your graphics card, so it doesn&rsquo;t matter where you plug your monitor in.</p>
+
+<p>In XFCE, you&rsquo;d add this script to <em>Application Autostart</em>:</p>
+
+<p><img src="/images/2016/05/Session-and-Startup_033.png" alt="XFCE Application Autostart" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2016/04/fixing-the-up-button-in-python-shell-history/</id>
+    <link href="https://cowboyprogrammer.org/2016/04/fixing-the-up-button-in-python-shell-history/" rel="alternate" />
+    <title>Fixing the up button in Python shell history</title>
+    <updated>2016-04-02T00:00:00+00:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <media:thumbnail url="https://cowboyprogrammer.org/images/2016/04/Selection_021-1.png" />
+    
+    <summary type="html"><![CDATA[In case your python/ipython shell doesn&rsquo;t have a working history, e.g. pressing &#8593; only prints some nonsensical ^[[A, then you are missing either the readline or ncurses library.
+Ipython is more descriptive that something is wrong, but if you&rsquo;re in the habit of mostly using python as a quick calculator, you might never notice:
+If you&rsquo;re using Miniconda then just do:
+conda install ncurses readline  And &#8593; should work:]]></summary>
+    <content type="html"><![CDATA[<p>In case your python/ipython shell doesn&rsquo;t have a working history, e.g. pressing &#8593; only prints some nonsensical <code>^[[A</code>, then you are missing either the <code>readline</code> or <code>ncurses</code> library.</p>
+
+<p><img src="/images/2016/04/Selection_021.png" alt="Python shell where up doesn't work" /></p>
+
+<p>Ipython is more descriptive that something is wrong, but if you&rsquo;re in the habit of mostly using python as a quick calculator, you might never notice:</p>
+
+<p><img src="/images/2016/04/Selection_022.png" alt="iPython shell where up doesn't work" /></p>
+
+<p>If you&rsquo;re using <a href="http://conda.pydata.org/miniconda.html">Miniconda</a> then just do:</p>
+
+<pre><code>conda install ncurses readline
+</code></pre>
+
+<p>And &#8593; should work:</p>
+
+<p><img src="/images/2016/04/Selection_023.png" alt="iPython with working up" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2016/03/nvidia-gsync-on-linux/</id>
+    <link href="https://cowboyprogrammer.org/2016/03/nvidia-gsync-on-linux/" rel="alternate" />
+    <title>Nvidia G-Sync and Linux</title>
+    <updated>2016-03-05T00:00:00+00:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <media:thumbnail url="https://cowboyprogrammer.org/images/2016/03/NVIDIA-X-Server-Settings_007-1.png" />
+    
+    <summary type="html"><![CDATA[After getting a fancy new monitor with G-Sync support, I was eager to try it out in my Linux gaming setup. While Nvidia fully supports G-Sync in their Linux drivers, it turns out that other components of the system can get in the way. As explained by a post on the Nvidia forums:
+ For G-SYNC to work, the application has to be able to flip and the symptoms you&rsquo;re describing here sound like it&rsquo;s not able to flip in your configuration.]]></summary>
+    <content type="html"><![CDATA[
+
+<p>After getting a fancy new monitor with G-Sync support, I was eager to try it out in my Linux gaming setup. While Nvidia fully supports G-Sync in their Linux drivers, it turns out that other components of the system can get in the way. As explained by a <a href="https://devtalk.nvidia.com/default/topic/854184/gsync-is-not-working/?offset=1">post on the Nvidia forums</a>:</p>
+
+<blockquote>
+<p>For G-SYNC to work, the application has to be able to flip and the symptoms you&rsquo;re describing here sound like it&rsquo;s not able to flip in your configuration. There are a variety of reasons why flipping might not be working, but the most likely culprits here are either the compositor getting in the way, or the game not being completely full-screen. The full-screen requirement includes the game being completely unoccluded, so if your window manager is drawing something on top of the game, even just by one pixel, it will prevent flipping. Full-screen also means that it has to cover the entire X screen, which includes both monitors if you have them both enabled.</p>
+
+<p>Can you please try a different window manager / desktop environment to see if the behavior changes?</p>
+</blockquote>
+
+<p>Since only a minority of PC-gamers are actually on Linux, and only a minority of those actually have G-Sync capable monitors, Googling for assistance was&hellip; challenging. So, for any other Linux gamers out there, here is a short guide on how to enable G-Sync and verify that it works. Some of the steps are XFCE specific, as this is my window manager of choice on my gaming PC. If you are using a different window manager, you&rsquo;ll have to look through your options to find the equivalent settings.</p>
+
+<h2 id="nvidia-settings">Nvidia settings</h2>
+
+<ul>
+<li>Sync to VBlank: Optional</li>
+<li>Allow Flipping: Required</li>
+<li>Allow G-SYNC: Required</li>
+<li>Enable G-SYNC Visual Indicator: Optional</li>
+</ul>
+
+<p>The only two required settings are <em>flipping</em> and <em>G-Sync</em>, the others are optional. Enabling <em>Sync to VBlank</em> (VSync) in combination with G-Sync only prevents the GPU from generating an FPS beyond your monitor&rsquo;s max refresh rate (which you can&rsquo;t see anyway). It is turned off below the max refresh rate when G-Sync is enabled.</p>
+
+<p>The visual indicator is useful here to see that G-Sync is working. If all goes well, you should see a green &ldquo;G-SYNC&rdquo; text in the corner when running a game.</p>
+
+<p><img src="/images/2016/03/NVIDIA-X-Server-Settings_007.png" alt="Nvidia settings" /></p>
+
+<h2 id="disable-compositor">Disable compositor</h2>
+
+<p>As mentioned in the forum post, a compositor will prevent G-Sync from activating because essentially something is rendering above the game. The same reason prevents G-Sync from working in Window mode (unlike Windows, where G-Sync does not require fullscreen).</p>
+
+<p>For XFCE, go to <em>Window Manager Tweaks</em> under <em>Settings</em>
+<img src="/images/2016/03/Selection_004.png" alt="XFCE Settings" /></p>
+
+<p>Then under the <em>Compositor</em> tab, make sure the compositor is disabled
+<img src="/images/2016/03/Selection_005.png" alt="Window Manager Tweaks" /></p>
+
+<p>In addition, depending on your setup, make sure you don&rsquo;t have things like <a href="https://wiki.archlinux.org/index.php/Compton">Compton</a> or <a href="https://wiki.archlinux.org/index.php/Compiz">Compiz</a> enabled.</p>
+
+<h2 id="start-a-game-in-fullscreen">Start a game  in fullscreen</h2>
+
+<p>As mentioned, you must run the game in fullscreen mode. G-Sync does not work with window mode in Linux.</p>
+
+<p>I did notice that there are games which do not enable G-Sync. One example is &ldquo;Cities: Skylines&rdquo;. So make sure to try several games if you don&rsquo;t see the G-Sync logo.</p>
+
+<p>A good candidate here is Dota 2 since it is free to play. Dota 2 running in &ldquo;Desktop-Friendly Fullscreen&rdquo; does enable G-Sync. As does Portal 2 and XCOM 2.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2014/12/encrypt-a-btrfs-raid5-array-in-place/</id>
+    <link href="https://cowboyprogrammer.org/2014/12/encrypt-a-btrfs-raid5-array-in-place/" rel="alternate" />
+    <title>Encrypt a BTRFS RAID5-array in-place</title>
+    <updated>2014-12-28T00:00:00+00:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <summary type="html"><![CDATA[When I decided I needed more disk space for media and virtual machine (VM) images, I decided to throw some more money at the problem and get three 3TB hard drives and run BTRFS in RAID5. It&rsquo;s still somewhat experimental, but has proven very solid for me.
+RAID5 means that one drive can completely fail, but all the data is still intact. All one has to do is insert a new drive and the drive will be reconstructed.]]></summary>
+    <content type="html"><![CDATA[
+
+<p>When I decided I needed more disk space for media and virtual machine (VM) images, I decided to throw some more money at the problem and get three 3TB hard drives and run <a href="https://btrfs.wiki.kernel.org/index.php/Main_Page">BTRFS</a> in <a href="http://en.wikipedia.org/wiki/RAID#Standard_levels">RAID5</a>. It&rsquo;s still somewhat experimental, but has proven very solid for me.</p>
+
+<p>RAID5 means that one drive can completely fail, but all the data is still intact. All one has to do is insert a new drive and the drive will be reconstructed. While RAID5 protects against a complete drive failure, it does nothing to prevent a single bit to be flipped to due cosmic rays or electricity spikes.</p>
+
+<p>BTRFS is a new filesystem for Linux which does what ZFS does for BSD. The two important features which it offers over previous systems is: copy-on-write (COW), and bitrot protection. See, when running RAID with BTRFS, if a single bit is flipped, BTRFS will detect it when you try to read the file and correct it (if running in RAID so there&rsquo;s redundancy). COW means you can take snapshots of the entire drive instantly without using extra space. Space will only be required when stuff change and diverge from your snapshots.</p>
+
+<p>See <a href="http://arstechnica.com/information-technology/2014/01/bitrot-and-atomic-cows-inside-next-gen-filesystems/">Arstechnica</a> for why <em>BTRFS</em> is da shit for your next drive or system.</p>
+
+<p>What I did not do at the time was encrypt the drives. <a href="http://www.linuxvoice.com/">Linux Voice #11</a> had a very nice article on encryption so I thought I&rsquo;d set it up. And because I&rsquo;m using RAID5, it is actually possible for me to encrypt my drives using <a href="https://wiki.archlinux.org/index.php/Dm-crypt/Device_encryption">dm-crypt/LUKS</a> in-place, while the whole shebang is mounted, readable and usable :)</p>
+
+<p>Some initial mistakes meant I had to actually reboot the system, so I thought I&rsquo;d write down how to do it correctly. So to summarize, the goal is to convert three disks to three encrypted disks. BTRFS will be moved from using the drives directly, to using the LUKS-mapped.</p>
+
+<h3 id="unmount-the-raid-system-time-1-second">Unmount the raid system (time 1 second)</h3>
+
+<p>Sadly, we need to unmount the volume to be able to &ldquo;remove&rdquo; the drive. This needs to be done so the system can understand that the drive has &ldquo;vanished&rdquo;. It will only stay unmounted for about a minute though.</p>
+
+<pre><code>sudo umount /path/to/vol
+</code></pre>
+
+<p>This is assuming you have configured your <strong>fstab</strong> with all the details. For example, with something like this (ALWAYS USE UUID!!)</p>
+
+<pre><code># BTRFS Systems
+UUID=&quot;ac21dd50-e6ee-4a9e-abcd-459cba0e6913&quot; /mnt/btrfs  btrfs   defaults       0        0
+</code></pre>
+
+<p>Note that no modification of the <strong>fstab</strong> will be necessary if you have used UUID.</p>
+
+<h3 id="encrypt-one-of-the-drives-time-10-seconds">Encrypt one of the drives (time 10 seconds)</h3>
+
+<p>Pick one of the drives to encrypt. Here it&rsquo;s <code>/dev/sdc</code>:</p>
+
+<pre><code>sudo cryptsetup luksFormat -v /dev/sdc
+</code></pre>
+
+<h3 id="open-the-encrypted-drive-time-30-seconds">Open the encrypted drive (time 30 seconds)</h3>
+
+<p>To use it, we have to open the drive. You can pick any name you want:</p>
+
+<pre><code>sudo cryptsetup luksOpen /dev/sdc DRIVENAME
+</code></pre>
+
+<p>To make this happen on boot, find the new <em>UUID</em> of <code>/dev/sdc</code> with <code>blkid</code>:</p>
+
+<pre><code>sudo blkid
+</code></pre>
+
+<p><img src="/images/2014/Dec/Screenshot-from-2014-12-29-13-28-29.png" alt="Output of blkid" /></p>
+
+<p>So for me, the drive has a the following <em>UUID:</em> <code>f5d3974c-529e-4574-bbfa-7f3e6db05c65</code>. Add the following line to <code>/etc/crypttab</code> with your desired drive name and your <em>UUID</em> (without any quotes):</p>
+
+<pre><code>DRIVENAME   UUID=your-uuid-without-quotes   none    luks
+</code></pre>
+
+<p>Now the system will ask for your password on boot.</p>
+
+<h3 id="add-the-encrypted-drive-to-the-raid-time-20-seconds">Add the encrypted drive to the raid (time 20 seconds)</h3>
+
+<p>First we have to remount the raid system. This will fail because there is a missing drive, unless we add the option <em>degraded</em>.</p>
+
+<pre><code>sudo mount -o degraded /path/to/vol
+</code></pre>
+
+<p>There will be some complaints about missing drives and such, which is exactly what we expect. Now, just add the new drive:</p>
+
+<pre><code>sudo btrfs device add /dev/mapper/DRIVENAME /path/to/vol
+</code></pre>
+
+<h3 id="remove-the-missing-drive-time-14-hours">Remove the missing drive (time 14 hours)</h3>
+
+<p>The final step is to remove the old drive. We can use the special name <em>missing</em> to remove it:</p>
+
+<pre><code>sudo btrfs device delete missing /path/to/vol
+</code></pre>
+
+<p>This can take a really long time, and by long I mean ~15 hours if you have a terrabyte of data. But, you can still use the drive during this process so just be patient.</p>
+
+<p><img src="/images/2014/Dec/Screenshot-from-2014-12-29-12-48-45.png" alt="Balance took 14 hours" /></p>
+
+<p>For me it took 14 hours 34 minutes. The reason for the delay is because the <em>delete</em> command will force the system to rebuild the missing drive on your new encrypted volume.</p>
+
+<h3 id="next-drive-rinse-and-repeat">Next drive, rinse and repeat</h3>
+
+<p>Just unmount the raid, encrypt the drive, add it back and delete the missing. Repeat for all drives in your array. Once the last drive is done, unmount the array and remount it without the <code>-o degraded</code> option. Now you have an encrypted RAID array.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2014/08/making-an-rss-reader-app/</id>
+    <link href="https://cowboyprogrammer.org/2014/08/making-an-rss-reader-app/" rel="alternate" />
+    <title>Making an RSS reader app</title>
+    <updated>2014-08-28T00:00:00+00:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <summary type="html"><![CDATA[So I&rsquo;ve been busy building my own RSS reader for the last few weeks. My motivation to make this app is because I got angry at gReader for displaying fullscreen-ads. The source is available on GitHub.
+I started with an idea of targeting Android-L, but because it&rsquo;s only in preview any app targeting L will be completely incompatible with earler versions. Hence I was forced to refrain from using the new RecyclerView which I really liked.]]></summary>
+    <content type="html"><![CDATA[
+
+<p>So I&rsquo;ve been busy building my own RSS reader for the last few weeks. My motivation to make this app is because I got angry at <em>gReader</em> for displaying fullscreen-ads. The source is available on <a href="https://github.com/spacecowboy/Feeder">GitHub</a>.</p>
+
+<p>I started with an idea of targeting <em>Android-L</em>, but because it&rsquo;s only in preview any app targeting <em>L</em> will be completely incompatible with earler versions. Hence I was forced to refrain from using the new RecyclerView which I really liked. In general I&rsquo;ve been stealing as much code as possible from the <a href="https://github.com/google/iosched">Google-IO app</a>.</p>
+
+<p>It&rsquo;s early still, but here are two screenshots of current progress:</p>
+
+<p><img src="/images/2014/Aug/Screenshot_2014-08-28-15-02-40.png" alt="Feeds with tags" width=50% /></p>
+
+<p><img src="/images/2014/Aug/Screenshot_2014-08-28-15-03-21.png" alt="Reader activity" width=50% /></p>
+
+<p>To parse RSS feeds I have <a href="https://github.com/spacecowboy/Simplistic-RSS">forked Simplistic-RSS</a> by <a href="https://github.com/ShirwaM/Simplistic-RSS">ShirwaM</a>. To display images I am using <a href="http://square.github.io/picasso/">Picasso by Square</a> (awesome library). I don&rsquo;t have any intention of uploading this app to the Play store at this time, at least not until I feel that it is fairly stable and feature complete. I am building it all for myself as this is the only kind of app which I actually use everyday. I figure I can talk about the difficulties that I encounter and how to solve them. So today&rsquo;s topic will be:</p>
+
+<h2 id="displaying-formatted-text-with-images">Displaying formatted text with images</h2>
+
+<p>RSS feeds generally have stories formatted in HTML. For example, see the <a href="http://cowboyprogrammer.org/rss/">RSS feed of this blog</a>. This is good because it means all we need to do is decode it and display it. You could use a WebView, but that would be unacceptably ugly and disgusting for an app of mine. A nicer solution is to use a normal TextView. You can actually format HTML easily and display it with:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>textview<span style="color: #666666">.</span><span style="color: #4070a0">setText</span><span style="color: #666666">(</span>android<span style="color: #666666">.</span><span style="color: #4070a0">text</span><span style="color: #666666">.</span><span style="color: #4070a0">Html</span><span style="color: #666666">.</span><span style="color: #4070a0">fromHtml</span><span style="color: #666666">(</span>htmlString<span style="color: #666666">));</span>
+</pre></div>
+
+<p>This simple act gets you most of the way. Here&rsquo;s what a story looks like with this:</p>
+
+<p><img src="/images/2014/Aug/Screenshot_2014-08-28-15-27-44_photo.png" alt="Using just fromHtml img" width=50% /></p>
+
+<p><img src="/images/2014/Aug/Screenshot_2014-08-28-15-28-08_code_bad.png" alt="Using just fromHtml code" width=50% /></p>
+
+<p>Notice that in the first image, the image is missing and you don&rsquo;t see that there is a list in the beginning. In the second image, the source code has no special formatting and it&rsquo;s hard to tell when it starts or stops.</p>
+
+<p><em>fromHtml</em> is great, but it is missing functionality to handle some tags. Lucky for us, it is possible to hand it some tagHandlers for those cases. Because I am downloading images, I do the formatting in a background thread using a Loader. To this end I created the <a href="https://github.com/spacecowboy/Feeder/blob/master/app/src/main/java/com/nononsenseapps/feeder/model/ImageTextLoader.java">ImageTextLoader</a>. What it does instead is:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>android<span style="color: #666666">.</span><span style="color: #4070a0">text</span><span style="color: #666666">.</span><span style="color: #4070a0">Html</span><span style="color: #666666">.</span><span style="color: #4070a0">fromHtml</span><span style="color: #666666">(</span>text<span style="color: #666666">,</span> imageHandler<span style="color: #666666">,</span> TagHandler<span style="color: #666666">);</span>
+</pre></div>
+
+<p>Where the imageHandler is really simple (notice that I use Picasso to get the image from the network):</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>imgThing <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> Html<span style="color: #666666">.</span><span style="color: #4070a0">ImageGetter</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+    <span style="color: #60a0b0; font-style: italic">/**</span>
+<span style="color: #60a0b0; font-style: italic">     * This methos is called when the HTML parser encounters an</span>
+<span style="color: #60a0b0; font-style: italic">     * &lt;img&gt; tag.  The &lt;code&gt;source&lt;/code&gt; argument is the</span>
+<span style="color: #60a0b0; font-style: italic">     * string from the &quot;src&quot; attribute; the return value should be</span>
+<span style="color: #60a0b0; font-style: italic">     * a Drawable representation of the image or &lt;code&gt;null&lt;/code&gt;</span>
+<span style="color: #60a0b0; font-style: italic">     * for a generic replacement image.  Make sure you call</span>
+<span style="color: #60a0b0; font-style: italic">     * setBounds() on your Drawable if it doesn&#39;t already have</span>
+<span style="color: #60a0b0; font-style: italic">     * its bounds set.</span>
+<span style="color: #60a0b0; font-style: italic">     *</span>
+<span style="color: #60a0b0; font-style: italic">     * @param source</span>
+<span style="color: #60a0b0; font-style: italic">     */</span>
+    <span style="color: #555555; font-weight: bold">@Override</span>
+    <span style="color: #007020; font-weight: bold">public</span> Drawable <span style="color: #06287e">getDrawable</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">final</span> String source<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+      Drawable d <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">null</span><span style="color: #666666">;</span>
+      <span style="color: #007020; font-weight: bold">try</span> <span style="color: #666666">{</span>
+        <span style="color: #007020; font-weight: bold">final</span> Bitmap b <span style="color: #666666">=</span> Picasso<span style="color: #666666">.</span><span style="color: #4070a0">with</span><span style="color: #666666">(</span>appContext<span style="color: #666666">).</span><span style="color: #4070a0">load</span><span style="color: #666666">(</span>source<span style="color: #666666">).</span><span style="color: #4070a0">get</span><span style="color: #666666">();</span>
+        <span style="color: #60a0b0; font-style: italic">// Get original size</span>
+        <span style="color: #902000">int</span> w <span style="color: #666666">=</span> b<span style="color: #666666">.</span><span style="color: #4070a0">getWidth</span><span style="color: #666666">();</span>
+        <span style="color: #902000">int</span> h <span style="color: #666666">=</span> b<span style="color: #666666">.</span><span style="color: #4070a0">getHeight</span><span style="color: #666666">();</span>
+        <span style="color: #60a0b0; font-style: italic">// Shrink if big</span>
+        <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>w <span style="color: #666666">&gt;</span> maxSize<span style="color: #666666">.</span><span style="color: #4070a0">x</span> <span style="color: #666666">||</span> h <span style="color: #666666">&gt;</span> maxSize<span style="color: #666666">.</span><span style="color: #4070a0">y</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
+          Point newSize <span style="color: #666666">=</span> scaleImage<span style="color: #666666">(</span>w<span style="color: #666666">,</span> h<span style="color: #666666">);</span>
+          w <span style="color: #666666">=</span> newSize<span style="color: #666666">.</span><span style="color: #4070a0">x</span><span style="color: #666666">;</span>
+          h <span style="color: #666666">=</span> newSize<span style="color: #666666">.</span><span style="color: #4070a0">y</span><span style="color: #666666">;</span>
+        <span style="color: #666666">}</span>
+        <span style="color: #60a0b0; font-style: italic">// Need to return a drawable</span>
+        d <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> BitmapDrawable<span style="color: #666666">(</span>appContext<span style="color: #666666">.</span><span style="color: #4070a0">getResources</span><span style="color: #666666">(),</span> b<span style="color: #666666">);</span>
+        d<span style="color: #666666">.</span><span style="color: #4070a0">setBounds</span><span style="color: #666666">(</span><span style="color: #40a070">0</span><span style="color: #666666">,</span> <span style="color: #40a070">0</span><span style="color: #666666">,</span> w<span style="color: #666666">,</span> h<span style="color: #666666">);</span>
+      <span style="color: #666666">}</span> <span style="color: #007020; font-weight: bold">catch</span> <span style="color: #666666">(</span>IOException e<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+        Log<span style="color: #666666">.</span><span style="color: #4070a0">e</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;JONAS&quot;</span><span style="color: #666666">,</span> <span style="color: #4070a0">&quot;&quot;</span> <span style="color: #666666">+</span> e<span style="color: #666666">.</span><span style="color: #4070a0">getMessage</span><span style="color: #666666">());</span>
+      <span style="color: #666666">}</span>
+      <span style="color: #007020; font-weight: bold">return</span> d<span style="color: #666666">;</span>
+    <span style="color: #666666">}</span>
+  <span style="color: #666666">};</span>
+</pre></div>
+
+<p>The tag handler contains a bit more code, and I won&rsquo;t paste all of it here. The tags which are handled can be seen in <em>handleTag</em>:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">void</span> <span style="color: #06287e">handleTag</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">final</span> <span style="color: #902000">boolean</span> opening<span style="color: #666666">,</span> <span style="color: #007020; font-weight: bold">final</span> String tag<span style="color: #666666">,</span>
+                      <span style="color: #007020; font-weight: bold">final</span> Editable output<span style="color: #666666">,</span> <span style="color: #007020; font-weight: bold">final</span> XMLReader xmlReader<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+  <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>tag<span style="color: #666666">.</span><span style="color: #4070a0">equalsIgnoreCase</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;ul&quot;</span><span style="color: #666666">))</span> <span style="color: #666666">{</span>
+    handleUl<span style="color: #666666">(</span>output<span style="color: #666666">,</span> opening<span style="color: #666666">);</span>
+  <span style="color: #666666">}</span> <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>tag<span style="color: #666666">.</span><span style="color: #4070a0">equalsIgnoreCase</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;ol&quot;</span><span style="color: #666666">))</span> <span style="color: #666666">{</span>
+    handleOl<span style="color: #666666">(</span>output<span style="color: #666666">,</span> opening<span style="color: #666666">);</span>
+  <span style="color: #666666">}</span> <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>tag<span style="color: #666666">.</span><span style="color: #4070a0">equalsIgnoreCase</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;li&quot;</span><span style="color: #666666">))</span> <span style="color: #666666">{</span>
+    handleLi<span style="color: #666666">(</span>output<span style="color: #666666">,</span> opening<span style="color: #666666">);</span>
+  <span style="color: #666666">}</span> <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>tag<span style="color: #666666">.</span><span style="color: #4070a0">equalsIgnoreCase</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;img&quot;</span><span style="color: #666666">))</span> <span style="color: #666666">{</span>
+    handleImgEnd<span style="color: #666666">(</span>output<span style="color: #666666">);</span>
+  <span style="color: #666666">}</span> <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>tag<span style="color: #666666">.</span><span style="color: #4070a0">equalsIgnoreCase</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;code&quot;</span><span style="color: #666666">))</span> <span style="color: #666666">{</span>
+    handleCode<span style="color: #666666">(</span>output<span style="color: #666666">,</span> opening<span style="color: #666666">);</span>
+  <span style="color: #666666">}</span> <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>tag<span style="color: #666666">.</span><span style="color: #4070a0">equalsIgnoreCase</span><span style="color: #666666">(</span><span style="color: #4070a0">&quot;pre&quot;</span><span style="color: #666666">))</span> <span style="color: #666666">{</span>
+    handlePre<span style="color: #666666">(</span>output<span style="color: #666666">,</span> opening<span style="color: #666666">);</span>
+  <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+</pre></div>
+
+<p>Note that fromHtml only notifies your handler about img-tags when they have ended, so I use that to insert a newline after each image. I would have liked to use it to get the configured size of the image, but that will have to wait for another day. For code-tags, I reduce the size of the text and make it Monospace:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">// Source code</span>
+<span style="color: #007020; font-weight: bold">private</span> <span style="color: #902000">void</span> <span style="color: #06287e">handleCode</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">final</span> Editable text<span style="color: #666666">,</span>
+                        <span style="color: #007020; font-weight: bold">final</span> <span style="color: #902000">boolean</span> start<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+  <span style="color: #60a0b0; font-style: italic">// Should be monospace</span>
+  <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>start<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+    start<span style="color: #666666">(</span>text<span style="color: #666666">,</span> <span style="color: #007020; font-weight: bold">new</span> Monospace<span style="color: #666666">());</span>
+    start<span style="color: #666666">(</span>text<span style="color: #666666">,</span> <span style="color: #007020; font-weight: bold">new</span> RelativeSize<span style="color: #666666">());</span>
+  <span style="color: #666666">}</span> <span style="color: #007020; font-weight: bold">else</span> <span style="color: #666666">{</span>
+    end<span style="color: #666666">(</span>text<span style="color: #666666">,</span> Monospace<span style="color: #666666">.</span><span style="color: #4070a0">class</span><span style="color: #666666">,</span>
+        <span style="color: #007020; font-weight: bold">new</span> TypefaceSpan<span style="color: #666666">(</span><span style="color: #4070a0">&quot;monospace&quot;</span><span style="color: #666666">));</span>
+    end<span style="color: #666666">(</span>text<span style="color: #666666">,</span> RelativeSize<span style="color: #666666">.</span><span style="color: #4070a0">class</span><span style="color: #666666">,</span>
+        <span style="color: #007020; font-weight: bold">new</span> RelativeSizeSpan<span style="color: #666666">(</span><span style="color: #40a070">0.8f</span><span style="color: #666666">));</span>
+  <span style="color: #666666">}</span>
+<span style="color: #666666">}</span>
+</pre></div>
+
+<p>The <em>start</em> and <em>end</em> methods were simply stolen straight from <em>android.Html</em>.</p>
+
+<h3 id="result">Result</h3>
+
+<p>Here&rsquo;s the result using the added <em>tagHandlers</em>:</p>
+
+<p><img src="/images/2014/Aug/Screenshot_2014-08-28-15-03-21-1.png" alt="With image" width=50% /></p>
+
+<p><img src="/images/2014/Aug/Screenshot_2014-08-28-15-28-44_code_good.png" alt="With code" width=50% /></p>
+
+<h3 id="handling-clicks-on-links">Handling clicks on links</h3>
+
+<p>Thankfully I had already solved the issue of clickable spans in NoNonsense Notes. See [ReaderFragment]() for this:</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">// Catch clicks on links</span>
+mBodyTextView<span style="color: #666666">.</span><span style="color: #4070a0">setOnTouchListener</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">new</span> View<span style="color: #666666">.</span><span style="color: #4070a0">OnTouchListener</span><span style="color: #666666">()</span> <span style="color: #666666">{</span>
+    <span style="color: #555555; font-weight: bold">@Override</span>
+    <span style="color: #007020; font-weight: bold">public</span> <span style="color: #902000">boolean</span> <span style="color: #06287e">onTouch</span><span style="color: #666666">(</span><span style="color: #007020; font-weight: bold">final</span> View v<span style="color: #666666">,</span>
+                           <span style="color: #007020; font-weight: bold">final</span> MotionEvent event<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+      TextView widget <span style="color: #666666">=</span> <span style="color: #666666">(</span>TextView<span style="color: #666666">)</span> v<span style="color: #666666">;</span>
+      Object text <span style="color: #666666">=</span> widget<span style="color: #666666">.</span><span style="color: #4070a0">getText</span><span style="color: #666666">();</span>
+      <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>text <span style="color: #007020; font-weight: bold">instanceof</span> Spanned<span style="color: #666666">)</span> <span style="color: #666666">{</span>
+        Spanned buffer <span style="color: #666666">=</span> <span style="color: #666666">(</span>Spanned<span style="color: #666666">)</span> text<span style="color: #666666">;</span>
+        
+        <span style="color: #902000">int</span> action <span style="color: #666666">=</span> event<span style="color: #666666">.</span><span style="color: #4070a0">getAction</span><span style="color: #666666">();</span>
+        
+        <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>action <span style="color: #666666">==</span> MotionEvent<span style="color: #666666">.</span><span style="color: #4070a0">ACTION_UP</span> <span style="color: #666666">||</span>
+            action <span style="color: #666666">==</span> MotionEvent<span style="color: #666666">.</span><span style="color: #4070a0">ACTION_DOWN</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
+          <span style="color: #902000">int</span> x <span style="color: #666666">=</span> <span style="color: #666666">(</span><span style="color: #902000">int</span><span style="color: #666666">)</span> event<span style="color: #666666">.</span><span style="color: #4070a0">getX</span><span style="color: #666666">();</span>
+          <span style="color: #902000">int</span> y <span style="color: #666666">=</span> <span style="color: #666666">(</span><span style="color: #902000">int</span><span style="color: #666666">)</span> event<span style="color: #666666">.</span><span style="color: #4070a0">getY</span><span style="color: #666666">();</span>
+          
+          x <span style="color: #666666">-=</span> widget<span style="color: #666666">.</span><span style="color: #4070a0">getTotalPaddingLeft</span><span style="color: #666666">();</span>
+          y <span style="color: #666666">-=</span> widget<span style="color: #666666">.</span><span style="color: #4070a0">getTotalPaddingTop</span><span style="color: #666666">();</span>
+          
+          x <span style="color: #666666">+=</span> widget<span style="color: #666666">.</span><span style="color: #4070a0">getScrollX</span><span style="color: #666666">();</span>
+          y <span style="color: #666666">+=</span> widget<span style="color: #666666">.</span><span style="color: #4070a0">getScrollY</span><span style="color: #666666">();</span>
+          
+          Layout layout <span style="color: #666666">=</span> widget<span style="color: #666666">.</span><span style="color: #4070a0">getLayout</span><span style="color: #666666">();</span>
+          <span style="color: #902000">int</span> line <span style="color: #666666">=</span> layout<span style="color: #666666">.</span><span style="color: #4070a0">getLineForVertical</span><span style="color: #666666">(</span>y<span style="color: #666666">);</span>
+          <span style="color: #902000">int</span> off <span style="color: #666666">=</span> layout<span style="color: #666666">.</span><span style="color: #4070a0">getOffsetForHorizontal</span><span style="color: #666666">(</span>line<span style="color: #666666">,</span> x<span style="color: #666666">);</span>
+          
+          ClickableSpan<span style="color: #666666">[]</span> link <span style="color: #666666">=</span>
+              buffer<span style="color: #666666">.</span><span style="color: #4070a0">getSpans</span><span style="color: #666666">(</span>off<span style="color: #666666">,</span> off<span style="color: #666666">,</span> ClickableSpan<span style="color: #666666">.</span><span style="color: #4070a0">class</span><span style="color: #666666">);</span>
+          
+          <span style="color: #60a0b0; font-style: italic">// Cant click to the right of a span,</span>
+          <span style="color: #60a0b0; font-style: italic">// if the line ends with the span!</span>
+          <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>x <span style="color: #666666">&gt;</span> layout<span style="color: #666666">.</span><span style="color: #4070a0">getLineRight</span><span style="color: #666666">(</span>line<span style="color: #666666">))</span> <span style="color: #666666">{</span>
+            <span style="color: #60a0b0; font-style: italic">// Don&#39;t call the span</span>
+          <span style="color: #666666">}</span> <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> <span style="color: #666666">(</span>link<span style="color: #666666">.</span><span style="color: #4070a0">length</span> <span style="color: #666666">!=</span> <span style="color: #40a070">0</span><span style="color: #666666">)</span> <span style="color: #666666">{</span>
+            link<span style="color: #666666">[</span><span style="color: #40a070">0</span><span style="color: #666666">].</span><span style="color: #4070a0">onClick</span><span style="color: #666666">(</span>widget<span style="color: #666666">);</span>
+            <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">true</span><span style="color: #666666">;</span>
+          <span style="color: #666666">}</span>
+        <span style="color: #666666">}</span>
+      <span style="color: #666666">}</span>
+      <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">false</span><span style="color: #666666">;</span>
+    <span style="color: #666666">}</span>
+  <span style="color: #666666">});</span>
+</pre></div>
+
+<p>Thus clicking on links in the <em>TextView</em> will open them in the browser. You could do whatever you want instead of calling <em>link[0].onClick()</em> however.</p>
+
+<p>That&rsquo;s it for today. I&rsquo;ll write more about other pieces of the app soon. Things like how the database is structured or how to use ExpandableListView.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2014/06/building-python-wheels-for-windows/</id>
+    <link href="https://cowboyprogrammer.org/2014/06/building-python-wheels-for-windows/" rel="alternate" />
+    <title>Building Python wheels for Windows</title>
+    <updated>2014-06-04T00:00:00+00:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <media:thumbnail url="https://cowboyprogrammer.org/images/2014/Jun/jenkins_result.png" />
+    
+    <summary type="html"><![CDATA[One group in particular suffers from lack of package management in Windows (as I griped about here): developers. This post will largely be a big howto on how to build Python packages with Fortran/C-extensions (especially Fortran extensions seem problematic on Windows). You&rsquo;d think that something like that would be clearly explained somewhere. So did I, and I was wrong. So here is my guide to building Python packages with native extensions (both C and Fortran) on Windows.]]></summary>
+    <content type="html"><![CDATA[
+
+<p>One group in particular suffers from lack of package management in Windows (<a href="http://cowboyprogrammer.org/people-have-been-trained-to-install-malware/">as I griped about here</a>): developers. This post will largely be a big howto on how to build Python packages with Fortran/C-extensions (especially Fortran extensions seem problematic on Windows). You&rsquo;d think that something like that would be clearly explained somewhere. So did I, and I was wrong. So here is my guide to building Python packages with native extensions (both C and Fortran) on Windows.</p>
+
+<h4 id="installing-python-packages">Installing Python packages</h4>
+
+<p>The lack of a compiler means most Windows users can&rsquo;t do what *nix users do when faced with a package containing some c or fortran extensions:</p>
+
+<pre><code>python setup.py install
+</code></pre>
+
+<p>Or if it&rsquo;s publicly available on <a href="https://pypi.python.org/">PyPi</a> for example:</p>
+
+<pre><code>pip install package
+</code></pre>
+
+<p><em>pip</em> will download the source, and on any system with a compiler, compile it, then install it. So it becomes necessary to provide pre-built binaries for Windows users who don&rsquo;t have a compiler. Something which no one offers a concise explanation of&hellip; until now that is. If you upload your package to <a href="https://pypi.python.org/">PyPi</a>, once you have followed this guide, even Windows users will be able to do <em>pip install package</em>.</p>
+
+<h2 id="1-set-up-a-windows-machine">1. Set up a Windows machine</h2>
+
+<p>To build Windows binaries you will need access to a Windows machine. If you don&rsquo;t have a copy of Windows lying around to install in a virtual machine, you can create a <em>free virtual machine</em> on <a href="http://aws.amazon.com/">Amazon</a> with Windows Server 2012. Selecting the most basic options will be fine and the machine will be free for atleast a year, at which point you can pay the few dollars per year or register for another free account.</p>
+
+<p>Another note: make sure to use <strong>64-bit Windows</strong> (Server 2012 only comes in 64-bit versions).</p>
+
+<h2 id="2-install-32-bit-compilers">2. Install 32-bit compilers</h2>
+
+<p>Don&rsquo;t ask me why Microsoft didn&rsquo;t want to ship the 64-bit compiler together with the 32-bit one&hellip; The versions here are final. You <strong>cannot use newer compilers</strong>. In other words, don&rsquo;t get Visual Studio 2012 and expect it to work&hellip; It&rsquo;s a simple fact that you need to compile your packages with the same compiler as was used to build Python itself.</p>
+
+<h3 id="install-visual-c-2010-express-for-python3">Install Visual C++ 2010 Express (for Python3)</h3>
+
+<p>Python3.<sup>3</sup>&frasl;<sub>3</sub>.4 is built with 2010 and hence all extensions must be as well.</p>
+
+<p>Google for it, <a href="http://www.visualstudio.com/downloads/download-visual-studio-vs#DownloadFamilies_4">or try this link</a></p>
+
+<h3 id="install-visual-c-2008-express-for-python2-7">Install Visual C++ 2008 Express (for Python2.7)</h3>
+
+<p>For building Python2.7, 2008 version is required. Google for &ldquo;Visual C++ 2008 Express&rdquo; or <a href="http://go.microsoft.com/?linkid=7729279">try this link</a></p>
+
+<h2 id="3-install-64-bit-compilers">3. Install 64-bit compilers</h2>
+
+<p>Why did you do this Microsoft, why?!</p>
+
+<h3 id="install-the-windows-sdk-for-visual-studio-2010-for-python-3">Install the Windows SDK for Visual Studio 2010 (for Python 3)</h3>
+
+<p>The free Visual C++ 2010 Express compiler does not include 64-bit support. That is what we need the SDK to provide. Google for <strong>&ldquo;Microsoft Windows SDK for Windows 7 and .NET Framework 4&rdquo;</strong> or <a href="http://www.microsoft.com/en-us/download/details.aspx?id=8279">try this link</a>. You need the Windows 7 SDK even if you are running Windows 8. And make sure it is the version with <em>.NET Framework 4</em>, the one with <em>.NET Framework 3</em> is for Visual Studio 2008.</p>
+
+<p>Note: if you have <em>C++ 2010 Redistributables</em> installed, you might have
+to uninstall them first or this install might fail. It might work even if some parts of the installer fails since you only need the compiler bits.</p>
+
+<h3 id="install-the-windows-sdk-for-visual-studio-2008-for-python-2-7">Install the Windows SDK for Visual Studio 2008 for (Python 2.7)</h3>
+
+<p>Same story for Visual C++ 2008 Express which is used for Python2.7. Find <strong>&ldquo;Microsoft Windows SDK for Windows 7 and .NET Framework 3.5&rdquo;</strong> or <a href="http://www.microsoft.com/en-us/download/details.aspx?id=3138">try this link</a></p>
+
+<h2 id="4-install-miniconda-anaconda">4. Install Miniconda/Anaconda</h2>
+
+<p><a href="http://continuum.io/downloads">Download page</a></p>
+
+<p>Download both the 32-bit and 64 bit versions. Python2 or Python3 versions do not matter as we will be using conda environments, but you do need both 32-bit and 64-bit versions! During the installation procedure, I recommend you select the following:</p>
+
+<ul>
+<li>Install for current user only (this is the default)</li>
+<li>Install into: <em>Users\YOURNAME\Anaconda</em> and <em>Users\YOURNAME\Anaconda-64</em> respectively</li>
+<li>Do <strong>NOT modify the PATH</strong>, this will be done explicitly in the build script</li>
+<li>Do <strong>NOT make it the default Python</strong>, we need to be able to switch easily</li>
+</ul>
+
+<h2 id="5-create-the-environments">5. Create the environments</h2>
+
+<p><strong>Do this for both the 32-bit and 64-bit versions.</strong></p>
+
+<p>Open a command line window and navigate to <em>Users\YOURNAME\Anaconda\Scripts</em> (and same for <em>Anaconda-64</em> later) (Protip: use the file browser to get to the directory then shift-click
+somewhere and select &lsquo;open command line here&rsquo;).</p>
+
+<p>Type the following commands:</p>
+
+<pre><code>conda create -n py3.4 python=3.4 numpy pip mingw
+
+conda create -n py3.3 python=3.3 numpy pip mingw
+
+conda create -n py2.7 python=2.7 numpy pip mingw
+</code></pre>
+
+<p>Remember to repeat that process for the 64-bit/32-bit version as well!</p>
+
+<h2 id="6-install-git">6. Install git</h2>
+
+<p>This has nothing to do with the build process, but I will assume that you want to do <em>git clone</em> at some point. <a href="http://git-scm.com/download/win]">Download it here</a>. In this case you absolutely DO want it to modify your PATH.</p>
+
+<h1 id="actually-building-stuff">Actually building stuff</h1>
+
+<p>Believe it or not, but you are actually ready to compile your package. Due to multiple compilers and all that, I have made a bat-file which builds wheels for Python 2.7, 3.3 and 3.4, both for 32-bit and 64-bit:</p>
+
+<script src="https://gist.github.com/spacecowboy/23fcd4d40cfd1c1cd88a.js"></script>
+
+<p>Edit the information at the top. Now assuming everything was installed in the right place, you should just have to double click the bat-file and have built the wheel files which you can then upload to PyPi.</p>
+
+<h2 id="building-wheels-automatically-on-commits">Building wheels automatically on commits</h2>
+
+<p>Having to do this manually is a drag and so I have also come up with a fully automated solution using <a href="jenkins-ci.org">Jenkins</a>, a continuous integration system which monitors your git-repo and clones, builds new files as changes are committed.</p>
+
+<h3 id="install-jenkins">Install Jenkins</h3>
+
+<p>Just download the native package from [jenkins-ci.org]().</p>
+
+<h3 id="configure-jenkins">Configure Jenkins</h3>
+
+<p>Once Jenkins is installed, it will start itself as a Windows service. Open you web browser and head to <em>[<a href="http://localhost:8080](">http://localhost:8080](</a>)</em>. You then want to go to <em>Manage Jenkins</em>, followed by <em>Manage Plugins</em>:</p>
+
+<p><img src="/images/2014/Jun/jenkins_manage.png" alt="Manage Jenkins" /></p>
+
+<p>Go to the <em>available</em> tab, and filter on &ldquo;GIT plugin&rdquo; (already installed in the screenshot):</p>
+
+<p><img src="/images/2014/Jun/jenkins_git.png" alt="Install the GIT Plugin" /></p>
+
+<p>OK, now go back to the top (click Jenkins in upper left) and create a <em>New Item</em>. You want to select &ldquo;free-style software project&rdquo; and give it a name:</p>
+
+<p><img src="/images/2014/Jun/jenkins_newitem.png" alt="Create a new free-style project" /></p>
+
+<p>First thing you need to configure is the git source. Scroll down to <em>Source Code Management</em>, select <em>git</em>, and fill in the repo-address. If you input a public GitHub address you don&rsquo;t need any credentials:</p>
+
+<p><img src="/images/2014/Jun/jenkins_config_git.png" alt="Configure Git address" /></p>
+
+<p>I also recommend you add one <em>Additional behaviour</em>: <em>Clean before checkout</em> to guarantee that builds do not affect each other:</p>
+
+<p><img src="/images/2014/Jun/jenkins_git_clean.png" alt="Clean before checkout" /></p>
+
+<p>Next you can setup the automatic behaviour. The easiest way is to have Jenkins poll GitHub every X minutes and check if there&rsquo;s a change. Here I have configured Jenkins to check every 15 minutes:</p>
+
+<p><img src="/images/2014/Jun/jenkins_scm_poll.png" alt="SCM Polling" /></p>
+
+<p>So Jenkins knows what to do when it detects a change, you want to add a <em>Build step</em>, specifically <em>Execute a Windows batch file</em>:</p>
+
+<p><img src="/images/2014/Jun/jenkins_build_step.png" alt="Build step" /></p>
+
+<p>In the box, just copy paste the batch file I <a href="https://gist.github.com/spacecowboy/23fcd4d40cfd1c1cd88a">included above</a>. Fill in the paths to your Anaconda installs and set the repo to:</p>
+
+<pre><code>set PKG_REPO=.
+</code></pre>
+
+<p><img src="/images/2014/Jun/jenkins_batch.png" alt="Pasted batch file" /></p>
+
+<p>Jenkins will handle the cloning and simply execute the script in the correct directory. As a final configuration step, tell Jenkins to archive build artifacts under <em>Post-Build Actions</em> since you want to be able to download the wheel files:</p>
+
+<p><img src="/images/2014/Jun/jenkins_post_build.png" alt="Archive wheelfiles" /></p>
+
+<p>If you don&rsquo;t upload wheels to PyPi, then you can install wheels with pip from anywhere with:</p>
+
+<pre><code>pip install --no-index -f http://your.site/wheeldir/ yourpackage
+</code></pre>
+
+<h3 id="enjoy-your-build-machine">Enjoy your build machine</h3>
+
+<p>Now you&rsquo;re all done. You can manually trigger builds in the left menu. Each build will have links for you to download the wheelfiles and the job&rsquo;s main page will always display the links to the latest artifacts.</p>
+
+<p><img src="/images/2014/Jun/jenkins_result.png" alt="Job result" /></p>
+
+<p>There are so many plugins and options available for Jenkins so play around if you want even more stuff. Some things you can do include:</p>
+
+<ul>
+<li>Automatically uploading artifacts to an FTP/SSH-server.</li>
+<li>Sending E-mail notifications on success/failures.</li>
+<li>Build only specific branches/tags.</li>
+<li>Make the server public and tie login to GitHub accounts.</li>
+<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/ChuckNorris+Plugin">Add Chuck Norris jokes to your builds</a></li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2014/05/people-have-been-trained-to-install-malware/</id>
+    <link href="https://cowboyprogrammer.org/2014/05/people-have-been-trained-to-install-malware/" rel="alternate" />
+    <title>People have been trained to install malware</title>
+    <updated>2014-05-11T00:00:00+00:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <summary type="html"><![CDATA[disclaimer: I get angry when I have to fix Windows. Expect explicit content. You have been warned.
+Being computer literate can be something of a curse. Anyone with even the most rudimentary skill set has probably sometime gotten asked if they could help someone with their computer. The other day I got asked if I could help, let&rsquo;s call him Roger, as he was having some problems with Windows Update.]]></summary>
+    <content type="html"><![CDATA[
+
+<p><em>disclaimer: I get angry when I have to fix Windows. Expect explicit content. You have been warned.</em></p>
+
+<p>Being computer literate can be something of a curse. Anyone with even the most rudimentary skill set has probably sometime gotten asked if they could help someone with their computer. The other day I got asked if I could help, let&rsquo;s call him Roger, as he was having some problems with Windows Update. The initial symptoms could be clearly relayed by Roger:</p>
+
+<blockquote>
+<p>The update gets to 30% then it just stops and reboots.</p>
+</blockquote>
+
+<p>First step is always to recreate the problem and see it in action. No problem there. Telling Windows Update to proceed resulted in precisely the described result, after a fair bit of time waiting for a frigging restore point to be created. I&rsquo;d read about the <a href="http://techreport.com/news/26306/windows-8-1-update-failing-for-many-users">failing 8.1 upgrade</a> so I half expected it to be Microsoft&rsquo;s fault, even though this machine was running Windows 7. Roger didn&rsquo;t need anything from the update so worst case I thought, I&rsquo;ll just disable Windows Update entirely.</p>
+
+<h2 id="first-things-first">First things first</h2>
+
+<p>Once I had confirmed that there was a problem, I begun by clearing out various <em>crapware</em> that was installed, mainly different kinds of toolbars and some video player that seemed to be a repackaging of VLC mainly. It&rsquo;s hard to see why this software is installed or where it came from. Roger uses only Word and the browser. I figure he&rsquo;s the sort that clicks on various malicious ads for some reason. At least Roger has been coerced into using Chrome instead of IE&hellip;</p>
+
+<p>So I uninstall everything I don&rsquo;t recognize and reboot, because rebooting is something you do a lot in Windows land&hellip; OK, maybe the update will work now without all the crap installed. It&rsquo;s worth a try at least.</p>
+
+<blockquote>
+<p>Initiate the update&hellip; It creates a restore point&hellip; wait&hellip; wait&hellip; wait&hellip;. Reboot. Update still fails at 30%.</p>
+</blockquote>
+
+<h2 id="trial-and-error">Trial and error</h2>
+
+<p>Now the real work begins. Maybe Microsoft screwed up their patches or something? There were 5 security patches waiting to be installed so let&rsquo;s try them one by one.</p>
+
+<ul>
+<li>First one fails.</li>
+<li>Second one fails.</li>
+<li>Everyone but the first and second one fails.</li>
+</ul>
+
+<p>OK&hellip; Let&rsquo;s just do the damn IE patches first. They also fail. And for every try, I&rsquo;m forced to wait for Windows to create another damn restore point which takes several minutes. This on an almost brand new Intel NUC with an SSD.</p>
+
+<h2 id="bored">Bored&hellip;</h2>
+
+<p>While waiting for the damn restore points, I am seriously considering if I can just wipe the machine and force Roger to use Linux instead. All he needs is Word. So I decide to download LibreOffice and see how their docx support is these days. Downloading 200MB takes a while on the effectively 2MBit connection. Still quicker than the now <strong>cancelled</strong> restore point. So I click through the installer, get to the progress bar, and wait. And wait. And wait.</p>
+
+<blockquote>
+<p>Why the fuck isn&rsquo;t the progress bar moving?</p>
+</blockquote>
+
+<p>Instinctively, I open the task manager to see what the hold up is. Apparently nothing. No CPU is being used. No memory is consumed. It&rsquo;s an SSD so disk speed is not an issue. Change to the services tab and same thing, nothing obvious. I try disabling the antivirus (Microsoft&rsquo;s own so should be compatible right?). Good try chump, still no difference.</p>
+
+<p>Second time in the task manager, I notice something though. A service which doesn&rsquo;t really sound very official: <em>safetynut</em>. I find out where <em>safetynut.exe</em> lives and sure enough, it lives in something like:</p>
+
+<blockquote>
+<p>C:\Program Files (x86)\Movie Toolbar\Safetynut</p>
+</blockquote>
+
+<p>But I uninstalled that! Fine.. End process. To which Windows replies:</p>
+
+<blockquote>
+<p>You don&rsquo;t have permission to end this process</p>
+</blockquote>
+
+<p><strong>W T F</strong></p>
+
+<p>OK computer, I&rsquo;m going to stop you right there. I am the administrator. I am your <em>GOD</em>. And as said deity, I command you to end that process!</p>
+
+<blockquote>
+<p>God or no god, you still don&rsquo;t have permission to do that</p>
+</blockquote>
+
+<p>OK, fine, be that way. Delete <em>C:\Program Files (x86)\Movie Toolbar\Safetynut</em>.</p>
+
+<blockquote>
+<p>Could not delete safetynut.dll as it is in use</p>
+</blockquote>
+
+<p><em>Shaka, when the walls fell&hellip;</em></p>
+
+<p>It&rsquo;s an amazing <em>&ldquo;feature&rdquo;</em> in Windows that a program can lock a file and thus prevent you from deleting it. It&rsquo;s also an amazing <em>&ldquo;feature&rdquo;</em> that the administrator can be refused the permission to do something. No recourse left but to reboot into safe mode.</p>
+
+<h2 id="to-safe-mode-we-go">To safe mode we go!</h2>
+
+<p>First, I go into the normal safe mode with a desktop. Still can&rsquo;t delete the dll file though as it is &ldquo;in use&rdquo;. Time to open <em>regedit</em> and delete all references to safetynut from the registry. Search, delete. Rince, repeat&hellip;</p>
+
+<p>Next reboot to safe mode with only a command line window. Navigate to the folder and delete the file and the folder, then reboot.</p>
+
+<h2 id="success">Success!</h2>
+
+<p>No more safetynut. Let&rsquo;s try Windows Update again. Ooh, that&rsquo;s a mighty fast restore point creation! And the update succeeds!</p>
+
+<p>So apparently, safetynut was actively preventing Windows Update from proceeding. Roger promptly got a stern talking to about installing <strong>any</strong> software or clicking on ads/popups (I also installed adblock plus in Chrome). But it got me thinking about malware in general..</p>
+
+<h2 id="most-people-are-trained-to-install-malware">Most people are trained to install malware</h2>
+
+<p>In my view, none of this is the user&rsquo;s fault. The fact is that Microsoft has trained everyone to install shitty software from untrusted sources. Let&rsquo;s go back a few years, to the days of yore, in the time of Windows 98 and Windows 2000. If you reinstalled Windows back then, and I did a lot, then you very quickly got a routine for downloading the software you needed once Windows was installed.</p>
+
+<p>First obvious things to install were the drivers for your network card, sound card and graphics card. You even possibly needed to install SATA-drivers during the actual install or the installer wouldn&rsquo;t find your disk. If you did not have that on a <strong>floppy</strong>, you were screwed. But OK, you had your floppy, and you had your drivers on CD. Next you needed:</p>
+
+<ul>
+<li>A browser, because Internet Explorer is still a gaping security hole</li>
+<li>A firewall, because even up to XP, being exposed to the internet directly meant instant infection</li>
+<li>Antivirus, anything that wasn&rsquo;t Norton would do&hellip;</li>
+<li>PDF-reader</li>
+<li>zip/rar-extractor</li>
+</ul>
+
+<p>I&rsquo;d like to draw your attention to the last item. Something so mundane as a zip-extractor was not built in to Windows. XP was the first version (if I remember correctly) to include a built in zip-extractor. This specific flaw trained everyone to download Winzip or Winrar. Quite possibly, they would resort to getting a pirated serial key as well. The problem? Now users are trained to go to any website their 10-year old neighborhood tech support kid tells them to and click <em>Download</em>.</p>
+
+<p>Here&rsquo;s a screenshot of the pirate bay to illustrate (to clarify, do NOT download your software from torrent sites. It&rsquo;s just an example of this behavior). The big download buttons will lead to ads, online poker or who knows. We can be quite sure that they will lead to endless evil. On the internet, never <strong>FUCKING EVER</strong> press a big styled button with the text &ldquo;Download&rdquo;. The link you want is the smaller green text: &ldquo;get this torrent&rdquo;.</p>
+
+<p><img src="/images/2014/May/piratebay-downloadlinks.png" alt="Never press Download!" /></p>
+
+<p>Now, assuming you managed to avoid the big download buttons to download your program, you have your completely unverified <em>.exe</em> file or <em>.msi</em> file, you double click on it, and what do you get? More <em>fucking bullshit</em>. Here&rsquo;s a screenshot of the Winzip (totally unnecessary program today) installer. Right after you agree to the Winzip Terms of Service, you get another license agreement.</p>
+
+<p><img src="/images/2014/May/winzip-malware.png" alt="Toolbars!" /></p>
+
+<p>How the screaming fuck are ordinary users supposed to understand that pressing Next will lead to untold horrors and pressing Decline is the way to install the software they want? They won&rsquo;t of course. <em>That&rsquo;s the whole point!</em></p>
+
+<p>I bet this is the source of 99% of all malware on Windows.  And the problem is that this is a perfectly acceptable way of getting software. Macs have the same problem to some minor extent. They are also being trained to download strange files from various pages. It is NOT accepted on Linux. The reason you don&rsquo;t need antivirus on Linux is not because the system is more secure. All software is brittle and insecure. The vital difference is in how Linux users get their software.</p>
+
+<h2 id="the-way-it-should-be">The way it should be</h2>
+
+<p>Here&rsquo;s a screenshot of the package manager in Debian:</p>
+
+<p><img src="/images/2014/May/synaptic.png" alt="Synaptic" /></p>
+
+<p>Now let&rsquo;s say I need a c++ compiler and one was not installed already. I search for &ldquo;c++ compiler&rdquo; and there&rsquo;s clang. To this day, I have no idea how I can get a compiler on Windows.</p>
+
+<p><img src="/images/2014/May/synaptic_clang.png" alt="Searching for a compiler" /></p>
+
+<p>Installing 99% of all software is super easy and reliable on Linux. All of these packages have been checked by the people working on the distro. If any package were to install a toolbar or other malware, you can bet your ass that it would be removed from the official sources. And because this is how Linux users are trained to install their software, they will have some degree of suspicion against download links on unknown websites. Installing malware becomes notably harder than installing good software.</p>
+
+<h2 id="the-coming-app-stores">The coming app stores</h2>
+
+<p>Both OS X and Windows are trying to push their users to use their &ldquo;app stores&rdquo;. While I have many negative things to say about them, they should hopefully reduce the included malware problem and train users to only install garbage from trusted sources.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2014/04/are-ipads-retarding-us/</id>
+    <link href="https://cowboyprogrammer.org/2014/04/are-ipads-retarding-us/" rel="alternate" />
+    <title>Are iPads actually a step back?</title>
+    <updated>2014-04-26T00:00:00+00:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <summary type="html"><![CDATA[Think what you will of the iPad, but it has been a huge success for Apple and people love it. It&rsquo;s one of the few products that appealed (past-tense) to both the geeks and _hoi polloi_.
+I remember watching the keynote where the iPhone was introduced and immediately I thought that&rsquo;s the pad from Star-Trek TNG! I had to have it. Apple&rsquo;s initial carrier exclusivity deals meant I had to wait for the iPhone 3g.]]></summary>
+    <content type="html"><![CDATA[
+
+<p>Think what you will of the iPad, but it has been a huge success for Apple and people love it. It&rsquo;s one of the few products that appealed (past-tense) to both the geeks and _<a href="http://en.wikipedia.org/wiki/Hoi_polloi">hoi polloi</a>_.</p>
+
+<p>I remember watching the keynote where the iPhone was introduced and immediately I thought <em>that&rsquo;s the pad from Star-Trek TNG!</em> I <strong>had</strong> to have it.
+Apple&rsquo;s initial carrier exclusivity deals meant I had to wait for the iPhone 3g. Not only that, but because they partnered with a company I am sworned to destroy, I payed a guy in Italy to buy one unlocked and ship it to me for 7500SEK. Funny thing is that at the time I was a developer at Sony Ericsson, who did not think kindly of Apple entering their mobile domain. I got a lot of weird looks a work&hellip;</p>
+
+<p>Then came the iPad. Again I&rsquo;m thinking <em>holy shit that&rsquo;s awesome.</em> At this point I had upgraded to an Android device (an HTC Legend) and had come to the conclusion that Android was far more interesting as a platform because of Apple&rsquo;s restrictions on what apps can do. The customizability and capabilities on Android were far greater and as a developer, you appreciate that. However, <em>there were no Android tablets.</em> And there wouldn&rsquo;t be for a long time.</p>
+
+<p>I kept my cool though and managed to hold on to my money until the iPad 2 was released. I left early from work and lined up with other enthusiasts at the electronics store. At the time most people had no idea what they were going to do with it, me included, but I <strong>had</strong> to have it. I think my extended family clearly demonstrates how successful a product the iPad was. That same year I saw 3 iPads being gifted away (3 in a group of around 9 people!). By the next year, 3 more iPads were acquired. Everyone had to have one. It was one of those cases where you don&rsquo;t get it until you see it for yourself.</p>
+
+<h2 id="from-revolutionary-to-evolutionary">From revolutionary to evolutionary</h2>
+
+<p>It is both a sign of how good the original product was and how little has changed that I never felt a reason to upgrade from the iPad 2.</p>
+
+<ul>
+<li>The battery life was fantastic.</li>
+<li>The screen size just right.</li>
+<li>The resolution was good enough.</li>
+<li>The speed was fine (until recently).</li>
+</ul>
+
+<p>Hardware-wise, it was feature complete. The rest could be fixed in software. They never did though. The problem is iOS. Just as I abandoned the iPhone for Android, I now abandoned the iPad for a Nexus 7. There was so much potential being held back by the limitations of iOS.
+<a href="http://stratechery.com/2014/dont-give-ipad/">Stratechery</a> explains some of my frustrations well. He means it as a defense in iOS&rsquo;s favor though. But there is actually more to it than the limitations of iOS. Something inherent in the touch screen and the current mobile paradigm.</p>
+
+<h2 id="limitations-of-the-touch-screen">Limitations of the touch screen</h2>
+
+<p>I was playing <a href="https://play.google.com/store/apps/details?id=com.dotemu.rtype2">R-Type 2</a> on my Nexus 10 and kept dying on the boss in the second level. And I realized that while I might get lucky and finish the level, I would never be able to play the game well due to the touch screen.</p>
+
+<p><img src="/images/2014/Apr/rtype2-boss.png" alt="R-Type 2 second level boss" /></p>
+
+<p>See, R-Type is a classic side-scrolling <em>shoot-em-up</em>. You pilot a spaceship and have to avoid enemy fire, hordes of enemies, and not crash into the roof or ceiling. It is a game based entirely on mastering the controls. You can see a good example of what I mean in this clip of a similar game called <em>Gradius</em> for the NES.</p>
+
+<iframe width="420" height="315" src="//www.youtube.com/embed/3PMpbPYB0iY" frameborder="0" allowfullscreen></iframe>
+
+<p>The problem I was having was that I kept crashing into the floor as I tried to manouever around the boss. Having played for and hour or two (and still being stuck on level 2!) I came to realize that it wasn&rsquo;t I that sucked, it was the controls. I had reached the limit of what was possible (precision-wise) with a touch screen.</p>
+
+<h3 id="noobs-forever">Noobs forever</h3>
+
+<p>And this is where the back-stepping begins. Growing up with NES, SNES, and a PC, I remember many older relatives noting the dexterity and precision in the thumbs of kids due to all the gaming. Video games required:</p>
+
+<ul>
+<li>hand-eye-coordination</li>
+<li>hand dexterity</li>
+<li>concentration</li>
+</ul>
+
+<p>To beat these games you needed <em>mastery</em> and <em>focus</em>. Not only was mastery required, it was the <em>reward</em>. The games suitable for touch screens can require neither. So tablet games will remain at a level no more advanced than snake or scrabble. (As a side note, what really can work is turn-based strategy games.)</p>
+
+<h3 id="no-such-thing-as-a-touch-typist">No such thing as a touch typist</h3>
+
+<p>Just as serious gaming becomes impossible due to the touch interface, serious productivity suffers from the same limitations. It&rsquo;s funny to see things like Microsoft Office being released for the iPad because it&rsquo;s impossible to work with. Serious productivity requires the efficient inputting of language, be it English or Python. The touch keyboard is unable to let you do that. There is no such thing as a touch typist. On a tablet, everyone goes back to tapping with two fingers. There is nothing to master here (due to the lack of feedback) and so everyone will remain as noobs forever.</p>
+
+<h2 id="the-dark-age-begins">The dark age begins</h2>
+
+<p>Maybe you&rsquo;re thinking to yourself:</p>
+
+<blockquote>
+<p><em>so what if a touch screen isn&rsquo;t ideal for everything, no input device is!</em></p>
+</blockquote>
+
+<p>If you are, then I agree. Nothing can be great at everything. You use the right tool for the right job. The problem is the tremendous success of the tablet. This is where I think the geeks have a different view of where we are headed.</p>
+
+<p>Geeks see the benefits of the touch screen. Its strengths, but also its weaknesses. They use it when it&rsquo;s convenient. For more serious work, they move to their workstation, with keyboard and screen.</p>
+
+<p>Non-geeks see the tablet as <em>&ldquo;the future&rdquo;</em>. They never liked their PC to begin with. It was just something they were forced to acquire to be able to pay their bills. They see the tablet as liberating. Geeks see the tablet as confining.</p>
+
+<p>The success of the tablet amongst geeks and non-geeks combined means companies are scrambling to push everything into tablet interfaces. Apple is clearly moving towards iOS as OSX is evolving. Microsoft has already gone too far:</p>
+
+<iframe width="560" height="315" src="//www.youtube.com/embed/WTYet-qf1jo" frameborder="0" allowfullscreen></iframe>
+    
+
+<p>But it&rsquo;s not just the tablet interface. It&rsquo;s the whole mobile paradigm that is spreading. With it comes the <em>app stores</em>, where every app is pre-approved by the benevolent corporation that owns your <del>soul</del> apps and music. The corporation reserves the right to remove any app or in-app purchase it deems unworthy of your attention. <a href="http://www.nytimes.com/2009/07/18/technology/companies/18amazon.html?_r=0">Amazon did it</a>, <a href="http://www.pcworld.com/article/2095060/apple-removes-blockchain-last-bitcoin-wallet-app-from-mobile-store.html">Apple does it all the time</a>, <a href="http://www.wired.co.uk/news/archive/2014-01/20/microsoft-removes-tor">and same for Microsoft</a>.</p>
+
+<p>I would say that Linux is the only alternative going forward, but then again, <a href="https://www.gnu.org/philosophy/ubuntu-spyware.html">Canonical is showing that not even Linux is safe</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <id>https://cowboyprogrammer.org/2014/04/advertising-thats-not-intrusive-orly/</id>
+    <link href="https://cowboyprogrammer.org/2014/04/advertising-thats-not-intrusive-orly/" rel="alternate" />
+    <title>Advertising, that&#39;s not intrusive. Orly?</title>
+    <updated>2014-04-07T00:00:00+00:00</updated>
+    <author>
+      <name>Space Cowboy</name>
+      <email>jonas@cowboyprogrammer.org</email>
+    </author>
+    
+    <summary type="html"><![CDATA[When you have apps in Google Play (and I imagine, other App stores as well), the amount of spam you receive instantly goes up by a factor of 10. Google&rsquo;s spam filters are pretty well trained but every now and again something gets through.
+Advertising opportunity Today&rsquo;s piece of bullshyt (I really meant to spell it like that) reads as follows (my emphasis):
+ Our premium advertisers are currently looking to buy android traffic at a very high price in apps like Nononsense Notes.]]></summary>
+    <content type="html"><![CDATA[
+
+<p>When you have apps in Google Play (and I imagine, other App stores as well), the amount of spam you receive instantly goes up by a factor of 10. Google&rsquo;s spam filters are pretty well trained but every now and again something gets through.</p>
+
+<h2 id="advertising-opportunity">Advertising opportunity</h2>
+
+<p>Today&rsquo;s piece of bullshyt (I really meant to spell it like that) reads as follows (my emphasis):</p>
+
+<blockquote>
+<p>Our premium advertisers are currently looking to buy android traffic at a very high price in apps like Nononsense Notes.</p>
+
+<p>We think you can generate up to $10 CPM with their <strong>full screen ads</strong>, which are <strong>very clean</strong>. Indeed, most of our advertisers are willing to pay, on average, between $1 and $3 per installation. You&rsquo;re free to display these ads whenever you want in your app so that it&rsquo;s <strong>not intrusive</strong>.</p>
+</blockquote>
+
+<p>Ads are by definition <em>intrusive</em>. That&rsquo;s how they nag you into buying their stupid stuff. And it doesn&rsquo;t matter how clean your ads are. Displaying them fullscreen is <em>beyond</em> intrusive. It is down right <strong>offensive</strong>.</p>
+
+<p>I uninstall anything that displays obnoxious ads, be they fullscreen or notifications, and promptly give the app a one star review. I sincerely hope others afford me the same &ldquo;courtesy&rdquo; for my apps.</p>
+]]></content>
+  </entry>
+  
+</feed>

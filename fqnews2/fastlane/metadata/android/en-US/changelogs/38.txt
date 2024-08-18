@@ -1,0 +1,5 @@
+# 1.7.1
+*   Fixed possible crash when marking all items as read
+    See !127 #145
+*   Fixed text for show unread toggle
+    See !125

@@ -1,0 +1,737 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 29,
+    "identityHash": "cf20b4f82806500e920fde90e8d78cc7",
+    "entities": [
+      {
+        "tableName": "feeds",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `custom_title` TEXT NOT NULL, `url` TEXT NOT NULL, `tag` TEXT NOT NULL, `notify` INTEGER NOT NULL, `image_url` TEXT, `last_sync` INTEGER NOT NULL, `response_hash` INTEGER NOT NULL, `fulltext_by_default` INTEGER NOT NULL, `open_articles_with` TEXT NOT NULL, `alternate_id` INTEGER NOT NULL, `currently_syncing` INTEGER NOT NULL, `when_modified` INTEGER NOT NULL, `site_fetched` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "customTitle",
+            "columnName": "custom_title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tag",
+            "columnName": "tag",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notify",
+            "columnName": "notify",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageUrl",
+            "columnName": "image_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lastSync",
+            "columnName": "last_sync",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "responseHash",
+            "columnName": "response_hash",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fullTextByDefault",
+            "columnName": "fulltext_by_default",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "openArticlesWith",
+            "columnName": "open_articles_with",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "alternateId",
+            "columnName": "alternate_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currentlySyncing",
+            "columnName": "currently_syncing",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "whenModified",
+            "columnName": "when_modified",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "siteFetched",
+            "columnName": "site_fetched",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_feeds_url",
+            "unique": true,
+            "columnNames": [
+              "url"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_feeds_url` ON `${TABLE_NAME}` (`url`)"
+          },
+          {
+            "name": "index_feeds_id_url_title",
+            "unique": true,
+            "columnNames": [
+              "id",
+              "url",
+              "title"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_feeds_id_url_title` ON `${TABLE_NAME}` (`id`, `url`, `title`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "feed_items",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `guid` TEXT NOT NULL, `title` TEXT NOT NULL, `plain_title` TEXT NOT NULL, `plain_snippet` TEXT NOT NULL, `image_url` TEXT, `enclosure_link` TEXT, `enclosure_type` TEXT, `author` TEXT, `pub_date` TEXT, `link` TEXT, `unread` INTEGER NOT NULL, `notified` INTEGER NOT NULL, `feed_id` INTEGER, `first_synced_time` INTEGER NOT NULL, `primary_sort_time` INTEGER NOT NULL, `pinned` INTEGER NOT NULL, `bookmarked` INTEGER NOT NULL, `fulltext_downloaded` INTEGER NOT NULL, `read_time` INTEGER, FOREIGN KEY(`feed_id`) REFERENCES `feeds`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "guid",
+            "columnName": "guid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plainTitle",
+            "columnName": "plain_title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plainSnippet",
+            "columnName": "plain_snippet",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageUrl",
+            "columnName": "image_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "enclosureLink",
+            "columnName": "enclosure_link",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "enclosureType",
+            "columnName": "enclosure_type",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "author",
+            "columnName": "author",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pubDate",
+            "columnName": "pub_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "link",
+            "columnName": "link",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "oldUnread",
+            "columnName": "unread",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notified",
+            "columnName": "notified",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "feedId",
+            "columnName": "feed_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "firstSyncedTime",
+            "columnName": "first_synced_time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "primarySortTime",
+            "columnName": "primary_sort_time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "oldPinned",
+            "columnName": "pinned",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bookmarked",
+            "columnName": "bookmarked",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fullTextDownloaded",
+            "columnName": "fulltext_downloaded",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "readTime",
+            "columnName": "read_time",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_feed_items_guid_feed_id",
+            "unique": true,
+            "columnNames": [
+              "guid",
+              "feed_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_feed_items_guid_feed_id` ON `${TABLE_NAME}` (`guid`, `feed_id`)"
+          },
+          {
+            "name": "index_feed_items_feed_id",
+            "unique": false,
+            "columnNames": [
+              "feed_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_feed_items_feed_id` ON `${TABLE_NAME}` (`feed_id`)"
+          },
+          {
+            "name": "idx_feed_items_cursor",
+            "unique": true,
+            "columnNames": [
+              "primary_sort_time",
+              "pub_date",
+              "id"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `idx_feed_items_cursor` ON `${TABLE_NAME}` (`primary_sort_time`, `pub_date`, `id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "feeds",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "feed_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "blocklist",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `glob_pattern` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "globPattern",
+            "columnName": "glob_pattern",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_blocklist_glob_pattern",
+            "unique": true,
+            "columnNames": [
+              "glob_pattern"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_blocklist_glob_pattern` ON `${TABLE_NAME}` (`glob_pattern`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "sync_remote",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `url` TEXT NOT NULL, `sync_chain_id` TEXT NOT NULL, `latest_message_timestamp` INTEGER NOT NULL, `device_id` INTEGER NOT NULL, `device_name` TEXT NOT NULL, `secret_key` TEXT NOT NULL, `last_feeds_remote_hash` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "syncChainId",
+            "columnName": "sync_chain_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latestMessageTimestamp",
+            "columnName": "latest_message_timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deviceId",
+            "columnName": "device_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deviceName",
+            "columnName": "device_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "secretKey",
+            "columnName": "secret_key",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastFeedsRemoteHash",
+            "columnName": "last_feeds_remote_hash",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "read_status_synced",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sync_remote` INTEGER NOT NULL, `feed_item` INTEGER NOT NULL, FOREIGN KEY(`feed_item`) REFERENCES `feed_items`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`sync_remote`) REFERENCES `sync_remote`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sync_remote",
+            "columnName": "sync_remote",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "feed_item",
+            "columnName": "feed_item",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_read_status_synced_feed_item_sync_remote",
+            "unique": true,
+            "columnNames": [
+              "feed_item",
+              "sync_remote"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_read_status_synced_feed_item_sync_remote` ON `${TABLE_NAME}` (`feed_item`, `sync_remote`)"
+          },
+          {
+            "name": "index_read_status_synced_feed_item",
+            "unique": false,
+            "columnNames": [
+              "feed_item"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_read_status_synced_feed_item` ON `${TABLE_NAME}` (`feed_item`)"
+          },
+          {
+            "name": "index_read_status_synced_sync_remote",
+            "unique": false,
+            "columnNames": [
+              "sync_remote"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_read_status_synced_sync_remote` ON `${TABLE_NAME}` (`sync_remote`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "feed_items",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "feed_item"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "sync_remote",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "sync_remote"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "remote_read_mark",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sync_remote` INTEGER NOT NULL, `feed_url` TEXT NOT NULL, `guid` TEXT NOT NULL, `timestamp` INTEGER NOT NULL, FOREIGN KEY(`sync_remote`) REFERENCES `sync_remote`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sync_remote",
+            "columnName": "sync_remote",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "feedUrl",
+            "columnName": "feed_url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "guid",
+            "columnName": "guid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_remote_read_mark_sync_remote_feed_url_guid",
+            "unique": true,
+            "columnNames": [
+              "sync_remote",
+              "feed_url",
+              "guid"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_remote_read_mark_sync_remote_feed_url_guid` ON `${TABLE_NAME}` (`sync_remote`, `feed_url`, `guid`)"
+          },
+          {
+            "name": "index_remote_read_mark_feed_url_guid",
+            "unique": false,
+            "columnNames": [
+              "feed_url",
+              "guid"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_remote_read_mark_feed_url_guid` ON `${TABLE_NAME}` (`feed_url`, `guid`)"
+          },
+          {
+            "name": "index_remote_read_mark_sync_remote",
+            "unique": false,
+            "columnNames": [
+              "sync_remote"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_remote_read_mark_sync_remote` ON `${TABLE_NAME}` (`sync_remote`)"
+          },
+          {
+            "name": "index_remote_read_mark_timestamp",
+            "unique": false,
+            "columnNames": [
+              "timestamp"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_remote_read_mark_timestamp` ON `${TABLE_NAME}` (`timestamp`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "sync_remote",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "sync_remote"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "remote_feed",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sync_remote` INTEGER NOT NULL, `url` TEXT NOT NULL, FOREIGN KEY(`sync_remote`) REFERENCES `sync_remote`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "syncRemote",
+            "columnName": "sync_remote",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_remote_feed_sync_remote_url",
+            "unique": true,
+            "columnNames": [
+              "sync_remote",
+              "url"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_remote_feed_sync_remote_url` ON `${TABLE_NAME}` (`sync_remote`, `url`)"
+          },
+          {
+            "name": "index_remote_feed_url",
+            "unique": false,
+            "columnNames": [
+              "url"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_remote_feed_url` ON `${TABLE_NAME}` (`url`)"
+          },
+          {
+            "name": "index_remote_feed_sync_remote",
+            "unique": false,
+            "columnNames": [
+              "sync_remote"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_remote_feed_sync_remote` ON `${TABLE_NAME}` (`sync_remote`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "sync_remote",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "sync_remote"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "sync_device",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `sync_remote` INTEGER NOT NULL, `device_id` INTEGER NOT NULL, `device_name` TEXT NOT NULL, FOREIGN KEY(`sync_remote`) REFERENCES `sync_remote`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "syncRemote",
+            "columnName": "sync_remote",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deviceId",
+            "columnName": "device_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deviceName",
+            "columnName": "device_name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_sync_device_sync_remote_device_id",
+            "unique": true,
+            "columnNames": [
+              "sync_remote",
+              "device_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_sync_device_sync_remote_device_id` ON `${TABLE_NAME}` (`sync_remote`, `device_id`)"
+          },
+          {
+            "name": "index_sync_device_sync_remote",
+            "unique": false,
+            "columnNames": [
+              "sync_remote"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_sync_device_sync_remote` ON `${TABLE_NAME}` (`sync_remote`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "sync_remote",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "sync_remote"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cf20b4f82806500e920fde90e8d78cc7')"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+<p>Feeder è un lettore open source di feed per Android creato nel 2014.</p>
+
+<p>Con Feeder potete leggere le ultime notizie e i post dei vostri siti preferiti.</p>
+
+<p>Feeder NON si sincronizza con i soliti backend remoti, quindi non è necessaria registrazione di alcun tipo di account.</p>
+
+<p>Feeder è gratuito e funziona localmente sul vostro dispositivo. I vostri dati sono privati al 100%.</p>
+
+<p><b>Caratteristiche:</b></p>
+
+<ul>
+<li>Analizza l'HTML e lo visualizza in una TextView nativa</li>
+<li>Lettura offline</li>
+<li>Sincronizzazione in background</li>
+<li>Notifiche</li>
+<li>Importazione/esportazione OPML</li>
+<li>Comodo accesso ai collegamenti degli allegati </li>
+<li>Material design</li>
+</ul>

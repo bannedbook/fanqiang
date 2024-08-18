@@ -1,0 +1,13 @@
+# 2.6.1
+Jonas Kalderstam (6):
+  * [08295427] Fixed a crash if device was removed from sync chain
+  * [7f4ec4f6] Implemented Either from Arrow
+  * [efe67fee] Added more descriptive error messages when feeds can not be
+         found or parsed
+  * [424007c2] Added a new theme specifically for E Ink screens
+  * [acb40347] Updated Swedish translation using Weblate
+  * [171477fa] Added some extra crash handling
+
+Agnieszka C (3):
+  * [49505e90] Updated Polish translation using Weblate
+  * [f7274779] U

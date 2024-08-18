@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:installLocation="internalOnly">
+  <!-- Import export feeds -->
+  <uses-permission
+          android:name="android.permission.READ_EXTERNAL_STORAGE"
+          android:maxSdkVersion="28" />
+  <uses-permission
+          android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+          android:maxSdkVersion="29" />
+  <!-- For syncing -->
+  <uses-permission android:name="android.permission.INTERNET" />
+  <!-- To limit syncing to only WiFi -->
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+  <!-- For expedited work manager jobs that run in foreground service -->
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" android:minSdkVersion="34" />
+  <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+  <permission
+          android:name="${applicationId}.SERVICE"
+          android:protectionLevel="signature" />
+  <uses-permission android:name="${applicationId}.SERVICE" />
+  <permission
+          android:name="${applicationId}.permission.read"
+          android:description="@string/permission_read_desc"
+          android:label="@string/permission_read_label" />
+
+  <queries>
+    <!-- So a barcode scanner can be invoked -->
+    <package android:name="com.google.zxing.client.android" />
+
+    <intent>
+      <action android:name="android.intent.action.TTS_SERVICE" />
+    </intent>
+    <intent>
+      <action android:name="android.intent.action.PROCESS_TEXT" />
+      <data android:mimeType="text/plain" />
+    </intent>
+    <intent>
+      <action android:name="io.nekohasekai.sagernet.plugin.ACTION_NATIVE_PLUGIN" />
+    </intent>
+  </queries>
+
+  <application
+          android:name="jww.app.FeederApplication"
+          android:allowBackup="true"
+          android:autoRevokePermissions="allowed"
+          android:dataExtractionRules="@xml/backup_rules"
+          android:enableOnBackInvokedCallback="true"
+          android:extractNativeLibs="true"
+          android:fullBackupContent="@xml/backup_descriptor"
+          android:fullBackupOnly="true"
+          android:hardwareAccelerated="true"
+          android:hasFragileUserData="true"
+          android:icon="@mipmap/ic_launcher"
+          android:label="@string/app_name"
+          android:largeHeap="true"
+          android:localeConfig="@xml/locales_config"
+          android:networkSecurityConfig="@xml/network_security_config"
+          android:roundIcon="@mipmap/ic_launcher_round"
+          android:supportsRtl="true"
+          android:theme="@style/AppThemeDayNoActionBar"
+          android:usesCleartextTraffic="true">
+
+    <meta-data
+            android:name="android.webkit.WebView.MetricsOptOut"
+            android:value="true" />
+
+    <activity
+            android:name="io.nekohasekai.sagernet.ui.BlankActivity"
+            android:configChanges="uiMode" />
+    <receiver
+            android:name="io.nekohasekai.sagernet.BootReceiver"
+            android:enabled="false"
+            android:exported="true"
+            android:process=":bg">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+        <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+        <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+      </intent-filter>
+    </receiver>
+
+    <service
+            android:name="io.nekohasekai.sagernet.bg.ProxyService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync"
+            android:process=":bg" />
+    <service
+            android:name="androidx.room.MultiInstanceInvalidationService"
+            android:process=":bg" />
+
+    <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.cache"
+            android:exported="false"
+            android:grantUriPermissions="true">
+      <meta-data
+              android:name="android.support.FILE_PROVIDER_PATHS"
+              android:resource="@xml/cache_paths" />
+    </provider>
+    <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="remove" />
+
+    <activity
+            android:name="com.nononsenseapps.feeder.ui.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+
+      <!-- This filter MUST look like this for Android to automatically open these links -->
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:scheme="http" />
+        <data android:scheme="https" />
+        <data android:host="feederapp.nononsenseapps.com" />
+      </intent-filter>
+
+      <meta-data
+              android:name="android.app.shortcuts"
+              android:resource="@xml/shortcuts" />
+    </activity>
+
+    <activity
+            android:name=".ui.ManageSettingsActivity"
+            android:exported="true"
+            android:parentActivityName=".ui.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
+        <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+    </activity>
+
+    <activity
+            android:name=".ui.ImportOMPLFileActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:label="@string/import_feeds_from_opml"
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/AppThemeDialog">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <action android:name="android.intent.action.SEND" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:scheme="content" />
+        <data android:host="*" />
+
+        <data android:mimeType="text/xml" />
+        <data android:mimeType="application/xml" />
+        <data android:mimeType="text/x-opml" />
+        <data android:mimeType="application/octet-stream" />
+      </intent-filter>
+    </activity>
+
+    <activity
+            android:name=".ui.AddFeedFromShareActivity"
+            android:exported="true"
+            android:parentActivityName=".ui.MainActivity">
+      <!-- URLs with feed mimetype can be opened -->
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:scheme="http" />
+        <data android:scheme="https" />
+
+        <data android:host="*" />
+
+        <data android:mimeType="text/xml" />
+        <data android:mimeType="application/rss+xml" />
+        <data android:mimeType="application/atom+xml" />
+        <data android:mimeType="application/xml" />
+        <data android:mimeType="application/json" />
+      </intent-filter>
+      <!-- URLs ending with '.xml' or '.rss' can be opened directly-->
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:scheme="http" />
+        <data android:scheme="https" />
+        <data android:host="*" />
+        <data android:pathPattern=".*\\.xml" />
+        <data android:pathPattern=".*\\.rss" />
+        <data android:pathPattern=".*\\.atom" />
+        <data android:pathPattern=".*\\.json" />
+      </intent-filter>
+      <!-- FeedBurner URLs can be opened directly-->
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:scheme="http" />
+        <data android:scheme="https" />
+        <data android:host="feeds.feedburner.com" />
+        <data android:host="feedproxy.google.com" />
+        <data android:host="feeds2.feedburner.com" />
+        <data android:host="feedsproxy.google.com" />
+      </intent-filter>
+      <!-- Any other URL can be shared with the app -->
+      <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:scheme="http" />
+        <data android:scheme="https" />
+        <data android:host="*" />
+      </intent-filter>
+      <!-- Also possible to share pure text -->
+      <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:mimeType="text/plain" />
+      </intent-filter>
+    </activity>
+
+    <!-- Receiver for notification cancellations and such -->
+    <receiver android:name=".model.RssNotificationBroadcastReceiver" />
+
+    <activity
+            android:name=".ui.OpenLinkInDefaultActivity"
+            android:exported="true"
+            android:label="@string/open_link_in_browser"
+            android:launchMode="singleInstance"
+            android:taskAffinity="${applicationId}.OpenLinkTask" />
+
+    <provider
+            android:name=".contentprovider.RSSContentProvider"
+            android:authorities="${applicationId}.rssprovider"
+            android:exported="true"
+            android:readPermission="${applicationId}.permission.read" />
+
+    <service
+            android:name="androidx.work.impl.foreground.SystemForegroundService"
+            android:foregroundServiceType="dataSync"
+            tools:node="merge" />
+
+  </application>
+</manifest>

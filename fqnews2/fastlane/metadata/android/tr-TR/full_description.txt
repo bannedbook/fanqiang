@@ -1,0 +1,19 @@
+<p>Feeder, 2014 yılında oluşturulan Android için açık kaynaklı bir yayın (RSS/Atom/JSONFeed) okuyucusudur.</p>
+
+<p>Feeder ile sevdiğiniz sitelerdeki en son haberleri ve gönderileri okuyabilirsiniz.</p>
+
+<p>Feeder normal uzak arka uçlarla eşzamanlanmaz, bu nedenle herhangi bir hesap kaydı gerekli değildir.</p>
+
+<p>Feeder'ın kullanımı ücretsizdir ve aygıtınızda yerel olarak çalışır. Verileriniz %100 gizlidir.</p>
+
+<p><b>Özellikler</b></p>
+
+<ul>
+<li>HTML'yi ayrıştırır ve yerel bir TextView içinde görüntüler</li>
+<li>Çevrim dışı okuma</li>
+<li>Arka planda eşzamanlama</li>
+<li>Bildirimler</li>
+<li>OPML içe/dışa aktarma</li>
+<li>Bağlantılara kullanışlı erişim</li>
+<li>Material tasarımı</li>
+</ul>

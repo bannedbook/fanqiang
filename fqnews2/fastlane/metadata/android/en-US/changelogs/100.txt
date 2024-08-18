@@ -1,0 +1,18 @@
+# 1.12.1
+Belmar Begić (1):
+  * [666f0e3c] Updated Bosnian translation using Weblate
+
+J. Lavoie (1):
+  * [cccbf8a7] Updated German translation using Weblate
+
+Jonas Kalderstam (1):
+  * [67f53ebc] Prevent fastlane from conflicting on releases
+
+Tomáš Tihlařík (1):
+  * [40adb64f] Updated czech strings
+
+VfBFan (1):
+  * [92e2a263] Updated German translation using Weblate
+
+cld4h (1):
+  * [95e8f6df] Translated using Weblate (Chinese (Simplified))

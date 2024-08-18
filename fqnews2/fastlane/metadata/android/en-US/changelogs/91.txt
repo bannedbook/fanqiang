@@ -1,0 +1,19 @@
+# 1.10.11
+Allan Nordhøy (2):
+  * [c64b4a57] Updated Norwegian Bokmål translation using Weblate
+  * [853b7f0a] Translated using Weblate (Norwegian Bokmål)
+
+El Pirujo (1):
+  * [18a10d55] Translated using Weblate (Spanish)
+
+George (1):
+  * [f317a3ee] Translated using Weblate (Greek)
+
+J. Lavoie (1):
+  * [53b67002] Translated using Weblate (Italian)
+
+Jakub Fabijan (1):
+  * [a084f837] Added Esperanto translation using Weblate
+
+Jonas Kalderstam (15):
+  * [9e9c46f5] Replaced Crowdin widget with Webla

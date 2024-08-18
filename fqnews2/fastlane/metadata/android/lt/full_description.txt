@@ -1,0 +1,19 @@
+<p>Ar jums atsibodo išpūsti nemokami skaitytuvai, kurie vagia jūsų asmeninę informaciją?<br/>
+Ar pavargote nuo sudėtingų sinchronizavimo nustatymų, reikalaujančių valandų valandas konfigūruoti serverį?<br/>
+Ar jums atsibodo visur kurti paskyras?<br/></p>.
+
+<p>Išbandykite „Feeder“!</p>
+
+<p>„Feeder“ - tai visiškai nemokama ir laisva kanalų skaityklė. Ji palaiko visus įprastus kanalų formatus, įskaitant JSONFeed. Ji jūsų neseka. Nereikalauja jokių nustatymų. Net nereikia susikurti paskyros! Tiesiog nustatykite savo kanalus arba importuokite juos iš senosios skaityklės per OPML, tada sinchronizuokite ir skaitykite</p>.
+
+<p><b>Savybės</b></p>
+
+<ul>
+<li>Išanalizuoja HTML ir rodo jį gimtajame „TextView“</li>
+<li>Skaitymas neprisijungus</li>
+<li>Fono sinchronizavimas</li>
+<li>Pranešimai</li>
+<li>OPML importavimas/eksportavimas </li>
+<li>Patogi prieiga prie uždarų nuorodų</li>
+<li>Material dizainas</li>
+</ul>

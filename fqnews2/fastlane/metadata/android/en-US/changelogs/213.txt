@@ -1,0 +1,21 @@
+# 2.0.2
+Agnieszka C (1):
+  * [2530f074] Updated Polish translation using Weblate
+
+Andrij Mizyk (1):
+  * [dc7b2c8f] Translated using Weblate (Ukrainian)
+
+Eric (1):
+  * [99457a1a] Updated Chinese (Simplified) translation using Weblate
+
+Felipe Alvarez (2):
+  * [aed89f36] Hide FAB when feed is empty
+  * [3154cf7a] Swap booleans order
+
+Gediminas Murauskas (1):
+  * [0bd119ca] Updated Lithuanian translation using Weblate
+
+J. Lavoie (1):
+  * [02c90a84] Updated Italian translation using Weblate
+
+Jonas Ka

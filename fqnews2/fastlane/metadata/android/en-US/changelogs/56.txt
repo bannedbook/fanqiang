@@ -1,0 +1,5 @@
+# 1.8.17
+*   Made feed title clickable in Reader
+    See !194 #205
+*   Fixed crash when notification contained items to be marked as read
+    See !193 #204

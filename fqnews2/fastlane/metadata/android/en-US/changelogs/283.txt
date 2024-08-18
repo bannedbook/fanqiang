@@ -1,0 +1,21 @@
+# 2.5.0
+Agnieszka C (1):
+  * [0818b4a7] Updated Polish translation using Weblate
+
+Axus Wizix (1):
+  * [fee820a7] Updated Russian translation using Weblate
+
+Bahasnyldz (1):
+  * [e2828a30] Updated Turkish translation using Weblate
+
+Dan (1):
+  * [2f1271fe] Updated Ukrainian translation using Weblate
+
+ERYpTION (1):
+  * [4fa7e6d0] Updated Danish translation using Weblate
+
+El Pirujo (1):
+  * [2778cf14] Updated Spanish translation using Weblate
+
+Eric (1):
+  * [e7b81bb9] Updated Chinese (Simplified) tra

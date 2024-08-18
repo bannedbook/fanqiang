@@ -1,0 +1,14 @@
+# 2.6.22
+Jonas Kalderstam (4):
+  * [166390e5] Fixed so sync will never run when no network available
+  * [eac1b124] Fixed performance of NavDrawer. If you have many feeds you
+         will notice a big difference
+  * [178ea561] Fixed resource usage during sync. It might be slower now
+         though.
+  * [f02c3118] Fixed a resource leak with OkHTTP
+
+Pablo Wildson (1):
+  * [ea828a07] Translated using Weblate (Portuguese (Brazil))
+
+atilluF (1):
+  * [a5c25344] Updated Italian translation using Webl

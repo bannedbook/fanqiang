@@ -1,0 +1,9 @@
+# 2.0.0-beta.6
+Jonas Kalderstam (5):
+  * [08760e63] Fixed sync indicator being rendered behind top app bar
+  * [92e802b0] Added ability to toggle between full text and included
+         article text
+  * [e46f91ff] Fixed so scroll to refresh works on the empty screen again
+  * [47c40796] Adding some fade in/out animations to empty screen
+  * [d1275492] Tweaked some padding in list
+

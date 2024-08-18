@@ -1,0 +1,19 @@
+# 1.12.0
+El Pirujo (1):
+  * [ddf06c3a] Updated Spanish translation using Weblate
+
+Eric (1):
+  * [34e65ed7] Updated Chinese (Simplified) translation using Weblate
+
+Francesco Bonazzi (2):
+  * [6d51fd8c] Add support for reading feeds aloud with Android's
+         TextToSpeech engine
+  * [770ce381] moved text-to-speech code to model-view class
+
+Hierax Swiftwing (1):
+  * [c1e336fe] Translated using Weblate (Serbian)
+
+J. Lavoie (1):
+  * [d491cd62] Updated Italian translation using Weblate
+
+Jonas Kalde

@@ -1,0 +1,11 @@
+# 2.1.0
+Jonas Kalderstam (19):
+  * [24c0c8fd] Implemented multi device sync
+  * [211b1281] Fixed spaces getting replaced by + in feed titles
+  * [4cfd9e2e] Fixed incorrect bundling of notifications and sync
+         notification
+  * [96cd9754] Added setting for swiping to mark as read
+  * [154ad356] Fixed summary notification not getting cleared
+  * [416bb580] Changed all header sizes inside articles to be the same size
+  * [16ef3dc5] Fixed OPML export file lacking .opml suffix
+  * [211bcf43] Fi

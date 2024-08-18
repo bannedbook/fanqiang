@@ -1,0 +1,33 @@
+<?xml version="1.0"?><rss version="2.0">
+  <channel>
+    <title>Diskuse na Jak psát web</title>
+    <link>https://diskuse.jakpsatweb.cz/</link>
+    <description>O tvorbě, údržbě a zlepšování internetových stránek</description>
+    <language>cs</language>
+    <copyright>Copyright 2004, Yuhů + Doublethink</copyright>
+    <managingEditor>dusan@pc-slany.cz (Yuhů)</managingEditor>
+    <webMaster>dusan@pc-slany.cz (Yuhů)</webMaster>
+    <image>
+      <url>https://diskuse.jakpsatweb.cz/img/logo-rss.png</url>
+      <title>DJPW</title>
+      <link>https://diskuse.jakpsatweb.cz/</link>
+      <height>60</height>
+      <width>60</width>
+    </image>
+
+    <lastBuildDate>Wed, 15 Apr 2020 16:30:29 +0200</lastBuildDate>
+    <item>
+      <title>Kajman, O této diskusi: test &amp;lt;pre&amp;gt; in &amp;lt;description&amp;gt; and &amp;lt;b&amp;gt;bold&amp;lt;/b&amp;gt; in title</title>
+      <description>Code text in &amp;lt;pre&amp;gt;...
+        &lt;br&gt;&lt;div class=&quot;pre&quot;&gt;&lt;pre&gt;SELECT *
+        FROM   tbl
+        WHERE  date &amp;gt; Now()
+        ORDER  BY date
+        LIMIT  10&lt;/pre&gt;&lt;/div&gt;
+        &lt;br&gt;Code text in &amp;lt;code&amp;gt; &lt;code&gt;SELECT&lt;/code&gt; and &lt;code&gt;WHERE&lt;/code&gt;.</description>
+      <pubDate>Wed, 15 Apr 2020 16:30:29 +0200</pubDate>
+      <link>https://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=18&amp;topic=173233#post-1112174</link>
+      <guid isPermaLink="false">https://diskuse.jakpsatweb.cz/?action=vpost&amp;post=1112174</guid>
+    </item>
+  </channel>
+</rss>

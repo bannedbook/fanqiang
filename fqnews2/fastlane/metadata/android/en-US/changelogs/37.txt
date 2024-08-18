@@ -1,0 +1,14 @@
+# 1.7.0
+*   Moved notification toggle to options menu
+    See !123 #125 #66
+*   Added a light theme
+    See !122 #38
+*   Fixed size of FAB icon on high density screens
+    See !119
+*   Fixed crash for certain feeds with slash comment meta-data
+    See !117 #140
+*   Added additional sync frequency options (15min and 30min)
+    Also removed the need for an account and related system permission
+    See #49
+*   Added menu option in reader to mark item as unread
+    See !111 #134

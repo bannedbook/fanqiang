@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<opml version='1.1'>
+<head>
+<title>Flym export</title>
+<dateCreated>1498468298144</dateCreated>
+</head>
+<body>
+	<outline type='rss' title='black humor'>
+		<outline title='SMBC' type='rss' xmlUrl='http://www.smbc-comics.com/rss.php' retrieveFullText='false'/>
+		<outline title='Deathbulge' type='rss' xmlUrl='http://www.deathbulge.com/rss.xml' retrieveFullText='true'/>
+	</outline>
+	<outline type='rss' title='comics'>
+		<outline title='Gaia' type='rss' xmlUrl='http://www.sandraandwoo.com/gaia/feed/' retrieveFullText='false'/>
+		<outline title='Replay' type='rss' xmlUrl='http://replaycomic.com/feed/' retrieveFullText='true'/>
+		<outline title='Cut Time' type='rss' xmlUrl='http://www.cuttimecomic.com/rss.php' retrieveFullText='false'/>
+		<outline title='Commit strip' type='rss' xmlUrl='http://www.commitstrip.com/feed/' retrieveFullText='true'/>
+		<outline title='Sandra and Woo' type='rss' xmlUrl='http://www.sandraandwoo.com/feed/' retrieveFullText='false'/>
+		<outline title='Awaken' type='rss' xmlUrl='http://www.awakencomic.com/rss.php' retrieveFullText='true'/>
+		<outline title='Questionable Content' type='rss' xmlUrl='http://www.questionablecontent.net/QCRSS.xml' retrieveFullText='false'/>
+	</outline>
+	<outline type='rss' title='Tech'>
+		<outline title='Arch news' type='rss' xmlUrl='https://www.archlinux.org/feeds/news/' retrieveFullText='false'/>
+	</outline>
+	<outline type='rss' title='Political humour'>
+		<outline title='Grisebouille' type='rss' xmlUrl='https://grisebouille.net/feed/' retrieveFullText='true'/>
+	</outline>
+</body>
+</opml>

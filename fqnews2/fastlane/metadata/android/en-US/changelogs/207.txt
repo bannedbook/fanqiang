@@ -1,0 +1,6 @@
+# 2.0.0-rc.1
+Jonas Kalderstam (10):
+  * [f0e87b8a] Fixed accessibility descriptions
+  * [fa632512] Changed to Readability4JExtended for full text parsing
+  * [908efc98] Made Feeder very TalkBack compatible
+  * [3fda9092] Fixed so Feeder handles rotation gracefully

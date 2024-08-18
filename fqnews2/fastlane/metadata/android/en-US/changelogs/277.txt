@@ -1,0 +1,12 @@
+# 2.4.15
+Jonas Kalderstam (15):
+  * [6838e46a] Updated versions
+  * [8cd2453a] Changed to official upsert
+  * [aa4c7362] Changed to new and safer flow collection with lifecycle
+         awareness
+  * [233afed4] Updated so text should appear more balanced with line breaks
+         and hyphenation
+  * [5077ad25] Added tooltips to all icon buttons on long-press
+  * [4c7ab111] Changed so zeros aren't shown in nav drawer
+  * [ab30b452] Changed so New-indicator is only shown if read items would be
+   

@@ -1,0 +1,10 @@
+# 1.8.7
+*   Added support for RTL
+    Some devices might still not render perfectly though
+    See !165 #176
+*   Fixed youtube previews not showing
+    See !168
+*   Changed plaintext rendering to not include '[image alt text]' in text
+    See !167
+*   Changed so that notification actions do not open the app after pressing Back
+    See !166

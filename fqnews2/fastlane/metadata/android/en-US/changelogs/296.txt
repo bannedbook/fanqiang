@@ -1,0 +1,19 @@
+# 2.6.11
+Aitor Salaberria (1):
+  * [a8431296] Translated using Weblate (Basque)
+
+Jonas Kalderstam (2):
+  * [5dcc336f] Fixed items getting stuck when swiping them away
+  * [784bcd34] Fixed missing files for eu-ES
+
+Mehdi Kurtcebe (1):
+  * [d230ff05] Updated Turkish translation using Weblate
+
+RT Redréovič (1):
+  * [b64609b5] Updated Esperanto translation using Weblate
+
+Retrial (1):
+  * [9f092435] Updated Greek translation using Weblate
+
+Vitor Henrique (1):
+  * [807a339a] Updated Portuguese (Brazi

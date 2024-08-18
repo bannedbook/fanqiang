@@ -1,0 +1,80 @@
+stages:
+  - build
+  - validate_deploy
+  - deploy
+
+image: registry.gitlab.com/spacecowboy/feeder:builder
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+cache:
+  key: "uber"
+  paths:
+     - .gradle/caches
+     - .gradle/wrapper
+
+lint:
+  stage: build
+  script:
+    - source devenv && ./gradlew :app:lint
+  needs: []
+
+test:
+  stage: build
+  script:
+    - source devenv && ./gradlew test :jsonfeed-parser:check
+  needs: []
+  artifacts:
+    paths:
+    - app/build/reports/
+
+compileTest:
+  stage: build
+  script:
+    - source devenv && ./gradlew packageDebugAndroidTest
+  needs: []
+  artifacts:
+    paths:
+    - app/build/outputs/
+    - build/logs/
+
+compilePlay:
+  stage: build
+  script:
+    - source devenv && ./gradlew assemblePlay
+  needs: []
+  artifacts:
+    paths:
+    - app/build/outputs/
+    - build/logs/
+
+compileRelease:
+  stage: build
+  script:
+    - source devenv && ./gradlew assembleRelease
+  needs: []
+  artifacts:
+    paths:
+    - app/build/outputs/
+    - build/logs/
+
+validate_deployment:
+  stage: validate_deploy
+  script:
+    - source devenv && ci/run-if-not-release ./deploy_playstore.sh --dry-run
+  needs: []
+  only:
+    - master
+    - tags
+
+deploy_playstore:
+  stage: deploy
+  script:
+    - source devenv && ./deploy_playstore.sh
+  needs: ["validate_deployment", "compilePlay", "compileRelease", "compileTest", "lint", "test"]
+  only:
+    - tags
+  environment:
+    name: Play
+    url: https://play.google.com/store/apps/details?id=jww.app.hwnews

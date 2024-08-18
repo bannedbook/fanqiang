@@ -1,0 +1,19 @@
+# 2.6.18
+Agnieszka C (1):
+  * [2a4acaef] Updated Polish translation using Weblate
+
+H Tamás (2):
+  * [17053d16] Updated Hungarian translation using Weblate
+  * [aced2492] Translated using Weblate (Hungarian)
+
+Jonas Kalderstam (1):
+  * [c640f0c9] Added skip duplicates as option for feeds
+
+Kazushi Hayama (1):
+  * [abf942ea] Updated Japanese translation using Weblate
+
+Oğuz Ersen (1):
+  * [e9d7eee2] Updated Turkish translation using Weblate
+
+Scrambled777 (1):
+  * [386b3bc5] Updated Hindi translatio

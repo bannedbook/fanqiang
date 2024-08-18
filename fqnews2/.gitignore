@@ -1,0 +1,16 @@
+*.iml
+build
+.gradle
+.idea
+local.properties
+*.db
+*.substvars
+.pybuild
+*.debhelper
+captures
+creds.json
+report.xml
+app/creds.b64
+keystore.b64
+devenv.local
+keystore

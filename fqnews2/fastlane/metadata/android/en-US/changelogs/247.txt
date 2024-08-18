@@ -1,0 +1,21 @@
+# 2.2.5
+Agnieszka C (1):
+  * [59c9f5d9] Updated Polish translation using Weblate
+
+Andrij Mizyk (1):
+  * [c51289a7] Updated Ukrainian translation using Weblate
+
+ERYpTION (1):
+  * [bf971897] Updated Danish translation using Weblate
+
+El Pirujo (1):
+  * [2b5a0bc7] Updated Spanish translation using Weblate
+
+Eric (1):
+  * [c410021f] Updated Chinese (Simplified) translation using Weblate
+
+H Tamás (1):
+  * [3b2a72d9] Added Hungarian translation using Weblate
+
+J. Lavoie (1):
+  * [2161a18a] Updated Itali

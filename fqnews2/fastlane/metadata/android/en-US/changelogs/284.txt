@@ -1,0 +1,21 @@
+# 2.6.0
+Agnieszka C (1):
+  * [3ae0d2ab] Updated Polish translation using Weblate
+
+Dan (1):
+  * [c736b141] Updated Ukrainian translation using Weblate
+
+ERYpTION (1):
+  * [651c9ad5] Updated Danish translation using Weblate
+
+El Pirujo (1):
+  * [437f5af8] Updated Spanish translation using Weblate
+
+Eric (1):
+  * [a0d92681] Updated Chinese (Simplified) translation using Weblate
+
+Francesco Saltori (1):
+  * [9422a197] Updated Italian translation using Weblate
+
+Jonas Kalderstam (13):
+  * [1bbaa426] Chang

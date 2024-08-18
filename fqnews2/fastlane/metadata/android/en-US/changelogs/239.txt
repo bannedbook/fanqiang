@@ -1,0 +1,15 @@
+# 2.1.8
+Ben Beaver (2):
+  * [e0d24b91] Added Toki Pona translation using Weblate
+  * [5be9e915] Translated using Weblate (Toki Pona)
+
+ERYpTION (1):
+  * [72d5b3fb] Translated using Weblate (Danish)
+
+Jonas Kalderstam (2):
+  * [bc4c314c] Toki Pona is not supported by Play Store
+  * [5b46fa0a] Toki Pona not supported by Android
+
+Vitor Henrique (1):
+  * [bef7d13c] Updated Portuguese (Brazil) translation using Weblate
+

@@ -1,0 +1,19 @@
+<p>Feeder is een open-source nieuwslezer (RSS/Atom/JSONFeed) voor Android, gemaakt in 2014.</p>
+
+<p>Met Feeder kun je het laatste nieuws en berichten lezen van je favoriete websites.</p>
+
+<p>Feeder synchroniseert NIET met gebruikelijke externe back-ends, dus er is geen registratie van een account vereist.</p>
+
+<p>Feeder is gratis te gebruiken en draait lokaal op je apparaat. Je gegevens zijn 100% privé.</p>
+
+<p><b>Kenmerken</b></p>
+
+<ul>
+<li>HTML analyseren en weergeven in een oorspronkelijke tekstweergave</li>.
+<li>Offline lezen</li>
+<li>Achtergrond synchronisatie</li>
+<li>Meldingen</li>
+<li>OPML import/export</li>
+<li>Handige toegang tot ingesloten links</li>
+<li>Material Design</li>
+</ul>

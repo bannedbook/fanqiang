@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:georss="http://www.georss.org/georss">
+  <channel>
+    <title>OpenStreetMap diary entries</title>
+    <description>Recent diary entries from users of OpenStreetMap</description>
+    <link>https://www.openstreetmap.org/diary</link>
+    <image>
+      <url>https://www.openstreetmap.org/assets/mag_map-rss2.0-2973595662b8a92522b315b6c69bf5ee9bec75e07d702c5932f114c44a6251ea.png</url>
+      <title>OpenStreetMap diary entries</title>
+      <width>100</width>
+      <height>100</height>
+      <link>https://www.openstreetmap.org/diary</link>
+    </image>
+    <item>
+      <title>Begining of a mountain of a task</title>
+      <link>https://www.openstreetmap.org/user/0235/diary/396687</link>
+      <guid>https://www.openstreetmap.org/user/0235/diary/396687</guid>
+      <description>&lt;p&gt;So, Dear Diary, 2021-05-11&lt;/p&gt;
+
+        &lt;p&gt;I have decided to take on the task of tracing every building in the town where I live, population about 60,000. Currently the coverage of traced buildings are large retail, large industrial, or the hospital. Almost no houses are mapped, and most of the roads are bare minimum information with no cycleway or footway information.&lt;/p&gt;
+
+        &lt;p&gt;This comes after my previous task, as I have just finished basic tracing and labelling of the local amusement park, which was almost barren (and due to the “roller coaster track” tag not rendering, it still look barren!).&lt;/p&gt;
+
+        &lt;p&gt;I do plan on trying to get out a bit and visit some of the places, however the area is very sketchy. Since living here there have been a few drive by shootings, and many places are know as “The Stablands” with how much knife crime goes on…. I feel I will get chased out of some areas for wearing a surveying Hi-Vis, and arrested by the police if I don’t wear one!&lt;/p&gt;
+
+        &lt;p&gt;I am massively impressed so far with the depth of the Wiki, the ease of use of the ID editor, the wide toolset JOSM has to offer, and the incredibly smooth function of StreetComplete (Quite how it hasn’t had 1mil+ downloads is beyond me!)&lt;/p&gt;
+
+        &lt;p&gt;For now, the Armchair awaits, though mapping some of the clearly inaccurate foot “trails” around the area could be a nice break, and lower the risk of a shankin’&lt;/p&gt;
+      </description>
+      <dc:creator>0235</dc:creator>
+      <pubDate>Tue, 11 May 2021 22:03:30 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/0235/diary/396687#comments</comments>
+      <geo:lat>52.3993553385688</geo:lat>
+      <geo:long>-0.728080272674561</geo:long>
+      <georss:point>52.3993553385688 -0.728080272674561</georss:point>
+    </item>
+    <item>
+      <title>Data Working Group supports vandalism and deletion of data in the project.</title>
+      <link>https://www.openstreetmap.org/user/Sowa1980/diary/396680</link>
+      <guid>https://www.openstreetmap.org/user/Sowa1980/diary/396680</guid>
+      <description>&lt;h2 id="data-working-group---------mavl---------------anakinnn---------------------3---------10-----------"&gt;Data Working Group поддерживает вандализм и удаление актуальных данных в проекте, mavl один из участников рабочей группы поддерживает активно вандализм в проекте, а в частности участника AnakinNN массовые вандальные действия данного участника и его “достойный вклад” (ссылки ниже) из-за которого мне был выставлен бан сначала на 3 дня, а после без объяснений причин продлен на 10 лет, за то что я не позволял данному участнику удалять данные.&lt;/h2&gt;
+        &lt;p&gt;Браво Data Working Group даже не дала пояснений о моей блокировки.
+        Ну как я и писал mavl = царь, не должен давать объяснений. Холопы этого не заслуживают.
+        Блокировка участников с миллионными вкладами в проект выглядит с его точке зрения нормально, но не один вандал и не один участник не получил блокировку даже за использование и внесение чужих данных в проект, яркий пример тому участник &lt;a href="https://www.openstreetmap.org/user/Nimfea" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/user/Nimfea&lt;/a&gt;, вносивший данные из 2GIS и массово удалял существующие данные.&lt;/p&gt;
+
+        &lt;p&gt;Напоминаю как усердно данный участник пытался тут показать его достойный вклад читайте комментарии. &lt;a href="https://www.openstreetmap.org/user/Sowa1980/diary/396347" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/user/Sowa1980/diary/396347&lt;/a&gt;&lt;/p&gt;
+
+        &lt;p&gt;&lt;a href="https://www.openstreetmap.org/changeset/102932042" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/changeset/102932042&lt;/a&gt; - массовое удаление дорожного инфраструктуры, в частности отношений и бордюров.&lt;/p&gt;
+
+        &lt;p&gt;&lt;a href="https://www.openstreetmap.org/changeset/102869641" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/changeset/102869641&lt;/a&gt; - удаления памятника танка Мультти полигона плюс флагштоков. достойный подарок от данного участника нашим ветеранам ВОВ.&lt;/p&gt;
+
+        &lt;p&gt;&lt;a href="https://www.openstreetmap.org/changeset/102942351" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/changeset/102942351&lt;/a&gt; - удаление кодов междугородней связи.&lt;/p&gt;
+
+        &lt;p&gt;&lt;a href="https://www.openstreetmap.org/changeset/102941820" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/changeset/102941820&lt;/a&gt; - удаление контактной информации&lt;/p&gt;
+
+        &lt;p&gt;&lt;a href="https://www.openstreetmap.org/changeset/102941178" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/changeset/102941178&lt;/a&gt; - удаление информации о подстанции.&lt;/p&gt;
+
+        &lt;p&gt;&lt;a href="https://www.openstreetmap.org/changeset/102941049" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/changeset/102941049&lt;/a&gt; - удаление контактной информации&lt;/p&gt;
+
+        &lt;p&gt;&lt;a href="https://www.openstreetmap.org/changeset/102939485" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/changeset/102939485&lt;/a&gt; - удаление емел адреса и названия.&lt;/p&gt;
+
+        &lt;p&gt;&lt;a href="https://www.openstreetmap.org/changeset/102941979" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/changeset/102941979&lt;/a&gt; - удаление тегов. входов.&lt;/p&gt;
+
+        &lt;p&gt;&lt;a href="https://www.openstreetmap.org/changeset/102752077" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/changeset/102752077&lt;/a&gt; - удаление контактной информации и прочее
+        &lt;a href="https://www.openstreetmap.org/changeset/102752647" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/changeset/102752647&lt;/a&gt; - удаление контактной информации&lt;/p&gt;
+
+        &lt;p&gt;&lt;a href="https://www.openstreetmap.org/changeset/102939976" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/changeset/102939976&lt;/a&gt; - удаление  мультиполигонов и т.д.&lt;/p&gt;
+
+      </description>
+      <dc:creator>Sowa1980</dc:creator>
+      <pubDate>Tue, 11 May 2021 09:07:14 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/Sowa1980/diary/396680#comments</comments>
+    </item>
+    <item>
+      <title>ปักหมุด</title>
+      <link>https://www.openstreetmap.org/user/Pimnapa/diary/396677</link>
+      <guid>https://www.openstreetmap.org/user/Pimnapa/diary/396677</guid>
+      <description>&lt;p&gt;ปักๆๆๆๆ&lt;/p&gt;
+      </description>
+      <dc:creator>Pimnapa</dc:creator>
+      <pubDate>Mon, 10 May 2021 21:30:43 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/Pimnapa/diary/396677#comments</comments>
+      <geo:lat>13.663276</geo:lat>
+      <geo:long>102.547489</geo:long>
+      <georss:point>13.663276 102.547489</georss:point>
+    </item>
+    <item>
+      <title>Klášterec nad Ohří má špatně zakreslené plochy</title>
+      <link>https://www.openstreetmap.org/user/AF%20HAF%20KARTOGRAF/diary/396674</link>
+      <guid>https://www.openstreetmap.org/user/AF%20HAF%20KARTOGRAF/diary/396674</guid>
+      <description>&lt;p&gt;Teď jsem aktuálně v úpravách v Klášterci nad Ohří a jsou tam špatně popsané plochy mimo budov, že je to už práce nad moje síly. Žádám všechny kdo by je chtěl opravit ať do dá do pořádku. Plochy zahrada by měly být slučovány s budovy a všechny další oblasti venkovních ploch které nemají zahrnovat budovy a jiné prvky.&lt;/p&gt;
+      </description>
+      <dc:creator>AF HAF KARTOGRAF</dc:creator>
+      <pubDate>Mon, 10 May 2021 18:01:05 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/AF%20HAF%20KARTOGRAF/diary/396674#comments</comments>
+      <geo:lat>50.3887664603262</geo:lat>
+      <geo:long>13.1954920291901</geo:long>
+      <georss:point>50.3887664603262 13.1954920291901</georss:point>
+    </item>
+    <item>
+      <title>What a mess!!</title>
+      <link>https://www.openstreetmap.org/user/CartoCrazy/diary/396668</link>
+      <guid>https://www.openstreetmap.org/user/CartoCrazy/diary/396668</guid>
+      <description>&lt;p&gt;Re.: (&lt;a href="https://www.openstreetmap.org/edit#map=16/34.9460/-111.6368" rel="nofollow noopener noreferrer"&gt;https://www.openstreetmap.org/edit#map=16/34.9460/-111.6368&lt;/a&gt;)&lt;/p&gt;
+
+        &lt;p&gt;I feel that the area in and around Munds Park, AZ has been very terribly rendered, most especially on the roads (for example, instead of showing smooth curves where they exist on the ground, they appear as jagged angles, or they do not follow the actually road path), and this is most obvious when zooming in&lt;/p&gt;
+
+        &lt;p&gt;It is things like this that very greatly annoy me about OpenStreetMap, as it seems like someone did not wish to take the time to do the job right the first time, and now another user will have to make the adjustments and corrections to clean up the mess left behind.&lt;/p&gt;
+
+        &lt;p&gt;I don’t know if anyone else feels the way that I do, but I just wanted to express my opinion on what could have otherwise been done properly  I apologize if I am stepping on feet on this one… just trying to make OpenStreetMap a beautiful project for all to use.&lt;/p&gt;
+      </description>
+      <dc:creator>CartoCrazy</dc:creator>
+      <pubDate>Mon, 10 May 2021 02:30:13 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/CartoCrazy/diary/396668#comments</comments>
+    </item>
+    <item>
+      <title>quán nét khanh ok</title>
+      <link>https://www.openstreetmap.org/user/Tr%E1%BA%A7n%20Ho%C3%A0ng%20Th%C3%A1i/diary/396667</link>
+      <guid>https://www.openstreetmap.org/user/Tr%E1%BA%A7n%20Ho%C3%A0ng%20Th%C3%A1i/diary/396667</guid>
+      <description>&lt;p&gt;khang nguyen&lt;/p&gt;
+      </description>
+      <dc:creator>Trần Hoàng Thái</dc:creator>
+      <pubDate>Sun, 09 May 2021 20:15:45 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/Tr%E1%BA%A7n%20Ho%C3%A0ng%20Th%C3%A1i/diary/396667#comments</comments>
+      <geo:lat>12.6510581337035</geo:lat>
+      <geo:long>108.00904199481</geo:long>
+      <georss:point>12.6510581337035 108.00904199481</georss:point>
+    </item>
+    <item>
+      <title>Super Market</title>
+      <link>https://www.openstreetmap.org/user/pymgsm/diary/396665</link>
+      <guid>https://www.openstreetmap.org/user/pymgsm/diary/396665</guid>
+      <description>&lt;p&gt;افق کوروش سجادیه تبریز&lt;/p&gt;
+      </description>
+      <dc:creator>pymgsm</dc:creator>
+      <pubDate>Sun, 09 May 2021 18:45:21 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/pymgsm/diary/396665#comments</comments>
+      <geo:lat>38.0508749241235</geo:lat>
+      <geo:long>46.3140785694122</geo:long>
+      <georss:point>38.0508749241235 46.3140785694122</georss:point>
+    </item>
+    <item>
+      <title>不懂就问</title>
+      <link>https://www.openstreetmap.org/user/Brian@Stone/diary/396662</link>
+      <guid>https://www.openstreetmap.org/user/Brian@Stone/diary/396662</guid>
+      <description>&lt;p&gt;日记到底是干嘛使的？谁能告诉我&lt;/p&gt;
+      </description>
+      <dc:creator>Brian@Stone</dc:creator>
+      <pubDate>Sun, 09 May 2021 14:22:51 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/Brian@Stone/diary/396662#comments</comments>
+      <geo:lat>39.9301261961833</geo:lat>
+      <geo:long>116.310356855392</geo:long>
+      <georss:point>39.9301261961833 116.310356855392</georss:point>
+    </item>
+    <item>
+      <title>Granting permission regarding Kira Maps</title>
+      <link>https://www.openstreetmap.org/user/testooools/diary/396661</link>
+      <guid>https://www.openstreetmap.org/user/testooools/diary/396661</guid>
+      <description>&lt;h2 id="kira"&gt;Kira:&lt;/h2&gt;
+        &lt;p&gt;Dear testooools (Mapper),
+        Regarding the Open-Street-Map Request, Congratulations! we have approved the usage on your behalf using our APIs only for open source usage, Can’t be used for commercial use or any kind of using else open-source projects Specifically Open-Street-Map.&lt;/p&gt;
+
+        &lt;p&gt;Kira Team have the right to revoke your key at any time, But what have been used still valid and approved by us forever and ever, Thank you for contacting us! have a great day&lt;/p&gt;
+
+        &lt;p&gt;Best Regards.
+        Kira Team.&lt;/p&gt;
+
+        &lt;h2 id="me"&gt;Me:&lt;/h2&gt;
+        &lt;p&gt;Hello, I have contacted open street map members and they said the license can’t be used because the osm data is used by everyone even for commercial use!
+        So if I integrated Kira data on top of open street maps some commercial companies will use this as it is open source to everyone.
+        Please can you explain if that’s a case considered in my permission or not and how?&lt;/p&gt;
+
+        &lt;h2 id="kira-1"&gt;Kira:&lt;/h2&gt;
+        &lt;p&gt;Hello, again testooools!
+        Your concerns are in their place
+        Actually, we are more than happy to confirm that:
+        You can use your key for open street maps directly any effect follow this action will be (valid and approved by us forever and ever) as I mentioned earlier
+        Open street maps are open source you can use our data on it and no worries about any outsider use.
+        I’m sorry for not clarifying this earlier.&lt;/p&gt;
+
+        &lt;p&gt;Thank you for contacting us! have a great day&lt;/p&gt;
+
+        &lt;p&gt;Best Regards.
+        Kira Team.&lt;/p&gt;
+
+        &lt;p&gt;&lt;img src="https://i.ibb.co/4RQR6py/Screen-Shot-2021-05-10-at-9-36-22-PM.png" alt="Permission"&gt;&lt;/p&gt;
+      </description>
+      <dc:creator>testooools</dc:creator>
+      <pubDate>Sun, 09 May 2021 09:39:26 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/testooools/diary/396661#comments</comments>
+    </item>
+    <item>
+      <title>هیات والیبال استان اردبیل</title>
+      <link>https://www.openstreetmap.org/user/hamedjahandideh18509/diary/396659</link>
+      <guid>https://www.openstreetmap.org/user/hamedjahandideh18509/diary/396659</guid>
+      <description>&lt;p&gt;هیات والیبال استان اردبیل&lt;/p&gt;
+      </description>
+      <dc:creator>hamedjahandideh18509</dc:creator>
+      <pubDate>Sun, 09 May 2021 07:16:23 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/hamedjahandideh18509/diary/396659#comments</comments>
+      <geo:lat>38.2374295989212</geo:lat>
+      <geo:long>48.2860915520587</geo:long>
+      <georss:point>38.2374295989212 48.2860915520587</georss:point>
+    </item>
+    <item>
+      <title>Viel hat sich getan!</title>
+      <link>https://www.openstreetmap.org/user/RanJenner/diary/396658</link>
+      <guid>https://www.openstreetmap.org/user/RanJenner/diary/396658</guid>
+      <description>&lt;p&gt;Dank des Feedbacks der sehr aufmerksamen und lieben Community hier, habe ich nun einige Veränderungen an meiner umap zum Thema Bürgerentscheide in Bayern vorgenommen. Zuletzt hatte ich noch eine Gliederung nach erfolgreichem BE. Diese habe ich jedoch fürs Erste verworfen und mich auf die thematische Gliederung konzentriert. Diese gefällt mir deutlich besser!
+        Ich bin auch schon recht fleißig dabei, BEs einzutragen. Habe jetzt die Jahre 2021 (bisher), 2020 und 2019 eingetragen. Hier ist die Karte zu finden: (&lt;a href="https://umap.openstreetmap.de/de/map/burgerentscheide-in-bayern_11914#7/49.137/11.536" rel="nofollow noopener noreferrer"&gt;https://umap.openstreetmap.de/de/map/burgerentscheide-in-bayern_11914#7/49.137/11.536&lt;/a&gt;)
+        Darüber hinaus habe ich die Karte nun in die Website meines Vereins mit integriert und sie mit einem “Bürgerentscheids-Ticker” für anstehende BEs in Bayern eingebunden: (&lt;a href="https://bayern.mehr-demokratie.de/buergerbegehren/buergerentscheids-ticker/" rel="nofollow noopener noreferrer"&gt;https://bayern.mehr-demokratie.de/buergerbegehren/buergerentscheids-ticker/&lt;/a&gt;)&lt;/p&gt;
+
+        &lt;p&gt;Wie bereits gesagt, mir gefällt die neue thematische Gliederung der BEs in meiner Karte schon sehr gut. Nur würde ich mir wünschen, dass ein Pin (also ein BE) mehreren Ebenen zugerechnet werden könnte. Also als Beispiel würde ich gerne den BE “Für einen hauptamtlichen Bürgermeister” nicht nur der Ebene “Satzungsplan” sondern auch einer extra-Ebene “2019” hinzufügen. Geht so etwas?&lt;/p&gt;
+
+        &lt;p&gt;LG
+        Jan&lt;/p&gt;
+
+      </description>
+      <dc:creator>RanJenner</dc:creator>
+      <pubDate>Sat, 08 May 2021 14:32:00 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/RanJenner/diary/396658#comments</comments>
+    </item>
+    <item>
+      <title>Akhila</title>
+      <link>https://www.openstreetmap.org/user/MD%20OALIUR%20RAHMAN/diary/396656</link>
+      <guid>https://www.openstreetmap.org/user/MD%20OALIUR%20RAHMAN/diary/396656</guid>
+      <description>&lt;p&gt;Akhila, Nachole, Chapainawabganj&lt;/p&gt;
+      </description>
+      <dc:creator>MD OALIUR RAHMAN</dc:creator>
+      <pubDate>Sat, 08 May 2021 09:18:34 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/MD%20OALIUR%20RAHMAN/diary/396656#comments</comments>
+      <geo:lat>24.7665</geo:lat>
+      <geo:long>88.3925</geo:long>
+      <georss:point>24.7665 88.3925</georss:point>
+    </item>
+    <item>
+      <title>الشخصيه</title>
+      <link>https://www.openstreetmap.org/user/tamimKSA/diary/396655</link>
+      <guid>https://www.openstreetmap.org/user/tamimKSA/diary/396655</guid>
+      <description>&lt;p&gt;الضوء يتفوق في سرعة وصوله وإنتشاره.. وكذلك الأهداف النبيلة النقية التي لم تدنسها المصلحة الشخصية&lt;/p&gt;
+      </description>
+      <dc:creator>tamimKSA</dc:creator>
+      <pubDate>Sat, 08 May 2021 05:14:49 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/tamimKSA/diary/396655#comments</comments>
+      <geo:lat>18.2954297312046</geo:lat>
+      <geo:long>42.7615432720631</geo:long>
+      <georss:point>18.2954297312046 42.7615432720631</georss:point>
+    </item>
+    <item>
+      <title>رمضان كريم</title>
+      <link>https://www.openstreetmap.org/user/tamimKSA/diary/396654</link>
+      <guid>https://www.openstreetmap.org/user/tamimKSA/diary/396654</guid>
+      <description>&lt;p&gt;كل عام وانتم بخير بمناسبه رمضان المبارك اعاده الله علينا وعليكم بالخير واليمن والبركات&lt;/p&gt;
+      </description>
+      <dc:creator>tamimKSA</dc:creator>
+      <pubDate>Sat, 08 May 2021 04:51:30 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/tamimKSA/diary/396654#comments</comments>
+    </item>
+    <item>
+      <title>Addition of forest Roads in Abau District,Central Province,PNG</title>
+      <link>https://www.openstreetmap.org/user/Nicxon%20Piaso/diary/396653</link>
+      <guid>https://www.openstreetmap.org/user/Nicxon%20Piaso/diary/396653</guid>
+      <description>&lt;p&gt;For quite sometime,I have edited some road networks around the Rigo District and Abau especially in Kupiano and Moreguina Rubber plantation as well as Babauguina Rubber Plantation. I can recall of a Survey field party that we did in 2015 regarding the setup of GPS for control station coordination using TOPCON HiPER system for aero-triangulation.&lt;/p&gt;
+
+        &lt;p&gt;Those road were full of dirt and often times we complained of the wild experience along the Magi Highway en-route to Abau District. We were preparing the way for LiDAR(Light Detection and Ranging) work to be undertaken by FUGRO Geospatial for Australia.
+        Visiting these thick vegetated areas some times inhospitable made Surveyor work really tough. Hu ah!! we did it..When I map these features in OSM, it brings back vivid memories of my travel in the “Land of the Unexpected”,Papua New Guinea&lt;/p&gt;
+      </description>
+      <dc:creator>Nicxon Piaso</dc:creator>
+      <pubDate>Sat, 08 May 2021 02:34:26 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/Nicxon%20Piaso/diary/396653#comments</comments>
+      <geo:lat>-10.017241</geo:lat>
+      <geo:long>148.474753</geo:long>
+      <georss:point>-10.017241 148.474753</georss:point>
+    </item>
+    <item>
+      <title>Updates of features at Rigo and Abau District,Central Province</title>
+      <link>https://www.openstreetmap.org/user/Nicxon%20Piaso/diary/396652</link>
+      <guid>https://www.openstreetmap.org/user/Nicxon%20Piaso/diary/396652</guid>
+      <description>&lt;p&gt;Seeing a lot of features especially structures and roads)(esp logging roads) are not mapped an I have appended them form the Maxar imagery.
+        Once these roads networks are mapped ,we can track where illegal logging sites are in Papua New Guinea.
+        Those Mappers who are in PNG using OSM, please do assist as there are a lot of roads built into thick vegetation of the lowlands and they are not identifiable in Goggle Maps but through OSM we can map these linear infrastructures out.&lt;/p&gt;
+      </description>
+      <dc:creator>Nicxon Piaso</dc:creator>
+      <pubDate>Sat, 08 May 2021 01:48:16 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/Nicxon%20Piaso/diary/396652#comments</comments>
+    </item>
+    <item>
+      <title>Is lockdown driving mass POI additions from GMaps by fly-by-night users?</title>
+      <link>https://www.openstreetmap.org/user/TagaSanPedroAko/diary/396651</link>
+      <guid>https://www.openstreetmap.org/user/TagaSanPedroAko/diary/396651</guid>
+      <description>&lt;p&gt;Last January, I’ve just came upon several newbie users in the Philippines who have accumulated over a thousand edits within a few days, adding a thousand POIs, which I discovered by comparing coverage, are more or less copyright violations from Google Maps (with some POIs being at completely odd spots, someting usual with GMaps in some places). I’ve been able to clean up a bunch of their edits, particularly those from a user named &lt;a href="https://www.openstreetmap.org/user/JPBaje" rel="nofollow noopener noreferrer"&gt;JP Baje&lt;/a&gt; and another working for a new ride-hail service in the Philippines,  and asked the user about their source, but they never replied, and with their activity continuing unabated despite concerns from other fellow mappers back home, I have asked the DWG to have one of them blocked until they have read a message from the DWG addressing concerns. The other one hasn’t been blocked, and has stopped editing, but I’m trying to clean up their edits within my favourite locations while I’m trying to focus with mapping in Canada.&lt;/p&gt;
+
+        &lt;p&gt;I have no idea why these fly-by-night editors would spring out here with the sole purpose of filling areas of several cities with POIs without providing their source, adding them one by one that make it hard to revert them in one huge sweep and disappearing later when the damage is done, but I think long and strict lockdowns (such as those in the Philippines) are driving this kind of mapping because in such situation, you can’t just go out of home – even within your neighbourhood – without having to present some form of travel authorization from the local government, or you’re a member of a demographic that is likely to get infected with COVID-19 (which in the Philippines, includes those under 14, above 60, or having a serious health condition as of the May 2021 quarantine restrictions) and I assume these users involved are unlikely to have been in those locations, before or during the mass quarantines. Any thoughts?&lt;/p&gt;
+      </description>
+      <dc:creator>TagaSanPedroAko</dc:creator>
+      <pubDate>Sat, 08 May 2021 01:28:06 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/TagaSanPedroAko/diary/396651#comments</comments>
+    </item>
+    <item>
+      <title>New Calming Traffic Island</title>
+      <link>https://www.openstreetmap.org/user/Bill%20Ricker/diary/396649</link>
+      <guid>https://www.openstreetmap.org/user/Bill%20Ricker/diary/396649</guid>
+      <description>&lt;p&gt;I saw a new traffic calming traffic island announced on &lt;a href="https://twitter.com/CaughtDot/status/1390380709693566979" rel="nofollow noopener noreferrer"&gt;Twitter&lt;/a&gt; so i took a small detour and &lt;a href="https://www.openstreetmap.org/changeset/104345669#map=16/42.2941/-71.0757" rel="nofollow noopener noreferrer"&gt;added&lt;/a&gt; it. I think i’ll add a Note to review it when new imagery is available.&lt;/p&gt;
+
+        &lt;p&gt;The neighborhood has a number of other traffic calming measures, speed humps and new lower “Neighborhood”  20mph speed limit. Nice. I didn’t survey or change all the reduced streets, just the ones i drove.&lt;/p&gt;
+      </description>
+      <dc:creator>Bill Ricker</dc:creator>
+      <pubDate>Sat, 08 May 2021 00:48:41 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/Bill%20Ricker/diary/396649#comments</comments>
+      <geo:lat>42.290468</geo:lat>
+      <geo:long>-71.0739711</geo:long>
+      <georss:point>42.290468 -71.0739711</georss:point>
+    </item>
+    <item>
+      <title>Potres i torrenti</title>
+      <link>https://www.openstreetmap.org/user/Matija%20Nalis/diary/396648</link>
+      <guid>https://www.openstreetmap.org/user/Matija%20Nalis/diary/396648</guid>
+      <description>&lt;p&gt;Nakon velikog početnog entuzijazma oko mapiranja &lt;a href="https://osm-hr.org/2021/01/31/ostecenja-od-potresa-oton/" rel="nofollow noopener noreferrer"&gt;područja oštećenih potresom&lt;/a&gt;, uglavnom smo posustali…&lt;/p&gt;
+
+        &lt;p&gt;Tako da za pauzu pokušavam dobiti da OSM prihvati &lt;a href="https://github.com/openstreetmap/chef/issues/373" rel="nofollow noopener noreferrer"&gt;RSS za .torrent&lt;/a&gt; za skidanje Planet OSM datoteka, kako bi se smanjilo opterećenje na download web servere, koji su trenutno ograničeni na 4096 KB/s zbog preopterećenja. Tako da slobodno lajkajte taj github issue :-)&lt;/p&gt;
+      </description>
+      <dc:creator>Matija Nalis</dc:creator>
+      <pubDate>Fri, 07 May 2021 15:03:43 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/Matija%20Nalis/diary/396648#comments</comments>
+    </item>
+    <item>
+      <title>Call for Surveyors and Cartographers in Papua New Guinea(PNG)</title>
+      <link>https://www.openstreetmap.org/user/Nicxon%20Piaso/diary/396645</link>
+      <guid>https://www.openstreetmap.org/user/Nicxon%20Piaso/diary/396645</guid>
+      <description>&lt;p&gt;Hi friends, Surveyors and Cartographers,&lt;/p&gt;
+
+        &lt;p&gt;If you are in Papua New guinea, we still need most parts of Papua New Guinea almost in all 21 provinces where most parts are unmapped.&lt;/p&gt;
+
+        &lt;p&gt;Please wherever you are, do contribute to OSM(OpenStreetMap) and have your place mapped out. It is free of charge and all you have to do is register an account and contribute your map editing there. You can hone your basic cartographic skills there.&lt;/p&gt;
+      </description>
+      <dc:creator>Nicxon Piaso</dc:creator>
+      <pubDate>Fri, 07 May 2021 06:06:57 +0000</pubDate>
+      <comments>https://www.openstreetmap.org/user/Nicxon%20Piaso/diary/396645#comments</comments>
+    </item>
+  </channel>
+</rss>

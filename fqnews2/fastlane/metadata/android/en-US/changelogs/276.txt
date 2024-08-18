@@ -1,0 +1,14 @@
+# 2.4.14
+Jonas Kalderstam (4):
+  * [9251378d] Added TW title
+  * [f6bd778e] Updated UserAgent to explain what the app is for server
+         owners
+  * [d13def0e] Fixed crash when searching for strange URLs
+  * [63c0da7a] Fixed rare crash in reader
+
+Subham Jena (1):
+  * [5e89dfc2] Updated Odia translation using Weblate
+
+yangyangdaji (1):
+  * [f86db9ca] Translated using Weblate (Chinese (Traditional))
+

@@ -1,0 +1,21 @@
+# 2.6.16
+Jonas Kalderstam (1):
+  * [78919404] Added ability to export saved articles
+
+Adam Jermstad (1):
+  * [95d1979a] Update README screenshot references
+
+Agnieszka C (1):
+  * [832cfce5] Updated Polish translation using Weblate
+
+Eduardo (1):
+  * [9067ff5d] Updated Portuguese (Brazil) translation using Weblate
+
+Matth78 (1):
+  * [dd821aad] Updated French translation using Weblate
+
+Mattia (1):
+  * [e32b060d] Updated Italian translation using Weblate
+
+Oğuz Ersen (1):
+  * [4976c3ee] Updated Turkis

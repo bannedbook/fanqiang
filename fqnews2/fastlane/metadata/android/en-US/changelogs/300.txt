@@ -1,0 +1,17 @@
+# 2.6.15
+Agnieszka C (1):
+  * [d8d3b6e0] Updated Polish translation using Weblate
+
+ERYpTION (1):
+  * [9409eb87] Updated Danish translation using Weblate
+
+Jonas Kalderstam (5):
+  * [a2465ad4] Added Galician language component
+  * [d31d028d] Removed decorative icons from TalkBack
+  * [475abdc5] Added invisible close menu buttons for TalkBack to all
+         dropdown menus
+  * [d5a7234e] Added LeakCanary to debug builds
+  * [3f9d0507] Testing not deleting galician language
+
+Matth78 (1):
+  * [06d961

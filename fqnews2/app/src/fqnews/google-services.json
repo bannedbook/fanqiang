@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "732014214742",
+    "firebase_url": "https://jww-feed-fqnews.firebaseio.com",
+    "project_id": "jww-feed-fqnews",
+    "storage_bucket": "jww-feed-fqnews.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732014214742:android:7908d4ebbfe3de7e08c5f7",
+        "android_client_info": {
+          "package_name": "jww.feed.fqnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732014214742-736up15g8jd5lv4om5e0ntj3hc99r2qe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCqcKJOQN0zzBr0dbmmp3FfWL0BZqjVVo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732014214742-736up15g8jd5lv4om5e0ntj3hc99r2qe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,14 @@
+# 1.10.1
+Jonas Kalderstam (2):
+  * [b9b3bd76] Reworded tooltip to reduce confusion
+  * [a4d8dd3b] Increased synchronization speed
+
+Khar Khamal (2):
+  * [756cb108] Update strings.xml for Spanish language
+  * [ffff95dd] Update strings.xml for Spanish language
+
+aevw (1):
+  * [1fd20db4] Updated Portuguese translation
+
+linsui (1):
+  * [19b64a13] Update Simplified Chinese translation

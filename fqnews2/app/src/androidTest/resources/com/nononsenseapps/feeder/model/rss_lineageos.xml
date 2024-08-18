@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-02-25T04:13:58+00:00</updated><id>//</id><title type="html">LineageOS</title><subtitle>LineageOS Android Distribution</subtitle><entry><title type="html">Changelog 16 - Smart Styles, Treble is trouble and Omfg Oreo</title><link href="/Changelog-16/" rel="alternate" type="text/html" title="Changelog 16 - Smart Styles, Treble is trouble and Omfg Oreo" /><published>2018-02-25T00:00:00+00:00</published><updated>2018-02-25T00:00:00+00:00</updated><id>/Changelog-16</id><content type="html" xml:base="/Changelog-16/">&lt;p&gt;&lt;img src=&quot;/images/2018-02-25/lineageos-15.1-hero.png&quot; alt=&quot;hero adaptive-icons image&quot; class=&quot;blog_post_image_full&quot; /&gt;&lt;/p&gt;
+
+  &lt;h2 id=&quot;hello-lineageos-151&quot;&gt;Hello LineageOS-15.1&lt;/h2&gt;
+
+  &lt;p&gt;We’ve been working hard these months to get this new version available; the changes that were
+  done in upstream (AOSP) are huge: Project Treble changed the way hardware is managed in Android,
+  so all the OEM-abandoned platforms that are supported by Lineage had to be adapted for the new platform.
+  Moreover, we’ve taken the time to make the code future-proof by converting a lot of our hardware-related
+  code to make use of the new Treble capabilities: things such as LiveDisplay and lights (leds) control
+  are now up to date with the new Android standards, so we’re going to have an easier time
+  forward-porting stuff whenever a new Android version comes out.&lt;/p&gt;
+
+  &lt;p&gt;We’ve not spent all the time just forward-porting 14.1 features: the whole platform code
+  has been cleaned up: all the unused and deprecated bits have been removed and the rebrand process has been
+  completed.&lt;/p&gt;
+
+  &lt;p&gt;We’re also introducing some new features that were highly requested
+  in the &lt;a href=&quot;/Summer-Survey/&quot;&gt;Summer Survey&lt;/a&gt; we held last summer, and a few are featured below:&lt;/p&gt;
+
+  &lt;h4 id=&quot;styles&quot;&gt;Styles&lt;/h4&gt;
+
+  &lt;p&gt;You can now style some aspects of your device by selecting a custom accent color and by choosing between a light or dark interface.
+  A really cool feature we’ve added to this is the (optional) integration with LiveDisplay: during the day the device will have a light theme, and at night some of the interface elements will turn dark, so it’s easier on the eyes.
+  What if this isn’t enough? What if you want your device style to match your wallpaper colors? &lt;em&gt;Automagic&lt;/em&gt; will propose you the best colors combination based on your current wallpaper.
+  While this is not a full theming replacement, we hope to satisfy users that requested simple theming capabilities.&lt;/p&gt;
+
+  &lt;h4 id=&quot;new-trebuchet-launcher&quot;&gt;New Trebuchet launcher&lt;/h4&gt;
+
+  &lt;p&gt;Our homegrown launcher has been rewritten to make it more up to date with Android standards. Some redundant features have been removed and new ones, such as icon packs support, have been added.
+  All our apps have received a new adaptive icon too, thanks to the feedback you provided in the Summer Survey (you can see a sneak peak of them above).
+  Moreover, Trebuchet will allow you to choose the icon shape that suits your liking from circle, super ellipse, squircle and teardrop.&lt;/p&gt;
+
+  &lt;h4 id=&quot;qr-support-in-snap-camera&quot;&gt;QR support in Snap camera&lt;/h4&gt;
+
+  &lt;p&gt;There’s now a QR reader mode in our camera app, which supports QR-encoded URLs, plain text, SMS, email addresses, contacts cards, events, phone numbers and location coordinates.&lt;/p&gt;
+
+  &lt;h3 id=&quot;upgrading-to-151&quot;&gt;Upgrading to 15.1&lt;/h3&gt;
+
+  &lt;p&gt;We’re starting our 15.1 builds with some devices (listed below), with others migrating to 15.1 sooner or later. Note that several older devices are unable to receive official builds at this time due to the lack of support for working HAL1 camera recorder, which was broken by the treble changes, but don’t worry - we’re working on it.&lt;/p&gt;
+
+  &lt;h4 id=&quot;from-official-lineageos-141&quot;&gt;From official LineageOS 14.1&lt;/h4&gt;
+
+  &lt;ol&gt;
+  &lt;li&gt;(Optional) Make a backup of your important data&lt;/li&gt;
+  &lt;li&gt;Download the build either from &lt;a href=&quot;https://download.lineageos.org&quot;&gt;download portal&lt;/a&gt; or built in updater app
+  &lt;ul&gt;
+  &lt;li&gt;You can export the downloaded package to the sdcard from the Updater app by long-pressing it and then selecting &lt;em&gt;“Export”&lt;/em&gt; on the top menu&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Download proper addons packages (&lt;a href=&quot;https://wiki.lineageos.org/gapps.html&quot;&gt;GApps&lt;/a&gt;, &lt;a href=&quot;https://download.lineageos.org/extras&quot;&gt;su&lt;/a&gt;…) for Oreo 8.1 (8.0 packages are not compatible).&lt;/li&gt;
+  &lt;li&gt;Make sure your recovery and firmware are up to date&lt;/li&gt;
+  &lt;li&gt;Boot into recovery mode&lt;/li&gt;
+  &lt;li&gt;Format your system partition&lt;/li&gt;
+  &lt;li&gt;Install the LineageOS 15.1 build, then install all your addons &lt;em&gt;WITHOUT&lt;/em&gt; rebooting&lt;/li&gt;
+  &lt;li&gt;When you’re done, reboot the device.&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;p&gt;Note that:&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;Wiping data is &lt;em&gt;not&lt;/em&gt; needed when upgrading from an official build&lt;/li&gt;
+  &lt;li&gt;While you’ll be able to download the update from the updater app, you won’t be allowed to install a 15.1 build on the top of a 14.1 one automatically&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h4 id=&quot;from-anything-else-including-unofficial-lineageos-builds&quot;&gt;From anything else (including unofficial LineageOS builds)&lt;/h4&gt;
+
+  &lt;ol&gt;
+  &lt;li&gt;(Optional) Make a backup of your important data&lt;/li&gt;
+  &lt;li&gt;Download the build from &lt;a href=&quot;https://download.lineageos.org&quot;&gt;download portal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Download proper addons packages (&lt;a href=&quot;https://wiki.lineageos.org/gapps.html&quot;&gt;GApps&lt;/a&gt;, &lt;a href=&quot;https://download.lineageos.org/extras&quot;&gt;su&lt;/a&gt;…) for Oreo 8.1 (8.0 packages are not compatible)&lt;/li&gt;
+  &lt;li&gt;Make sure your recovery and firmware are up to date&lt;/li&gt;
+  &lt;li&gt;Boot into recovery mode and wipe data&lt;/li&gt;
+  &lt;li&gt;Install the LineageOS 15.1 build, then install all your addons without rebooting&lt;/li&gt;
+  &lt;li&gt;When you’re done, reboot the device&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;p&gt;Note that wipe data is &lt;em&gt;always&lt;/em&gt; needed when coming from something that’s not an official build, regardless of the Android version&lt;/p&gt;
+
+  &lt;h3 id=&quot;nightly-builds-will-roll-out-this-monday&quot;&gt;Nightly builds will roll out this Monday&lt;/h3&gt;
+
+  &lt;p&gt;We’ll be testing the infrastructure this weekend (24th and 25th Feb.), you will see some 15.1 builds appear on our download portal marked as &lt;em&gt;EXPERIMENTAL&lt;/em&gt;.&lt;/p&gt;
+
+  &lt;p&gt;The first batch of nightlies builds will roll out on Monday 26th February, while the other days of the week will remain dedicated to 14.1 devices.
+  Keep in mind that if you install an &lt;em&gt;EXPERIMENTAL&lt;/em&gt; build you will not receive OTA updates, but you’ll have to manually flash a &lt;em&gt;NIGHTLY&lt;/em&gt; build instead.&lt;/p&gt;
+
+  &lt;h2 id=&quot;older-versions-changes&quot;&gt;Older versions changes&lt;/h2&gt;
+  &lt;ul&gt;
+  &lt;li&gt;LineageOS 14.1
+  &lt;ul&gt;
+  &lt;li&gt;Jelly’s favorites management has been improved&lt;/li&gt;
+  &lt;li&gt;December 2017, January 2018 and February 2018 security patches have been merged&lt;/li&gt;
+  &lt;li&gt;Webview has been updated to Chromium 64.0.3282.137&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;LineageOS 13.0
+  &lt;ul&gt;
+  &lt;li&gt;December 2017, January 2018 and February 2018 security patches have been merged&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h2 id=&quot;goodbye-lineageos-130&quot;&gt;Goodbye LineageOS 13.0&lt;/h2&gt;
+  &lt;p&gt;The Marshmallow-based release has been discontinued and the last builds were published on Feb 11th, 2018. The branches will not be locked, so it’ll still be open for contributions such as security patches, like the 11.0 branch which has been getting security patches backported from the community. LineageOS 14.1 will remain under active development, but don’t expect new features to come since the majority of the team has jumped to the Oreo branch.&lt;/p&gt;
+
+  &lt;h2 id=&quot;infrastructure&quot;&gt;Infrastructure&lt;/h2&gt;
+  &lt;p&gt;A couple of our infrastructure repos have been moved from the &lt;a href=&quot;https://github.com/LineageOS&quot;&gt;LineageOS organization&lt;/a&gt; to the &lt;a href=&quot;https://github.com/lineageos-infra&quot;&gt;LineageOS-Infra organization&lt;/a&gt; on GitHub.
+  The wiki has also been updated with a focus on device information since a lot of users often check it to look for a suitable device that’s also capable of running LineageOS&lt;/p&gt;
+
+  &lt;h2 id=&quot;device-support-new-rules&quot;&gt;Device support: new rules&lt;/h2&gt;
+  &lt;p&gt;Beginning with LineageOS 15.1, we’re enforcing a set of rules defined by the &lt;a href=&quot;https://github.com/LineageOS/charter/blob/master/device-support-requirements.md&quot;&gt;LDSR&lt;/a&gt; (LineageOS Device Support Requirements). This document defines the requirements that must be met in order for devices to be deemed ship-ready for LineageOS releases to maintain a higher quality standard. These rules, which are not retroactive (14.1 builds won’t be affected), will apply to all the devices that want to ship a LineageOS 15.1 official release regardless of having a 14.1 build.
+  For the end user it means that whenever an official 15.1 build is published, you can expect everything that’s listed in the charter as working.&lt;/p&gt;
+
+  &lt;h2 id=&quot;device-changes&quot;&gt;Device changes&lt;/h2&gt;
+
+  &lt;h4 id=&quot;initial-151-devices&quot;&gt;Initial 15.1 devices&lt;/h4&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/angler&quot;&gt;Google Nexus 6P - angler&lt;/a&gt; - moved from 14.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/bullhead&quot;&gt;Google Nexus 5X - bullhead&lt;/a&gt; - moved from 14.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/zl1&quot;&gt;LeEco Le Pro3 / Le Pro3 Elite - zl1&lt;/a&gt; - moved from 14.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/oneplus3&quot;&gt;OnePlus 3 / 3T - oneplus3&lt;/a&gt; - moved from 14.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/cheeseburger&quot;&gt;OnePlus 5 - cheeseburger&lt;/a&gt; - moved from 14.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/dumpling&quot;&gt;OnePlus 5T - dumpling&lt;/a&gt; - maintainers: &lt;em&gt;codeworkx, amartinz&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/gts210vewifi&quot;&gt;Samsung Galaxy Tab S2 9.7 Wi-Fi (2016) - gts210vewifi&lt;/a&gt; - moved from 14.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/gts28vewifi&quot;&gt;Samsung Galaxy Tab S2 8.0 Wi-Fi (2016) - gts28vewifi&lt;/a&gt; - moved from 14.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/gemini&quot;&gt;Xiaomi Mi 5 - gemini&lt;/a&gt; - moved from 14.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/capricorn&quot;&gt;Xiaomi Mi 5S - capricorn&lt;/a&gt; - moved from 14.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/natrium&quot;&gt;Xiaomi Mi 5S Plus - natrium&lt;/a&gt; - moved from 14.1&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h4 id=&quot;added-141-devices&quot;&gt;Added 14.1 devices&lt;/h4&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/fugu/&quot;&gt;Google Nexus Player - fugu&lt;/a&gt; - maintainer: &lt;em&gt;npjohnson&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/kltesprsports/&quot;&gt;Samsung Galaxy S5 Sport - kltesprsports&lt;/a&gt; - maintainer: &lt;em&gt;javelinanddart&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Samsung Galaxy S6 &lt;a href=&quot;https://wiki.lineageos.org/devices/zerofltexx&quot;&gt;Flat (zerofltexx)&lt;/a&gt; and &lt;a href=&quot;https://wiki.lineageos.org/devices/zeroltexx&quot;&gt;Edge (zeroltexx)&lt;/a&gt; - maintainer: &lt;em&gt;usaamah99&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/land&quot;&gt;Xiaomi Redmi 3S and 3X - land&lt;/a&gt; - maintainers: &lt;em&gt;karthick111, darshan1205, chaubeyprateek&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/sumire&quot;&gt;Sony Xperia Z5 - sumire&lt;/a&gt; - maintainers: &lt;em&gt;myself5, haoZeke&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/tulip&quot;&gt;ZTE Axon 7 Mini - tulip&lt;/a&gt; - maintainer: &lt;em&gt;tdm&lt;/em&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h4 id=&quot;changes-to-141-devices&quot;&gt;Changes to 14.1 devices&lt;/h4&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;Samsung Galaxy Note 2 (&lt;a href=&quot;https://wiki.lineageos.org/devices/t0ltekor&quot;&gt;Korean&lt;/a&gt;) has been merged with the &lt;a href=&quot;https://wiki.lineageos.org/devices/t0lte&quot;&gt;LTE&lt;/a&gt; variant&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/addison&quot;&gt;Motorola Moto Z Play - addison&lt;/a&gt; has been readded - maintainer: &lt;em&gt;mccreary&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/jfltexx&quot;&gt;Samsung Galaxy S4 T-Mobile - jfltetmo&lt;/a&gt; is now supported in the &lt;a href=&quot;https://wiki.lineageos.org/devices/jfltexx&quot;&gt;Samsung Galaxy S4 International (LTE) - jfltexx&lt;/a&gt; builds - maintainer: &lt;em&gt;zatoichi&lt;/em&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h4 id=&quot;removed-141-devices&quot;&gt;Removed 14.1 devices&lt;/h4&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;Samsung Galaxy S III US variants: &lt;a href=&quot;https://wiki.lineageos.org/devices/d2att&quot;&gt;AT&amp;amp;T&lt;/a&gt;, &lt;a href=&quot;https://wiki.lineageos.org/devices/d2spr&quot;&gt;Sprint&lt;/a&gt;, &lt;a href=&quot;https://wiki.lineageos.org/devices/d2tmo&quot;&gt;T-Mobile&lt;/a&gt; and &lt;a href=&quot;https://wiki.lineageos.org/devices/d2vzw&quot;&gt;Verizon&lt;/a&gt; - no longer maintained&lt;/li&gt;
+  &lt;li&gt;Asus Zenfone 2 &lt;a href=&quot;https://wiki.lineageos.org/devices/Z00D&quot;&gt;ZE500CL (Z00D)&lt;/a&gt;, &lt;a href=&quot;https://wiki.lineageos.org/devices/Z008&quot;&gt;ZE550ML  (Z008)&lt;/a&gt; and &lt;a href=&quot;https://wiki.lineageos.org/devices/Z00A&quot;&gt;ZE551ML (Z00A)&lt;/a&gt; - no longer maintained&lt;/li&gt;
+  &lt;/ul&gt;</content><author><name>LineageOS team</name></author><category term="blog" /><summary type="html">Oh my! Finally Oreo</summary></entry><entry><title type="html">Celebrating one year of LineageOS</title><link href="/Celebrating-one-year-of-LineageOS/" rel="alternate" type="text/html" title="Celebrating one year of LineageOS" /><published>2017-12-24T00:00:00+00:00</published><updated>2017-12-24T00:00:00+00:00</updated><id>/Celebrating-one-year-of-LineageOS</id><content type="html" xml:base="/Celebrating-one-year-of-LineageOS/">&lt;h2 id=&quot;reviewing-our-first-12-months&quot;&gt;Reviewing our first 12 months&lt;/h2&gt;
+
+  &lt;p&gt;One year ago, LineageOS was announced to the world.
+  We’d like to take the time to celebrate with our contributors, our users and our community.
+  This wouldn’t have been possible without all of you.&lt;/p&gt;
+
+  &lt;p&gt;We would never have enough words to express how much we appreciate this community and how excited we are for the next year to come.
+  So instead, we’ve created an infographic, that we hope you all will enjoy.&lt;/p&gt;
+
+  &lt;p&gt;&lt;img src=&quot;/images/2017-12-24/lineageos-1st-birthday-infographic.png&quot; alt=&quot;infographic&quot; class=&quot;blog_post_image&quot; /&gt;&lt;/p&gt;
+
+  &lt;h4 id=&quot;thank-you&quot;&gt;Thank you&lt;/h4&gt;</content><author><name>LineageOS team</name></author><category term="blog" /><summary type="html">Happy birthday to us</summary></entry><entry><title type="html">Changelog 15 - Super Security, Gratifying Gestures, Resounding Recorder</title><link href="/Changelog-15/" rel="alternate" type="text/html" title="Changelog 15 - Super Security, Gratifying Gestures, Resounding Recorder" /><published>2017-12-05T00:00:00+00:00</published><updated>2017-12-05T00:00:00+00:00</updated><id>/Changelog-15</id><content type="html" xml:base="/Changelog-15/">&lt;h2 id=&quot;welcome-to-lineageos-regularly-irregular-review-where-we-go-over-changes-in-the-last-few-weeks&quot;&gt;Welcome to LineageOS’ regularly irregular review, where we go over changes in the last few weeks&lt;/h2&gt;
+
+  &lt;h3 id=&quot;major-changes-since-september-23rd&quot;&gt;Major changes since September 23rd&lt;/h3&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;Recorder app has gotten a major redesign, it’s now better thanks to the feedback provided in the Summer Survey.
+  &lt;ul&gt;
+  &lt;li&gt;If you are interested in reading more about the design changes, our very own jrizzoli wrote a &lt;a href=&quot;https://medium.com/@jrizzoli/recording-awesomeness-bc1c5ffe2826&quot;&gt;Medium post&lt;/a&gt; on the thought process&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;A LiveDisplay tile has been added&lt;/li&gt;
+  &lt;li&gt;KRACK Wi-Fi vulnerability has been fixed in both LineageOS 14.1 and 13.0&lt;/li&gt;
+  &lt;li&gt;October security patches have been merged for both LineageOS 14.1 and 13.0&lt;/li&gt;
+  &lt;li&gt;November security patches have been merged for LineageOS 14.1 and 13.0&lt;/li&gt;
+  &lt;li&gt;Bypassing the lockscreen by switching to a lockscreen-less profile from quick settings has been blocked (BUGBASH-1095)&lt;/li&gt;
+  &lt;li&gt;The updater, among other minor improvements, now supports device unifications: when a device gets build merged with another one, the user will directly receive updates without requiring the user to manually flash the new build.&lt;/li&gt;
+  &lt;li&gt;Added support for extended length NFC (needs to be enabled per-device, if supported)&lt;/li&gt;
+  &lt;li&gt;Two new touchscreen gesture options have been added for lowering and raising the media volume&lt;/li&gt;
+  &lt;li&gt;Battery icon has been improved; the percentage will be shown in battery saver mode when the “show percentage” option is set. The exclamation mark in the battery has also been given more contrast so it’s easier on the eyes&lt;/li&gt;
+  &lt;li&gt;The Calendar app now shows week start and end in the title when in week view, instead of showing the month and year&lt;/li&gt;
+  &lt;li&gt;Gallery has received some stability improvements&lt;/li&gt;
+  &lt;li&gt;Making emergency calls without a sim card is now possible, in regions that allow it&lt;/li&gt;
+  &lt;li&gt;Issues with the “Install” button being greyed out when installing APKs should now be fixed (REGRESSION-1262)&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h3 id=&quot;oreo-update&quot;&gt;Oreo Update&lt;/h3&gt;
+
+  &lt;p&gt;Up to now, news on Oreo-based LineageOS 15.0 has been almost non-existent, but we’re in a position now where we can document some of our progress here.&lt;/p&gt;
+
+  &lt;p&gt;As many of you have seen (and we’re sure some of you are running them right now), a number of unofficial LineageOS 15.0 builds exist, some of which are built by our very own maintainers.
+  These are in no way representative of a final product, but definitely let you all experience some of the features Android 8.0 has to offer.&lt;/p&gt;
+
+  &lt;p&gt;Once that the basic framework has been put in place and devices are successfully booting LineageOS 15.0, some features are being brought forward, most of which are dependent on what was previously known as the CMSDK. A large focus while doing this has been to evaluate the need to carry-forward or otherwise clean up the leftovers from our inception last year.&lt;/p&gt;
+
+  &lt;p&gt;However now that Android 8.1 has been released, we’re anticipating moving straight to the 15.1 branch where we’ll merge all our work done for 15.0 and finish the porting effort.&lt;/p&gt;
+
+  &lt;p&gt;Like always, we won’t be giving any indication as to when we might be close to a releasable product, but keep waiting patiently, and as we reach big milestones, we’ll be giving you some more status updates.&lt;/p&gt;
+
+  &lt;h3 id=&quot;infrastructure&quot;&gt;Infrastructure&lt;/h3&gt;
+
+  &lt;p&gt;Our &lt;a href=&quot;https://status.lineageos.org&quot;&gt;status page&lt;/a&gt; has been updated and now it automatically detects whether a service is down without requiring any manual input as it did previously.&lt;/p&gt;
+
+  &lt;p&gt;We have added a new language &lt;a href=&quot;https://en.wikipedia.org/wiki/Kabyle_language&quot;&gt;Kabyle&lt;/a&gt; to our &lt;a href=&quot;https://translate.lineageos.org/&quot;&gt;translation system&lt;/a&gt; . Feel free to subscribe to this or other languages to improve or complete the translation progress!&lt;/p&gt;
+
+  &lt;h3 id=&quot;build-roster&quot;&gt;Build roster&lt;/h3&gt;
+
+  &lt;p&gt;We have enforced stricter quality terms for our builds: maintainers now have limited time frames to fix important issues that have been assigned to them on Jira before their device gets pulled down from the build roster. Those devices will be added back once the issues listed in the &lt;a href=&quot;https://github.com/LineageOS/hudson/commit/b2560ed989493a7798ca914fe82033ccfee610df&quot;&gt;removal commit&lt;/a&gt; have been addressed.&lt;/p&gt;
+
+  &lt;p&gt;Added 14.1 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/gohan&quot;&gt;BQ Aquaris X5 Plus - gohan&lt;/a&gt; - &lt;em&gt;maintainers: brinlyau, cmorlok, eloimuns, Kra1o5, stucki, cyclon1978, Team aquaris-dev&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/tenshi&quot;&gt;BQ Aquaris U Plus - tenshi&lt;/a&gt; - &lt;em&gt;maintainers: brinlyau, eloimuns, Kra1o5, stucki, Team aquaris-dev&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/suzuran&quot;&gt;Sony Xperia Z5 Compact - suzuran&lt;/a&gt; - &lt;em&gt;maintainer: olefb&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/karin&quot;&gt;Sony Xperia Z4 Tablet LTE - karin&lt;/a&gt; - &lt;em&gt;maintainers: andralex8, cdesai, Kali-, olivier97, quarx2k&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/karin_windy&quot;&gt;Sony Xperia Z4 Tablet WiFi - karin_windy&lt;/a&gt; - &lt;em&gt;maintainers: andralex8, cdesai, Kali-, olivier97, quarx2k&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/m216&quot;&gt;LG K10 - m216&lt;/a&gt; - &lt;em&gt;maintainers: erfanoabdi, dom133&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/FP2&quot;&gt;Fairphone 2 - FP2&lt;/a&gt; - &lt;em&gt;maintainer: chrmhoffmann&lt;/em&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Changes to 14.1 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;Samsung Galaxy S5 Sprint SM-G900P (&lt;a href=&quot;https://wiki.lineageos.org/devices/kltespr&quot;&gt;kltespr&lt;/a&gt;) has been merged into Samsung Galaxy S5 G900I/P (&lt;a href=&quot;https://wiki.lineageos.org/devices/kltedv&quot;&gt;kltedv&lt;/a&gt;).&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Removed 14.1 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/vs985&quot;&gt;LG G3 (Verizon) - vs985&lt;/a&gt; - no longer maintained&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/peach&quot;&gt;Ark Benefit A3 - peach&lt;/a&gt; - no longer maintained&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/wt88047&quot;&gt;Wingtech Redmi 2 - wt88047&lt;/a&gt; - no longer maintained&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/addison&quot;&gt;Motorola Moto Z Play - addison&lt;/a&gt; - no longer maintained&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/A6020&quot;&gt;Lenovo Vibe K5 / K5 Plus  - A6020&lt;/a&gt; - outstanding unfixed issues&lt;/li&gt;
+  &lt;li&gt;LG G4 - &lt;a href=&quot;https://wiki.lineageos.org/devices/h815&quot;&gt;h815&lt;/a&gt;, &lt;a href=&quot;https://wiki.lineageos.org/devices/h811&quot;&gt;h811&lt;/a&gt; - outstanding unfixed issues&lt;/li&gt;
+  &lt;li&gt;HTC One M9 - &lt;a href=&quot;https://wiki.lineageos.org/devices/himaul&quot;&gt;himaul&lt;/a&gt;, &lt;a href=&quot;https://wiki.lineageos.org/devices/himawl&quot;&gt;himawl&lt;/a&gt; - outstanding unfixed issues&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/i9305&quot;&gt;Samsung Galaxy S III (LTE / International) - i9305&lt;/a&gt; - outstanding unfixed issues&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Removed 13.0 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/ghost&quot;&gt;Motorola Moto X - ghost&lt;/a&gt; - no longer maintained&lt;/li&gt;
+  &lt;/ul&gt;</content><author><name>harryyoud</name></author><category term="blog" /><summary type="html">Changes since September 23rd</summary></entry><entry><title type="html">Summer Survey - Results</title><link href="/Summer-Survey-Results/" rel="alternate" type="text/html" title="Summer Survey - Results" /><published>2017-10-16T00:00:00+00:00</published><updated>2017-10-16T00:00:00+00:00</updated><id>/Summer-Survey-Results</id><content type="html" xml:base="/Summer-Survey-Results/">&lt;h2 id=&quot;we-asked-for-feedback-you-answered&quot;&gt;We asked for feedback. You answered&lt;/h2&gt;
+
+  &lt;p&gt;Let’s talk about the &lt;a href=&quot;https://www.lineageos.org/Summer-Survey/&quot;&gt;Summer Survey&lt;/a&gt; and its results.&lt;br /&gt;
+  To start off, only about 1.35% of our users (at the time of writing) took the survey (23000 / 1700000), so the results are not reflective of our entire userbase, but we’ll analyze the feedback nonetheless.&lt;/p&gt;
+
+  &lt;h3 id=&quot;builds&quot;&gt;Builds&lt;/h3&gt;
+
+  &lt;p&gt;The majority of the people who responded were using an official build (86%). Nearly all (97%) had it installed on a phone, whereas a smaller portion (10%) had it installed on a tablet.&lt;/p&gt;
+
+  &lt;h3 id=&quot;apps&quot;&gt;Apps&lt;/h3&gt;
+
+  &lt;p&gt;Your favorite apps are our Snap Camera app, our Trebuchet launcher, and AudioFX. The apps you’d like to see improved in LineageOS 15 are Snap, Trebuchet, and the Gallery app.&lt;br /&gt;
+  Many asked to match the camera quality of stock in Snap, but unfortunately that is not entirely within our control, primarily due to the proprietary nature of newer stock features and algorithms. However, this doesn’t mean we won’t continue to aim for the best with what we can control.&lt;br /&gt;
+  The least used app is Jelly (61% of the surveyed never use it) and that’s understandable since there are more powerful alternatives. This doesn’t mean Jelly (or any other app) is going to be removed, but we will use this information to avoid spending time and resources on projects people rarely use.&lt;/p&gt;
+
+  &lt;p&gt;Most of the responders said they were using Google Apps, but a sizeable amount of those surveyed weren’t using any Google Apps (mostly due to region-blocks, or privacy and ideological motivations). We will work hard to improve user experience for both types of users.&lt;/p&gt;
+
+  &lt;h3 id=&quot;icons&quot;&gt;Icons&lt;/h3&gt;
+
+  &lt;p&gt;On average, our icons were rated 3.8 / 5, and the Dialer and Gallery were said to have the best icons. We’ll use this feedback to adapt our icons to the new adaptive icon style introduced with Android O in LineageOS 15.&lt;/p&gt;
+
+  &lt;h3 id=&quot;wallpapers&quot;&gt;Wallpapers&lt;/h3&gt;
+
+  &lt;p&gt;Our wallpapers have been rated 3.2 / 5. Responder’s favorite kinds are abstract and landscapes. We’ll also try to bring some improvements to our wallpapers collection in the upcoming release.&lt;/p&gt;
+
+  &lt;h3 id=&quot;features&quot;&gt;Features&lt;/h3&gt;
+
+  &lt;p&gt;Status bar customizations and Privacy Guard were the favorite features among those who responded, followed by Ambient display, button remapping, lockscreen enhancements, LiveDisplay, Protected Apps, and Profiles.&lt;/p&gt;
+
+  &lt;h3 id=&quot;infrastructure&quot;&gt;Infrastructure&lt;/h3&gt;
+
+  &lt;p&gt;Changelogs were rated 4.6 / 5 as a good idea, and 4 / 5 with regards to the quality of them. Our wiki was rated as 3.8 / 5 and the download portal was slightly higher at 4.2 / 5.&lt;br /&gt;
+  It looks like a large portion of the responders is not aware of our Jira, subreddit or IRC channels (47%, 42% and 47% respectively). We would like to offer some clarification as to where to find these and what they are.&lt;br /&gt;
+  Our subreddit (&lt;a href=&quot;https://www.reddit.com/r/LineageOS&quot;&gt;r/LineageOS&lt;/a&gt;) is a good place for finding support directly from other LineageOS users and sometimes team members.&lt;br /&gt;
+  Our &lt;a href=&quot;https://jira.lineageos.org&quot;&gt;Jira&lt;/a&gt; is a place for &lt;a href=&quot;https://wiki.lineageos.org/bugreport-howto.html&quot;&gt;submitting bug reports&lt;/a&gt;.&lt;br /&gt;
+  Our IRC, similar to our subreddit, a place for finding support with installation, or asking Android questions, can be found at channels &lt;em&gt;#lineageos&lt;/em&gt; and &lt;em&gt;#lineageos-dev&lt;/em&gt; on Freenode (the latter being used for development related questions).&lt;/p&gt;
+
+  &lt;h3 id=&quot;your-personal-messages&quot;&gt;Your personal messages&lt;/h3&gt;
+
+  &lt;p&gt;The last survey page had an optional text box that could be filled with a personal message for the LineageOS team, and we took the time to read them all.&lt;br /&gt;
+  It’s very motivating to see that so many people, who could write anything they wanted, said a simple, yet powerful, “Thank you” (or something similar).&lt;br /&gt;
+  Others were mostly about feature suggessions. Even though not all of the suggestions can be implemented, we appreciate your contribution, and we’ll do our best to tune our goals so that they are more inline with the community desires during the development of the next branch.&lt;/p&gt;
+
+  &lt;p&gt;The LineageOS team would like to extend our thanks back to everyone who took their time to answer these simple questions.&lt;/p&gt;</content><author><name>jrizzoli</name></author><category term="blog" /><summary type="html">Here's what you told us</summary></entry><entry><title type="html">Changelog 14 - Powerful PrivacyGuard, Unique Updater, Brave Burn-in protection and Awesome AudioFX</title><link href="/Changelog-14/" rel="alternate" type="text/html" title="Changelog 14 - Powerful PrivacyGuard, Unique Updater, Brave Burn-in protection and Awesome AudioFX" /><published>2017-09-23T00:00:00+00:00</published><updated>2017-09-23T00:00:00+00:00</updated><id>/Changelog-14</id><content type="html" xml:base="/Changelog-14/">&lt;h2 id=&quot;welcome-to-lineageos-regularly-irregular-review-where-we-go-over-changes-in-the-last-few-weeks&quot;&gt;Welcome to LineageOS’ regularly irregular review, where we go over changes in the last few weeks&lt;/h2&gt;
+
+  &lt;h3 id=&quot;major-changes-since-august-8th&quot;&gt;Major changes since August 8th&lt;/h3&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;LineageOS Updater app has been rewritten. Previous issues with downloading updates should be gone now
+  &lt;ul&gt;
+  &lt;li&gt;Downloads are now stored at &lt;em&gt;/data/lineageos_updates/&lt;/em&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Privacy Guard has received an user interface overhaul&lt;/li&gt;
+  &lt;li&gt;Burn-in protection (device-specific): statusbar and navigation bar (if any) icon’s position is shifted every minute to help prevent burn-in of these areas&lt;/li&gt;
+  &lt;li&gt;AudioFX can now control reverb effect&lt;/li&gt;
+  &lt;li&gt;Added system profiles tile&lt;/li&gt;
+  &lt;li&gt;September security patches, including &lt;a href=&quot;https://www.armis.com/blueborne/&quot;&gt;blueborne&lt;/a&gt; vulnerability fix&lt;/li&gt;
+  &lt;li&gt;Jelly improvements, including more HTML 5 features support&lt;/li&gt;
+  &lt;li&gt;Disabled unused cmsdk services in builds&lt;/li&gt;
+  &lt;li&gt;Added carrier selection shortcut for Settings app, so you can jump to it right from your homescreen&lt;/li&gt;
+  &lt;li&gt;It’s now possible to reapply the current system profile&lt;/li&gt;
+  &lt;li&gt;Volume buttons should no longer cause backlit hardware keys to light up&lt;/li&gt;
+  &lt;li&gt;Email is (back) able to customize notification lights settings for each email account&lt;/li&gt;
+  &lt;li&gt;WEP WiFi encryption input now detects valid keys correctly&lt;/li&gt;
+  &lt;li&gt;A number of crashes have been fixed in camera operations&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h3 id=&quot;survey&quot;&gt;Survey&lt;/h3&gt;
+
+  &lt;p&gt;Our &lt;a href=&quot;https://www.lineageos.org/Summer-Survey/&quot;&gt;summer survey&lt;/a&gt; has ended. We’d like to thank everyone who took their time to provide advices and feedbacks. We’ll share the results once we’ve analyzed the data in another post. Stay tuned!&lt;/p&gt;
+
+  &lt;h3 id=&quot;lineageos-150-progress&quot;&gt;LineageOS 15.0 progress&lt;/h3&gt;
+
+  &lt;p&gt;While the cm-14.1 branch development hasn’t stopped, we’re also working on the next LineageOS version (15.0), based on the latest Android 8.0. We will refrain from giving any ETA, just patiently wait until the new branch is ready for release-time.&lt;/p&gt;
+
+  &lt;h3 id=&quot;infrastructure&quot;&gt;Infrastructure&lt;/h3&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;CVE Tracker
+  &lt;ul&gt;
+  &lt;li&gt;Improvements for internal usage (maintainers): tags for filters, severity indicators for CVEs, actions are now logged&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h3 id=&quot;build-roster&quot;&gt;Build roster&lt;/h3&gt;
+
+  &lt;h4 id=&quot;added-141-devices&quot;&gt;Added 14.1 devices&lt;/h4&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;LG G6 (&lt;a href=&quot;https://wiki.lineageos.org/devices/h870&quot;&gt;EU Unlocked - h870&lt;/a&gt; and &lt;a href=&quot;https://wiki.lineageos.org/devices/us997&quot;&gt;US Unlocked - us997&lt;/a&gt;) - &lt;em&gt;maintainer: rashed&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/v400&quot;&gt;LG G Pad 7.0 WiFi - v400&lt;/a&gt; - &lt;em&gt;maintainer: mycax&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/cheeseburger&quot;&gt;OnePlus 5 - cheeseburger&lt;/a&gt; - &lt;em&gt;maintainers: amartinz, codeworkx, jrizzoli, jumoog, xingrz&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/v1awifi&quot;&gt;Samsung Galaxy Note Pro 12.2 Wi-Fi - v1awifi&lt;/a&gt; - &lt;em&gt;maintainer: thompatry&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/v1awifi&quot;&gt;Samsung Galaxy S5 (Exynos International 3G) - k3gxx&lt;/a&gt; - &lt;em&gt;maintainer: tincho5588&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/gtelwifiue&quot;&gt;Samsung Galaxy Tab E 9.6 - gtelwifiue&lt;/a&gt; - &lt;em&gt;maintainer: zvikovincent&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/gtesqltespr&quot;&gt;Samsung Galaxy Tab E 8.0 - gtesqltespr&lt;/a&gt; - &lt;em&gt;maintainer: zvikovincent&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/taoshan&quot;&gt;Sony Xperia L - taoshan&lt;/a&gt; - &lt;em&gt;maintainer: corphish&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/odin&quot;&gt;Sony Xperia ZL - odin&lt;/a&gt; - &lt;em&gt;maintainers: cyberwalkman, daedroza, chippa_a, adrian dc&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/dogo&quot;&gt;Sony Xperia ZR - dogo&lt;/a&gt; - &lt;em&gt;maintainers: daedroza, chippa_a, cyberwalkman. adrian dc&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/yuga&quot;&gt;Sony Xperia Z - yuga&lt;/a&gt; - &lt;em&gt;maintainers: daedroza, cyberwalkman, mardonhh, chippa_a, adrian dc&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/pollux&quot;&gt;Sony Xperia Tablet Z LTE - pollux&lt;/a&gt; - &lt;em&gt;maintainers: cahbkaup, cyberwalkman, daedroza, chippa_a,  adrian dc&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/pollux_windy&quot;&gt;Sony Xperia Tablet Z Wi-Fi - pollux_windy&lt;/a&gt; - &lt;em&gt;maintainers: cahbkaup, cyberwalkman, daedroza, chippa_a,  adrian dc&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/ivy&quot;&gt;Sony Xperia Z3+ - ivy&lt;/a&gt; - &lt;em&gt;maintainers: cdesai, kali-, olivier97, quarx2k&lt;/em&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h4 id=&quot;readded-141-devices&quot;&gt;Readded 14.1 devices&lt;/h4&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/lt03lte&quot;&gt;Samsung Galaxy Note 10.1 2014 (LTE) - lt03lte&lt;/a&gt; - &lt;em&gt;maintainer: rashed&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/w7&quot;&gt;Lg L90 - w7&lt;/a&gt; - &lt;em&gt;maintainer: mobiusm&lt;/em&gt;&lt;/li&gt;
+  &lt;/ul&gt;</content><author><name>harryyoud</name></author><category term="blog" /><summary type="html">Changes since August 8th 2017</summary></entry><entry><title type="html">Summer Survey</title><link href="/Summer-Survey/" rel="alternate" type="text/html" title="Summer Survey" /><published>2017-08-18T00:00:00+00:00</published><updated>2017-08-18T00:00:00+00:00</updated><id>/Summer-Survey</id><content type="html" xml:base="/Summer-Survey/">&lt;p&gt;While the project’s development proceeds, we think it’s important to take a moment and get some feedback from our users.
+  It has been decided to create a simple survey, instead of collecting on-device metrics, to help us improve LineageOS
+  in the right direction without wasting resources on things that our userbase is not interested in.&lt;/p&gt;
+
+  &lt;p&gt;The survey is really simple and we won’t collect any sensitive information.&lt;/p&gt;
+
+  &lt;p&gt;We kindly ask you to be respectful of everyone: be honest and don’t take the survey more than one time, each one’s opinion is equally important.&lt;/p&gt;
+
+  &lt;p&gt;The survey will be closed in two weeks’ time.&lt;/p&gt;
+
+  &lt;h3 id=&quot;topics&quot;&gt;Topics&lt;/h3&gt;
+
+  &lt;p&gt;We’ve divided this survey into 5 topics:&lt;/p&gt;
+
+  &lt;ol&gt;
+  &lt;li&gt;Apps&lt;/li&gt;
+  &lt;li&gt;Wallpapers&lt;/li&gt;
+  &lt;li&gt;Features&lt;/li&gt;
+  &lt;li&gt;Infrastructure&lt;/li&gt;
+  &lt;li&gt;Public relations&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;p&gt;You can take the survey here below, and you can share it to your friends using this link: &lt;a href=&quot;https://goo.gl/forms/4phLuXIWHUr3s4Qf2&quot;&gt;goo.gl/forms/4phLuXIWHUr3s4Qf2&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;We’re looking forward to see your answers!&lt;/p&gt;
+
+  &lt;p&gt;The LineageOS team&lt;/p&gt;
+
+  &lt;h3 id=&quot;survey&quot;&gt;Survey&lt;/h3&gt;
+
+  &lt;html&gt;
+  &lt;iframe src=&quot;https://docs.google.com/forms/d/e/1FAIpQLSdb1IiHmxwVh08emdMh5Nc9pi8oIhc-Wp49Sr5JdFRzoDMPmA/viewform?embedded=true&quot; width=&quot;100%&quot; height=&quot;700&quot; frameborder=&quot;0&quot; marginheight=&quot;0&quot; marginwidth=&quot;0&quot;&gt;&lt;a href=&quot;https://goo.gl/forms/4phLuXIWHUr3s4Qf2&quot;&gt;Loading...&lt;/a&gt;&lt;/iframe&gt;
+  &lt;/html&gt;</content><author><name>jrizzoli</name></author><category term="blog" /><summary type="html">It's your time</summary></entry><entry><title type="html">Changelog 13 - Wonderful Webviews, Pedantic Permissions and Disappearing Dates</title><link href="/Changelog-13/" rel="alternate" type="text/html" title="Changelog 13 - Wonderful Webviews, Pedantic Permissions and Disappearing Dates" /><published>2017-08-08T00:00:00+00:00</published><updated>2017-08-08T00:00:00+00:00</updated><id>/Changelog-13</id><content type="html" xml:base="/Changelog-13/">&lt;h2 id=&quot;welcome-to-lineageos-regularly-irregular-review-where-we-go-over-changes-in-the-last-few-weeks&quot;&gt;Welcome to LineageOS’ regularly irregular review, where we go over changes in the last few weeks&lt;/h2&gt;
+
+  &lt;h3 id=&quot;major-changes-since-july-3rd&quot;&gt;Major changes since July 3rd&lt;/h3&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;Even more Jelly improvements
+  &lt;ul&gt;
+  &lt;li&gt;Search on page has been added&lt;/li&gt;
+  &lt;li&gt;No longer saves form data when in incognito mode&lt;/li&gt;
+  &lt;li&gt;Changed to Google as the default search engine, home page and suggestion provider. This can still be changed in Settings, just like before&lt;/li&gt;
+  &lt;li&gt;Added the Yandex search engine&lt;/li&gt;
+  &lt;li&gt;Media can now be displayed in full screen mode&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Merged July security patches for both LineageOS 14.1 and 13.0&lt;/li&gt;
+  &lt;li&gt;Merged August security patches for LineageOS 14.1&lt;/li&gt;
+  &lt;li&gt;Sensitive number improvements
+  &lt;ul&gt;
+  &lt;li&gt;Countries with multiple MCCs are now supported properly (including GB, US, and India)&lt;/li&gt;
+  &lt;li&gt;Added multiple 116 numbers in various European countries&lt;/li&gt;
+  &lt;li&gt;Added sensitive numbers for Greece&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Date can now be hidden on the LockClock widget&lt;/li&gt;
+  &lt;li&gt;Updated Chromium Webview to version 60 (60.0.3112.78)&lt;/li&gt;
+  &lt;li&gt;A number of deadlocks/freezes/crashes in AppOps have been fixed&lt;/li&gt;
+  &lt;li&gt;The updater app now warns in case mobile data is about to be used for a download&lt;/li&gt;
+  &lt;li&gt;“Panic detection” mode is now enabled. Pressing the back button several times in quick succession will return you to the home screen&lt;/li&gt;
+  &lt;li&gt;Fixed a number of crashes and removed a screen for single SIM devices in the Setup Wizard&lt;/li&gt;
+  &lt;li&gt;Eleven (Music app), Snap, and Gallery are now properly granted external storage permissions&lt;/li&gt;
+  &lt;li&gt;On dual-SIM devices, the preferred SIM for SMS is no longer reset on reboot&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h3 id=&quot;infrastructure&quot;&gt;Infrastructure&lt;/h3&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;CVE tracker improvements
+  &lt;ul&gt;
+  &lt;li&gt;Added a dark theme - makes it easier on the eyes!&lt;/li&gt;
+  &lt;li&gt;Added a new landing page to answer some FAQs&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h3 id=&quot;build-roster&quot;&gt;Build roster&lt;/h3&gt;
+
+  &lt;p&gt;Added 14.1 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/nx512j&quot;&gt;nubia Z9 Max - nx512j&lt;/a&gt; - &lt;em&gt;maintainer: Bauuuuu&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/mido&quot;&gt;Xiaomi Redmi Note 4 - mido&lt;/a&gt; - &lt;em&gt;maintainer: TheScarastic&lt;/em&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Readded 14.1 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/athene&quot;&gt;Motorola Moto G4 - athene&lt;/a&gt; - &lt;em&gt;maintainers: vache, shr3ps, rahulsnair&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/d800&quot;&gt;LG G2 (AT&amp;amp;T) - d800&lt;/a&gt; - &lt;em&gt;maintainer: Kapricornus&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/d801&quot;&gt;LG G2 (T-Mobile) - d801&lt;/a&gt; - &lt;em&gt;maintainer: Kapricornus&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/d802&quot;&gt;LG G2 (International) - d802&lt;/a&gt; - &lt;em&gt;maintainer: Kapricornus&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/d803&quot;&gt;LG G2 (Canadian) - d803&lt;/a&gt; - &lt;em&gt;maintainer: Kapricornus&lt;/em&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Suspended 14.1 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/lt03lte&quot;&gt;Samsung Galaxy Note 10.1 2014 (LTE) - lt03lte&lt;/a&gt;
+  &lt;ul&gt;
+  &lt;li&gt;Withdrawn due to neglected CVE patches&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;/ul&gt;</content><author><name>harryyoud</name></author><category term="blog" /><summary type="html">Changes since July 3rd 2017</summary></entry><entry><title type="html">Changelog 12 - Jam-packed Jelly, Terrific Tiles, and Updated Updater</title><link href="/Changelog-12/" rel="alternate" type="text/html" title="Changelog 12 - Jam-packed Jelly, Terrific Tiles, and Updated Updater" /><published>2017-07-03T00:00:00+00:00</published><updated>2017-07-03T00:00:00+00:00</updated><id>/Changelog-12</id><content type="html" xml:base="/Changelog-12/">&lt;h2 id=&quot;welcome-to-lineageos-biweekly-review-where-we-go-over-changes-in-the-last-couple-of-weeks&quot;&gt;Welcome to LineageOS’ biweekly review, where we go over changes in the last couple of weeks&lt;/h2&gt;
+
+  &lt;h3 id=&quot;major-changes-since-june-12th&quot;&gt;Major changes since June 12th&lt;/h3&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;Jelly has been vastly improved:
+  &lt;ul&gt;
+  &lt;li&gt;When a download is completed, a notification is now shown, and a scan for new files is now run&lt;/li&gt;
+  &lt;li&gt;Links in incognito tabs are now opened in new incognito tabs&lt;/li&gt;
+  &lt;li&gt;A shortcut can now be created directly to a new incognito tab&lt;/li&gt;
+  &lt;li&gt;Form data (e.g. usernames, passwords are not saved) is now saved by default&lt;/li&gt;
+  &lt;li&gt;Do not track option can now be enabled&lt;/li&gt;
+  &lt;li&gt;Search suggestions are now available, including:
+  &lt;ul&gt;
+  &lt;li&gt;Baidu&lt;/li&gt;
+  &lt;li&gt;Bing&lt;/li&gt;
+  &lt;li&gt;DuckDuckGo (default)&lt;/li&gt;
+  &lt;li&gt;Google&lt;/li&gt;
+  &lt;li&gt;Yahoo&lt;/li&gt;
+  &lt;li&gt;None&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Links can now be opened in external apps (e.g. YouTube links can be opened in the YouTube app)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://android-developers.googleblog.com/2017/06/whats-new-in-webview-security.html&quot;&gt;Safe browsing&lt;/a&gt; is now supported&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://www.lineageos.org/Changelog-10/&quot;&gt;sensitive numbers list&lt;/a&gt; has been expanded:
+  &lt;ul&gt;
+  &lt;li&gt;Brazil, France, Portugal, and the UK have new numbers included&lt;/li&gt;
+  &lt;li&gt;Sensitive numbers for Greece, Taiwan, and Ukraine have been added&lt;/li&gt;
+  &lt;li&gt;Country detection for the Czech Republic has been fixed&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;A longstanding issue affecting tap-to-pay on several devices has now been fixed&lt;/li&gt;
+  &lt;li&gt;Media codecs have been updated&lt;/li&gt;
+  &lt;li&gt;A timeout for the ‘long press power button for torch’ option can now be set. You can find this option in Settings &amp;gt; Buttons &amp;gt; Automatically turn torch off&lt;/li&gt;
+  &lt;li&gt;The clock app can now set a system profile when an alarm triggers&lt;/li&gt;
+  &lt;li&gt;The Location QS tile can now be toggled without fully expanding the status bar&lt;/li&gt;
+  &lt;li&gt;The Battery Saver QS tile has been removed, as this functionality is already available in the main Battery QS tile&lt;/li&gt;
+  &lt;li&gt;Custom tiles have now been integrated into the framework to allow for deeper integration with the system, and mimic behavior from older versions
+  &lt;ul&gt;
+  &lt;li&gt;In the next few weeks, keep an eye out for new tiles being forward ported&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The updater app now prevents major version upgrades (e.g. 13.0 to 14.1) from being automatically installed, in order to prevent the situation where the user doesn’t notice the change and ends up with incompatible add-ons&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h3 id=&quot;infrastructure&quot;&gt;Infrastructure&lt;/h3&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://cve.lineageos.org/&quot;&gt;CVE tracker&lt;/a&gt; has seen a major redesign, and completion percentage calculation has been improved&lt;/li&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://download.lineageos.org/&quot;&gt;downloads page&lt;/a&gt; now shows &lt;code class=&quot;highlighter-rouge&quot;&gt;sha256&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;sha1&lt;/code&gt; checksums instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;md5&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Weather providers are now available on the &lt;a href=&quot;https://download.lineageos.org/extras&quot;&gt;extras page&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h3 id=&quot;build-roster&quot;&gt;Build roster&lt;/h3&gt;
+
+  &lt;p&gt;Added 14.1 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/foster&quot;&gt;Nvidia Shield Android TV - foster&lt;/a&gt; - &lt;em&gt;maintainer: webgeek1234&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/shieldtablet&quot;&gt;Nvidia Shield Tablet - shieldtablet&lt;/a&gt; - &lt;em&gt;maintainer: webgeek1234&lt;/em&gt;
+  &lt;ul&gt;
+  &lt;li&gt;Promoted from 13.0&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Readded 14.1 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;LG G5 (&lt;a href=&quot;https://wiki.lineageos.org/devices/h830&quot;&gt;T-Mobile - h830&lt;/a&gt; and &lt;a href=&quot;https://wiki.lineageos.org/devices/h850&quot;&gt;International - h850&lt;/a&gt;) - &lt;em&gt;maintainer: rashed&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;LG V20 (&lt;a href=&quot;https://wiki.lineageos.org/devices/h918&quot;&gt;T-Mobile -  h918&lt;/a&gt; and &lt;a href=&quot;https://wiki.lineageos.org/devices/us996&quot;&gt;GSM Unlocked - us996&lt;/a&gt;) - &lt;em&gt;maintainers: rashed, Albinoman887&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/v521&quot;&gt;LG G Pad X (T-Mobile) - v521&lt;/a&gt; - &lt;em&gt;maintainer: rashed&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/ham&quot;&gt;ZUK Z1 - ham&lt;/a&gt; - &lt;em&gt;maintainers: ashwinr64, raymanfx, shenki&lt;/em&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Suspended 14.1 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/w7&quot;&gt;LG L90 - w7&lt;/a&gt;
+  &lt;ul&gt;
+  &lt;li&gt;No active maintainer owns the device&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/athene&quot;&gt;Motorola Moto G4 - athene&lt;/a&gt;
+  &lt;ul&gt;
+  &lt;li&gt;Investigating boot issues&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;/ul&gt;</content><author><name>javelinanddart</name></author><category term="blog" /><summary type="html">Changes since June 12th 2017</summary></entry><entry><title type="html">Changelog 11 - June ASB, Chromium 59 and Tasks Lock</title><link href="/Changelog-11/" rel="alternate" type="text/html" title="Changelog 11 - June ASB, Chromium 59 and Tasks Lock" /><published>2017-06-12T00:00:00+00:00</published><updated>2017-06-12T00:00:00+00:00</updated><id>/Changelog-11</id><content type="html" xml:base="/Changelog-11/">&lt;h2 id=&quot;welcome-to-lineageos-biweekly-review-where-we-go-over-changes-in-the-last-couple-of-weeks&quot;&gt;Welcome to LineageOS’ biweekly review, where we go over changes in the last couple of weeks&lt;/h2&gt;
+
+  &lt;h3 id=&quot;major-changes-since-the-31st-may&quot;&gt;Major changes since the 31st May&lt;/h3&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://source.android.com/security/bulletin/2017-06-01&quot;&gt;June security patches&lt;/a&gt; have been merged (AOSP tag &lt;em&gt;android-7.1.2_r17&lt;/em&gt;). All builds starting June 6th will include these. Users that have a vendor.img (mostly Google devices) will be presented with a notice to update this on first boot&lt;/li&gt;
+  &lt;li&gt;You can now &lt;a href=&quot;https://review.lineageos.org/#/q/topic:taskLock&quot;&gt;prevent tasks from being removed when clearing all apps&lt;/a&gt; in the recent apps view&lt;/li&gt;
+  &lt;li&gt;Jelly now supports HTTP authentication&lt;/li&gt;
+  &lt;li&gt;System WebView has been updated to &lt;a href=&quot;https://review.lineageos.org/#/q/topic:chromium-59&quot;&gt;Chromium 59&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://www.lineageos.org/Changelog-10/&quot;&gt;sensitive numbers list&lt;/a&gt; has been expanded, and some new countries are now included (e.g. Canada, Czech Republic, Germany, Greece, India, Israel, Netherlands, Serbia and Spain)&lt;/li&gt;
+  &lt;li&gt;You can now disable lock screen album background when playing music&lt;/li&gt;
+  &lt;li&gt;Double tap to sleep now works on the lock screen too&lt;/li&gt;
+  &lt;li&gt;Terminal now properly recognizes CTRL and ALT keys&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h3 id=&quot;build-roster&quot;&gt;Build roster&lt;/h3&gt;
+
+  &lt;p&gt;Added 14.1 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/flounder&quot;&gt;Google Nexus 9 (WiFi) - flounder&lt;/a&gt; - &lt;em&gt;maintainers: hashbang173, razorloves&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/flounder_lte&quot;&gt;Google Nexus 9 (LTE) - flounder_lte&lt;/a&gt; - &lt;em&gt;maintainers: hashbang173, razorloves&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/libra&quot;&gt;Xiaomi Mi 4c - libra&lt;/a&gt; - &lt;em&gt;maintainer: Demon000&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/capricorn&quot;&gt;Xiaomi Mi 5s - capricorn&lt;/a&gt; - &lt;em&gt;maintainer: LuK1337&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/lithium&quot;&gt;Xiaomi Mi MIX - lithium&lt;/a&gt; - &lt;em&gt;maintainer: balika011&lt;/em&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Changed 13.0 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/maserati&quot;&gt;Motorola Droid 4 - maserati&lt;/a&gt; - Promoted to 14.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/targa&quot;&gt;Motorola Droid Bionic - targa&lt;/a&gt; - Promoted to 14.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/spyder&quot;&gt;Motorola Droid RAZR/RAZR MAXX (CDMA) - spyder&lt;/a&gt; - Promoted to 14.1&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/umts_spyder&quot;&gt;Motorola Droid RAZR/RAZR MAXX (GSM) - umts_spyder&lt;/a&gt; - Promoted to 14.1&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Suspended 14.1 devices&lt;/p&gt;
+
+  &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/tenshi&quot;&gt;BQ Aquaris U Plus - tenshi&lt;/a&gt;
+  &lt;ul&gt;
+  &lt;li&gt;Rework in progress&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.lineageos.org/devices/v521&quot;&gt;LG G Pad X (T-Mobile) - v521&lt;/a&gt;
+  &lt;ul&gt;
+  &lt;li&gt;Suspended until wiki instructions are updated&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;LG G2 (&lt;a href=&quot;https://wiki.lineageos.org/devices/d800&quot;&gt;AT&amp;amp;T&lt;/a&gt;, &lt;a href=&quot;https://wiki.lineageos.org/devices/d801&quot;&gt;T-Mobile&lt;/a&gt;, &lt;a href=&quot;https://wiki.lineageos.org/devices/d803&quot;&gt;Canadian&lt;/a&gt; and &lt;a href=&quot;https://wiki.lineageos.org/devices/d802&quot;&gt;International&lt;/a&gt;)
+  &lt;ul&gt;
+  &lt;li&gt;No longer actively maintained&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;LG G5 (&lt;a href=&quot;https://wiki.lineageos.org/devices/h830&quot;&gt;T-Mobile&lt;/a&gt; and &lt;a href=&quot;https://wiki.lineageos.org/devices/h850&quot;&gt;International&lt;/a&gt;)
+  &lt;ul&gt;
+  &lt;li&gt;Suspended until wiki instructions are updated&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;LG V20 (&lt;a href=&quot;https://wiki.lineageos.org/devices/h910&quot;&gt;AT&amp;amp;T&lt;/a&gt;, &lt;a href=&quot;https://wiki.lineageos.org/devices/h918&quot;&gt;T-Mobile&lt;/a&gt;, &lt;a href=&quot;https://wiki.lineageos.org/devices/ls997&quot;&gt;Sprint&lt;/a&gt;, &lt;a href=&quot;https://wiki.lineageos.org/devices/vs995&quot;&gt;Verizon&lt;/a&gt; and &lt;a href=&quot;https://wiki.lineageos.org/devices/us996&quot;&gt;GSM Unlocked&lt;/a&gt;)
+  &lt;ul&gt;
+  &lt;li&gt;Suspended until wiki instructions are updated&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;You can &lt;a href=&quot;http://wiki.lineageos.org/contributing.html&quot;&gt;contribute&lt;/a&gt; and help the maintainer with updating the wiki instructions by submitting a commit like &lt;a href=&quot;https://review.lineageos.org/#/c/175965/&quot;&gt;this one&lt;/a&gt; for the device to get builds re-enabled.&lt;/p&gt;</content><author><name>TimSchumi</name></author><category term="blog" /><summary type="html">Changes since 31st May 2017</summary></entry><entry><title type="html">SafetyNet</title><link href="/Safetynet/" rel="alternate" type="text/html" title="SafetyNet" /><published>2017-06-05T00:00:00+00:00</published><updated>2017-06-05T00:00:00+00:00</updated><id>/Safetynet</id><content type="html" xml:base="/Safetynet/">&lt;h2 id=&quot;safetynet-what-it-is-and-how-it-affects-you&quot;&gt;SafetyNet: What it is, and how it affects you&lt;/h2&gt;
+
+  &lt;h3 id=&quot;what-is-safetynet&quot;&gt;What is SafetyNet?&lt;/h3&gt;
+  &lt;p&gt;&lt;a href=&quot;https://developer.android.com/training/safetynet/index.html&quot;&gt;SafetyNet&lt;/a&gt; is an API that was developed by Google in order to detect whether or not a device is in a known-good state. On older devices, this check is more lenient in order to maintain compatibility.&lt;/p&gt;
+
+  &lt;h3 id=&quot;how-does-this-affect-you&quot;&gt;How does this affect you?&lt;/h3&gt;
+  &lt;p&gt;App developers can choose to enable a toggle in the app developer console to hide their app on the Play Store if a device doesn’t pass SafetyNet tests, or can choose to check the SafetyNet status of a device to disable certain functionality. Notable examples would be Netflix, which is hidden on the Play Store, and Android Pay, which checks SafetyNet each time the app is used. Devices running Lineage may have a smaller selection of usable apps in the Play Store as a result of these checks.&lt;/p&gt;
+
+  &lt;h3 id=&quot;what-are-we-going-to-do-about-it&quot;&gt;What are we going to do about it?&lt;/h3&gt;
+  &lt;p&gt;Our official stance is that &lt;strong&gt;we will not intentionally circumvent an integrity check that Google has put in place for app developers&lt;/strong&gt;. Any action taken to bypass SafetyNet risks a backlash against all custom OSes, and could cause Google to block them entirely from the Play Store. We have always taken the approach that our customizations should not change the underlying Android architecture in ways that developers cannot predict.&lt;/p&gt;
+
+  &lt;h3 id=&quot;what-can-you-do-about-it&quot;&gt;What can you do about it?&lt;/h3&gt;
+  &lt;p&gt;For apps that are no longer visible in the Play Store, you can pursue alternative methods of app installation. For apps that inhibit functionality, you can always install your device’s stock software and relock your bootloader.&lt;/p&gt;
+
+  &lt;p&gt;The LineageOS Team&lt;/p&gt;</content><author><name>javelinanddart</name></author><category term="blog" /><summary type="html">What it is, and how it affects you</summary></entry></feed>

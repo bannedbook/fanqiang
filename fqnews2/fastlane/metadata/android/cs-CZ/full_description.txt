@@ -1,0 +1,19 @@
+<p>Feeder je open source čtečka kanálů (RSS/Atom/JSONFeed) pro Android vytvořená v roce 2014.</p>
+
+<p>Pomocí aplikace Feeder můžete číst nejnovější zprávy a příspěvky ze svých oblíbených webů.</p>
+
+<p>Feeder se NEsynchronizuje s obvyklými vzdálenými úložišti, takže není potřeba registrace žádného účtu.</p>
+
+<p>Aplikace Feeder je zdarma a je spuštěna lokálně v zařízení. Vaše data jsou 100% soukromá.</p>
+
+<p><b>Funkce</b></p>
+
+<ul>
+<li>Zpracuje HTML a vykreslí jej v nativním TextView</li>
+<li>Čtení bez internetu</li>
+<li>Synchronizace na pozadí</li>
+<li>Oznámení</li>
+<li>Import/export OPML</li>
+<li>Pohodlný přístup k odkazům na přílohy</li>
+<li>Material Design</li>
+</ul>

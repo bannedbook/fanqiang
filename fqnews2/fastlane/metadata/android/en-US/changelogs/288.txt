@@ -1,0 +1,10 @@
+# 2.6.4
+Jonas Kalderstam (7):
+  * [ef1a65b0] Improved OPML import when files are incorrect
+  * [2f564e62] Some gradle housekeeping
+  * [369a17d4] Fixed crash: Parcel: unable to marshal value HttpError
+  * [434ecae8] Fixed crash: URLDecoder: Illegal hex characters in escape
+  * [f258c45e] Fixed crash: gzip finished without exhausting source
+  * [477e3b32] Fixed crash: file:/// exposed beyond app through
+         ClipData.Item.getUri()
+  * [724d0b60] Fixed crash: No Activity found to handle Intent

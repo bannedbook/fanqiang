@@ -1,0 +1,21 @@
+# 2.6.5
+Agnieszka C (1):
+  * [5fa3ac9e] Updated Polish translation using Weblate
+
+ERYpTION (1):
+  * [1f7ede07] Updated Danish translation using Weblate
+
+El Pirujo (1):
+  * [634379b0] Updated Spanish translation using Weblate
+
+Eric (1):
+  * [9c6fe4a1] Updated Chinese (Simplified) translation using Weblate
+
+J. Lavoie (1):
+  * [5a4c5c7b] Updated Italian translation using Weblate
+
+Jonas Kalderstam (1):
+  * [341310e6] Added ability to force add a feed despite network errors
+
+Oğuz Ersen (1):
+  * [88f

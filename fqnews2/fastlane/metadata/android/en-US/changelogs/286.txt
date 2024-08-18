@@ -1,0 +1,14 @@
+# 2.6.2
+Axus Wizix (1):
+  * [ec5281aa] Updated Russian translation using Weblate
+
+Jonas Kalderstam (6):
+  * [1195f0cc] Changed so sync uses only a single CPU-core
+  * [49a7f653] Improved some error handling
+  * [ce759df2] Fixed crash in edit feed text related to focus
+  * [91c0627e] Made the OPML importer tolerant of ill-formed XML (bad files)
+  * [272a898f] Fixed text in list possibly getting out of date with data
+  * [10d071e3] Added support for more types of feed icons
+
+YGXB_net (1):
+  * [182

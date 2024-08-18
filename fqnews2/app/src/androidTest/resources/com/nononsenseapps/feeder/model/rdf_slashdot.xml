@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rdf:RDF
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns="http://purl.org/rss/1.0/"
+        xmlns:admin="http://webns.net/mvcb/"
+        xmlns:content="http://purl.org/rss/1.0/modules/content/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+        xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+        xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+>
+
+  <channel rdf:about="https://slashdot.org/">
+    <title>Slashdot</title>
+    <link>https://slashdot.org/</link>
+    <description>News for nerds, stuff that matters</description>
+    <dc:language>en-us</dc:language>
+    <dc:rights>Copyright 1997-2016, SlashdotMedia. All Rights Reserved.</dc:rights>
+    <dc:date>2024-03-02T15:38:20+00:00</dc:date>
+    <dc:publisher>Dice</dc:publisher>
+    <dc:creator>help@slashdot.org</dc:creator>
+    <dc:subject>Technology</dc:subject>
+    <syn:updateBase>1970-01-01T00:00+00:00</syn:updateBase>
+    <syn:updateFrequency>1</syn:updateFrequency>
+    <syn:updatePeriod>hourly</syn:updatePeriod>
+    <items>
+      <rdf:Seq>
+        <rdf:li rdf:resource="https://yro.slashdot.org/story/24/03/02/071229/ransomware-attack-hampers-prescription-drug-sales-at-90-of-us-pharmacies?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://apple.slashdot.org/story/24/03/02/0118225/spotify-epic-games-and-others-argue-apples-app-store-changes-do-not-comply-with-dma?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://tech.slashdot.org/story/24/03/02/016213/copilot-for-onedrive-will-fetch-your-files-and-summarize-them?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://science.slashdot.org/story/24/03/01/2328228/the-desert-planet-in-dune-is-plausible-according-to-science?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://news.slashdot.org/story/24/03/01/2320203/helium-discovery-in-northern-minnesota-may-be-biggest-ever-in-north-america?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://it.slashdot.org/story/24/03/01/2312238/yelp-says-remote-first-policy-boosted-job-apps-by-43-led-to-a-more-satisfied-workforce?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://tech.slashdot.org/story/24/03/01/2258257/meta-says-its-deleting-all-oculus-accounts-at-the-end-of-the-month?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://tech.slashdot.org/story/24/03/01/2255216/california-approves-waymo-robotaxi-services-in-la-sf-neighboring-cities?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://news.slashdot.org/story/24/03/01/2246227/rogue-editors-started-a-competing-wikipedia-thats-only-about-roads?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://slashdot.org/story/24/03/01/2143247/hands-up-if-you-want-to-volunteer-for-layoffs-ibm-tells-staff?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://news.slashdot.org/story/24/03/01/2136253/police-now-need-warrant-for-ip-addresses-canadas-top-court-rules?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://developers.slashdot.org/story/24/03/01/2130254/a-leaky-database-spilled-2fa-codes-for-the-worlds-tech-giants?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://developers.slashdot.org/story/24/03/01/1912250/stack-overflow-to-charge-llm-developers-for-access-to-its-coding-content?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://news.slashdot.org/story/24/03/01/190220/worldwide-obesity-tops-1-billion?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+        <rdf:li rdf:resource="https://news.slashdot.org/story/24/03/01/1854225/carbon-emissions-reached-record-high-in-2023-iea-says?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+      </rdf:Seq>
+    </items>
+    <image rdf:resource="https://a.fsdn.com/sd/topics/topicslashdot.gif" />
+    <textinput rdf:resource="https://slashdot.org/search.pl" />
+  </channel>
+  <image rdf:about="https://a.fsdn.com/sd/topics/topicslashdot.gif">
+    <title>Slashdot</title>
+    <url>https://a.fsdn.com/sd/topics/topicslashdot.gif</url>
+    <link>https://slashdot.org/</link>
+  </image>
+  <item rdf:about="https://yro.slashdot.org/story/24/03/02/071229/ransomware-attack-hampers-prescription-drug-sales-at-90-of-us-pharmacies?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>Ransomware Attack Hampers Prescription Drug Sales at 90% of US Pharmacies</title>
+    <link>https://yro.slashdot.org/story/24/03/02/071229/ransomware-attack-hampers-prescription-drug-sales-at-90-of-us-pharmacies?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>"A ransomware gang once thought to have been crippled by law enforcement has snarled prescription processing for millions of Americans over the past week..." reports the Washington Post.
+
+      "The hackers stole data about patients, encrypted company files and demanded money to unlock them, prompting the company to shut down most of its network as it worked to recover."
+
+      Insurance giant UnitedHealthcare Group said the hackers struck its Change Health business unit, which routes prescription claims from pharmacies to companies that determine whether patients are covered by insurance and what they should pay... Change Health and a rival, CoverMyMeds, are the two biggest players in the so-called switch business, charging pharmacies a small fee for funneling claims to insurers. "When one of them goes down, obviously it's a major problem," said Patrick Berryman, a senior vice president at the National Community Pharmacists Association...
+
+      UnitedHealth estimated that more than 90 percent of the nation's 70,000-plus pharmacies have had to alter how they process electronic claims as a result of the Change Health outage. But it said only a small number of patients have been unable to get their prescriptions at some price. At CVS, which operates one of the largest pharmacy networks in the nation, a spokesperson said there are "a small number of cases in which our pharmacies are not able to process insurance claims" as a result of the outage. It said workarounds were allowing it to fill prescriptions, however...
+
+      For pharmacies that were not able to quickly route claims to a different company, the Change Health outage left pharmacists to try to manually calculate a patient's co-pay or offer them the cash price. Compounding the impact, thousands of organizations cut off Change Health from their systems to ensure the hackers did not infect their networks as well... The attack on Change Health has left many pharmacies in a cash-flow bind, as they face bills from the companies that deliver the medication without knowing when they will be reimbursed by insurers. Some pharmacies are requiring customers to pay full price for their prescriptions when they cannot tell if they are covered by insurance. In some cases, that means people are paying more than $1,000 out of pocket, according to social media posts.
+
+      The situation has been "extremely disruptive," said Erin Fox, associate chief pharmacy officer at University of Utah Health. "At our system, our retail pharmacies were providing three-day gratis emergency supplies for patients who could not afford to pay the cash price," Fox said by email. "In some cases, like for inhalers, we had to send product out at risk, not knowing if we will ever get paid, but we need to take care of the patients." Axis Pharmacy Northwest near Seattle is "going out on a limb and dispensing product with absolutely no inkling if we'll get paid or not," said Richard Molitor, the pharmacist in charge.&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=Ransomware+Attack+Hampers+Prescription+Drug+Sales+at+90%25+of+US+Pharmacies%3A+https%3A%2F%2Fyro.slashdot.org%2Fstory%2F24%2F03%2F02%2F071229%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fyro.slashdot.org%2Fstory%2F24%2F03%2F02%2F071229%2Fransomware-attack-hampers-prescription-drug-sales-at-90-of-us-pharmacies%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://yro.slashdot.org/story/24/03/02/071229/ransomware-attack-hampers-prescription-drug-sales-at-90-of-us-pharmacies?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244560&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>EditorDavid</dc:creator>
+    <dc:date>2024-03-02T15:34:00+00:00</dc:date>
+    <dc:subject>crime</dc:subject>
+    <slash:department>bitter-pills</slash:department>
+    <slash:section>yro</slash:section>
+    <slash:hit_parade>0,0,0,0,0,0,0</slash:hit_parade>
+  </item>
+  <item rdf:about="https://apple.slashdot.org/story/24/03/02/0118225/spotify-epic-games-and-others-argue-apples-app-store-changes-do-not-comply-with-dma?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>Spotify, Epic Games, and Others Argue Apple's App Store Changes Do Not Comply With DMA</title>
+    <link>https://apple.slashdot.org/story/24/03/02/0118225/spotify-epic-games-and-others-argue-apples-app-store-changes-do-not-comply-with-dma?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>An anonymous reader quotes a report from MacRumors: Spotify, Epic Games, Deezer, Paddle, and several other developers and EU associations today sent a joint letter to the European Commission to complain about Apple's "proposed scheme for compliance" with the Digital Markets Act (DMA). The 34 companies and associations do not believe Apple's plans "meet the law's requirements." Apple's changes "disregard both the spirit and letter of the law" and if left unchanged, will "make a mockery of the DMA," according to the letter. Several specific components of Apple's plan are highlighted, including the Core Technology Fee, the Notarization process, and the terms that developers must accept:
+      - Apple's requirement to stay with the current App Store terms or opt in to new terms provides developers with "an unworkable choice" that adds complexity and confusion. The letter suggests that neither option is DMA compliant and would "consolidate Apple's stronghold over digital markets."
+      - The Core Technology Fee and transaction fees will hamper competition and will prevent developers from agreeing to the "unjust terms."
+      - Apple is using "unfounded privacy and security concerns" to limit user choice. The "scare screens" that Apple plans to show users will "mislead and degrade the user experience."
+      - Apple is not allowing sideloading, and it is making the installation and use of new app stores "difficult, risky and financially unattractive for developers."
+      The companies and associations are urging the European Union to take "swift, timely and decisive action against Apple." The way the European Commission responds to Apple's proposal "will serve as a litmus test of the DMA and whether it can deliver for Europe's citizens and economy." Further reading: Apple Backtracks on Removing EU Home Screen Web Apps in iOS 17.4&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=Spotify%2C+Epic+Games%2C+and+Others+Argue+Apple's+App+Store+Changes+Do+Not+Comply+With+DMA%3A+https%3A%2F%2Fapple.slashdot.org%2Fstory%2F24%2F03%2F02%2F0118225%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fapple.slashdot.org%2Fstory%2F24%2F03%2F02%2F0118225%2Fspotify-epic-games-and-others-argue-apples-app-store-changes-do-not-comply-with-dma%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://apple.slashdot.org/story/24/03/02/0118225/spotify-epic-games-and-others-argue-apples-app-store-changes-do-not-comply-with-dma?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244364&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>BeauHD</dc:creator>
+    <dc:date>2024-03-02T13:00:00+00:00</dc:date>
+    <dc:subject>eu</dc:subject>
+    <slash:department>making-a-mockery</slash:department>
+    <slash:section>apple</slash:section>
+    <slash:comments>13</slash:comments>
+    <slash:hit_parade>13,13,12,10,1,0,0</slash:hit_parade>
+  </item>
+  <item rdf:about="https://tech.slashdot.org/story/24/03/02/016213/copilot-for-onedrive-will-fetch-your-files-and-summarize-them?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>Copilot For OneDrive Will Fetch Your Files and Summarize Them</title>
+    <link>https://tech.slashdot.org/story/24/03/02/016213/copilot-for-onedrive-will-fetch-your-files-and-summarize-them?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>An upcoming April release of Copilot for OneDrive will be able to find, summarize, and extract information from a wide range of files, including text documents, presentations, spreadsheets, HTML pages and PDF files. "Users can ask Copilot to tailor summaries to their liking, such as only including key points or highlights from a specific section," reports The Verge. From the report: The chatbot will also be able to respond to natural language prompts and answer highly specific questions about the contents of a user's files. Some examples given by Microsoft included asking Copilot to tabulate a week's worth of beverage sales and throw the data in a table view by day. Or, asking it to list the pros and cons of a project, or display the most recent or relevant files. Users can even ask Copilot for advice on how to make their documents better. Copilot on OneDrive will also be able to create outlines, tables, and lists for users, based on existing files. A few examples given were:
+
+      - Using the /sales-enablement.docx as reference, create an outline of a sales pitch to a new customer.
+
+      - For these selected resumes, create a table with names, current title, years of experience, educational qualifications, and current location.
+
+      - Create a list of frequently asked questions about project Moonshot.&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=Copilot+For+OneDrive+Will+Fetch+Your+Files+and+Summarize+Them%3A+https%3A%2F%2Ftech.slashdot.org%2Fstory%2F24%2F03%2F02%2F016213%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Ftech.slashdot.org%2Fstory%2F24%2F03%2F02%2F016213%2Fcopilot-for-onedrive-will-fetch-your-files-and-summarize-them%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://tech.slashdot.org/story/24/03/02/016213/copilot-for-onedrive-will-fetch-your-files-and-summarize-them?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244342&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>BeauHD</dc:creator>
+    <dc:date>2024-03-02T10:00:00+00:00</dc:date>
+    <dc:subject>ai</dc:subject>
+    <slash:department>AI-overhaul</slash:department>
+    <slash:section>technology</slash:section>
+    <slash:comments>21</slash:comments>
+    <slash:hit_parade>21,21,16,15,0,0,0</slash:hit_parade>
+  </item>
+  <item rdf:about="https://science.slashdot.org/story/24/03/01/2328228/the-desert-planet-in-dune-is-plausible-according-to-science?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>The Desert Planet In 'Dune' Is Plausible, According To Science</title>
+    <link>https://science.slashdot.org/story/24/03/01/2328228/the-desert-planet-in-dune-is-plausible-according-to-science?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>The desert planet Arrakis in Frank Herbert's science fiction novel Dune is plausible, says Alexander Farnsworth, a climate modeler at the University of Bristol in England. According to Science News, the world would be a harsh place for humans to live, and they probably wouldn't have to worry about getting eaten by extraterrestrial helminths. From the report: For their Arrakis climate simulation, which you can explore at the website Climate Archive, Farnsworth and colleagues started with the well-known physics that drive weather and climate on Earth. Using our planet as a starting point makes sense, Farnsworth says, partly because Herbert drew inspiration for Arrakis from "some sort of semi-science of looking at dune systems on the Earth itself." The team then added nuggets of information about the planet from details in Herbert's novels and in the Dune Encyclopedia. According to that intel, the fictional planet's atmosphere is similar to Earth's with a couple of notable differences. Arrakis has less carbon dioxide in the atmosphere than Earth -- about 350 parts per million on the desert planet compared with 417 parts per million on Earth. But Dune has far more ozone in its lower atmosphere: 0.5 percent of the gases in the atmosphere compared to Earth's 0.000001 percent.
+
+      All that extra ozone is crucial for understanding the planet. Ozone is a powerful greenhouse gas, about 65 times as potent at warming the atmosphere as carbon dioxide is, when measured over a 20-year period. "Arrakis would certainly have a much warmer atmosphere, even though it has less CO2 than Earth today," Farnsworth says. In addition to warming the planet, so much ozone in the lower atmosphere could be bad news. "For humans, that would be incredibly toxic, I think, almost fatal if you were to live under such conditions," Farnsworth says. People on Arrakis would probably have to rely on technology to scrub ozone from the air. Of course, ozone in the upper atmosphere could help shield Arrakis from harmful radiation from its star, Canopus. (Canopus is a real star also known as Alpha Carinae. It's visible in the Southern Hemisphere and is the second brightest star in the sky. Unfortunately for Dune fans, it isn't known to have planets.) If Arrakis were real, it would be located about as far from Canopus as Pluto is from the sun, Farnsworth says. But Canopus is a large white star calculated to be about 7,200 degrees Celsius. "That's significantly hotter than the sun," which runs about 2,000 degrees cooler, Farnsworth says. But "there's a lot of supposition and assumptions they made in here, and whether those are accurate numbers or not, I can't say."
+
+      The climate simulation revealed that Arrakis probably wouldn't be exactly as Herbert described it. For instance, in one throwaway line, the author described polar ice caps receding in the summer heat. But Farnsworth and colleagues say it would be far too hot at the poles, about 70&amp;#194; C during the summer, for ice caps to exist at all. Plus, there would be too little precipitation to replenish the ice in the winter. High clouds and other processes would warm the atmosphere at the poles and keep it warmer than lower latitudes, especially in the summertime. Although Herbert's novels have people living in the midlatitudes and close to the poles, the extreme summer heat and bone-chilling -40C to -75C temperatures in the winters would make those regions nearly unlivable without technology, Farnsworth says. Temperatures in Arrakis' tropical latitudes would be relatively more pleasant at 45C in the warmest months and about 15C in colder months. On Earth, high humidity in the tropics makes it far warmer than at the poles. But on Arrakis, "most of the atmospheric moisture was essentially removed from the tropics," making even the scorching summers more tolerable. The poles are where clouds and the paltry amount of moisture gather and heat the atmosphere. But the tropics on Arrakis pose their own challenges. Hurricane force winds would regularly sandblast inhabitants and build dunes up to 250 meters tall, the researchers calculate. It doesn't mean people couldn't live on Arrakis, just that they'd need technology and lots of off-world support to bring in food and water, Farnsworth says. "I'd say it's a very livable world, just a very inhospitable world."&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=The+Desert+Planet+In+'Dune'+Is+Plausible%2C+According+To+Science%3A+https%3A%2F%2Fscience.slashdot.org%2Fstory%2F24%2F03%2F01%2F2328228%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fscience.slashdot.org%2Fstory%2F24%2F03%2F01%2F2328228%2Fthe-desert-planet-in-dune-is-plausible-according-to-science%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://science.slashdot.org/story/24/03/01/2328228/the-desert-planet-in-dune-is-plausible-according-to-science?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244256&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>BeauHD</dc:creator>
+    <dc:date>2024-03-02T07:00:00+00:00</dc:date>
+    <dc:subject>space</dc:subject>
+    <slash:department>minus-the-giant-sandworms</slash:department>
+    <slash:section>science</slash:section>
+    <slash:comments>24</slash:comments>
+    <slash:hit_parade>24,24,24,20,2,2,0</slash:hit_parade>
+  </item>
+  <item rdf:about="https://news.slashdot.org/story/24/03/01/2320203/helium-discovery-in-northern-minnesota-may-be-biggest-ever-in-north-america?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>Helium Discovery In Northern Minnesota May Be Biggest Ever In North America</title>
+    <link>https://news.slashdot.org/story/24/03/01/2320203/helium-discovery-in-northern-minnesota-may-be-biggest-ever-in-north-america?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>An anonymous reader quotes a report from CBS News: Scientists and researchers are celebrating what they call a "dream" discovery after an exploratory drill confirmed a high concentration of helium buried deep in Minnesota's Iron Range. Thomas Abraham-James, CEO of Pulsar Helium, said the confirmed presence of helium could be one of the most significant such finds in the world. CBS News Minnesota toured the drill site soon after the drill rig first broke ground at the beginning of February. The discovery happened more than three weeks later at about 2 a.m. Thursday, as a drill reached its depth of 2,200 feet below the surface. According to Abraham-James, the helium concentration was measured at 12.4%, which is higher than forecasted and roughly 30 times the industry standard for commercial helium. "12.4% is just a dream. It's perfect," he said.
+
+      Now that helium is confirmed to be underground in Babbitt, Abraham-James said the next phase of the project is a feasibility study by an independent third party to study the size of the well and whether it could support a full-service helium plant. "It's not just about drilling one hole, but now proving up the geological models, being able to get some really good data that wasn't captured in the original discovery," he explained. "It has the potential to really contribute to local society." The company said the feasibility study could take until the end of the year to complete.&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=Helium+Discovery+In+Northern+Minnesota+May+Be+Biggest+Ever+In+North+America%3A+https%3A%2F%2Fnews.slashdot.org%2Fstory%2F24%2F03%2F01%2F2320203%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fnews.slashdot.org%2Fstory%2F24%2F03%2F01%2F2320203%2Fhelium-discovery-in-northern-minnesota-may-be-biggest-ever-in-north-america%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://news.slashdot.org/story/24/03/01/2320203/helium-discovery-in-northern-minnesota-may-be-biggest-ever-in-north-america?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244254&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>BeauHD</dc:creator>
+    <dc:date>2024-03-02T03:30:00+00:00</dc:date>
+    <dc:subject>usa</dc:subject>
+    <slash:department>dream-discoveries</slash:department>
+    <slash:section>news</slash:section>
+    <slash:comments>25</slash:comments>
+    <slash:hit_parade>25,23,22,19,2,0,0</slash:hit_parade>
+  </item>
+  <item rdf:about="https://it.slashdot.org/story/24/03/01/2312238/yelp-says-remote-first-policy-boosted-job-apps-by-43-led-to-a-more-satisfied-workforce?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>Yelp Says Remote-First Policy Boosted Job Apps By 43%, Led To a More Satisfied Workforce</title>
+    <link>https://it.slashdot.org/story/24/03/01/2312238/yelp-says-remote-first-policy-boosted-job-apps-by-43-led-to-a-more-satisfied-workforce?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>Since implementing a remote-first policy in 2021, Yelp says it's experienced a surge in job applications and a more satisfied workforce. Fortune reports: Last year, the total number of job applicants was 43% higher compared to 2021, according to Yelp's 2024 Remote Work Report released earlier this month. The number of applicants for sales roles skyrocketed by 103%, and prospects for its general and administrative (G&amp;amp;A) positions shot up 52% over the same time period. Those increases fall in line with data that shows a tidal wave of applicants clamoring for remote jobs. "It's rewarding to see both the level of interest and the quality of our applicants," Carmen Amara, chief people officer at Yelp, told Fortune. "Remote work has allowed us to attract a number of candidates who previously would not have applied to Yelp due to their location."
+
+      Despite arguments that remote work weakens workers' connections and growth opportunities, Yelp says it has found the opposite to be true. About 90% of the company's more than 4,700 employees say they have found effective ways to collaborate remotely, and 91% say they are confident in upward career mobility while working out of the office. Flexible schedules have also facilitated a healthy work-life balance -- about 89% of the company's workers say they can manage personal and professional demands, and the same amount say that the remote model has allowed them to make positive changes for their wellbeing.
+
+      Notably, Yelp's global tenure has increased to 3.5 years in 2023, compared to 2.8 years the year prior. The company says it's using the money it saved from shutting down its underutilized offices in New York City, Chicago, and Washington D.C., to funnel back into employee benefits, professional development, and wellness reimbursements.&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=Yelp+Says+Remote-First+Policy+Boosted+Job+Apps+By+43%25%2C+Led+To+a+More+Satisfied+Workforce%3A+https%3A%2F%2Fit.slashdot.org%2Fstory%2F24%2F03%2F01%2F2312238%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fit.slashdot.org%2Fstory%2F24%2F03%2F01%2F2312238%2Fyelp-says-remote-first-policy-boosted-job-apps-by-43-led-to-a-more-satisfied-workforce%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://it.slashdot.org/story/24/03/01/2312238/yelp-says-remote-first-policy-boosted-job-apps-by-43-led-to-a-more-satisfied-workforce?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244234&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>BeauHD</dc:creator>
+    <dc:date>2024-03-02T02:02:00+00:00</dc:date>
+    <dc:subject>business</dc:subject>
+    <slash:department>work-life-balance</slash:department>
+    <slash:section>it</slash:section>
+    <slash:comments>11</slash:comments>
+    <slash:hit_parade>11,10,9,9,3,0,0</slash:hit_parade>
+  </item>
+  <item rdf:about="https://tech.slashdot.org/story/24/03/01/2258257/meta-says-its-deleting-all-oculus-accounts-at-the-end-of-the-month?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>Meta Says It's Deleting All Oculus Accounts At the End of the Month</title>
+    <link>https://tech.slashdot.org/story/24/03/01/2258257/meta-says-its-deleting-all-oculus-accounts-at-the-end-of-the-month?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>Emma Roth reports via The Verge: If you still haven't migrated your Oculus account to a Meta one, you might want to do that soon. In an email sent to users, the company says it will delete Oculus accounts on March 29th, 2024, preventing you from reactivating or retrieving your apps, in-app purchases, store credits, and more. You'll lose your achievements, friends list, and any content created with your Oculus account if you don't migrate to a Meta account before then.
+
+      Oculus accounts have been on the way out since 2020, when the company then known as Facebook started requiring new users to sign up with Facebook accounts instead. However, it added the ability to create a Meta account in 2022, offering an alternative to users who didn't want to link their Facebook account to their Quest headset. Meta stopped letting users log in to their Oculus accounts in January 2023. If you've got a Quest gathering dust in a drawer somewhere, now's your last chance to migrate your Oculus account to a Meta one.
+
+      You can migrate your account by heading to this page and signing up for a Meta account with the same email you've used for Oculus. From there, you'll be able to access all of the same games, data, and other purchases saved to your Oculus account.&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=Meta+Says+It's+Deleting+All+Oculus+Accounts+At+the+End+of+the+Month%3A+https%3A%2F%2Ftech.slashdot.org%2Fstory%2F24%2F03%2F01%2F2258257%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Ftech.slashdot.org%2Fstory%2F24%2F03%2F01%2F2258257%2Fmeta-says-its-deleting-all-oculus-accounts-at-the-end-of-the-month%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://tech.slashdot.org/story/24/03/01/2258257/meta-says-its-deleting-all-oculus-accounts-at-the-end-of-the-month?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244228&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>BeauHD</dc:creator>
+    <dc:date>2024-03-02T01:25:00+00:00</dc:date>
+    <dc:subject>facebook</dc:subject>
+    <slash:department>time-to-migrate</slash:department>
+    <slash:section>technology</slash:section>
+    <slash:comments>20</slash:comments>
+    <slash:hit_parade>20,19,16,14,3,1,0</slash:hit_parade>
+  </item>
+  <item rdf:about="https://tech.slashdot.org/story/24/03/01/2255216/california-approves-waymo-robotaxi-services-in-la-sf-neighboring-cities?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>California Approves Waymo Robotaxi Services In LA, SF Neighboring Cities</title>
+    <link>https://tech.slashdot.org/story/24/03/01/2255216/california-approves-waymo-robotaxi-services-in-la-sf-neighboring-cities?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>The California Public Utilities Commission (CPUC) approved Alphabet's Waymo robotaxi service to operate in Los Angeles and some cities near San Francisco. Reuters reports: Waymo, which already operates in San Francisco and Phoenix, applied on Jan 19 to expand its driverless services, saying it would work with policymakers, first responders and community organizations. Last month, the CPUC suspended the application "for further staff review." "Waymo may begin fared driverless passenger service operations in the specified areas of Los Angeles and the San Francisco Peninsula, effective today," the regulator said on a notice posted to its website Friday.&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=California+Approves+Waymo+Robotaxi+Services+In+LA%2C+SF+Neighboring+Cities%3A+https%3A%2F%2Ftech.slashdot.org%2Fstory%2F24%2F03%2F01%2F2255216%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Ftech.slashdot.org%2Fstory%2F24%2F03%2F01%2F2255216%2Fcalifornia-approves-waymo-robotaxi-services-in-la-sf-neighboring-cities%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://tech.slashdot.org/story/24/03/01/2255216/california-approves-waymo-robotaxi-services-in-la-sf-neighboring-cities?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244224&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>BeauHD</dc:creator>
+    <dc:date>2024-03-02T00:45:00+00:00</dc:date>
+    <dc:subject>transportation</dc:subject>
+    <slash:department>red-light-green-light</slash:department>
+    <slash:section>technology</slash:section>
+    <slash:comments>10</slash:comments>
+    <slash:hit_parade>10,10,10,10,2,1,0</slash:hit_parade>
+  </item>
+  <item rdf:about="https://news.slashdot.org/story/24/03/01/2246227/rogue-editors-started-a-competing-wikipedia-thats-only-about-roads?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>Rogue Editors Started a Competing Wikipedia That's Only About Roads</title>
+    <link>https://news.slashdot.org/story/24/03/01/2246227/rogue-editors-started-a-competing-wikipedia-thats-only-about-roads?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>An anonymous reader quotes a report from Gizmodo: For 20 years, a loosely organized group of Wikipedia editors toiled away curating a collection of 15,000 articles on a single subject: the roads and highways of the United States. Despite minor disagreements, the US Roads Project mostly worked in harmony, but recently, a long-simmering debate over the website's rules drove this community to the brink. Efforts at compromise fell apart. There was a schism, and in the fall of 2023, the editors packed up their articles and moved over to a website dedicated to roads and roads alone. It's called AARoads, a promised land where the editors hope, at last, that they can find peace. "Roads are a background piece. People drive on them every day, but they don't give them much attention," said editor Michael Gronseth, who goes by Imzadi1979 on Wikipedia, where he dedicated his work to Michigan highways, specifically. But a road has so much to offer if you look beyond the asphalt. It's the nexus of history, geography, travel, and government, a seemingly perfect subject for the hyper-fixations of Wikipedia. "But there was a shift about a year ago," Gronseth said. "More editors started telling us that what we're doing isn't important enough, and we should go work on more significant topics." [...]
+
+      The Roads Project had a number of adversaries, but the chief rival is a group known as the New Page Patrol, or the NPP for short. The NPP has a singular mission. When a new page goes up on Wikipedia, it gets reviewed by the NPP. The Patrol has special editing privileges and if a new article doesn't meet the website's standards, the NPP takes it down. "There's a faction of people who feel that basically anything is valid to be published on Wikipedia. They say, 'Hey, just throw it out there! Anything goes.' That's not where I come down." said Bil Zeleny, a former member of the NPP who goes by onel5969 on Wikipedia, a reference to the unusual spelling of his first name. At his peak, Zeleny said he was reviewing upwards of 100,000 articles a year, and he rejected a lot of articles about roads during his time. After years of frustration, Zeleny felt he was seeing too many new road articles that weren't following the rules -- entire articles that cited nothing other than Google Maps, he said. Enough was enough. Zeleny decided it was time to bring the subject to the council.
+
+      Zeleny brought up the problem on the NPP discussion forum, sparking months of heated debate. Eventually, the issue became so serious that some editors proposed an official policy change on the use of maps as a source. Rule changes require a process called "Request for Comment," where everyone is invited to share their thoughts on the issue. Over the course of a month, Wikipedia users had written more than 56,000 words on the subject. For reference, that's about twice as long as Ernest Hemingway's novel The Old Man and the Sea. In the end, the roads project was successful. The vote was decisive, and Wikipedia updated its "No Original Research" policy to clarify that it's ok to cite maps and other visual sources. But this, ultimately, was a victory with no winners. "Some of us felt attacked," Gronseth said. On the US Roads Project's Discord channel, a different debate was brewing. The website didn't feel safe anymore. What would happen at the next request for comment? The community decided it was time to fork. "We don't want our articles deleted. It didn't feel like we had a choice," he said.
+
+      The Wikipedia platform is designed for interoperability. If you want to start your own Wiki, you can split off and take your Wikipedia work with you, a process known as "forking." [...] Over the course of several months, the US Roads Project did the same. Leaving Wikipedia was painful, but the fight that drove the roads editors away was just as difficult for people on the other side. Some editors embroiled in the roads fights deleted their accounts, though none of these ex-Wikipedian's responded to Gizmodo's requests for comment. Bil Zeleny was among the casualties. After almost six years of hard work on the New Post Patrol, he reached the breaking point. The controversy had pushed him too far, and Zeleny resigned from the NPP. [...] AARoads actually predates Wikipedia, tracing its origins all the way back to the prehistoric internet days of the year 2000, complete with articles, maps, forums, and a collection of over 10,000 photos of highway signs and markers. When the US Roads Project needed a new home, AARoads was happy to oblige. It's a beautiful resource. It even has backlinks to relevant non-roads articles on the regular Wikipedia. But for some, it isn't home. "There are members who disagree with me, but my ultimate goal is to fork back," said Gronseth. "We made our articles license-compatible, so they can be exported back to Wikipedia someday if that becomes an option. I don't want to stay separate. I want to be part of the Wikipedia community. But we don't know where things will land, and for now, we've struck out on our own."&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=Rogue+Editors+Started+a+Competing+Wikipedia+That's+Only+About+Roads%3A+https%3A%2F%2Fnews.slashdot.org%2Fstory%2F24%2F03%2F01%2F2246227%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fnews.slashdot.org%2Fstory%2F24%2F03%2F01%2F2246227%2Frogue-editors-started-a-competing-wikipedia-thats-only-about-roads%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://news.slashdot.org/story/24/03/01/2246227/rogue-editors-started-a-competing-wikipedia-thats-only-about-roads?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244202&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>BeauHD</dc:creator>
+    <dc:date>2024-03-02T00:02:00+00:00</dc:date>
+    <dc:subject>wikipedia</dc:subject>
+    <slash:department>forge-your-own-path</slash:department>
+    <slash:section>news</slash:section>
+    <slash:comments>42</slash:comments>
+    <slash:hit_parade>42,40,35,28,12,4,2</slash:hit_parade>
+  </item>
+  <item rdf:about="https://slashdot.org/story/24/03/01/2143247/hands-up-if-you-want-to-volunteer-for-layoffs-ibm-tells-staff?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>Hands Up If You Want To Volunteer For Layoffs, IBM Tells Staff</title>
+    <link>https://slashdot.org/story/24/03/01/2143247/hands-up-if-you-want-to-volunteer-for-layoffs-ibm-tells-staff?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>Paul Kunert writes in an exclusive report for The Register: IBM is asking staff who want to take voluntary redundancy to raise their hand as it embarks on a new round of global job cuts, though roles in Europe and within a handful of departments are expected to shoulder the brunt. The Resource Action, as Big Blue likes to euphemistically refer to layoffs, shouldn't be a massive surprise to anyone with more than a passing interest in IBM as it was signaled last month in a Q4 earnings call. Insiders told us this latest process is not considered to be financial but "transformative," although IBM was quite clear in January when CFO James Kavanaugh discussed achieving "$3 billion annual run rate in savings by the end of 2024." This is a third bigger than the initial ambition. The Reg understands that 80 percent of the reduction target is aimed at Enterprise Operations &amp;amp; Support (EO&amp;amp;S) and Q2C missions, Finance &amp;amp; Operations (including Procurement, CIO, HR, Marketing &amp;amp; Comms and Global Real Estate).
+
+      The European Works Council, one IBMer told us, has informed staff that circa 50 percent of IBM's reduction goal will impact staffing levels across the European continent. As if often the preferred route, IBM is seeking employees that are happy to take voluntary redundancy, rather than ditching someone that doesn't want to leave. The sources we spoke to did not reveal the total population in scope for redundancies or the numbers of volunteers being sought. IBM did not confirm the numbers either. [...] Slovakia, we're told, is to feel the tightest squeeze with around a third of IBM's cuts in Europe landing on its International (shared services) Center in Bratislava; the Center in Hungary that supports EO&amp;amp;S/ Q2C, as well as the Finance function in Bulgaria are also going to absorb what our sources described as the most dramatic staff reductions.&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=Hands+Up+If+You+Want+To+Volunteer+For+Layoffs%2C+IBM+Tells+Staff%3A+https%3A%2F%2Fslashdot.org%2Fstory%2F24%2F03%2F01%2F2143247%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fslashdot.org%2Fstory%2F24%2F03%2F01%2F2143247%2Fhands-up-if-you-want-to-volunteer-for-layoffs-ibm-tells-staff%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://slashdot.org/story/24/03/01/2143247/hands-up-if-you-want-to-volunteer-for-layoffs-ibm-tells-staff?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244132&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>BeauHD</dc:creator>
+    <dc:date>2024-03-01T23:20:00+00:00</dc:date>
+    <dc:subject>ibm</dc:subject>
+    <slash:department>tough-times-in-tech</slash:department>
+    <slash:section>slashdot</slash:section>
+    <slash:comments>28</slash:comments>
+    <slash:hit_parade>28,28,24,24,9,4,1</slash:hit_parade>
+  </item>
+  <item rdf:about="https://news.slashdot.org/story/24/03/01/2136253/police-now-need-warrant-for-ip-addresses-canadas-top-court-rules?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>Police Now Need Warrant For IP Addresses, Canada's Top Court Rules</title>
+    <link>https://news.slashdot.org/story/24/03/01/2136253/police-now-need-warrant-for-ip-addresses-canadas-top-court-rules?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>The Supreme Court of Canada ruled today that police must now have a warrant or court order to obtain a person or organization's IP address. CBC News reports: The top court was asked to consider whether an IP address alone, without any of the personal information attached to it, was protected by an expectation of privacy under the Charter. In a five-four split decision, the court said a reasonable expectation of privacy is attached to the numbers making up a person's IP address, and just getting those numbers alone constitutes a search. Writing for the majority, Justice Andromache Karakatsanis wrote that an IP address is "the crucial link between an internet user and their online activity." "Thus, the subject matter of this search was the information these IP addresses could reveal about specific internet users including, ultimately, their identity." Writing for the four dissenting judges, Justice Suzanne Cote disagreed with that central point, saying there should be no expectation of privacy around an IP address alone. [...]
+
+      In the Supreme Court majority decision, Karakatsanis said that only considering the information associated with an IP address to be protected by the Charter and not the IP address itself "reflects piecemeal reasoning" that ignores the broad purpose of the Charter. The ruling said the privacy interests cannot be limited to what the IP address can reveal on its own "without consideration of what it can reveal in combination with other available information, particularly from third-party websites." It went on to say that because an IP address unlocks a user's identity, it comes with a reasonable expectation of privacy and is therefore protected by the Charter. "If [the Charter] is to meaningfully protect the online privacy of Canadians in today's overwhelmingly digital world, it must protect their IP addresses," the ruling said.
+
+      Justice Cote, writing on behalf of justices Richard Wagner, Malcolm Rowe and Michelle O'Bonsawin, acknowledged that IP addresses "are not sought for their own sake" but are "sought for the information they reveal." "However, the evidentiary record in this case establishes that an IP address, on its own, reveals only limited information," she wrote. Cote said the biographical personal information the law was designed to protect are not revealed through having access to an IP address. Police must use that IP address to access personal information that is held by an ISP or a website that tracks customers' IP addresses to determine their habits. "On its own, an IP address does not even reveal browsing habits," Cote wrote. "What it reveals is a user's ISP -- hardly a more private piece of information than electricity usage or heat emissions." Cote said placing a reasonable expectation of privacy on an IP address alone upsets the careful balance the Supreme Court has struck between Canadians' privacy interests and the needs of law enforcement. "It would be inconsistent with a functional approach to defining the subject matter of the search to effectively hold that any step taken in an investigation engages a reasonable expectation of privacy," the dissenting opinion said.&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=Police+Now+Need+Warrant+For+IP+Addresses%2C+Canada's+Top+Court+Rules%3A+https%3A%2F%2Fnews.slashdot.org%2Fstory%2F24%2F03%2F01%2F2136253%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fnews.slashdot.org%2Fstory%2F24%2F03%2F01%2F2136253%2Fpolice-now-need-warrant-for-ip-addresses-canadas-top-court-rules%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://news.slashdot.org/story/24/03/01/2136253/police-now-need-warrant-for-ip-addresses-canadas-top-court-rules?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244130&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>BeauHD</dc:creator>
+    <dc:date>2024-03-01T22:40:00+00:00</dc:date>
+    <dc:subject>canada</dc:subject>
+    <slash:department>private-links</slash:department>
+    <slash:section>news</slash:section>
+    <slash:comments>25</slash:comments>
+    <slash:hit_parade>25,25,21,17,3,0,0</slash:hit_parade>
+  </item>
+  <item rdf:about="https://developers.slashdot.org/story/24/03/01/2130254/a-leaky-database-spilled-2fa-codes-for-the-worlds-tech-giants?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>A Leaky Database Spilled 2FA Codes For the World's Tech Giants</title>
+    <link>https://developers.slashdot.org/story/24/03/01/2130254/a-leaky-database-spilled-2fa-codes-for-the-worlds-tech-giants?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>An anonymous reader quotes a report from TechCrunch: A technology company that routes millions of SMS text messages across the world has secured an exposed database that was spilling one-time security codes that may have granted users' access to their Facebook, Google and TikTok accounts. The Asian technology and internet company YX International manufactures cellular networking equipment and provides SMS text message routing services. SMS routing helps to get time-critical text messages to their proper destination across various regional cell networks and providers, such as a user receiving an SMS security code or link for logging in to online services. YX International claims to send 5 million SMS text messages daily. But the technology company left one of its internal databases exposed to the internet without a password, allowing anyone to access the sensitive data inside using only a web browser, just with knowledge of the database's public IP address.
+
+      Anurag Sen, a good-faith security researcher and expert in discovering sensitive but inadvertently exposed datasets leaking to the internet, found the database. Sen said it was not apparent who the database belonged to, nor who to report the leak to, so Sen shared details of the exposed database with TechCrunch to help identify its owner and report the security lapse. Sen told TechCrunch that the exposed database included the contents of text messages sent to users, including one-time passcodes and password reset links for some of the world's largest tech and online companies, including Facebook and WhatsApp, Google, TikTok, and others. The database had monthly logs dating back to July 2023 and was growing in size by the minute. In the exposed database, TechCrunch found sets of internal email addresses and corresponding passwords associated with YX International, and alerted the company to the spilling database. The database went offline a short time later.&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=A+Leaky+Database+Spilled+2FA+Codes+For+the+World's+Tech+Giants%3A+https%3A%2F%2Fdevelopers.slashdot.org%2Fstory%2F24%2F03%2F01%2F2130254%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fdevelopers.slashdot.org%2Fstory%2F24%2F03%2F01%2F2130254%2Fa-leaky-database-spilled-2fa-codes-for-the-worlds-tech-giants%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://developers.slashdot.org/story/24/03/01/2130254/a-leaky-database-spilled-2fa-codes-for-the-worlds-tech-giants?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244108&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>BeauHD</dc:creator>
+    <dc:date>2024-03-01T22:02:00+00:00</dc:date>
+    <dc:subject>database</dc:subject>
+    <slash:department>exposed-databases</slash:department>
+    <slash:section>developers</slash:section>
+    <slash:comments>7</slash:comments>
+    <slash:hit_parade>7,7,6,5,2,0,0</slash:hit_parade>
+  </item>
+  <item rdf:about="https://developers.slashdot.org/story/24/03/01/1912250/stack-overflow-to-charge-llm-developers-for-access-to-its-coding-content?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>Stack Overflow To Charge LLM Developers For Access To Its Coding Content</title>
+    <link>https://developers.slashdot.org/story/24/03/01/1912250/stack-overflow-to-charge-llm-developers-for-access-to-its-coding-content?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>Stack Overflow has launched an API that will require all AI models trained on its coding question-and-answer content to attribute sources linking back to its posts. And it will cost money to use the site's content. From a report: "All products based on models that consume public Stack Overflow data are required to provide attribution back to the highest relevance posts that influenced the summary given by the model," it confirmed in a statement. The Overflow API is designed to act as a knowledge database to help developers build more accurate and helpful code-generation models. Google announced it was using the service to access relevant information from Stack Overflow via the API and integrate the data with its latest Gemini models, and for its cloud storage console.&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=Stack+Overflow+To+Charge+LLM+Developers+For+Access+To+Its+Coding+Content%3A+https%3A%2F%2Fdevelopers.slashdot.org%2Fstory%2F24%2F03%2F01%2F1912250%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fdevelopers.slashdot.org%2Fstory%2F24%2F03%2F01%2F1912250%2Fstack-overflow-to-charge-llm-developers-for-access-to-its-coding-content%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://developers.slashdot.org/story/24/03/01/1912250/stack-overflow-to-charge-llm-developers-for-access-to-its-coding-content?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244014&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>msmash</dc:creator>
+    <dc:date>2024-03-01T21:22:00+00:00</dc:date>
+    <dc:subject>programming</dc:subject>
+    <slash:department>pay-to-play</slash:department>
+    <slash:section>developers</slash:section>
+    <slash:comments>28</slash:comments>
+    <slash:hit_parade>28,28,25,21,5,2,0</slash:hit_parade>
+  </item>
+  <item rdf:about="https://news.slashdot.org/story/24/03/01/190220/worldwide-obesity-tops-1-billion?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>Worldwide Obesity Tops 1 Billion</title>
+    <link>https://news.slashdot.org/story/24/03/01/190220/worldwide-obesity-tops-1-billion?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>Rates of obesity in the U.S. and around the world have more than doubled over the past three decades, according to a new study in The Lancet. From a report: More than 1 billion people worldwide now have obesity, a sign of worsening nutrition that's also raising the risk of leading causes of death and disease such as high blood pressure, cancer and diabetes. The global rate of obesity more than doubled among women, from 8.8% to 18.5%, and nearly tripled in men, from 4.8% to 14.0%, between 1990 and 2022, according to research that pulls from over 3,600 studies.
+
+      The obesity rate among children and adolescents increased by roughly four times, from 1.7% to 6.9% in girls and 2.1% to 9.3% in boys. Just over 4 in 10 adults and 2 in 5 kids in the U.S. are obese. The U.S. now has the world's 10th-highest male obesity rate and 36th-highest female obesity rate. In 1990, the U.S. had the world's 17th-highest male obesity rate and the 41st-highest female obesity rate.&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=Worldwide+Obesity+Tops+1+Billion%3A+https%3A%2F%2Fnews.slashdot.org%2Fstory%2F24%2F03%2F01%2F190220%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fnews.slashdot.org%2Fstory%2F24%2F03%2F01%2F190220%2Fworldwide-obesity-tops-1-billion%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://news.slashdot.org/story/24/03/01/190220/worldwide-obesity-tops-1-billion?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244012&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>msmash</dc:creator>
+    <dc:date>2024-03-01T20:41:00+00:00</dc:date>
+    <dc:subject>news</dc:subject>
+    <slash:department>tragedy</slash:department>
+    <slash:section>news</slash:section>
+    <slash:comments>121</slash:comments>
+    <slash:hit_parade>121,116,96,81,16,5,1</slash:hit_parade>
+  </item>
+  <item rdf:about="https://news.slashdot.org/story/24/03/01/1854225/carbon-emissions-reached-record-high-in-2023-iea-says?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+    <title>Carbon Emissions Reached Record High in 2023, IEA Says</title>
+    <link>https://news.slashdot.org/story/24/03/01/1854225/carbon-emissions-reached-record-high-in-2023-iea-says?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+    <description>Energy-related emissions of carbon dioxide hit a record high in 2023, the International Energy Agency (IEA) said in a report on Friday. The IEA analysis showed that it rose by 410 million tonnes, or 1.1%, in 2023 to 37.4 billion tonnes. From a report: "Far from falling rapidly -- as is required to meet the global climate goals set out in the Paris Agreement -- CO2 emissions reached a new record high," the IEA said. However, the Paris-based watchdog also found clean energy including wind and solar energy, as well as electric vehicles, had helped to offset the impact of the continued burning of coal and oil growth, which was 1.3% in 2022.
+
+      The reopening of China's economy after the COVID-19 pandemic and a recovery in the aviation sector contributed to an overall rise, the IEA said in its report. Severe droughts last year in China, the United States, India, and other countries hampered hydropower production. It accounted for around 40% of the rise in emissions or 170 million tonnes of CO2. "Without this effect, emissions from the global electricity sector would have fallen in 2023," the IEA said. Carbon dioxide emissions from coal accounted for the remaining increase. The IEA analysis showed that 2023 was the first year in which at least half of electricity generation in industrialized countries came from low-emission sources such as renewable energy and nuclear power. Energy-related emissions in the United States fell by 4.1%, and 9% in the European Union, driven by a surge in renewable power generation.&lt;p&gt;&lt;div class="share_submission" style="position:relative;"&gt;
+      &lt;a class="slashpop" href="http://twitter.com/home?status=Carbon+Emissions+Reached+Record+High+in+2023%2C+IEA+Says%3A+https%3A%2F%2Fnews.slashdot.org%2Fstory%2F24%2F03%2F01%2F1854225%2F%3Futm_source%3Dtwitter%26utm_medium%3Dtwitter"&gt;&lt;img src="https://a.fsdn.com/sd/twitter_icon_large.png"&gt;&lt;/a&gt;
+      &lt;a class="slashpop" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fnews.slashdot.org%2Fstory%2F24%2F03%2F01%2F1854225%2Fcarbon-emissions-reached-record-high-in-2023-iea-says%3Futm_source%3Dslashdot%26utm_medium%3Dfacebook"&gt;&lt;img src="https://a.fsdn.com/sd/facebook_icon_large.png"&gt;&lt;/a&gt;
+
+
+
+      &lt;/div&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="https://news.slashdot.org/story/24/03/01/1854225/carbon-emissions-reached-record-high-in-2023-iea-says?utm_source=rss1.0moreanon&amp;amp;utm_medium=feed"&gt;Read more of this story&lt;/a&gt; at Slashdot.&lt;/p&gt;&lt;iframe src="https://slashdot.org/slashdot-it.pl?op=discuss&amp;amp;id=23244010&amp;amp;smallembed=1" style="height: 300px; width: 100%; border: none;"&gt;&lt;/iframe&gt;</description>
+    <dc:creator>msmash</dc:creator>
+    <dc:date>2024-03-01T20:01:00+00:00</dc:date>
+    <dc:subject>earth</dc:subject>
+    <slash:department>growing-concern</slash:department>
+    <slash:section>news</slash:section>
+    <slash:comments>54</slash:comments>
+    <slash:hit_parade>54,52,33,28,6,2,0</slash:hit_parade>
+  </item>
+  <textinput rdf:about="https://slashdot.org/search.pl">
+    <title>Search Slashdot</title>
+    <description>Search Slashdot stories</description>
+    <name>query</name>
+    <link>https://slashdot.org/search.pl</link>
+  </textinput>
+</rdf:RDF>

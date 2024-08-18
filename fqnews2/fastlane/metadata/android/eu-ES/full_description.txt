@@ -1,0 +1,19 @@
+<p>Are you sick of bloated non-free readers that steal your personal information?<br/>
+Are you tired of convoluted syncing setups requiring hours of server configuration?<br/>
+Are you fed up with having to create accounts everywhere?<br/></p>
+
+<p>Try Feeder instead!</p>
+
+<p>Feeder is a fully free/libre feed reader. It supports all common feed formats, including JSONFeed. It doesn't track you. It doesn't require any setup. It doesn't even need you to create an account! Just setup your feeds, or import them from your old reader via OPML, then get on with syncing and reading.</p>
+
+<p><b>Features</b></p>
+
+<ul>
+<li>Parses HTML and displays it in a native TextView</li>
+<li>Offline reading</li>
+<li>Background synchronization</li>
+<li>Notifications</li>
+<li>OPML Import/Export</li>
+<li>Handy access to enclosure links</li>
+<li>Material design</li>
+</ul>

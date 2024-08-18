@@ -1,0 +1,13 @@
+# 2.3.0
+
+* Upgraded to follow Material3 guidelines including dynamic colors
+* Big improvements to TTS with the help of Kevin Jiang
+* App is now tablet friendly on all screens
+
+Kevin Jiang (7):
+  * [65eb5d73] feat(settings): added detect language to settings
+  * [0444b16a] feat(readaloud): detect language of the article for readaloud
+  * [7295d5c7] test: test newly added detect language setting
+  * [a4a3f843] Use separate description if language detect feature is not
+         available
+  * [45a63

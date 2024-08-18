@@ -1,0 +1,6 @@
+# 1.9.5
+Philipp Hutterer (1):
+  * [9222bf71] Bugfix: decode encoded credentials before request
+
+zmni (1):
+  * [60007125] Update Indonesian translation

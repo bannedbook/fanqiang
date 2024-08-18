@@ -1,0 +1,6 @@
+# 1.6.0
+*   Added option of how to open articles.
+    One of Reader, WebView or Browser.
+    See !93 #39 #102
+*   Fixed resolution of relative links
+    See !92 #101

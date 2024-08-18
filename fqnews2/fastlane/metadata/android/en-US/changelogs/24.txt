@@ -1,0 +1,7 @@
+# 1.4.1
+*   Fixed some translation issues which could cause crashes
+    See !74
+*   Added French translation
+    See !73
+*   Added Polish translation
+    See !72

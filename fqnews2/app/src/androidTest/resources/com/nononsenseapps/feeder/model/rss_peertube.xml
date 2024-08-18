@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Framasoft</title>
+    <link>https://framatube.org</link>
+    <description/>
+    <lastBuildDate>Wed, 20 Nov 2019 20:40:20 GMT</lastBuildDate>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <generator>Toraifōsu</generator>
+    <image>
+      <title>Framasoft</title>
+      <url>https://framatube.org/client/assets/images/icons/icon-96x96.png</url>
+      <link>https://framatube.org</link>
+    </image>
+    <copyright>All rights reserved, unless otherwise specified in the terms specified at https://framatube.org/about and potential licenses granted by each content&apos;s rightholder.</copyright>
+    <atom:link href="https://framatube.org/feeds/videos.atom" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[1.4. Et les réseaux sociaux ?]]></title>
+      <link>https://framatube.org/videos/watch/ed5c048d-01f3-4ceb-97db-6e278de512b0</link>
+      <guid>https://framatube.org/videos/watch/ed5c048d-01f3-4ceb-97db-6e278de512b0</guid>
+      <pubDate>Mon, 18 Nov 2019 09:25:45 GMT</pubDate>
+      <description><![CDATA[MOOC CHATONS#1 - Internet : pourquoi et comment reprendre le contrôle ?
+Séquence 1. Internet, pourquoi et comment ?
+Vidéo 4. Et les réseaux sociaux ?]]></description>
+      <content:encoded><![CDATA[MOOC CHATONS#1 - Internet : pourquoi et comment reprendre le contrôle ?
+Séquence 1. Internet, pourquoi et comment ?
+Vidéo 4. Et les réseaux sociaux ?]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/ed5c048d-01f3-4ceb-97db-6e278de512b0-1080.torrent" length="207922774">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/ed5c048d-01f3-4ceb-97db-6e278de512b0-1080.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/ed5c048d-01f3-4ceb-97db-6e278de512b0-720.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/ed5c048d-01f3-4ceb-97db-6e278de512b0-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/ed5c048d-01f3-4ceb-97db-6e278de512b0-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/ed5c048d-01f3-4ceb-97db-6e278de512b0-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/ed5c048d-01f3-4ceb-97db-6e278de512b0.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[1.3. C'est quoi la neutralité du net ?]]></title>
+      <link>https://framatube.org/videos/watch/fec25007-be8e-4e65-b461-40ce435179ec</link>
+      <guid>https://framatube.org/videos/watch/fec25007-be8e-4e65-b461-40ce435179ec</guid>
+      <pubDate>Mon, 18 Nov 2019 09:04:12 GMT</pubDate>
+      <description><![CDATA[MOOC CHATONS#1 - Internet : pourquoi et comment reprendre le contrôle ?
+Séquence 1. Internet, pourquoi et comment ?
+Vidéo 3. C'est quoi la neutralité du net ?]]></description>
+      <content:encoded><![CDATA[MOOC CHATONS#1 - Internet : pourquoi et comment reprendre le contrôle ?
+Séquence 1. Internet, pourquoi et comment ?
+Vidéo 3. C'est quoi la neutralité du net ?]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/fec25007-be8e-4e65-b461-40ce435179ec-1080.torrent" length="77457610">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/fec25007-be8e-4e65-b461-40ce435179ec-1080.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/fec25007-be8e-4e65-b461-40ce435179ec-720.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/fec25007-be8e-4e65-b461-40ce435179ec-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/fec25007-be8e-4e65-b461-40ce435179ec-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/fec25007-be8e-4e65-b461-40ce435179ec-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/fec25007-be8e-4e65-b461-40ce435179ec.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[1.2. Internet, ça fonctionne comment ?]]></title>
+      <link>https://framatube.org/videos/watch/f06ad0f4-d585-4aa4-a184-91a33ef89081</link>
+      <guid>https://framatube.org/videos/watch/f06ad0f4-d585-4aa4-a184-91a33ef89081</guid>
+      <pubDate>Mon, 18 Nov 2019 08:50:52 GMT</pubDate>
+      <description><![CDATA[MOOC CHATONS#1 - Internet : pourquoi et comment reprendre le contrôle ?
+Séquence 1. Internet, pourquoi et comment ?
+Vidéo 2. Internet, ça fonctionne comment ?]]></description>
+      <content:encoded><![CDATA[MOOC CHATONS#1 - Internet : pourquoi et comment reprendre le contrôle ?
+Séquence 1. Internet, pourquoi et comment ?
+Vidéo 2. Internet, ça fonctionne comment ?]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/f06ad0f4-d585-4aa4-a184-91a33ef89081-1080.torrent" length="261296337">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f06ad0f4-d585-4aa4-a184-91a33ef89081-1080.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f06ad0f4-d585-4aa4-a184-91a33ef89081-720.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f06ad0f4-d585-4aa4-a184-91a33ef89081-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f06ad0f4-d585-4aa4-a184-91a33ef89081-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f06ad0f4-d585-4aa4-a184-91a33ef89081-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/f06ad0f4-d585-4aa4-a184-91a33ef89081.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[1.1. Selon vous, c'est quoi Internet ?]]></title>
+      <link>https://framatube.org/videos/watch/bf4a9913-a3b8-4a5f-ae45-611f78bdf526</link>
+      <guid>https://framatube.org/videos/watch/bf4a9913-a3b8-4a5f-ae45-611f78bdf526</guid>
+      <pubDate>Mon, 18 Nov 2019 08:19:32 GMT</pubDate>
+      <description><![CDATA[MOOC CHATONS#1 - Internet : pourquoi et comment reprendre le contrôle ?
+Séquence 1. Internet, pourquoi et comment ?
+Vidéo 1. Selon vous, c'est quoi Internet ?]]></description>
+      <content:encoded><![CDATA[MOOC CHATONS#1 - Internet : pourquoi et comment reprendre le contrôle ?
+Séquence 1. Internet, pourquoi et comment ?
+Vidéo 1. Selon vous, c'est quoi Internet ?]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/bf4a9913-a3b8-4a5f-ae45-611f78bdf526-1080.torrent" length="188494927">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/bf4a9913-a3b8-4a5f-ae45-611f78bdf526-1080.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/bf4a9913-a3b8-4a5f-ae45-611f78bdf526-720.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/bf4a9913-a3b8-4a5f-ae45-611f78bdf526-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/bf4a9913-a3b8-4a5f-ae45-611f78bdf526-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/bf4a9913-a3b8-4a5f-ae45-611f78bdf526-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/bf4a9913-a3b8-4a5f-ae45-611f78bdf526.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[Contributopia : Peut-on faire du libre sans vision politique ? (Capitole du Libre, Toulouse, nov. 2018)]]></title>
+      <link>https://framatube.org/videos/watch/0ac267f2-0ab8-4ee6-af4a-6d2d77bafb8e</link>
+      <guid>https://framatube.org/videos/watch/0ac267f2-0ab8-4ee6-af4a-6d2d77bafb8e</guid>
+      <pubDate>Sun, 17 Feb 2019 12:09:23 GMT</pubDate>
+      <description><![CDATA[Suite à sa campagne "Dégooglisons Internet" (oct 2014 - oct 2017), l'association a fait le bilan, calmement. Et il n'est pas brillant.
+
+En quelques années, les GAFAM/BATX/NATU (Google, Apple, Facebook, Amazon, Microsoft, Baidu, Alibaba, Tencent,...]]></description>
+      <content:encoded><![CDATA[Suite à sa campagne "Dégooglisons Internet" (oct 2014 - oct 2017), l'association a fait le bilan, calmement. Et il n'est pas brillant.
+
+En quelques années, les GAFAM/BATX/NATU (Google, Apple, Facebook, Amazon, Microsoft, Baidu, Alibaba, Tencent, Xiaomi, Netflix, AirBnb, Tesla, Uber) ont "colonisé" le monde, en formatant nos interactions, en normalisant nos relations, en orientant nos consommations, en contrôlant notre pouvoir d'agir. À l’œuvre derrière cette mécanique, une mutation économique et sociale : le capitalisme de surveillance.
+
+Avec sa nouvelle feuille de route "Contributopia", Framasoft souhaite mettre en place des outils et accompagner des dynamiques collectives qui permettraient de pouvoir agir, plutôt que de subir. Il ne s'agit plus seulement de savoir « ce que nous refusons » (le logiciel propriétaire, les attaques contre nos libertés fondamentales, etc), mais aussi de définir « quel monde nous souhaitons », et comment le logiciel libre et les communs peuvent nous aider à y le mettre en œuvre.
+
+Nous essaierons donc de poser les faits qui démontrent que l'opensource se porte (très) bien mais que le logiciel libre (= opensource + valeurs + éthique) soit dans une ornière depuis plusieurs années.
+
+Pour sortir de l'ornière, mais aussi de l'épuisement, ne devrions nous pas faire un pas de côté et réinterroger les pratiques, les fonctionnements et les visions de nos communautés libristes ? De ne plus voir le logiciel libre comme une fin en soi nous permettant de nous libérer nous (libristes), mais comme un outil inspirant capable de favoriser l'émancipation de toutes et tous, et d’accélérer des transformations sociales positives ?
+
+La question politique a toujours été centrale dans le mouvement du logiciel libre, mais les questions économiques, techniques et juridiques - elles aussi profondément politiques, mais évitant soigneusement notre capacité d'avoir une vision globale - ont parfois posé un voile sur notre faculté à nous projeter ou à passer de la réaction à l'action.
+
+Et vous, comment imaginez la place du logiciel libre dans la société dans 3, 5 ou 10 ans ?]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/0ac267f2-0ab8-4ee6-af4a-6d2d77bafb8e-720.torrent" length="494783446">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/0ac267f2-0ab8-4ee6-af4a-6d2d77bafb8e-720.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/0ac267f2-0ab8-4ee6-af4a-6d2d77bafb8e-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/0ac267f2-0ab8-4ee6-af4a-6d2d77bafb8e-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/0ac267f2-0ab8-4ee6-af4a-6d2d77bafb8e-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/0ac267f2-0ab8-4ee6-af4a-6d2d77bafb8e.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[Pierre-Yves GOSSET Framasoft EspacedickensTV (octobre 2018)]]></title>
+      <link>https://framatube.org/videos/watch/e328bf32-ff8e-4d1d-a7a9-2a8a18f28b41</link>
+      <guid>https://framatube.org/videos/watch/e328bf32-ff8e-4d1d-a7a9-2a8a18f28b41</guid>
+      <pubDate>Fri, 08 Feb 2019 19:31:14 GMT</pubDate>
+      <description><![CDATA[11.10.2018 18h30 – 22h00
+QUELLES ALTERNATIVES AUX MULTINATIONALES DU NUMÉRIQUE ?
+DES SERVICES WEB LIBRES, ÉCOLOGIQUES, SOUVERAINS ET JUSTES SONT-ILS POSSIBLES ?
+Conférence-débat
+Les individus, la société civile, mais également les acteurs écon...]]></description>
+      <content:encoded><![CDATA[11.10.2018 18h30 – 22h00
+QUELLES ALTERNATIVES AUX MULTINATIONALES DU NUMÉRIQUE ?
+DES SERVICES WEB LIBRES, ÉCOLOGIQUES, SOUVERAINS ET JUSTES SONT-ILS POSSIBLES ?
+Conférence-débat
+Les individus, la société civile, mais également les acteurs économiques et les collectivités publiques sont de plus souvent amenés à utiliser des services informatiques externes pour sauvegarder, partager ou encore co-construire de l'information. Cette information est stockée dans le "nuage", des serveurs aux mains de multinationales qui ne respectent ni les lois (fiscalité, transparence), ni les principes techniques de sobriété énergétique, de décentralisation, d'interopérabilité qui permettraient d'envisager une transition écologique juste. À l'instar du concept de souveraineté alimentaire, une "souveraineté technologique" doit-elle s'imposer et à quelle échelle ? Comment sortir de la dépendance individuelle, mais également géopolitique ?
+
+L'association Framasoft propose gratuitement, sur la page https://degooglisons-internet.org, toute une série d'alternatives libres et fonctionnelles permettant de gérer un agenda, créer un sondage, rédiger un document à plusieurs, partager des multimédias, communiquer sur des réseaux sociaux, etc. Nous échangerons sur les raisons qui poussent collectifs et institutions à développer une telle offre, sur sa durabilité et les perspectives de développement du modèle en Suisse romande. Swisslinux.org et Itopie nous éclaireront sur les initiatives en cours et leurs enjeux.
+CONFÉRENCIERS
+Pierre-Yves GOSSET Framasoft France
+Samuel CHENAL Itopie , Suisse
+Sebastien PIGUET Swisslinux.org , Suisse
+Louca LERCH FPH - Modérateur]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/e328bf32-ff8e-4d1d-a7a9-2a8a18f28b41-720.torrent" length="122823097">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/e328bf32-ff8e-4d1d-a7a9-2a8a18f28b41-720.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/e328bf32-ff8e-4d1d-a7a9-2a8a18f28b41-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/e328bf32-ff8e-4d1d-a7a9-2a8a18f28b41-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/e328bf32-ff8e-4d1d-a7a9-2a8a18f28b41-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/e328bf32-ff8e-4d1d-a7a9-2a8a18f28b41.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[Alternatives aux GAFAM Samuel CHENAL Itopie EspacedickensTV]]></title>
+      <link>https://framatube.org/videos/watch/4d661d5f-a884-4510-bca8-15cb19aa3fe5</link>
+      <guid>https://framatube.org/videos/watch/4d661d5f-a884-4510-bca8-15cb19aa3fe5</guid>
+      <pubDate>Fri, 08 Feb 2019 19:17:24 GMT</pubDate>
+      <description><![CDATA[11.10.2018 18h30 – 22h00
+QUELLES ALTERNATIVES AUX MULTINATIONALES DU NUMÉRIQUE ?
+DES SERVICES WEB LIBRES, ÉCOLOGIQUES, SOUVERAINS ET JUSTES SONT-ILS POSSIBLES ?
+Conférence-débat
+Les individus, la société civile, mais également les acteurs écon...]]></description>
+      <content:encoded><![CDATA[11.10.2018 18h30 – 22h00
+QUELLES ALTERNATIVES AUX MULTINATIONALES DU NUMÉRIQUE ?
+DES SERVICES WEB LIBRES, ÉCOLOGIQUES, SOUVERAINS ET JUSTES SONT-ILS POSSIBLES ?
+Conférence-débat
+Les individus, la société civile, mais également les acteurs économiques et les collectivités publiques sont de plus souvent amenés à utiliser des services informatiques externes pour sauvegarder, partager ou encore co-construire de l'information. Cette information est stockée dans le "nuage", des serveurs aux mains de multinationales qui ne respectent ni les lois (fiscalité, transparence), ni les principes techniques de sobriété énergétique, de décentralisation, d'interopérabilité qui permettraient d'envisager une transition écologique juste. À l'instar du concept de souveraineté alimentaire, une "souveraineté technologique" doit-elle s'imposer et à quelle échelle ? Comment sortir de la dépendance individuelle, mais également géopolitique ?
+
+L'association Framasoft propose gratuitement, sur la page https://degooglisons-internet.org, toute une série d'alternatives libres et fonctionnelles permettant de gérer un agenda, créer un sondage, rédiger un document à plusieurs, partager des multimédias, communiquer sur des réseaux sociaux, etc. Nous échangerons sur les raisons qui poussent collectifs et institutions à développer une telle offre, sur sa durabilité et les perspectives de développement du modèle en Suisse romande. Swisslinux.org et Itopie nous éclaireront sur les initiatives en cours et leurs enjeux.
+CONFÉRENCIERS
+Pierre-Yves GOSSET Framasoft France
+Samuel CHENAL Itopie , Suisse
+Sebastien PIGUET Swisslinux.org , Suisse
+Louca LERCH FPH - Modérateur]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/4d661d5f-a884-4510-bca8-15cb19aa3fe5-720.torrent" length="212231176">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/4d661d5f-a884-4510-bca8-15cb19aa3fe5-720.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/4d661d5f-a884-4510-bca8-15cb19aa3fe5-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/4d661d5f-a884-4510-bca8-15cb19aa3fe5-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/4d661d5f-a884-4510-bca8-15cb19aa3fe5-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/4d661d5f-a884-4510-bca8-15cb19aa3fe5.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[Alternatives aux GAFAM Pierre Yves GOSSET Framasoft EspacedickensTV (Lausanne, octobre 2018)]]></title>
+      <link>https://framatube.org/videos/watch/32e5175c-c799-48d3-a0c7-dcf051584600</link>
+      <guid>https://framatube.org/videos/watch/32e5175c-c799-48d3-a0c7-dcf051584600</guid>
+      <pubDate>Fri, 08 Feb 2019 18:55:37 GMT</pubDate>
+      <description><![CDATA[11.10.2018 18h30 – 22h00
+QUELLES ALTERNATIVES AUX MULTINATIONALES DU NUMÉRIQUE ?
+DES SERVICES WEB LIBRES, ÉCOLOGIQUES, SOUVERAINS ET JUSTES SONT-ILS POSSIBLES ?
+Conférence-débat
+Les individus, la société civile, mais également les acteurs écon...]]></description>
+      <content:encoded><![CDATA[11.10.2018 18h30 – 22h00
+QUELLES ALTERNATIVES AUX MULTINATIONALES DU NUMÉRIQUE ?
+DES SERVICES WEB LIBRES, ÉCOLOGIQUES, SOUVERAINS ET JUSTES SONT-ILS POSSIBLES ?
+Conférence-débat
+Les individus, la société civile, mais également les acteurs économiques et les collectivités publiques sont de plus souvent amenés à utiliser des services informatiques externes pour sauvegarder, partager ou encore co-construire de l'information. Cette information est stockée dans le "nuage", des serveurs aux mains de multinationales qui ne respectent ni les lois (fiscalité, transparence), ni les principes techniques de sobriété énergétique, de décentralisation, d'interopérabilité qui permettraient d'envisager une transition écologique juste. À l'instar du concept de souveraineté alimentaire, une "souveraineté technologique" doit-elle s'imposer et à quelle échelle ? Comment sortir de la dépendance individuelle, mais également géopolitique ?
+
+L'association Framasoft propose gratuitement, sur la page https://degooglisons-internet.org, toute une série d'alternatives libres et fonctionnelles permettant de gérer un agenda, créer un sondage, rédiger un document à plusieurs, partager des multimédias, communiquer sur des réseaux sociaux, etc. Nous échangerons sur les raisons qui poussent collectifs et institutions à développer une telle offre, sur sa durabilité et les perspectives de développement du modèle en Suisse romande. Swisslinux.org et Itopie nous éclaireront sur les initiatives en cours et leurs enjeux.
+CONFÉRENCIERS
+Pierre-Yves GOSSET Framasoft France
+Samuel CHENAL Itopie , Suisse
+Sebastien PIGUET Swisslinux.org , Suisse
+Louca LERCH FPH - Modérateur]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/32e5175c-c799-48d3-a0c7-dcf051584600-720.torrent" length="285034572">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/32e5175c-c799-48d3-a0c7-dcf051584600-720.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/32e5175c-c799-48d3-a0c7-dcf051584600-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/32e5175c-c799-48d3-a0c7-dcf051584600-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/32e5175c-c799-48d3-a0c7-dcf051584600-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/32e5175c-c799-48d3-a0c7-dcf051584600.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[Genma & Pouhiou - Dégooglisons Internet, an 2 (Bazar du Libre, Toulouse, novembre 2015)]]></title>
+      <link>https://framatube.org/videos/watch/3fff751a-a5d4-4a1a-b1b9-94f24f4b9c5b</link>
+      <guid>https://framatube.org/videos/watch/3fff751a-a5d4-4a1a-b1b9-94f24f4b9c5b</guid>
+      <pubDate>Fri, 08 Feb 2019 17:08:27 GMT</pubDate>
+      <description><![CDATA[L'emprise de Google, Apple, Facebook, Amazon ou Microsoft ne cesse de croître. Non seulement sur internet, mais aussi dans bien d'autres domaines (robotique, automobile, santé, presse, média, etc).
+
+L'an passé, Framasoft révélait à Toulouse Capi...]]></description>
+      <content:encoded><![CDATA[L'emprise de Google, Apple, Facebook, Amazon ou Microsoft ne cesse de croître. Non seulement sur internet, mais aussi dans bien d'autres domaines (robotique, automobile, santé, presse, média, etc).
+
+L'an passé, Framasoft révélait à Toulouse Capitole du libre, son (modeste) plan de libération du monde :
+1. sensibiliser le public aux dangers de la colonisation du web par G.A.F.A.M., notamment par la mise en ligne du site http://degooglisons-internet.org
+2. démontrer que le logiciel libre est une solution, si ce n'est LA solution, face à la concentration massive des pouvoirs placés entre les mains de ces entreprises, en proposant de matière systématique des alternatives libres, éthiques, décentralisées et solidaires face aux services déloyaux de ces sociétés.
+3. essaimer, en partageant notre expérience, et en encourageant la multiplication des services d'auto-hébergement.
+
+Un an après, où en est ce projet ?
+
+Nos autres conférences sur cette playlist : https://www.youtube.com/playlist?list=PLl5L_Q3U-E4Xqaq4ZxHNHxbGNlc2u-N9F
+
+Site du BZDL2015 : http://bazardulibre.org/
+Site de Toulibre : http://www.toulibre.org/
+Site de Framasoft : http://www.framasoft.org/
+Musique d'intro de Nablast : https://soundcloud.com/nablast
+
+Retrouvez TVn7, l'asso vidéo de l'INP-ENSEEIHT, sur :
+facebook : http://www.facebook.com/TVn7.n7
+twitter : http://www.twitter.com/TVn7_N7
+ou sur notre site internet : http://www.tvn7.fr
+
+Et si vous êtes de l'n7, retrouvez toutes nos vidéos sur http://www.tvn7.fr/intranet/login/]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/3fff751a-a5d4-4a1a-b1b9-94f24f4b9c5b-1080.torrent" length="1357529057">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/3fff751a-a5d4-4a1a-b1b9-94f24f4b9c5b-1080.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/3fff751a-a5d4-4a1a-b1b9-94f24f4b9c5b-720.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/3fff751a-a5d4-4a1a-b1b9-94f24f4b9c5b-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/3fff751a-a5d4-4a1a-b1b9-94f24f4b9c5b-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/3fff751a-a5d4-4a1a-b1b9-94f24f4b9c5b-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/3fff751a-a5d4-4a1a-b1b9-94f24f4b9c5b.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[Dégooglisons Internet (Semaine Québecoise de l'Informatique Libre - 2015)]]></title>
+      <link>https://framatube.org/videos/watch/20358afa-4d88-4902-8c6f-9525d0920af0</link>
+      <guid>https://framatube.org/videos/watch/20358afa-4d88-4902-8c6f-9525d0920af0</guid>
+      <pubDate>Fri, 08 Feb 2019 16:25:18 GMT</pubDate>
+      <description><![CDATA[Cette conférence a été organisée dans le cadre de la semaine québécoise de l'informatique libre (SQIL) par La Chaire LexUM, en partenariat avec FACIL (appropriation collective pour l’informatique libre) et le Laboratoire de cyberjustice.]]></description>
+      <content:encoded><![CDATA[Cette conférence a été organisée dans le cadre de la semaine québécoise de l'informatique libre (SQIL) par La Chaire LexUM, en partenariat avec FACIL (appropriation collective pour l’informatique libre) et le Laboratoire de cyberjustice.]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/20358afa-4d88-4902-8c6f-9525d0920af0-720.torrent" length="307820725">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/20358afa-4d88-4902-8c6f-9525d0920af0-720.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/20358afa-4d88-4902-8c6f-9525d0920af0-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/20358afa-4d88-4902-8c6f-9525d0920af0-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/20358afa-4d88-4902-8c6f-9525d0920af0-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/20358afa-4d88-4902-8c6f-9525d0920af0.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[PSESHSF-2016 - Pierre-Yves Gosset - CHATONS : des félins (et de la bière ) pour sauver le monde]]></title>
+      <link>https://framatube.org/videos/watch/5b28ec58-d1e0-4b64-b55d-c80f9778b355</link>
+      <guid>https://framatube.org/videos/watch/5b28ec58-d1e0-4b64-b55d-c80f9778b355</guid>
+      <pubDate>Fri, 08 Feb 2019 15:46:53 GMT</pubDate>
+      <description><![CDATA[Conférence CHATONS à Passage en Seine 2016]]></description>
+      <content:encoded><![CDATA[Conférence CHATONS à Passage en Seine 2016]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/5b28ec58-d1e0-4b64-b55d-c80f9778b355-720.torrent" length="493557100">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/5b28ec58-d1e0-4b64-b55d-c80f9778b355-720.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/5b28ec58-d1e0-4b64-b55d-c80f9778b355-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/5b28ec58-d1e0-4b64-b55d-c80f9778b355-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/5b28ec58-d1e0-4b64-b55d-c80f9778b355-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/5b28ec58-d1e0-4b64-b55d-c80f9778b355.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[Contributopia : Peut-on faire du libre sans vision politique ? (Toulouse, octobre 2018)]]></title>
+      <link>https://framatube.org/videos/watch/7e261f9e-242c-4100-a0bd-268dab321114</link>
+      <guid>https://framatube.org/videos/watch/7e261f9e-242c-4100-a0bd-268dab321114</guid>
+      <pubDate>Mon, 26 Nov 2018 17:11:02 GMT</pubDate>
+      <description><![CDATA[Suite à sa campagne "Dégooglisons Internet" (oct 2014 - oct 2017), l'association a fait le bilan, calmement. Et il n'est pas brillant.
+
+En quelques années, les GAFAM/BATX/NATU (Google, Apple, Facebook, Amazon, Microsoft, Baidu, Alibaba, Tencent,...]]></description>
+      <content:encoded><![CDATA[Suite à sa campagne "Dégooglisons Internet" (oct 2014 - oct 2017), l'association a fait le bilan, calmement. Et il n'est pas brillant.
+
+En quelques années, les GAFAM/BATX/NATU (Google, Apple, Facebook, Amazon, Microsoft, Baidu, Alibaba, Tencent, Xiaomi, Netflix, AirBnb, Tesla, Uber) ont "colonisé" le monde, en formatant nos interactions, en normalisant nos relations, en orientant nos consommations, en contrôlant notre pouvoir d'agir. À l’œuvre derrière cette mécanique, une mutation économique et sociale : le capitalisme de surveillance.
+
+Avec sa nouvelle feuille de route "Contributopia", Framasoft souhaite mettre en place des outils et accompagner des dynamiques collectives qui permettraient de pouvoir agir, plutôt que de subir. Il ne s'agit plus seulement de savoir « ce que nous refusons » (le logiciel propriétaire, les attaques contre nos libertés fondamentales, etc), mais aussi de définir « quel monde nous souhaitons », et comment le logiciel libre et les communs peuvent nous aider à y le mettre en œuvre.
+
+Nous essaierons donc de poser les faits qui démontrent que l'opensource se porte (très) bien mais que le logiciel libre (= opensource + valeurs + éthique) soit dans une ornière depuis plusieurs années.
+
+Pour sortir de l'ornière, mais aussi de l'épuisement, ne devrions nous pas faire un pas de côté et réinterroger les pratiques, les fonctionnements et les visions de nos communautés libristes ? De ne plus voir le logiciel libre comme une fin en soi nous permettant de nous libérer nous (libristes), mais comme un outil inspirant capable de favoriser l'émancipation de toutes et tous, et d’accélérer des transformations sociales positives ?
+
+La question politique a toujours été centrale dans le mouvement du logiciel libre, mais les questions économiques, techniques et juridiques - elles aussi profondément politiques, mais évitant soigneusement notre capacité d'avoir une vision globale - ont parfois posé un voile sur notre faculté à nous projeter ou à passer de la réaction à l'action.
+
+Et vous, comment imaginez la place du logiciel libre dans la société dans 3, 5 ou 10 ans ?]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/7e261f9e-242c-4100-a0bd-268dab321114-720.torrent" length="367273671">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/7e261f9e-242c-4100-a0bd-268dab321114-720.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/7e261f9e-242c-4100-a0bd-268dab321114-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/7e261f9e-242c-4100-a0bd-268dab321114-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/7e261f9e-242c-4100-a0bd-268dab321114-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/7e261f9e-242c-4100-a0bd-268dab321114.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[ Contributopia: De-google-ifying is not enough (Brussels, FOSDEM 2018)]]></title>
+      <link>https://framatube.org/videos/watch/fff79bf3-99c8-4601-9a05-f64561d97d09</link>
+      <guid>https://framatube.org/videos/watch/fff79bf3-99c8-4601-9a05-f64561d97d09</guid>
+      <pubDate>Tue, 16 Oct 2018 17:40:05 GMT</pubDate>
+      <description><![CDATA[
+
+For the past 3 years, the French non-profit Framasoft has been leading a campaign to "De-google-ify Internet", hosting 32 free-libre alternatives to Google (and GAFAM) services, educating users to change their digital habits and creating a Fre...]]></description>
+      <content:encoded><![CDATA[
+
+For the past 3 years, the French non-profit Framasoft has been leading a campaign to "De-google-ify Internet", hosting 32 free-libre alternatives to Google (and GAFAM) services, educating users to change their digital habits and creating a French network of free-libre and ethical services hosters. In October 2017, Framasoft launched a new campaign: Contributopia. 12 actions over 3 years sharing the same goal: let's create the digital tools to equip the "contributors society" in order to interest them into contributing to free-libre and open-source software.
+
+Over 3 years of campaigning to De-Google-ify Internet (and doing it), we learned a few lessons:
+*    Open source software are doing great, while free-libre projects desperately need contributions;
+*    There are lots of non-digital communities that share the free-libre ethics, but havn't heard about FLOSS;
+*    Building tools and giving talks against Big Data companies works, thinking out of their box to propose another way of seeing our future works better.
+
+We concluded that proposing 30 free-libre and data-friendly alternatives to the most used web-services (during the 2014-2017 Degoogleify Internet campaign) was not enough... This proof of concept (used today by about 400 000 monthly French-speaking users) is just a start.
+
+Here is our plan for the 3 years to come: include users in the making of the most politically (and technically)-sensitive web services, document our experimentations and meet our peers so they can be adapted and reproduced. And finally imagine and create the tools to facilitate access to open knowledge and digital independency.
+
+This won't happen if we don't go and build bridges between the free-libre software communities and all the people who share these ethics in other domains. There are new worlds to explore, and we hope more and more will join us on this journey.]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/fff79bf3-99c8-4601-9a05-f64561d97d09-720.torrent" length="51290461">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/fff79bf3-99c8-4601-9a05-f64561d97d09-720.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/fff79bf3-99c8-4601-9a05-f64561d97d09-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/fff79bf3-99c8-4601-9a05-f64561d97d09-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/fff79bf3-99c8-4601-9a05-f64561d97d09-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/fff79bf3-99c8-4601-9a05-f64561d97d09.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[ The emPeerTube strikes back. Let's decentralize YouTube ! (Brussels, FOSDEM 2018)]]></title>
+      <link>https://framatube.org/videos/watch/f4a68510-d819-44b2-9d93-c5fa642116d7</link>
+      <guid>https://framatube.org/videos/watch/f4a68510-d819-44b2-9d93-c5fa642116d7</guid>
+      <pubDate>Tue, 16 Oct 2018 17:30:19 GMT</pubDate>
+      <description><![CDATA[Presentation of PeerTube, a decentralized video streaming platform using P2P (BitTorrent) directly in the web browser and ActivityPub to federate servers.
+
+Attended audience is technical people, or decentralization enthousiasts.
+
+Today, you ca...]]></description>
+      <content:encoded><![CDATA[Presentation of PeerTube, a decentralized video streaming platform using P2P (BitTorrent) directly in the web browser and ActivityPub to federate servers.
+
+Attended audience is technical people, or decentralization enthousiasts.
+
+Today, you can't offer an real alternative to Youtube: costs for storage or Internet bandwidth would be so huge that only a few societies can afford it. Some free softwares exist to host your own videos but they don't address the money issue when too much videos are uploaded to your server, or if a video goes viral.
+
+That's where PeerTube comes up! Servers are federated with ActivityPub, a federating protocol built by the W3C (already used in Mastodon) and they send the videos to web browsers with the help of WebTorrent (Bittorrent over WebRTC). The videos are indexed accross federated servers so people can watch a video from instance A on the instance B's web interface. Here's the disk storage cost-killer: just upload your videos on your own instance or one you trust! When viewers are watching the same video at the same time, thanks to WebTorrent, you don't get the videos only from the instance which hosts the video but from the other watchers too. And that's for the bandwith issue.
+
+We will present the project, its technical background and its future developments.
+
+Outline of the talk or goals of the session:
+
+*    Issues with YouTube and why it's hard to offer an alernative (costs)
+*    General concepts of PeerTube (federation + P2P) which resolve this issue
+*    In-depth explaination of the federation (with ActivityPub handling videos metadata like torrents links, thumbnails, names…)
+*    Future eventual developments -> redundancy of videos with webseed
+
+    Call for developers! Join the revolution!]]></content:encoded>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/f4a68510-d819-44b2-9d93-c5fa642116d7-720.torrent" length="54315592">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f4a68510-d819-44b2-9d93-c5fa642116d7-720.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f4a68510-d819-44b2-9d93-c5fa642116d7-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f4a68510-d819-44b2-9d93-c5fa642116d7-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f4a68510-d819-44b2-9d93-c5fa642116d7-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/f4a68510-d819-44b2-9d93-c5fa642116d7.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[PeerTube - Feeds (RSS/Atom) demonstration]]></title>
+      <link>https://framatube.org/videos/watch/f57da309-6b92-4fe0-9267-ff8188cc050c</link>
+      <guid>https://framatube.org/videos/watch/f57da309-6b92-4fe0-9267-ff8188cc050c</guid>
+      <pubDate>Tue, 02 Oct 2018 15:20:57 GMT</pubDate>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/f57da309-6b92-4fe0-9267-ff8188cc050c-1060.torrent" length="3172808">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f57da309-6b92-4fe0-9267-ff8188cc050c-1060.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f57da309-6b92-4fe0-9267-ff8188cc050c-720.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f57da309-6b92-4fe0-9267-ff8188cc050c-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f57da309-6b92-4fe0-9267-ff8188cc050c-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/f57da309-6b92-4fe0-9267-ff8188cc050c-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/f57da309-6b92-4fe0-9267-ff8188cc050c.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[PeerTube - User subscriptions demonstration]]></title>
+      <link>https://framatube.org/videos/watch/8968dbe1-a387-433b-a20f-37fe9f3ca8d5</link>
+      <guid>https://framatube.org/videos/watch/8968dbe1-a387-433b-a20f-37fe9f3ca8d5</guid>
+      <pubDate>Tue, 02 Oct 2018 14:43:37 GMT</pubDate>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/8968dbe1-a387-433b-a20f-37fe9f3ca8d5-1060.torrent" length="3049006">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/8968dbe1-a387-433b-a20f-37fe9f3ca8d5-1060.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/8968dbe1-a387-433b-a20f-37fe9f3ca8d5-720.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/8968dbe1-a387-433b-a20f-37fe9f3ca8d5-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/8968dbe1-a387-433b-a20f-37fe9f3ca8d5-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/8968dbe1-a387-433b-a20f-37fe9f3ca8d5-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/8968dbe1-a387-433b-a20f-37fe9f3ca8d5.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[PeerTube - Advanced search demonstration]]></title>
+      <link>https://framatube.org/videos/watch/60c4bea4-6bb2-4fce-8d9f-8a522575419d</link>
+      <guid>https://framatube.org/videos/watch/60c4bea4-6bb2-4fce-8d9f-8a522575419d</guid>
+      <pubDate>Tue, 02 Oct 2018 12:27:30 GMT</pubDate>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/60c4bea4-6bb2-4fce-8d9f-8a522575419d-1060.torrent" length="2325372">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/60c4bea4-6bb2-4fce-8d9f-8a522575419d-1060.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/60c4bea4-6bb2-4fce-8d9f-8a522575419d-720.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/60c4bea4-6bb2-4fce-8d9f-8a522575419d-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/60c4bea4-6bb2-4fce-8d9f-8a522575419d-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/60c4bea4-6bb2-4fce-8d9f-8a522575419d-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/60c4bea4-6bb2-4fce-8d9f-8a522575419d.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[PeerTube - Subtitles demonstration]]></title>
+      <link>https://framatube.org/videos/watch/edd7a468-08d5-4877-b62b-61c5f3f83ceb</link>
+      <guid>https://framatube.org/videos/watch/edd7a468-08d5-4877-b62b-61c5f3f83ceb</guid>
+      <pubDate>Tue, 02 Oct 2018 11:48:27 GMT</pubDate>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/edd7a468-08d5-4877-b62b-61c5f3f83ceb-1060.torrent" length="1184019">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/edd7a468-08d5-4877-b62b-61c5f3f83ceb-1060.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/edd7a468-08d5-4877-b62b-61c5f3f83ceb-720.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/edd7a468-08d5-4877-b62b-61c5f3f83ceb-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/edd7a468-08d5-4877-b62b-61c5f3f83ceb-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/edd7a468-08d5-4877-b62b-61c5f3f83ceb-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/edd7a468-08d5-4877-b62b-61c5f3f83ceb.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[PeerTube - Torrent import demonstration]]></title>
+      <link>https://framatube.org/videos/watch/dcad56d9-9fe6-45bc-96aa-3d778f6804c1</link>
+      <guid>https://framatube.org/videos/watch/dcad56d9-9fe6-45bc-96aa-3d778f6804c1</guid>
+      <pubDate>Tue, 02 Oct 2018 11:46:59 GMT</pubDate>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/dcad56d9-9fe6-45bc-96aa-3d778f6804c1-1060.torrent" length="1286098">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/dcad56d9-9fe6-45bc-96aa-3d778f6804c1-1060.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/dcad56d9-9fe6-45bc-96aa-3d778f6804c1-720.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/dcad56d9-9fe6-45bc-96aa-3d778f6804c1-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/dcad56d9-9fe6-45bc-96aa-3d778f6804c1-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/dcad56d9-9fe6-45bc-96aa-3d778f6804c1-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/dcad56d9-9fe6-45bc-96aa-3d778f6804c1.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+    <item>
+      <title><![CDATA[PeerTube - YouTube video import demonstration]]></title>
+      <link>https://framatube.org/videos/watch/59d306c0-fc5b-493a-956a-43785693346b</link>
+      <guid>https://framatube.org/videos/watch/59d306c0-fc5b-493a-956a-43785693346b</guid>
+      <pubDate>Tue, 02 Oct 2018 11:46:00 GMT</pubDate>
+      <dc:creator>Framasoft</dc:creator>
+      <enclosure type="application/x-bittorrent" url="https://framatube.org/static/torrents/59d306c0-fc5b-493a-956a-43785693346b-1060.torrent" length="1051431">
+      </enclosure>
+      <media:group>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/59d306c0-fc5b-493a-956a-43785693346b-1060.torrent" isDefault="true">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/59d306c0-fc5b-493a-956a-43785693346b-720.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/59d306c0-fc5b-493a-956a-43785693346b-480.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/59d306c0-fc5b-493a-956a-43785693346b-360.torrent">
+        </media:content>
+        <media:content type="application/x-bittorrent" url="https://framatube.org/static/torrents/59d306c0-fc5b-493a-956a-43785693346b-240.torrent">
+        </media:content>
+        <media:rating>nonadult</media:rating>
+      </media:group>
+      <media:thumbnail url="https://framatube.org/static/thumbnails/59d306c0-fc5b-493a-956a-43785693346b.jpg" height="122" width="223">
+      </media:thumbnail>
+    </item>
+  </channel>
+</rss>

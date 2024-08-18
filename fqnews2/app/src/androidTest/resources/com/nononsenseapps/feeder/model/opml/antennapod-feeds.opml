@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
+<opml version="2.0">
+  <head>
+    <title>AntennaPod Subscriptions</title>
+    <dateCreated>04 Jul 17 00:58:04 +0200</dateCreated>
+  </head>
+  <body>
+    <outline text="Alice Isn't Dead" title="Alice Isn't Dead" type="rss" xmlUrl="http://aliceisntdead.libsyn.com/rss" htmlUrl="http://www.aliceisntdead.com" />
+    <outline text="Invisible City" title="Invisible City" type="rss" xmlUrl="http://feeds.soundcloud.com/users/soundcloud:users:154104768/sounds.rss" htmlUrl="http://www.invisiblecitypodcast.com" />
+    <outline text="PodCastle" title="PodCastle" type="rss" xmlUrl="http://feeds.feedburner.com/PodCastle_Main" htmlUrl="http://podcastle.org" />
+    <outline text="The Art of Storytelling with Brother Wolf" title="The Art of Storytelling with Brother Wolf" type="rss" xmlUrl="http://www.artofstorytellingshow.com/podcast/storycast.xml" htmlUrl="http://www.artofstorytellingshow.com" />
+    <outline text="The Cleansed: A Post-Apocalyptic Saga" title="The Cleansed: A Post-Apocalyptic Saga" type="rss" xmlUrl="http://feeds.feedburner.com/TheCleansed" htmlUrl="http://thecleansed.com/" />
+    <outline text="The Tolkien Professor" title="The Tolkien Professor" type="rss" xmlUrl="http://media.signumuniversity.org/tolkienprof/feed" htmlUrl="http://www.tolkienprofessor.com" />
+    <outline text="Welcome to Night Vale" title="Welcome to Night Vale" type="rss" xmlUrl="http://nightvale.libsyn.com/rss" htmlUrl="http://welcometonightvale.com" />
+    <outline text="Within the Wires" title="Within the Wires" type="rss" xmlUrl="http://withinthewires.libsyn.com/rss" htmlUrl="http://withinthewires.libsyn.com/podcast" />
+  </body>
+</opml>

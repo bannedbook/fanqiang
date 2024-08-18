@@ -1,0 +1,3 @@
+# 1.10.4
+Jonas Kalderstam (1):
+  * [51ef23e6] App is now compiled against Android 11 (SDK-30, R)

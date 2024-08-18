@@ -1,0 +1,5 @@
+# 1.8.10
+*   Update Simplified Chinese Translation
+    Thanks to linsui
+    See !179
+*   Added option to mark items as read as you scroll (defaults to true)

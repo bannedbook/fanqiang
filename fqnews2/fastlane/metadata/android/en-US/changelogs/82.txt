@@ -1,0 +1,6 @@
+# 1.10.2
+Fëdor T (1):
+  * [e9787dee] Updated Russian translation
+
+Muha Aliss (1):
+  * [2885b218] Turkish translations added

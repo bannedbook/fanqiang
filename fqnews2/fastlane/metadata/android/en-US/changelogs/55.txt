@@ -1,0 +1,3 @@
+# 1.8.16
+*   Fixed a null pointer crash if bare <li> tag was encountered
+    See !192

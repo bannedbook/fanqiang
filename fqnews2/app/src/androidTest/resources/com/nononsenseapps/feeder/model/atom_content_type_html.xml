@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><id>feeder_reproduce</id><title>Feeder Reproduce</title><updated>2020-10-13T08:35:20Z</updated>
+  <entry><id>feeder_reproduce/o1iax7</id><title>14,000x Speedup</title><link href="https://gitlab.com/spacecowboy/Feeder/-/issues/311"></link><updated>2020-10-12T21:26:03Z</updated><content type="html">&lt;div&gt;&lt;div class="span8"&gt;
+    &lt;p&gt;In my job as a scientific software developer, I tend to write a lot of code. And most people who haven’t been through a Computer Science degree tend to think that CS is “just” about slinging code at the screen and then running it. I have a good working relationship with many of my colleagues and co-workers with other backgrounds… Physics, Climate Science, Biology, etc. But when it comes to developing software, I get the distinct impression that people think, “Hey, how hard could this be?! We just write down a few instructions about what we want the computer to do, hit the execute button and the, ‘Blamo!’, we get our answer!”&lt;/p&gt;
+
+    &lt;p&gt;The problem with that line of thinking is that it’s incredibly easy to write instructions that don’t mean what you think they mean. For example, your program could be completely uninterpretable by the computer. Furthermore, there is literally &lt;a href="https://en.wikipedia.org/wiki/Halting_problem"&gt;no way to tell whether your program will ever actually terminate&lt;/a&gt; without actually executing it. And there are many, many, &lt;em&gt;many&lt;/em&gt;, ways to write a program which make it “slow” to execute. “Slow” being… like &lt;em&gt;really&lt;/em&gt; slow. Like it would take your entire lifetime or more to actually execute it. This final problem is one that I see most often when reading software written by people without a CS education. And fixing that is my job.&lt;/p&gt;
+
+    &lt;p&gt;The thing about CS that people don’t realize is that it teaches you about the theory of computation, computability (i.e. can we actually compute something? We often take for granted that we can!), algorithm complexity, and all of the knowledge, logic and analysis techniques and help you compose a program that will run in the minimum amount of time or using the minimum amount of space.&lt;/p&gt;
+
+    &lt;p&gt;Allow me to show you an example of a huge optimization that I made to a simple script written by a colleague.&lt;/p&gt;
+
+    &lt;p&gt;In climate science we do a lot of downscaling. We take temperature and precipitation readings from a coarse scale Global Climate Model grid and map them to a fine scale local grid. Let’s say the global grid is 50x25 and the local grid is 1000x500. For each grid cell in the local grid, we want to know to which grid cell in the global grid it corresponds.&lt;/p&gt;
+
+    &lt;p&gt;A simple way to think about this is that we want to minimize the distance between L[n] and G[n]. So a simple way to do the search would be:&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt;for each Local cell L[i]:
+    for each Global cell G[j]:
+    compute distance between L[i] and G[j]
+    find the minimum distance in the set L[i] * G
+    return the index of the minimum
+    &lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;It seems simple enough. However, if you look closely, you’ll notice that you have to do a &lt;em&gt;lot&lt;/em&gt; of extra work. Look at the algorithm in terms of the size of the input.&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt;for each Local cell L[i]:                        # Do this L times
+    for each Global cell G[j]:                     # Do this L x G times
+    compute distance (d) between L[i] and G[j]  # Do this L x G times
+    find the minimum distance in the set d[i*j]    # Read G cells L times (cost L x G)
+    find the index whose cell matches the minimum  # Read G cells L times (cost L x G)
+    &lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;The code for this looked something like this:&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class="language-R"&gt;obs.lon &amp;lt;- ncvar_get(nc.obs, 'lon')
+    obs.lat &amp;lt;- ncvar_get(nc.obs, 'lat')
+    n.lon &amp;lt;- length(obs.lon)
+    n.lat &amp;lt;- length(obs.lat)
+
+    obs.lats &amp;lt;- matrix(obs.lat, nrow=n.lon, ncol=n.lat, byrow=TRUE)
+    obs.lons &amp;lt;- matrix(obs.lon, nrow=n.lon, ncol=n.lat)
+    obs.time &amp;lt;- netcdf.calendar(nc.obs)
+
+    gcm.lon &amp;lt;- ncvar_get(nc.gcm, 'lon')-360
+    gcm.lat &amp;lt;- ncvar_get(nc.gcm, 'lat')
+    gcm.lats &amp;lt;- matrix(gcm.lat, ncol=length(gcm.lat), nrow=length(gcm.lon),
+    byrow=TRUE)
+    gcm.lons &amp;lt;- matrix(gcm.lon, ncol=length(gcm.lat), nrow=length(gcm.lon))
+    gcm.lons.lats &amp;lt;- cbind(c(gcm.lons), c(gcm.lats))
+
+    # Figure out which GCM grid boxes are associated with each fine-scale grid point
+    # Confine search to 10 deg. x 10 deg. neighbourhood
+
+    dxy &amp;lt;- 10
+    mdist &amp;lt;- function(x, y)
+    apply(abs(sweep(data.matrix(y), 2, data.matrix(x), '-')), 1, sum)
+    nn &amp;lt;- list()
+    for (i in seq_along(obs.lons)) {
+    if((i %% 500)==0) cat(i, '')
+    gcm.lims &amp;lt;- ((gcm.lons.lats[,1] &amp;gt;= (obs.lons[i]-dxy)) &amp;amp;
+    (gcm.lons.lats[,1] &amp;lt;= (obs.lons[i]+dxy))) &amp;amp;
+    ((gcm.lons.lats[,2] &amp;gt;= (obs.lats[i]-dxy)) &amp;amp;
+    (gcm.lons.lats[,2] &amp;lt;= (obs.lats[i]+dxy)))
+    gcm.lims &amp;lt;- which(gcm.lims)
+    nn.min &amp;lt;- which.min(mdist(c(obs.lons[i], obs.lats[i]),
+    gcm.lons.lats[gcm.lims,]))
+    nn[[i]] &amp;lt;- gcm.lims[nn.min]
+    }
+    nn &amp;lt;- unlist(nn)
+    &lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;So, it seems like a simple algorithm. “Just” compute the distances and then find the minimum. But the way it was written, as the size of the number of local cells grows, our cost of computation grows by its product with the number of global grid cells. For Canadian ANUSPLIN data, there are 1068 x 510 cells (for a total of 544,680) and let’s say that our GCM has 50 x 25 cells (for a total of 1,250 cells). So the cost of the inner loop in “some computational unit” is:&lt;/p&gt;
+
+
+
+    &lt;p&gt;where the  terms are constants that correspond to the cost of computing a distance between two points, finding the minimum point, and finding an array index. Really, we don’t care (much) about the constant terms, because they are not affected by the size of the input. So we can just clump them together and call the cost;&lt;/p&gt;
+
+
+
+    &lt;p&gt;So for this set of input, our cost is &lt;/p&gt;
+
+    &lt;p&gt;680 million.&lt;/p&gt;
+
+    &lt;p&gt;That &lt;em&gt;seems&lt;/em&gt; like a lot, but is it? Computers are fast, right? If we run the naive implementation that’s something like this:&lt;/p&gt;
+
+    &lt;p&gt;it ends up taking 1668 seconds which is a little less than half an hour.&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class="language-R"&gt;&amp;gt; source('BCCA/naive.implementation.R')
+    500 1000 1500 2000 2500 3000 ... 543000 543500 544000 544500 [1] "Elapsed Time"
+    user   system  elapsed
+    1668.868    8.926 1681.728
+    &lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;But do we &lt;em&gt;need&lt;/em&gt; for it to take 30 minutes? Here’s the thing. We’re comparing two grids together, both of which have tons of structure that we haven’t taken advantage of. For example the latitudes and longitudes in both the coarse and the fine grid are in sorted order. So if you want to search for a number, you don’t have to look at every single number. You can use a bisect algorithm where you look at the point in the middle and then decide which half of the array you want to search. Then searching the full space only costs you the log (base 2) of the search space.&lt;/p&gt;
+
+    &lt;p&gt;The other major structure that we haven’t taken advantage of is the fact that the latitudes repeat themselves in the  dimension and the longitudes repeat themselves in the  dimension. So instead of doing an operation  times, we can do it  times. That’s a &lt;em&gt;huge&lt;/em&gt; optimization.&lt;/p&gt;
+
+    &lt;p&gt;What does that look like in pseudo-code?&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code&gt;For each local[x]:
+    bisect_search(local[x], Global[x])
+
+    For each local[y]:
+    bisect_search(local[y], Global[y])
+
+    return a 2d grid of the search results for each dimension
+    &lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;In code:&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class="language-R"&gt;## Perform a binary search on the *sorted* vector v
+    ## Return the array index of the element closest to x
+    find.nearest &amp;lt;- function(x, v) {
+    if (length(v) == 1) {
+    return(1)
+    }
+    if (length(v) == 2) {
+    return(which.min(abs(v - x)))
+    }
+    mid &amp;lt;- ceiling(length(v) / 2)
+    if (x == v[mid]) {
+    return(mid)
+    } else if (x &amp;lt; v[mid]) {
+    return(find.nearest(x, v[1:mid]))
+    }
+    else {
+    return((mid - 1) + find.nearest(x, v[mid:length(v)]))
+    }
+    }
+
+    regrid.one.dim &amp;lt;- function(coarse.points, fine.points) {
+    return(sapply(fine.points, find.nearest, coarse.points))
+    }
+
+    ## Take a fine scale (e.g. ANUSPLINE) grid of latitudes and longitudes
+    ## and find the indicies that correspond to a coarse scale (e.g. a GCM) grid
+    ## Since the search is essentially a minimizing distance in 2 dimensions
+    ## We can actually search independently in each dimensions separately (which
+    ## is a huge optimization, making the run time x + y instead of x * y) and
+    ## then reconstruct the indices to create a full grid
+    regrid.coarse.to.fine &amp;lt;- function(coarse.lats, coarse.lons, fine.lats, fine.lons) {
+    xi &amp;lt;- regrid.one.dim(gcm.lon, obs.lon)
+    yi &amp;lt;- regrid.one.dim(gcm.lat, obs.lat)
+    ## Two dimensional grid of indices
+    xi &amp;lt;- matrix(xi, ncol=length(fine.lats), nrow=length(fine.lons), byrow=F)
+    yi &amp;lt;- matrix(yi, ncol=length(fine.lats), nrow=length(fine.lons), byrow=T)
+    return(list(xi=xi, yi=yi))
+    }
+
+    &lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;The cost for every bisection search is the log of the input size. Our input size is divided into X and Y space this time, so we’ll use , and  for Global, Local, X and Y.&lt;/p&gt;
+
+
+
+    &lt;p&gt;Plugging in our numbers this gives us a cost estimate of 553,076. 553 thousand sounds a lot better than 680 million. Do we see that in the run time?&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class="language-R"&gt;&amp;gt; ptm &amp;lt;- proc.time(); rv &amp;lt;- regrid.coarse.to.fine(gcm.lat, gcm.lon, obs.lat, obs.lon); print('Elapsed Time'); print(proc.time() - ptm)[1] "Elapsed Time"
+    user  system elapsed
+    0.117   0.000   0.117
+    &amp;gt; str(rv)
+    List of 2
+    $ xi: num [1:1068, 1:510] 15 15 15 15 15 15 15 15 15 15 ...
+    $ yi: num [1:1068, 1:510] 13 13 13 13 13 13 13 13 13 13 ...
+    &amp;gt;
+    &lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;0.117 seconds. What took us almost half an hour before, now takes us a little over  of a second.&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class="language-R"&gt;&amp;gt; 1668.868 / .117
+    [1] 14263.83
+    &lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;Soooooo… I know that I’m trained to do this kind of work and it’s my job to know how to do these types of things. But even &lt;em&gt;I’m&lt;/em&gt; surprised and self-impressed at how significant that speedup is. That’s a &lt;em&gt;14 thousand times&lt;/em&gt; speedup.&lt;/p&gt;
+
+    &lt;p&gt;This script used to take so long that it had to save its output to disk and be manually checked by a scientist before proceeding. Now you can compute it in the blink of an eye. This is a computation that we have to do hundreds of times, and this saves us days to weeks of computation time. And it increases the ability to interact with the system, helping us to get more value out of our scientists’ time… they’re not sitting around waiting for a computation to finish. It just does it.&lt;/p&gt;
+
+    &lt;p&gt;I should emphasize that these epic performance improvements come without buying any larger computer systems, no parallelization or increase in complexity… in fact the code for the faster algorithm is actually simpler and more reusable! It’s pretty much an all around win, just by reading the code and having some knowledge of computational complexity.&lt;/p&gt;
+
+    &lt;p&gt;tldr; Computer Science, For The Win.&lt;/p&gt;
+
+    &lt;hr/&gt;
+
+    &lt;hr/&gt;
+
+
+
+
+
+    &lt;noscript&gt;Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+    &lt;a href="http://disqus.com" class="dsq-brlink"&gt;blog comments powered by &lt;/a&gt;
+
+
+
+
+    &lt;/div&gt;
+
+    &lt;/div&gt;</content>
+  </entry></feed>

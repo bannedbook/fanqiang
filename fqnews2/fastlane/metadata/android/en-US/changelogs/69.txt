@@ -1,0 +1,8 @@
+# 1.8.30
+  * [49e7f76] Replaced day-night theme with manual control over themes
+  * [d54ccbc] Fixed scrollbar ghosting
+  * [3614f8a] Added another theme which follows system night mode
+  * [4022f62] Save navigation state and restore it
+  * [d72d7fa] Increased speed of app and implemented system-follow theme
+  * [7df3dc2] Removed conscrypt
+  * [e9a6dc3] Updated versions of libraries used

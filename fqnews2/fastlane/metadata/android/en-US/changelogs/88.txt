@@ -1,0 +1,3 @@
+# 1.10.8
+Jonas Kalderstam (2):
+  * [472dc314] Fixed reader going blank after opening a web view

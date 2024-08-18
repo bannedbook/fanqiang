@@ -1,0 +1,10 @@
+# 2.4.11
+Juraj Liso (1):
+  * [61a263f3] Added Slovak translation using Weblate
+
+Parsa (1):
+  * [1f07f778] Translated using Weblate (Persian)
+
+Zayed Al-Saidi (1):
+  * [3b48b9b8] Translated using Weblate (Arabic)
+

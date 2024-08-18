@@ -1,0 +1,11 @@
+# 1.8.13
+*   Fixed edit dialog starting with the wrong theme
+    See !187
+*   Fixed spelling error in Spanish
+    See !185
+*   Fixed webview resetting night mode
+    See !185 #172
+*   Migrated to single activity; app should feel faster
+    See !185
+*   Fixed thumbnails not showing in Engadget feed
+    See !183 #186

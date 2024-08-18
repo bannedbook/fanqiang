@@ -1,0 +1,15 @@
+# 2.0.0-rc.3
+Andrij Mizyk (2):
+  * [4615622f] Updated Ukrainian translation using Weblate
+
+Jam Jam (2):
+  * [e2cd1132] Translated using Weblate (Ukrainian)
+
+Jonas Kalderstam (15):
+  * [5b0892ff] Fixed infinite loop issue if for example a notification was
+         clicked then back
+  * [0b35343c] Fixed app shortcuts not being cleared after delete
+  * [5b0badf8] Fixed TTS (and rest of app) not working on Android S
+  * [afdca651] Fixed image placeholders
+  * [95118fa6] Fixed images in reader view
+ 

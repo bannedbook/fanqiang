@@ -1,0 +1,34 @@
+<resources>
+
+  <style name="AppThemeDayNoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <item name="windowActionModeOverlay">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+
+    <item name="colorPrimary">@color/primary</item>
+    <item name="colorPrimaryDark">@color/primary</item>
+
+    <item name="colorOnPrimary">@android:color/white</item>
+    <item name="colorOnSecondary">@android:color/white</item>
+
+    <item name="android:windowActionModeOverlay">true</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowBackground">@null</item>
+  </style>
+
+  <style name="AppThemeDialog" parent="Theme.MaterialComponents.Light.DialogWhenLarge">
+    <item name="windowActionModeOverlay">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+
+    <item name="colorPrimary">@color/primary</item>
+    <item name="colorPrimaryDark">@color/primary</item>
+
+    <item name="colorOnPrimary">@android:color/white</item>
+    <item name="colorOnSecondary">@android:color/white</item>
+
+    <item name="android:windowActionModeOverlay">true</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowBackground">@null</item>
+  </style>
+</resources>

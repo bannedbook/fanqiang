@@ -1,0 +1,19 @@
+# 2.0.0-rc.4
+Agnieszka C (1):
+  * [89ba5aef] Updated Polish translation using Weblate
+
+Andrij Mizyk (1):
+  * [38b0167b] Updated Ukrainian translation using Weblate
+
+El Pirujo (1):
+  * [34edcbc3] Updated Spanish translation using Weblate
+
+Eric (1):
+  * [97085761] Updated Chinese (Simplified) translation using Weblate
+
+Gediminas Murauskas (1):
+  * [12b100a1] Updated Lithuanian translation using Weblate
+
+J. Lavoie (2):
+  * [f4e87145] Updated German translation using Weblate
+  * [a032ba03] Updated I

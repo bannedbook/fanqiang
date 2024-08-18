@@ -1,0 +1,3 @@
+# 1.8.6
+*   Fixed notification "Open in"-actions not working
+    See !164

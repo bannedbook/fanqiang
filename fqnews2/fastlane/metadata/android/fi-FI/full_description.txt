@@ -1,0 +1,19 @@
+<p>Oletko kyllästynyt paisuneisiin ei-vapaisiin lukijoihin, jotka varastavat henkilökohtaisia tietojasi?<br/>
+Oletko kyllästynyt sekaviin synkronointijärjestelmiin joiden kanssa menee monta tuntia palvelimien määrittelyssä?<br/>
+Oletko kyllästynyt tunnusten tekemiseen joka paikkaan?<br/></p>
+
+<p>Kokeile sen sijaan Feederiä!</p>
+
+<p>Feeder on täysin vapaa ja ilmainen syötelukija. Se tukee kaikkia yleisimpiä syötemuotoja, myös JSONFeediä. Se ei seuraa sinua. Se ei tarvitse mitään määrittelyä. Se ei edes tarvitse sinun tekevän tunnuksia toimiakseen! Laita omat syötteet, tuo ne vanhasta lukijasta OPML avulla ja pääset synkronoimaan ja lukemaan.</p>
+
+<p><b>Ominaisuudet</b></p>
+
+<ul>
+<li>Jäsentää HTML ja näyttää sen natiivissa TextViewissä</li>
+<li>Offline-lukeminen</li>
+<li>Taustasynkronointi</li>
+<li>Ilmoitukset</li>
+<li>OPML-tuonti/vienti</li>
+<li>Kätevä pääsy liitelinkkeihin</li>
+<li>Material design</li>
+</ul>

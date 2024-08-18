@@ -1,0 +1,20 @@
+# 1.13.4
+Agnieszka C (2):
+  * [098172c1] Updated Polish translation using Weblate
+  * [d8455440] Updated Polish translation using Weblate
+
+Gediminas Murauskas (1):
+  * [8a3df04f] Translated using Weblate (Lithuanian)
+
+Jonas Kalderstam (1):
+  * [b164dece] Added missing title for language lt
+
+PPNplus (1):
+  * [18a39e63] Added Thai translation using Weblate
+
+Thien Bui (1):
+  * [3d4cd189] Updated Vietnamese translation using Weblate
+
+VfBFan (2):
+  * [2ae60832] Translated using Weblate (German)
+  * [

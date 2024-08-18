@@ -1,0 +1,21 @@
+# 2.1.0
+Agnieszka C (3):
+  * [c68321b8] Updated Polish translation using Weblate
+
+Andrij Mizyk (3):
+  * [c32113b2] Updated Ukrainian translation using Weblate
+
+ERYpTION (3):
+  * [06039102] Updated Danish translation using Weblate
+
+El Pirujo (3):
+  * [2f615a19] Updated Spanish translation using Weblate
+
+Eric (3):
+  * [a5277f50] Updated Chinese (Simplified) translation using Weblate
+
+J. Lavoie (3):
+  * [81011919] Updated Italian translation using Weblate
+
+Jonas Kalderstam (19):
+  * [24c0c8fd] Impl

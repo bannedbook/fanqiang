@@ -1,0 +1,7 @@
+# 2.1.2
+Jonas Kalderstam (1):
+  * [d06407a5] Fixed broken test
+
+mm4c (1):
+  * [c7a09365] Updated Dutch translation using Weblate
+

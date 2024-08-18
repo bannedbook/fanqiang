@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<opml version="version" xmlns:rssguard="https://github.com/martinrotter/rssguard">
+  <head>
+    <title>RSS Guard</title>
+    <dateCreated>Thu, 27 Jul 2017 18:51:54 GMT</dateCreated>
+  </head>
+  <body>
+    <outline description="" text="Amis">
+      <outline title="avril de perthuis" description="" encoding="UTF-8" version="RSS" text="avril de perthuis" xmlUrl="http://www.avrildeperthuis.com/feed/"/>
+    </outline>
+    <outline description="" text="Actu Geek">
+      <outline title="Everyone's Blog Posts - Fashioning Technology" description="" encoding="UTF-8" version="ATOM" text="Everyone's Blog Posts - Fashioning Technology" xmlUrl="http://www.fashioningtech.com/profiles/blog/feed?xn_auth=no"/>
+      <outline title="LinuxFr.org : les dépêches" description="" encoding="UTF-8" version="ATOM" text="LinuxFr.org : les dépêches" xmlUrl="http://linuxfr.org/news.atom"/>
+      <outline title="Multiroom - Musique et cinéma dans toute la maison" description="Comment profiter de l'audio et de la vidéo dans toutes les pièces de sa maison" encoding="UTF-8" version="RSS" text="Multiroom - Musique et cinéma dans toute la maison" xmlUrl="http://feeds.feedburner.com/multiroom"/>
+      <outline title="Next INpact" description="Actualités Informatique" encoding="UTF-8" version="RSS" text="Next INpact" xmlUrl="http://www.pcinpact.com/rss/news.xml"/>
+      <outline title="xkcd.com" description="xkcd.com: A webcomic of romance and math humor." encoding="UTF-8" version="RSS" text="xkcd.com" xmlUrl="http://xkcd.com/rss.xml"/>
+      <outline title="Jeuxlinux - Le site des jeux pour linux" description="" encoding="UTF-8" version="RSS" text="Jeuxlinux - Le site des jeux pour linux" xmlUrl="http://www.jeuxlinux.fr/backend-breves.php3"/>
+      <outline title="Phoronix" description="Linux Hardware Reviews &amp; News" encoding="UTF-8" version="RSS" text="Phoronix" xmlUrl="http://feeds.feedburner.com/Phoronix"/>
+      <outline title="Tech Blog" description="" encoding="UTF-8" version="ATOM" text="Tech Blog" xmlUrl="http://www.techeblog.com/elephant/?mode=atom"/>
+      <outline title="Best Online Videos | Wimp.com" description="Best Online Videos" encoding="UTF-8" version="RSS" text="Best Online Videos | Wimp.com" xmlUrl="http://www.wimp.com/rss/"/>
+      <outline title="One Thing Well" description="A weblog about simple, useful software (on any platform)." encoding="UTF-8" version="RSS" text="One Thing Well" xmlUrl="http://onethingwell.org/rss"/>
+      <outline title="La vache libre" description="Actu GNU/Linux, Logiciels Libres, Geek et autres vacheries inutiles mais indispensables." encoding="UTF-8" version="RSS" text="La vache libre" xmlUrl="http://la-vache-libre.org/feed/"/>
+      <outline title="Instantané techniques" description="Restez toujours informé grâce aux flux RSS de l'espace actualité : Instantanés Techniques." encoding="UTF-8" version="RSS" text="Instantané techniques" xmlUrl="http://www.techniques-ingenieur.fr/rss/actualite.xml"/>
+      <outline title="The Hacker News" description="The Hacker News has been internationally recognized as a leading news source dedicated to promoting awareness for security experts and hackers" encoding="UTF-8" version="RSS" text="The Hacker News" xmlUrl="http://thehackernews.com/feeds/posts/default?alt=rss"/>
+      <outline title="Blog – Hackaday" description="Fresh hacks every day" encoding="UTF-8" version="RSS" text="Blog – Hackaday" xmlUrl="https://hackaday.com/blog/feed/"/>
+      <outline title="gHacks Technology News" description="The independent technology news blog" encoding="UTF-8" version="RSS" text="gHacks Technology News" xmlUrl="https://www.ghacks.net/feed/"/>
+    </outline>
+    <outline description="" text="Graphs">
+      <outline title="Chart Porn" description="A collection of interesting charts, tables, maps, and interactive data toys -- with a focus on economics and graphic design. " encoding="UTF-8" version="RSS" text="Chart Porn" xmlUrl="http://feeds2.feedburner.com/ChartPorn"/>
+      <outline title="Information Is Beautiful" description="Ideas, issues, knowledge, data - visualized!" encoding="UTF-8" version="RSS" text="Information Is Beautiful" xmlUrl="http://feeds.feedburner.com/InformationIsBeautiful"/>
+      <outline title="Visual Capitalist" description="Rich Visual Content For The Modern Investor" encoding="UTF-8" version="RSS" text="Visual Capitalist" xmlUrl="http://www.visualcapitalist.com/feed/"/>
+      <outline title="Quote Snack" description="Big thoughts; human-sized canvas" encoding="UTF-8" version="RSS" text="Quote Snack" xmlUrl="http://feeds.feedburner.com/QuoteSnack"/>
+    </outline>
+    <outline description="" text="Religion">
+      <outline title="Mosquee de Paris" description="" encoding="UTF-8" version="RSS" text="Mosquee de Paris" xmlUrl="http://www.mosqueedeparis.net/index.php?format=feed&amp;amp;type=atom"/>
+      <outline title="Les trois sagesses" description="MDG" encoding="UTF-8" version="RSS1" text="Les trois sagesses" xmlUrl="http://www.les-trois-sagesses.org/rss-articles.xml"/>
+      <outline title="Theotokos.fr : flux rss" description="Les flux rss de Theotokos" encoding="UTF-8" version="RSS" text="Theotokos.fr : flux rss" xmlUrl="http://www.theotokos.fr/flux.rss"/>
+      <outline title="magazine-zelie" description="magazine-zelie" encoding="UTF-8" version="RSS" text="magazine-zelie" xmlUrl="http://www.magazine-zelie.com/feed.xml"/>
+    </outline>
+    <outline description="" text="Mainstream update">
+      <outline title="Stunt Rally" description="" encoding="UTF-8" version="RSS" text="Stunt Rally" xmlUrl="http://sourceforge.net/projects/stuntrally/rss"/>
+      <outline title="Racer" description="" encoding="UTF-8" version="RSS" text="Racer" xmlUrl="http://sourceforge.net/projects/racer/rss"/>
+      <outline title="Xfce Blog" description="The little mouse told me..." encoding="UTF-8" version="RSS" text="Xfce Blog" xmlUrl="http://blog.xfce.org/feed/"/>
+      <outline title="Release qupzilla" description="" encoding="UTF-8" version="ATOM" text="Release qupzilla" xmlUrl="https://github.com/QupZilla/qupzilla/releases.atom"/>
+      <outline title="Release pogo" description="" encoding="UTF-8" version="ATOM" text="Release pogo" xmlUrl="https://github.com/jendrikseipp/pogo/releases.atom"/>
+    </outline>
+    <outline title="Actualités" description="Actualités de la Mairie du 6ème" encoding="UTF-8" version="RSS" text="Actualités" xmlUrl="http://www.mairie6.lyon.fr/cs/Satellite?Thematique=&amp;TypeContenu=Actualite&amp;pagename=RSSFeed&amp;site=Mairie6"/>
+  </body>
+</opml>

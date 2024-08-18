@@ -1,0 +1,15 @@
+# 1.13.1
+Axus Wizix (1):
+  * [2f4d770f] Updated Russian translation using Weblate
+
+Belmar Begić (1):
+  * [c8af81d8] Updated Bosnian translation using Weblate
+
+Jonas Kalderstam (4):
+  * [533e92d4] Specified the region of bare Portuguese to Portugal
+  * [73e6cddb] Translated using Weblate (Romanian)
+  * [2d173196] Fixed dc:creator not showing up as author in RSS feeds
+  * [0a2452c5] Updated Czech translation using Weblate
+
+Simona Iacob (1):
+  * [ec364392] Updated Romanian translation using Weblat

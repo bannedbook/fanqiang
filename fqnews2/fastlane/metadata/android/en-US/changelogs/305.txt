@@ -1,0 +1,14 @@
+# 2.6.20
+Agnieszka C (1):
+  * [f13c3c3f] Updated Polish translation using Weblate
+
+Alex Gavrishev (1):
+  * [80fd92f3] Added new article style: compact card layout (#243)
+
+Jonas Kalderstam (6):
+  * [3684b5d7] Changed "already read" label to "read" instead
+  * [233d6ce9] Fixed talkback for delete dialog
+  * [edc8966d] Fixed some timezone handling in publication dates
+  * [0845a3b4] Tried to make a test less flaky
+  * [e0219f24] Made feed parsing more lenient because I'm sick of bug
+         report

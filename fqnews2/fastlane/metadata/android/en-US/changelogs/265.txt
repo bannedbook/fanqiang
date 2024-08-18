@@ -1,0 +1,13 @@
+# 2.4.5
+Jonas Kalderstam (3):
+  * [7a26e00d] Fixed crash when sharing link to Feeder
+  * [1ce1f6b0] Upgraded some versions
+  * [3ef1871a] Removed Large Top App Bar because of crash when rotating
+         device
+
+José Cabeda (1):
+  * [30455aba] Updated Portuguese (Portugal) translation using Weblate
+
+bowornsin (1):
+  * [d9b58d61] Updated Thai translation using Weblate
+

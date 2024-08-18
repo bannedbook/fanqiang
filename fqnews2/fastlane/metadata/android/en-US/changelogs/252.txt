@@ -1,0 +1,16 @@
+# 2.3.2
+Allan Nordhøy (1):
+  * [9c947b4c] Updated Norwegian Bokmål translation using Weblate
+
+Andrij Mizyk (1):
+  * [e50de95c] Updated Ukrainian translation using Weblate
+
+ERYpTION (1):
+  * [6162c9e7] Translated using Weblate (Danish)
+
+Jonas Kalderstam (14):
+  * [4ee8790e] Fixed padding in tag list
+  * [8cce8c0d] Fixed images rendering too large causing crashes
+  * [c660a688] Added fallback to feed icon in compact views
+  * [2b91e13f] Added blacklist for twitter icon as article icon
+  * [d4817

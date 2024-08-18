@@ -1,0 +1,12 @@
+# 1.8.5
+*   Fixed parsing of feeds without unique guids or links (NixOS)
+    See !162
+*   Changed so feed search finds alternate links in body of documents
+    See !162
+*   Fixed feed results not showing error message on *second* search
+    See !162
+*   Feeder can now be used to *open* links, not just accept *shared* ones
+    See !161 #174
+*   Fixed notifications so that all actions will mark item as read also
+    See !160
+*   Fixed app losing state if in reader and switching to another app and 

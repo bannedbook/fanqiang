@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- generator="FeedCreator 1.6" -->
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  version="2.0">
+  <channel>
+    <title>Golem.de</title>
+    <description>IT-News fuer Profis</description>
+    <link>https://www.golem.de/</link>
+    <atom:link rel="self" href="https://rss.golem.de/rss.php?feed=RSS2.0" />
+    <lastBuildDate>Sat, 09 Dec 2017 15:49:02 +0100</lastBuildDate>
+    <generator>FeedCreator 1.6</generator>
+    <image>
+      <url>https://www.golem.de/staticrl/images/golem-rss.png</url>
+      <title>Golem.de</title>
+      <link>https://www.golem.de/</link>
+      <description>Golem.de News Feed</description>
+    </image>
+    <language>de</language>
+    <atom:link rel="hub" href="http://golem.superfeedr.com/" />
+    <item>
+      <title>Anheuser Busch: US-Brauerei bestellt 40 Tesla-Trucks vor</title>
+      <link>https://www.golem.de/news/anheuser-busch-us-brauerei-bestellt-40-tesla-trucks-vor-1712-131577-rss.html</link>
+      <description>Das US-Brau-Unternehmen Anheuser Busch hat 40 der neuen Lkws von Tesla vorbestellt. Dem Hersteller zufolge ist das die größte Vorbestellung bisher. Auch Walmart und DHL haben den Elektro-Truck bereits geordert. (&lt;a href=&quot;https://www.golem.de/specials/tesla/&quot;&gt;Tesla&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/elektroauto/&quot;&gt;Elektroauto&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131577&amp;amp;page=1&amp;amp;ts=1512830640&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <pubDate>Sat, 09 Dec 2017 15:44:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131577-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1711/131200-149083-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Das US-Brau-Unternehmen Anheuser Busch hat 40 der neuen Lkws von Tesla vorbestellt. Dem Hersteller zufolge ist das die größte Vorbestellung bisher. Auch Walmart und DHL haben den Elektro-Truck bereits geordert. (<a href="https://www.golem.de/specials/tesla/">Tesla</a>, <a href="https://www.golem.de/specials/elektroauto/">Elektroauto</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131577&amp;page=1&amp;ts=1512830640" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>0</slash:comments>
+    </item>
+    <item>
+      <title>Apple: Jony Ive übernimmt wieder Apples Produktdesign</title>
+      <link>https://www.golem.de/news/apple-jony-ive-uebernimmt-wieder-apples-produktdesign-1712-131576-rss.html</link>
+      <description>Der Apple Park ist fertig, also hat Jony Ive wieder Zeit für Produktdesign: Ab sofort ist der britische Designer wieder für das Aussehen von Apples Geräten und Software verantwortlich. Die vergangenen zwei Jahre war Ive in die Designentscheidungen von Produkten nicht involviert. (&lt;a href=&quot;https://www.golem.de/specials/jonathan-ive/&quot;&gt;Jonathan Ive&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/apple/&quot;&gt;Apple&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131576&amp;amp;page=1&amp;amp;ts=1512824700&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/handy/apple-jony-ive-uebernimmt-wieder-apples-produktdesign/114242,list.html</comments>
+      <pubDate>Sat, 09 Dec 2017 14:05:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131576-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1305/99045-57584-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Der Apple Park ist fertig, also hat Jony Ive wieder Zeit für Produktdesign: Ab sofort ist der britische Designer wieder für das Aussehen von Apples Geräten und Software verantwortlich. Die vergangenen zwei Jahre war Ive in die Designentscheidungen von Produkten nicht involviert. (<a href="https://www.golem.de/specials/jonathan-ive/">Jonathan Ive</a>, <a href="https://www.golem.de/specials/apple/">Apple</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131576&amp;page=1&amp;ts=1512824700" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>0</slash:comments>
+    </item>
+    <item>
+      <title>Elon Musk: Tesla will eigene KI-Chips bauen</title>
+      <link>https://www.golem.de/news/elon-musk-tesla-will-eigene-ki-chips-bauen-1712-131575-rss.html</link>
+      <description>Auf einer Konferenz hat Tesla-Gründer Elon Musk verraten, dass das Unternehmen eigene KI-Chips für autonome Fahrzeuge entwickelt. An der Forschung beteiligt ist Jim Keller, der zuvor unter anderem bei AMD Chips entwickelt hat. (&lt;a href=&quot;https://www.golem.de/specials/tesla/&quot;&gt;Tesla&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/ki/&quot;&gt;KI&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131575&amp;amp;page=1&amp;amp;ts=1512821340&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/automobil/elon-musk-tesla-will-eigene-ki-chips-bauen/114241,list.html</comments>
+      <pubDate>Sat, 09 Dec 2017 13:09:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131575-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131575-150145-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Auf einer Konferenz hat Tesla-Gründer Elon Musk verraten, dass das Unternehmen eigene KI-Chips für autonome Fahrzeuge entwickelt. An der Forschung beteiligt ist Jim Keller, der zuvor unter anderem bei AMD Chips entwickelt hat. (<a href="https://www.golem.de/specials/tesla/">Tesla</a>, <a href="https://www.golem.de/specials/ki/">KI</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131575&amp;page=1&amp;ts=1512821340" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>0</slash:comments>
+    </item>
+    <item>
+      <title>Die Woche im Video: Lauscher auf!</title>
+      <link>https://www.golem.de/news/die-woche-im-video-lauscher-auf-1712-131540-rss.html</link>
+      <description> Security ist kaputt und ein Tesla-Mietwagen völlig demoliert. Außerdem drehen wir gleich zwölf smarte Lautsprecher - oder besser Lauschsprecher - auf. Sieben Tage und viele Meldungen im Überblick. (&lt;a href=&quot;https://www.golem.de/specials/golemwochenrueckblick/&quot;&gt;Golem-Wochenrückblick&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/apple-tv/&quot;&gt;Apple TV&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131540&amp;amp;page=1&amp;amp;ts=1512806580&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/politik-recht/die-woche-im-video-lauscher-auf/114240,list.html</comments>
+      <pubDate>Sat, 09 Dec 2017 09:03:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131540-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131540-150136-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left"> Security ist kaputt und ein Tesla-Mietwagen völlig demoliert. Außerdem drehen wir gleich zwölf smarte Lautsprecher - oder besser Lauschsprecher - auf. Sieben Tage und viele Meldungen im Überblick. (<a href="https://www.golem.de/specials/golemwochenrueckblick/">Golem-Wochenrückblick</a>, <a href="https://www.golem.de/specials/apple-tv/">Apple TV</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131540&amp;page=1&amp;ts=1512806580" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>0</slash:comments>
+    </item>
+    <item>
+      <title>Entlassungen: Kaufland beendet Online-Lieferservice für Lebensmittel</title>
+      <link>https://www.golem.de/news/entlassungen-kaufland-beendet-online-lieferservice-fuer-lebensmittel-1712-131573-rss.html</link>
+      <description>Viele Kunden hatten Interesse an dem Online-Lieferservice für Lebensmittel von Kaufland. Dennoch hört das Unternehmen jetzt damit auf. Amazon dürfte sich freuen. (&lt;a href=&quot;https://www.golem.de/specials/amazon/&quot;&gt;Amazon&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/lieferdienst/&quot;&gt;Lieferdienst&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131573&amp;amp;page=1&amp;amp;ts=1512757080&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/wirtschaft/entlassungen-kaufland-beendet-online-lieferservice-fuer-lebensmittel/114239,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 19:18:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131573-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1705/127631-139290-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Viele Kunden hatten Interesse an dem Online-Lieferservice für Lebensmittel von Kaufland. Dennoch hört das Unternehmen jetzt damit auf. Amazon dürfte sich freuen. (<a href="https://www.golem.de/specials/amazon/">Amazon</a>, <a href="https://www.golem.de/specials/lieferdienst/">Lieferdienst</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131573&amp;page=1&amp;ts=1512757080" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>61</slash:comments>
+    </item>
+    <item>
+      <title>DigiNetz-Gesetz: Unitymedia überbaut keine Glasfaser in Fördergebieten</title>
+      <link>https://www.golem.de/news/diginetz-gesetz-unitymedia-ueberbaut-keine-glasfaser-in-foerdergebieten-1712-131572-rss.html</link>
+      <description>Im Streit um ein Open-Access-Modell blieb Unitymedia hart. Wir haben uns vom Leiter Regulatory des Unternehmens die Hintergründe zur Entscheidung um die Mitverlegung von Glasfaserkabeln in einem Neubaugebiet erklären lassen. (&lt;a href=&quot;https://www.golem.de/specials/bundesnetzagentur/&quot;&gt;Bundesnetzagentur&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/openaccess/&quot;&gt;Open Access&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131572&amp;amp;page=1&amp;amp;ts=1512754860&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/politik-recht/diginetz-gesetz-unitymedia-ueberbaut-keine-glasfaser-in-foerdergebieten/114238,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 18:41:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131572-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131572-150142-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Im Streit um ein Open-Access-Modell blieb Unitymedia hart. Wir haben uns vom Leiter Regulatory des Unternehmens die Hintergründe zur Entscheidung um die Mitverlegung von Glasfaserkabeln in einem Neubaugebiet erklären lassen. (<a href="https://www.golem.de/specials/bundesnetzagentur/">Bundesnetzagentur</a>, <a href="https://www.golem.de/specials/openaccess/">Open Access</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131572&amp;page=1&amp;ts=1512754860" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>4</slash:comments>
+    </item>
+    <item>
+      <title>Telekom: Mobilfunk an neuer ICE-Strecke München-Berlin ausgebaut</title>
+      <link>https://www.golem.de/news/telekom-mobilfunk-an-neuer-ice-strecke-muenchen-berlin-ausgebaut-1712-131571-rss.html</link>
+      <description>Die neue ICE-Strecke zwischen München und Berlin erforderte auch Anstrengungen von den Mobilfunkbetreibern Deutsche Telekom, Vodafone und Telefónica. Die drei Konkurrenten haben hier zusammengearbeitet. (&lt;a href=&quot;https://www.golem.de/specials/deutsche-bahn/&quot;&gt;Deutsche Bahn&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/wlan/&quot;&gt;WLAN&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131571&amp;amp;page=1&amp;amp;ts=1512753900&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/wirtschaft/telekom-mobilfunk-an-neuer-ice-strecke-muenchen-berlin-ausgebaut/114237,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 18:25:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131571-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1612/125319-132596-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Die neue ICE-Strecke zwischen München und Berlin erforderte auch Anstrengungen von den Mobilfunkbetreibern Deutsche Telekom, Vodafone und Telefónica. Die drei Konkurrenten haben hier zusammengearbeitet. (<a href="https://www.golem.de/specials/deutsche-bahn/">Deutsche Bahn</a>, <a href="https://www.golem.de/specials/wlan/">WLAN</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131571&amp;page=1&amp;ts=1512753900" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>14</slash:comments>
+    </item>
+    <item>
+      <title>Modems: Huawei und Telekom warnen vor Angriffen auf Wartungsports</title>
+      <link>https://www.golem.de/news/modems-huawei-und-telekom-warnen-vor-angriffen-auf-wartungsports-1712-131570-rss.html</link>
+      <description>Ein IoT-Botnetz greift derzeit weltweit Modems von Huawei über einen Wartungsport an, die Deutsche Telekom spricht von bis zu 100.000 infizierten Geräten. Huawei gibt Sicherheitstipps und will einen Patch bereitstellen. (&lt;a href=&quot;https://www.golem.de/specials/huawei/&quot;&gt;Huawei&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/telekom/&quot;&gt;Telekom&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131570&amp;amp;page=1&amp;amp;ts=1512752940&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/security/modems-huawei-und-telekom-warnen-vor-angriffen-auf-wartungsports/114236,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 18:09:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131570-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131570-150139-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Ein IoT-Botnetz greift derzeit weltweit Modems von Huawei über einen Wartungsport an, die Deutsche Telekom spricht von bis zu 100.000 infizierten Geräten. Huawei gibt Sicherheitstipps und will einen Patch bereitstellen. (<a href="https://www.golem.de/specials/huawei/">Huawei</a>, <a href="https://www.golem.de/specials/telekom/">Telekom</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131570&amp;page=1&amp;ts=1512752940" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>5</slash:comments>
+    </item>
+    <item>
+      <title>Antivirus: Microsoft bringt Extra-Patch für kritische Lücke in Defender</title>
+      <link>https://www.golem.de/news/antivirus-microsoft-bringt-extra-patch-fuer-kritische-luecke-in-defender-1712-131569-rss.html</link>
+      <description>Erneut trifft es Windows Defender: Ein Speicherfehler kann Angreifer in die Lage versetzen, den Virenscanner zum Ausführen von Code zu nutzen. Microsoft hält aktive Exploits allerdings für unwahrscheinlich, Patches werden verteilt. (&lt;a href=&quot;https://www.golem.de/specials/security/&quot;&gt;Security&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/virenscanner/&quot;&gt;Virenscanner&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131569&amp;amp;page=1&amp;amp;ts=1512747300&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/security/antivirus-microsoft-bringt-extra-patch-fuer-kritische-luecke-in-defender/114235,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 16:35:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131569-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1709/129978-145747-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Erneut trifft es Windows Defender: Ein Speicherfehler kann Angreifer in die Lage versetzen, den Virenscanner zum Ausführen von Code zu nutzen. Microsoft hält aktive Exploits allerdings für unwahrscheinlich, Patches werden verteilt. (<a href="https://www.golem.de/specials/security/">Security</a>, <a href="https://www.golem.de/specials/virenscanner/">Virenscanner</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131569&amp;page=1&amp;ts=1512747300" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>6</slash:comments>
+    </item>
+    <item>
+      <title>Bandai Namco: Neue Taktiken für Prügelspieler in Soul Calibur 6</title>
+      <link>https://www.golem.de/news/bandai-namco-neue-taktiken-fuer-pruegelspieler-in-soul-calibur-6-1712-131568-rss.html</link>
+      <description>Altbekannte Helden, aber auch ein paar Neuzugänge und überarbeitete Taktiken: Bandai Namco hat das Prügelspiel Soul Calibur 6 für Windows-PC und Konsolen angekündigt. (&lt;a href=&quot;https://www.golem.de/specials/soul-calibur/&quot;&gt;Soul Calibur&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/steam/&quot;&gt;Steam&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131568&amp;amp;page=1&amp;amp;ts=1512744660&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/games/bandai-namco-neue-taktiken-fuer-pruegelspieler-in-soul-calibur-6/114234,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 15:51:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131568-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131568-150133-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Altbekannte Helden, aber auch ein paar Neuzugänge und überarbeitete Taktiken: Bandai Namco hat das Prügelspiel Soul Calibur 6 für Windows-PC und Konsolen angekündigt. (<a href="https://www.golem.de/specials/soul-calibur/">Soul Calibur</a>, <a href="https://www.golem.de/specials/steam/">Steam</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131568&amp;page=1&amp;ts=1512744660" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>9</slash:comments>
+    </item>
+    <item>
+      <title>C++ Framework: Qt 5.10 streamt UIs und bringt moderne Crypto</title>
+      <link>https://www.golem.de/news/c-framework-qt-5-10-streamt-uis-und-bringt-moderne-crypto-1712-131567-rss.html</link>
+      <description>Mit der aktuellen Version 5.10 von Qt lassen sich UIs per WebGL streamen, Multi-Touch-Eingaben besser bearbeiten und QtQuick-Steuerelemente über Bilder umsetzen. Darüber hinaus kann Qt nun OpenSSL 1.1 nutzen und liefert bessere Zufallszahlen. (&lt;a href=&quot;https://www.golem.de/specials/qt/&quot;&gt;Qt&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/api/&quot;&gt;API&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131567&amp;amp;page=1&amp;amp;ts=1512743340&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/software-entwicklung/c-framework-qt-5.10-streamt-uis-und-bringt-moderne-crypto/114233,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 15:29:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131567-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1601/118514-112275-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Mit der aktuellen Version 5.10 von Qt lassen sich UIs per WebGL streamen, Multi-Touch-Eingaben besser bearbeiten und QtQuick-Steuerelemente über Bilder umsetzen. Darüber hinaus kann Qt nun OpenSSL 1.1 nutzen und liefert bessere Zufallszahlen. (<a href="https://www.golem.de/specials/qt/">Qt</a>, <a href="https://www.golem.de/specials/api/">API</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131567&amp;page=1&amp;ts=1512743340" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>5</slash:comments>
+    </item>
+    <item>
+      <title>Bluehole: Pubg-Wüstenkarte Miramar auf Testservern spielbar</title>
+      <link>https://www.golem.de/news/bluehole-pubg-wuestenkarte-miramar-auf-testservern-spielbar-1712-131566-rss.html</link>
+      <description>Kurz vor Weihnachten 2017 erscheint die erste finale Version von Playerunknown's Battlegrounds. Bereits jetzt können Spieler die Wüstenkarte Miramar auf den Testservern ausprobieren. (&lt;a href=&quot;https://www.golem.de/specials/playerunknowns-battlegrounds/&quot;&gt;Playerunknown&amp;#039;s Battlegrounds&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/steam/&quot;&gt;Steam&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131566&amp;amp;page=1&amp;amp;ts=1512742200&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/games/bluehole-pubg-wuestenkarte-miramar-auf-testservern-spielbar/114231,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 15:10:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131566-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131566-150130-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Kurz vor Weihnachten 2017 erscheint die erste finale Version von Playerunknown's Battlegrounds. Bereits jetzt können Spieler die Wüstenkarte Miramar auf den Testservern ausprobieren. (<a href="https://www.golem.de/specials/playerunknowns-battlegrounds/">Playerunknown&#039;s Battlegrounds</a>, <a href="https://www.golem.de/specials/steam/">Steam</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131566&amp;page=1&amp;ts=1512742200" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>4</slash:comments>
+    </item>
+    <item>
+      <title>Bridge: Protonmail startet lokalen IMAP-Server für Verschlüsselung</title>
+      <link>https://www.golem.de/news/bridge-protonmail-startet-lokalen-imap-server-fuer-verschluesselung-1712-131565-rss.html</link>
+      <description>Mit einer neuen Software sollen verschlüsselte E-Mails praxistauglicher werden: Proton stellt die Bridge vor. Diese übernimmt die Verschlüsselung und kommuniziert via IMAP und SMTP mit dem Mailclient. (&lt;a href=&quot;https://www.golem.de/specials/protonmail/&quot;&gt;Protonmail&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/macosx/&quot;&gt;Mac OS X&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131565&amp;amp;page=1&amp;amp;ts=1512740760&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/security/bridge-protonmail-startet-lokalen-imap-server-fuer-verschluesselung/114230,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 14:46:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131565-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131565-150127-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Mit einer neuen Software sollen verschlüsselte E-Mails praxistauglicher werden: Proton stellt die Bridge vor. Diese übernimmt die Verschlüsselung und kommuniziert via IMAP und SMTP mit dem Mailclient. (<a href="https://www.golem.de/specials/protonmail/">Protonmail</a>, <a href="https://www.golem.de/specials/macosx/">Mac OS X</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131565&amp;page=1&amp;ts=1512740760" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>1</slash:comments>
+    </item>
+    <item>
+      <title>Nvidia Titan V: Die neue schnellste Grafikkarte kostet 3.100 Euro</title>
+      <link>https://www.golem.de/news/nvidia-titan-v-die-neue-schnellste-grafikkarte-kostet-3-100-euro-1712-131562-rss.html</link>
+      <description>Nvidia hat mit der Titan V die mit Abstand flotteste Grafikkarte vorgestellt. Für 3.100 Euro erhalten Käufer den Volta-basierten Pixelbeschleuniger kostenlos geliefert. Ungeachtet des hohen Preises hat Nvidia die Karte aber um ein Viertel beschnitten. (&lt;a href=&quot;https://www.golem.de/specials/nvidia-volta/&quot;&gt;Nvidia Volta&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/grafikhardware/&quot;&gt;Grafikhardware&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131562&amp;amp;page=1&amp;amp;ts=1512733020&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/sonstiges/nvidia-titan-v-die-neue-schnellste-grafikkarte-kostet-3.100-euro/114228,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 12:37:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131562-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131562-150119-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Nvidia hat mit der Titan V die mit Abstand flotteste Grafikkarte vorgestellt. Für 3.100 Euro erhalten Käufer den Volta-basierten Pixelbeschleuniger kostenlos geliefert. Ungeachtet des hohen Preises hat Nvidia die Karte aber um ein Viertel beschnitten. (<a href="https://www.golem.de/specials/nvidia-volta/">Nvidia Volta</a>, <a href="https://www.golem.de/specials/grafikhardware/">Grafikhardware</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131562&amp;page=1&amp;ts=1512733020" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>70</slash:comments>
+    </item>
+    <item>
+      <title>Kilopower: Ein Kernreaktor für Raumsonden</title>
+      <link>https://www.golem.de/news/kilopower-ein-kernreaktor-fuer-raumsonden-1712-131418-rss.html</link>
+      <description>Als Ersatz für Radioisotopenbatterien entwickelt die Nasa kleine Kernreaktoren, die flexibler, leistungsstärker und beim Start weniger radioaktiv sind. Von Frank Wunderlich-Pfeiffer (&lt;a href=&quot;https://www.golem.de/specials/raumfahrt/&quot;&gt;Raumfahrt&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/nasa/&quot;&gt;Nasa&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131418&amp;amp;page=1&amp;amp;ts=1512730920&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/internet/kilopower-ein-kernreaktor-fuer-raumsonden/114227,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 12:02:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131418-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131418-149715-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Als Ersatz für Radioisotopenbatterien entwickelt die Nasa kleine Kernreaktoren, die flexibler, leistungsstärker und beim Start weniger radioaktiv sind. Von Frank Wunderlich-Pfeiffer (<a href="https://www.golem.de/specials/raumfahrt/">Raumfahrt</a>, <a href="https://www.golem.de/specials/nasa/">Nasa</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131418&amp;page=1&amp;ts=1512730920" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>58</slash:comments>
+    </item>
+    <item>
+      <title>Trotz Reform: BND lässt neues Kontrollgremium angeblich auflaufen</title>
+      <link>https://www.golem.de/news/trotz-reform-bnd-laesst-neues-kontrollgremium-angeblich-auflaufen-1712-131561-rss.html</link>
+      <description>Die BND-Reform nach den Enthüllungen des NSA-Ausschusses sollte eine bessere Kontrolle des Geheimdienstes ermöglichen. Das scheint jedoch noch nicht zu funktionieren. (&lt;a href=&quot;https://www.golem.de/specials/bnd/&quot;&gt;BND&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/datenschutz/&quot;&gt;Datenschutz&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131561&amp;amp;page=1&amp;amp;ts=1512730620&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/internet/trotz-reform-bnd-laesst-neues-kontrollgremium-angeblich-auflaufen/114226,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 11:57:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131561-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131561-150111-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Die BND-Reform nach den Enthüllungen des NSA-Ausschusses sollte eine bessere Kontrolle des Geheimdienstes ermöglichen. Das scheint jedoch noch nicht zu funktionieren. (<a href="https://www.golem.de/specials/bnd/">BND</a>, <a href="https://www.golem.de/specials/datenschutz/">Datenschutz</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131561&amp;page=1&amp;ts=1512730620" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>8</slash:comments>
+    </item>
+    <item>
+      <title>In the Valley of Gods: Firewatch-Macher betreten das Tal der Götter</title>
+      <link>https://www.golem.de/news/in-the-valley-of-gods-firewatch-macher-betreten-das-tal-der-goetter-1712-131560-rss.html</link>
+      <description>Nach Abenteuern in einem US-Nationalpark (Firewatch) wagen die Entwickler vom Studio Campo Santo ein etwas exotischeres Szenario: Ihr nächstes Werk In the Valley of Gods schickt Spieler auf Schatzsuche in ein ägyptisches Tal. (&lt;a href=&quot;https://www.golem.de/specials/adventure/&quot;&gt;Adventure&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/playstation4/&quot;&gt;Playstation 4&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131560&amp;amp;page=1&amp;amp;ts=1512728880&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/games/in-the-valley-of-gods-firewatch-macher-betreten-das-tal-der-goetter/114222,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 11:28:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131560-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131560-150108-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Nach Abenteuern in einem US-Nationalpark (Firewatch) wagen die Entwickler vom Studio Campo Santo ein etwas exotischeres Szenario: Ihr nächstes Werk In the Valley of Gods schickt Spieler auf Schatzsuche in ein ägyptisches Tal. (<a href="https://www.golem.de/specials/adventure/">Adventure</a>, <a href="https://www.golem.de/specials/playstation4/">Playstation 4</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131560&amp;page=1&amp;ts=1512728880" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>8</slash:comments>
+    </item>
+    <item>
+      <title>Dynamics 365: Microsoft verteilt privaten Schlüssel an alle Kunden</title>
+      <link>https://www.golem.de/news/microsoft-dynamics-365-microsoft-leakt-wildcard-zertifikat-for-clouddienst-1712-131542-rss.html</link>
+      <description>Microsoft hat aus Versehen einen privaten Schlüssel für seinen Clouddienst Dynamics 365 veröffentlicht - und schaffte es über Monate nicht, auf Hinweise zu reagieren. Zwischenzeitlich empfahl der Support sogar, eine Krisenreaktionsfirma aus der Ölindustrie anzurufen, um das Problem zu beseitigen. Von Hanno Böck (&lt;a href=&quot;https://www.golem.de/specials/microsoft/&quot;&gt;Microsoft&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/serverapps/&quot;&gt;Server-Applikationen&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131542&amp;amp;page=1&amp;amp;ts=1512727860&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/security/dynamics-365-microsoft-verteilt-privaten-schluessel-an-alle-kunden/114220,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 11:11:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131542-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131542-150061-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Microsoft hat aus Versehen einen privaten Schlüssel für seinen Clouddienst Dynamics 365 veröffentlicht - und schaffte es über Monate nicht, auf Hinweise zu reagieren. Zwischenzeitlich empfahl der Support sogar, eine Krisenreaktionsfirma aus der Ölindustrie anzurufen, um das Problem zu beseitigen. Von Hanno Böck (<a href="https://www.golem.de/specials/microsoft/">Microsoft</a>, <a href="https://www.golem.de/specials/serverapps/">Server-Applikationen</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131542&amp;page=1&amp;ts=1512727860" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>20</slash:comments>
+    </item>
+    <item>
+      <title>Apple: Fehler in Homekit ermöglichte offenbar unbefugten Zugang</title>
+      <link>https://www.golem.de/news/apple-fehler-in-homekit-erlaubte-offenbar-unbefugten-zugang-1712-131559-rss.html</link>
+      <description>Ein Fehler im Homekit-Framework soll dazu geführt haben, dass Smart-Devices von außerhalb gesteuert werden konnten. Apple hat einen Fehler eingestanden und bereits eine Übergangslösung verteilt, wodurch jedoch bestimmte Funktionen von Homekit zunächst eingeschränkt sind. (&lt;a href=&quot;https://www.golem.de/specials/homekit/&quot;&gt;Homekit&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/apple/&quot;&gt;Apple&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131559&amp;amp;page=1&amp;amp;ts=1512726600&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/applikationen/apple-fehler-in-homekit-ermoeglichte-offenbar-unbefugten-zugang/114216,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 10:50:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131559-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1707/128891-142712-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Ein Fehler im Homekit-Framework soll dazu geführt haben, dass Smart-Devices von außerhalb gesteuert werden konnten. Apple hat einen Fehler eingestanden und bereits eine Übergangslösung verteilt, wodurch jedoch bestimmte Funktionen von Homekit zunächst eingeschränkt sind. (<a href="https://www.golem.de/specials/homekit/">Homekit</a>, <a href="https://www.golem.de/specials/apple/">Apple</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131559&amp;page=1&amp;ts=1512726600" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>7</slash:comments>
+    </item>
+    <item>
+      <title>Bundesregierung: Mit verdrehten Zahlen gegen die ePrivacy-Verordnung</title>
+      <link>https://www.golem.de/news/bundesregierung-mit-verdrehten-zahlen-gegen-die-eprivacy-verordnung-1712-131553-rss.html</link>
+      <description>Die Werbewirtschaft läuft weiter Sturm gegen die geplante EU-Verordnung zum Schutz vor Nutzertracking. Doch die Bundesregierung geht in einer Studie offenbar bewusst von nicht belegten Zahlen aus und verkehrt die Nutzererwartungen in ihr Gegenteil. Eine Analyse von Friedhelm Greis (&lt;a href=&quot;https://www.golem.de/specials/europaeische-union/&quot;&gt;EU&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/datenschutz/&quot;&gt;Datenschutz&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131553&amp;amp;page=1&amp;amp;ts=1512724620&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/security/bundesregierung-mit-verdrehten-zahlen-gegen-die-eprivacy-verordnung/114215,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 10:17:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131553-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131553-150082-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Die Werbewirtschaft läuft weiter Sturm gegen die geplante EU-Verordnung zum Schutz vor Nutzertracking. Doch die Bundesregierung geht in einer Studie offenbar bewusst von nicht belegten Zahlen aus und verkehrt die Nutzererwartungen in ihr Gegenteil. Eine Analyse von Friedhelm Greis (<a href="https://www.golem.de/specials/europaeische-union/">EU</a>, <a href="https://www.golem.de/specials/datenschutz/">Datenschutz</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131553&amp;page=1&amp;ts=1512724620" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>63</slash:comments>
+    </item>
+    <item>
+      <title>Telekom-Klage: Gericht untersagt O2 Falschbehauptungen bei Kundenwerbung</title>
+      <link>https://www.golem.de/news/telekom-klage-gericht-untersagt-o2-falschbehauptungen-bei-kundenwerbung-1712-131558-rss.html</link>
+      <description>Ein Gericht hat befunden, dass der Netzanbieter O2 bei der Anwerbung von Kunden gelogen habe. Einige Mitarbeiter hatten unter anderem behauptet, die Telekom werde Anschlüsse nicht mehr bedienen, und so versucht, Kunden neue Verträge aufzuschwatzen. (&lt;a href=&quot;https://www.golem.de/specials/telekom/&quot;&gt;Telekom&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/telefonica/&quot;&gt;Telefónica&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131558&amp;amp;page=1&amp;amp;ts=1512722880&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/politik-recht/telekom-klage-gericht-untersagt-o2-falschbehauptungen-bei-kundenwerbung/114214,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 09:48:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131558-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1609/123402-127067-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Ein Gericht hat befunden, dass der Netzanbieter O2 bei der Anwerbung von Kunden gelogen habe. Einige Mitarbeiter hatten unter anderem behauptet, die Telekom werde Anschlüsse nicht mehr bedienen, und so versucht, Kunden neue Verträge aufzuschwatzen. (<a href="https://www.golem.de/specials/telekom/">Telekom</a>, <a href="https://www.golem.de/specials/telefonica/">Telefónica</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131558&amp;page=1&amp;ts=1512722880" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>25</slash:comments>
+    </item>
+    <item>
+      <title>Apps und Games für VR-Headsets: Der virtuelle Blade Runner und Sport mit Sparc</title>
+      <link>https://www.golem.de/news/apps-und-games-fuer-vr-headsets-der-virtuelle-blade-runner-und-sport-mit-sparc-1712-131481-rss.html</link>
+      <description>Eintauchen in die Welt von Blade Runner 2049, aber auch schweißtreibende Action von CCP Games (Eve Online) mit Sparc und Horror in fast völliger Dunkelheit bei Stifled: Golem.de hat sich spannende Neuheiten für Virtual-Reality-Headsets angeschaut. Von Achim Fehrenbach (&lt;a href=&quot;https://www.golem.de/specials/virtuelle-realitaet/&quot;&gt;VR&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/steam/&quot;&gt;Steam&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131481&amp;amp;page=1&amp;amp;ts=1512719820&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/sonstiges/apps-und-games-fuer-vr-headsets-der-virtuelle-blade-runner-und-sport-mit-sparc/114213,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 08:57:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131481-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131481-149947-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Eintauchen in die Welt von Blade Runner 2049, aber auch schweißtreibende Action von CCP Games (Eve Online) mit Sparc und Horror in fast völliger Dunkelheit bei Stifled: Golem.de hat sich spannende Neuheiten für Virtual-Reality-Headsets angeschaut. Von Achim Fehrenbach (<a href="https://www.golem.de/specials/virtuelle-realitaet/">VR</a>, <a href="https://www.golem.de/specials/steam/">Steam</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131481&amp;page=1&amp;ts=1512719820" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>14</slash:comments>
+    </item>
+    <item>
+      <title>LEVC: London bekommt Elektrotaxis mit Range Extender</title>
+      <link>https://www.golem.de/news/levc-london-bekommt-elektrotaxis-mit-range-extender-1712-131557-rss.html</link>
+      <description>Kurz bevor die Londoner Innenstadt zur Umweltzone wird, sind Elektrotaxis im Stil der alten Taxis der britischen Hauptstadt zugelassen worden. Ganz ohne Verbrennungsmotor kommen die E-Taxis aber nicht aus. (&lt;a href=&quot;https://www.golem.de/specials/elektroauto/&quot;&gt;Elektroauto&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/technologie/&quot;&gt;Technologie&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131557&amp;amp;page=1&amp;amp;ts=1512715260&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/automobil/levc-london-bekommt-elektrotaxis-mit-range-extender/114212,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 07:41:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131557-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131557-150098-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Kurz bevor die Londoner Innenstadt zur Umweltzone wird, sind Elektrotaxis im Stil der alten Taxis der britischen Hauptstadt zugelassen worden. Ganz ohne Verbrennungsmotor kommen die E-Taxis aber nicht aus. (<a href="https://www.golem.de/specials/elektroauto/">Elektroauto</a>, <a href="https://www.golem.de/specials/technologie/">Technologie</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131557&amp;page=1&amp;ts=1512715260" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>38</slash:comments>
+    </item>
+    <item>
+      <title>Vehicle-to-Grid: Honda macht Elektroautos zu Stromnetz-Puffern</title>
+      <link>https://www.golem.de/news/vehicle-to-grid-honda-macht-elektroautos-zu-stromnetz-puffern-1712-131556-rss.html</link>
+      <description>Honda will Elektroautos zu temporären Energiespeichern machen und hat eine bidirektionale Ladetechnologie an seinem europäischen Forschungs- und Entwicklungszentrum in Offenbach installiert. Damit kann Energie vom Auto wieder ins Stromnetz eingespeist werden. (&lt;a href=&quot;https://www.golem.de/specials/elektroauto/&quot;&gt;Elektroauto&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/technologie/&quot;&gt;Technologie&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131556&amp;amp;page=1&amp;amp;ts=1512714660&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/automobil/vehicle-to-grid-honda-macht-elektroautos-zu-stromnetz-puffern/114211,list.html</comments>
+      <pubDate>Fri, 08 Dec 2017 07:31:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131556-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131556-150089-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Honda will Elektroautos zu temporären Energiespeichern machen und hat eine bidirektionale Ladetechnologie an seinem europäischen Forschungs- und Entwicklungszentrum in Offenbach installiert. Damit kann Energie vom Auto wieder ins Stromnetz eingespeist werden. (<a href="https://www.golem.de/specials/elektroauto/">Elektroauto</a>, <a href="https://www.golem.de/specials/technologie/">Technologie</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131556&amp;page=1&amp;ts=1512714660" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>2</slash:comments>
+    </item>
+    <item>
+      <title>Notebook: AMDs Ryzen Mobile überzeugt im ersten Test</title>
+      <link>https://www.golem.de/news/notebook-amds-ryzen-mobile-ueberzeugt-im-ersten-test-1712-131555-rss.html</link>
+      <description>Das Laptop Mag hat zwei HP Envy x360 getestet, einen mit AMDs Ryzen Mobile und einen mit Intels 8th Gen genannten Prozessoren. Beide Notebooks weisen fast die gleiche Akkulaufzeit auf, bei der CPU- und der GPU-Geschwindigkeit hat AMD aber Vorteile. (&lt;a href=&quot;https://www.golem.de/specials/zen/&quot;&gt;AMD Zen&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/notebook/&quot;&gt;Notebook&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131555&amp;amp;page=1&amp;amp;ts=1512681960&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/mobile-computing/notebook-amds-ryzen-mobile-ueberzeugt-im-ersten-test/114209,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 22:26:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131555-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131555-150085-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Das Laptop Mag hat zwei HP Envy x360 getestet, einen mit AMDs Ryzen Mobile und einen mit Intels 8th Gen genannten Prozessoren. Beide Notebooks weisen fast die gleiche Akkulaufzeit auf, bei der CPU- und der GPU-Geschwindigkeit hat AMD aber Vorteile. (<a href="https://www.golem.de/specials/zen/">AMD Zen</a>, <a href="https://www.golem.de/specials/notebook/">Notebook</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131555&amp;page=1&amp;ts=1512681960" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>49</slash:comments>
+    </item>
+    <item>
+      <title>Lübben: Tele-Columbus-Tochter schließt 3.000 Haushalte an</title>
+      <link>https://www.golem.de/news/luebben-tele-columbus-tochter-schliesst-3-000-haushalte-an-1712-131554-rss.html</link>
+      <description>Ein weiteres großes Ausbauprojekt im Spreewald bringt den Menschen dort eine höhere Datenübertagungsrate. Die Tele-Columbus-Tochter Pepcom baut Fiber To The Building. (&lt;a href=&quot;https://www.golem.de/specials/tele-columbus/&quot;&gt;Tele Columbus&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/studie/&quot;&gt;Studie&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131554&amp;amp;page=1&amp;amp;ts=1512667440&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/wirtschaft/luebben-tele-columbus-tochter-schliesst-3.000-haushalte-an/114208,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 18:24:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131554-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1708/129794-145216-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Ein weiteres großes Ausbauprojekt im Spreewald bringt den Menschen dort eine höhere Datenübertagungsrate. Die Tele-Columbus-Tochter Pepcom baut Fiber To The Building. (<a href="https://www.golem.de/specials/tele-columbus/">Tele Columbus</a>, <a href="https://www.golem.de/specials/studie/">Studie</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131554&amp;page=1&amp;ts=1512667440" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>8</slash:comments>
+    </item>
+    <item>
+      <title>Betrug: Bundesnetzagentur sperrt Erotik-Rufnummern</title>
+      <link>https://www.golem.de/news/betrug-bundesnetzagentur-sperrt-erotik-rufnummern-1712-131552-rss.html</link>
+      <description>Statt sexwilliger schöner Frauen am Handy sind unter einer 0900-Vorwahl nur Warteschleifen geboten worden. Das Geschäftsmodell wurde jetzt von der Bundesnetzagentur verboten. (&lt;a href=&quot;https://www.golem.de/specials/bundesnetzagentur/&quot;&gt;Bundesnetzagentur&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/telekommunikation/&quot;&gt;Telekommunikation&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131552&amp;amp;page=1&amp;amp;ts=1512664980&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/sonstiges/betrug-bundesnetzagentur-sperrt-erotik-rufnummern/114207,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 17:43:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131552-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131552-150079-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Statt sexwilliger schöner Frauen am Handy sind unter einer 0900-Vorwahl nur Warteschleifen geboten worden. Das Geschäftsmodell wurde jetzt von der Bundesnetzagentur verboten. (<a href="https://www.golem.de/specials/bundesnetzagentur/">Bundesnetzagentur</a>, <a href="https://www.golem.de/specials/telekommunikation/">Telekommunikation</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131552&amp;page=1&amp;ts=1512664980" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>25</slash:comments>
+    </item>
+    <item>
+      <title>AI Type: 31 Millionen Kundendaten von Tastaturanbieter veröffentlicht</title>
+      <link>https://www.golem.de/news/ai-type-31-millionen-kundendaten-von-tastaturanbieter-veroeffentlicht-1712-131550-rss.html</link>
+      <description>Ein peinlicher Fehler, der dazu noch die ungeheure Datensammelwut des Herstellers zeigt: AI Type hat eine Datenbank mit mehr als 500 Gbyte Kundendaten ins Netz gestellt. (&lt;a href=&quot;https://www.golem.de/specials/security/&quot;&gt;Security&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/smartphone/&quot;&gt;Smartphone&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131550&amp;amp;page=1&amp;amp;ts=1512657960&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/security/ai-type-31-millionen-kundendaten-von-tastaturanbieter-veroeffentlicht/114205,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 15:46:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131550-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131550-150076-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Ein peinlicher Fehler, der dazu noch die ungeheure Datensammelwut des Herstellers zeigt: AI Type hat eine Datenbank mit mehr als 500 Gbyte Kundendaten ins Netz gestellt. (<a href="https://www.golem.de/specials/security/">Security</a>, <a href="https://www.golem.de/specials/smartphone/">Smartphone</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131550&amp;page=1&amp;ts=1512657960" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>50</slash:comments>
+    </item>
+    <item>
+      <title>Spieleportal: Bitcoin ist Steam zu unbeständig und zu teuer</title>
+      <link>https://www.golem.de/news/spieleportal-bitcoin-ist-steam-zu-unbestaendig-und-zu-teuer-1712-131551-rss.html</link>
+      <description>Selbst Bitcoin-Milliardäre können mit der Cyberwährung keine Spiele mehr bei Steam kaufen. Das Portal besteht ab sofort auf der Bezahlung mit Euro, Dollar oder anderen klassischen Währungen. (&lt;a href=&quot;https://www.golem.de/specials/steam/&quot;&gt;Steam&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/valve/&quot;&gt;Valve&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131551&amp;amp;page=1&amp;amp;ts=1512656580&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/wirtschaft/spieleportal-bitcoin-ist-steam-zu-unbestaendig-und-zu-teuer/114204,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 15:23:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131551-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131551-150073-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Selbst Bitcoin-Milliardäre können mit der Cyberwährung keine Spiele mehr bei Steam kaufen. Das Portal besteht ab sofort auf der Bezahlung mit Euro, Dollar oder anderen klassischen Währungen. (<a href="https://www.golem.de/specials/steam/">Steam</a>, <a href="https://www.golem.de/specials/valve/">Valve</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131551&amp;page=1&amp;ts=1512656580" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>79</slash:comments>
+    </item>
+    <item>
+      <title>Containerd: Container-Laufzeit von Docker allgemein verfügbar</title>
+      <link>https://www.golem.de/news/containerd-container-laufzeit-von-docker-allgemein-verfuegbar-1712-131549-rss.html</link>
+      <description>Die Container-Spezialisten von Docker spalten ihren anfangs monolithischen Dienst auf Druck der Community und der Industrie immer weiter auf. Die Laufzeitumgebung Containerd ist nun stabil, in Version 1.0 verfügbar und kann in Kubernetes genutzt werden. (&lt;a href=&quot;https://www.golem.de/specials/docker/&quot;&gt;Docker&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/linux/&quot;&gt;Linux&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131549&amp;amp;page=1&amp;amp;ts=1512655440&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/opensource/containerd-container-laufzeit-von-docker-allgemein-verfuegbar/114203,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 15:04:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131549-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131549-150070-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Die Container-Spezialisten von Docker spalten ihren anfangs monolithischen Dienst auf Druck der Community und der Industrie immer weiter auf. Die Laufzeitumgebung Containerd ist nun stabil, in Version 1.0 verfügbar und kann in Kubernetes genutzt werden. (<a href="https://www.golem.de/specials/docker/">Docker</a>, <a href="https://www.golem.de/specials/linux/">Linux</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131549&amp;page=1&amp;ts=1512655440" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>7</slash:comments>
+    </item>
+    <item>
+      <title>Mobilfunknetze: LTE Roaming hat ähnliche Probleme wie SS7</title>
+      <link>https://www.golem.de/news/mobilfunknetze-lte-roaming-hat-aehnliche-probleme-wie-ss7-1712-131548-rss.html</link>
+      <description>Forscher demonstrieren auf der Konferenz Black Hat Europe ähnliche Sicherheitsprobleme für das LTE Roaming, wie diese auch für das vollkommen veraltete SS7 existieren. Schlimmstenfalls lassen sich damit Sprachnachrichten analysieren. (&lt;a href=&quot;https://www.golem.de/specials/security/&quot;&gt;Security&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/lte/&quot;&gt;Long Term Evolution&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131548&amp;amp;page=1&amp;amp;ts=1512654000&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/security/mobilfunknetze-lte-roaming-hat-aehnliche-probleme-wie-ss7/114202,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 14:40:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131548-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131548-150067-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Forscher demonstrieren auf der Konferenz Black Hat Europe ähnliche Sicherheitsprobleme für das LTE Roaming, wie diese auch für das vollkommen veraltete SS7 existieren. Schlimmstenfalls lassen sich damit Sprachnachrichten analysieren. (<a href="https://www.golem.de/specials/security/">Security</a>, <a href="https://www.golem.de/specials/lte/">Long Term Evolution</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131548&amp;page=1&amp;ts=1512654000" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>5</slash:comments>
+    </item>
+    <item>
+      <title>Stillfront Group: Hamburger Goodgame Studios für 270 Millionen Euro übernommen</title>
+      <link>https://www.golem.de/news/stillfront-group-hamburger-goodgame-studios-fuer-270-millionen-euro-uebernommen-1712-131547-rss.html</link>
+      <description>Nur wenige Monate nach Querelen mit der Belegschaft und Entlassungen wird der Hamburger Entwickler Goodgame Studios für rund 270 Millionen Euro von einem schwedischen Unternehmen akquiriert. (&lt;a href=&quot;https://www.golem.de/specials/goodgame-studios/&quot;&gt;Goodgame Studios&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/games/&quot;&gt;Games&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131547&amp;amp;page=1&amp;amp;ts=1512650460&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/wirtschaft/stillfront-group-hamburger-goodgame-studios-fuer-270-millionen-euro-uebernommen/114201,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 13:41:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131547-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131547-150064-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Nur wenige Monate nach Querelen mit der Belegschaft und Entlassungen wird der Hamburger Entwickler Goodgame Studios für rund 270 Millionen Euro von einem schwedischen Unternehmen akquiriert. (<a href="https://www.golem.de/specials/goodgame-studios/">Goodgame Studios</a>, <a href="https://www.golem.de/specials/games/">Games</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131547&amp;page=1&amp;ts=1512650460" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>16</slash:comments>
+    </item>
+    <item>
+      <title>Amazon: Verkaufsbann für Apple TV bleibt bestehen</title>
+      <link>https://www.golem.de/news/amazon-verkaufsbann-fuer-apple-tv-bleibt-bestehen-1712-131546-rss.html</link>
+      <description>Amazons Verkaufsbann für das Streaminggerät Apple TV bleibt bestehen. Obwohl es für das Apple TV nun Amazons Video-App gibt, wird Apples Streaminggerät weiterhin nicht bei Amazon gelistet. Ob dieser Bann jemals aufgehoben wird, ist ungewiss. (&lt;a href=&quot;https://www.golem.de/specials/apple-tv/&quot;&gt;Apple TV&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/amazon/&quot;&gt;Amazon&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131546&amp;amp;page=1&amp;amp;ts=1512648360&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/sonstiges/amazon-verkaufsbann-fuer-apple-tv-bleibt-bestehen/114200,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 13:06:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131546-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1702/126060-134705-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Amazons Verkaufsbann für das Streaminggerät Apple TV bleibt bestehen. Obwohl es für das Apple TV nun Amazons Video-App gibt, wird Apples Streaminggerät weiterhin nicht bei Amazon gelistet. Ob dieser Bann jemals aufgehoben wird, ist ungewiss. (<a href="https://www.golem.de/specials/apple-tv/">Apple TV</a>, <a href="https://www.golem.de/specials/amazon/">Amazon</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131546&amp;page=1&amp;ts=1512648360" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>57</slash:comments>
+    </item>
+    <item>
+      <title>Global Technology Services: IBM Deutschland verkauft GTS-Teile mit 1.000 Beschäftigten</title>
+      <link>https://www.golem.de/news/global-technology-services-ibm-deutschland-verkauft-gts-teile-mit-1-000-beschaeftigten-1712-131545-rss.html</link>
+      <description>IBM Deutschland baut erneut indirekt Arbeitsplätze ab, auch in Großbritannien werden IT-Jobs von IBM abgebaut. IBM Global Technology Services hat eine neue Führung. (&lt;a href=&quot;https://www.golem.de/specials/ibm/&quot;&gt;IBM&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/verdi/&quot;&gt;Verdi&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131545&amp;amp;page=1&amp;amp;ts=1512647460&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/wirtschaft/global-technology-services-ibm-deutschland-verkauft-gts-teile-mit-1.000-beschaeftigten/114199,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 12:51:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131545-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1603/120049-116984-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">IBM Deutschland baut erneut indirekt Arbeitsplätze ab, auch in Großbritannien werden IT-Jobs von IBM abgebaut. IBM Global Technology Services hat eine neue Führung. (<a href="https://www.golem.de/specials/ibm/">IBM</a>, <a href="https://www.golem.de/specials/verdi/">Verdi</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131545&amp;page=1&amp;ts=1512647460" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>0</slash:comments>
+    </item>
+    <item>
+      <title>Alexa-Geräte und ihre Konkurrenz im Test: Der perfekte smarte Lautsprecher ist nicht dabei</title>
+      <link>https://www.golem.de/news/alexa-geraete-und-ihre-konkurrenz-der-perfekte-smarte-lautsprecher-ist-nicht-dabei-1712-131519-rss.html</link>
+      <description>Wir haben zwölf smarte Lautsprecher mit Alexa oder dem Google Assistant getestet und waren überrascht, wie schwer es für einige Firmen aus der Hi-Fi-Branche ist, den Echo-Geräten Paroli zu bieten. Zwei Modelle, die nicht einmal so teuer sind, haben es dann aber doch geschafft. Ein Test von Ingo Pakalski (&lt;a href=&quot;https://www.golem.de/specials/smarter-lautsprecher/&quot;&gt;Smarter Lautsprecher&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/google/&quot;&gt;Google&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131519&amp;amp;page=1&amp;amp;ts=1512644520&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/audio-video/alexa-geraete-und-ihre-konkurrenz-im-test-der-perfekte-smarte-lautsprecher-ist-nicht-dabei/114198,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 12:02:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131519-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131519-150041-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Wir haben zwölf smarte Lautsprecher mit Alexa oder dem Google Assistant getestet und waren überrascht, wie schwer es für einige Firmen aus der Hi-Fi-Branche ist, den Echo-Geräten Paroli zu bieten. Zwei Modelle, die nicht einmal so teuer sind, haben es dann aber doch geschafft. Ein Test von Ingo Pakalski (<a href="https://www.golem.de/specials/smarter-lautsprecher/">Smarter Lautsprecher</a>, <a href="https://www.golem.de/specials/google/">Google</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131519&amp;page=1&amp;ts=1512644520" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>81</slash:comments>
+    </item>
+    <item>
+      <title>Firmware-Bug: Codeausführung in deaktivierter Intel-ME möglich</title>
+      <link>https://www.golem.de/news/firmware-bug-codeausfuehrung-in-deaktivierter-intel-me-moeglich-1712-131543-rss.html</link>
+      <description>Sicherheitsforscher demonstrieren einen Angriff auf Intels ME zum Ausführen von beliebigem Code, gegen den weder das sogenannte Kill-Bit noch die von Google geplanten Sicherheitsmaßnahmen für seine Server helfen. Theoretisch lassen sich Geräte so auch aus der Ferne angreifen. Von Kristian Kißling und Sebastian Grüner (&lt;a href=&quot;https://www.golem.de/specials/intel/&quot;&gt;Intel&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/server/&quot;&gt;Server&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131543&amp;amp;page=1&amp;amp;ts=1512644100&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/security/firmware-bug-codeausfuehrung-in-deaktivierter-intel-me-moeglich/114197,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 11:55:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131543-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131543-150058-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Sicherheitsforscher demonstrieren einen Angriff auf Intels ME zum Ausführen von beliebigem Code, gegen den weder das sogenannte Kill-Bit noch die von Google geplanten Sicherheitsmaßnahmen für seine Server helfen. Theoretisch lassen sich Geräte so auch aus der Ferne angreifen. Von Kristian Kißling und Sebastian Grüner (<a href="https://www.golem.de/specials/intel/">Intel</a>, <a href="https://www.golem.de/specials/server/">Server</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131543&amp;page=1&amp;ts=1512644100" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>16</slash:comments>
+    </item>
+    <item>
+      <title>Deutscher Entwicklerpreis: The Surge ist das beste und schönste deutsche Spiel</title>
+      <link>https://www.golem.de/news/deutscher-entwicklerpreis-the-surge-ist-das-beste-und-schoenste-deutsche-spiel-1712-131541-rss.html</link>
+      <description>Das Actionspiel The Surge von Deck 13 aus Frankfurt ist der große Gewinner bei der Verleihung des Deutschen Entwicklerpreises. Es konnte sich in drei Kategorien durchsetzen - darunter in der des Besten deutschen Spiels. (&lt;a href=&quot;https://www.golem.de/specials/deutscher-entwicklerpreis/&quot;&gt;Deutscher Entwicklerpreis&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/games/&quot;&gt;Games&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131541&amp;amp;page=1&amp;amp;ts=1512642600&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/games/deutscher-entwicklerpreis-the-surge-ist-das-beste-und-schoenste-deutsche-spiel/114196,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 11:30:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131541-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131541-150055-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Das Actionspiel The Surge von Deck 13 aus Frankfurt ist der große Gewinner bei der Verleihung des Deutschen Entwicklerpreises. Es konnte sich in drei Kategorien durchsetzen - darunter in der des Besten deutschen Spiels. (<a href="https://www.golem.de/specials/deutscher-entwicklerpreis/">Deutscher Entwicklerpreis</a>, <a href="https://www.golem.de/specials/games/">Games</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131541&amp;page=1&amp;ts=1512642600" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>51</slash:comments>
+    </item>
+    <item>
+      <title>Kryptowährung: 4.700 Bitcoin von Handelsplattform Nicehash gestohlen</title>
+      <link>https://www.golem.de/news/bitcoin-4-700-bitcoin-von-handelsplattform-nicehash-gestohlen-1712-131538-rss.html</link>
+      <description>Es soll ein &quot;hochprofessioneller Angriff mit fortgeschrittenem Social Engineering&quot; gewesen sein: Der Handelsplattform Nicehash wurden Bitcoin im Wert von knapp 64 Millionen US-Dollar gestohlen. Nutzer sollen ihre Passwörter ändern. (&lt;a href=&quot;https://www.golem.de/specials/bitcoin/&quot;&gt;Bitcoin&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/internet/&quot;&gt;Internet&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131538&amp;amp;page=1&amp;amp;ts=1512641760&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/security/kryptowaehrung-4.700-bitcoin-von-handelsplattform-nicehash-gestohlen/114194,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 11:16:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131538-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131538-150049-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Es soll ein "hochprofessioneller Angriff mit fortgeschrittenem Social Engineering" gewesen sein: Der Handelsplattform Nicehash wurden Bitcoin im Wert von knapp 64 Millionen US-Dollar gestohlen. Nutzer sollen ihre Passwörter ändern. (<a href="https://www.golem.de/specials/bitcoin/">Bitcoin</a>, <a href="https://www.golem.de/specials/internet/">Internet</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131538&amp;page=1&amp;ts=1512641760" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>53</slash:comments>
+    </item>
+    <item>
+      <title>Elektromobilität: Porsche plant einen 911er mit Hybridantrieb</title>
+      <link>https://www.golem.de/news/elektromobilitaet-porsche-plant-einen-911er-mit-hybridantrieb-1712-131539-rss.html</link>
+      <description>Ein Elektroauto entwickelt Porsche schon. Als Nächstes soll auch der Porsche 911 einen neuen Antrieb erhalten: Die kommende Generation wird es auch als Hybridfahrzeug geben. (&lt;a href=&quot;https://www.golem.de/specials/porsche/&quot;&gt;Porsche&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/technologie/&quot;&gt;Technologie&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131539&amp;amp;page=1&amp;amp;ts=1512640740&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/automobil/elektromobilitaet-porsche-plant-einen-911er-mit-hybridantrieb/114193,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 10:59:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131539-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1712/131539-150052-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Ein Elektroauto entwickelt Porsche schon. Als Nächstes soll auch der Porsche 911 einen neuen Antrieb erhalten: Die kommende Generation wird es auch als Hybridfahrzeug geben. (<a href="https://www.golem.de/specials/porsche/">Porsche</a>, <a href="https://www.golem.de/specials/technologie/">Technologie</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131539&amp;page=1&amp;ts=1512640740" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>25</slash:comments>
+    </item>
+    <item>
+      <title>MacOS 10.13.2: Updates für High Sierra, Sierra und El Capitan</title>
+      <link>https://www.golem.de/news/macos-10-13-2-updates-fuer-high-sierra-sierra-und-el-capitan-1712-131536-rss.html</link>
+      <description>Apple hat High Sierra alias MacOS 10.13 auf eine neue Version aktualisiert, einige Fehler behoben und Verbesserungen hinzugefügt. Zudem beseitigt Apple in der Vorversion von MacOS sowie dem letzten OS X zahlreiche sicherheitsrelevante Fehler. (&lt;a href=&quot;https://www.golem.de/specials/macoshighsierra/&quot;&gt;MacOS 10.13 High Sierra&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/apple/&quot;&gt;Apple&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131536&amp;amp;page=1&amp;amp;ts=1512638760&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <comments>https://forum.golem.de/kommentare/applikationen/macos-10.13.2-updates-fuer-high-sierra-sierra-und-el-capitan/114192,list.html</comments>
+      <pubDate>Thu, 07 Dec 2017 10:26:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131536-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1709/130246-146415-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Apple hat High Sierra alias MacOS 10.13 auf eine neue Version aktualisiert, einige Fehler behoben und Verbesserungen hinzugefügt. Zudem beseitigt Apple in der Vorversion von MacOS sowie dem letzten OS X zahlreiche sicherheitsrelevante Fehler. (<a href="https://www.golem.de/specials/macoshighsierra/">MacOS 10.13 High Sierra</a>, <a href="https://www.golem.de/specials/apple/">Apple</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131536&amp;page=1&amp;ts=1512638760" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments>6</slash:comments>
+    </item>
+  </channel>
+</rss>

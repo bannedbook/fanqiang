@@ -1,0 +1,21 @@
+# 2.0.12
+Agnieszka C (1):
+  * [7daeddf9] Updated Polish translation using Weblate
+
+Allan Nordhøy (1):
+  * [ce11cb59] Updated Norwegian Bokmål translation using Weblate
+
+Andrij Mizyk (1):
+  * [750a0665] Updated Ukrainian translation using Weblate
+
+El Pirujo (1):
+  * [00a98173] Updated Spanish translation using Weblate
+
+Eric (1):
+  * [38dcf806] Updated Chinese (Simplified) translation using Weblate
+
+I. Musthafa (1):
+  * [a08922ba] Updated Indonesian translation using Weblate
+
+J. Lavoie (1):
+  * 

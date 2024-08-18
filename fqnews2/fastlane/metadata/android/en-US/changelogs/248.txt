@@ -1,0 +1,19 @@
+# 2.2.6
+D221 (1):
+  * [f6445c30] Updated Lithuanian translation using Weblate
+
+Freddy Morán Jr (1):
+  * [272e4800] Updated Spanish translation using Weblate
+
+H Tamás (1):
+  * [b39803b6] Updated Hungarian translation using Weblate
+
+Vitor Henrique (1):
+  * [00e0ae07] Updated Portuguese (Brazil) translation using Weblate
+
+WB (1):
+  * [62efdde3] Updated Galician translation using Weblate
+
+zmni (1):
+  * [b9c15802] Updated Indonesian translation using Weblate
+

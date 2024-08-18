@@ -1,0 +1,7 @@
+binary*.go
+*.[a|j]ar
+.idea
+.vscode
+/debug.go
+build
+.build

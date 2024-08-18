@@ -1,0 +1,16 @@
+# 2.3.1
+Ady (1):
+  * [65b669ec] Updated French translation using Weblate
+
+Jonas Kalderstam (5):
+  * [130c2319] Fix Right to Left languages in headers
+  * [35eb7660] Changed back to single screen on tablets in portrait mode
+  * [2ccf7d00] Fixed content alignment in search screen
+  * [8a68f2a5] Added parsing support for additional thumbnails
+  * [fd46ece5] Fixed list not centered in landscape on phones
+
+linsui (1):
+  * [c07e95ce] Fix feed indicator localization
+
+zmni (1):
+  * [e37aba0c] Updated In

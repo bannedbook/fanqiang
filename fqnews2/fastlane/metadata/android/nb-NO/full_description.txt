@@ -1,0 +1,19 @@
+<p>Lei av ufrie lesere som stjeler personvernsinfo?<br/>
+Tar du deg i å synkronisere oppsett mellom maskiner selv?<br/>
+Gått lei av å lage kontoer overalt?<br/></p>
+
+<p>Prøv Feeder!</p>
+
+<p>Fri leser. Støtter alle informasjonskanalformater, inkludert JSONFeed. Den sporer deg ikke, og krever ikke noe oppsett. Du trenger ikke engang en konto. Importer informasjonskanalene dine fra din gamle leser via OPML, eller legg dem til, så synkroniseres lesingen.</p>
+
+<p><b>Funksjoner</b></p>
+
+<ul>
+<li>Tolker HTML og viser det i egen tekstvisning</li>
+<li>Frakoblet lesing</li>
+<li>Bakgrunnssynkronisering</li>
+<li>Merknader</li>
+<li>OPML-import/eksport</li>
+<li>Hendig tilgang til lukkingslenker</li>
+<li>Materiell design</li>
+</ul>

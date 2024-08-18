@@ -1,0 +1,21 @@
+# 2.3.7
+Ady (1):
+  * [30fab5dd] Updated French translation using Weblate
+
+Agnieszka C (1):
+  * [65a039ef] Updated Polish translation using Weblate
+
+Allan Nordhøy (1):
+  * [ee6fe99d] Updated Norwegian Bokmål translation using Weblate
+
+Andrij Mizyk (1):
+  * [d457772f] Updated Ukrainian translation using Weblate
+
+Dhruv Sangvikar (1):
+  * [81e46e5b] Add support for showing favicons in nav drawer
+
+ERYpTION (1):
+  * [f057e3fb] Updated Danish translation using Weblate
+
+El Pirujo (1):
+  * [11bc8b68] U

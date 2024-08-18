@@ -1,0 +1,8 @@
+# 2.0.0-beta.2
+Jonas Kalderstam (5):
+  * [60694836] Renamed Norwegian play store metadata
+  * [9c8f5e07] Validate fastlane deployment on 2.0.0 branch
+  * [aea58578] Enabled R8 - compose relies heavily on it for performance
+  * [3d2aa645] Fixed mapping directive in Fastlane
+  * [93b8f4c8] Added beta support to fastlane
+

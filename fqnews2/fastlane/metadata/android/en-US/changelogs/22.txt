@@ -1,0 +1,4 @@
+# 1.3.15
+
+*   Fixed an installation crash on Android 5
+    See !62 #69

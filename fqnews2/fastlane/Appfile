@@ -1,0 +1,10 @@
+json_key_file("/home/jonas/.ssh/service.json")
+
+def get_application_id(flavor)
+  # Replace 'app' with your module name if it's different
+  output = `./gradlew app:print#{flavor.capitalize}ApplicationId`
+  application_id = output.lines.last.strip
+  return application_id
+end
+flavor = ENV['FLAVOR'] || 'hwnews' # 默认值为 hwnews
+package_name(get_application_id(flavor))

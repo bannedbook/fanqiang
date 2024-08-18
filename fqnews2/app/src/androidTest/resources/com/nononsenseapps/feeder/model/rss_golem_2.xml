@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- generator="FeedCreator 1.6" -->
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    version="2.0">
+    <channel>
+        <title>Golem.de</title>
+        <description>IT-News fuer Profis</description>
+        <link>https://www.golem.de/</link>
+        <atom:link rel="self" href="https://rss.golem.de/rss.php?feed=RSS2.0" />
+        <lastBuildDate>Mon, 17 Dec 2018 10:26:02 +0100</lastBuildDate>
+        <generator>FeedCreator 1.6</generator>
+        <image>
+            <url>https://www.golem.de/staticrl/images/golem-rss.png</url>
+            <title>Golem.de</title>
+            <link>https://www.golem.de/</link>
+            <description>Golem.de News Feed</description>
+        </image>
+        <language>de</language>
+        <atom:link rel="hub" href="http://golem.superfeedr.com/" />
+        <item>
+            <title>Datenbank: Fehler in SQLite ermöglichte Codeausführung</title>
+            <link>https://www.golem.de/news/datenbank-fehler-in-sqlite-ermoeglichte-codeausfuehrung-1812-138280-rss.html</link>
+            <description>Anwendungen, die SQLite einsetzen und von außen SQL-Zugriff darauf bieten, sind offenbar von einem Fehler betroffen, der eine beliebige Codeausführung ermöglicht. Dazu gehören unter anderem Browser auf Chromium-Basis, für die inzwischen Updates bereitstehen. (&lt;a href=&quot;https://www.golem.de/specials/security/&quot;&gt;Security&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/browser/&quot;&gt;Browser&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138280&amp;amp;page=1&amp;amp;ts=1545038700&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <pubDate>Mon, 17 Dec 2018 10:25:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138280-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138280-181914-181911_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Anwendungen, die SQLite einsetzen und von außen SQL-Zugriff darauf bieten, sind offenbar von einem Fehler betroffen, der eine beliebige Codeausführung ermöglicht. Dazu gehören unter anderem Browser auf Chromium-Basis, für die inzwischen Updates bereitstehen. (<a href="https://www.golem.de/specials/security/">Security</a>, <a href="https://www.golem.de/specials/browser/">Browser</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138280&amp;page=1&amp;ts=1545038700" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments />
+        </item>
+        <item>
+            <title>Windows 10: Datensammeln geht nach Deaktivieren weiter, meinen Nutzer</title>
+            <link>https://www.golem.de/news/windows-10-datensammeln-geht-nach-deaktivieren-weiter-meinen-nutzer-1812-138281-rss.html</link>
+            <description>Aktuell sind viele Nutzer darüber empört, dass Windows 10 wohl weiterhin Aktivitätsdaten im Dashboard anzeigt, obwohl diese Funktion ausgeschaltet ist. Sie bieten daher Lösungen in Form von Gruppenrichtlinien an. Microsoft meint, dass es sich dabei nur um eine verwirrende Namensgebung handelt. (&lt;a href=&quot;https://www.golem.de/specials/microsoft/&quot;&gt;Microsoft&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/datenschutz/&quot;&gt;Datenschutz&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138281&amp;amp;page=1&amp;amp;ts=1545037800&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/security/windows-10-datensammeln-geht-nach-deaktivieren-weiter-meinen-nutzer/122728,list.html</comments>
+            <pubDate>Mon, 17 Dec 2018 10:10:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138281-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138281-181918-181915_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Aktuell sind viele Nutzer darüber empört, dass Windows 10 wohl weiterhin Aktivitätsdaten im Dashboard anzeigt, obwohl diese Funktion ausgeschaltet ist. Sie bieten daher Lösungen in Form von Gruppenrichtlinien an. Microsoft meint, dass es sich dabei nur um eine verwirrende Namensgebung handelt. (<a href="https://www.golem.de/specials/microsoft/">Microsoft</a>, <a href="https://www.golem.de/specials/datenschutz/">Datenschutz</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138281&amp;page=1&amp;ts=1545037800" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>2</slash:comments>
+        </item>
+        <item>
+            <title>Indiegames-Rundschau: Überflieger mit Tiefe und Abenteuer im Low-Poly-Land</title>
+            <link>https://www.golem.de/news/indiegames-rundschau-ueberflieger-mit-tiefe-und-abenteuer-im-low-poly-land-1812-138263-rss.html</link>
+            <description>Below und Ashen locken mit toller Atmosphäre, Insurgency Sandstorm sorgt für Multiplayer-Spannung und Gris betört mit besonderer Schönheit: Kurz vor Jahresende 2018 sind mehrere wunderbare Indiegames fertig geworden! Von Rainer Sigl (&lt;a href=&quot;https://www.golem.de/specials/indiegames-rundschau/&quot;&gt;Indiegames Rundschau&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/spieletest/&quot;&gt;Spieletest&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138263&amp;amp;page=1&amp;amp;ts=1545035040&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/games/indiegames-rundschau-ueberflieger-mit-tiefe-und-abenteuer-im-low-poly-land/122727,list.html</comments>
+            <pubDate>Mon, 17 Dec 2018 09:24:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138263-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138263-181890-181887_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Below und Ashen locken mit toller Atmosphäre, Insurgency Sandstorm sorgt für Multiplayer-Spannung und Gris betört mit besonderer Schönheit: Kurz vor Jahresende 2018 sind mehrere wunderbare Indiegames fertig geworden! Von Rainer Sigl (<a href="https://www.golem.de/specials/indiegames-rundschau/">Indiegames Rundschau</a>, <a href="https://www.golem.de/specials/spieletest/">Spieletest</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138263&amp;page=1&amp;ts=1545035040" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>4</slash:comments>
+        </item>
+        <item>
+            <title>Elektro-Lkw: Tesla-Truck wird an fünf Superchargern geladen</title>
+            <link>https://www.golem.de/news/elektro-lkw-tesla-truck-wird-an-fuenf-superchargern-geladen-1812-138278-rss.html</link>
+            <description>Als Tesla seine elektrischen Sattelschlepper vor mehr als einem Jahr erstmals gezeigt hat, hieß es, dass spezielle Ladestationen für diese erforderlich seien. Nun ist entdeckt worden, dass der Lkw an fünf Superchargern parallel geladen werden kann. (&lt;a href=&quot;https://www.golem.de/specials/tesla/&quot;&gt;Tesla&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/technologie/&quot;&gt;Technologie&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138278&amp;amp;page=1&amp;amp;ts=1545029400&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/automobil/elektro-lkw-tesla-truck-wird-an-fuenf-superchargern-geladen/122726,list.html</comments>
+            <pubDate>Mon, 17 Dec 2018 07:50:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138278-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1711/131200-149083-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Als Tesla seine elektrischen Sattelschlepper vor mehr als einem Jahr erstmals gezeigt hat, hieß es, dass spezielle Ladestationen für diese erforderlich seien. Nun ist entdeckt worden, dass der Lkw an fünf Superchargern parallel geladen werden kann. (<a href="https://www.golem.de/specials/tesla/">Tesla</a>, <a href="https://www.golem.de/specials/technologie/">Technologie</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138278&amp;page=1&amp;ts=1545029400" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>17</slash:comments>
+        </item>
+        <item>
+            <title>Smart Home: AVM stellt Funktaster Fritzdect 400 vor</title>
+            <link>https://www.golem.de/news/smart-home-avm-stellt-funktaster-fritzdect-400-vor-1812-138276-rss.html</link>
+            <description>Mit dem Fritzdect 400 hat AVM ein Smart-Home-Produkt vorgestellt, das es ermöglicht, die Steckdosen Fritzdect 200 und 210 per Knopfdruck, aber kabellos ein- und auszuschalten. Eine blinkende LED bestätigt den Tastendruck. (&lt;a href=&quot;https://www.golem.de/specials/smarthome/&quot;&gt;Smart Home&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/fritz-box/&quot;&gt;Fritzbox&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138276&amp;amp;page=1&amp;amp;ts=1545028200&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/sonstiges/smart-home-avm-stellt-funktaster-fritzdect-400-vor/122725,list.html</comments>
+            <pubDate>Mon, 17 Dec 2018 07:30:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138276-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138276-181895-181892_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Mit dem Fritzdect 400 hat AVM ein Smart-Home-Produkt vorgestellt, das es ermöglicht, die Steckdosen Fritzdect 200 und 210 per Knopfdruck, aber kabellos ein- und auszuschalten. Eine blinkende LED bestätigt den Tastendruck. (<a href="https://www.golem.de/specials/smarthome/">Smart Home</a>, <a href="https://www.golem.de/specials/fritz-box/">Fritzbox</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138276&amp;page=1&amp;ts=1545028200" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>6</slash:comments>
+        </item>
+        <item>
+            <title>Chinesischer Anbieter: Kleiner Elektro-SUV Nio ES6 soll 480 km weit kommen</title>
+            <link>https://www.golem.de/news/chinesischer-anbieter-kleiner-elektro-suv-nio-es6-soll-480-km-weit-kommen-1812-138277-rss.html</link>
+            <description>Der chinesische Anbieter Nio hat ein Elektroauto vorgestellt, das eine Reichweite von bis zu 480 km bei einem Preis von umgerechnet 46.000 Euro haben soll. (&lt;a href=&quot;https://www.golem.de/specials/elektroauto/&quot;&gt;Elektroauto&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/technologie/&quot;&gt;Technologie&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138277&amp;amp;page=1&amp;amp;ts=1545027600&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/automobil/chinesischer-anbieter-kleiner-elektro-suv-nio-es6-soll-480-km-weit-kommen/122724,list.html</comments>
+            <pubDate>Mon, 17 Dec 2018 07:20:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138277-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138277-181899-181896_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Der chinesische Anbieter Nio hat ein Elektroauto vorgestellt, das eine Reichweite von bis zu 480 km bei einem Preis von umgerechnet 46.000 Euro haben soll. (<a href="https://www.golem.de/specials/elektroauto/">Elektroauto</a>, <a href="https://www.golem.de/specials/technologie/">Technologie</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138277&amp;page=1&amp;ts=1545027600" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>11</slash:comments>
+        </item>
+        <item>
+            <title>Nissan: Luxusmarke Infiniti plant Elektro-Crossover</title>
+            <link>https://www.golem.de/news/nissan-luxusmarke-infiniti-plant-elektro-crossover-1812-138275-rss.html</link>
+            <description>Die Luxusmarke Infiniti baut Verbrennerfahrzeuge, ein vollelektrisches Auto gibt es von diesem Hersteller noch nicht. Angesichts der Pionierarbeit der Muttergesellschaft Nissan ist das verwunderlich. Nun wurden erste Bilder eines Elektro-Infinitis veröffentlicht. (&lt;a href=&quot;https://www.golem.de/specials/elektroauto/&quot;&gt;Elektroauto&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/technologie/&quot;&gt;Technologie&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138275&amp;amp;page=1&amp;amp;ts=1544968800&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/automobil/nissan-luxusmarke-infiniti-plant-elektro-crossover/122716,list.html</comments>
+            <pubDate>Sun, 16 Dec 2018 15:00:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138275-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138275-181879-181876_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Die Luxusmarke Infiniti baut Verbrennerfahrzeuge, ein vollelektrisches Auto gibt es von diesem Hersteller noch nicht. Angesichts der Pionierarbeit der Muttergesellschaft Nissan ist das verwunderlich. Nun wurden erste Bilder eines Elektro-Infinitis veröffentlicht. (<a href="https://www.golem.de/specials/elektroauto/">Elektroauto</a>, <a href="https://www.golem.de/specials/technologie/">Technologie</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138275&amp;page=1&amp;ts=1544968800" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>16</slash:comments>
+        </item>
+        <item>
+            <title>Kalifornien: Ab 2029 müssen Stadtbusse elektrisch fahren</title>
+            <link>https://www.golem.de/news/kalifornien-ab-2029-muessen-stadtbusse-elektrisch-fahren-1812-138274-rss.html</link>
+            <description>Im US-Bundesstaat Kalifornien ist eine der härtesten Regelung des Westens im Hinblick auf Elektromobilität verabschiedet worden. Ab 2029 muss jeder neu zugelassene Stadtbus elektrisch fahren. (&lt;a href=&quot;https://www.golem.de/specials/elektromobilitaet/&quot;&gt;Elektromobilität&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/technologie/&quot;&gt;Technologie&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138274&amp;amp;page=1&amp;amp;ts=1544961600&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/automobil/kalifornien-ab-2029-muessen-stadtbusse-elektrisch-fahren/122715,list.html</comments>
+            <pubDate>Sun, 16 Dec 2018 13:00:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138274-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138274-181857-181854_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Im US-Bundesstaat Kalifornien ist eine der härtesten Regelung des Westens im Hinblick auf Elektromobilität verabschiedet worden. Ab 2029 muss jeder neu zugelassene Stadtbus elektrisch fahren. (<a href="https://www.golem.de/specials/elektromobilitaet/">Elektromobilität</a>, <a href="https://www.golem.de/specials/technologie/">Technologie</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138274&amp;page=1&amp;ts=1544961600" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>32</slash:comments>
+        </item>
+        <item>
+            <title>Mainboard: Intels B365-Chip ist ein alter 22-nm-Bekannter</title>
+            <link>https://www.golem.de/news/mainboard-intels-b365-chip-ist-ein-alter-22-nm-bekannter-1812-138270-rss.html</link>
+            <description>Mit dem B365 hat Intel einen weiteren Chipsatz für Sockel-LGA-1151-v2-Mainboards aufgelegt. Auch wenn der Name suggeriert, es sei der B360-Nachfolger, ist der Chip ein älteres 22-nm-Modell. So kann Intel seine 14-nm-Fabs für CPUs entlasten, denn 10 nm lässt weiter auf sich warten. (&lt;a href=&quot;https://www.golem.de/specials/intelcoffeelake/&quot;&gt;Intel Coffee Lake&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/cpu/&quot;&gt;Prozessor&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138270&amp;amp;page=1&amp;amp;ts=1544956200&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/sonstiges/mainboard-intels-b365-chip-ist-ein-alter-22-nm-bekannter/122714,list.html</comments>
+            <pubDate>Sun, 16 Dec 2018 11:30:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138270-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138270-181861-181858_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Mit dem B365 hat Intel einen weiteren Chipsatz für Sockel-LGA-1151-v2-Mainboards aufgelegt. Auch wenn der Name suggeriert, es sei der B360-Nachfolger, ist der Chip ein älteres 22-nm-Modell. So kann Intel seine 14-nm-Fabs für CPUs entlasten, denn 10 nm lässt weiter auf sich warten. (<a href="https://www.golem.de/specials/intelcoffeelake/">Intel Coffee Lake</a>, <a href="https://www.golem.de/specials/cpu/">Prozessor</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138270&amp;page=1&amp;ts=1544956200" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>9</slash:comments>
+        </item>
+        <item>
+            <title>Helio P90: Mediatek bleibt PowerVR treu</title>
+            <link>https://www.golem.de/news/helio-p90-mediatek-bleibt-powervr-treu-1812-138271-rss.html</link>
+            <description>Der Helio P90 von Mediatek ist ein neues SoC für Mittelklasse-Smartphones. Der Chip hat eine überraschende CPU-Konfiguration und tatsächlich wieder eine PowerVR-Grafikeinheit. Zudem steigt die AI-Leistung. (&lt;a href=&quot;https://www.golem.de/specials/mediatek/&quot;&gt;Mediatek&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/smartphone/&quot;&gt;Smartphone&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138271&amp;amp;page=1&amp;amp;ts=1544954400&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/wissenschaft/helio-p90-mediatek-bleibt-powervr-treu/122713,list.html</comments>
+            <pubDate>Sun, 16 Dec 2018 11:00:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138271-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138271-181865-181862_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Der Helio P90 von Mediatek ist ein neues SoC für Mittelklasse-Smartphones. Der Chip hat eine überraschende CPU-Konfiguration und tatsächlich wieder eine PowerVR-Grafikeinheit. Zudem steigt die AI-Leistung. (<a href="https://www.golem.de/specials/mediatek/">Mediatek</a>, <a href="https://www.golem.de/specials/smartphone/">Smartphone</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138271&amp;page=1&amp;ts=1544954400" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>2</slash:comments>
+        </item>
+        <item>
+            <title>Adrenalin 2019 Edition: Radeon Software erhält umfangreiche Verbesserungen</title>
+            <link>https://www.golem.de/news/adrenalin-2019-edition-radeon-software-erhaelt-umfangreiche-verbesserungen-1812-138273-rss.html</link>
+            <description>Kurz vor dem Jahreswechsel erneuert AMD die Radeon Software: Die Adrenalin 2019 Edition für Radeon-Grafikkarten macht diese schneller, sparsamer und verbessert Overclocking sowie Streaming und fügt neue Funktionen wie eine Sprachsteuerung hinzu. (&lt;a href=&quot;https://www.golem.de/specials/radeon-software/&quot;&gt;Radeon Software&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/amd/&quot;&gt;AMD&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138273&amp;amp;page=1&amp;amp;ts=1544952600&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/applikationen/adrenalin-2019-edition-radeon-software-erhaelt-umfangreiche-verbesserungen/122712,list.html</comments>
+            <pubDate>Sun, 16 Dec 2018 10:30:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138273-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138273-181872-181871_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Kurz vor dem Jahreswechsel erneuert AMD die Radeon Software: Die Adrenalin 2019 Edition für Radeon-Grafikkarten macht diese schneller, sparsamer und verbessert Overclocking sowie Streaming und fügt neue Funktionen wie eine Sprachsteuerung hinzu. (<a href="https://www.golem.de/specials/radeon-software/">Radeon Software</a>, <a href="https://www.golem.de/specials/amd/">AMD</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138273&amp;page=1&amp;ts=1544952600" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>5</slash:comments>
+        </item>
+        <item>
+            <title>Command &amp; Conquer (1995): Trash und Trendsetter</title>
+            <link>https://www.golem.de/news/command-conquer-1995-trash-und-trendsetter-1812-138001-rss.html</link>
+            <description> Grünes Gold, Kane und - jedenfalls in Deutschland - Cyborgs statt Soldaten stehen im Mittelpunkt aller Nostalgie für Command &amp; Conquer. Von Oliver Nickel (&lt;a href=&quot;https://www.golem.de/specials/golemretro/&quot;&gt;golem retro_&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/command-conquer/&quot;&gt;Command &amp; Conquer&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138001&amp;amp;page=1&amp;amp;ts=1544950920&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/games/command-conquer-1995-trash-und-trendsetter/122709,list.html</comments>
+            <pubDate>Sun, 16 Dec 2018 10:02:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138001-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138001-181622-181621_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left"> Grünes Gold, Kane und - jedenfalls in Deutschland - Cyborgs statt Soldaten stehen im Mittelpunkt aller Nostalgie für Command & Conquer. Von Oliver Nickel (<a href="https://www.golem.de/specials/golemretro/">golem retro_</a>, <a href="https://www.golem.de/specials/command-conquer/">Command & Conquer</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138001&amp;page=1&amp;ts=1544950920" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>32</slash:comments>
+        </item>
+        <item>
+            <title>NES und SNES: Keine weitere Produktion von Nintendo-Classic-Konsolen</title>
+            <link>https://www.golem.de/news/nes-und-snes-keine-weitere-produktion-von-nintendo-classic-konsolen-1812-138269-rss.html</link>
+            <description>Wer noch eine der Classic-Konsolen von Nintendo haben will, muss sich möglicherweise beeilen: Wie der USA-Chef des japanischen Herstellers angekündigt hat, soll die Produktion nicht wieder aufgenommen werden. Auch soll es keine weiteren Modelle in der Reihe geben. (&lt;a href=&quot;https://www.golem.de/specials/nintendo-classic-mini/&quot;&gt;Nintendo Classic Mini&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/nintendo/&quot;&gt;Nintendo&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138269&amp;amp;page=1&amp;amp;ts=1544943600&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/games/nes-und-snes-keine-weitere-produktion-von-nintendo-classic-konsolen/122708,list.html</comments>
+            <pubDate>Sun, 16 Dec 2018 08:00:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138269-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1610/123577-127643-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Wer noch eine der Classic-Konsolen von Nintendo haben will, muss sich möglicherweise beeilen: Wie der USA-Chef des japanischen Herstellers angekündigt hat, soll die Produktion nicht wieder aufgenommen werden. Auch soll es keine weiteren Modelle in der Reihe geben. (<a href="https://www.golem.de/specials/nintendo-classic-mini/">Nintendo Classic Mini</a>, <a href="https://www.golem.de/specials/nintendo/">Nintendo</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138269&amp;page=1&amp;ts=1544943600" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>23</slash:comments>
+        </item>
+        <item>
+            <title>Arrivo: Startup von Hyperloop-One-Gründer macht dicht</title>
+            <link>https://www.golem.de/news/arrivo-hyperloop-startup-von-hyperloop-one-gruender-macht-dicht-1812-138268-rss.html</link>
+            <description>Das von ehemaligen Hyperloop-One-Mitarbeitern gegründete Startup Arrivo wird wohl keinen Hyperloop bauen: Einem Medienbericht zufolge soll das Unternehmen nicht wie erhofft neue Finanzierungsgelder aufgetrieben haben und muss daher schließen. (&lt;a href=&quot;https://www.golem.de/specials/hyperloop/&quot;&gt;Hyperloop&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/wirtschaft/&quot;&gt;Wirtschaft&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138268&amp;amp;page=1&amp;amp;ts=1544913360&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/wirtschaft/arrivo-startup-von-hyperloop-one-gruender-macht-dicht/122706,list.html</comments>
+            <pubDate>Sat, 15 Dec 2018 23:36:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138268-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1711/131153-148965-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Das von ehemaligen Hyperloop-One-Mitarbeitern gegründete Startup Arrivo wird wohl keinen Hyperloop bauen: Einem Medienbericht zufolge soll das Unternehmen nicht wie erhofft neue Finanzierungsgelder aufgetrieben haben und muss daher schließen. (<a href="https://www.golem.de/specials/hyperloop/">Hyperloop</a>, <a href="https://www.golem.de/specials/wirtschaft/">Wirtschaft</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138268&amp;page=1&amp;ts=1544913360" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>11</slash:comments>
+        </item>
+        <item>
+            <title>Horst Herold: Erfinder der computergestützten Polizeiarbeit ist tot</title>
+            <link>https://www.golem.de/news/horst-herold-erfinder-der-computergestuetzten-polizeiarbeit-ist-tot-1812-138267-rss.html</link>
+            <description>Der ehemalige Präsident des Bundeskriminalamts, Horst Herold, ist tot. Herold war BKA-Chef zu Hochzeiten des RAF-Terrors und gilt als Miterfinder der Rasterfahndung. (&lt;a href=&quot;https://www.golem.de/specials/polizei/&quot;&gt;Polizei&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/internet/&quot;&gt;Internet&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138267&amp;amp;page=1&amp;amp;ts=1544911020&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/politik-recht/horst-herold-erfinder-der-computergestuetzten-polizeiarbeit-ist-tot/122705,list.html</comments>
+            <pubDate>Sat, 15 Dec 2018 22:57:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138267-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138267-181853-181850_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Der ehemalige Präsident des Bundeskriminalamts, Horst Herold, ist tot. Herold war BKA-Chef zu Hochzeiten des RAF-Terrors und gilt als Miterfinder der Rasterfahndung. (<a href="https://www.golem.de/specials/polizei/">Polizei</a>, <a href="https://www.golem.de/specials/internet/">Internet</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138267&amp;page=1&amp;ts=1544911020" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>15</slash:comments>
+        </item>
+        <item>
+            <title>Warenwirtschaft: Gummibärchen wegen Softwareproblemen in Not</title>
+            <link>https://www.golem.de/news/warenwirtschaft-gummibaerchen-wegen-softwareproblemen-in-not-1812-138266-rss.html</link>
+            <description>Die Umstellung des Warenwirtschaftssystems bei Hans Riegel Bonn hat zu Produktionsproblemen geführt. Haribo soll deshalb Schwierigkeiten bei der Herstellung von Goldbären, Fruchtgummi-Vampiren und anderen Süßigkeiten haben. (&lt;a href=&quot;https://www.golem.de/specials/unternehmenssoftware/&quot;&gt;Unternehmenssoftware&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/serverapps/&quot;&gt;Server-Applikationen&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138266&amp;amp;page=1&amp;amp;ts=1544874540&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/wirtschaft/warenwirtschaft-gummibaerchen-wegen-softwareproblemen-in-not/122704,list.html</comments>
+            <pubDate>Sat, 15 Dec 2018 12:49:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138266-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138266-181849-181846_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Die Umstellung des Warenwirtschaftssystems bei Hans Riegel Bonn hat zu Produktionsproblemen geführt. Haribo soll deshalb Schwierigkeiten bei der Herstellung von Goldbären, Fruchtgummi-Vampiren und anderen Süßigkeiten haben. (<a href="https://www.golem.de/specials/unternehmenssoftware/">Unternehmenssoftware</a>, <a href="https://www.golem.de/specials/serverapps/">Server-Applikationen</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138266&amp;page=1&amp;ts=1544874540" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>98</slash:comments>
+        </item>
+        <item>
+            <title>Wochenrückblick: Apple scheut den Kontakt und Intel stapelt hoch</title>
+            <link>https://www.golem.de/news/wochenrueckblick-apple-scheut-den-kontakt-und-intel-stapelt-hoch-1812-138240-rss.html</link>
+            <description> Apple Pay startet ohne Probleme in Deutschland, Intel enthüllt neue Chiptechnik und wir programmieren mit einer Retrokonsole. (&lt;a href=&quot;https://www.golem.de/specials/golemwochenrueckblick/&quot;&gt;Golem-Wochenrückblick&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/steam/&quot;&gt;Steam&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138240&amp;amp;page=1&amp;amp;ts=1544861460&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/politik-recht/wochenrueckblick-apple-scheut-den-kontakt-und-intel-stapelt-hoch/122703,list.html</comments>
+            <pubDate>Sat, 15 Dec 2018 09:11:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138240-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138240-181809-181806_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left"> Apple Pay startet ohne Probleme in Deutschland, Intel enthüllt neue Chiptechnik und wir programmieren mit einer Retrokonsole. (<a href="https://www.golem.de/specials/golemwochenrueckblick/">Golem-Wochenrückblick</a>, <a href="https://www.golem.de/specials/steam/">Steam</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138240&amp;page=1&amp;ts=1544861460" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments />
+        </item>
+        <item>
+            <title>US-Sicherheitsbehörden: Telekom darf Sprint kaufen, wenn sie Huawei fallen lässt</title>
+            <link>https://www.golem.de/news/us-sicherheitsbehoerden-telekom-darf-sprint-kaufen-wenn-sie-huawei-fallen-lassen-1812-138265-rss.html</link>
+            <description>Die US-Regierung setzt die Deutsche Telekom unter Druck. Der Kauf von Sprint durch T-Mobile US wird genehmigt, wenn der Mutterkonzern die Zusammenarbeit mit Huawei einschränkt. Offenbar ist die Telekom dazu bereit. (&lt;a href=&quot;https://www.golem.de/specials/t-mobile/&quot;&gt;T-Mobile&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/telekom/&quot;&gt;Telekom&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138265&amp;amp;page=1&amp;amp;ts=1544829840&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/wirtschaft/us-sicherheitsbehoerden-telekom-darf-sprint-kaufen-wenn-sie-huawei-fallen-laesst/122702,list.html</comments>
+            <pubDate>Sat, 15 Dec 2018 00:24:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138265-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138265-181845-181842_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Die US-Regierung setzt die Deutsche Telekom unter Druck. Der Kauf von Sprint durch T-Mobile US wird genehmigt, wenn der Mutterkonzern die Zusammenarbeit mit Huawei einschränkt. Offenbar ist die Telekom dazu bereit. (<a href="https://www.golem.de/specials/t-mobile/">T-Mobile</a>, <a href="https://www.golem.de/specials/telekom/">Telekom</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138265&amp;page=1&amp;ts=1544829840" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>78</slash:comments>
+        </item>
+        <item>
+            <title>Keine Beweise: BSI spricht sich gegen Huawei-Boykott aus</title>
+            <link>https://www.golem.de/news/keine-beweise-bsi-spricht-sich-gegen-huawei-boykott-aus-1812-138262-rss.html</link>
+            <description>Eine Offenlegung des Quellcodes wie durch Huawei wünscht sich BSI-Chef Schönbohm auch von anderen Herstellern. Derweil besorgt sich das BSI Huawei-Bauteile auf der ganzen Welt, um sie auf Hintertüren zu untersuchen. Alles ohne Ergebnis. (&lt;a href=&quot;https://www.golem.de/specials/huawei/&quot;&gt;Huawei&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/handy/&quot;&gt;Handy&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138262&amp;amp;page=1&amp;amp;ts=1544806800&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/security/keine-beweise-bsi-spricht-sich-gegen-huawei-boykott-aus/122701,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 18:00:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138262-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138262-181832-181829_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Eine Offenlegung des Quellcodes wie durch Huawei wünscht sich BSI-Chef Schönbohm auch von anderen Herstellern. Derweil besorgt sich das BSI Huawei-Bauteile auf der ganzen Welt, um sie auf Hintertüren zu untersuchen. Alles ohne Ergebnis. (<a href="https://www.golem.de/specials/huawei/">Huawei</a>, <a href="https://www.golem.de/specials/handy/">Handy</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138262&amp;page=1&amp;ts=1544806800" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>34</slash:comments>
+        </item>
+        <item>
+            <title>Bitkom: Besetzung von IT-Jobs scheitert an Geld und Kompetenzmangel</title>
+            <link>https://www.golem.de/news/bitkom-besetzung-von-it-jobs-scheitert-an-geld-und-kompetenzmangel-1812-138264-rss.html</link>
+            <description>Drei von vier Unternehmen meinen, Bewerber für IT-Jobs forderten zu viel Gehalt. Vier von zehn bemängeln fehlende fachliche Qualifikation. (&lt;a href=&quot;https://www.golem.de/specials/studie/&quot;&gt;Studie&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/it-jobs/&quot;&gt;IT-Jobs&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138264&amp;amp;page=1&amp;amp;ts=1544804160&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/wirtschaft/bitkom-besetzung-von-it-jobs-scheitert-an-geld-und-kompetenzmangel/122700,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 17:16:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138264-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138264-181836-181833_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Drei von vier Unternehmen meinen, Bewerber für IT-Jobs forderten zu viel Gehalt. Vier von zehn bemängeln fehlende fachliche Qualifikation. (<a href="https://www.golem.de/specials/studie/">Studie</a>, <a href="https://www.golem.de/specials/it-jobs/">IT-Jobs</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138264&amp;page=1&amp;ts=1544804160" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>374</slash:comments>
+        </item>
+        <item>
+            <title>Wolfenstein 2: Hitler statt Heiler möglicherweise auch in Deutschland</title>
+            <link>https://www.golem.de/news/wolfenstein-2-hitler-statt-heiler-moeglicherweise-auch-in-deutschland-1812-138261-rss.html</link>
+            <description>Nach einer neuen Entscheidung über die Indizierung von Wolfenstein 2 prüft Bethesda derzeit zusammen mit der USK, ob die Originalversion auch in Deutschland erscheinen kann. Dann würden Spieler im Handlungsverlauf auf Herrn Hitler statt auf Herrn Heiler treffen. (&lt;a href=&quot;https://www.golem.de/specials/jugendschutz/&quot;&gt;Jugendschutz&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/bethesda/&quot;&gt;Bethesda&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138261&amp;amp;page=1&amp;amp;ts=1544800200&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/games/wolfenstein-2-hitler-statt-heiler-moeglicherweise-auch-in-deutschland/122699,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 16:10:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138261-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138261-181827-181823_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Nach einer neuen Entscheidung über die Indizierung von Wolfenstein 2 prüft Bethesda derzeit zusammen mit der USK, ob die Originalversion auch in Deutschland erscheinen kann. Dann würden Spieler im Handlungsverlauf auf Herrn Hitler statt auf Herrn Heiler treffen. (<a href="https://www.golem.de/specials/jugendschutz/">Jugendschutz</a>, <a href="https://www.golem.de/specials/bethesda/">Bethesda</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138261&amp;page=1&amp;ts=1544800200" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>21</slash:comments>
+        </item>
+        <item>
+            <title>Kriminalität: Bombendrohungen per Massenmail</title>
+            <link>https://www.golem.de/news/kriminalitaet-bombendrohungen-per-massenmail-1812-138260-rss.html</link>
+            <description>In den USA, Kanada und Neuseeland empfangen Unternehmen und andere Organisationen per E-Mail versendete Bombendrohungen. Die Absender wollen damit offenbar Geld erpressen, Bomben wurden bisher aber keine gefunden. (&lt;a href=&quot;https://www.golem.de/specials/hoax/&quot;&gt;Hoax&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/spam/&quot;&gt;Spam&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138260&amp;amp;page=1&amp;amp;ts=1544798400&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/internet/kriminalitaet-bombendrohungen-per-massenmail/122698,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 15:40:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138260-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138260-181817-181814_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">In den USA, Kanada und Neuseeland empfangen Unternehmen und andere Organisationen per E-Mail versendete Bombendrohungen. Die Absender wollen damit offenbar Geld erpressen, Bomben wurden bisher aber keine gefunden. (<a href="https://www.golem.de/specials/hoax/">Hoax</a>, <a href="https://www.golem.de/specials/spam/">Spam</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138260&amp;page=1&amp;ts=1544798400" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>3</slash:comments>
+        </item>
+        <item>
+            <title>Kryptowährungen: Nutzer können für Razer minen und erhalten Spielgeld</title>
+            <link>https://www.golem.de/news/kryptowaehrungen-nutzer-koennen-fuer-razer-minen-und-erhalten-spielgeld-1812-138258-rss.html</link>
+            <description>Nutzer erhalten virtuelles Silber, wenn sie mit ihrer Grafikkarte für Razer Hashwerte errechnen. Das Geld können sie für Hardware oder Ingame-Inhalte ausgeben. Es ist nicht ganz klar, wie viel Gegenwert Gamer erhalten - der dürfte aber nicht an die Stromkosten heranreichen, die dadurch anfallen. (&lt;a href=&quot;https://www.golem.de/specials/razer/&quot;&gt;Razer&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/maus/&quot;&gt;Maus&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138258&amp;amp;page=1&amp;amp;ts=1544793600&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/applikationen/kryptowaehrungen-nutzer-koennen-fuer-razer-minen-und-erhalten-spielgeld/122697,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 14:20:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138258-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138258-181805-181802_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Nutzer erhalten virtuelles Silber, wenn sie mit ihrer Grafikkarte für Razer Hashwerte errechnen. Das Geld können sie für Hardware oder Ingame-Inhalte ausgeben. Es ist nicht ganz klar, wie viel Gegenwert Gamer erhalten - der dürfte aber nicht an die Stromkosten heranreichen, die dadurch anfallen. (<a href="https://www.golem.de/specials/razer/">Razer</a>, <a href="https://www.golem.de/specials/maus/">Maus</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138258&amp;page=1&amp;ts=1544793600" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>23</slash:comments>
+        </item>
+        <item>
+            <title>Mutant Year Zero im Test: Xcom plus postnukleare Ente</title>
+            <link>https://www.golem.de/news/mutant-year-zero-im-test-xcom-plus-postnukleare-ente-1812-138255-rss.html</link>
+            <description>Die Taktiküberraschung der Saison schmeckt nach Geflügel: Das düstere, witzige und fordernde Mutant Year Zero macht vor, wie ein gutes Taktik-Rollenspiel funktioniert. Fans von Fallout und Xcom sollten zubeißen. Von Jan Bojaryn (&lt;a href=&quot;https://www.golem.de/specials/spieletest/&quot;&gt;Spieletest&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/rollenspiel/&quot;&gt;Rollenspiel&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138255&amp;amp;page=1&amp;amp;ts=1544792400&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/games/mutant-year-zero-im-test-xcom-plus-postnukleare-ente/122696,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 14:00:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138255-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138255-181791-181788_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Die Taktiküberraschung der Saison schmeckt nach Geflügel: Das düstere, witzige und fordernde Mutant Year Zero macht vor, wie ein gutes Taktik-Rollenspiel funktioniert. Fans von Fallout und Xcom sollten zubeißen. Von Jan Bojaryn (<a href="https://www.golem.de/specials/spieletest/">Spieletest</a>, <a href="https://www.golem.de/specials/rollenspiel/">Rollenspiel</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138255&amp;page=1&amp;ts=1544792400" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>5</slash:comments>
+        </item>
+        <item>
+            <title>Vivo Nex Dual Screen: Vivo stellt Smartphone mit zwei Displays vor</title>
+            <link>https://www.golem.de/news/vivo-nex-dual-screen-vivo-stellt-smartphone-mit-zwei-displays-vor-1812-138257-rss.html</link>
+            <description>Nach Nubia stellt mit Vivo der zweite chinesische Hersteller binnen kurzer Zeit ein Smartphone mit zwei Displays vor: Neben dem Hauptbildschirm befindet sich ein zweiter, kleinerer auf der Rückseite. Eine Frontkamera hat das Nex Dual Screen entsprechend nicht mehr. (&lt;a href=&quot;https://www.golem.de/specials/smartphone/&quot;&gt;Smartphone&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/android/&quot;&gt;Android&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138257&amp;amp;page=1&amp;amp;ts=1544790600&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/handy/vivo-nex-dual-screen-vivo-stellt-smartphone-mit-zwei-displays-vor/122695,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 13:30:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138257-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138257-181801-181798_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Nach Nubia stellt mit Vivo der zweite chinesische Hersteller binnen kurzer Zeit ein Smartphone mit zwei Displays vor: Neben dem Hauptbildschirm befindet sich ein zweiter, kleinerer auf der Rückseite. Eine Frontkamera hat das Nex Dual Screen entsprechend nicht mehr. (<a href="https://www.golem.de/specials/smartphone/">Smartphone</a>, <a href="https://www.golem.de/specials/android/">Android</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138257&amp;page=1&amp;ts=1544790600" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>20</slash:comments>
+        </item>
+        <item>
+            <title>Hochgeschwindigkeitszug: Alfa-X wird der schnellste Shinkansen</title>
+            <link>https://www.golem.de/news/hochgeschwindigkeitszug-alfa-x-wird-der-schnellste-shinkansen-1812-138256-rss.html</link>
+            <description>Erst einmal kommt die Nase, dann erst der Zug. Der neue Shinkansen wird der Zug mit der längsten Frontpartie. Gerade wurde der erste Wagen mit einer 16 Meter langen Nase fertiggestellt. Die des hinteren wird noch länger. (&lt;a href=&quot;https://www.golem.de/specials/verkehr/&quot;&gt;Verkehr&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/technologie/&quot;&gt;Technologie&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138256&amp;amp;page=1&amp;amp;ts=1544789580&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/wissenschaft/hochgeschwindigkeitszug-alfa-x-wird-der-schnellste-shinkansen/122694,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 13:13:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138256-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138256-181797-181796_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Erst einmal kommt die Nase, dann erst der Zug. Der neue Shinkansen wird der Zug mit der längsten Frontpartie. Gerade wurde der erste Wagen mit einer 16 Meter langen Nase fertiggestellt. Die des hinteren wird noch länger. (<a href="https://www.golem.de/specials/verkehr/">Verkehr</a>, <a href="https://www.golem.de/specials/technologie/">Technologie</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138256&amp;page=1&amp;ts=1544789580" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>100</slash:comments>
+        </item>
+        <item>
+            <title>Smartphone-Kaufberatung: Mehr Geld für noch etwas mehr Smartphone</title>
+            <link>https://www.golem.de/news/smartphone-kaufberatung-mehr-geld-fuer-noch-etwas-mehr-smartphone-1812-138230-rss.html</link>
+            <description>Smartphones mit einem Preis von mehr als 600 Euro sind mittlerweile nur noch schwer von günstigeren Geräten zu unterscheiden. Wir haben dennoch ein paar interessante Geräte gefunden. Mehr als 800 Euro braucht heute aber wirklich niemand mehr für ein Top-Android-Smartphone auszugeben. Von Tobias Költzsch (&lt;a href=&quot;https://www.golem.de/specials/smartphone/&quot;&gt;Smartphone&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/sony/&quot;&gt;Sony&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138230&amp;amp;page=1&amp;amp;ts=1544785620&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/handy/smartphone-kaufberatung-mehr-geld-fuer-noch-etwas-mehr-smartphone/122693,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 12:07:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138230-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138230-181699-181696_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Smartphones mit einem Preis von mehr als 600 Euro sind mittlerweile nur noch schwer von günstigeren Geräten zu unterscheiden. Wir haben dennoch ein paar interessante Geräte gefunden. Mehr als 800 Euro braucht heute aber wirklich niemand mehr für ein Top-Android-Smartphone auszugeben. Von Tobias Költzsch (<a href="https://www.golem.de/specials/smartphone/">Smartphone</a>, <a href="https://www.golem.de/specials/sony/">Sony</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138230&amp;page=1&amp;ts=1544785620" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>53</slash:comments>
+        </item>
+        <item>
+            <title>E-Mail-Scam: Save The Children verliert 1 Million US-Dollar an Betrüger</title>
+            <link>https://www.golem.de/news/e-mail-scam-save-the-children-verliert-1-million-us-dollar-an-betrueger-1812-138254-rss.html</link>
+            <description>Hacker verschafften sich Zugriff auf das E-Mail-Postfach eines Angestellten der Kinderhilfsorganisation und legten dessen Kollegen mit gefälschten Zahlungsanweisungen herein. Dabei sind sie nicht alleine. (&lt;a href=&quot;https://www.golem.de/specials/security/&quot;&gt;Security&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/passwort/&quot;&gt;Passwort&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138254&amp;amp;page=1&amp;amp;ts=1544783760&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/security/e-mail-scam-save-the-children-verliert-1-million-us-dollar-an-betrueger/122689,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 11:36:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138254-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138254-181787-181786_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Hacker verschafften sich Zugriff auf das E-Mail-Postfach eines Angestellten der Kinderhilfsorganisation und legten dessen Kollegen mit gefälschten Zahlungsanweisungen herein. Dabei sind sie nicht alleine. (<a href="https://www.golem.de/specials/security/">Security</a>, <a href="https://www.golem.de/specials/passwort/">Passwort</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138254&amp;page=1&amp;ts=1544783760" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>14</slash:comments>
+        </item>
+        <item>
+            <title>Daybreak Games: Planetside Arena will Battle Royale mit Klassen und Jetpacks</title>
+            <link>https://www.golem.de/news/daybreak-games-planetside-arena-will-battle-royale-mit-klassen-und-jetpacks-1812-138253-rss.html</link>
+            <description>Der Actionklassiker Planetside bekommt mit Arena einen neuen Ableger. Das Programm für Windows-PC setzt auf Battle Royale mit drei Klassen und weitere Modi. In einem davon bekämpfen sich zwei Teams aus jeweils 250 Teilnehmern - später sollen sogar insgesamt 1.000 Kämpfer mitmachen können. (&lt;a href=&quot;https://www.golem.de/specials/planetside/&quot;&gt;Planetside&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/mmorpg/&quot;&gt;MMORPG&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138253&amp;amp;page=1&amp;amp;ts=1544780760&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/games/daybreak-games-planetside-arena-will-battle-royale-mit-klassen-und-jetpacks/122688,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 10:46:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138253-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138253-181780-181777_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Der Actionklassiker Planetside bekommt mit Arena einen neuen Ableger. Das Programm für Windows-PC setzt auf Battle Royale mit drei Klassen und weitere Modi. In einem davon bekämpfen sich zwei Teams aus jeweils 250 Teilnehmern - später sollen sogar insgesamt 1.000 Kämpfer mitmachen können. (<a href="https://www.golem.de/specials/planetside/">Planetside</a>, <a href="https://www.golem.de/specials/mmorpg/">MMORPG</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138253&amp;page=1&amp;ts=1544780760" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>11</slash:comments>
+        </item>
+        <item>
+            <title>Firmware-Update: Philips macht die Hue-Lampen praktischer</title>
+            <link>https://www.golem.de/news/firmware-update-philips-macht-die-hue-lampen-praktischer-1812-138252-rss.html</link>
+            <description>Philips hat ein Firmware-Update für die Hue-Lampen verteilt. Damit sollen sich die Lampen die zuletzt gewählte Farbe und Helligkeit merken. Bisher gingen die Hue-Lampen immer mit einer nicht änderbaren Standardeinstellung an, wenn sie einmal komplett vom Strom genommen wurden. (&lt;a href=&quot;https://www.golem.de/specials/philips-hue/&quot;&gt;Hue&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/firmware/&quot;&gt;Firmware&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138252&amp;amp;page=1&amp;amp;ts=1544779860&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/sonstiges/firmware-update-philips-macht-die-hue-lampen-praktischer/122687,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 10:31:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138252-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138252-181772-181769_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Philips hat ein Firmware-Update für die Hue-Lampen verteilt. Damit sollen sich die Lampen die zuletzt gewählte Farbe und Helligkeit merken. Bisher gingen die Hue-Lampen immer mit einer nicht änderbaren Standardeinstellung an, wenn sie einmal komplett vom Strom genommen wurden. (<a href="https://www.golem.de/specials/philips-hue/">Hue</a>, <a href="https://www.golem.de/specials/firmware/">Firmware</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138252&amp;page=1&amp;ts=1544779860" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>33</slash:comments>
+        </item>
+        <item>
+            <title>Microsoft 365: Windows-10-Abo kommt wohl auch für private Nutzer</title>
+            <link>https://www.golem.de/news/microsoft-365-windows-10-abo-wird-wohl-auch-fuer-verbraucher-kommen-1812-138250-rss.html</link>
+            <description>Derzeit sucht Microsoft nach einem Produkt-Manager, der in einem neuen Team für eine an Endkunden gerichtete Microsoft-365-Option arbeitet. Damit könnten Kunden in Zukunft auch privat Windows 10 und Office 365 zu einem monatlichen Preis mieten, was bisher Unternehmen vorbehalten ist. (&lt;a href=&quot;https://www.golem.de/specials/windows10/&quot;&gt;Windows 10&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/microsoft/&quot;&gt;Microsoft&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138250&amp;amp;page=1&amp;amp;ts=1544778960&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/applikationen/microsoft-365-windows-10-abo-kommt-wohl-auch-fuer-private-nutzer/122686,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 10:16:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138250-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138250-181776-181773_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Derzeit sucht Microsoft nach einem Produkt-Manager, der in einem neuen Team für eine an Endkunden gerichtete Microsoft-365-Option arbeitet. Damit könnten Kunden in Zukunft auch privat Windows 10 und Office 365 zu einem monatlichen Preis mieten, was bisher Unternehmen vorbehalten ist. (<a href="https://www.golem.de/specials/windows10/">Windows 10</a>, <a href="https://www.golem.de/specials/microsoft/">Microsoft</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138250&amp;page=1&amp;ts=1544778960" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>330</slash:comments>
+        </item>
+        <item>
+            <title>Virgin Galactic: Raketenflugzeug VSS Unity steigt auf über 80 Kilometer auf</title>
+            <link>https://www.golem.de/news/virgin-galactic-raketenflugzeug-vss-unity-steigt-auf-ueber-80-kilometer-auf-1812-138251-rss.html</link>
+            <description>Virgin Galactics Raketenflugzeug VSS Unity ist erstmals über 80 Kilometer hoch aufgestiegen. Virgin Galactic feiert das als Erreichen des Weltraums. Das kommerzielle Raumfahrtprogramm des Unternehmens soll im kommenden Jahr starten. (&lt;a href=&quot;https://www.golem.de/specials/virgin-galactic/&quot;&gt;Virgin Galactic&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/raumfahrt/&quot;&gt;Raumfahrt&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138251&amp;amp;page=1&amp;amp;ts=1544778180&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/internet/virgin-galactic-raketenflugzeug-vss-unity-steigt-auf-ueber-80-kilometer-auf/122685,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 10:03:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138251-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138251-181768-181765_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Virgin Galactics Raketenflugzeug VSS Unity ist erstmals über 80 Kilometer hoch aufgestiegen. Virgin Galactic feiert das als Erreichen des Weltraums. Das kommerzielle Raumfahrtprogramm des Unternehmens soll im kommenden Jahr starten. (<a href="https://www.golem.de/specials/virgin-galactic/">Virgin Galactic</a>, <a href="https://www.golem.de/specials/raumfahrt/">Raumfahrt</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138251&amp;page=1&amp;ts=1544778180" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>4</slash:comments>
+        </item>
+        <item>
+            <title>Gefahr für Werbenetzwerke: Wie legal ist das Tracking von Online-Nutzern?</title>
+            <link>https://www.golem.de/news/gefahr-fuer-werbenetzwerke-wie-legal-ist-das-tracking-von-online-nutzern-1812-138244-rss.html</link>
+            <description>Dürfen Websites ohne weiteres Daten von Websurfern an Werbenetzwerke weiterreichen? Die französische Datenschutzaufsicht CNIL weist einen französischen Werbenetzbetreiber in die Schranken und versetzt damit die internationale Online-Werbewirtschaft in Aufregung. Ein Bericht von Christiane Schulzki-Haddouti (&lt;a href=&quot;https://www.golem.de/specials/tracking/&quot;&gt;Tracking&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/datenschutz/&quot;&gt;Datenschutz&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138244&amp;amp;page=1&amp;amp;ts=1544776500&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/security/gefahr-fuer-werbenetzwerke-wie-legal-ist-das-tracking-von-online-nutzern/122683,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 09:35:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138244-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138244-181753-181750_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Dürfen Websites ohne weiteres Daten von Websurfern an Werbenetzwerke weiterreichen? Die französische Datenschutzaufsicht CNIL weist einen französischen Werbenetzbetreiber in die Schranken und versetzt damit die internationale Online-Werbewirtschaft in Aufregung. Ein Bericht von Christiane Schulzki-Haddouti (<a href="https://www.golem.de/specials/tracking/">Tracking</a>, <a href="https://www.golem.de/specials/datenschutz/">Datenschutz</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138244&amp;page=1&amp;ts=1544776500" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>19</slash:comments>
+        </item>
+        <item>
+            <title>Nvidia: Shield TV bekommt Google Assistant</title>
+            <link>https://www.golem.de/news/nvidia-shield-tv-bekommt-google-assistant-1812-138249-rss.html</link>
+            <description>Nvidia verteilt ein Update für die Android-TV-Streaming-Box Shield TV. Damit kommt der Google Assistant auf das Gerät, so dass sich Shield TV umfangreicher als bisher mit der Stimme steuern lässt. Für ausgewählte Informationen werden Zusatzinhalte auf dem Fernseher angezeigt. (&lt;a href=&quot;https://www.golem.de/specials/shield_tv/&quot;&gt;Shield_TV&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/google/&quot;&gt;Google&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138249&amp;amp;page=1&amp;amp;ts=1544775060&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/sonstiges/nvidia-shield-tv-bekommt-google-assistant/122680,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 09:11:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138249-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138249-181749-181746_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Nvidia verteilt ein Update für die Android-TV-Streaming-Box Shield TV. Damit kommt der Google Assistant auf das Gerät, so dass sich Shield TV umfangreicher als bisher mit der Stimme steuern lässt. Für ausgewählte Informationen werden Zusatzinhalte auf dem Fernseher angezeigt. (<a href="https://www.golem.de/specials/shield_tv/">Shield_TV</a>, <a href="https://www.golem.de/specials/google/">Google</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138249&amp;page=1&amp;ts=1544775060" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>22</slash:comments>
+        </item>
+        <item>
+            <title>Kein Crowdfunding mehr: Neustart für Meyer Optik Görlitz nach Insolvenz</title>
+            <link>https://www.golem.de/news/kein-crowdfunding-mehr-neustart-fuer-meyer-optik-goerlitz-nach-insolvenz-1812-138246-rss.html</link>
+            <description>Die Objektive von Meyer Optik Görlitz, deren Produktion über Kickstarter finanziert werden sollte, werden nicht ausgeliefert. Die Unterstützer gehen leer aus. Doch die Marken des insolventen Unternehmens werden wiederaufgelegt. (&lt;a href=&quot;https://www.golem.de/specials/kickstarter/&quot;&gt;Kickstarter&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/dslr/&quot;&gt;DSLR&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138246&amp;amp;page=1&amp;amp;ts=1544769900&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/foto/kein-crowdfunding-mehr-neustart-fuer-meyer-optik-goerlitz-nach-insolvenz/122678,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 07:45:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138246-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1604/120342-117960-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Die Objektive von Meyer Optik Görlitz, deren Produktion über Kickstarter finanziert werden sollte, werden nicht ausgeliefert. Die Unterstützer gehen leer aus. Doch die Marken des insolventen Unternehmens werden wiederaufgelegt. (<a href="https://www.golem.de/specials/kickstarter/">Kickstarter</a>, <a href="https://www.golem.de/specials/dslr/">DSLR</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138246&amp;page=1&amp;ts=1544769900" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>7</slash:comments>
+        </item>
+        <item>
+            <title>Monowheel Z-One One: Die Elektro-Vespa auf einem Rad</title>
+            <link>https://www.golem.de/news/monowheel-z-one-one-die-elektro-vespa-auf-einem-rad-1812-138248-rss.html</link>
+            <description>Mit dem Monowheel Z-One One hat das Unternehmen Bel &amp; Bel ein Elektrofahrzeug vorgestellt, das einer alten Vespa ähnelt und mit einem Sitz ausgerüstet ist. Was fehlt, ist das zweite Rad. (&lt;a href=&quot;https://www.golem.de/specials/elektromobilitaet/&quot;&gt;Elektromobilität&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138248&amp;amp;page=1&amp;amp;ts=1544769060&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/sonstiges/monowheel-z-one-one-die-elektro-vespa-auf-einem-rad/122677,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 07:31:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138248-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138248-181745-181744_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Mit dem Monowheel Z-One One hat das Unternehmen Bel & Bel ein Elektrofahrzeug vorgestellt, das einer alten Vespa ähnelt und mit einem Sitz ausgerüstet ist. Was fehlt, ist das zweite Rad. (<a href="https://www.golem.de/specials/elektromobilitaet/">Elektromobilität</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138248&amp;page=1&amp;ts=1544769060" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>92</slash:comments>
+        </item>
+        <item>
+            <title>Expansion: Apple investiert 1 Milliarde US-Dollar für texanischen Campus</title>
+            <link>https://www.golem.de/news/expansion-apple-investiert-1-milliarde-us-dollar-fuer-texanischen-campus-1812-138247-rss.html</link>
+            <description>Apple will in den nächsten fünf Jahren 20.000 Arbeitsplätze in den USA schaffen und hat angekündigt, für eine Milliarde US-Dollar einen neuen Campus in Austin im Bundesstaat Texas zu bauen. (&lt;a href=&quot;https://www.golem.de/specials/apple/&quot;&gt;Apple&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138247&amp;amp;page=1&amp;amp;ts=1544768400&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/wirtschaft/expansion-apple-investiert-1-milliarde-us-dollar-fuer-texanischen-campus/122676,list.html</comments>
+            <pubDate>Fri, 14 Dec 2018 07:20:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138247-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138247-181737-181734_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Apple will in den nächsten fünf Jahren 20.000 Arbeitsplätze in den USA schaffen und hat angekündigt, für eine Milliarde US-Dollar einen neuen Campus in Austin im Bundesstaat Texas zu bauen. (<a href="https://www.golem.de/specials/apple/">Apple</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138247&amp;page=1&amp;ts=1544768400" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>3</slash:comments>
+        </item>
+        <item>
+            <title>Leasing: United Internet will 5G-Netz von ZTE bauen lassen</title>
+            <link>https://www.golem.de/news/leasing-united-internet-will-5g-netz-von-zte-fuer-sich-bauen-lassen-1812-138245-rss.html</link>
+            <description>Ein viertes Mobilfunknetz in Deutschland könnte doch noch kommen. Der Chef von United Internet, Ralph Dommermuth, will ZTE aus China für sich einspannen. ZTE hat gerade seinen wichtigsten Kunden in Deutschland verloren. (&lt;a href=&quot;https://www.golem.de/specials/roaming/&quot;&gt;Roaming&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/telekom/&quot;&gt;Telekom&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138245&amp;amp;page=1&amp;amp;ts=1544738880&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/handy/leasing-united-internet-will-5g-netz-von-zte-bauen-lassen/122675,list.html</comments>
+            <pubDate>Thu, 13 Dec 2018 23:08:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138245-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138245-181733-181730_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Ein viertes Mobilfunknetz in Deutschland könnte doch noch kommen. Der Chef von United Internet, Ralph Dommermuth, will ZTE aus China für sich einspannen. ZTE hat gerade seinen wichtigsten Kunden in Deutschland verloren. (<a href="https://www.golem.de/specials/roaming/">Roaming</a>, <a href="https://www.golem.de/specials/telekom/">Telekom</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138245&amp;page=1&amp;ts=1544738880" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>11</slash:comments>
+        </item>
+        <item>
+            <title>Sega Classics angespielt: Sonic hüpft und springt auf dem Fire TV</title>
+            <link>https://www.golem.de/news/sega-classics-angespielt-sonic-huepft-und-springt-auf-dem-fire-tv-1812-138232-rss.html</link>
+            <description>Keine Mini- oder Classic-Konsole, sondern mit einer App namens Sega Classics läuft Sonic auf dem Fire TV Stick 4K von Amazon. Insgesamt bietet die Sammlung 25 Retrogames, die einst auf dem Mega Drive erschienen sind. Golem.de hat ausprobiert, ob das Spielen immer noch Spaß macht. (&lt;a href=&quot;https://www.golem.de/specials/sega/&quot;&gt;Sega&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/amazon/&quot;&gt;Amazon&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138232&amp;amp;page=1&amp;amp;ts=1544721480&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/games/sega-classics-angespielt-sonic-huepft-und-springt-auf-dem-fire-tv/122674,list.html</comments>
+            <pubDate>Thu, 13 Dec 2018 18:18:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138232-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138232-181671-181665_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Keine Mini- oder Classic-Konsole, sondern mit einer App namens Sega Classics läuft Sonic auf dem Fire TV Stick 4K von Amazon. Insgesamt bietet die Sammlung 25 Retrogames, die einst auf dem Mega Drive erschienen sind. Golem.de hat ausprobiert, ob das Spielen immer noch Spaß macht. (<a href="https://www.golem.de/specials/sega/">Sega</a>, <a href="https://www.golem.de/specials/amazon/">Amazon</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138232&amp;page=1&amp;ts=1544721480" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>5</slash:comments>
+        </item>
+        <item>
+            <title>Anwaltspostfach: BeA-Klage erstmal vertagt</title>
+            <link>https://www.golem.de/news/anwaltspostfach-bea-klage-erstmal-vertagt-1812-138241-rss.html</link>
+            <description>Vor dem Anwaltsgerichtshof in Berlin fand heute die erste Verhandlung zu einer Klage statt, bei der Rechtsanwälte eine Ende-zu-Ende-Verschlüsselung im besonderen elektronischen Anwaltspostfach (BeA) erzwingen wollen. Das Gericht sieht aber noch viel Klärungsbedarf. (&lt;a href=&quot;https://www.golem.de/specials/bea/&quot;&gt;BeA&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/verschluesselung/&quot;&gt;Verschlüsselung&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=138241&amp;amp;page=1&amp;amp;ts=1544716680&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+            <comments>https://forum.golem.de/kommentare/security/anwaltspostfach-bea-klage-erstmal-vertagt/122673,list.html</comments>
+            <pubDate>Thu, 13 Dec 2018 16:58:00 +0100</pubDate>
+            <guid>https://www.golem.de/1812/138241-rss.html</guid>
+            <content:encoded><![CDATA[<img src="https://www.golem.de/1812/138241-181728-181725_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Vor dem Anwaltsgerichtshof in Berlin fand heute die erste Verhandlung zu einer Klage statt, bei der Rechtsanwälte eine Ende-zu-Ende-Verschlüsselung im besonderen elektronischen Anwaltspostfach (BeA) erzwingen wollen. Das Gericht sieht aber noch viel Klärungsbedarf. (<a href="https://www.golem.de/specials/bea/">BeA</a>, <a href="https://www.golem.de/specials/verschluesselung/">Verschlüsselung</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=138241&amp;page=1&amp;ts=1544716680" alt="" width="1" height="1" />]]></content:encoded>
+            <slash:comments>9</slash:comments>
+        </item>
+    </channel>
+</rss>

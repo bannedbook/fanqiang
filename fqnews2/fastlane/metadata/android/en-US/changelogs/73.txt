@@ -1,0 +1,8 @@
+# 1.9.3
+Jonas Kalderstam (4):
+  * [614597d] Fixed sort order to be the minimum of syncing time and publish date
+  * [5596669] Updated share menu to use modern chooser
+  * [c59b2f5] Fixed items with no links showing "show in browser" buttons
+
+Tomáš Tihlařík (1):
+  * [ada5da8] Updated Czech translation

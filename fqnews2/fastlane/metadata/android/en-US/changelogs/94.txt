@@ -1,0 +1,12 @@
+# 1.10.14
+Jonas Kalderstam (2):
+  * [3777ebfd] Added error reporting when trying to add a feed fails
+
+Meiru (1):
+  * [ab59bc7a] Updated Japanese translation using Weblate
+
+kak mi (1):
+  * [0215e61c] Updated Chinese (Simplified) translation using Weblate
+
+vachan-maker (1):
+  * [1221c6f3] Updated Malayalam translation using Weblate

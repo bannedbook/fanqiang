@@ -1,0 +1,14 @@
+# 1.5.0
+*   Fixed notifications  
+    See !91 #10 #88
+*   Changed to allow installation on internal storage  
+    This has always been implied by the limitations of Android but now
+    it is explicit to avoid issues for people who try to move it to
+    external storage.
+    See !78 #79
+*   Added special handling for finding Youtube feeds  
+    See !90 #100
+*   Fixed HTML encoded titles not being decoded in list
+    See !89 #91
+*   Changed so more feeds display thumbnail images  
+    See !88 #96

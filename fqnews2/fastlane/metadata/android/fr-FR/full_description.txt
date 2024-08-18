@@ -1,0 +1,19 @@
+<p>En avez-vous assez des lecteurs non libres boursouflés qui volent vos informations personnelles ?<br/>
+Êtes-vous fatigué(e) des réglages de synchronisation alambiqués nécessitant des heures de configuration de serveur ?<br/>
+En avez-vous marre d’avoir à créer des comptes partout ?<br/> </p>
+
+<p>Essayez plutôt Feeder !</p>
+
+<p>Feeder est un lecteur de flux entièrement libre. Il prend en charge tous les formats de flux courants, y compris JSONFeed. Il ne vous piste pas. Il ne nécessite aucune configuration. Vous n’avez même pas besoin de créer de compte ! Configurez simplement vos flux ou importez-les depuis votre ancien lecteur via OPML, puis commencez l’actualisation et la lecture.</p>
+
+<p><b>Fonctionnalités</b></p>
+
+<ul>
+<li>Analyse le code HTML et l’affiche dans un TextView natif</li>
+<li>Lecture hors ligne</li>
+<li>Actualisation en arrière-plan</li>
+<li>Notifications</li>
+<li>Importation/exportation OPML</li>
+<li>Accès pratique aux médias inclus</li>
+<li>Material Design</li>
+</ul>

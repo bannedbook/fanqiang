@@ -1,0 +1,14 @@
+# 2.4.19
+Alexthegib (1):
+  * [9a6ec389] Updated Portuguese (Portugal) translation using Weblate
+
+Jonas Kalderstam (4):
+  * [794e0928] Fixed article ending up in a mixture of full article and
+         regular
+  * [4350b21d] Fixed full text download worker to be slightly more optimal
+  * [9cad034f] Tweaked requests' Cache Control headers
+  * [aaf9a9c6] Fixed sites getting fetched on every sync if they didn't
+         specify an icon
+
+Retrial (1):
+  * [0c626ff8] Updated Greek translation using Webl

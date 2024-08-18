@@ -1,0 +1,5 @@
+# 2.0.0-beta.1
+
+Complete rewrite of the UI in Jetpack Compose
+
+Expect bugs, but all features should be present.

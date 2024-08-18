@@ -1,0 +1,11 @@
+# 2.4.4
+Jonas Kalderstam (5):
+  * [22996d2b] Removed all static functions with DI in them
+  * [3dbb26b5] Fixed crash on startup if "Sync upon app start" was enabled
+  * [8109a298] Consolidated all compose providers
+  * [202dd81d] Fixed wrong colors for small top app bar
+  * [d45711ea] Fixed new item count not respecting block list
+
+Retrial (1):
+  * [9518e7e8] Translated using Weblate (Greek)
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <atom:link href="http://ANON.com/rss" rel="self" type="application/rss+xml" />
+        <title><![CDATA[ANON]]></title>
+        <description><![CDATA[ANON]]></description>
+        <link>http://ANON.com/sub</link>
+        <generator>The Grawlix CMS</generator>
+        <item>
+            <pubDate>2018-12-13 00:00:00</pubDate>
+            <title><![CDATA[ANON]]></title>
+            <guid>http://ANON.com/sub/##</guid>
+            <description><![CDATA[ANON]]></description>
+        </item>
+    </channel>
+</rss>

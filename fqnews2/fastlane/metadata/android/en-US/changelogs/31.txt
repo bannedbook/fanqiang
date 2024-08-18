@@ -1,0 +1,5 @@
+# 1.6.3
+*   Now all links are explicitly opened in new browser tabs
+    See !97 #117
+*   Fixed buggy back stack
+    See !96

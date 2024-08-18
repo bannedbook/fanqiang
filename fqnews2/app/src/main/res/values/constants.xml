@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="pref_theme_value_default" translatable="false">@string/pref_theme_value_day</string>
+  <string name="pref_theme_value_system" translatable="false">system</string>
+  <string name="pref_theme_value_auto" translatable="false">auto</string>
+  <string name="pref_theme_value_day" translatable="false">day</string>
+  <string name="pref_theme_value_night" translatable="false">night</string>
+
+  <string name="pref_sort_value_default" translatable="false">@string/pref_sort_value_newest_first</string>
+  <string name="pref_sort_value_newest_first" translatable="false">newest_first</string>
+  <string name="pref_sort_value_oldest_first" translatable="false">oldest_first</string>
+</resources>

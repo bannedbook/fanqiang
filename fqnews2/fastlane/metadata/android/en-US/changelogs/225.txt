@@ -1,0 +1,6 @@
+# 2.1.0-beta.1
+Jonas Kalderstam (1):
+  * [24c0c8fd] Implemented multi device sync
+
+Meiru (1):
+  * [9957d68b] Updated Japanese translation using Weblate

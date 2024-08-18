@@ -1,0 +1,12 @@
+# 2.4.16
+Jonas Kalderstam (11):
+  * [3493e09b] Added global notifications setting as an alternative way to
+         toggle feed notifications
+  * [6d11e165] Changed block list setting to have dynamic size
+  * [7d4e275e] Cleaned up some code
+  * [cce0be9b] Added an entry in the nav drawer to easily access bookmarked
+         articles
+  * [fd0577d4] Fixed mark as read after/before
+  * [502c16cd] Removed ability to pin articles
+  * [a3630e7a] Renamed "bookmark" to "save article"
+  * [b903a8f5] Ensu

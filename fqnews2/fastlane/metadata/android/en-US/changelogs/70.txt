@@ -1,0 +1,8 @@
+# 1.9.0
+Jonas Kalderstam (3):
+  * [ae1338e] Added additional accessibility strings
+  * [25e9602] Added dialog for deleting multiple feeds
+  * [da3089e] Changed sort order to include synchronization time
+
+Khar Khamal (1):
+  * [ff491f1] Updated Spanish translations

@@ -1,0 +1,15 @@
+# 2.6.10
+Agnieszka C (1):
+  * [1bedec87] Updated Polish translation using Weblate
+
+Belmar Begić (1):
+  * [0c4e4ca9] Updated Bosnian translation using Weblate
+
+Eric (1):
+  * [8f3b03f5] Updated Chinese (Simplified) translation using Weblate
+
+Jonas Kalderstam (12):
+  * [e89df3ba] Fixed crash when a resource string was not styled as expected
+  * [510a38ac] Added reading time/word count for languages which use spaces
+  * [d1d7b1a5] Added kurdish language file
+  * [8433be8d] Changed word/minutes to p

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="FullBackupContent">
+    <cloud-backup>
+        <include
+            domain="database"
+            path="sager_net.db" />
+        <include
+            domain="device_database"
+            path="configuration.db" />
+    </cloud-backup>
+    <device-transfer>
+        <include
+            domain="database"
+            path="sager_net.db" />
+        <include
+            domain="device_database"
+            path="configuration.db" />
+    </device-transfer>
+</data-extraction-rules>

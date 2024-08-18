@@ -1,0 +1,17 @@
+# 2.3.5
+Ady (1):
+  * [4cdc88ba] Translated using Weblate (French)
+
+Jonas Kalderstam (2):
+  * [ff23128b] Changed user-agent to match Chrome's
+  * [6002d91d] Fixed user-agent test
+
+Vitor Henrique (1):
+  * [073ccb1d] Updated Portuguese (Brazil) translation using Weblate
+
+liimee (1):
+  * [e4090e15] Updated Indonesian translation using Weblate
+
+zmni (1):
+  * [9c1acc5b] Translated using Weblate (Indonesian)
+

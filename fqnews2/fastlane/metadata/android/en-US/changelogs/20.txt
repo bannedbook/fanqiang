@@ -1,0 +1,16 @@
+# 1.3.13
+
+*   Add new feed now finds feed links in web pages
+
+    Makes it possible to input a url to a site, such as
+    `cowboyprogrammer.org`, when adding a new feed.
+
+    Previously, the direct address to the RSS/Atom feed was required
+    (`cowboyprogrammer.org/atom.xml`). This was not ideal because
+
+    - not all sites advertise a link to their feeds
+
+    - the location of the feed is not standardized so it's not easily
+      guessable
+
+    - viewing the source of a web site to find the al

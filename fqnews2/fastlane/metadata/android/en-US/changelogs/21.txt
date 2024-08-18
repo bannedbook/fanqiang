@@ -1,0 +1,4 @@
+# 1.3.14
+
+*   Fixed loss of scroll position on redraw in left drawer menu
+    See !61 #57

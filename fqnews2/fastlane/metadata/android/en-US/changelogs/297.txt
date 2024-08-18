@@ -1,0 +1,11 @@
+# 2.6.12
+Jonas Kalderstam (9):
+  * [0044d6b1] Fixed small images being rendered too large and flickering on
+         scroll
+  * [3ec908d8] Added caching on failed (4xx) network requests
+  * [aa2dfc69] Changed so tablets don't force images to be 16:9 anymore
+  * [e7484738] Added debugMini icon and app name
+  * [2fa239a4] Improved scroll performance
+  * [432d9ab0] Added support for data-img-url in images
+  * [e936b2bc] Removed debugMini configuration
+  * [4de81e11] Added emulator tests to release 

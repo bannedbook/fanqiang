@@ -1,0 +1,19 @@
+<p>Estàs cansat de lectors no lliures i sobrecarregats que et roben la teva informació personal?<br/>
+Estàs cansat de configuracions de sincronització complicades que requereixen hores de configuració del servidor?<br/>
+Estàs fart d'haver de crear comptes a tot arreu?<br/></p>
+
+<p>Prova Feeder!</p>
+
+<p>Feeder és un lector de canals completament lliure i gratis. Admet tots els formats comuns de canal, incloent JSONFeed. No et segueix. No et requereix cap configuració. Ni tan sols necessita que et creïs un compte! Simplement configura els teus canals, o importa'ls del teu antic lector per mitjà d'OPML, i comença a sincronitzar i llegir.</p>
+
+<p><b>Característiques</b></p>
+
+<ul>
+<li>Analitza HTML i ho mostra en un TextView natiu</li>
+<li>Lectura fora de línia</li>
+<li>Sincronització en segon pla</li>
+<li>Notificacions</li>
+<li>Importa/Exporta OPML</li>
+<li>Accés pràctics a enllaços adjunts</li>
+<li>Disseny "Material"</li>
+</ul>

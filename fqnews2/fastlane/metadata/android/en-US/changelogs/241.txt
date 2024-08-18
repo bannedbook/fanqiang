@@ -1,0 +1,21 @@
+# 2.2.1
+Ady (1):
+  * [41c33ece] Updated French translation using Weblate
+
+Agnieszka C (1):
+  * [76baedde] Updated Polish translation using Weblate
+
+Andrij Mizyk (1):
+  * [88ebe3cd] Updated Ukrainian translation using Weblate
+
+ERYpTION (1):
+  * [f99360d4] Updated Danish translation using Weblate
+
+El Pirujo (1):
+  * [8355e4b1] Updated Spanish translation using Weblate
+
+Eric (1):
+  * [7247ce08] Updated Chinese (Simplified) translation using Weblate
+
+Jonas Kalderstam (1):
+  * [ed0f3c33] Fixed crash 

@@ -1,0 +1,18 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="24dp"
+        android:height="24dp"
+        android:viewportWidth="24"
+        android:viewportHeight="24">
+    <path
+        android:name="strike_thru_path"
+        android:pathData="M 19.73 22 L 21 20.73 L 3.27 3 L 2 4.27 Z"
+        android:fillColor="#fff"
+        android:strokeWidth="1"/>
+    <clip-path
+        android:name="strike_thru_mask"
+        android:pathData="M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z M 4.54 1.73 L 3.27 3 L 21 20.73 L 22.27 19.46 Z"/>
+    <path
+        android:name="holey_icon"
+        android:pathData="M17.68,9l-1.59,7L12.7,14.89l5-5.93M10,10.08l-3.57,3L5,12.55l5-2.47M21.25,2.28L0,12.8l6.83,2.57,9.76-8.21L9.26,15.89l8.29,2.67,3.7-16.27h0ZM 9.45 17.56 L 9.46 22 L 12.09 18.41 L 9.45 17.56 L 9.45 17.56 Z"
+        android:fillColor="#fff"/>
+</vector>

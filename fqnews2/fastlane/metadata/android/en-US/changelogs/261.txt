@@ -1,0 +1,21 @@
+# 2.4.1
+Agnieszka C (1):
+  * [86b33eb1] Updated Polish translation using Weblate
+
+Andrij Mizyk (1):
+  * [f5557397] Updated Ukrainian translation using Weblate
+
+Dritan Taulla (1):
+  * [301cdff5] Updated Albanian translation using Weblate
+
+ERYpTION (1):
+  * [4b2c8749] Updated Danish translation using Weblate
+
+El Pirujo (1):
+  * [7fff2056] Updated Spanish translation using Weblate
+
+Eric (1):
+  * [6e75150b] Updated Chinese (Simplified) translation using Weblate
+
+Gediminas Murauskas (1):
+  * [6e2d9ed

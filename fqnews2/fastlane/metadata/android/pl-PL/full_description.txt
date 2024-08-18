@@ -1,0 +1,19 @@
+<p>Feeder to otwartoźródłowy czytnik kanałów (RSS/Atom/JSONFeed) dla Androida stworzony w 2014 roku.</p>
+
+<p>Z Feederem możesz czytać najnowsze wiadomości i posty ze swoich ulubionych stron.</p>
+
+<p>Feeder NIE synchronizuje się ze zwykłymi zdalnymi backendami, więc nie jest wymagana żadna rejestracja konta.</p>
+
+<p>Feeder jest darmowy i działa lokalnie na Twoim urządzeniu. Twoje dane są w 100% prywatne.</p>
+
+<p><b>Cechy:</b></p>
+
+<ul>
+<li>Przetwarza HTML i wyświetla go w natywnym widoku tekstowym (TextView)</li>
+<li>Czytanie w trybie offline</li>
+<li>Synchronizacja w tle</li>
+<li>Powiadomienia</li>
+<li>Import/Eksport OPML</li>
+<li>Poręczny dostęp do zamieszczonych linków</li>
+<li>Material Design</li>
+</ul>

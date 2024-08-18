@@ -1,0 +1,4 @@
+# 2.6.24
+Jonas Kalderstam (1):
+  * [8a86acbd] Fixed performance when many entries in blocklist
+

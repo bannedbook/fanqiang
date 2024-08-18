@@ -1,0 +1,14 @@
+# 2.1.4
+Agnieszka C (1):
+  * [066ab713] Updated Polish translation using Weblate
+
+ERYpTION (1):
+  * [a7c0746b] Updated Danish translation using Weblate
+
+Eric (1):
+  * [369136d5] Updated Chinese (Simplified) translation using Weblate
+
+Jonas Kalderstam (2):
+  * [ce2f7648] Ktlint format
+  * [b218326e] Fixed a crash introduced in 2.1.3
+

@@ -1,0 +1,19 @@
+# 1.13.2
+Drhaal (1):
+  * [c4545c2b] Use different colors when swiping to mark article as
+         read/unread
+
+J. Lavoie (1):
+  * [9d750135] Updated German translation using Weblate
+
+Jonas Kalderstam (8):
+  * [cadaef03] Raised minimum supported version of Android to M (6.0 -
+         API23)
+  * [df11985f] Added support for TLSv1.3 on older versions of Android
+  * [40549eea] Update README.md with ko-fi link
+
+Naveen (1):
+  * [b2422d25] Added Tamil translation using Weblate
+
+gutierri (1):
+  * [7426

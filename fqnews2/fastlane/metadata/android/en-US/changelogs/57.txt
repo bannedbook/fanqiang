@@ -1,0 +1,6 @@
+# 1.8.18
+*   Indonesian translation
+    Thanks to zmni
+    See !196
+*   Fixed back button handling in web view
+    See !195

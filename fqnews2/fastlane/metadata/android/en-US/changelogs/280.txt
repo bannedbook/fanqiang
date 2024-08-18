@@ -1,0 +1,21 @@
+# 2.4.18
+Agnieszka C (1):
+  * [565de63c] Updated Polish translation using Weblate
+
+Aitor Salaberria (1):
+  * [72cd7fab] Updated Basque translation using Weblate
+
+Dan (1):
+  * [4d7b2ac6] Updated Ukrainian translation using Weblate
+
+ERYpTION (1):
+  * [d81a686b] Updated Danish translation using Weblate
+
+El Pirujo (1):
+  * [f203fdaa] Updated Spanish translation using Weblate
+
+Eric (1):
+  * [31a7aee8] Updated Chinese (Simplified) translation using Weblate
+
+J. Lavoie (1):
+  * [0b71640c] Updated French

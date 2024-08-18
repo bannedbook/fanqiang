@@ -1,0 +1,15 @@
+# 2.6.26
+Agnieszka C (1):
+  * [7fd77f475] Updated Polish translation using Weblate
+
+Jonas Kalderstam (7):
+  * [769423012] Fixed email links not opening email client
+  * [4a96932ec] Added support for iframes inside figures
+  * [8ac5fa68f] Fixed parsed width/height of iframes
+  * [57490d923] Fixed some crashes related to article viewing
+  * [4bfe0f9f3] Fixed a crash in reader
+  * [0277df664] Fixed number of columns for tablets
+  * [4c09edb7c] Fixed too large images on tablets
+
+Matth78 (1):
+  * [55

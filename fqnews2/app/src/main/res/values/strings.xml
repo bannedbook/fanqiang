@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="action_settings">Settings</string>
+  <string name="add_feed">Add feed</string>
+  <string name="title_activity_edit_feed">Subscribe to feed</string>
+  <string name="url">URL</string>
+  <string name="tag">Tag</string>
+  <string name="add_feed_search_hint">Feed URL</string>
+  <string name="title">Title</string>
+
+  <string name="by_author_on_date" comment="1 is the author, 2 is the date. So the default format will be shown as&#10;&#10;John Smith, Saturday, 9 January 2021 15:49&#10;&#10;if better for other language, it can be changed. For example &#10;&#10;%1$s on %2$s:&#10;&#10;John Smith on Saturday, 9 January 2021 15:49">%1$s, %2$s</string>
+  <string name="on_date" comment="1 is the date. Used in the feed view.">%1$s</string>
+  <string name="save">Save</string>
+  <string name="empty_feed_top">本APP需要导入翻墙节点才能正常运行，请将节点拷贝到剪贴板后，点 导入节点 ，每行一个，数量不限，支持节点类型及格式如下:\n
+    ss://...\n
+    vmess://...\n
+    vless://...\n
+    trojan://...\n
+    如果已导入节点,请点 同步新闻(可能需要多点几次)
+  </string>
+  <string name="empty_feed_open"><annotation style="link">同步新闻</annotation></string>
+  <string name="empty_feed_add"><annotation style="link">导入节点</annotation></string>
+  <string name="search_feed_empty_hint">Enter a feed address</string>
+  <string name="mark_as_read">Mark as read</string>
+  <string name="mark_as_unread">Mark as unread</string>
+  <string name="mark_all_as_read">Mark all as read</string>
+  <string name="edit_feed">Edit feed</string>
+  <string name="delete_feed">Delete feed</string>
+  <string name="show_all_items">Show all items</string>
+  <string name="show_unread_items">Show unread items</string>
+  <string name="new_items_available">New items available</string>
+  <string name="view">View</string>
+  <string name="no_tag">No tag</string>
+  <string name="notify_for_new_items">Notify for new items</string>
+  <string name="dont_notify_for_new_items">Stop notifications</string>
+  <string name="toggle_read_status">Toggle read status</string>
+  <string name="open_link_in_browser">Open link in web browser</string>
+  <string name="open_in_browser">Open in web browser</string>
+  <string name="open_enclosed_media">Open enclosed media</string>
+  <string name="open_enclosed_media_file">Open %1$s</string>
+  <string name="read_article">Read aloud</string>
+  <string name="text_to_speech">Text to speech</string>
+  <string name="pause_reading">Pause reading</string>
+  <string name="resume_reading">Resume reading</string>
+  <string name="stop_reading">Stop reading</string>
+  <string name="skip_to_next">Skip to next</string>
+  <string name="set_language">Set language</string>
+  <string name="sync">Sync</string>
+  <string name="export_feeds_to_opml">Export feeds to OPML</string>
+  <string name="import_feeds_from_opml">Import feeds from OPML</string>
+  <string name="export_saved_articles">Export saved articles</string>
+  <string name="view_debug_log">View debug log</string>
+  <string name="new_based_on_this">New based on this</string>
+  <string name="indicator_for_mark_as_read">Indicator for mark as read</string>
+  <string name="share">Share</string>
+  <string name="no_such_feed">No such feed could be found. Try using HTTPS maybe?</string>
+  <string name="nothing_to_display">Nothing to display!</string>
+  <string name="title_activity_settings">Settings</string>
+  <string name="all_feeds">All feeds</string>
+
+  <string name="sync_option_manually">Manually</string>
+  <string name="sync_option_every_15min">Every 15 minutes</string>
+  <string name="sync_option_every_30min">Every 30 minutes</string>
+  <string name="sync_option_every_hour">Every hour</string>
+  <string name="sync_option_every_3_hours">Every 3 hours</string>
+  <string name="sync_option_every_6_hours">Every 6 hours</string>
+  <string name="sync_option_every_12_hours">Every 12 hours</string>
+  <string name="sync_option_every_day">Every day</string>
+
+  <string name="synchronization">Syncing</string>
+  <string name="syncing">Syncing</string>
+  <string name="only_on_wifi">Only on Wi-Fi</string>
+  <string name="show_thumbnails">Show thumbnails</string>
+  <string name="use_detect_language">Detect language</string>
+  <string name="only_available_on_android_n">Only available on Android %1$s and above</string>
+  <string name="description_for_read_aloud">Automatically detects article language</string>
+  <string name="may_result_data_charges">May result in mobile data charges.</string>
+  <string name="only_when_charging">Only when charging</string>
+  <string name="image_loading">Image loading</string>
+  <string name="no_activity_for_link">Install something to open this link with first</string>
+  <string name="check_for_updates">Look for new articles…</string>
+  <string name="on_startup">Upon app start</string>
+  <string name="block_list">Block list</string>
+  <string name="block_list_description">Hides articles with titles containing any of these filters. Example filters:</string>
+  <string name="add_item">Add item</string>
+  <string name="show_fab">Show floating action button</string>
+  <string name="include_mobile_hotspots">Include mobile hotspots</string>
+  <string name="updated_feeds">Updated feeds</string>
+  <string name="notification_channel_name">Unread feeds</string>
+  <string name="notification_channel_description">Notifications are only shown for unread items in configured feeds</string>
+  <string name="sync_status">Sync status</string>
+  <string name="open_in_reader">Reader</string>
+  <string name="open_in_webview">Web view</string>
+  <string name="open_in_default_browser">Default browser</string>
+  <string name="open_in_custom_tab">Custom tab</string>
+  <string name="use_app_default">Use app default</string>
+  <string name="open_item_by_default_with">Open items by default with</string>
+  <string name="open_links_with">Open links with</string>
+  <string name="reader_settings">Reader</string>
+  <string name="article_list_settings">Article list</string>
+  <string name="open_link_in_web_view">Open link in web view</string>
+  <string name="open_in_web_view">Open in Web view</string>
+  <string name="max_feed_items">Max items per feed</string>
+  <string name="could_not_load_url">Could not load URL</string>
+
+  <string name="theme_system">System</string>
+  <string name="theme_automatic">Auto</string>
+  <string name="theme_day">Day</string>
+  <string name="theme_night">Night</string>
+  <string name="theme_e_ink">E Ink</string>
+  <string name="theme">Theme</string>
+  <string name="dynamic_theme_use">Dynamic colors</string>
+  <string name="dark_theme_preference">Preferred dark theme</string>
+  <string name="dark_theme_preference_black">Black</string>
+  <string name="dark_theme_preference_dark">Dark</string>
+  <string name="sort_newest_first">Newest first</string>
+  <string name="sort_oldest_first">Oldest first</string>
+  <string name="sort">Sort by</string>
+  <string name="send_bug_report">Send bug-report</string>
+  <string name="no_email_client">Could not open e-mail client</string>
+  <string name="touch_to_play_video">Touch to play video</string>
+  <string name="javascript">JavaScript</string>
+  <string name="open_feed">Open feed</string>
+  <string name="mark_items_above_as_read">Mark the above as read</string>
+  <string name="mark_items_below_as_read">Mark the below as read</string>
+  <string name="discovered_feeds_list">Discovered feeds list</string>
+  <string name="toggle_tag_expansion">Toggle tag expansion</string>
+  <string name="expanded_tag">Open tag</string>
+  <string name="contracted_tag">Closed tag</string>
+
+  <string name="battery_optimization">Battery optimization</string>
+  <string name="battery_optimization_disabled">Off</string>
+  <string name="battery_optimization_enabled">On</string>
+  <string name="preload_custom_tab">Preload custom tab</string>
+
+  <string name="failed_to_parse">Could not parse %1$s</string>
+
+  <string name="fetch_full_article">Fetch full article</string>
+  <string name="fetch_full_articles_by_default">Fetch full articles by default</string>
+  <string name="failed_to_fetch_full_article">Could not fetch full article</string>
+  <string name="failed_to_open_article">Could not open article</string>
+  <string name="sync_to_fetch">Synchronize to fetch article</string>
+  <string name="fetching_full_article">Fetching full article…</string>
+  <string name="failed_to_load_text_to_speech">Could not load text to speech</string>
+  <string name="go_back">Go back</string>
+  <string name="open_menu">Open menu</string>
+  <string name="go_to_feed">Go to %1$s</string>
+  <string name="unread_adjective">Unread</string>
+  <string name="already_read">Already read</string>
+  <string name="showing_only_unread_articles">Showing only unread articles</string>
+  <string name="showing_all_articles">Showing all articles</string>
+  <string name="synchronize_feeds">Sync feeds</string>
+
+  <string name="zero_unread_articles">%1$s unread articles</string>
+  <string name="one_unread_article">%1$s unread article</string>
+  <string name="two_unread_articles">%1$s unread articles</string>
+  <string name="few_unread_articles">%1$s unread articles</string>
+  <string name="many_unread_articles">%1$s unread articles</string>
+  <string name="other_unread_articles">%1$s unread articles</string>
+
+  <string name="feed_item_style">Article style</string>
+  <string name="feed_item_style_card">Card</string>
+  <string name="feed_item_style_compact_card">Compact Card</string>
+  <string name="feed_item_style_compact">Compact</string>
+  <string name="feed_item_style_super_compact">Super compact</string>
+  <string name="generate_extra_unique_ids">Generate extra unique IDs</string>
+  <string name="only_enable_for_bad_id_feeds">Only enable for feeds with bad IDs</string>
+  <string name="invalid_url">Not a valid URL</string>
+  <string name="failed_to_import_OPML">"Failed to import OPML"</string>
+  <string name="failed_to_export_OPML">"Failed to export OPML"</string>
+  <string name="failed_to_export_saved_articles">"Failed to export saved articles"</string>
+  <string name="device_sync">Device sync</string>
+  <string name="add_new_device">Add new device</string>
+  <string name="device_sync_financed_by_community">This service is paid for by the community. Please consider donating if you find it useful.</string>
+  <string name="this_device">%1$s (this device)</string>
+  <string name="disconnect_device_from_sync">Disconnect device from sync chain</string>
+  <string name="devices_on_sync_chain">Devices on sync chain</string>
+  <string name="remove">Remove</string>
+  <string name="remove_device">Remove device</string>
+  <string name="remove_device_question">Are you sure you want to delete device %1$s?</string>
+  <string name="press_scan_sync">On your device, navigate to device sync, and press scan sync code.</string>
+  <string name="or_open_device_sync_link">Alternatively, open the link on your device.</string>
+  <string name="treat_like_password">Treat this like a password. Anyone can read your synced data if they have the link.</string>
+  <string name="qr_code">QR Code</string>
+  <string name="feeder_device_sync_code">Feeder device sync code</string>
+  <string name="leave_sync_chain">Leave sync chain</string>
+  <string name="device_sync_description_1">Device sync allows you to sync feed subscriptions and read articles between your various devices.</string>
+  <string name="device_sync_description_2">Simply scan the code from your sync chain that you created on another device, or start a new sync chain.</string>
+  <string name="scan_or_enter_code">Scan or enter sync code</string>
+  <string name="start_new_sync_chain">Start new sync chain</string>
+  <string name="sync_code">Sync code</string>
+  <string name="secret_key">Secret key</string>
+  <string name="join_sync_chain">Join sync chain</string>
+  <string name="disabled">Disabled</string>
+  <string name="only_from_end">Only from end</string>
+  <string name="from_anywhere">From anywhere</string>
+  <string name="swipe_to_mark_as_read">Swipe to mark as read</string>
+  <string name="are_you_sure_leave_sync_chain">Are you sure you want to leave the sync chain?</string>
+  <string name="no_barcode_scanner_installed">Could not find a barcode scanner</string>
+  <string name="new_indicator">New</string>
+
+  <string name="permission_read_desc">Allows the application to read feeds and articles</string>
+  <string name="permission_read_label">Feeder read-only access</string>
+
+  <string name="explanation_permission_notifications">Permission must be granted before notifications can be enabled.</string>
+  <string name="article_image">Article image</string>
+  <string name="feed_icon">Feed Icon</string>
+  <string name="text_scale">Text scale</string>
+
+  <string name="saved_articles">Saved articles</string>
+  <string name="saved_article">Saved article</string>
+  <string name="save_article">Save article</string>
+  <string name="unsave_article">Stop saving article</string>
+  <string name="mark_as_read_on_scroll">Mark as read on scroll</string>
+  <string name="no_feeds">No feeds</string>
+  <string name="zero_feeds">%1$s feeds</string>
+  <string name="one_feed">%1$s feed</string>
+  <string name="two_feeds">%1$s feeds</string>
+  <string name="few_feeds">%1$s feeds</string>
+  <string name="many_feeds">%1$s feeds</string>
+  <string name="other_feeds">%1$s feeds</string>
+  <string name="import_x_feeds_with_y_tags">Import %1$s with %2$s?</string>
+  <string name="zero_tags">%1$s tags</string>
+  <string name="one_tags">%1$s tag</string>
+  <string name="two_tags">%1$s tags</string>
+  <string name="few_tags">%1$s tags</string>
+  <string name="many_tags">%1$s tags</string>
+  <string name="other_tags">%1$s tags</string>
+  <string name="failed_to_fetch_full_article_missing_body">Found nothing to fetch</string>
+  <string name="failed_to_fetch_full_article_missing_link">Feed is missing link to article</string>
+  <string name="failed_to_fetch_full_article_not_html">Link is not an HTML document</string>
+  <string name="max_lines">Max lines</string>
+  <string name="filter_noun">Filter</string>
+  <string name="recently_read_adjective">Recently read</string>
+  <string name="read_adjective">Read</string>
+  <string name="saved_adjective">Saved</string>
+  <string name="show_only_title">Show only title</string>
+  <string name="failed_to_download">Failed to download</string>
+  <string name="failed_to_parse_the_page">Failed to parse the page</string>
+  <string name="no_feeds_in_the_page">No feeds in the page</string>
+  <string name="content_is_not_html">Content is not HTML</string>
+  <string name="failed_to_parse_rss_feed">Failed to parse RSS feed</string>
+  <string name="http_error">HTTP error</string>
+  <string name="failed_to_parse_json_feed">Failed to parse JSON feed</string>
+  <string name="no_body_in_response">No body in response</string>
+  <string name="unsupported_content_type">Unsupported content type</string>
+  <string name="failed_to_parse_full_article">Failed to parse full article</string>
+  <string name="no_url">No URL</string>
+  <string name="add_anyway">Add anyway</string>
+  <string name="open_browser_in_split_screen">Open browser in split screen</string>
+  <string name="show_reading_time">Show estimated reading time</string>
+  <string name="zero_words">%1$s words</string>
+  <string name="one_word">%1$s word</string>
+  <string name="two_words">%1$s words</string>
+  <string name="few_words">%1$s words</string>
+  <string name="many_words">%1$s words</string>
+  <string name="other_words">%1$s words</string>
+  <string name="zero_minutes">%1$s minutes</string>
+  <string name="one_minute">%1$s minute</string>
+  <string name="two_minutes">%1$s minutes</string>
+  <string name="few_minutes">%1$s minutes</string>
+  <string name="many_minutes">%1$s minutes</string>
+  <string name="other_minutes">%1$s minutes</string>
+  <string name="close_menu">Close menu</string>
+  <string name="skip_duplicate_articles">Skip duplicate articles</string>
+  <string name="skip_duplicate_articles_desc">Articles with links or titles identical to existing articles are ignored</string>
+  <string name="touch_to_play_audio">Touch to play audio</string>
+  <string name="title_unread_count" translatable="false">(%1$d)</string>
+  <string name="show_title_unread_count">Show unread article count in title</string>
+</resources>

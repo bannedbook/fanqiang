@@ -1,0 +1,19 @@
+# 2.4.2
+Agnieszka C (1):
+  * [f4bb4abf] Updated Polish translation using Weblate
+
+Axus Wizix (1):
+  * [b4351577] Updated Russian translation using Weblate
+
+Dan (2):
+  * [d0dd8fa2] Translated using Weblate (Ukrainian)
+  * [e9349b64] Updated Ukrainian translation using Weblate
+
+ERYpTION (1):
+  * [d1ea9ca3] Updated Danish translation using Weblate
+
+Eric (1):
+  * [bf17b3e0] Updated Chinese (Simplified) translation using Weblate
+
+J. Lavoie (1):
+  * [d7609fb2] Updated French translation using Weblate

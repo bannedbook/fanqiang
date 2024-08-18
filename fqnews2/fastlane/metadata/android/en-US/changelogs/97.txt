@@ -1,0 +1,11 @@
+# 1.11.2
+Eric (1):
+  * [b5a50dfb] Updated Chinese (Simplified) translation using Weblate
+
+Jonas Kalderstam (5):
+  * [130137d3] Fixed database test
+  * [aa9ebbd3] Maybe fixed a nullpointer error
+  * [6023a40c] Fixed sporadic error while loading images
+
+Nikita Epifanov (1):
+  * [d09adafe] Updated Russian translation using Weblate

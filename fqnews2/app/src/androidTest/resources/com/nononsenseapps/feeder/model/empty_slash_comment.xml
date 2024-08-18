@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- generator="FeedCreator 1.6" -->
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  version="2.0">
+  <channel>
+    <title>Golem.de</title>
+    <description>IT-News fuer Profis</description>
+    <link>https://www.golem.de/</link>
+    <atom:link rel="self" href="https://rss.golem.de/rss.php?feed=RSS2.0" />
+    <lastBuildDate>Sat, 09 Dec 2017 15:49:02 +0100</lastBuildDate>
+    <generator>FeedCreator 1.6</generator>
+    <image>
+      <url>https://www.golem.de/staticrl/images/golem-rss.png</url>
+      <title>Golem.de</title>
+      <link>https://www.golem.de/</link>
+      <description>Golem.de News Feed</description>
+    </image>
+    <language>de</language>
+    <atom:link rel="hub" href="http://golem.superfeedr.com/" />
+    <item>
+      <title>Anheuser Busch: US-Brauerei bestellt 40 Tesla-Trucks vor</title>
+      <link>https://www.golem.de/news/anheuser-busch-us-brauerei-bestellt-40-tesla-trucks-vor-1712-131577-rss.html</link>
+      <description>Das US-Brau-Unternehmen Anheuser Busch hat 40 der neuen Lkws von Tesla vorbestellt. Dem Hersteller zufolge ist das die größte Vorbestellung bisher. Auch Walmart und DHL haben den Elektro-Truck bereits geordert. (&lt;a href=&quot;https://www.golem.de/specials/tesla/&quot;&gt;Tesla&lt;/a&gt;, &lt;a href=&quot;https://www.golem.de/specials/elektroauto/&quot;&gt;Elektroauto&lt;/a&gt;) &lt;img src=&quot;https://cpx.golem.de/cpx.php?class=17&amp;amp;aid=131577&amp;amp;page=1&amp;amp;ts=1512830640&quot; alt=&quot;&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;</description>
+      <pubDate>Sat, 09 Dec 2017 15:44:00 +0100</pubDate>
+      <guid>https://www.golem.de/1712/131577-rss.html</guid>
+      <content:encoded><![CDATA[<img src="https://www.golem.de/1711/131200-149083-i_rc.jpg" width="140" height="140" vspace="3" hspace="8" align="left">Das US-Brau-Unternehmen Anheuser Busch hat 40 der neuen Lkws von Tesla vorbestellt. Dem Hersteller zufolge ist das die größte Vorbestellung bisher. Auch Walmart und DHL haben den Elektro-Truck bereits geordert. (<a href="https://www.golem.de/specials/tesla/">Tesla</a>, <a href="https://www.golem.de/specials/elektroauto/">Elektroauto</a>) <img src="https://cpx.golem.de/cpx.php?class=17&amp;aid=131577&amp;page=1&amp;ts=1512830640" alt="" width="1" height="1" />]]></content:encoded>
+      <slash:comments/>
+    </item>
+  </channel>
+</rss>

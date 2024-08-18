@@ -1,0 +1,13 @@
+# 1.11.3
+Eric (1):
+  * [b5a50dfb] Updated Chinese (Simplified) translation using Weblate
+
+Jonas Kalderstam (9):
+  * [aa9ebbd3] Maybe fixed a nullpointer error
+  * [6023a40c] Fixed sporadic error while loading images
+  * [56b7c946] Fixed reader going blank after opening webview and going back
+  * [da0d2a9f] Updated view models with correct nullability
+  * [078a486c] Fixed additional fragment view lifecycle issues
+
+Nikita Epifanov (1):
+  * [d09adafe] Updated Russian translation using Weblate

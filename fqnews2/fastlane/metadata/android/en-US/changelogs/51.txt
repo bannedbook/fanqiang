@@ -1,0 +1,6 @@
+# 1.8.12
+*   Fixed webview being obscured by the action bar
+    See !182 #179 #173
+*   Added Spanish translation
+    Thanks to Khar Khamal
+    See !180

@@ -1,0 +1,19 @@
+# 2.0.8
+Agnieszka C (2):
+  * [b8857312] Updated Polish translation using Weblate
+
+Andrij Mizyk (2):
+  * [7bbed7f1] Updated Ukrainian translation using Weblate
+
+El Pirujo (2):
+  * [3bbb9216] Updated Spanish translation using Weblate
+
+Eric (2):
+  * [e3a59bbe] Updated Chinese (Simplified) translation using Weblate
+
+J. Lavoie (2):
+  * [993a07b8] Updated Italian translation using Weblate
+
+Jonas Kalderstam (7):
+  * [f976af75] Fixed sync indicator getting stuck sometimes
+  * [3d3da496] Added sync progr

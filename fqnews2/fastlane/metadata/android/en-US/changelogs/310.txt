@@ -1,0 +1,14 @@
+# 2.6.25
+Jonas Kalderstam (6):
+  * [dea0a7092] Updated release pipeline to always publish APKs even if Play
+         store is dumb
+  * [26b71e8dd] Fixed release pipeline syntax
+  * [040255905] Added ktlint to gradle
+  * [ebb5ea81a] Ensured retry-after is respected, even when feeds share the
+         same host
+  * [42ce72343] Rewrote reader layout engine. Adds real table support.
+  * [e76526be9] Fixed test
+
+eevan78 (2):
+  * [1d306a759] Updated Serbian translation using Weblate
+  * [0b19e6d44] Tra

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title>NixOS Linux</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+
+        <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
+
+        <link rel="stylesheet" href="css/nixos-site.css" type="text/css" />
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+
+        <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <li class="dropdown brand">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                            <img src="logo/nix-wiki.png" alt="NixOS" class="logo" />                NixOS              <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">NixOS</a></li>
+                            <li><a href="nix">Nix</a></li>
+                            <li><a href="nixops">NixOps</a></li>
+                            <li><a href="nixpkgs">Nixpkgs</a></li>
+                            <li class="divider"></li>
+                            <li><a href="hydra">Hydra</a></li>
+                            <li><a href="disnix">Disnix</a></li>
+                        </ul>
+                    </li>
+
+                    <div class="nav-collapse collapse">              <ul class="nav pull-left">
+                        <li><a href="nixos/about.html">About</a></li>
+                        <li><a href="nixos/download.html">Download</a></li>
+                        <li><a href="nixos/support.html">Support</a></li>
+                        <li><a href="nixos/packages.html">Packages</a></li>
+                        <li><a href="nixos/options.html">Options</a></li>
+                        <li><a href="nixos/community.html">Community</a></li>
+                        <li><a href="nixos/security.html">Security</a></li>
+                    </ul>
+                        <ul class="nav pull-right">
+                            <!--
+                            <li><a href="https://github.com/NixOS/nixpkgs"><i class="fa fa-github"></i></a></li>
+                            <li><a href="https://twitter.com/nixos_org"><i class="fa fa-twitter"></i></a></li>
+                            -->
+                            <form class="navbar-search" method="get" action="https://www.google.com/search">
+                                <input name="q" type="text" class="search-query span2" placeholder="Search nixos.org"/>
+                                <input name="sitesearch" type="hidden" value="nixos.org"/>
+                            </form>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container main">
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="/news-rss.xml" />
+
+            <div class="jumbotron">
+                <img class="right-logo" src="logo/nixos-logo-only-hires.png" alt="NixOS Logo"/>
+                <h1>NixOS</h1>
+                <h2>The Purely Functional Linux Distribution</h2>
+
+                <p class="lead">NixOS is a Linux distribution with a unique approach
+                    to package and configuration management.  Built on top of the <a
+                        href="nix">Nix package manager</a>, it is completely
+                    declarative, makes upgrading systems reliable, and has <a
+                        href="nixos/about.html">many other advantages</a>.</p>
+
+                <div class="get-nixos get-button">
+                    <a class="btn btn-large btn-success"
+                        href="nixos/download.html"><i class="fa
+  fa-cloud-download"></i> Get NixOS</a>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row-fluid">
+                <div class="span4">
+                    <h2>Declarative</h2>
+                    <p>NixOS has a completely <strong>declarative</strong> approach to
+                        configuration management: you write a specification of the desired
+                        configuration of your system in NixOS’s modular language, and
+                        NixOS takes care of making it happen.</p>
+                </div>
+                <div class="span4">
+                    <h2>Reliable</h2>
+                    <p>NixOS has <strong>atomic upgrades and rollbacks</strong>.  It’s
+                        always safe to try an upgrade or configuration change: if things
+                        go wrong, you can always roll back to the previous
+                        configuration.</p>
+                </div>
+                <div class="span4">
+                    <h2>DevOps-friendly</h2>
+                    <p>Declarative specs and safe upgrades make NixOS a great system
+                        for DevOps use.  <a
+                            href="nixops"><strong>NixOps</strong></a>, the NixOS cloud
+                        deployment tool, allows you to provision and manage networks of
+                        NixOS machines in environments like Amazon EC2 and VirtualBox.</p>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row-fluid">
+                <div class="span6">
+                    <h3>
+                        <a href="/news-rss.xml">
+                            <img src="/logo/rss.png"/>
+                        </a>
+                        News
+                    </h3><table class="news"><tr class="news-header"><td class="news-short">
+                    NixOS 18.09 released
+                </td><td class="news-date"> Oct 06 2018</td></tr><tr class="news-descr"><td colspan="2">
+                    <a href="https://github.com/NixOS/nixos-artwork/blob/master/releases/18.09-jellyfish/jellyfish.png">
+                        <img class="inline" src="logo/nixos-logo-18.09-jellyfish-lores.png" alt="18.09 Jellyfish logo" with="100" height="87"/>
+                    </a>
+                    NixOS 18.09 “Jellyfish” has been released, the tenth stable release branch.
+                    See the <a href="/nixos/manual/release-notes.html#sec-release-18.09">release notes</a>
+                    for details. You can get NixOS 18.09 ISOs and VirtualBox appliances
+                    from the <a href="nixos/download.html">download page</a>.
+                    For information on how to upgrade from older release branches
+                    to 18.09, check out the
+                    <a href="/nixos/manual/index.html#sec-upgrading">manual section on upgrading</a>.
+                </td></tr><tr class="news-header"><td class="news-short">
+                    Fastly supports NixOS
+                </td><td class="news-date"> Oct 04 2018</td></tr><tr class="news-descr"><td colspan="2">
+                    We are happy to announce that we have moved our binary cache to <a href="https://fastly.com">Fastly</a>. Fastly
+                    is a big supporter of open source projects and now NixOS is one of them! Fastly provides us with CDN capability,
+                    which previously was running on AWS CloudFront. Big thanks go to Fastly, in particular Tom Denniston and Elaine
+                    Greenberg, our friends at <a href="https://www.infor.com">Infor</a> and <a href="https://packet.net">Packet.net</a>
+                    and Graham Christensen for making this possible.
+                </td></tr><tr class="news-header"><td class="news-short">
+                    Nix 2.1 released
+                </td><td class="news-date"> Sep 02 2018</td></tr><tr class="news-descr"><td colspan="2">
+                    <a href="/nix/download.html">Nix 2.1</a>
+                    has been released.  See the <a href="/nix/manual#ssec-relnotes-2.1">release
+                    notes</a> for a list of changes and new features.
+                </td></tr><tr class="news-header"><td class="news-short">
+                    NixOS Discourse forum
+                </td><td class="news-date"> Aug 14 2018</td></tr><tr class="news-descr"><td colspan="2">
+                    The <tt>nix-devel</tt> mailing list is now replaced by our discourse forum instance which is also usable by email:
+                    <a href="https://discourse.nixos.org"><tt>discourse.nixos.org</tt></a>.
+                </td></tr><tr class="news-header"><td class="news-short">
+                    NixCon 2018
+                </td><td class="news-date"> May 21 2018</td></tr><tr class="news-descr"><td colspan="2">
+                    We're happy to announce that <strong>NixCon 2018</strong>, the
+                    third Nix Conference, will take place <strong>October 25-27 2018 in London</strong>
+                    For more information, see the
+                    <a href="http://nixcon2018.org/">NixCon 2018 website</a>.
+                    And please consider
+                    <a href="https://nixcon2018.org/#call-for-paper">submitting a talk</a>!
+                </td></tr><tr class="news-header"><td class="news-short">
+                    NixOS 18.03 released
+                </td><td class="news-date"> Apr 04 2018</td></tr><tr class="news-descr"><td colspan="2">
+                    <a href="https://github.com/NixOS/nixos-artwork/blob/master/releases/18.03-impala/impala.png">
+                        <img class="inline" src="logo/nixos-logo-18.03-impala-lores.png" alt="18.03 Impala logo"/>
+                    </a>
+                    NixOS 18.03 “Impala” has been released, the ninth stable release branch.
+                    See the <a href="/nixos/manual/release-notes.html#sec-release-18.03">release notes</a>
+                    for details. You can get NixOS 18.03 ISOs and VirtualBox appliances
+                    from the <a href="nixos/download.html">download page</a>.
+                    For information on how to upgrade from older release branches
+                    to 18.03, check out the
+                    <a href="/nixos/manual/index.html#sec-upgrading">manual section on upgrading</a>.
+                </td></tr><tr class="news-header"><td class="news-short">
+                    Nix 2.0 released
+                </td><td class="news-date"> Feb 22 2018</td></tr><tr class="news-descr"><td colspan="2">
+                    <a href="/nix/download.html">Nix 2.0</a>
+                    has been released.  See the <a href="/nix/manual#ssec-relnotes-2.0">release
+                    notes</a> for a list of changes and new features.
+                </td></tr><tr class="news-header"><td class="news-short">
+                    NixOS 17.09 released
+                </td><td class="news-date"> Oct 02 2017</td></tr><tr class="news-descr"><td colspan="2">
+                    NixOS 17.09 “Hummingbird” has been released, the eigth stable release
+                    branch. See the <a href="/nixos/manual/release-notes.html#sec-release-17.09">release notes</a>
+                    for details. You can get NixOS 17.09 ISOs and VirtualBox
+                    appliances from the <a href="nixos/download.html">download
+                    page</a>. For information on how to upgrade from older release
+                    branches to 17.09, check out the <a href="/nixos/manual/index.html#sec-upgrading">manual section on
+                    upgrading</a>.
+                </td></tr><tr class="news-header"><td class="news-short">
+                    Nix-dev mailing list moved
+                </td><td class="news-date"> Jul 12 2017</td></tr><tr class="news-descr"><td colspan="2">
+                    The <tt>nix-dev</tt> mailing list has moved to
+                    <a href="https://groups.google.com/forum/#!forum/nix-devel"><tt>nix-devel</tt></a>
+                    on Google Groups.
+                </td></tr><tr class="news-header"><td class="news-short">
+                    NixCon 2017
+                </td><td class="news-date"> Jun 18 2017</td></tr><tr class="news-descr"><td colspan="2">
+                    We're happy to announce that <strong>NixCon 2017</strong>, the
+                    second Nix Conference, will take place <strong>October 28–31 2017 in Munich</strong>
+                    For more information, see the
+                    <a href="http://nixcon2017.org/">NixCon 2017 website</a>.
+                    And please consider
+                    <a href="https://schedule.nixcon2017.org/en/nixcon2017/cfp/">submitting a talk</a>!
+                </td></tr><tr class="news-header"><td class="news-short">
+                    NixOS 17.03 released
+                </td><td class="news-date"> Mar 31 2017</td></tr><tr class="news-descr"><td colspan="2">
+                    NixOS 17.03 “Gorilla” has been released, the seventh stable release
+                    branch. See the <a href="/nixos/manual/release-notes.html#sec-release-17.03">release notes</a>
+                    for details. You can get NixOS 17.03 ISOs and VirtualBox
+                    appliances from the <a href="nixos/download.html">download
+                    page</a>. For information on how to upgrade from older release
+                    branches to 17.03, check out the <a href="/nixos/manual/index.html#sec-upgrading">manual section on
+                    upgrading</a>.
+                </td></tr><tr class="news-header"><td class="news-short">
+                    NixOS 16.09 released
+                </td><td class="news-date"> Oct 03 2016</td></tr><tr class="news-descr"><td colspan="2">
+                    NixOS 16.09 “Flounder” has been released, the sixth stable release
+                    branch. See the <a href="/nixos/manual/release-notes.html#sec-release-16.09">release notes</a>
+                    for details. You can get NixOS 16.09 ISOs and VirtualBox
+                    appliances from the <a href="nixos/download.html">download
+                    page</a>. For information on how to upgrade from older release
+                    branches to 16.09, check out the <a href="/nixos/manual/index.html#sec-upgrading">manual section on
+                    upgrading</a>.
+                </td></tr></table>
+                    <p><a href="news.html" class="btn btn-mini">More »</a></p>
+                </div>
+                <div class="span6">
+
+                    <h3>
+                        <a href="/blogs.xml">
+                            <img src="/logo/rss.png"/>
+                        </a>
+                        Blog Posts
+                    </h3>
+                    <ul class="nixos-blogs">        <li>
+                        <div class="nixos-blog">            <div class="nixos-blog-title">
+                            <a href="http://ocharles.org.uk/blog/posts/2018-12-25-fast-downward.html">Solving Planning Problems with Fast Downward and Haskell</a>
+                        </div>
+                            <div class="nixos-blog-author-info">
+                                <span class="nixos-blog-author">Ollie Charles</span>
+                                <span class="muted"> wrote on Tue, 25 Dec 2018 00:00:00 +0000</span>
+                            </div>
+                        </div>
+                    </li>        <li>
+                        <div class="nixos-blog">            <div class="nixos-blog-title">
+                            <a href="https://matthewbauer.us/blog/build-systems.html">Subjective ranking of build systems</a>
+                        </div>
+                            <div class="nixos-blog-author-info">
+                                <span class="nixos-blog-author">Matthew Bauer</span>
+                                <span class="muted"> wrote on Mon, 26 Nov 2018 00:00:00 +0000</span>
+                            </div>
+                        </div>
+                    </li>        <li>
+                        <div class="nixos-blog">            <div class="nixos-blog-title">
+                            <a href="https://nixos.mayflower.consulting/blog/2018/11/08/the-nixops-default-module/">The nixops defaults module</a>
+                        </div>
+                            <div class="nixos-blog-author-info">
+                                <span class="nixos-blog-author">Mayflower</span>
+                                <span class="muted"> wrote on Thu, 08 Nov 2018 14:00:00 +0000</span>
+                            </div>
+                        </div>
+                    </li>        <li>
+                        <div class="nixos-blog">            <div class="nixos-blog-title">
+                            <a href="http://sandervanderburg.blogspot.com/2018/10/auto-patching-prebuilt-binary-software.html">Auto patching prebuilt binary software packages for deployment with the Nix package manager</a>
+                        </div>
+                            <div class="nixos-blog-author-info">
+                                <span class="nixos-blog-author">Sander van der Burg</span>
+                                <span class="muted"> wrote on Tue, 30 Oct 2018 22:57:00 +0000</span>
+                            </div>
+                        </div>
+                    </li>        <li>
+                        <div class="nixos-blog">            <div class="nixos-blog-title">
+                            <a href="https://nixos.mayflower.consulting/blog/2018/10/26/nixops-machine-configs/">The NixOps resources.machines option</a>
+                        </div>
+                            <div class="nixos-blog-author-info">
+                                <span class="nixos-blog-author">Mayflower</span>
+                                <span class="muted"> wrote on Fri, 26 Oct 2018 11:00:00 +0000</span>
+                            </div>
+                        </div>
+                    </li>      <p><a href="https://planet.nixos.org/" class="btn btn-mini">More »</a></p>
+                    </ul>
+
+                    <h3>Commits</h3>    <p class="muted">520 commits in the last week, 40010 in the last year</p>
+                    <ul class="nixos-commits">        <li>
+                        <div class="nixos-commit">
+                            <img class="nixos-commit-avatar" src="https://avatars2.githubusercontent.com/u/6806011?v=4" alt="Avatar"/>
+                            <div class="nixos-commit-summary">                <a href="https://github.com/NixOS/nixpkgs/commit/98686d3b7f9bf156331b88c2a543da224a63e0e2">python3.pkgs.aiohttp: 3.5.2 -&gt; 3.5.3</a>            </div>
+                            <div class="nixos-commit-author-info">
+                                <span class="nixos-commit-author">                  <a href="https://github.com/dotlambda">Robert Schütz</a>              </span>
+                                <span class="muted">authored 2019-01-11T22:50:59Z</span>
+                            </div>
+                        </div>
+                    </li>        <li>
+                        <div class="nixos-commit">
+                            <img class="nixos-commit-avatar" src="https://avatars2.githubusercontent.com/u/6806011?v=4" alt="Avatar"/>
+                            <div class="nixos-commit-summary">                <a href="https://github.com/NixOS/nixpkgs/commit/feae4d6cdbfd9bc93328867539d9b7cca2039124">home-assistant: 0.85.0 -&gt; 0.85.1</a>            </div>
+                            <div class="nixos-commit-author-info">
+                                <span class="nixos-commit-author">                  <a href="https://github.com/dotlambda">Robert Schütz</a>              </span>
+                                <span class="muted">authored 2019-01-11T22:40:58Z</span>
+                            </div>
+                        </div>
+                    </li>        <li>
+                        <div class="nixos-commit">
+                            <img class="nixos-commit-avatar" src="https://avatars1.githubusercontent.com/u/245573?v=4" alt="Avatar"/>
+                            <div class="nixos-commit-summary">                <a href="https://github.com/NixOS/nixpkgs/commit/73625f25223b47af03a372acaa2b8044b118ad3f">root5: mark as broken on Linux</a>            </div>
+                            <div class="nixos-commit-author-info">
+                                <span class="nixos-commit-author">                  <a href="https://github.com/veprbl">Dmitry Kalinkin</a>              </span>
+                                <span class="muted">authored 2018-10-18T19:26:53Z</span>
+                            </div>
+                        </div>
+                    </li>        <li>
+                        <div class="nixos-commit">
+                            <img class="nixos-commit-avatar" src="https://avatars1.githubusercontent.com/u/245573?v=4" alt="Avatar"/>
+                            <div class="nixos-commit-summary">                <a href="https://github.com/NixOS/nixpkgs/commit/0c9335fb1ca2a0a78d52ba19e057dfb1103c6c43">root, root5: fix build on darwin</a>            </div>
+                            <div class="nixos-commit-author-info">
+                                <span class="nixos-commit-author">                  <a href="https://github.com/veprbl">Dmitry Kalinkin</a>              </span>
+                                <span class="muted">authored 2019-01-12T01:06:37Z</span>
+                            </div>
+                        </div>
+                    </li>        <li>
+                        <div class="nixos-commit">
+                            <img class="nixos-commit-avatar" src="https://avatars0.githubusercontent.com/u/3416?v=4" alt="Avatar"/>
+                            <div class="nixos-commit-summary">                <a href="https://github.com/NixOS/nixpkgs/commit/61e57a827b84251bbe4713ea2714a99f9e6f7314">icestorm: enableParallelBuilding = true</a>            </div>
+                            <div class="nixos-commit-author-info">
+                                <span class="nixos-commit-author">                  <a href="https://github.com/thoughtpolice">Austin Seipp</a>              </span>
+                                <span class="muted">authored 2019-01-10T22:08:01Z</span>
+                            </div>
+                        </div>
+                    </li>    </ul>
+                    <p><a href="https://github.com/NixOS/nixpkgs/commits/master" class="btn btn-mini">More »</a></p>
+
+                    <h3>Twitter</h3>
+                    <p>
+                        <a class="twitter-timeline" data-chrome="noheader nofooter transparent" href="https://twitter.com/nixos_org" data-widget-id="433975692670152704">Tweets by @nixos_org</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="footer">
+                <hr />
+                <center>
+                    <small class="muted">            Last changed on 2018-08-15            · <a href="https://github.com/NixOS/nixos-homepage/blob/master/index.tt">Page source</a>
+                        · <a href="https://github.com/NixOS/nixos-homepage/edit/master/index.tt">Edit</a>        </small>
+                </center>
+            </div>
+
+        </div>
+
+        <script>
+            $(document).ready(function() {
+            $(".nixos-popover").popover({});
+            });
+        </script>
+
+    </body>
+
+</html>

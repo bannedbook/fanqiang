@@ -1,0 +1,41 @@
+image: debian/stretch
+packages:
+  - git
+  - openjdk-8-jdk-headless
+  - wget
+  - tar
+  - unzip
+  - lib32stdc++6
+  - lib32z1
+  - file
+  - mesa-utils
+  - pciutils
+environment:
+  ANDROID_COMPILE_SDK: "28"
+  ANDROID_BUILD_TOOLS: "28.0.3"
+  ANDROID_EMULATOR_SDK: "28"
+  GRADLE_USER_HOME: "/home/build/.gradle"
+  ANDROID_HOME: "/home/build/.androidhome"
+sources:
+  - https://git.sr.ht/~cowboyprogrammer/feeder
+triggers:
+  - action: email
+    condition: failure
+    to: jonas.srht@cowboyprogrammer.org
+secrets:
+  - d9eb6ad0-7288-447a-954b-74e22ef4d054
+  - c492e32e-551e-42e8-b8d5-c252fc20b625
+  - 8a654fa4-6c85-480f-abee-d3b50d92d5f7
+tasks:
+ - setup: |
+     export PATH="${ANDROID_HOME}/emulator/:${ANDROID_HOME}/tools/bin/:${ANDROID_HOME}/tools/:${ANDROID_HOME}/platform-tools/:${PATH}"
+     env
+     cd feeder
+     echo 'org.gradle.jvmargs=-Xmx1g' >> gradle.properties
+     ci/before
+ - build: |
+     cd feeder
+     ./gradlew build
+ - deploy: |
+     cd feeder
+     ci/deploy_playstore

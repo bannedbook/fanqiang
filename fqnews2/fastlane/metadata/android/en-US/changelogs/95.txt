@@ -1,0 +1,19 @@
+# 1.11.0
+Allan Nordhøy (2):
+  * [4e05cb55] Updated Norwegian Bokmål translation using Weblate
+
+Eduardo (1):
+  * [7d23f022] Updated Portuguese (Brazil) translation using Weblate
+
+El Pirujo (2):
+  * [4af3761e] Updated Spanish translation using Weblate
+
+J. Lavoie (2):
+  * [65079f61] Updated Italian translation using Weblate
+
+Jakub Fabijan (1):
+  * [d49aa9e6] Updated Esperanto translation using Weblate
+
+Jonas Kalderstam (7):
+  * [074e85ac] Fixed links not opening after screen rotation
+  * [2bd413a

@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:blogChannel="http://backend.userland.com/blogChannelModule" version="2.0"><channel><title>NixOS News</title><link>https://nixos.org</link><description>News for NixOS, the purely functional Linux distribution.</description><image><title>NixOS</title><url>https://nixos.org/logo/nixos-logo-only-hires.png</url><link>https://nixos.org/</link></image><item><title>
+    NixOS 18.09 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://github.com/NixOS/nixos-artwork/blob/master/releases/18.09-jellyfish/jellyfish.png">
+        <img class="inline" src="logo/nixos-logo-18.09-jellyfish-lores.png" alt="18.09 Jellyfish logo" with="100" height="87"/>
+    </a>
+    NixOS 18.09 “Jellyfish” has been released, the tenth stable release branch.
+    See the <a href="/nixos/manual/release-notes.html#sec-release-18.09">release notes</a>
+    for details. You can get NixOS 18.09 ISOs and VirtualBox appliances
+    from the <a href="nixos/download.html">download page</a>.
+    For information on how to upgrade from older release branches
+    to 18.09, check out the
+    <a href="/nixos/manual/index.html#sec-upgrading">manual section on upgrading</a>.
+</description><pubDate>Sat Oct 06 2018 00:00:00 GMT</pubDate></item><item><title>
+    Fastly supports NixOS
+</title><link>https://nixos.org/news.html</link><description>
+    We are happy to announce that we have moved our binary cache to <a href="https://fastly.com">Fastly</a>. Fastly
+    is a big supporter of open source projects and now NixOS is one of them! Fastly provides us with CDN capability,
+    which previously was running on AWS CloudFront. Big thanks go to Fastly, in particular Tom Denniston and Elaine
+    Greenberg, our friends at <a href="https://www.infor.com">Infor</a> and <a href="https://packet.net">Packet.net</a>
+    and Graham Christensen for making this possible.
+</description><pubDate>Thu Oct 04 2018 00:00:00 GMT</pubDate></item><item><title>
+    Nix 2.1 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="/nix/download.html">Nix 2.1</a>
+    has been released.  See the <a href="/nix/manual#ssec-relnotes-2.1">release
+    notes</a> for a list of changes and new features.
+</description><pubDate>Sun Sep 02 2018 00:00:00 GMT</pubDate></item><item><title>
+    NixOS Discourse forum
+</title><link>https://nixos.org/news.html</link><description>
+    The <tt>nix-devel</tt> mailing list is now replaced by our discourse forum instance which is also usable by email:
+    <a href="https://discourse.nixos.org"><tt>discourse.nixos.org</tt></a>.
+</description><pubDate>Tue Aug 14 2018 00:00:00 GMT</pubDate></item><item><title>
+    NixCon 2018
+</title><link>https://nixos.org/news.html</link><description>
+    We're happy to announce that <strong>NixCon 2018</strong>, the
+    third Nix Conference, will take place <strong>October 25-27 2018 in London</strong>
+    For more information, see the
+    <a href="http://nixcon2018.org/">NixCon 2018 website</a>.
+    And please consider
+    <a href="https://nixcon2018.org/#call-for-paper">submitting a talk</a>!
+</description><pubDate>Mon May 21 2018 00:00:00 GMT</pubDate></item><item><title>
+    NixOS 18.03 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://github.com/NixOS/nixos-artwork/blob/master/releases/18.03-impala/impala.png">
+        <img class="inline" src="logo/nixos-logo-18.03-impala-lores.png" alt="18.03 Impala logo"/>
+    </a>
+    NixOS 18.03 “Impala” has been released, the ninth stable release branch.
+    See the <a href="/nixos/manual/release-notes.html#sec-release-18.03">release notes</a>
+    for details. You can get NixOS 18.03 ISOs and VirtualBox appliances
+    from the <a href="nixos/download.html">download page</a>.
+    For information on how to upgrade from older release branches
+    to 18.03, check out the
+    <a href="/nixos/manual/index.html#sec-upgrading">manual section on upgrading</a>.
+</description><pubDate>Wed Apr 04 2018 00:00:00 GMT</pubDate></item><item><title>
+    Nix 2.0 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="/nix/download.html">Nix 2.0</a>
+    has been released.  See the <a href="/nix/manual#ssec-relnotes-2.0">release
+    notes</a> for a list of changes and new features.
+</description><pubDate>Thu Feb 22 2018 00:00:00 GMT</pubDate></item><item><title>
+    NixOS 17.09 released
+</title><link>https://nixos.org/news.html</link><description>
+    NixOS 17.09 “Hummingbird” has been released, the eigth stable release
+    branch. See the <a href="/nixos/manual/release-notes.html#sec-release-17.09">release notes</a>
+    for details. You can get NixOS 17.09 ISOs and VirtualBox
+    appliances from the <a href="nixos/download.html">download
+    page</a>. For information on how to upgrade from older release
+    branches to 17.09, check out the <a href="/nixos/manual/index.html#sec-upgrading">manual section on
+    upgrading</a>.
+</description><pubDate>Mon Oct 02 2017 00:00:00 GMT</pubDate></item><item><title>
+    Nix-dev mailing list moved
+</title><link>https://nixos.org/news.html</link><description>
+    The <tt>nix-dev</tt> mailing list has moved to
+    <a href="https://groups.google.com/forum/#!forum/nix-devel"><tt>nix-devel</tt></a>
+    on Google Groups.
+</description><pubDate>Wed Jul 12 2017 00:00:00 GMT</pubDate></item><item><title>
+    NixCon 2017
+</title><link>https://nixos.org/news.html</link><description>
+    We're happy to announce that <strong>NixCon 2017</strong>, the
+    second Nix Conference, will take place <strong>October 28–31 2017 in Munich</strong>
+    For more information, see the
+    <a href="http://nixcon2017.org/">NixCon 2017 website</a>.
+    And please consider
+    <a href="https://schedule.nixcon2017.org/en/nixcon2017/cfp/">submitting a talk</a>!
+</description><pubDate>Sun Jun 18 2017 00:00:00 GMT</pubDate></item><item><title>
+    NixOS 17.03 released
+</title><link>https://nixos.org/news.html</link><description>
+    NixOS 17.03 “Gorilla” has been released, the seventh stable release
+    branch. See the <a href="/nixos/manual/release-notes.html#sec-release-17.03">release notes</a>
+    for details. You can get NixOS 17.03 ISOs and VirtualBox
+    appliances from the <a href="nixos/download.html">download
+    page</a>. For information on how to upgrade from older release
+    branches to 17.03, check out the <a href="/nixos/manual/index.html#sec-upgrading">manual section on
+    upgrading</a>.
+</description><pubDate>Fri Mar 31 2017 00:00:00 GMT</pubDate></item><item><title>
+    NixOS 16.09 released
+</title><link>https://nixos.org/news.html</link><description>
+    NixOS 16.09 “Flounder” has been released, the sixth stable release
+    branch. See the <a href="/nixos/manual/release-notes.html#sec-release-16.09">release notes</a>
+    for details. You can get NixOS 16.09 ISOs and VirtualBox
+    appliances from the <a href="nixos/download.html">download
+    page</a>. For information on how to upgrade from older release
+    branches to 16.09, check out the <a href="/nixos/manual/index.html#sec-upgrading">manual section on
+    upgrading</a>.
+</description><pubDate>Mon Oct 03 2016 00:00:00 GMT</pubDate></item><item><title>
+    NixOps 1.4 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="/releases/nixops/nixops-1.4/nixops-1.4.tar.bz2">NixOps
+        1.4</a> has been released. This release contains contains many
+    nice new features. See the <a href="https://nixos.org/nixops/manual#ssec-relnotes-1.4">manual</a>
+    for details.
+</description><pubDate>Wed Jul 20 2016 00:00:00 GMT</pubDate></item><item><title>
+    NixOS 16.03 released
+</title><link>https://nixos.org/news.html</link><description>
+    NixOS 16.03 “Emu” has been released, the fifth stable release
+    branch. See the <a href="/nixos/manual/release-notes.html#sec-release-16.03">release notes</a>
+    for details. You can get NixOS 16.03 ISOs and VirtualBox
+    appliances from the <a href="nixos/download.html">download
+    page</a>. For information on how to upgrade from older release
+    branches to 16.03, check out the <a href="/nixos/manual/index.html#sec-upgrading">manual section on
+    upgrading</a>.
+</description><pubDate>Sun May 01 2016 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.11 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="/nix/download.html">Nix 1.11</a>
+    has been released.  See the <a href="/nix/manual#ssec-relnotes-1.11">release
+    notes</a> for a list of changes and new features.
+</description><pubDate>Fri Feb 19 2016 00:00:00 GMT</pubDate></item><item><title>
+    NixOS 15.09 released
+</title><link>https://nixos.org/news.html</link><description>
+    NixOS 15.09 “Dingo” has been released, the fourth stable release
+    branch. See the <a href="/nixos/manual/release-notes.html#sec-release-15.09">release notes</a>
+    for details. You can get NixOS 15.09 ISOs and VirtualBox
+    appliances from the <a href="nixos/download.html">download
+    page</a>. For information on how to upgrade from older release
+    branches to 15.09, check out the <a href="/nixos/manual/index.html#sec-upgrading">manual section on
+    upgrading</a>.
+</description><pubDate>Fri Oct 30 2015 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.10 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="/nix/download.html">Nix 1.10</a>
+    has been released.  See the <a href="/nix/manual#ssec-relnotes-1.10">release
+    notes</a> for a list of changes and new features.
+</description><pubDate>Sat Oct 03 2015 00:00:00 GMT</pubDate></item><item><title>
+    NixCon 2015
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="http://conf.nixos.org"><img class="inline" style="width: 10em;" src="https://d2z6c3c3r6k4bx.cloudfront.net/uploads/event/logo/1005856/banner.png" alt="NixCon logo"/></a>
+    We're happy to announce that <strong>NixCon 2015</strong>, the
+    first Nix Conference, will take place on <strong>November
+    14—15th 2015 in Berlin</strong>. For more information, see the
+    <a href="http://conf.nixos.org">NixCon website</a>. And please
+    consider <a href="http://conf.nixos.org/submit-a-talk.html">submitting a
+    talk</a>!
+</description><pubDate>Thu Sep 03 2015 00:00:00 GMT</pubDate></item><item><title>
+    NixOS Foundation
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://nixos.org/nixos/foundation.html">The NixOS Foundation</a>
+    was started to improve our ability to maintain and extend the infrastructure
+    used by the Nix related projects. If you would like to support us, please go
+    <a href="https://nixos.org/nixos/foundation.html">here</a> and donate some money!
+</description><pubDate>Sun Aug 09 2015 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.9 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-1.9">Nix 1.9</a>
+    has been released.  See the <a href="https://nixos.org/releases/nix/nix-1.9/manual/#ssec-relnotes-1.9">release
+    notes</a> for a list of changes and new features.
+</description><pubDate>Sun Jul 12 2015 00:00:00 GMT</pubDate></item><item><title>
+    NixOS 14.12 released
+</title><link>https://nixos.org/news.html</link><description>
+    NixOS 14.12 “Caterpillar” has been released, the third stable
+    release branch. It brings Linux 3.14, systemd 217, Glibc 2.20,
+    KDE 4.14.1, and much more. See the <a href="/nixos/manual/sec-release-14.12.html">release notes</a>
+    for details. You can get NixOS 14.12 ISOs and VirtualBox
+    appliances from the <a href="nixos/download.html">download
+    page</a>. For information on how to upgrade from older release
+    branches to 14.12, check out the <a href="/nixos/manual/sec-upgrading.html">manual section on
+    upgrading</a>.
+</description><pubDate>Fri Jan 30 2015 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.8 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-1.8">Nix 1.8</a>
+    has been released.  See the <a href="https://nixos.org/releases/nix/nix-1.8/manual/#ssec-relnotes-1.8">release
+    notes</a> for a list of changes and new features.
+</description><pubDate>Wed Jan 14 2015 00:00:00 GMT</pubDate></item><item><title>
+    NixOS sprint in Ljubljana
+</title><link>https://nixos.org/news.html</link><description>
+    We’re having a NixOS sprint at the <a href="https://www.kiberpipa.org/en/">Kiberpipa hackerspace</a>
+    in Ljubljana, Slovenia, on <strong>August
+    23—27</strong>. Joining is free! For more information and to
+    register, please go to the <a href="http://www.kiberpipa.org/nixos-sprint-ljubljana-2014/">sprint
+    page</a>.
+</description><pubDate>Sat Aug 30 2014 00:00:00 GMT</pubDate></item><item><title>
+    NixOS 14.04 released
+</title><link>https://nixos.org/news.html</link><description>
+    NixOS 14.04 “Baboon” has been released, the second stable
+    release branch. It brings Linux 3.12, systemd 212, GCC 4.8,
+    Glibc 2.19, KDE 4.12, light-weight NixOS containers, and much
+    more. See the <a href="/nixos/manual/#sec-release-14.04">release
+    notes</a> for details. You can get NixOS 14.04 ISOs and
+    VirtualBox appliances from the <a href="nixos/download.html">download page</a>. For information on
+    how to upgrade a 13.10 system to 14.04, check out the <a href="/nixos/manual/#sec-upgrading">manual
+    section on upgrading</a>.
+</description><pubDate>Fri May 30 2014 00:00:00 GMT</pubDate></item><item><title>
+    NixOps 1.2 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nixops/nixops-1.2">NixOps
+        1.2</a> has been released. This release contains contains many nice new features. See the <a href="https://nixos.org/nixops/manual#ssec-relnotes-1.2">manual</a>
+    for details.
+</description><pubDate>Fri May 30 2014 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.7 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-1.7">Nix 1.7</a>
+    has been released.  See the <a href="https://nixos.org/releases/nix/nix-1.7/manual/#ssec-relnotes-1.7">release
+    notes</a> for a list of new features.
+</description><pubDate>Sun May 11 2014 00:00:00 GMT</pubDate></item><item><title>
+    Heartbleed vulnerability in OpenSSL
+</title><link>https://nixos.org/news.html</link><description>
+    A <a href="http://heartbleed.com/">serious security
+    vulnerability</a> has been discovered in OpenSSL. All stable
+    NixOS releases prior to version
+    <strong>13.10.35708.15a465c</strong> are vulnerable. (You can
+    see your current version by running <tt>nixos-version</tt>.) To
+    upgrade to the latest NixOS version, run <tt>nixos-rebuild
+    switch --upgrade</tt>. You can verify whether you are safe by
+    running
+
+    <pre class="code">
+        $ nix-store -qR /run/current-system | grep openssl
+    </pre>
+
+    If this shows any OpenSSL version prior to 1.0.1g, you may be
+    vulnerable.
+</description><pubDate>Fri May 09 2014 00:00:00 GMT</pubDate></item><item><title>
+    FOSDEM talks
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://www.domenkozar.com/">Domen Kožar</a> gave <a href="https://fosdem.org/2014/schedule/event/nixos_declarative_configuration_linux_distribution/">a
+    talk at FOSDEM about NixOS</a> (<a href="https://video.fosdem.org/2014/H1309_Van_Rijn/Saturday/NixOS_declarative_configuration_Linux_distribution.webm">video</a>).
+    Also, Ludovic Courtès gave <a href="https://fosdem.org/2014/schedule/event/gnuguix/">a talk on
+    Guix</a>, the Nix- and Guile-based package manager.
+</description><pubDate>Sun Mar 02 2014 00:00:00 GMT</pubDate></item><item><title>
+    Stdenv updates branch merged into master
+</title><link>https://nixos.org/news.html</link><description>
+    The stdenv-updates branch <a href="https://github.com/NixOS/nixpkgs/commit/668310a2b578d57a59dad7481db651ab3a258256">has
+    been merged</a> into the master branch of Nixpkgs.  The main
+    change are that brings is that Nixpkgs/NixOS are now based on
+    GCC 4.8 and Glibc 2.18, in addition to many smaller updates.
+</description><pubDate>Fri Feb 21 2014 00:00:00 GMT</pubDate></item><item><title>
+    NixOS 13.10 released
+</title><link>https://nixos.org/news.html</link><description>
+    We have released NixOS 13.10, the first stable branch of NixOS.
+    Its goal is to provide a safe branch for production environments
+    that need bug fixes and security updates, but not the
+    potentially destabilising changes that sometimes occur on the
+    unstable branch.  You can get NixOS 13.10 ISOs and VirtualBox
+    appliances from the <a href="nixos/download.html">download
+    page</a>.  See the <a href="https://nixos.org/nix-dev/2013-October/011941.html">announcement</a>
+    for more information.  For information on how to switch an
+    existing NixOS machine from the unstable channel to 13.10, check
+    out the <a href="https://nixos.org/nixos/manual/#sec-upgrading">manual
+    section on upgrading</a>.
+</description><pubDate>Sun Dec 01 2013 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.6.1 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-1.6.1">Nix
+        1.6.1</a> has been released.  This is primarily a bug fix
+    release but has some minor new features.  See the <a href="https://nixos.org/nix/manual/#ssec-relnotes-1.6.1">release
+    notes</a> for details.
+</description><pubDate>Thu Nov 28 2013 00:00:00 GMT</pubDate></item><item><title>
+    NixOS sources merged into Nixpkgs
+</title><link>https://nixos.org/news.html</link><description>
+    The NixOS Git tree has been merged into the Nixpkgs tree in
+    order to simplify development.  The sources now live in the <a href="https://github.com/NixOS/nixpkgs/tree/master/nixos"><tt>nixos</tt>
+    subdirectory of the Nixpkgs repository on GitHub</a>.  See the
+    <a href="https://nixos.org/nix-dev/2013-October/011873.html">announcement</a>
+    for more information.
+</description><pubDate>Sun Nov 10 2013 00:00:00 GMT</pubDate></item><item><title>
+    NixOps 1.1.1 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nixops/nixops-1.1.1">NixOps
+        1.1.1</a> has been released. This release consists mostly of minor bugfixes. See the <a href="https://hydra.nixos.org/build/6347332/download/1/manual/manual.html#ssec-relnotes-1.1.1">manual</a>
+    for details.
+</description><pubDate>Sat Nov 02 2013 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.6 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-1.6">Nix 1.6</a>
+    has been released.  See the <a href="https://hydra.nixos.org/build/6039366/download/3/release-notes">release
+    notes</a> for details.
+</description><pubDate>Thu Oct 10 2013 00:00:00 GMT</pubDate></item><item><title>
+    NixOps 1.1 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nixops/nixops-1.1">NixOps
+        1.1</a> has been released. This release brings a backend for Hetzner,
+    a German data center provider, support for EC2 spot instances and some
+    minor bugfixes. See the <a href="https://hydra.nixos.org/build/6036396/download/1/manual/manual.html#ssec-relnotes-1.1">manual</a>
+    for details.
+</description><pubDate>Wed Oct 09 2013 00:00:00 GMT</pubDate></item><item><title>
+    NixOS sprint in Slovenia
+</title><link>https://nixos.org/news.html</link><description>
+    A sprint focused on NixOS and <a href="http://kotti.pylonsproject.org/">Kotti</a> will be held <a href="http://www.coactivate.org/projects/zidanca-sprint-2013/project-home">22-26
+    July 2013 in Lokve, Slovenia</a>. It is organised by <a href="http://www.termitnjak.com/">Termitnjak</a> and sponsored
+    by <a href="http://www.logicblox.com/">LogicBlox</a>.
+</description><pubDate>Thu Aug 15 2013 00:00:00 GMT</pubDate></item><item><title>
+    NixOps 1.0.1 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nixops/nixops-1.0.1">NixOps
+        1.0.1</a> has been released, a minor bug fix release. See the <a href="https://hydra.nixos.org/build/5508053/download/1/manual/manual.html#ssec-relnotes-1.0.1">manual</a>
+    for details.
+</description><pubDate>Sun Aug 11 2013 00:00:00 GMT</pubDate></item><item><title>
+    NixOS presentation at EuroPython
+</title><link>https://nixos.org/news.html</link><description>
+    Domen Kožar gave a presentation at <a href="https://ep2013.europython.eu/conference/talks/nixos-operating-system-declarative-configuration-distribution">EuroPython
+    2013</a>: <a href="https://www.youtube.com/watch?v=DtOBROowzDg">“NixOS
+    Operating System: Declarative Configuration Distribution”</a>.
+</description><pubDate>Mon Aug 05 2013 00:00:00 GMT</pubDate></item><item><title>
+    NixOps 1.0 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nixops/nixops-1.0">NixOps
+        1.0</a> has been released, the inaugural release of the NixOS
+    cloud deployment tool.  See the <a href="https://nixos.org/nix-dev/2013-June/011363.html">announcement</a>
+    and the <a href="https://hydra.nixos.org/build/5426864/download/1/manual/manual.html">manual</a>
+    for details.
+</description><pubDate>Thu Jul 25 2013 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.5.3 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-1.5.3">Nix 1.5.3</a>
+    has been released.  This is primarily a bug fix release.  See the <a href="https://hydra.nixos.org/build/5350096/download/3/release-notes">release
+    notes</a> for details.
+</description><pubDate>Wed Jul 17 2013 00:00:00 GMT</pubDate></item><item><title>
+    PhD thesis: A Reference Architecture for Distributed Software Deployment
+</title><link>https://nixos.org/news.html</link><description>
+    Today <a href="http://www.st.ewi.tudelft.nl/~sander/">Sander van
+    der Burg</a> successfully defended his PhD thesis entitled <a href="http://www.st.ewi.tudelft.nl/~sander/index.php/phdthesis"><em>A
+    Reference Architecture for Distributed Software
+    Deployment</em></a>!  It describes (among other things) <a href="https://nixos.org/disnix/">Disnix</a>, a system for
+    deployment of service-oriented architectures.
+</description><pubDate>Wed Jul 03 2013 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.5.2 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-1.5.2">Nix 1.5.2</a>
+    has been released.  This is a bug fix release.
+</description><pubDate>Thu Jun 13 2013 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.5.1 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-1.5.1">Nix 1.5.1</a>
+    has been released.  It fixes a regression introduced in Nix 1.4.  See the <a href="https://hydra.nixos.org/build/4253990/download/3/release-notes">release
+    notes</a> for details.
+</description><pubDate>Thu Mar 28 2013 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.4 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-1.4">Nix 1.4</a>
+    has been released.  This is primarily a bug fix release that
+    addresses a security problem in multi-user mode.  See the <a href="https://hydra.nixos.org/build/4228031/download/3/release-notes">release
+    notes</a> for details.  For installation information, see the <a href="https://hydra.nixos.org/build/4228031/download/1/manual#chap-installation">manual</a>.
+</description><pubDate>Tue Mar 26 2013 00:00:00 GMT</pubDate></item><item><title>
+    NixOS switched to systemd
+</title><link>https://nixos.org/news.html</link><description>
+    NixOS has switched from Upstart to <a href="https://www.freedesktop.org/wiki/Software/systemd">systemd</a>!
+    Systemd brings many advantages such as better dependency
+    management, socket-based activation of services, per-service
+    logging, cgroup-based process management, and much more.  (Read
+    the <a href="https://nixos.org/nix-dev/2013-January/010482.html">announcement</a>.)
+</description><pubDate>Thu Feb 21 2013 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.3 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-1.3">Nix 1.3</a>
+    has been released.  This is primarily a bug fix release.  See
+    the <a href="https://hydra.nixos.org/build/3668901/download/3/release-notes">release
+    notes</a> for details.  For installation information, see the <a href="https://hydra.nixos.org/build/3668901/download/1/manual#chap-installation">manual</a>.
+</description><pubDate>Tue Feb 05 2013 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.2 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-1.2">Nix 1.2</a>
+    has been released.  See the <a href="https://hydra.nixos.org/build/3455295/download/3/release-notes">release
+    notes</a> for details.  For installation information, see the <a href="https://hydra.nixos.org/build/3455295/download/1/manual">manual</a>.
+</description><pubDate>Sun Jan 06 2013 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.1 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-1.1">Nix 1.1</a>
+    has been released.  See the <a href="https://hydra.nixos.org/build/2860022/download/3/release-notes">release
+    notes</a> for details.  For installation information, see the <a href="https://hydra.nixos.org/build/2860022/download/1/manual">manual</a>.
+</description><pubDate>Sat Aug 18 2012 00:00:00 GMT</pubDate></item><item><title>
+    Binary Nix tarballs available
+</title><link>https://nixos.org/news.html</link><description>
+    Our continuous build system, Hydra, now produces <a href="https://hydra.nixos.org/view/nix/trunk/latest">binary
+    tarball distributions</a> of Nix for Mac OS X (Darwin), FreeBSD
+    and Linux.  The tarballs contain all dependencies of Nix, making
+    it a lot easier to install Nix on those platforms.  To install,
+    download a binary tarball, unpack it in the root directory, then
+    run <tt>nix-finish-install</tt>. See the <a href="https://hydra.nixos.org/view/nix/trunk/latest/tarball/download-by-type/doc/manual#chap-installation">manual</a>
+    for more information.
+</description><pubDate>Sun Jun 24 2012 00:00:00 GMT</pubDate></item><item><title>
+    Nix 1.0 released
+</title><link>https://nixos.org/news.html</link><description>
+    After almost two years of development, <a href="https://hydra.nixos.org/release/nix/nix-1.0">Nix 1.0</a>
+    has been released.  See the <a href="https://hydra.nixos.org/build/2609700/download/3/release-notes">release
+    notes</a> for an overview of the most important improvements.
+    For installation information, see the <a href="https://hydra.nixos.org/build/2609700/download/1/manual">manual</a>.
+</description><pubDate>Mon Jun 11 2012 00:00:00 GMT</pubDate></item><item><title>PatchELF 0.6 released</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/patchelf/patchelf-0.6">PatchELF
+        0.6</a> has been released.  Apart from some bug fixes, it adds
+    support for executables produced by the Gold linker.  See the <a href="https://hydra.nixos.org/build/1524660/download/1/README">README</a>
+    for details.
+</description><pubDate>Wed Dec 07 2011 00:00:00 GMT</pubDate></item><item><title>Hydra talk at Inria</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/">
+        <img class="inline" src="images/hydra.png" alt="Hydra       logo"/></a>
+
+    Ludovic Courtès gave a talk on <a href="https://nixos.org/hydra">Hydra</a> at <a href="https://www.inria.fr/centre/bordeaux">Inria</a> (which has
+    its own Hydra instance for building Inria software) entitled <a href="http://sed.bordeaux.inria.fr/seminars/hydra-ci_20111103.pdf">“Hydra:
+    continuous integration for demanding people”</a>.
+</description><pubDate>Sat Dec 03 2011 00:00:00 GMT</pubDate></item><item><title>Moving to GitHub</title><link>https://nixos.org/news.html</link><description>
+    The NixOS project is (slowly) migrating from Subversion to Git!
+    The master repositories will be hosted in the <a href="https://github.com/NixOS/">NixOS organization</a> on <a href="https://github.com/">GitHub</a>.  For the moment, just a
+    few subprojects have been migrated, such as <a href="https://github.com/NixOS/hydra">Hydra</a> and <a href="https://github.com/NixOS/charon">Charon</a>.  Thanks to
+    Tianyi Cui for donating the NixOS GitHub organization.
+</description><pubDate>Mon Nov 28 2011 00:00:00 GMT</pubDate></item><item><title>
+    Nix-dev mailing list moved
+</title><link>https://nixos.org/news.html</link><description>
+    The <tt>nix-dev</tt> mailing list has moved.  The address is now
+    <tt>nix-dev@lists.science.uu.nl</tt> (<a href="http://lists.science.uu.nl/mailman/listinfo/nix-dev">web
+    interface</a>).
+</description><pubDate>Fri Oct 14 2011 00:00:00 GMT</pubDate></item><item><title>
+    FOSDEM talk about NixOS
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://fosdem.org/2011"><img class="inline" src="logo/fosdem-logo.png" alt="Fosdem logo"/></a>
+    <a href="http://www.st.ewi.tudelft.nl/~sander/">Sander van der
+        Burg</a> gave a talk about NixOS at the <a href="https://fosdem.org/2011/schedule/track/crossdistro_devroom">CrossDistro
+    track</a> of <a href="http://fosdem.org/2011/">FOSDEM</a> (<a href="http://blip.tv/file/4726612">video</a>, <a href="http://www.st.ewi.tudelft.nl/~sander/pdf/talks/vanderburg11-fosdem.pdf">slides</a>).
+</description><pubDate>Sat Mar 05 2011 00:00:00 GMT</pubDate></item><item><title>
+    ISSRE paper on NixOS-based system testing
+</title><link>https://nixos.org/news.html</link><description>
+    The paper <a href="docs/papers.html#issre10">“Automating System
+    Tests Using Declarative Virtual Machines”</a> (by Sander van der
+    Burg and Eelco Dolstra) has been accepted for presentation at
+    the <a href="http://www.issre2010.org/">21st IEEE International
+    Symposium on Software Reliability Engineering (ISSRE 2010)</a>.
+    It describes how system tests with complex requirements on the
+    environment (such as remote machines, network topologies, system
+    services or root privileges) can be written succinctly using <a href="https://svn.nixos.org/websvn/nix/nixos/trunk/tests/bittorrent.nix">declarative
+    specifications</a> of the machines needed by the test
+    environment.  From these specifications we can automatically
+    instantiate (networks of) virtual machines.  This is what we use
+    for <a href="https://hydra.nixos.org/jobset/nixos/trunk/jobstatus">automated
+    regression testing of NixOS itself</a>.  A <a href="https://nixos.org/~eelco/pubs/decvms-issre2010-submitted.pdf">draft
+    of the paper</a> is available.
+</description><pubDate>Sat Sep 18 2010 00:00:00 GMT</pubDate></item><item><title>
+    Xfce in NixOS
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="http://www.xfce.org/"><img class="inline" src="logo/xfce-small.png" alt="Xfce screenshot"/></a>
+    NixOS now supports <a href="http://www.xfce.org/">Xfce</a>, a
+    modern, light-weight desktop environment.  It can be enabled by
+    setting the NixOS configuration value
+    <tt>services.xserver.desktopManager.xfce.enable</tt> to
+    <tt>true</tt>.  (<a href="nixos/screenshots/nixos-xfce.png">Screenshot</a>)
+</description><pubDate>Sat Sep 18 2010 00:00:00 GMT</pubDate></item><item><title>
+    Nix 0.16 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-0.16">Nix
+        0.16</a> has been released, featuring a much faster evaluator
+    and support for configurable parallelism inside builders.  See
+    the <a href="https://hydra.nixos.org/build/565033/download/3/release-notes">release
+    notes</a> for details.  For installation information, see the <a href="https://hydra.nixos.org/build/565033/download/1/manual">manual</a>.
+</description><pubDate>Fri Sep 17 2010 00:00:00 GMT</pubDate></item><item><title>
+    NixOS talk at LSM
+</title><link>https://nixos.org/news.html</link><description>
+    Ludovic Courtès gave a talk about Nix and NixOS at the <a href="http://2010.rmll.info/spip.php">Libre Software Meeting</a>
+    in Bordeaux, entitled <a href="http://2010.rmll.info/NixOS-The-Only-Functional-GNU-Linux-Distribution.html?lang=en"><em>“NixOS:
+    The Only Functional GNU/Linux Distribution”</em></a> (<a href="http://2010.rmll.info/IMG/pdf/LSM2010-OS-NixOS.pdf">slides</a>).
+</description><pubDate>Mon Aug 09 2010 00:00:00 GMT</pubDate></item><item><title>
+    Nix 0.15 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-0.15">Nix
+        0.15</a> has been released.  This is a bug fix release.  See the
+    <a href="https://hydra.nixos.org/build/326788/download/3/release-notes">release
+        notes</a> for details.  For installation information, see the <a href="https://hydra.nixos.org/build/326788/download/1/manual">manual</a>.
+</description><pubDate>Sat Apr 17 2010 00:00:00 GMT</pubDate></item><item><title>
+    Nix 0.14 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-0.14">Nix
+        0.14</a> has been released.  This is primarily a bug fix
+    release.  See the <a href="https://hydra.nixos.org/build/281118/download/3/release-notes">release
+    notes</a> for details.  For installation information, see the <a href="https://hydra.nixos.org/build/281118/download/1/manual">manual</a>.
+</description><pubDate>Thu Mar 04 2010 00:00:00 GMT</pubDate></item><item><title>
+    Nix logo
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="logo/nixos-hires.png">
+        <img class="inline" src="logo/nixos-lores.png" alt="Nix       logo"/></a> Long overdue, the Nix project finally has a logo!
+    The logo was originally created by <a href="http://arbitrary.name/">Simon Frankau</a> for the <a href="https://www.haskell.org/haskellwiki/Haskell_logos/New_logo_ideas">Haskell
+    logo competition</a>, who kindly gave us permission to use it
+    for the Nix project.  (The snowflake motif is even more
+    appropriate for Nix, because <em>nix</em> is Latin for
+    <em>snow</em>.)  Any further modifications are entirely our
+    fault.
+</description><pubDate>Fri Dec 25 2009 00:00:00 GMT</pubDate></item><item><title>
+    Nix 0.13 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/release/nix/nix-0.13">Nix
+        0.13</a> has been released.  This is mostly a bug fix release,
+    although it also adds some new language features.  See the <a href="https://hydra.nixos.org/build/118589/download/3/release-notes/">release
+    notes</a> for details.  For installation information, see the <a href="https://hydra.nixos.org/build/118589/download/1/manual/">manual</a>.
+</description><pubDate>Sat Dec 05 2009 00:00:00 GMT</pubDate></item><item><title>
+    LWN.net article on NixOS
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://lwn.net/">LWN.net</a> has an <a href="https://lwn.net/Articles/337677/">article about NixOS</a>
+    written by Koen Vervloesem.
+</description><pubDate>Sun Jul 26 2009 00:00:00 GMT</pubDate></item><item><title>
+    Nixpkgs 0.12 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://nixos.org/releases/nixpkgs/nixpkgs-0.12/">Nixpkgs
+        0.12</a> has been released.  See the <a href="https://nixos.org/releases/nixpkgs/nixpkgs-0.12/release-notes/">release
+    notes</a> for details.  Meanwhile, the Nixpkgs trunk has been
+    <a href="https://svn.nixos.org/websvn/nix/nixpkgs/trunk/?rev=15324&amp;sc=1">updated</a>
+    to GCC 4.3.3, Glibc 2.9 and X.org 7.4.
+</description><pubDate>Sun May 24 2009 00:00:00 GMT</pubDate></item><item><title>
+    OpenOffice.org 3 in Nixpkgs
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="nixos/screenshots/nixos-openoffice-3.png"><img class="inline screenshot" src="nixos/screenshots/nixos-openoffice-3-small.png" alt="OpenOffice.org 3.0.1 screenshot"/></a>
+
+    Lluís Batlle has updated OpenOffice.org in Nixpkgs to 3.0.1
+    (<a href="nixos/screenshots/nixos-openoffice-3.png">screenshot</a>).
+</description><pubDate>Thu May 21 2009 00:00:00 GMT</pubDate></item><item><title>
+    KDE 4.2 in Nixpkgs/NixOS
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="nixos/screenshots/nixos-kde42-1.png"><img class="inline screenshot" src="nixos/screenshots/nixos-kde42-1-small.png" alt="KDE 4.2 screenshot"/></a>
+
+    We now have a fairly complete set of KDE 4.2 packages in Nixpkgs
+    and NixOS.  Previously we had KDE 3.5, but it was rather
+    incomplete: just <tt>kdelibs</tt> and <tt>kdebase</tt>.
+    Now we have all that <a href="nixos/screenshots/nixos-kde42-2.png">desktop
+    goodness</a>, such as <tt>kdemultimedia</tt>,
+    <tt>kdenetwork</tt> and <tt>kdegames</tt>.  You can
+    enable KDE 4 in NixOS by setting the
+    <tt>services.xserver.sessionType</tt> option to
+    <tt>kde4</tt>.  Thanks go to Yury G. Kudryashov, Andrew
+    Morsillo and Sander van der Burg for doing the hard work on
+    adding KDE 4 to Nixpkgs.  (<a href="nixos/screenshots/nixos-kde42-1.png">Screenshot 1</a>,
+    <a href="nixos/screenshots/nixos-kde42-2.png">screenshot
+        2</a>.)
+</description><pubDate>Thu May 07 2009 00:00:00 GMT</pubDate></item><item><title>
+    Hydra
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://hydra.nixos.org/">
+        <img class="inline" src="images/hydra.png" alt="Hydra       logo"/></a>
+
+    <a href="https://hydra.nixos.org/releases/nix/unstable">Nix</a>
+    and <a href="https://hydra.nixos.org/project/nixos/jobstatus">NixOS</a>
+    releases are now built in <a href="https://hydra.nixos.org/">Hydra</a>, the new Nix-based
+    continuous build system.  Hydra replaces our <a href="http://buildfarm.st.ewi.tudelft.nl/status">old Nix-based
+    build farm</a>, which will be phased out soon.  There are
+    several advantages over the old build farm: the build tasks for
+    a project are scheduled and published separately, so that for
+    instance a (fast) tarball build doesn’t have to wait for a
+    (slow) Cygwin build; build results are stored in a database,
+    which will enable all sorts of interesting queries; better error
+    reporting; a better web interface; and much more.  We have
+    written a <a href="https://nixos.org/~eelco/pubs/hydra-scp-submitted.pdf">draft
+    paper about Hydra</a>.  There are some <a href="https://hydra.nixos.org/job/hydra/trunk/build/latest/download-by-type/doc/manual">instructions
+    available</a> about how to set up your own Hydra server.
+</description><pubDate>Thu Feb 05 2009 00:00:00 GMT</pubDate></item><item><title>
+    Linux.com article about Nix
+</title><link>https://nixos.org/news.html</link><description>
+    There is an article on <a href="https://www.linux.com/">Linux.com</a> about Nix: <a href="https://www.linux.com/feature/155922">“Nix fixes dependency
+    hell on all Linux distributions”</a>.
+</description><pubDate>Thu Jan 22 2009 00:00:00 GMT</pubDate></item><item><title>
+    Nix 0.12 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://nixos.org/releases/nix/nix-0.12/">Nix
+        0.12</a> has been released.  The most important change is that
+    Nix no longer needs Berkeley DB to store metadata, but there are
+    many other improvements.  See the <a href="https://nixos.org/releases/nix/nix-0.12/release-notes/">release
+    notes</a> for details.
+</description><pubDate>Sun Dec 21 2008 00:00:00 GMT</pubDate></item><item><title>
+    DisNix paper accepted at HotSWUp
+</title><link>https://nixos.org/news.html</link><description>
+    <p>
+        The paper “Atomic Upgrading of Distributed Systems” (by Sander
+        van der Burg, Eelco Dolstra and Merijn de Jonge) has been
+        accepted for presentation at the <a href="http://www.hotswup.org/">First ACM Workshop on Hot
+        Topics in Software Upgrades (HotSWUp)</a>.  A <a href="https://nixos.org/~eelco/pubs/atomic-hotswup2008-submitted.pdf">draft
+        of the paper</a> is available.  It describes Sander’s master’s
+        thesis research on DisNix, an extension to Nix that allows
+        deployment and upgrading of distributed systems from a single
+        declarative description.  We will continue this research in
+        the <a href="http://swerl.tudelft.nl/bin/view/Main/PDS">Jacquard PDS
+        project</a>, which has now started.  (We still have an opening
+        for a PhD student or a postdoc; please <a href="mailto:visser@acm.org">contact us</a> if you’re
+        interested.)
+    </p>
+</description><pubDate>Thu Oct 09 2008 00:00:00 GMT</pubDate></item><item><title>
+    NixOS paper accepted at ICFP!
+</title><link>https://nixos.org/news.html</link><description>
+    <p>
+        The paper “NixOS: A Purely Functional Linux Distribution” (by
+        Eelco Dolstra and Andres Löh) has been <a href="http://www.icfpconference.org/icfp2008/accepted/accepted.html">accepted</a>
+        for presentation at the <a href="http://www.icfpconference.org/icfp2008/">2008
+        International Conference on Functional Programming</a> (ICFP).
+        It describes NixOS in much greater detail than last year’s
+        HotOS paper, and argues why the purely functional style and
+        features such as laziness are important for system
+        configuration management.  It also provides some measurements
+        on the actual purity of Nix build actions.  A <a href="https://nixos.org/~eelco/pubs/nixos-icfp2008-submitted.pdf">draft
+        of the paper</a> is available.
+    </p>
+</description><pubDate>Wed Jul 16 2008 00:00:00 GMT</pubDate></item><item><title>
+    Website back up
+</title><link>https://nixos.org/news.html</link><description>
+    <p>
+        The Nix website was down for a few days due to cooling
+        problems in the server room causing the machine to overheat.
+        These should be resolved now.  Apologies for the
+        inconvenience.
+    </p>
+</description><pubDate>Fri Jun 06 2008 00:00:00 GMT</pubDate></item><item><title>
+    Website / SVN repositories moved
+</title><link>https://nixos.org/news.html</link><description>
+    <p>
+        The Nix website has moved to <a href="https://nixos.org/"><tt>nixos.org</tt></a> (hosted at <a href="http://www.tudelft.nl/">TU Delft</a>).  The Subversion
+        repositories have moved to <a href="http://svn.nixos.org/"><tt>svn.nixos.org</tt></a>.  See
+        <a href="http://mail.cs.uu.nl/pipermail/nix-dev/2008-April/000740.html">this
+            mailing list posting</a> for information about moving existing
+        SVN working copies.
+    </p>
+</description><pubDate>Sun May 25 2008 00:00:00 GMT</pubDate></item><item><title>
+    LDTA 2008 paper
+</title><link>https://nixos.org/news.html</link><description>
+    <p>
+        Eelco Dolstra presented the paper <a href="https://nixos.org/~eelco/pubs/laziness-ldta2008-final.pdf">“Maximal
+        Laziness — An Efficient Interpretation Technique for Purely
+        Functional DSLs”</a> at <a href="http://ldta2008.inf.elte.hu/">8th Workshop on Language
+        Description, Tools and Applications (LDTA 2008)</a>.  It’s about
+        caching of evaluation results in the Nix expression evaluator as
+        a technique to make a simple term-rewriting evaluator efficient.
+        Slides are <a href="https://nixos.org/~eelco/talks/ldta-apr-2008.pdf">here</a>.
+    </p>
+</description><pubDate>Mon May 05 2008 00:00:00 GMT</pubDate></item><item><title>
+    Jacquard grant proposal accepted!
+</title><link>https://nixos.org/news.html</link><description>
+    <p>
+
+        The <a href="http://www.jacquard.nl/">Jacquard program</a> of
+        NWO and EZ has granted funding for the Nix-related project “Pull
+        Deployment of Services” (PDS), which is about improving the
+        deployment of software and services in complex heterogenous
+        environments.  The grant consists of 368 K€ for a PhD student (4
+        years) and a postdoc (3 years).  If you’re interested in these
+        positions, please have a look at <a href="http://swerl.tudelft.nl/bin/view/Main/PDS">this page</a>,
+        and don’t hesitate to contact <a href="http://swerl.tudelft.nl/bin/view/EelcoVisser">Eelco
+        Visser</a> or <a href="https://nixos.org/~eelco/">Eelco Dolstra</a>.
+
+    </p>
+</description><pubDate>Fri Mar 14 2008 00:00:00 GMT</pubDate></item><item><title>
+    New NixOS ISOs
+</title><link>https://nixos.org/news.html</link><description>
+    <p>
+
+        <a href="nixos/screenshots/nixos-installer-help.png"><img class="inline screenshot" src="nixos/screenshots/nixos-installer-help-small.png" alt="NixOS installer online help"/></a>
+
+        New NixOS installation CD images for <tt>i686</tt> and
+        <tt>x86_64</tt> are <a href="https://nixos.org/releases/nixos-0.1pre10083/">available</a>,
+        which is a good thing as the previous ones were already a few
+        months old.  The new images are Nix 0.11-based, contain <a href="http://www.memtest.org/">Memtest86+</a> as a
+        convenience, should support more SATA drives, and show online
+        help (the <a href="https://nixos.org/releases/nixos-unstable-latest/manual/">NixOS
+        manual</a>) on virtual console 7.
+
+    </p>
+</description><pubDate>Wed Feb 06 2008 00:00:00 GMT</pubDate></item><item><title>
+    Nix 0.11 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://nixos.org/releases/nix/nix-0.11/">Nix
+        0.11</a> has been released.  This is a major new release
+    representing over a year of development.  The most important
+    improvement is secure multi-user support. It also features many
+    usability enhancements and language extensions, many of them
+    prompted by NixOS, the purely functional Linux distribution
+    based on Nix.  See the <a href="https://nixos.org/releases/nix/nix-0.11/release-notes/">release
+    notes</a> for details.
+</description><pubDate>Thu Jan 31 2008 00:00:00 GMT</pubDate></item><item><title>
+    Nixpkgs 0.11 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://nixos.org/releases/nixpkgs/nixpkgs-0.11/">Nixpkgs
+        0.11</a> has been released.  See the <a href="https://nixos.org/releases/nixpkgs/nixpkgs-0.11/release-notes/">release
+    notes</a> for details.
+</description><pubDate>Fri Oct 12 2007 00:00:00 GMT</pubDate></item><item><title>
+    OpenOffice in Nixpkgs
+</title><link>https://nixos.org/news.html</link><description>
+    <p>
+
+        <a href="nixos/screenshots/nixos-openoffice.png"><img class="inline screenshot" src="nixos/screenshots/nixos-openoffice-small.png" alt="OpenOffice screenshot"/></a>
+
+        <a href="https://www.openoffice.org/">OpenOffice</a> is now in
+        Nixpkgs (<a href="nixos/screenshots/nixos-openoffice.png">screenshot of
+        OpenOffice 2.2.1 running under NixOS</a>, and <a href="http://www.denbreejen.net/public/nixos/nixos-oo-scrs.png">another
+        screenshot</a>).  Despite being a rather gigantic package (it
+        takes two hours to compile on an Intel Core 2 6700), OpenOffice
+        had only two “impurities” (references to paths outside of the
+        Nix store) in its <a href="https://svn.nixos.org/viewvc/nix/nixpkgs/trunk/pkgs/applications/office/openoffice/">build
+        process</a> that had to be resolved — a reference to
+        <tt>/bin/bash</tt> and one to <tt>/usr/lib/libjpeg.so</tt>.</p>
+
+    <p>Armijn Hemel, Wouter den
+        Breejen and Eelco Dolstra contributed to the Nix expression for
+        OpenOffice.</p>
+</description><pubDate>Wed Oct 10 2007 00:00:00 GMT</pubDate></item><item><title>
+    NixOS progress report
+</title><link>https://nixos.org/news.html</link><description>
+    <p>
+
+        <a href="nixos/screenshots/nixos-games.png"><img class="inline screenshot" src="nixos/screenshots/nixos-games-small.png" alt="NixOS screenshot"/></a>
+
+        <a href="https://www.winehq.org/">Wine</a> now runs on NixOS!
+        Finally we can run all those <a href="nixos/screenshots/nixos-games.png">legacy
+        applications</a>...  Thanks to Michael Raskin for adding Wine
+        and a NPTL-enabled Glibc (which Wine seems to need).  This is a
+        nice application of purely functional package composition, by
+        the way: Wine didn’t work with the standard Glibc in Nixpkgs, so
+        we just <a href="https://svn.nixos.org/viewvc/nix/nixpkgs/trunk/pkgs/top-level/all-packages.nix?r1=9165&amp;r2=9164&amp;pathrev=9165">pass
+        it another Glibc at build time</a>.</p>
+
+    <p>In other news, Nix 0.11
+        and Nixpkgs 0.11 will be released soon.</p>
+</description><pubDate>Sat Sep 22 2007 00:00:00 GMT</pubDate></item><item><title>
+    Commits mailing list
+</title><link>https://nixos.org/news.html</link><description>
+    <p>
+        There is now a <a href="http://mail.cs.uu.nl/mailman/listinfo/nix-commits">mailing
+        list</a> (<tt>nix-commits@cs.uu.nl</tt>) that you can
+        subscribe to if you want to receive automatic commit
+        notifications from the Nix Subversion repository.
+    </p>
+</description><pubDate>Fri Sep 14 2007 00:00:00 GMT</pubDate></item><item><title>
+    HotOS paper on NixOS
+</title><link>https://nixos.org/news.html</link><description>
+    <p>
+        Eelco Dolstra presented the paper <a href="docs/papers.html#hotos07"><em>Purely Functional System
+        Configuration Management</em></a> at the <a href="https://www.usenix.org/events/hotos07/">11th Workshop on
+        Hot Topics in Operating Systems (HotOS XI)</a>.  It gives an
+        overview of the ideas behind <a href="nixos">NixOS</a>.  The
+        <a href="http://people.cs.uu.nl/eelco/talks/hotos-may-2007.pdf">slides</a>
+        are also available.
+    </p>
+</description><pubDate>Fri Jun 08 2007 00:00:00 GMT</pubDate></item><item><title>
+    NixOS progress report
+</title><link>https://nixos.org/news.html</link><description>
+
+    <p>
+
+        <a href="https://www.kde.org"><img class="inline screenshot" src="nixos/klogo-official-crystal-128x128.png" alt="KDE logo"/></a>
+
+        We now have <a href="https://www.kde.org/">KDE</a> running on
+        NixOS (<a href="nixos/screenshots/nixos-kde.png">obligatory
+        screenshot</a>).  Just <tt>kdebase</tt> for now (Martin
+        Bravenboer already added <tt>kdelibs</tt> a long time ago so
+        that we could run the wonderful <a href="http://kcachegrind.sourceforge.net/cgi-bin/show.cgi">KCachegrind</a>),
+        but it contains all the important stuff (Konqueror, KDesktop,
+        Kicker, Konsole, Control Center, etc.).</p>
+
+    <p>In related news, we can
+        safely say that, rumours to the contrary notwithstanding, NixOS
+        is not an <a href="http://www.osnews.com/comment.php?news_id=17601">April
+            Fools’ Joke</a>.</p>
+
+</description><pubDate>Wed May 02 2007 00:00:00 GMT</pubDate></item><item><title>
+    NixOS progress report
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="nixos/screenshots/nixos-compiz-cube.png"><img class="inline screenshot" src="nixos/screenshots/nixos-compiz-cube-small.png" alt="NixOS screenshot"/></a>
+
+    NixOS is now <em>almost</em> usable as a desktop OS ;-).  We
+    have an X server, a bunch of Gnome packages, basic wireless
+    support, and of course all the applications in Nixpkgs that we
+    had all along running on other Linux distributions.  Here are a
+    few screenshots:
+    <ul>
+        <li><a href="nixos/screenshots/nixos-compiz-cube.png">X server
+            with Compiz window manager</a>.</li>
+        <li><a href="nixos/screenshots/nixos-terminals.png">Emacs and
+            a few terminals</a> showing off the (near) absence of
+            <tt>/lib</tt>, <tt>/bin</tt> etc.; everything is in the Nix
+            store.</li>
+        <li><a href="nixos/screenshots/nixos-apps.png">Some
+            applications</a>.</li>
+    </ul>
+</description><pubDate>Thu Apr 05 2007 00:00:00 GMT</pubDate></item><item><title>
+    NixOS manual
+</title><link>https://nixos.org/news.html</link><description>
+    There is now some <a href="https://nixos.org/releases/nixos/unstable/manual/">basic
+    documentation for NixOS</a>.
+</description><pubDate>Mon Mar 19 2007 00:00:00 GMT</pubDate></item><item><title>
+    NixOS for x86_64
+</title><link>https://nixos.org/news.html</link><description>
+    NixOS now works on x86_64 machines.  A 64-bit ISO is <a href="nixos/#download">available</a>.
+</description><pubDate>Fri Feb 23 2007 00:00:00 GMT</pubDate></item><item><title>
+    New build farm hardware at TUD
+</title><link>https://nixos.org/news.html</link><description>
+    <p><a href="https://www.flickr.com/photos/eelcovisser/367433201/"><img class="inline screenshot" src="https://farm1.static.flickr.com/185/367433201_9ee5ad0986_m.jpg" alt="New build farm"/></a>To quote Eelco Visser: new
+        hardware for buildfarm at Delft University of Technology has
+        arrived.</p>
+
+    <p>Here’s what we have: 5 Intel Core 2 Duo DualCore machines
+        with 1GB RAM, 2 Mac minis with 1,83-GHz Intel Core
+        Duo-processor, another Core 2 Duo a UPS to deal with spikes in
+        power supply, a console with integrated monitor and keyboard
+        switches, a rack with room for a couple more machines.</p>
+
+    <p>Here’s what we’re going to do with the goodies. The five
+        Intel machines and the two MacMinis (also Intel) are going to
+        be used to crank at building hundreds of software
+        packages. Using virtualisation we should be able to run builds
+        on multiple operating system distributions. <a href="http://blog.eelcovisser.net/index.php?/archives/36-Bootfarm.html">Read
+            more…</a></p>
+</description><pubDate>Fri Feb 23 2007 00:00:00 GMT</pubDate></item><item><title>
+    Nixpkgs 0.10 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://nixos.org/releases/nixpkgs/nixpkgs-0.10/">Nixpkgs
+        0.10</a> has been released.  See the <a href="https://nixos.org/releases/nixpkgs/nixpkgs-0.10/release-notes/">release
+    notes</a> for details.
+</description><pubDate>Sun Nov 12 2006 00:00:00 GMT</pubDate></item><item><title>
+    Nix 0.10.1 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://nixos.org/releases/nix/nix-0.10.1/">Nix
+        0.10.1</a> has been released.  It fixes two obscure bugs that
+    shouldn’t affect most users.
+</description><pubDate>Sat Nov 11 2006 00:00:00 GMT</pubDate></item><item><title>
+    Nix 0.10 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://nixos.org/releases/nix/nix-0.10/">Nix
+        0.10</a> has been released.  This release has many
+    improvements and bug fixes; see the <a href="https://nixos.org/releases/nix/nix-0.10/release-notes/">release
+    notes</a> for details.
+</description><pubDate>Mon Nov 06 2006 00:00:00 GMT</pubDate></item><item><title>
+    Nixpkgs 0.9 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://nixos.org/releases/nixpkgs/nixpkgs-0.9/">Nixpkgs
+        0.9</a> has been <a href="http://mail.cs.uu.nl/pipermail/nix-dev/2006-January/000121.html">released</a>.
+</description><pubDate>Fri Mar 03 2006 00:00:00 GMT</pubDate></item><item><title>
+    PhD thesis defended
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="http://www.cs.uu.nl/~eelco">Eelco Dolstra</a>
+    defended his <a href="docs/papers.html#dolstra06thesis">PhD
+    thesis</a> on the purely functional deployment model.
+</description><pubDate>Sat Feb 18 2006 00:00:00 GMT</pubDate></item><item><title>
+    Nix 0.9.2 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://nixos.org/releases/nix/nix-0.9.2/">Nix
+        0.9.2</a> has been released released.  This is a bug fix
+    release that addresses some problems on Mac OS X.
+</description><pubDate>Fri Oct 21 2005 00:00:00 GMT</pubDate></item><item><title>
+    Nix 0.9 released
+</title><link>https://nixos.org/news.html</link><description>
+    <a href="https://nixos.org/releases/nix/nix-0.9/">Nix 0.9</a>
+    has been released.  This is a new major release that provides
+    quite a few performance improvements and bug fixes, as well as a
+    number of new features.  Read the <a href="https://nixos.org/releases/nix/nix-0.9/release-notes/">release
+    notes</a> for details.
+</description><pubDate>Sun Oct 16 2005 00:00:00 GMT</pubDate></item><item><title>
+    Secure sharing paper accepted for ASE 2005
+</title><link>https://nixos.org/news.html</link><description>
+    The paper “Secure Sharing Between Untrusted Users in a
+    Transparent Source/Binary Deployment Model” has been accepted at
+    <a href="http://www.ase-conference.org/">ASE 2005</a>.  This
+    paper describes how a Nix store can be securely shared by
+    multiple users who may not trust each other; i.e., how do we
+    prevent one user from installing a Trojan horse that is
+    subsequently executed by some other user?
+</description><pubDate>Sun Aug 28 2005 00:00:00 GMT</pubDate></item><item><title>
+    Service deployment paper accepted for SCM-12
+</title><link>https://nixos.org/news.html</link><description>
+    The paper “Service Configuration Management” (accepted at the
+    <a href="https://users.soe.ucsc.edu/~ejw/scm12/">12th
+        International Workshop on Software Configuration
+        Management</a>) describes how we can rather easily deploy
+    “services” (e.g., complete webserver configurations such as our
+    <a href="http://svn.nixos.org/">Subversion server</a>) through
+    Nix by treating the non-component parts (such as configuration
+    files, control scripts and static data) as components that are
+    built by Nix expressions.  The result is that all advantages
+    that Nix offers to software deployment also extend to service
+    deployment, such as the ability to easily have multiple
+    configuration side by side, to roll back configurations, and to
+    identify the precise dependencies of a configuration.
+</description><pubDate>Mon Aug 22 2005 00:00:00 GMT</pubDate></item><item><title>
+    Patching paper accepted for CBSE 2005
+</title><link>https://nixos.org/news.html</link><description>
+    The paper “Efficient Upgrading in a Purely Functional Component
+    Deployment Model” has been accepted at <a href="http://www.sei.cmu.edu/pacc/CBSE2005/">CBSE 2005</a>.
+    It describes how we can deploy updates to Nix packages
+    efficiently, even if “fundamental” packages like Glibc are
+    updated (which cause a rebuild of all dependent packages), by
+    deploying binary patches between components in the Nix store.
+    Includes techniques such as patch chaining and computing deltas
+    between archive files.
+</description><pubDate>Thu Mar 17 2005 00:00:00 GMT</pubDate></item><item><title>
+    Paper “Imposing a Memory Management Discipline on Software
+    Deployment” accepted for presentation at ICSE 2004!
+</title><link>https://nixos.org/news.html</link><description>
+    The first Nix paper.
+</description><pubDate>Fri Jan 16 2004 00:00:00 GMT</pubDate></item></channel></rss>

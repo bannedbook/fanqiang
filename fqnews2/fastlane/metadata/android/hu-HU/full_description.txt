@@ -1,0 +1,19 @@
+<p>A Feeder egy nyílt forráskódú feed olvasó (RSS/Atom/JSONFeed), mely létrehozásra került 2014-ben.</p>
+
+<p>A Feeder-rel elolvashatja a legújabb híreket és posztokat a kedvenc oldaláról.</p>
+
+<p>A Feeder nem szinkronizál a tipikus távoli backend-ekkel, így nem szükséges semmilyen fiók regisztráció.</p>
+
+<p>A Feeder ingyenes, és lokálisan fut a készülékén. Az adata 100%-ban privát.</p>
+
+<p><b>Funkciók</b></p>
+
+<ul>
+<li>Felbontja a HTML-t, és egy natív TextView-ban jeleníti meg</li>
+<li>Offline olvasás</li>
+<li>Szinkronizáció a háttérben</li>
+<li>Értesítések</li>
+<li>OPML Importálás/Exportálás</li>
+<li>Könnyű hozzáférés a belsős linkekhez</li>
+<li>Material design</li>
+</ul>

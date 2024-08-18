@@ -1,0 +1,2 @@
+# 1.9.1
+  * [72f6d12] Disabled R9 minification to avoid crash on Android Kitkat

@@ -1,0 +1,19 @@
+<p>Feeder 是针对安卓系统的开源 Feed 阅读器 (RSS/Atom/JSONFeed)，创建于 2014 年。</p>
+
+<p>你可以用它阅读来自您喜爱站点的最新消息和帖子。</p>
+
+<p>Feeder 不与通常的远程后端同步，因而无需任何类型的账户注册。</p>
+
+<p>Feeder 无需付费即可使用并运行在本地设备上。您的数据 100% 私密。</p>
+
+<p><b>功能</b></p>
+
+<ul>
+<li>解析 HTML 并以原生 TextView 进行展示</li>
+<li>离线阅读</li>
+<li>后台同步</li>
+<li>通知</li>
+<li>导入/导出 OPML</li>
+<li>便捷访问 enclosure 链接</li>
+<li>Material design</li>
+</ul>

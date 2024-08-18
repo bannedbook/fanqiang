@@ -1,0 +1,17 @@
+# 2.4.7
+Agnieszka C (1):
+  * [173a35ca] Updated Polish translation using Weblate
+
+Dan (1):
+  * [4c60bc5a] Updated Ukrainian translation using Weblate
+
+ERYpTION (2):
+  * [0bbf5ef0] Updated Danish translation using Weblate
+  * [0881c3d0] Updated Danish translation using Weblate
+
+El Pirujo (1):
+  * [f0865ca1] Updated Spanish translation using Weblate
+
+Eric (2):
+  * [8e4583c0] Updated Chinese (Simplified) translation using Weblate
+  * [3fe875ef] Updated Chinese (Simplified) translation using Weblate

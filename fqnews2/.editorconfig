@@ -1,0 +1,29 @@
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+tab_width = 4
+ij_continuation_indent_size = 8
+ij_formatter_off_tag = @formatter:off
+ij_formatter_on_tag = @formatter:on
+ij_formatter_tags_enabled = false
+ij_smart_tabs = false
+ij_visual_guides = none
+ij_wrap_on_typing = false
+
+[*.{kt,kts}]
+max_line_length = 200
+ktlint_code_style = ktlint_official
+ktlint_function_naming_ignore_when_annotated_with=Composable
+compose_allowed_composition_locals = LocalTypographySettings,LocalDI,LocalDimens,LocalWindowSizeMetrics,LocalWindowSize,LocalFoldableHinge
+compose_allowed_forwarding = .*Screen
+
+[{*.ant,*.fxml,*.jhm,*.jnlp,*.jrxml,*.opml,*.rng,*.tld,*.wsdl,*.xml,*.xsd,*.xsl,*.xslt,*.xul,rss_kuketz,rss_morningpaper}]
+indent_size = 2
+tab_width = 2
+
+[{*.bash,*.sh,*.zsh}]
+indent_size = 2
+tab_width = 2

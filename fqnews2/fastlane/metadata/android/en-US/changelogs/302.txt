@@ -1,0 +1,20 @@
+# 2.6.17
+Agnieszka C (1):
+  * [735920e6] Translated using Weblate (Polish)
+
+Anonymous (1):
+  * [b65a7a11] Translated using Weblate (Basque)
+
+Jonas Kalderstam (3):
+  * [bcac30c7] Updated README and store descriptions
+  * [c6b79e3d] Changed so duplicate stories are ignored
+  * [d661f9b5] Fixed articles getting mixed with other articles sometimes
+
+Nitin Khalia (1):
+  * [aa584e20] Translated using Weblate (Hindi)
+
+Oğuz Ersen (1):
+  * [85ace16d] Translated using Weblate (Turkish)
+
+VfBFan (1):
+  * [2

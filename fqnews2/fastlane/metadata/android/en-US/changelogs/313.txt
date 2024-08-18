@@ -1,0 +1,18 @@
+# 2.6.28
+Agnieszka C (1):
+  * [9fbe413d7] Updated Polish translation using Weblate
+
+Jonas Kalderstam (4):
+  * [0c2dfbcca] Fixed order of modifiers
+  * [98f3fa8a4] Fixed crash with table spans
+  * [d4a96558a] Fixed full text parsing sporadically showing error message
+  * [eabf243fc] Added support for RTL tables
+
+Matth78 (1):
+  * [825b37ea2] Updated French translation using Weblate
+
+Oğuz Ersen (1):
+  * [4c1323277] Updated Turkish translation using Weblate
+
+Scrambled777 (1):
+  * [57b2eedca] Update

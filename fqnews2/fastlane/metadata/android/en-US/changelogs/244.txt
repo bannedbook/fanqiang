@@ -1,0 +1,19 @@
+# 2.2.3
+Athanasios Plastiras (1):
+  * [d3ea05e1] Updated Greek translation using Weblate
+
+Jonas Kalderstam (3):
+  * [57528ef1] Releasing 2.2.3
+  * [4889a5dc] Removed duplicate portugese language
+  * [6ca4df09] Removed duplicate portugese play store translation
+
+Simona Iacob (1):
+  * [b7cce278] Updated Romanian translation using Weblate
+
+Vítor Fernandes Almado (1):
+  * [8c81a0ed] Updated Portuguese translation using Weblate
+
+WB (1):
+  * [4c03fe85] Translated using Weblate (Galician)
+
+Weblate (1)

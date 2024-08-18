@@ -1,0 +1,18 @@
+# 2.0.3
+Allan Nordhøy (4):
+  * [6f5418e3] Crowdin integration removed
+  * [826a18df] Correct locale for Norwegian Bokmål
+  * [871143e8] Reworded some strings
+  * [1612b7c2] Updated Norwegian Bokmål translation using Weblate
+
+Jonas Kalderstam (1):
+  * [c4048f9f] Added a new feed option to fix feeds with bad ids
+
+Simona Iacob (1):
+  * [eaddfe7e] Updated Romanian translation using Weblate
+
+THANOS SIOURDAKIS (1):
+  * [99f8e333] Updated Greek translation using Weblate
+
+harisai (1):
+  * [28fcb903] 

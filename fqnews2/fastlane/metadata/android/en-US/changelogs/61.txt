@@ -1,0 +1,4 @@
+# 1.8.22
+*   Update Spanish translations
+    Thanks to Khar Khamal
+    See !203

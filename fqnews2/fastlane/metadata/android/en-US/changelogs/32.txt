@@ -1,0 +1,5 @@
+# 1.6.4
+*   Added paging to lists
+    See !99
+*   Added option for maximum number of items per feed
+    See !98 #126

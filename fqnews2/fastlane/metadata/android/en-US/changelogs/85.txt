@@ -1,0 +1,15 @@
+# 1.10.5
+Armand Lynch (2):
+  * [08b6aa7f] Adds 'mark above as read' option
+  * [14c07701] Remove code duplication
+
+Enrico Lovisotto (1):
+  * [487a250c] Improved Italian translation and added missing items
+
+Jonas Kalderstam (5):
+  * [a622d655] Added minification to the app to make it faster to install
+  * [3ebd53c3] Fixed scroll position being reset in Reader
+
+Khar Khamal (1):
+  * [6663bdf2] Update Spanish strings.xml to add one new string and correct
+         other string

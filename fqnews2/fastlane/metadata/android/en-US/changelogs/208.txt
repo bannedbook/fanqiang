@@ -1,0 +1,19 @@
+# 2.0.0-rc.2
+Agnieszka C (1):
+  * [b36db45a] Updated Polish translation using Weblate
+
+El Pirujo (1):
+  * [5c5a3c91] Updated Spanish translation using Weblate
+
+Eric (1):
+  * [76e9eba5] Updated Chinese (Simplified) translation using Weblate
+
+Gediminas Murauskas (1):
+  * [0d802855] Updated Lithuanian translation using Weblate
+
+J. Lavoie (1):
+  * [0aa39250] Updated Italian translation using Weblate
+
+Jonas Kalderstam (7):
+  * [d94de6a7] Fixed so TextToSpeech is not initialized as part of App
+       

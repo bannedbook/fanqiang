@@ -1,0 +1,360 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "cff00d0142d9e53d2ca24a6a55cd213c",
+    "entities": [
+      {
+        "tableName": "proxy_groups",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `userOrder` INTEGER NOT NULL, `ungrouped` INTEGER NOT NULL, `name` TEXT, `type` INTEGER NOT NULL, `subscription` BLOB, `order` INTEGER NOT NULL, `isSelector` INTEGER NOT NULL, `frontProxy` INTEGER NOT NULL, `landingProxy` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userOrder",
+            "columnName": "userOrder",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ungrouped",
+            "columnName": "ungrouped",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "subscription",
+            "columnName": "subscription",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "order",
+            "columnName": "order",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isSelector",
+            "columnName": "isSelector",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "frontProxy",
+            "columnName": "frontProxy",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "landingProxy",
+            "columnName": "landingProxy",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "proxy_entities",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `groupId` INTEGER NOT NULL, `type` INTEGER NOT NULL, `userOrder` INTEGER NOT NULL, `tx` INTEGER NOT NULL, `rx` INTEGER NOT NULL, `status` INTEGER NOT NULL, `ping` INTEGER NOT NULL, `uuid` TEXT NOT NULL, `error` TEXT, `socksBean` BLOB, `httpBean` BLOB, `ssBean` BLOB, `vmessBean` BLOB, `trojanBean` BLOB, `trojanGoBean` BLOB, `mieruBean` BLOB, `naiveBean` BLOB, `hysteriaBean` BLOB, `tuicBean` BLOB, `sshBean` BLOB, `wgBean` BLOB, `shadowTLSBean` BLOB, `chainBean` BLOB, `nekoBean` BLOB, `configBean` BLOB)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "groupId",
+            "columnName": "groupId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userOrder",
+            "columnName": "userOrder",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tx",
+            "columnName": "tx",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rx",
+            "columnName": "rx",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "status",
+            "columnName": "status",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ping",
+            "columnName": "ping",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uuid",
+            "columnName": "uuid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "error",
+            "columnName": "error",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "socksBean",
+            "columnName": "socksBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "httpBean",
+            "columnName": "httpBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ssBean",
+            "columnName": "ssBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "vmessBean",
+            "columnName": "vmessBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "trojanBean",
+            "columnName": "trojanBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "trojanGoBean",
+            "columnName": "trojanGoBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mieruBean",
+            "columnName": "mieruBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "naiveBean",
+            "columnName": "naiveBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hysteriaBean",
+            "columnName": "hysteriaBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tuicBean",
+            "columnName": "tuicBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sshBean",
+            "columnName": "sshBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "wgBean",
+            "columnName": "wgBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "shadowTLSBean",
+            "columnName": "shadowTLSBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "chainBean",
+            "columnName": "chainBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nekoBean",
+            "columnName": "nekoBean",
+            "affinity": "BLOB",
+            "notNull": false
+          },
+          {
+            "fieldPath": "configBean",
+            "columnName": "configBean",
+            "affinity": "BLOB",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "groupId",
+            "unique": false,
+            "columnNames": [
+              "groupId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `groupId` ON `${TABLE_NAME}` (`groupId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "rules",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `userOrder` INTEGER NOT NULL, `enabled` INTEGER NOT NULL, `domains` TEXT NOT NULL, `ip` TEXT NOT NULL, `port` TEXT NOT NULL, `sourcePort` TEXT NOT NULL, `network` TEXT NOT NULL, `source` TEXT NOT NULL, `protocol` TEXT NOT NULL, `outbound` INTEGER NOT NULL, `packages` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userOrder",
+            "columnName": "userOrder",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "enabled",
+            "columnName": "enabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "domains",
+            "columnName": "domains",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ip",
+            "columnName": "ip",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "port",
+            "columnName": "port",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sourcePort",
+            "columnName": "sourcePort",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "network",
+            "columnName": "network",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "source",
+            "columnName": "source",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "protocol",
+            "columnName": "protocol",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "outbound",
+            "columnName": "outbound",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "packages",
+            "columnName": "packages",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cff00d0142d9e53d2ca24a6a55cd213c')"
+    ]
+  }
+}

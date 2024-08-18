@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name" translatable="false">FQNews</string>
+  <string name="about_flym">About FQNews</string>
+  <string name="proxy_chain">Proxy Chain</string>
+  <string name="file_manager_missing">Your device lacks an Android standard file selector, please
+        install one, such as Material Files.</string>
+  <string name="apps_message">%d Applications</string>
+  <string name="route_proxy">Proxy</string>
+  <string name="route_bypass">Bypass</string>
+  <string name="route_block">Block</string>
+  <string name="error_title">Error</string>
+  <string name="need_reload">Reload proxy service to apply changes</string>
+  <string name="apply">Apply</string>
+  <string name="need_restart">Restart APP to apply changes</string>
+  <string name="profile_empty">Please select a profile</string>
+  <string name="invalid_server">Invalid server name</string>
+  <string name="service_failed">Failed: </string>
+  <string name="speed_detail">Proxy： %1$s↑ %2$s↓\nDirect： %3$s↑ %4$s↓</string>
+  <string name="speed">%s/s</string>
+  <string name="traffic" translatable="false">%1$s↑ %2$s↓</string>
+  <string name="forward_success">Proxy started.</string>
+  <string name="stop">Stop</string>
+  <string name="action_switch">Switch</string>
+  <string name="reset_connections">Reset Connections</string>
+  <string name="route_opt_block_quic">Block QUIC</string>
+  <string name="route_opt_block_ads">Block ADs</string>
+  <string name="route_opt_block_analysis">Block analysis</string>
+  <string name="route_play_store">Play store rule for %s</string>
+  <string name="route_bypass_domain">Domain rule for %s</string>
+  <string name="route_bypass_ip">IP rule for %s</string>
+  <string name="group_default">Ungrouped</string>
+  <string name="route_need_vpn">Routing rule %s relies on the VPN to be in effect, so it is
+        ignored.</string>
+
+  <string name="action_trojan_go" translatable="false">Trojan Go</string>
+  <string name="action_mieru" translatable="false">Mieru</string>
+  <string name="action_naive" translatable="false">Naïve</string>
+  <string name="action_hysteria" translatable="false">Hysteria</string>
+  <string name="plugin_unknown">Unknown plugin %s</string>
+  <string name="connection_test_timeout">Timeout</string>
+  <string name="connection_test_refused">Connection refused</string>
+  <string name="neko_plugin_internal_error">%s internal error</string>
+  <string name="import_node">Import Node from Clipboard</string>
+  <string name="clipboard_empty">Clipboard is empty</string>
+  <string name="no_proxies_found_in_clipboard">No proxies found in the clipboard</string>
+  <string name="added">节点导入成功,请同步新闻</string>
+  <string name="update_subscription_warning">Proxy is not connected, are you sure you want to
+        continue updating?</string>
+  <string name="no_proxies_found_in_subscription">No proxies found in the subscription</string>
+  <string name="no_proxies_found">No proxies found in the link</string>
+  <string name="no_proxies_found_in_file">No proxies found in the file</string>
+  <string name="service_vpn">VPN Service</string>
+  <string name="service_proxy">Proxy Service</string>
+  <string name="service_subscription">Subscription Update Service</string>
+
+</resources>

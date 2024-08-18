@@ -1,0 +1,18 @@
+# 2.4.6
+Aitor (2):
+  * [69989627] Translated using Weblate (Basque)
+  * [21629a41] Updated Basque translation using Weblate
+
+Hur Ezeiza Zaldua (1):
+  * [af3ff07b] Updated Basque translation using Weblate
+
+Jonas Kalderstam (2):
+  * [a87da794] Try to ignore if conscrypt insertion fails
+  * [8adb4114] Updated UserAgent to avoid some issues with anti-spam
+  * [9ddc1a14] Fixed unit test
+
+Retrial (1):
+  * [e176df4d] Translated using Weblate (Greek)
+
+Skrripy (1):
+  * [05f2f077] Translated using Weblate
