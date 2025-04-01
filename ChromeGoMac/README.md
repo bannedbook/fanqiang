@@ -18,9 +18,9 @@ ChromeGoMac，Chrome一键翻墙包 Mac版
 
 > 如果下载速度慢，可以用 [FDM下载工具](https://www.freedownloadmanager.org/zh/)来下载，这个FDM下载工具如果官方网站下载慢，也可以百度搜索下载安装。然后用这个FDM来下载这里的软件。如果chrome提示此文件存在危险，请选择保留危险文件，是误报。
 > 
-> 1.  [ChromeGoMac下载点](https://d1a.88888811.xyz/ChromeGoMac.tar.gz)
-> 2.  [ChromeGoMac下载点](https://d1.88888811.xyz/ChromeGoMac.tar.gz)
-> 3.  [ChromeGoMac下载点](https://d2.88888811.xyz/ChromeGoMac.tar.gz)
+> 1.  [ChromeGoMac下载点](https://d1a.88888006.xyz/ChromeGoMac.tar.gz)
+> 2.  [ChromeGoMac下载点](https://d1.88888006.xyz/ChromeGoMac.tar.gz)
+> 3.  [ChromeGoMac下载点](https://d2.88888006.xyz/ChromeGoMac.tar.gz)
 > 4.  [ChromeGoMac下载点](https://github.com/bannedbook/fanqiang/releases)
 
 ### 使用说明
