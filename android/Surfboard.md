@@ -9,8 +9,6 @@ Surfboard 是一款运行在 Android 系统上的网络代理工具，兼容 Sur
 
 ## 应用下载
 
-[https://play.google.com](https://play.google.com/store/apps/details?id=com.getsurfboard&hl=zh)
-
 下载安装应用，完成后打开该应用。
 
 ## 获取订阅

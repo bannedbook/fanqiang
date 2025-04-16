@@ -20,7 +20,6 @@ V2ray.VPN 是在 Android 平台上的VPN APP，支持 VMess/Vless、Shadowsocks�
 ## 应用下载
 
  * [V2ray.VPN 安卓apk下载](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6#v-2-ray-vpn)
- * [V2ray.VPN 谷歌商店下载](https://play.google.com/store/apps/details?id=free.v2ray.proxy.VPN)
 
 第一次启动，务必点`是`<br>
 ![1](https://v2free.org/docs/SSPanel/Android/images/v2free0.png)
