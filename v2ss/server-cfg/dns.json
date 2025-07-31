@@ -1,6 +1,6 @@
 {
     "servers": [
-        "localhost"
+        "1.1.1.1"
     ],
     "tag": "dns_inbound"
 }
