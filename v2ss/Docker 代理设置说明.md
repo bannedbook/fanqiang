@@ -35,5 +35,12 @@ Docker pull 命令在 Linux 上不会使用您在 shell 会话中设置的 http_
 ```
 docker build --build-arg HTTP_PROXY=http://your-proxy-host:port/ --build-arg HTTPS_PROXY=https://your-proxy-host:port/ -t your-image .
 ```
-
 如果您的系统不使用 systemd（例如，较旧的 init 系统），则改为在 /etc/default/docker 中配置代理，但这在现代 Linux 上不太常见。
+
+**相关文章：**
+
+推荐免费翻墙软件：<br>
+<a href="https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6">安卓手机翻墙</a>、<a href="https://github.com/bannedbook/fanqiang/wiki/Chrome%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85" class="wiki-page-link">Chrome一键翻墙包</a>、<a href="https://github.com/bannedbook/fanqiang/tree/master/EdgeGo" target="_blank">EdgeGo-Edge一键翻墙包</a>、<a href="https://github.com/bannedbook/fanqiang/wiki/%E7%81%AB%E7%8B%90firefox%E4%B8%80%E9%94%AE%E7%BF%BB%E5%A2%99%E5%8C%85" class="wiki-page-link">火狐firefox一键翻墙包</a><br>
+
+<b>或者也可以购买现成的翻墙服务(跟本库无关哦)：</b><br>
+<a href="https://github.com/bannedbook/fanqiang/wiki/V2ray%E6%9C%BA%E5%9C%BA"><img src="https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2free.jpg" height="300" alt="V2free翻墙-不限流量、高速稳定、性价比超强"></a>
