@@ -14,7 +14,7 @@ Docker pull 命令在 Linux 上不会使用您在 shell 会话中设置的 http_
    ```
    [Service]
    Environment="HTTP_PROXY=http://your-proxy-host:port/"
-   Environment="HTTPS_PROXY=https://your-proxy-host:port/"
+   Environment="HTTPS_PROXY=http://your-proxy-host:port/"
    Environment="NO_PROXY=localhost,127.0.0.1,::1,your-internal-domains"
    ```
 
@@ -33,7 +33,7 @@ Docker pull 命令在 Linux 上不会使用您在 shell 会话中设置的 http_
 
 对于 docker build 命令，构建过程（由 BuildKit 或守护进程处理）可能需要将代理作为构建参数传递：
 ```
-docker build --build-arg HTTP_PROXY=http://your-proxy-host:port/ --build-arg HTTPS_PROXY=https://your-proxy-host:port/ -t your-image .
+docker build --build-arg HTTP_PROXY=http://your-proxy-host:port/ --build-arg HTTPS_PROXY=http://your-proxy-host:port/ -t your-image .
 ```
 如果您的系统不使用 systemd（例如，较旧的 init 系统），则改为在 /etc/default/docker 中配置代理，但这在现代 Linux 上不太常见。
 
