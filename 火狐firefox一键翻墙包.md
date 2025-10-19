@@ -24,9 +24,9 @@
 
 > 如果下载速度慢，可以用 [FDM下载工具](https://www.freedownloadmanager.org/zh/)来下载，这个FDM下载工具如果官方网站下载慢，也可以百度搜索下载安装。然后用这个FDM来下载这里的软件：
 > 
-> 1.  [FirefoxFQ.7z](https://d1a.88888006.xyz/FirefoxFQ.7z)
-> 2.  [FirefoxFQ.7z](https://d1.88888006.xyz/FirefoxFQ.7z)
-> 3.  [FirefoxFQ.7z](https://d2.88888006.xyz/FirefoxFQ.7z)
+> 1.  [FirefoxFQ.7z](https://d1a.mygrok.top/FirefoxFQ.7z)
+> 2.  [FirefoxFQ.7z](https://d1.mygrok.top/FirefoxFQ.7z)
+> 3.  [FirefoxFQ.7z](https://d2.mygrok.top/FirefoxFQ.7z)
 > 4.  [更多翻墙软件](https://github.com/bannedbook/fanqiang/wiki)
 
 #### 本页面短网址：

@@ -29,9 +29,9 @@ EdgeGo，Edge一键翻墙包
 
 > 如果下载速度慢，可以用 [FDM下载工具](https://www.freedownloadmanager.org/zh/)来下载，这个FDM下载工具如果官方网站下载慢，也可以百度搜索下载安装。然后用这个FDM来下载这里的软件。如果chrome提示此文件存在危险，请选择保留危险文件，是误报。
 > 
-> 1.  [EdgeGo下载点](https://d1a.88888006.xyz/EdgeGo.7z)
-> 2.  [EdgeGo下载点](https://d1.88888006.xyz/EdgeGo.7z)
-> 3.  [EdgeGo下载点](https://d2.88888006.xyz/EdgeGo.7z)
+> 1.  [EdgeGo下载点](https://d1a.mygrok.top/EdgeGo.7z)
+> 2.  [EdgeGo下载点](https://d1.mygrok.top/EdgeGo.7z)
+> 3.  [EdgeGo下载点](https://d2.mygrok.top/EdgeGo.7z)
 > 4.  [EdgeGo下载点](https://github.com/bannedbook/fanqiang/releases)
 
 下载解压后请务必阅读其中的使用说明文档。本软件需要调用Edge浏览器翻墙，如果还没安装Edge，需自行[下载安装Edge浏览器](https://www.microsoft.com/en-us/edge/business/download?form=MA13FJ)，已安装Edge浏览器，但仍然[提示找不到Edge.exe的解决办法](https://github.com/bannedbook/fanqiang/issues/432)。
