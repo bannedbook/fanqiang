@@ -1,6 +1,5 @@
 # 翻墙-科学上网、翻墙工具、翻墙教程项目库
 
-*   [热点禁闻](https://github.com/jsvpn/jsproxy/tree/dev#tt)
 *   [翻墙新闻-FQNews-安卓APP](https://github.com/bannedbook/fanqiang/tree/master/fqnews2)
 *   [安卓翻墙软件](https://github.com/bannedbook/fanqiang/wiki/%E5%AE%89%E5%8D%93%E7%BF%BB%E5%A2%99%E8%BD%AF%E4%BB%B6)
 *   [安卓翻墙APP教程](https://github.com/bannedbook/fanqiang/tree/master/android)
