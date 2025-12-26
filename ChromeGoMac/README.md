@@ -21,7 +21,7 @@ ChromeGoMac，Chrome一键翻墙包 Mac版
 > 1.  [ChromeGoMac下载点](https://d1a.mygrok.top/ChromeGoMac.tar.gz)
 > 2.  [ChromeGoMac下载点](https://d1.mygrok.top/ChromeGoMac.tar.gz)
 > 3.  [ChromeGoMac下载点](https://d2.mygrok.top/ChromeGoMac.tar.gz)
-> 4.  [ChromeGoMac下载点](https://github.com/bannedbook/fanqiang/releases)
+> 4.  [ChromeGoMac下载点](https://github.com/bannedbook/fanqiang/releases/tag/ChromeGo-latest)
 
 ### 使用说明
 
