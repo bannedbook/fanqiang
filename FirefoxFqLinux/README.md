@@ -12,14 +12,14 @@ Firefox一键翻墙包 Linux版
 
 ### 更新日志
 
-2023年10月7日更新公告：若干更新，请下载新版。 
+2025年12月26日更新，请下载新版。 
     
 ### ChromeGoMac下载地址<a name="chromego-xia-zai-di-zhi"></a>
 
-> 1.  [ChromeGoMac下载点](https://d1a.mygrok.top/FirefoxFqLinux.tar.gz)
-> 2.  [ChromeGoMac下载点](https://d1.mygrok.top/FirefoxFqLinux.tar.gz)
-> 3.  [ChromeGoMac下载点](https://d2.mygrok.top/FirefoxFqLinux.tar.gz)
-> 4.  [ChromeGoMac下载点](https://github.com/bannedbook/fanqiang/releases)
+> 1.  [Firefox一键翻墙包 Linux版 下载点](https://d1a.mygrok.top/FirefoxFqLinux.tar.gz)
+> 2.  [Firefox一键翻墙包 Linux版 下载点](https://d1.mygrok.top/FirefoxFqLinux.tar.gz)
+> 3.  [Firefox一键翻墙包 Linux版 下载点](https://d2.mygrok.top/FirefoxFqLinux.tar.gz)
+> 4.  [Firefox一键翻墙包 Linux版 下载点](https://github.com/bannedbook/fanqiang/releases/tag/ChromeGo-latest)
 
 ### 使用说明
 
@@ -44,10 +44,7 @@ Firefox一键翻墙包 Linux版
 4. 启动翻墙,输入下面的命令
 
 	```
-	bash 1-clash.meta.sh
-	#或者
-	bash 2-Xray.sh
-	#……根据看到的.sh 脚本的文件名逐个尝试
+	bash clash.meta.sh
 	```
 
 N种翻墙方式，哪个好用用哪个,欢迎按顺序挨个尝试。翻墙脚本的.sh文件的文件名前面也加了0、1、2、3...的序号，建议按这个序号挨个尝试。由于国内网络环境复杂，地区不同，运营商不同，封锁强度会不同，所以使用效果会有差别，有的地区几乎所有的软件都能使用，有的只能用几款，因此具体哪款软件适合你的网络环境，需要你自己来尝试。 
