@@ -1,5 +1,12 @@
 [
   {
+    "tag": "freedom_ip",
+    "protocol": "freedom",
+    "settings": {
+      "domainStrategy": "UseIP"
+    }
+  },
+  {
     "tag": "IPv4_out",
     "protocol": "freedom"
   },
@@ -17,13 +24,6 @@
           "port": 40000
         }
       ]
-    }
-  },
-  {
-    "tag": "freedom_ip",
-    "protocol": "freedom",
-    "settings": {
-      "domainStrategy": "UseIP"
     }
   },
   {
