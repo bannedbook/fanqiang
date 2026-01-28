@@ -1,0 +1,162 @@
+{
+    "dns": {
+        "servers": [
+            {
+                "tag": "cf",
+                "address": "1.1.1.1",
+                "detour": "direct"
+            },
+            {
+                "tag": "google",
+                "address": "8.8.8.8",
+                "detour": "direct"
+            },
+            {
+                "tag": "dns_unlock",
+                "address": "1.0.0.1",
+                "detour": "direct"
+            }
+        ],
+        "rules": [
+            {
+                "rule_set": [
+                    "geosite-entertainment"
+                ],
+                "domain_suffix": [
+                    "starott.com",
+                    "starplus.com"
+                ],
+                "server": "dns_unlock"
+            }
+        ],
+        "strategy": "prefer_ipv4"
+    },
+    "outbounds": [
+        {
+            "tag": "direct",
+            "type": "direct",
+            "domain_strategy": "prefer_ipv4"
+        },
+        {
+            "type": "block",
+            "tag": "block"
+        },
+        {
+            "tag": "WARP",
+            "type": "socks",
+            "server": "127.0.0.1",
+            "server_port": 40000
+        },
+        {
+            "tag": "IPv4_out",
+            "type": "direct",
+            "domain_strategy": "ipv4_only"
+        },
+        {
+            "tag": "IPv6_out",
+            "type": "direct",
+            "domain_strategy": "ipv6_only"
+        }
+    ],
+    "route": {
+        "rule_set": [
+            {
+                "tag": "geosite-google",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
+                "download_detour": "direct"
+            },
+            {
+                "tag": "geosite-entertainment",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-entertainment@!cn.srs",
+                "download_detour": "direct"
+            }
+        ],
+        "rules": [
+            {
+                "rule_set": [
+                    "geosite-google"
+                ],
+                "outbound": "WARP"
+            },
+            {
+                "rule_set": [
+                    "geosite-entertainment"
+                ],
+                "domain": [
+                    "starott.com",
+                    "starplus.com"
+                ],
+                "outbound": "direct"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "block"
+            },
+            {
+                "domain_regex": [
+                    "(api|ps|sv|offnavi|newvector|ulog.imap|newloc)(.map|).(baidu|n.shifen).com",
+                    "(.+.|^)(360|so).(cn|com)",
+                    "(Subject|HELO|SMTP)",
+                    "(torrent|.torrent|peer_id=|info_hash|get_peers|find_node|BitTorrent|announce_peer|announce.php?passkey=)",
+                    "(^.@)(guerrillamail|guerrillamailblock|sharklasers|grr|pokemail|spam4|bccto|chacuo|027168).(info|biz|com|de|net|org|me|la)",
+                    "(.?)(xunlei|sandai|Thunder|XLLiveUD)(.)",
+                    "(ed2k|.torrent|peer_id=|announce|info_hash|get_peers|find_node|BitTorrent|announce_peer|announce.php?passkey=|magnet:|xunlei|sandai|Thunder|XLLiveUD|bt_key)",
+                    "(.+.|^)(360).(cn|com|net)",
+                    "(.*.||)(guanjia.qq.com|qqpcmgr|QQPCMGR)",
+                    "(.*.||)(rising|kingsoft|duba|xindubawukong|jinshanduba).(com|net|org)",
+                    "(.*.||)(netvigator|torproject).(com|cn|net|org)",
+                    "(.*.||)(gov|12377|12315|110.qq|12321).(cn|com)"
+                ],
+                "outbound": "block"
+            },
+            {
+                "domain_suffix": [
+                    "avacom-lms.com",
+                    "pushnotificationws.com",
+                    "duckdns.org",
+                    "netcraft.com",
+                    "uceprotect.net",
+                    "abusix.com",
+                    "xarf.org",
+                    "blocklist.de",
+                    "bitninja.io",
+                    "bitninja.com",
+                    "ceye.io"
+                ],
+                "outbound": "block"
+            },
+            {
+                "protocol": [
+                    "bittorrent"
+                ],
+                "outbound": "block"
+            },
+            {
+                "port": [
+                    22,
+                    25,
+                    26,
+                    3306,
+                    7
+                ],
+                "outbound": "block"
+            },
+            {
+                "outbound": "direct",
+                "network": [
+                    "udp",
+                    "tcp"
+                ]
+            }
+        ]
+    },
+    "experimental": {
+        "cache_file": {
+            "enabled": true
+        }
+    }
+}
