@@ -29,13 +29,13 @@
                 "server": "dns_unlock"
             }
         ],
-        "strategy": "prefer_ipv4"
+        "strategy": "ipv4_only"
     },
     "outbounds": [
         {
             "tag": "direct",
             "type": "direct",
-            "domain_strategy": "prefer_ipv4"
+            "domain_strategy": "ipv4_only"
         },
         {
             "type": "block",
