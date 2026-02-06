@@ -5,7 +5,7 @@
       "type": "field",
       "domains": [
         "geosite:cn",
-		"geosite:category-porn",
+        "geosite:category-porn",
         ".xxx",
         "domain:avacom-lms.com",
         "domain:kmsactivate.com",
