@@ -80,7 +80,7 @@
                 "rule_set": [
                     "geosite-google"
                 ],
-                "outbound": "WARP"
+                "outbound": "direct"
             },
             {
                 "rule_set": [
