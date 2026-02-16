@@ -16,6 +16,7 @@ import (
 	"os"
 	"strconv"
 	"sync"
+	"time"
 
 	"github.com/sagernet/sing/common/metadata"
 	"github.com/sagernet/sing/protocol/socks"
@@ -57,7 +58,13 @@ var (
 	_ HTTPResponse = (*httpResponse)(nil)
 )
 
+const (
+	httpTimeout     = 30 * time.Second
+	maxResponseSize = 128 * 1024 * 1024
+)
+
 type httpClient struct {
+	mu        sync.Mutex
 	tls       tls.Config
 	client    http.Client
 	transport http.Transport
@@ -68,6 +75,9 @@ func NewHttpClient() HTTPClient {
 	client.client.Transport = &client.transport
 	client.transport.TLSClientConfig = &client.tls
 	client.transport.DisableKeepAlives = true
+	client.client.Timeout = httpTimeout
+	client.transport.TLSHandshakeTimeout = httpTimeout
+	client.transport.ResponseHeaderTimeout = httpTimeout
 	return client
 }
 
@@ -112,6 +122,7 @@ func (c *httpClient) TrySocks5(port int32) {
 			}
 			_, err = socks.ClientHandshake5(socksConn, socks5.CommandConnect, metadata.ParseSocksaddr(addr), "", "")
 			if err != nil {
+				socksConn.Close()
 				break
 			}
 			return socksConn, err
@@ -144,6 +155,8 @@ type httpRequest struct {
 }
 
 func (r *httpRequest) AllowInsecure() {
+	r.mu.Lock()
+	defer r.mu.Unlock()
 	r.tls.InsecureSkipVerify = true
 }
 
@@ -190,6 +203,7 @@ func (r *httpRequest) Execute() (HTTPResponse, error) {
 	}
 	httpResp := &httpResponse{Response: response}
 	if response.StatusCode != http.StatusOK {
+		defer response.Body.Close()
 		return nil, errors.New(httpResp.errorString())
 	}
 	return httpResp, nil
@@ -221,7 +235,7 @@ func (h *httpResponse) GetHeader(key string) string {
 func (h *httpResponse) GetContent() ([]byte, error) {
 	h.getContentOnce.Do(func() {
 		defer h.Body.Close()
-		h.content, h.contentError = io.ReadAll(h.Body)
+		h.content, h.contentError = io.ReadAll(io.LimitReader(h.Body, maxResponseSize))
 	})
 	return h.content, h.contentError
 }
@@ -241,6 +255,6 @@ func (h *httpResponse) WriteTo(path string) error {
 		return err
 	}
 	defer file.Close()
-	_, err = io.Copy(file, h.Body)
+	_, err = io.Copy(file, io.LimitReader(h.Body, maxResponseSize))
 	return err
 }
