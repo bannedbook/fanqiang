@@ -33,6 +33,7 @@
         "domain:blocklist.de",
         "domain:bitninja.io",
         "domain:bitninja.com",
+	"domain:local",
         "full:wpad",
         "full:isatap",
         "full:localhost",

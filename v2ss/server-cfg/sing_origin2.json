@@ -115,6 +115,7 @@
             },
             {
                 "domain_suffix": [
+                    "local",
                     "avacom-lms.com",
                     "pushnotificationws.com",
                     "duckdns.org",
