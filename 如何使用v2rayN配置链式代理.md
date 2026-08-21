@@ -65,7 +65,12 @@
 
 ![启用 Tun 并查看延迟](https://raw.githubusercontent.com/bannedbook/fanqiang/master/v2ss/images/v2rayn-proxy-chain10.png)
 
-## 四、注意事项
+## 四、为整个订阅分组的节点配置落地代理
+
+在前面配置的基础上，在 `翻墙节点` 这个订阅分组中添加落地代理即可，配置前置代理也是类似的，比如你的网络环境需要前置代理才能上网，也是先把前置代理添加作为一个http/socks节点，然后在订阅分组中把其作为前置代理即可。
+视频实操： https://www.youtube.com/watch?v=At3y_Jl0z_M
+
+## 五、注意事项
 
 1. 定期更新 v2rayN 客户端至最新版本，提升连接稳定性和安全性；
 2. 若遇到配置问题，请先核对协议类型（SOCKS5 / HTTP）与参数是否填写正确。
