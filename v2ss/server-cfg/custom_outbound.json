@@ -8,11 +8,21 @@
   },
   {
     "tag": "IPv4_out",
+    "settings": {
+      "domainStrategy": "UseIPv4"
+    },
     "protocol": "freedom"
   },
   {
     "protocol": "blackhole",
     "tag": "block"
+  },
+  {
+    "tag": "IPv6_out",
+    "protocol": "freedom",
+    "settings": {
+      "domainStrategy": "UseIPv6"
+    }
   },
   {
     "tag": "WARP",
@@ -27,22 +37,13 @@
     }
   },
   {
-    "tag": "warp-v6-out",
+    "tag": "WARP6",
     "protocol": "freedom",
     "settings": {
       "domainStrategy": "UseIPv6"
     },
-    "streamSettings": {
-      "sockopt": {
-        "interface": "warp"
-      }
-    }
-  },
-  {
-    "tag": "IPv6_out",
-    "protocol": "freedom",
-    "settings": {
-      "domainStrategy": "UseIPv6"
+    "proxySettings": {
+      "tag": "WARP"
     }
   }
 ]
